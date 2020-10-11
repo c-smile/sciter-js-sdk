@@ -1,5 +1,6 @@
 html {
-  font-family: Gotham Rounded, "Arial Rounded MT", sans-serif;
+  font-family: "Arial Rounded MT", "Gotham Rounded", sans-serif;
+  font-size: 14pt;
   font-weight: normal;
 }
 
@@ -13,8 +14,7 @@ body {
   font-size: 2rem;
   border: 1px solid white;
   outline: none;
-  background-color: rgba(255, 255, 255, .25);
-  //background-color: rgba(transparent);
+  background-color: rgba(255, 255, 255, .75);
 }
 
 .calculator-grid > button:hover {
@@ -102,6 +102,10 @@ body {
     size:*;  // flexible - fills grid cell
     text-align: right;
     vertical-align:bottom;
+  }
+
+  .calculator-grid > button {
+    background-color: transparent; // blurbehind already
   }
 
   .calculator-grid > button:hover {

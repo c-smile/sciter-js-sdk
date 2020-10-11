@@ -1,0 +1,112 @@
+html {
+  font-family: Gotham Rounded, "Arial Rounded MT", sans-serif;
+  font-weight: normal;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.calculator-grid > button {
+  cursor: pointer;
+  font-size: 2rem;
+  border: 1px solid white;
+  outline: none;
+  background-color: rgba(255, 255, 255, .25);
+  //background-color: rgba(transparent);
+}
+
+.calculator-grid > button:hover {
+  background-color: rgba(255, 255, 255, .9);
+}
+
+.output {
+  background-color: rgba(0, 0, 0, .75);
+  padding: 10px;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.output .previous-operand {
+  color: rgba(255, 255, 255, .75);
+  font-size: 1.5rem;
+}
+
+.output .current-operand {
+  color: white;
+  font-size: 2.5rem;
+}
+
+/* grid system */
+
+/* for browser */
+@supports (display:grid) { 
+
+  body {
+    background: linear-gradient(to right, #00AAFF, #00FF6C);
+  }
+
+  .calculator-grid {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+  }
+
+  .span-two {
+    grid-column: span 2;
+  }
+
+  .output {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+
+}
+
+/* for sciter */
+@supports (flow:horizontal) { 
+
+  html { 
+    background: transparent; // we use blurbehind
+    overflow: none;          // sciter specific - no owerflow
+  }
+
+  .calculator-grid {
+    flow: grid( 1  1  1  1,
+                2  2  3  4,
+                5  6  7  8,
+                9  10 11 12,
+                13 14 15 16,
+                17 18 19 19 ); // the layout
+    size:*;  // spans whole space
+  }
+
+  button {
+    style-set: none; // no standard decoration
+    behavior:button;
+    display: block;
+    size:*;  // flexible - fills grid cell
+    vertical-align:middle;
+    text-align:center;
+  }
+
+  .output {
+    flow: vertical;
+    size:*;  // flexible - fills grid cell
+    text-align: right;
+    vertical-align:bottom;
+  }
+
+  .calculator-grid > button:hover {
+    background-color: morph(window-accent-color, opacity:0.25);
+  }
+
+
+}

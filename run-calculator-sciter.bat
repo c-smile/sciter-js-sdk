@@ -1,0 +1,1 @@
+"bin.win/x32/scapp.exe" "samples/calc/index.html"

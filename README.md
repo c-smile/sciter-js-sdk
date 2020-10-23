@@ -18,9 +18,11 @@ Sciter.JS uses [QuickJS](https://bellard.org/quickjs/)
 
 ## Demos
 
-### Calc
+### Calc demo (universal: Browser and Sciter)
 
 ![Browser and Sciter](https://sciter.com/wp-content/uploads/2020/10/Sciter.JS.Calc_-e1602390091709.png)
+
+![Linux on Raspberry Pi](https://sciter.com/wp-content/uploads/2020/10/sjs-rpi-640x325.png)
 
 Path: samples/calc
 
@@ -28,7 +30,7 @@ Browser and Sciter shows [the same HTML document](https://github.com/c-smile/sci
 
 To run demo start run-calculator-browser.bat or run-calculator-sciter.bat. The later will start bin.win/x32/scapp.exe - standalone Sciter engine.
 
-### Mithril
+### Mithril demo (universal: Browser and Sciter)
 
 Path: samples/mithril
 

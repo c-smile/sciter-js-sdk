@@ -22,7 +22,7 @@ Sciter.JS uses [QuickJS](https://bellard.org/quickjs/)
 
 ![Browser and Sciter](https://sciter.com/wp-content/uploads/2020/10/Sciter.JS.Calc_-e1602390091709.png)
 
-![Linux on Raspberry Pi](https://sciter.com/wp-content/uploads/2020/10/sjs-rpi-640x325.png)
+![Linux on Raspberry Pi](https://sciter.com/wp-content/uploads/2020/10/sjs-rpi.png)
 
 Path: samples/calc
 

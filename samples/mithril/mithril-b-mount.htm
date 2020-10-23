@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+        </style>
+        <script>
+            const window = globalThis; // for browser compatibility
+        </script>
+        <script src="mithril.js"></script>
+    </head>
+    <body>
+      <main>?</main>
+    </body>
+
+    <script>
+      var count = 0; // added a variable
+
+      var Hello = {
+          view: function() {
+              return m("main", [
+                  m("h1", {class: "title"}, "My first app"),
+                  // changed the next line
+                  m("button", {onclick: function() {count++}}, count + " clicks"),
+              ])
+          }
+      }
+      /*class Hello 
+      {
+        view() {
+          return m("main", [
+              m("h1", {class: "title"}, "My first app"),
+              // changed the next line
+              m("button", {onclick: function() {count++}}, count + " clicks"),
+          ])
+        }
+      }*/
+
+      m.mount(document.body, Hello);
+
+    </script>
+
+</html>

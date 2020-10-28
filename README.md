@@ -3,7 +3,7 @@ Sciter.JS - Sciter but with QuickJS on board instead of my TIScript
 
 ## Script
 
-Sciter.JS uses [QuickJS](https://bellard.org/quickjs/) 
+Sciter.JS uses [QuickJS](https://bellard.org/quickjs/) in particular [QuickJS++ ](https://github.com/c-smile/quickjspp).
 
 * ES6: async/await, classes, modules, destructuring;
 * BigInt, BigFloat, BigDecimal - arbitrary precision IEEE 754 floating point operations and transcendental functions with exact rounding (currency, etc);

@@ -13,7 +13,7 @@ Sciter.JS uses [QuickJS](https://bellard.org/quickjs/) in particular [QuickJS++ 
 
 * **Windows - i32, i64 and arm64** - published;
 * **Linux - i64, arm32 (Raspberry Pi)** - published;
-* MacOS - i64 and arm64 - pending;
+* **MacOS - i64** and arm64 - published;
 * Mobiles - pending;
 
 ## Demos

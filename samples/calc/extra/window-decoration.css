@@ -48,3 +48,11 @@ html > header > window-buttons > window-button[role="window-minimize"] { foregro
 html > header > picture { size: window-caption-height; foreground-size: 16dip; }
 
 .output { padding-top: window-caption-height; }
+
+@media platform == "OSX" {
+
+  html > header > window-buttons { display:none; }
+  html > header > picture { display:none; }
+  html > header > window-caption { text-align:center; }
+
+}

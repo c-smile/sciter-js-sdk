@@ -24,7 +24,7 @@ Sciter.JS uses [QuickJS](https://bellard.org/quickjs/) in particular [QuickJS++ 
 
 ![Linux on Raspberry Pi](https://sciter.com/wp-content/uploads/2020/10/sjs-rpi.png)
 
-![On MacOS](https://js.sciter.com/wp-content/uploads/2020/11/sciter-js-calc-osx-3.png)
+![On MacOS](https://js.sciter.com/wp-content/uploads/2020/11/sciter-js-calc-osx-4.png)
 
 
 

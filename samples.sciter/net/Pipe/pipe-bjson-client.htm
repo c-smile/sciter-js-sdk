@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Client</title>
+        <style></style>
+        <script type="module">
+
+import * as sys from "@sys";
+import * as BJSON from "@bjson";
+
+const elText = document.$("input#text");
+const btnSend = document.$("button#send");
+const list = document.$("div#message-list");
+
+const p = new sys.Pipe();
+
+async function connect() {
+  await p.connect('fooPipe');
+  console.log(`Connected to ${p.getpeername()}`);   
+  btnSend.state.disabled = false;
+}
+
+document.on("click", "button#send", async function() {
+  try {
+    var text = elText.value;
+    p.write(BJSON.write({text:text}));
+    var respdata = await p.read();
+    var json = BJSON.read(respdata);
+    list.append(<text>Server sent:{JSON.stringify(json)}</text>);
+  } catch(e) {
+    console.error(e);
+  }
+})
+
+connect();
+
+        </script>
+    </head>
+    <body>
+
+<input|text #text novalue="message" />
+<button#send disabled>Send</button>
+
+<p>Messages from server</p>
+<div#message-list />
+
+    </body>
+</html>

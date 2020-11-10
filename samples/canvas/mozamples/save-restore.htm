@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+canvas { border:1px solid; }
+
+        </style>
+    </head>
+    <body>
+
+<canvas id="canvas" width=300 height=200 />
+
+    </body>
+<script>
+
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+// Save the default state
+ctx.save();
+
+ctx.fillStyle = 'green';
+ctx.fillRect(10, 10, 100, 100);
+
+// Restore the default state
+ctx.restore();
+
+ctx.fillRect(150, 40, 100, 100);
+
+</script>
+
+</html>

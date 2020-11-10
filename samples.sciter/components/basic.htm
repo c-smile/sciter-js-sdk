@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+  main {
+    prototype: Main; // note `class Main` below
+  }
+
+        </style>
+        <script>
+
+class Main extends Element {
+  counter = 0;
+  
+  componentDidMount() {
+    this.render();
+  }  
+
+  render() {
+    this.innerHTML = `<button>inc</button> clicked <span.counter>${this.counter}</span> times`;
+  }
+
+  ["on click at button"](evt, button) {
+    ++this.counter;
+    this.render();
+  }
+
+}
+
+
+        </script>
+    </head>
+    <body>
+
+<main #test/>
+
+    </body>
+</html>

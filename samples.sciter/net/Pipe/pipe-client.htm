@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style></style>
+        <script type="module">
+
+import * as sys from "@sys";
+
+const elText = document.$("input#text");
+const btnSend = document.$("button#send");
+
+const p = new sys.Pipe();
+
+async function connect() {
+  await p.connect('fooPipe');
+  console.log(`Connected to ${p.getpeername()}`);   
+  btnSend.state.disabled = false;
+}
+
+document.on("click", "button#send", async function() {
+  var data = elText.value;
+  p.write(data);
+  var respdata = await p.read();
+  console.assert(data = respdata); 
+})
+
+connect();
+
+        </script>
+    </head>
+    <body>
+
+<input|text #text novalue="message" />
+<button#send disabled>Send</button>
+
+    </body>
+</html>

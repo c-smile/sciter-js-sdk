@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style></style>
+        <script type="module">
+
+import * as sys from "@sys";
+
+// Sample Pipe echo server.
+//
+
+const list = document.$("div#message-list");
+
+async function handleConnection(conn) 
+{
+    console.log(`Accepted connection! ${conn.getpeername()} <-> ${conn.getsockname()}`);
+
+    let data;
+    while (true) {
+        data = await conn.read();
+        if (!data) {
+            console.log('connection closed!');
+            break;
+        }
+        conn.write(new Uint8Array(data));
+        list.append(<text>Received:{data.toString()}</text>);
+    }
+}
+
+(async () => {
+
+    var p = new sys.Pipe();
+    document.on("beforeunload", evt => p.close());
+    try {
+
+      p.bind('fooPipe');
+      p.listen();
+      //document.body.innerText = `Listening on ${p.getsockname()}`; 
+      console.log(`Listening on ${p.getsockname()}`);
+      let conn;
+      while (true) {
+          conn = await p.accept();
+          handleConnection(conn);
+          conn = undefined;
+      }
+    } catch (e) {
+      console.log(e);
+    }
+
+
+})();
+
+        </script>
+    </head>
+    <body>
+
+<div#message-list />
+
+
+    </body>
+</html>

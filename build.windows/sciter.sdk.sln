@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sciter-sqlite", "sciter-sqlite.vcxproj", "{EEF87A51-5AB9-F687-23F4-3F058F733B64}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "usciter", "usciter.vcxproj", "{84AA9945-F089-18E1-F9A1-A3B765007F42}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		DebugSkia|ARM64 = DebugSkia|ARM64
+		DebugSkia|Win32 = DebugSkia|Win32
+		DebugSkia|x64 = DebugSkia|x64
+		Debug|ARM64 = Debug|ARM64
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		ReleaseSkia|ARM64 = ReleaseSkia|ARM64
+		ReleaseSkia|Win32 = ReleaseSkia|Win32
+		ReleaseSkia|x64 = ReleaseSkia|x64
+		Release|ARM64 = Release|ARM64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EEF87A51-5AB9-F687-23F4-3F058F733B64}.DebugSkia|ARM64.ActiveCfg = Debug|ARM64
+		{EEF87A51-5AB9-F687-23F4-3F058F733B64}.DebugSkia|Win32.ActiveCfg = Debug|Win32
+		{EEF87A51-5AB9-F687-23F4-3F058F733B64}.DebugSkia|x64.ActiveCfg = Debug|x64
+		{EEF87A51-5AB9-F687-23F4-3F058F733B64}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{EEF87A51-5AB9-F687-23F4-3F058F733B64}.Debug|ARM64.Build.0 = Debug|ARM64
+		{EEF87A51-5AB9-F687-23F4-3F058F733B64}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EEF87A51-5AB9-F687-23F4-3F058F733B64}.Debug|Win32.Build.0 = Debug|Win32
+		{EEF87A51-5AB9-F687-23F4-3F058F733B64}.Debug|x64.ActiveCfg = Debug|x64
+		{EEF87A51-5AB9-F687-23F4-3F058F733B64}.Debug|x64.Build.0 = Debug|x64
+		{EEF87A51-5AB9-F687-23F4-3F058F733B64}.ReleaseSkia|ARM64.ActiveCfg = Debug|ARM64
+		{EEF87A51-5AB9-F687-23F4-3F058F733B64}.ReleaseSkia|Win32.ActiveCfg = Debug|Win32
+		{EEF87A51-5AB9-F687-23F4-3F058F733B64}.ReleaseSkia|x64.ActiveCfg = Debug|x64
+		{EEF87A51-5AB9-F687-23F4-3F058F733B64}.Release|ARM64.ActiveCfg = Release|ARM64
+		{EEF87A51-5AB9-F687-23F4-3F058F733B64}.Release|ARM64.Build.0 = Release|ARM64
+		{EEF87A51-5AB9-F687-23F4-3F058F733B64}.Release|Win32.ActiveCfg = Release|Win32
+		{EEF87A51-5AB9-F687-23F4-3F058F733B64}.Release|Win32.Build.0 = Release|Win32
+		{EEF87A51-5AB9-F687-23F4-3F058F733B64}.Release|x64.ActiveCfg = Release|x64
+		{EEF87A51-5AB9-F687-23F4-3F058F733B64}.Release|x64.Build.0 = Release|x64
+		{84AA9945-F089-18E1-F9A1-A3B765007F42}.DebugSkia|ARM64.ActiveCfg = Debug|ARM64
+		{84AA9945-F089-18E1-F9A1-A3B765007F42}.DebugSkia|Win32.ActiveCfg = Debug|Win32
+		{84AA9945-F089-18E1-F9A1-A3B765007F42}.DebugSkia|x64.ActiveCfg = Debug|Win32
+		{84AA9945-F089-18E1-F9A1-A3B765007F42}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{84AA9945-F089-18E1-F9A1-A3B765007F42}.Debug|ARM64.Build.0 = Debug|ARM64
+		{84AA9945-F089-18E1-F9A1-A3B765007F42}.Debug|Win32.ActiveCfg = Debug|Win32
+		{84AA9945-F089-18E1-F9A1-A3B765007F42}.Debug|Win32.Build.0 = Debug|Win32
+		{84AA9945-F089-18E1-F9A1-A3B765007F42}.Debug|x64.ActiveCfg = Debug|Win32
+		{84AA9945-F089-18E1-F9A1-A3B765007F42}.ReleaseSkia|ARM64.ActiveCfg = Debug|ARM64
+		{84AA9945-F089-18E1-F9A1-A3B765007F42}.ReleaseSkia|Win32.ActiveCfg = Debug|Win32
+		{84AA9945-F089-18E1-F9A1-A3B765007F42}.ReleaseSkia|x64.ActiveCfg = Debug|Win32
+		{84AA9945-F089-18E1-F9A1-A3B765007F42}.Release|ARM64.ActiveCfg = Release|ARM64
+		{84AA9945-F089-18E1-F9A1-A3B765007F42}.Release|ARM64.Build.0 = Release|ARM64
+		{84AA9945-F089-18E1-F9A1-A3B765007F42}.Release|Win32.ActiveCfg = Release|Win32
+		{84AA9945-F089-18E1-F9A1-A3B765007F42}.Release|Win32.Build.0 = Release|Win32
+		{84AA9945-F089-18E1-F9A1-A3B765007F42}.Release|x64.ActiveCfg = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+        </style>
+        <script>const window = globalThis; // for browser compatibility</script>
+        <script src="../mithril.js" />
+        <script>
+          
+          JSX = m;   // let's  use Mithril as a driver of JSX expressions
+
+          var count = 0; // added a variable
+
+          class Hello 
+          {
+            view() 
+            {
+              return <main>
+                  <h1 class="title">My first JSX/mithril Sciter.JS app</h1>
+                  <button onclick={ function(){count++} }>{count} clicks</button>
+                </main>;
+            }
+          }
+
+          m.mount(document.body, Hello);
+
+        </script>
+
+
+    </head>
+    <body>
+      <main>?</main>
+    </body>
+
+
+</html>

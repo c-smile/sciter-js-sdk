@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style></style>
+        <script>
+
+var div = document.querySelector("div");
+
+async function getit() {
+  try {
+    //var resp = await fetch("https://next.json-generator.com/VkdTYpUdt");
+    var resp = await fetch("https://baconipsum.com/api/?type=meat-and-filler");
+    var data = await resp.json();
+    div.innerHTML = "<p>" + data.join("</p><p>") + "</p>";
+    //console.log(resp);
+
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+getit();
+
+        </script>
+    </head>
+    <body>
+      <p>Data received by <code>await fetch(url)</code>:</p>
+      <div />    
+    </body>
+</html>

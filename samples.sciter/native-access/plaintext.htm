@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+plaintext { size:*; }
+
+        </style>
+        <script>
+
+var el = document.querySelector("plaintext");
+
+var counter = 0;
+
+document.on("click","button#append",function() {
+
+  el.plaintext.appendLine("line " +  ++counter);
+
+});
+
+
+        </script>
+    </head>
+    <body>
+
+<button#append>append</button>
+
+<plaintext></plaintext>
+
+
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style></style>
+        <script>
+
+          // Reactor is available out of the box:
+
+          class Hello extends Element 
+          {
+            count = 0;
+
+            render() 
+            {
+              return <body>
+                <button id="test">{this.count} clicks</button>
+              </body>;
+            }
+
+            ["on click at button#test"]() 
+            {
+              this.componentUpdate { count : this.count + 1 };
+              // note, this above is a short form of
+              // this.componentUpdate ({ count : this.count + 1 });
+            }
+
+          }
+
+          document.body.patch(<Hello/>);
+
+        </script>
+
+    </head>
+    <body>
+    </body>
+
+
+</html>

@@ -3,84 +3,8 @@
 Implemented so far (list will be extended): 
 
 * [Document](https://github.com/c-smile/sciter-js-sdk/wiki/DOM.Document)
-
-## Element extends Node
-
-#### Properties:
-
-* `element.className`
-* `element.id`
-* `element.tagName`
-* `element.innerHTML`
-* `element.outerHTML`
-* `element.innerText`
-* `element.firstElementChild`
-* `element.lastElementChild`
-* `element.nextElementSibling`
-* `element.previousElementSibling`
-* `element.value`
-
-#### Methods:
-
-* `element.appendChild(node)`
-* `element.insertBefore(node, refNode)`
-* `element.insertAfter(node, refNode)`
-* `element.removeChild(node)`
-* `element.replaceChild(newNode,oldNode)`
-* `element.insertAdjacentHTML(where, html)`
-* `element.querySelector(selector)`
-* `element.querySelectorAll(selector)`
-* `element.addEventListener(...)`
-* `element.getAttribute()`
-* `element.getAttributeNames()`
-* `element.removeAttribute()`
-* `element.setAttribute()`
-
-#### Methods (Sciter.JS specific):
-
-* `element.on(eventname: string, [selector: string,] handler: function): Element`
-
-  jQuery style event subscription:
-  
-  * eventname may start with `^` for handling events in capturing phase;
-  * eventname may contain namespace part: `"click.myns"` ;
-  * the handler is called with `this` set to element matching the selector;
-  * the method returns element itself allowing to chain `on` calls;
-
-* `element.off(eventname: string): Element`
-
-  Unsubscribe event handlers either by name  `"click"` or by namespace `".myns"`.
-
-* `element.off(handler: function): Element`
-  
-  Unsubscribe event handlers by function reference;
-
-
-### Node
-
-#### properties:
-
-* `node.nodeName`
-* `node.nodeType`
-* `node.nodeValue`
-* `node.firstChild`
-* `node.lastChild`
-* `node.nextSibling`
-* `node.previousSibling`
-* `node.ownerDocument`
-* `node.parentNode`
-* `node.parentElement`
-* `node.textContent`
-
-#### methods:
-
-* `node.cloneNode()`
-* `node.contains()`
-* `node.compareDocumentPosition()` - not yet
-* `node.getRootNode()`
-* `node.hasChildNodes()`
-* `node.isEqualNode()`
-* `node.isSameNode()`
+* [Element](https://github.com/c-smile/sciter-js-sdk/wiki/DOM.Element)
+* [Node](https://github.com/c-smile/sciter-js-sdk/wiki/DOM.Node)
 
 ### Event
 

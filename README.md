@@ -20,9 +20,18 @@ Sciter.JS uses [QuickJS](https://bellard.org/quickjs/) in particular [QuickJS++ 
 
 ### Calc demo (universal: Browser and Sciter)
 
+Windows:
+
 ![Browser and Sciter](https://sciter.com/wp-content/uploads/2020/10/Sciter.JS.Calc_-e1602390091709.png)
 
+Linux (Raspbian on Raspberry Pi in particular)
+
 ![Linux on Raspberry Pi](https://sciter.com/wp-content/uploads/2020/10/sjs-rpi.png)
+
+MacOS:
+
+![On MacOS](https://js.sciter.com/wp-content/uploads/2020/11/sciter-js-calc-osx-4.png)
+
 
 Path: samples/calc
 

@@ -8,4 +8,4 @@
 4. `Element.prepend(vnode)`
 5. `Element.append(vnode)`
 6. `Element.patch(vnode)` - core of the Sciter's Reactor, a.k.a. "Native React"
-7. `Element.componentUpdate(props) - Sciter's Reactor, request to render/patch the component.
+7. `Element.componentUpdate(props)` - Sciter's Reactor, request to render/patch the component.

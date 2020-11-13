@@ -1,6 +1,8 @@
 # sciter-js-sdk
 Sciter.JS - Sciter but with QuickJS on board instead of my TIScript
 
+### [Developement logfile](logfile.md)
+
 ## Script
 
 Sciter.JS uses [QuickJS](https://bellard.org/quickjs/) in particular [QuickJS++ ](https://github.com/c-smile/quickjspp).

@@ -22,19 +22,15 @@ defines { "DEVICE=" .. _OPTIONS["device"] }
 if( _TARGET_OS ~= "macosx") then  -- we are not auto generating XCode solutions for a while
                                   -- structure of typical XCode is not trivial - requires manual inputs.
 function osabbr() 
-  if( _TARGET_OS == "macosx") then return "osx" 
-  elseif( _TARGET_OS == "windows") then return "win"
-  elseif( _TARGET_OS == "linux") then return "lnx"
-  else return "unk"
-  end
+  return _TARGET_OS
 end
 
 -- function that setups target dir according to configuration
 function settargetdir() 
   basedir = basedir or ""
-  targetdir ("bin." .. osabbr() .."/%{cfg.platform}")
+  targetdir ("bin/" .. osabbr() .."/%{cfg.platform}")
   filter "configurations:*Skia" 
-    targetdir ("bin." .. osabbr() .."/%{cfg.platform}skia")
+    targetdir ("bin/" .. osabbr() .."/%{cfg.platform}skia")
   filter {}
 end
 
@@ -59,17 +55,17 @@ workspace "sciter.sdk"
   -- -- location "build"
   filter "system:windows"
     configurations { "DebugSkia", "ReleaseSkia" }
-    location "build.windows"
+    location ("build/" .. osabbr())
     links { "shell32", "advapi32", "ole32", "oleaut32", "comdlg32" }
     removeplatforms "arm32"
     systemversion "latest"
   filter "system:macosx"
-    location "build.macosx"
+    location ("build/" .. osabbr())
     filter "system:macosx"
     links { "CoreFoundation.framework", "Cocoa.framework" }
     buildoptions { "-fobjc-arc" }
   filter "system:linux"
-    location("build.linux/" .. string.lower(_OPTIONS["device"]))
+    location("build/" .. osabbr() .. "/" .. string.lower(_OPTIONS["device"]))
     defines { "_GNU_SOURCE" }
     buildoptions {
      "`pkg-config gtk+-3.0 --cflags`",      
@@ -145,7 +141,7 @@ project "usciter"
            "demos/usciter/win-res/usciter.rc",
            "demos/usciter/win-res/dpi-aware.manifest" }
     prebuildcommands { 
-      "%{prj.location}..\\bin.win\\packfolder.exe %{prj.location}..\\demos\\usciter\\res %{prj.location}..\\demos\\usciter\\resources.cpp -v \"resources\""
+      "%{prj.location}..\\..\\bin\\".. osabbr() .. "\\packfolder.exe %{prj.location}..\\..\\demos\\usciter\\res %{prj.location}..\\..\\demos\\usciter\\resources.cpp -v \"resources\""
     }
 
   filter "system:macosx"

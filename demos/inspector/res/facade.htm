@@ -1,0 +1,75 @@
+﻿<html resizeable>
+  <head>
+    <title>Sciter.JS Inspector</title>
+    <style>
+      @import url(facade.css);
+    </style>
+    <script>
+    
+      const RESOURCE_TYPE =
+      {
+        HTML      : 0,
+        IMAGE     : 1,
+        STYLE     : 2,
+        CURSOR    : 3,
+        SCRIPT    : 4,
+        RAW_DATA  : 5, 
+        FONT      : 6,
+        SOUND     : 7
+      } 
+    
+      function document.ready() {
+        //Settings.restore();
+        serve();
+      }
+      
+      on("navigate-to-source", function(evt) { // navigate-to-source requires particular tab to be present
+        //for(var tab in $$(#views > .view-driver)) 
+        //  if(evt.target.belongsTo(tab,false,true)) {
+        //    $(#views).current = tab;
+        //    break;
+        //  }
+      });
+      
+      on("connected", function(evt) { $(main).attributes["state"] = "views"; });
+      on("disconnected", function(evt) { if( ! $(#views).hasTabs ) $(main).attributes["state"] = "intro"; } );
+
+    </script>
+    
+    <menu.context #for-log-list>
+      <li command="edit:copy" name="edit:copy" style="foreground-image:url(sres:edit-copy.png)">Copy log items<span class="accesskey">Ctrl+C</span></li>
+      <li command="edit:clear" name="edit:clear">Clear log items</li>
+    </menu>   
+
+    <menu .context #for-input-eval>
+      <li name="edit:undo" command="edit:undo" style="foreground-image:url(sciter:undo.png)"><label>Undo</label><span class="accesskey">&platform-cmd-mod;Z</span></li>
+      <hr/>
+      <li name="edit:cut" command="edit:cut" style="foreground-image:url(sciter:cut.png)"><label>Cut</label><span class="accesskey">&platform-cmd-mod;X</span></li>
+      <li name="edit:copy" command="edit:copy" style="foreground-image:url(sciter:copy.png)"><label>Copy</label><span class="accesskey">&platform-cmd-mod;C</span></li>
+      <li name="edit:paste" command="edit:paste" style="foreground-image:url(sciter:paste.png)"><label>Paste</label><span class="accesskey">&platform-cmd-mod;V</span></li>
+      <hr/>
+      <li name="edit:selectall" command="edit:selectall"><label>Select All</label><span class="accesskey">&platform-cmd-mod;A</span></li>
+      <hr/>
+      <li.code command="paste-code"><code>self.ns;</code><dfn>// current global namespace</dfn></li>
+      <li.code command="paste-code"><code>this;</code><dfn>// shows current element</dfn></li>
+      <li.code command="paste-code"><code>this.attributes["foo"] = "bar";</code></li>
+      <li.code command="paste-code"><code>this.state.checked = true;</code></li>
+      <li.code command="paste-code"><code>this.style#display = "none";</code></li>
+      <hr/>
+    </menu>
+ 
+    
+  </head>
+<body>
+  <main state="intro">
+    <section #intro><include src="intro.htm"/></section>
+    <frameset rows="2*,*" >
+      <tabs.aside #views></tabs>
+      <splitter/>
+      <select|list .log.list.panel multiple>
+        <input|text.eval novalue="this - selected element" />
+      </select>
+    </frameset>      
+  </main>
+</body>
+</html>

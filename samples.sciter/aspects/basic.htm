@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+  section.test {
+    aspect: basicAspect; // see below
+  }
+
+  section.test:visited {
+    color: green;
+  }
+
+        </style>
+        <script>
+
+function basicAspect() {
+  this.innerHTML = "Woo-hoo, aspect is working!";
+  this.state.visited = true;
+}
+
+        </script>
+    </head>
+    <body>
+
+<p>Aspect in Sciter.JS is a function that is called once for element when CSS rule is applied to the element</p>
+
+<p>You should see "aspect is working!" below:</p>
+
+<section.test>Something is wrong with aspects:(</section>
+
+    </body>
+</html>

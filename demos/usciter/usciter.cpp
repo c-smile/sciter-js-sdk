@@ -4,8 +4,6 @@
 
 #include "../sqlite/sciter-sqlite.h"
 
-
-
 class uSciter: public sciter::window {
 public:
   uSciter() : window(SW_TITLEBAR | SW_RESIZEABLE | SW_CONTROLS | SW_MAIN | SW_GLASSY | SW_ENABLE_DEBUG) {}
@@ -96,6 +94,9 @@ int uimain(std::function<int()> run ) {
 #endif // WINDOWS
 
   pwin->expand();
+
+  //sciter::value r = pwin->call_function("test", sciter::value(42));
+  //sciter::value r = pwin->eval(const_wchars("test(32)"));
 
   return run();
 

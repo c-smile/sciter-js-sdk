@@ -1,11 +1,13 @@
 import { $, on } from "@sciter";
 import { launch } from "@env";
+import { DropZone } from "drop-zone.js";
 
 const APP_NAME = "jsciter.app";
 
 //include "settings.js";
 //include "drop-zone.js";
 //include "live-reload.tis";
+
 
 const view = Window.this;
 
@@ -21,10 +23,15 @@ const file_filter = "files *.htm,*.html,*.svg,*.zip,*.scapp|*.htm;*.html;*.svg;*
    
 var debugIsActive = false; 
 
+// for testing SciterEval and SciterCall APIs
+globalThis.test = function(param) {
+  console.log(param);
+  return param;
+}
+
 function loadFile(fn)
 {
   //liveReload.reset();
-
   filename = fn;
   content.frame.loadFile(fn);
   $("button#reload").state.disabled = false;
@@ -33,6 +40,7 @@ function loadFile(fn)
   //  view.launchDebugView();
 
   var croot = content.frame.document;
+  if(!croot) return;
   var title = croot.$("head>title");
   if(title) {
     title = `uSciter: ${ title.text || "" }`;
@@ -111,6 +119,17 @@ on("click", "button#glass", function()
   //saveState();
 });
 
+DropZone { 
+  container: content,
+  accept: "*.htm;*.html;*.xhtml;*.svg",
+  ondrop: function(files) { 
+    if( Array.isArray(files))
+      loadFile(files[0]);
+    else 
+      loadFile(files);
+    }
+}
+
 /*var liveReload = new LiveReload(function() {
   if( filename ) {
     content.load(filename);
@@ -176,14 +195,8 @@ event change-processed {
     width: 1024,
     height: 800
   };
-});*/
+});
 
-/*DropZone.call(content,"*.htm;*.html;*.xhtml;*.svg"); 
-
-event file-drop (evt) {
-  loadFile(evt.data[0]);
-  return true;
-}
 
 event click $(button#inspector)
 {

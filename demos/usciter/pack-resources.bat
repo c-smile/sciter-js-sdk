@@ -1,1 +1,1 @@
-..\..\bin.win\packfolder.exe res resources.cpp -v "resources"
+..\..\bin\windows\packfolder.exe res resources.cpp -v "resources"

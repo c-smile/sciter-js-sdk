@@ -4,8 +4,11 @@
     <style>
       @import url(facade.css);
     </style>
-    <script>
+    <script type="module">
     
+      import { serve } from "server.js";
+      import { ChannelDriver } from "driver.js";
+
       const RESOURCE_TYPE =
       {
         HTML      : 0,
@@ -17,12 +20,8 @@
         FONT      : 6,
         SOUND     : 7
       } 
-    
-      function document.ready() {
-        //Settings.restore();
-        serve();
-      }
-      
+   
+/*      
       on("navigate-to-source", function(evt) { // navigate-to-source requires particular tab to be present
         //for(var tab in $$(#views > .view-driver)) 
         //  if(evt.target.belongsTo(tab,false,true)) {
@@ -33,6 +32,17 @@
       
       on("connected", function(evt) { $(main).attributes["state"] = "views"; });
       on("disconnected", function(evt) { if( ! $(#views).hasTabs ) $(main).attributes["state"] = "intro"; } );
+*/      
+
+      function ChannelDriverFactory(outboundRq) {
+         
+      }
+
+      document.ready = function() {
+        //Settings.restore();
+        serve(ChannelDriverFactory);
+      }
+
 
     </script>
     

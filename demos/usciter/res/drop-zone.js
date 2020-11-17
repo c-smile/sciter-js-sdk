@@ -4,56 +4,71 @@
 //   "file-enter"/files
 //   "file-leave"/files
 //   "file-drop"/files
+
    
-function DropZone(filter = "") 
+export function DropZone(params) 
 {
-  var extensions = (this.attributes["accept-drop"] || filter || "*").split(";");
+  const container = params.container || this;  
+  const filter = container.getAttribute("accept-drop") || params.filter || "*";
+  const callback = params.ondrop;
+
+  if(!(container instanceof Element))
+    throw "no container";
+
+  const REGEXP_PARTS = /(\*|\?)/g;
+  var extensions = filter.split(";");
+      extensions = extensions.map((mask) => new RegExp(mask.replace(REGEXP_PARTS, '\.$1')));
 
   var files = []; // filtered files
 
   function checkFiles(list) {
-    if(typeof list != #array )
+    if(!Array.isArray(list))
       list = [list];
-    function flt(fn) {
-      for(var x in extensions)
-        if( fn like x ) return true;
+    function flt(fn) 
+    {
+      for(let x of extensions) {
+        if( x.test(fn) ) 
+          return true;
+      }
       return false;
     }
     files = list.filter(flt);
     return files.length > 0;
   }
 
-  this.onExchange = function(evt)
-  {
-     if( (evt.type == Event.X_WILL_ACCEPT_DROP) && (evt.draggingDataType == #file)) 
-     {
-       return checkFiles(evt.dragging); 
-     }
-     else if( evt.type == Event.X_DRAG_ENTER)
-     {
-       this.@.addClass("allow-drop");
-       this.postEvent("file-enter", files);
-       return true;
-     }
-     else if( evt.type == Event.X_DRAG_LEAVE )
-     {
-       this.@.removeClass("allow-drop");
-       this.postEvent("file-leave", files);
-       return true;
-     }
-     else if( evt.type == Event.X_DRAG)
-     {
-       //stdout.printf("dragging %V\n", evt.dragging);      
-       return true;
-     }
-     else if( evt.type == Event.X_DROP)
-     {
-       this.@.removeClass("allow-drop");
-       if( files.length )
-         this.postEvent("file-drop", files);
-       return true;
-     }
-  }
+  container.on("dragaccept",function(evt) {
+    var detail = evt.detail;
+    if((detail.dataType == "file") && checkFiles(detail.data)) {
+      evt.stopPropagation(); // consume the event
+    } 
+  });
+
+  container.on("dragenter",function(evt) {
+    container.classList.add("allow-drop");
+    //container.dispatchEvent(new CustomEvent("file-enter", {detail:files, bubbles:true}), true);
+  });
+
+  container.on("dragleave",function(evt) {
+    container.classList.remove("allow-drop");
+    //container.dispatchEvent(new CustomEvent("file-leave", {detail:files, bubbles:true}), true);
+  });
+
+  container.on("drag",function(evt) {
+    evt.stopPropagation(); // consume the event
+  });
+
+  container.on("drop",function(evt) {
+    container.classList.remove("allow-drop");
+    //console.log("*");
+    if( files.length ) {
+      if(callback)
+        callback(files);
+      else
+        container.dispatchEvent(new CustomEvent("file-drop", {detail:files, bubbles:true}), true);
+    }
+    evt.stopPropagation(); // consume the event
+  });
+
 } 
 
 

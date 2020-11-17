@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+          @import url(sciter:msgbox.css);
+        </style>
+        <script>
+
+document.on("click","button#close", function() 
+{
+  Window.this.close({ foo: "foo", bar:42 });
+});
+
+        </script>
+    </head>
+    <body>
+    <main#content type="info">
+       Just a test
+    </main>
+    <footer#button-bar>
+      <button #close role="default-button">Close dialog with data</button>
+    </footer>
+
+    </body>
+</html>

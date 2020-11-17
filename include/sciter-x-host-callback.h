@@ -212,6 +212,13 @@ namespace sciter
       }
       HELEMENT get_root() { return root(); }
 
+      SCITER_VALUE  eval(aux::wchars script) {
+        SCITER_VALUE rv;
+        BOOL r = SciterEval(static_cast<BASE*>(this)->get_hwnd(), script.start, script.length, &rv);
+        assert(r); r = r;
+        return rv;
+      }
+
       // call scripting function defined in the global namespace
       SCITER_VALUE  call_function(LPCSTR name, UINT argc, SCITER_VALUE* argv )
       {

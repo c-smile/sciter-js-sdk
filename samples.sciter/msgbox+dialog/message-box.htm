@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+button { display:block; margin:1em; }
+
+        </style>
+        <script>
+
+
+document.on("click","button#info", function() 
+{
+  var r = Window.modal(<info>Hello world!</info>);
+  console.log(r);
+});
+
+document.on("click","button#alert", function() 
+{
+  var r = Window.modal(<alert><p>Don't worry</p>
+                      <p>That is just a demo of alert box</p></alert>);
+  console.log(r);
+});
+
+document.on("click","button#error", function() 
+{
+  var r = Window.modal(<error><p>Don't worry</p>
+                      <p>That is just a demo of error report.</p></error>);
+  console.log(r);
+});
+
+document.on("click","button#buttons", function() 
+{
+  var r = Window.modal(
+    <question>
+      <content>Be or not to be?</content>
+      <buttons>
+         <button id="yes" role="default-button">Yes</button>
+         <button id="no" role="cancel-button">No</button>
+      </buttons>
+    </question>);
+  console.log(r);
+});
+
+        </script>
+    </head>
+    <body>
+
+      Configurable msgboxes:
+
+      <button id="info">info message box</button>
+      <button id="alert">alert message box</button>
+      <button id="error">error message box</button>
+
+      <button id="buttons">custom buttons</button>
+
+    </body>
+</html>

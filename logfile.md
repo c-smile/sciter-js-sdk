@@ -1,3 +1,7 @@
+## 4.4.5.6, revision 8340, 2020-11-17
+
+1. [css] hit test fix on inline-block/transform elements;
+
 ## 4.4.5.6, revision 8335, 2020-11-17
 
 ### New

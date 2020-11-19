@@ -3,6 +3,7 @@
 ### New
 
 1. WebSocket support, see sdk/samples/websockets/. Note: that is home grown implementation on top of libuv sockets - only basic functionality. 
+2. Node.remove() added.
 
 ## 4.4.5.6, revision 8340, 2020-11-17
 

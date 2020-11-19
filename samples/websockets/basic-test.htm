@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebSocket Test</title>  
+    <style>
+    </style>
+</head>
+    <body>
+
+  <h2>WebSocket Test</h2>
+
+  <div id="output">
+  </div>
+
+  <script>
+
+    var wsUri = "wss://echo.websocket.org/";
+    var output;
+    var websocket;
+
+    function writeToScreen(message)
+    {
+      var pre = document.createElement("p");
+      pre.innerHTML = message;
+      output.appendChild(pre);
+    }
+
+    function doSend(message)
+    {
+      websocket.send(message);      
+      writeToScreen("SENT: " + message);
+    }
+
+    function onOpen(evt)
+    {
+      writeToScreen("CONNECTED");
+      doSend("WebSocket rocks");
+    }
+
+    function onClose(evt)
+    {
+      writeToScreen("DISCONNECTED");
+    }
+
+    function onMessage(evt)
+    {
+      writeToScreen('<span style="color: blue;">RESPONSE: ' + evt.data+'</span>');
+      websocket.close();
+      websocket = null;
+    }
+
+    function onError(evt)
+    {
+      writeToScreen('<span style="color: red;">ERROR:</span> ' + evt.data);
+    }
+
+    function testWebSocket()
+    {
+      websocket = new WebSocket(wsUri);
+      websocket.onopen = function(evt) { onOpen(evt) };
+      websocket.onclose = function(evt) { onClose(evt) };
+      websocket.onmessage = function(evt) { onMessage(evt) };
+      websocket.onerror = function(evt) { onError(evt) };
+    }
+
+    output = document.getElementById("output");
+    testWebSocket();
+
+  </script>
+  </body>  
+</html>

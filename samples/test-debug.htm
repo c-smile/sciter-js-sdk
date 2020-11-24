@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style></style>
+        <script type="module" src="debug-peer.js" />
+
+        <script>
+          console.log("test log output");
+          console.log("test data", {foo:"text of foo bar zot zap"});
+          console.log("test data 2", [1,2,3,4]);
+          console.warn("test warning");
+          
+          document.$("div#time").innerText = (new Date()).toString();
+
+          document.on("click", "button", function() {
+            foo = bar + 42;  
+          }); 
+
+
+        </script>
+    </head>
+    <body>
+      <p>Try F5 to reload</p>
+      <div #time />
+      <button>Generate error</button>
+    </body>
+</html>

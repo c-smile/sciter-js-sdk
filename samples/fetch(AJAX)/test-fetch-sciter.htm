@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+plaintext {
+  border:1px solid;
+  size:*;
+}
+
+        </style>
+        <script>
+
+var plaintext = document.querySelector("plaintext");
+
+async function getit() {
+  try {
+    var resp = await fetch("https://sciter.com");
+    var data = resp.text();
+    plaintext.value = data;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+getit();
+
+        </script>
+    </head>
+    <body>
+      <p>Data received by <code>await fetch(url)</code>:</p>
+      <plaintext />
+    </body>
+</html>

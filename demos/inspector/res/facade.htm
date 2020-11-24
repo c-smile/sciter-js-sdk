@@ -5,44 +5,10 @@
       @import url(facade.css);
     </style>
     <script type="module">
-    
-      import { serve } from "server.js";
-      import { ChannelDriver } from "driver.js";
 
-      const RESOURCE_TYPE =
-      {
-        HTML      : 0,
-        IMAGE     : 1,
-        STYLE     : 2,
-        CURSOR    : 3,
-        SCRIPT    : 4,
-        RAW_DATA  : 5, 
-        FONT      : 6,
-        SOUND     : 7
-      } 
-   
-/*      
-      on("navigate-to-source", function(evt) { // navigate-to-source requires particular tab to be present
-        //for(var tab in $$(#views > .view-driver)) 
-        //  if(evt.target.belongsTo(tab,false,true)) {
-        //    $(#views).current = tab;
-        //    break;
-        //  }
-      });
-      
-      on("connected", function(evt) { $(main).attributes["state"] = "views"; });
-      on("disconnected", function(evt) { if( ! $(#views).hasTabs ) $(main).attributes["state"] = "intro"; } );
-*/      
+       import {App} from "facade.js";
 
-      function ChannelDriverFactory(outboundRq) {
-         
-      }
-
-      document.ready = function() {
-        //Settings.restore();
-        serve(ChannelDriverFactory);
-      }
-
+       document.body.patch(<App/>);
 
     </script>
     
@@ -71,15 +37,5 @@
     
   </head>
 <body>
-  <main state="intro">
-    <section #intro><include src="intro.htm"/></section>
-    <frameset rows="2*,*" >
-      <tabs.aside #views></tabs>
-      <splitter/>
-      <select|list .log.list.panel multiple>
-        <input|text.eval novalue="this - selected element" />
-      </select>
-    </frameset>      
-  </main>
 </body>
 </html>

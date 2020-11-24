@@ -162,6 +162,48 @@ project "usciter"
 
   filter {}
 
+project "inspector"
+  kind "WindowedApp"
+  language "C++"
+
+  dpiawareness "HighPerMonitor"
+
+  files { "demos/inspector/inspector.cpp" }
+
+  settargetdir()
+
+  filter "system:windows"
+    removeplatforms { "x64" }
+    removeconfigurations { "*skia" }
+    files {"include/sciter-*.h",
+           "include/sciter-*.hpp",
+           "include/aux-*.*",
+           "include/sciter-win-main.cpp",
+           "demos/inspector/win-res/inspector.rc",
+           "demos/inspector/win-res/dpi-aware.manifest" }
+    prebuildcommands { 
+      "%{prj.location}..\\..\\bin\\".. osabbr() .. "\\packfolder.exe %{prj.location}..\\..\\demos\\inspector\\res %{prj.location}..\\..\\demos\\inspector\\resources.cpp -v \"resources\""
+    }
+
+  filter "system:macosx"
+    files {"include/sciter-osx-main.mm"}
+  filter "system:linux"
+    files {"include/sciter-gtk-main.cpp"}
+    buildoptions {
+       "`pkg-config gtk+-3.0 --cflags`"
+    }
+    linkoptions { 
+       "`pkg-config gtk+-3.0 --libs`",
+       "`pkg-config fontconfig --libs`",
+       "-fPIC",
+       "-pthread",
+       "-Wl,--no-undefined",
+       "-ldl",
+    }
+
+  filter {}
+
+
 -- sciter extension library - SQLite
 project "sciter-sqlite"
 

@@ -1,3 +1,27 @@
+## 4.4.5.7, revision 8347, 2020-11-24
+
+### New
+
+1. `document.createNodeIterator()`
+2. `document.url([relurl])` - Sciter specific
+3. `element.click()`
+4. `element.childNodes`
+5. `event.altKey`, `event.ctrlKey`, `event.metaKey`, `event.shiftKey`, `event.button`, `event.buttons`, `event.clientX/Y`, `event.screenX/Y`, `event.x/y`,  
+6. `class Text extends Node`;
+7. `class Comment extends Node`;
+8. `class Graphics.Image` - sciter specific; 
+9. native module "@debug" - sciter specific;
+10. `Element.state.box()` - sciter specific;
+11. `sciter.uuid()` - uuid string generator
+12. event `"reloaddocument"`;
+13. samples/debug-peer.js (this will move inside sciter.dll) + inspector.exe, console log is operational there + F5 support (by debug-peer.js).
+
+
+### Fixes
+
+1. JSX, fix of <var>, etc parsing;
+
+
 ## 4.4.5.6, revision 8341, 2020-11-17
 
 ### New

@@ -5,40 +5,52 @@ const PIPE_NAME = "inspector-js";
 
 async function handleConnection(driverFactory,conn) 
 {
-    console.log(`Accepted connection! ${conn.getpeername()} <-> ${conn.getsockname()}`);
+    //console.log(`Accepted connection! ${conn.getpeername()} <-> ${conn.getsockname()}`);
 
     var driver;
 
-    async function outbound(message) {
-      conn.write(BJSON.write(message));
-      let response = await conn.read();
-      if (!response) {
-          console.log('connection closed!');
-          driver.gone();
-      }
-      return BJSON.read(response);
+    function closeconn() { if(conn) conn.close(); }
+
+    document.on("beforeunload", closeconn);
+
+    let awaitingResponses = [];
+
+    function outbound(name,data,callback) {
+      if(callback) {
+        awaitingResponses.push(callback);
+        conn.write(BJSON.write([name,true, data]));
+      } else 
+        conn.write(BJSON.write([name,false, data]));
     }
 
     driver = driverFactory(outbound);
 
     var message;
     while (true) {
-        try {
-          message = await conn.read();
-          if (!message) {
-              console.log('connection closed!');
-              driver.gone();
-              break;
+      try {
+        message = await conn.read();
+        if (!message)
+          break;
+        BJSON.read(message, (chunk) => {
+          const [name,needresp,data] = chunk;
+          if( name == "resp")
+            awaitingResponses.shift()(data);
+          else {
+            let answer = driver.handle(name,data);
+            if( needresp )
+              conn.write(BJSON.write(["resp",false,answer]));
           }
-          let answer = driver.handle(BJSON.read(message));
-          //list.append(<text>Received:{JSON.stringify(json)}</text>);
-          if(answer)
-            conn.write(BJSON.write(answer));
-        }
-        catch(e) {
-          console.error(e);
-        }
+        });
+      }
+      catch(e) {
+        console.error(e);
+        break;
+      }
     }
+    //console.log('empty message, connection closed?', typeof message);
+    driver.gone();
+    conn = undefined;
+    document.off(closeconn);
 }
 
 export async function serve(driverFactory) 
@@ -48,7 +60,7 @@ export async function serve(driverFactory)
   try {
     p.bind(PIPE_NAME);
     p.listen();
-    console.log(`Listening on ${p.getsockname()}`);
+    //console.log(`Listening on ${p.getsockname()}`);
     let conn;
     while (true) {
         conn = await p.accept();

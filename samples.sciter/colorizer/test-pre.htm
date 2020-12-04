@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title>static pre colorizing demo</title>
+    <style>
+      @import url(colorizer.css);
+    </style>
+    <script>
+      fetch(document.url()).then(function(resp) {
+        document.$("pre").value = resp.text();
+      }) 
+    </script>
+  </head>
+<body>
+  Selfie of the colorizer:
+  <pre type="text/html"></pre>
+</body>
+</html>

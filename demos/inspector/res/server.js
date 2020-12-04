@@ -43,7 +43,7 @@ async function handleConnection(driverFactory,conn)
         });
       }
       catch(e) {
-        console.error(e);
+        console.error("conn:",e,e?.stack);
         break;
       }
     }
@@ -64,10 +64,11 @@ export async function serve(driverFactory)
     let conn;
     while (true) {
         conn = await p.accept();
+        if(!conn) break;
         handleConnection(driverFactory,conn);
         conn = undefined;
     }
   } catch (e) {
-    console.log(e);
+    console.error("serve:",e,e?.stack);
   }
 }

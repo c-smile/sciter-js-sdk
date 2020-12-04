@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+@import url(../colorizer/colorizer.css);
+
+plaintext { size:*; }
+
+        </style>
+        <script>
+
+const plaintext = document.$("plaintext");
+
+document.on("click","button[type=radio]", async function(evt,button) {
+  var url = button.getAttribute("src");
+  var mime = button.getAttribute("srctype");
+  try {
+    var r = await fetch(url);
+    if(r.ok) {
+      plaintext.setAttribute("type",mime);
+      plaintext.value = r.text();
+    }
+    else
+      plaintext.value = url + " not found";
+  } catch (e) {
+    plaintext.value = url + " not found";
+  }
+});
+
+        </script>
+    </head>
+    <body>
+      <button|radio(resource) src="sciter:ux-master.css" srctype="text/css">master.css</button>
+      <button|radio(resource) src="sciter:master-base.css" srctype="text/css">master-base.css</button>
+      <button|radio(resource) src="sciter:debug-peer.js" srctype="text/javascript">debug-peer.js</button>
+      <plaintext type="text/css" readonly />
+    </body>
+</html>

@@ -4,13 +4,18 @@ import {uuid} from "@sciter";
 export class ChannelDriver
 {
   request = null; // function to request data from debugee 
+  notify = null; // function to notify debugee 
 
   theirLogs = [];
+  theirResources = {};
   key = null;
+
+  viewstate = {}; // storage of view states
 
   constructor(outboundRq) 
   {
-    this.request = outboundRq;
+    this.request = function(name,params) { return new Promise((resolve,reject) => { outboundRq(name,params,resolve); }); }
+    this.notify = outboundRq;
   }
 
   get connected() { return this.request !== null; }
@@ -55,6 +60,17 @@ export class ChannelDriver
   static snapshot(imageBytes) {
     if(this.onSnapshotBytes)
       this.onSnapshotBytes(imageBytes);
+  }
+
+  static highlighted(stack) {
+    if(this.onStackHighlight)
+      this.onStackHighlight(stack);
+  }
+
+  static resources(rsdefs) {
+    for(var rd of rsdefs)
+      this.theirResources[rd.rqUrl] = rd;
+    document.dispatchEvent(new Event("resource-new"), true);
   }
 
 

@@ -33,7 +33,7 @@ function loadFile(fn)
 {
   //liveReload.reset();
   filename = fn;
-  content.frame.loadFile(fn);
+  content.frame.loadFile(fn, true);
   $("button#reload").state.disabled = false;
   inspectorButton.state.disabled = false;
   //if(debugIsActive)
@@ -60,7 +60,7 @@ on("click","button#open", function() {
 on("click","button#reload", function () {
     //liveReload.reset();
     if( filename ) {
-      content.frame.load(filename);
+      loadFile(filename);
       //if(debugIsActive)
       //  view.launchDebugView();
     }

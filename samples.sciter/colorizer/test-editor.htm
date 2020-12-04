@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title></title>
+    <style>
+      @import url(colorizer.css);
+    </style>
+    <script>
+      fetch(document.url()).then(function(resp) {
+        document.$("plaintext").value = resp.text();
+      }) 
+    </script>
+  </head>
+<body>
+  Selfie of the colorizer:
+  <plaintext type="text/html" spaces-per-tab=2></plaintext>
+</body>
+</html>

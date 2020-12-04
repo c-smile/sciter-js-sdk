@@ -2,7 +2,6 @@
     <head>
         <title>Test</title>
         <style></style>
-        <script type="module" src="debug-peer.js" />
 
         <script>
           console.log("test log output");
@@ -23,5 +22,12 @@
       <p>Try F5 to reload</p>
       <div #time />
       <button>Generate error</button>
+
+      <button|checkbox #foo .bar>Test</button>
+      <div foo="bar">
+        <p>One</p>
+        <p>Two</p>
+        <p>Three</p>
+      </div>
     </body>
 </html>

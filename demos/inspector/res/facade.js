@@ -7,11 +7,15 @@ import { ChannelList } from "channel-list.js";
 import { ChannelView } from "channel-view.js";
 import { ChannelLog } from "channel-log.js";
 
+Object.defineProperty(Array.prototype, 'last', { get() { return this[this.length - 1]; } });
+Object.defineProperty(Array.prototype, 'first', { get() { return this[0]; } });
+
 export class App extends Element
 {
   componentDidMount() {
     document.on("channel-new", () => this.componentUpdate() );
     document.on("channel-gone", () => this.componentUpdate() );
+    document.on("resource-new", () => this.componentUpdate() );
   }
 
   render() 

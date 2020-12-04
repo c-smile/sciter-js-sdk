@@ -6,12 +6,15 @@ class ChannelCaption extends Element
     super();
     this.channel = props.channel;
     this.current = props.current;
+  }
+
+  componentDidMount() {
     // install receiver of snapshotBytes
     this.channel.onSnapshotBytes = (imageBytes) => {
-      this.value = Graphics.Image.fromBytes(imageBytes);
+      this.state.value = Graphics.Image.fromBytes(imageBytes);
     };
-
   }
+
   render() {
     const cls = this.channel.connected ? "active" : "gone";
     return <picture title={this.key} class={cls} state-current={this.current} />;

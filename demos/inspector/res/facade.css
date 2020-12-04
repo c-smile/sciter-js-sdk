@@ -1,4 +1,5 @@
-﻿
+﻿@import url(colorizer.css);
+
 html { font:system; background: #fff; color:#000;}
 
 body.channels {
@@ -8,6 +9,47 @@ body.channels {
   padding:0;
 }
 
+section#channel-view {
+  size:*;
+}
+
+@const HEADER_HEIGHT: 2em;
+@const CURRENT_BACK: #333;
+@const CURRENT_FORE: #fff;
+@const DECOLOR: #888;
+@const HIGHLIGHT: morph(highlight,opacity:10%);
+
+@mixin TAB {
+  padding: 0 1em;
+  line-height: @HEADER_HEIGHT;
+  text-transform: uppercase;
+}
+
+@mixin TAB_CURRENT {
+  background: @CURRENT_BACK;
+  color: @CURRENT_FORE;
+}
+
+[cols] > splitter {
+  width:1px;
+  background-color: @DECOLOR;
+  padding:0;
+  border: none;
+}
+[rows] > splitter {
+  height:1px;
+  background-color: @DECOLOR;
+  padding:0;
+  border: none;
+}
+
+splitter:hover {
+  background-color: @DECOLOR;
+  outline: 1px solid @DECOLOR; 
+}
+
+
+
 @set channel-list {
   :root {
     width:64px; 
@@ -15,7 +57,7 @@ body.channels {
     padding:3px;
     border-spacing:3px;
     overflow-y: scroll-indicator;
-    background:#888;
+    background:@DECOLOR;
   }
 
   picture { 
@@ -107,4 +149,94 @@ body.channels {
   var.string::before { content:'"'; }
   var.string::after { content:'"'; }
 
+}
+
+@set channel-view {
+  :root > header {
+    height: @HEADER_HEIGHT;
+    flow: horizontal;
+    border-bottom: 1px solid @DECOLOR;
+    padding-bottom: -1px;
+  }
+  :root > header > label { behavior:button; display:block; height:*; @TAB; }
+  :root > header > label:current { display:block; @TAB; @TAB_CURRENT; }
+  :root > header > :not(label) { width:*; line-height: @HEADER_HEIGHT; }
+}
+
+@set dom-tree < std-tree {
+  :root {
+    display:block;
+    size:*;
+    border:none;
+    ovreflow: scroll-indicator;
+  }
+  option { width:max-content; text-overflow:none; overflow-x:visible;}
+  option > caption { line-height:1.4em; height:1.4em; }
+  option > caption > span.tag { color:#4169E1; }
+  option > caption span.id { display:inline-block; width:max-content; color:#FF0000; }
+  option > caption span.class { display:inline-block; width:max-content; color:#2E8B57; }
+  option > caption span.type { display:inline-block; width:max-content; color:#8B4513; }
+  option > caption span.name { display:inline-block; width:max-content; color:#4B0082; }
+  option > caption span.attr { display:inline-block; width:max-content; margin-left:0.6em; color:#008080; }
+} 
+
+@set dom-stack {
+  :root {
+    flow:horizontal;
+    height:@HEADER_HEIGHT; line-height: @HEADER_HEIGHT;
+    horizontal-align: right;
+    padding-left: 0.3em;
+  }
+  :root > span {  
+    display:block;
+    background-repeat:no-repeat;
+    background-image:url(path: M 0 0 L 3 3 L 0 6);
+    background-position: top 50% right 0.45em;
+    background-size: 0.3em 0.6em;
+    stroke:currentcolor;
+    stroke-width:1px;
+    padding-right: 1.2em;
+  }
+
+  :root > span:hover {
+    background-color: @HIGHLIGHT;
+  }
+
+  :root > span:last-child { margin-right:*; }
+  span.id { display:inline-block; width:max-content; color:#FF0000; }
+}
+
+
+@set resources {
+  :root {
+    size:*;
+  }
+
+  :root > select {
+    display:block;  
+    height:*;
+    border:none;
+  }
+
+  :root > select > optgroup { padding: 0 3px; text-transform: uppercase; color: #888; }
+  :root > select > option { padding: 0 3px; text-overflow:path-ellipsis; overflow-x:hidden; white-space:no-wrap; }
+}
+
+@set resource {
+  plaintext {
+    size:*;
+    border:none;
+  }
+
+  figure {
+    margin:*;
+    width:max-content;
+  }
+
+  figure > picture {
+    max-width: 50vw;
+  }
+  figure > form {
+    flow:row(label,output);
+  }
 }

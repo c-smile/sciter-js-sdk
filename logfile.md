@@ -1,3 +1,28 @@
+## 4.4.5.8, revision 8364, 2020-12-03
+
+### New
+
+1. `element.tag` - lowercase tag name, `element.tagName` uppercase tagname
+2. `element.hasAttributes` 
+3. `element.hasAttribute()` 
+4. `element.attributes` - note in Sciter this returns an array of {name:..., value:...} objects - snapshot of current attributes collection (but not a live map).
+5. `element.disabled` - in Sciter it is a synonym of `element.state.disabled`
+6. `element.readonly` - in Sciter it is a synonym of `element.state.readonly`
+7. `Window.this.data` as semi-persistent object - survives document reload.
+8. `Range` class
+9. `Tokenizer` class (Sciter specific), see samples.sciter/colorizer/
+9. `element.state.value` value (of input and other elements)
+9. `scapp.exe -debug` to support connection with inspector.exe, inspector.exe should be running.
+9. `usciter.exe` supports connection with inspector.exe, inspector.exe should be running.
+
+Note: I am using *inspector* project as a testing tool for sciter.js
+
+### Fixes
+
+1. fix of loading local resources (including `file://`) by `fetch()`.
+2. Promise rejection is reported as an error on console.error() channel.
+3. Various rendering fixes.
+
 ## 4.4.5.7, revision 8347, 2020-11-24
 
 ### New

@@ -5,7 +5,6 @@ import { ChannelDriver } from "driver.js";
 
 import { ChannelList } from "channel-list.js";
 import { ChannelView } from "channel-view.js";
-import { ChannelLog } from "channel-log.js";
 
 Object.defineProperty(Array.prototype, 'last', { get() { return this[this.length - 1]; } });
 Object.defineProperty(Array.prototype, 'first', { get() { return this[0]; } });
@@ -22,25 +21,40 @@ export class App extends Element
   {
     var current = ChannelDriver.current;
     if( current ) {
-      return <body.channels>
+      return <body .channels>
         <ChannelList current={current} all={ChannelDriver.all} />
-        <frameset rows="2*,*" >
-          <ChannelView channel={current} />
-          <splitter/>
-          <ChannelLog channel={current} />
-        </frameset>
-      </body>;
+        <ChannelView key={current.key} channel={current} />
+      </body>
     }
     else
       return <body>
         <frame src="intro.htm" />
-      </body>;
+      </body>
   }
+
+  ["on channel-activate"](evt) {
+    let key = evt.detail;
+    ChannelDriver.current = ChannelDriver.all[key];
+    this.componentUpdate();
+    return false;
+  }
+
 }
 
 document.ready = function() {
   serve(ChannelDriver.factory);
-  Window.this.state = Window.WINDOW_SHOWN;
 }
+
+// global hyperlink handler
+document.on("^click", "[href]", function(evt, hlink) {
+
+  const data = {
+    url: hlink.getAttribute("href"),
+    lineno: hlink.getAttribute("lineno")
+  };
+  evt.preventDefault()
+  evt.stopPropagation();
+  this.dispatchEvent(new Event("resource-show",{bubbles:true, detail:data}),true);
+});
 
 

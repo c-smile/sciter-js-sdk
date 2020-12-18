@@ -1,0 +1,27 @@
+--- C:/Users/Andrew/AppData/Local/Temp/leaflet-src.esm.js-revBASE.svn001.tmp.js	Fri Dec 18 10:24:03 2020
++++ C:/sciter/sciter/sdk.js/samples/leaflet/src/leaflet-src.esm.js	Fri Dec 18 10:17:55 2020
+@@ -1881,0 +1882,2 @@ var any3d = !window.L_DISABLE_3D && (ie3d || webki
++any3d = true; // Sciter.JS - note any3d is used as is-hw-accelerated flag, nothing with 3D actually
++
+@@ -2411,0 +2414,6 @@ function setTransform(el, offset, scale) {
++	
++	//el.style[TRANSFORM] =  -- translate3d will not do any good here anyway
++	//	(ie3d ?
++	//		'translate(' + pos.x + 'px,' + pos.y + 'px)' :
++	//		'translate3d(' + pos.x + 'px,' + pos.y + 'px,0)') +
++	//	(scale ? ' scale(' + scale + ')' : '');
+@@ -2413,5 +2421,2 @@ function setTransform(el, offset, scale) {
+-	el.style[TRANSFORM] =
+-		(ie3d ?
+-			'translate(' + pos.x + 'px,' + pos.y + 'px)' :
+-			'translate3d(' + pos.x + 'px,' + pos.y + 'px,0)') +
+-		(scale ? ' scale(' + scale + ')' : '');
++	el.style[TRANSFORM] =	'translate(' + pos.x + 'px,' + pos.y + 'px)' 
++	  + (scale ? ' scale(' + scale + ')' : '');		
+@@ -12595,3 +12600,3 @@ var vmlCreate = (function () {
+-	return function (name) {
+-		return document.createElement('<' + name + ' xmlns="urn:schemas-microsoft.com:vml" class="lvml">');
+-	};
++		return function (name) {
++			return document.createElement('<' + name + ' xmlns="urn:schemas-microsoft.com:vml" class="lvml">');
++		};

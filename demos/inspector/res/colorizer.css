@@ -24,6 +24,8 @@
   text[type=script] {  background-color: #FFFAF0; }
   text[type=markup] {  background-color: #FFF;  }
   text[type=style]  {  background-color: #FAFFF0; }
+
+  text.highlighted { background-color:gold; }
 }
 
 plaintext[type] { style-set: colorizer; }
@@ -53,6 +55,8 @@ plaintext[type] { style-set: colorizer; }
   text[type=script] {  background-color: #FFFAF0; }
   text[type=markup] {  background-color: #FFF;  }
   text[type=style]  {  background-color: #FAFFF0; }
+
+  text.highlighted { background-color:gold; }
 }
 
 plaintext[type][linenumbers] { style-set: colorizer-numbers; }

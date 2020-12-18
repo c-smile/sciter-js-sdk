@@ -1,3 +1,19 @@
+## 4.4.5.9, revision 8396, 2020-12-18
+
+### New
+
+1. `element.children` support
+1. `element.removeEventListener` support
+1. `CSS.supports()` support
+1. `navigator` object support
+1. inspector.exe is more or less operational but JS debugger functionality is still in progress.
+1. Leaflet.JS demo. See: sdk.js/samples/leaflet . Note: Leaflet runs "as it is" with minor tweaks - Leaflet has outdated feature detection.
+
+### Fixes
+
+1. event.clientX/Y ppx/px fix.
+1. Event, various fixes.
+
 ## 4.4.5.8, revision 8364, 2020-12-03
 
 ### New

@@ -1,0 +1,33 @@
+--- C:/Users/Andrew/AppData/Local/Temp/leaflet.css-revBASE.svn000.tmp.css	Fri Dec 18 10:24:03 2020
++++ C:/sciter/sciter/sdk.js/samples/leaflet/src/leaflet.css	Fri Dec 18 10:27:39 2020
+@@ -585,4 +585,4 @@ svg.leaflet-image-layer.leaflet-interactive path {
+-.leaflet-tooltip-top:before,
+-.leaflet-tooltip-bottom:before,
+-.leaflet-tooltip-left:before,
+-.leaflet-tooltip-right:before {
++.leaflet-tooltip-top::before,
++.leaflet-tooltip-bottom::before,
++.leaflet-tooltip-left::before,
++.leaflet-tooltip-right::before {
+@@ -604,2 +604,2 @@ svg.leaflet-image-layer.leaflet-interactive path {
+-.leaflet-tooltip-bottom:before,
+-.leaflet-tooltip-top:before {
++.leaflet-tooltip-bottom::before,
++.leaflet-tooltip-top::before {
+@@ -609 +609 @@ svg.leaflet-image-layer.leaflet-interactive path {
+-.leaflet-tooltip-top:before {
++.leaflet-tooltip-top::before {
+@@ -614 +614 @@ svg.leaflet-image-layer.leaflet-interactive path {
+-.leaflet-tooltip-bottom:before {
++.leaflet-tooltip-bottom::before {
+@@ -626,2 +626,2 @@ svg.leaflet-image-layer.leaflet-interactive path {
+-.leaflet-tooltip-left:before,
+-.leaflet-tooltip-right:before {
++.leaflet-tooltip-left::before,
++.leaflet-tooltip-right::before {
+@@ -631 +631 @@ svg.leaflet-image-layer.leaflet-interactive path {
+-.leaflet-tooltip-left:before {
++.leaflet-tooltip-left::before {
+@@ -636 +636 @@ svg.leaflet-image-layer.leaflet-interactive path {
+-.leaflet-tooltip-right:before {
++.leaflet-tooltip-right::before {

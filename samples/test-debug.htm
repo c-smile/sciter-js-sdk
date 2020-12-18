@@ -11,9 +11,14 @@
           
           document.$("div#time").innerText = (new Date()).toString();
 
-          document.on("click", "button", function() {
+          document.on("click", "button#error", function() {
             foo = bar + 42;  
           }); 
+
+          document.on("click", "button#doc", function() {
+            console.log("test doc output", document);
+          }); 
+
 
 
         </script>
@@ -21,7 +26,8 @@
     <body>
       <p>Try F5 to reload</p>
       <div #time />
-      <button>Generate error</button>
+      <button#error>Generate error</button>
+      <button#doc>log document</button>
 
       <button|checkbox #foo .bar>Test</button>
       <div foo="bar">

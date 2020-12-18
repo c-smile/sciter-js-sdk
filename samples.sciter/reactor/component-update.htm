@@ -8,15 +8,24 @@
 
           class Hello extends Element 
           {
-            count = 0;
+            count;
 
-            render() 
+            // constructor, called once 
+            constructor(props) {
+              super();
+              this.count = props.initialCount;
+            }
+
+            // renderer is called on initial mounting and by componentUpdate
+            render(props,kids)
             {
               return <body>
                 <button id="test">{this.count} clicks</button>
               </body>;
             }
 
+          // event handler defined as method
+          // must start with "on " + eventname and may have "at " + selector
             ["on click at button#test"]() 
             {
               this.componentUpdate { count : this.count + 1 };
@@ -26,7 +35,7 @@
 
           }
 
-          document.body.patch(<Hello/>);
+          document.body.patch(<Hello initialCount={0} />);
 
         </script>
 

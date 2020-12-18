@@ -1,22 +1,10 @@
 ﻿@import url(colorizer.css);
 
-html { font:system; background: #fff; color:#000;}
-
-body.channels {
-  flow:horizontal;
-  size:*;
-  margin:0;
-  padding:0;
-}
-
-section#channel-view {
-  size:*;
-}
-
 @const HEADER_HEIGHT: 2em;
 @const CURRENT_BACK: #333;
 @const CURRENT_FORE: #fff;
 @const DECOLOR: #888;
+@const DECOLOR-ALT: #ccc;
 @const HIGHLIGHT: morph(highlight,opacity:10%);
 
 @mixin TAB {
@@ -30,11 +18,35 @@ section#channel-view {
   color: @CURRENT_FORE;
 }
 
+@mixin HEADER {
+  padding: 0 0.5em;
+  line-height: 1.8em;
+  //text-transform: uppercase;
+  background: #f8f8f8;
+}
+
+html { font:system; background: #fff; color:#000;}
+
+body.channels {
+  flow:horizontal;
+  size:*;
+  margin:0;
+  padding:0;
+}
+
+main {size:*;}
+
+section#channel-view,
+section#details-view {
+  size:*;
+}
+
 [cols] > splitter {
   width:1px;
   background-color: @DECOLOR;
   padding:0;
   border: none;
+  hit-margin:3px;
 }
 [rows] > splitter {
   height:1px;
@@ -48,7 +60,18 @@ splitter:hover {
   outline: 1px solid @DECOLOR; 
 }
 
-
+section.tabs { size:*; }
+section.tabs > header 
+{
+  height: @HEADER_HEIGHT;
+  flow: horizontal;
+  border-bottom: 1px solid @DECOLOR;
+  padding-bottom: -1px;
+}
+section.tabs > header > label { behavior:button; display:block; height:*; @TAB; }
+section.tabs > header > label[current=true] { display:block; @TAB; @TAB_CURRENT; }
+section.tabs > header > :not(label) { width:*; line-height: @HEADER_HEIGHT; }
+section.tabs > header > caption { width:max-content; display:block; height:*; padding:0 0.25em; }
 
 @set channel-list {
   :root {
@@ -61,6 +84,7 @@ splitter:hover {
   }
 
   picture { 
+    behavior:button;
     width:*;
     height:64px; 
     foreground-size: contain;
@@ -71,7 +95,7 @@ splitter:hover {
     foreground-color: rgba(240,240,240,0.5);
   }
 
-  picture:current { background:highlight; }
+  picture[current=true] { background:highlight; }
 }
        
 @set channel-log {
@@ -83,10 +107,12 @@ splitter:hover {
     display:block;
     overflow:scroll-indicator;
     size:*;
+    border-spacing:2px;
   }
 
   list > li {
     display:block;
+    flow:horizontal;
     width:*;
     padding-left:1.4em;
     background-size: 1em 1em;
@@ -94,10 +120,11 @@ splitter:hover {
     background-position: 0.2em 0.2em;
     white-space:pre;
     overflow-x: scroll-indicator;
+    border-spacing:0.5em 0;  
   }
 
   list > li.dom { background-color: #FFF8DC; }
-  list > li.css { background-color: #E0FFFF; }
+  list > li.css { background-color: #FAFFF0; }
 
   list > li.warning {
     background-image: url(path:M896 128q209 0 385.5 103t279.5 279.5 103 385.5-103 385.5-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103zm128 1247v-190q0-14-9-23.5t-22-9.5h-192q-13 0-23 10t-10 23v190q0 13 10 23t23 10h192q13 0 22-9.5t9-23.5zm-2-344l18-621q0-12-10-18-10-8-24-8h-220q-14 0-24 8-10 6-10 18l17 621q0 10 10 17.5t24 7.5h185q14 0 23.5-7.5t10.5-17.5z);
@@ -111,17 +138,32 @@ splitter:hover {
     color:#FF0000;
   }
 
+  list > li.eval {
+    background-image:url(path: M 0 0 L 3 3 L 0 6);
+    background-position: top 50% left 0.6em;
+    background-size: 0.3em 0.6em;
+    stroke:@DECOLOR;
+    stroke-width:1px;
+    background-color:#f5f5f5;
+  }
+
+  list > li > span {
+    display:inline-block;
+    width:max-content;
+  }
 
   var.coll {
     behavior:clickable;
     display:inline-block;
     padding-left:1.2em;
+    padding-right:0.6em;
     background-image: url(path:M1152 896q0 26-19 45l-448 448q-19 19-45 19t-45-19-19-45v-896q0-26 19-45t45-19 45 19l448 448q19 19 19 45z);
     background-size: 0.4em 0.6em;
     background-repeat: no-repeat;
     background-position: 0.6em 0.4em;
     fill:#888;
     vertical-align:top;
+    border:1px solid #ddd;
   } 
 
   var.coll[expanded] {
@@ -136,6 +178,9 @@ splitter:hover {
     text-align: right;
     color: #C71585;
   }
+  var.coll[expanded] > span.meta { /* caption */
+    color: #4B0082;
+  }
 
   var.string {
     display:inline-block;
@@ -149,19 +194,28 @@ splitter:hover {
   var.string::before { content:'"'; }
   var.string::after { content:'"'; }
 
+  textarea#toeval { 
+    display:block;
+    width:*;
+    height:max-content;
+    max-height:4.8em;
+    min-height:2.4em;
+
+    overflow:scroll-indicator;
+    border:none;
+    border-top:1px solid #eee;
+
+    background-repeat:no-repeat;
+    background-image:url(path: M 0 0 L 3 3 L 0 6);
+    background-position: top 0.6em left 0.6em;
+    background-size: 0.3em 0.6em;
+    stroke:@DECOLOR;
+    stroke-width:1px;
+    padding-left:1.2em;
+  }
+
 }
 
-@set channel-view {
-  :root > header {
-    height: @HEADER_HEIGHT;
-    flow: horizontal;
-    border-bottom: 1px solid @DECOLOR;
-    padding-bottom: -1px;
-  }
-  :root > header > label { behavior:button; display:block; height:*; @TAB; }
-  :root > header > label:current { display:block; @TAB; @TAB_CURRENT; }
-  :root > header > :not(label) { width:*; line-height: @HEADER_HEIGHT; }
-}
 
 @set dom-tree < std-tree {
   :root {
@@ -218,7 +272,7 @@ splitter:hover {
     border:none;
   }
 
-  :root > select > optgroup { padding: 0 3px; text-transform: uppercase; color: #888; }
+  :root > select > optgroup { @HEADER; }
   :root > select > option { padding: 0 3px; text-overflow:path-ellipsis; overflow-x:hidden; white-space:no-wrap; }
 }
 
@@ -239,4 +293,75 @@ splitter:hover {
   figure > form {
     flow:row(label,output);
   }
+}
+
+@set element-details {
+  :root { 
+    size:*; 
+    flow: row(dt,dd);
+    overflow:scroll-indicator;
+    margin:0;
+  }
+
+  header { @HEADER; }
+
+  rule {  display:block; 
+          background:morph(highlight,opacity:5%); 
+          border-top:1px solid #ddd; 
+          padding:0 0.5em 0.25em 0.5em; }
+  rule.file { flow:horizontal; }
+  rule.file > * { display:block; }
+  rule.file > .selector { width:*; font-weight:bold; overflow-x:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  rule.file > .filename { width: max-content; }
+  dt { white-space:nowrap; padding-left:0.5em; width:*; max-width:max-content; overflow-x:hidden; text-overflow:ellipsis;}
+  dd { white-space:nowrap; width:2*; max-width:max-content; overflow-x:hidden; text-overflow:ellipsis;}
+
+}
+
+@set element-metrics {
+
+  :root { border-top: 1px solid @DECOLOR; }
+  :root > header { text-align: center; }
+
+  div.box {
+    flow:grid(1 1 1,
+              2 5 3,
+              4 4 4);
+    width:max-content;
+    border: 1px solid #777;
+    margin:* * 0 *;    
+  }  
+
+  div.padding { background-color:#C3DEB7; }
+  div.border { background-color:#FFEEBC; }
+  div.margin { background-color:#F9CC9D; }
+
+  div.box var {
+    display:block;
+    width:max-content;
+    min-width:1.2em;
+    text-align:center;
+    vertical-align:middle;
+    padding:0 2px;
+  }
+
+  div.inner {
+    width:max-content;
+    background-color:#FFF;
+    border: 1px solid #777;
+    white-space:nowrap;
+    overflow:none;
+    padding:2px;
+  }
+
+  div.inner > var { font-weight:bold; display:inline-block; margin:0 2px; min-width:max-content; }
+
+  dl.content { 
+    flow:row(dt,dd,dt,dd);
+    margin:0 * * *; 
+    width:max-content;
+  }
+  dl.content > dt { white-space:no-wrap; text-align:right; margin:0; padding:0; }
+  dl.content > dd { width:max-width; display:block; margin:0; padding:0; }
+  dl.content var { font-weight:bold; display:inline-block; margin:0 2px; min-width:max-content; }
 }

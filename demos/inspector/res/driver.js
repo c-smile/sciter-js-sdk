@@ -22,7 +22,6 @@ export class ChannelDriver
   // debugee is gone, channel closed
   gone() {
     this.request = null;
-    //console.log("this.connected",this.connected);
     document.dispatchEvent(new Event("channel-gone"),true);
   }
 
@@ -44,15 +43,14 @@ export class ChannelDriver
   // particular message drivers 
   
   static logs(payload) {
-    //console.log("received logs:", JSON.stringify(payload));
     for(var logItem of payload)
       this.theirLogs.push({key:uuid(),subsystem:logItem[0],severity:logItem[1],items:logItem[2]});
     document.dispatchEvent(new Event("log-new", {detail:this}), true);
   }
 
-  static hello(theirUrl) {
-    this.key = theirUrl; // ???
-    ChannelDriver.all[theirUrl] = this;
+  static hello(theirId) {
+    this.key = theirId; 
+    ChannelDriver.all[theirId] = this;
     ChannelDriver.current = this;
     document.dispatchEvent(new Event("channel-new"),true);
   }

@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+          @import url(src/leaflet.css);
+        </style>
+        
+        <script type="module">
+
+          import * as L from "./src/leaflet-src.esm.js";
+          var map = L.map('mapid').setView([51.505, -0.09], 13);
+
+          L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+              attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          }).addTo(map);          
+
+          L.marker([51.5, -0.09]).addTo(map)
+            .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+            .openPopup();
+
+        </script>
+
+        <style>
+          #mapid { width: 862px; height: 300px; border:1px solid;  }
+        </style>
+
+    </head>
+    <body>
+
+    <div id="mapid" />
+
+
+    </body>
+</html>

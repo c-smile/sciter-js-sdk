@@ -1,3 +1,30 @@
+## 4.4.5.10, revision 8420, 2021-01-13
+
+By this release Sciter.JS has reached BETA phase.
+
+### New
+
+#### HTML/CSS
+
+* [CSS] + `appearance` property. Example `button { appearance:none; }` will suppress default styling of button elements.
+* [CSS] + support of `transition: ... cubic-bezier(x1,y1,x2,y2);` ease function.
+
+#### JS Runtime
+
+* + support of JavaScript debugger in scapp, usciter and user applications. Window shall be created with SW_ENABLE_DEBUG flag in order to be debugable. 
+* Element.onclick and other property-ehandlers.
+
+#### Frameworks
+
+* [PReact](https://preactjs.com/) framework is generally operational "as it is". JSX (built-in native implementation) can be used with PReact by defining `JSX = h;` - `h()` function of PReact is used as a driver of JSX expressions.
+  See: sdk.js/samples/preact/ demos.
+
+### Fixes
+
+* various fixes in HTML/CSS core;
+* QuickJS has upgraded to latest (2020-11-08) version. This fixes several issues in JS core. 
+
+
 ## 4.4.5.9, revision 8396, 2020-12-18
 
 ### New

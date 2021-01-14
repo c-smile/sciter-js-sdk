@@ -1,11 +1,12 @@
-﻿@import url(colorizer.css);
-
-@const HEADER_HEIGHT: 2em;
+﻿
+@const HEADER_HEIGHT: 2.4em;
 @const CURRENT_BACK: #333;
 @const CURRENT_FORE: #fff;
 @const DECOLOR: #888;
 @const DECOLOR-ALT: #ccc;
 @const HIGHLIGHT: morph(highlight,opacity:10%);
+
+@import url(source-code.css);
 
 @mixin TAB {
   padding: 0 1em;
@@ -152,48 +153,6 @@ section.tabs > header > caption { width:max-content; display:block; height:*; pa
     width:max-content;
   }
 
-  var.coll {
-    behavior:clickable;
-    display:inline-block;
-    padding-left:1.2em;
-    padding-right:0.6em;
-    background-image: url(path:M1152 896q0 26-19 45l-448 448q-19 19-45 19t-45-19-19-45v-896q0-26 19-45t45-19 45 19l448 448q19 19 19 45z);
-    background-size: 0.4em 0.6em;
-    background-repeat: no-repeat;
-    background-position: 0.6em 0.4em;
-    fill:#888;
-    vertical-align:top;
-    border:1px solid #ddd;
-  } 
-
-  var.coll[expanded] {
-    background-image: url(path:M1408 704q0 26-19 45l-448 448q-19 19-45 19t-45-19l-448-448q-19-19-19-45t19-45 45-19h896q26 0 45 19t19 45z);
-    background-size: 0.6em 0.4em;
-    background-position: 0.4em 0.6em;
-    flow:row(span,var);
-    border-spacing-x: 0.3em
-  }
-  var.coll[expanded] > span { /* caption */
-    display: block;
-    text-align: right;
-    color: #C71585;
-  }
-  var.coll[expanded] > span.meta { /* caption */
-    color: #4B0082;
-  }
-
-  var.string {
-    display:inline-block;
-    white-space:nowrap;
-    overflow-x: hidden;
-    text-overflow: ellipsis; 
-    max-width: 12em;
-    width: max-content;
-    line-height: 1.2em;
-  }
-  var.string::before { content:'"'; }
-  var.string::after { content:'"'; }
-
   textarea#toeval { 
     display:block;
     width:*;
@@ -261,7 +220,7 @@ section.tabs > header > caption { width:max-content; display:block; height:*; pa
 }
 
 
-@set resources {
+@set files {
   :root {
     size:*;
   }
@@ -273,14 +232,26 @@ section.tabs > header > caption { width:max-content; display:block; height:*; pa
   }
 
   :root > select > optgroup { @HEADER; }
-  :root > select > option { padding: 0 3px; text-overflow:path-ellipsis; overflow-x:hidden; white-space:no-wrap; }
+  :root > select > option { padding: 0 3px; }
 }
 
-@set resource {
+.url { display:block; width:*; flow:horizontal; white-space:no-wrap; vertical-align:middle; }
+.url > .path { display:block; width:*;text-overflow:ellipsis; overflow-x:hidden; }
+.url > .filename { display:block; max-width:max-content; width:100*; text-overflow:ellipsis; overflow-x:hidden; }
+.url > .lineno { display:block; width:max-content; 
+                 line-height:1.2em; border:1px solid; text-decoration:none; padding:0 0.2em; 
+                 border-radius:3px; margin:0 0.2em;}
+
+@set file {
   plaintext {
     size:*;
     border:none;
   }
+
+  /*plaintext > text.breakpoint::marker {
+    size:1em;
+    margin:* * * 0;
+  }*/
 
   figure {
     margin:*;
@@ -365,3 +336,52 @@ section.tabs > header > caption { width:max-content; display:block; height:*; pa
   dl.content > dd { width:max-width; display:block; margin:0; padding:0; }
   dl.content var { font-weight:bold; display:inline-block; margin:0 2px; min-width:max-content; }
 }
+
+var.coll {
+  display:inline-block;
+  border:1px solid #ddd;
+} 
+
+var.coll > caption {
+  behavior:clickable;
+  cursor:pointer;
+  padding-left:1.2em;
+  padding-right:0.6em;
+  background-image: url(path:M1152 896q0 26-19 45l-448 448q-19 19-45 19t-45-19-19-45v-896q0-26 19-45t45-19 45 19l448 448q19 19 19 45z);
+  background-size: 0.4em 0.6em;
+  background-repeat: no-repeat;
+  background-position: 0.6em 0.4em;
+  fill:#888;
+} 
+
+var.coll[expanded] > caption {
+  background-image: url(path:M1408 704q0 26-19 45l-448 448q-19 19-45 19t-45-19l-448-448q-19-19-19-45t19-45 45-19h896q26 0 45 19t19 45z);
+  background-size: 0.6em 0.4em;
+  background-position: 0.4em 0.6em;
+}
+
+
+var.coll > .details {
+  flow:row(span,var);
+  padding:3px;
+}
+
+var.coll[expanded] > .details > span { /* item caption */
+  display: block;
+  text-align: right;
+  width:max-content;
+  color: #C71585;
+}
+
+var.string {
+  display:block;
+  white-space:nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis; 
+  max-width: max-content;
+  width:*;
+  line-height: 1.2em;
+}
+var.string::before { content:'"'; }
+var.string::after { content:'"'; }
+

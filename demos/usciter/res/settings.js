@@ -1,77 +1,92 @@
 
-// persistable settings:
-namespace Settings
+import * as env from "@env";
+import * as sys from "@sys";
+
+import {encode,decode} from "@sciter";
+
+var path;
+var list = []; // list of persistable objects
+
+// persistable settings
+
+export async function store() 
 {
-  const path = System.path(#USER_APPDATA, APP_NAME + ".json");
-  var   list = []; // list of persistable objects
+  if(!path)
+    return;
 
-  function store() 
-  {
-    var stream = Stream.openFile(path,"uw");
-  
-    if( !stream )
-    {
-      view.msgbox(#warning, "Cannot open file "+ path +" for writing. Settings will not be saved." );
-      return;
-    }
-  
+  var file;
+
+  try {
+    file = await sys.fs.open(path,"w+",0o666);
     var data = {};
-    for(var persistable in list)
+    for(var persistable of list)
       persistable.store(data);
-
-    stream.printf("%V\n",data);
-    //stdout.printf("%V\n",data);
-    stream.close();
+    await file.write(encode(JSON.stringify(data, null, "  "),"utf-8"));
+  } catch(e) {
+    Window.modal(<warning>Cannot open file {path} for writing.<br/>{e}<br/>Settings will not be saved.</warning>);
   }
-
-  function restore() 
-  {
-    //stdout.printf("restoring\n");
-    var stream = Stream.openFile(path,"ur");
-    if( !stream )
-      return false;
-    var data = null;
-    try      { data = parseData( stream ); }
-    catch(e) { stdout.printf("Restore error %s\n",e); }
-    finally { stream.close(); }
-    if(data) for(var persistable in list)
-                persistable.restore(data);
+  finally {
+    if(file) file.close();
   }
-
-  function add(persistable) { list.push(persistable); }
 }
 
+async function restore() 
+{
+  var buffer;
+
+  try {
+    buffer = await sys.fs.readFile(path,"r");
+  } catch(e) {
+    return false;
+  }
+
+  try {
+    var data = JSON.parse( decode(buffer,"utf-8") );
+    for(var persistable of list)
+      persistable.restore(data);
+  }
+  catch(e) { 
+    console.error("Restore error:",e); 
+  }
+}
+
+export function add(persistable) { list.push(persistable); }
+
 // window position persistence
-Settings.add {
-  store: function(data) 
+add({
+  store : function(data) 
     {
-       var (x,y,w,h) = view.box(#rectw,#border,#screen);
+       var [x,y,w,h] = Window.this.box("xywh","border","screen");
        data.window = {left:x,top:y,width:w,height:h};  
     },
-  restore: function(data) 
+  restore : function(data) 
     {
       if( data.window ) {
-        var x = Integer.max(data.window.left,0);
-        var y = Integer.max(data.window.top,0);
-        var w = Integer.max(data.window.width,800);
-        var h = Integer.max(data.window.height,600); 
-
-        view.move(x,y); // move to monitor 
-        view.move(x,y,w,h); // replace on monitor
+        var x = Math.max(data.window.left,0);
+        var y = Math.max(data.window.top,0);
+        var w = Math.max(data.window.width,800);
+        var h = Math.max(data.window.height,600); 
+        Window.this.move(x,y); // move to monitor 
+        Window.this.move(x,y,w,h); // replace on monitor
       }
     }
-};
+});
   
 function saveState()
 {
-  if(!self.view) {
-    view.off(saveState);
+  if(!document.window) {
+    Window.this.off(saveState); // document is unloaded
     return;
   }
-  self.timer(1s,Settings.store);
+  // throttled request to store the data
+  document.timer(1000,store);
 }
 
-view.on("move",saveState)
-    .on("size",saveState);
+Window.this.on("move",saveState)
+           .on("size",saveState);
 
+export async function init(APP_NAME) {
+  path = env.path("USER_APPDATA", APP_NAME + ".json");
+  await restore();
+}
 

@@ -14,7 +14,7 @@ export class App extends Element
   componentDidMount() {
     document.on("channel-new", () => this.componentUpdate() );
     document.on("channel-gone", () => this.componentUpdate() );
-    document.on("resource-new", () => this.componentUpdate() );
+    document.on("file-new", () => this.componentUpdate() );
   }
 
   render() 
@@ -54,7 +54,7 @@ document.on("^click", "[href]", function(evt, hlink) {
   };
   evt.preventDefault()
   evt.stopPropagation();
-  this.dispatchEvent(new Event("resource-show",{bubbles:true, detail:data}),true);
+  hlink.dispatchEvent(new Event("file-show",{bubbles:true, detail:data}),true);
 });
 
 

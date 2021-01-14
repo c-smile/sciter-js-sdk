@@ -7,10 +7,19 @@ export class ChannelDriver
   notify = null; // function to notify debugee 
 
   theirLogs = [];
-  theirResources = {};
+  theirFiles = {};
+  breakpoints = [];
+  callstack = [];
   key = null;
+  atBreakpoint = false; // true if at breakpoint
+  breakpointHitNo = 0;
+
+  variables = null; // frame variables
+  variablesId = 0;
+  variablesFrameId = 0;
 
   viewstate = {}; // storage of view states
+  view = null;    // ChannelView
 
   constructor(outboundRq) 
   {
@@ -31,6 +40,22 @@ export class ChannelDriver
     if(fcn) return fcn.call(this,data);
     else console.log("unknown message", name);
   }
+
+  addBreakpoint(filename,lineno,enabled=true) {
+    this.breakpoints.push{filename,lineno,enabled};
+    this.view.componentUpdate();
+    this.notify("breakpoints",this.breakpoints);
+  }
+  removeBreakpoint(filename,lineno) {
+    this.breakpoints = this.breakpoints.filter(item => item.filename != filename || item.lineno != lineno );
+    this.view.componentUpdate();
+    this.notify("breakpoints",this.breakpoints);
+  }
+  updateBreakpoint(breakpoint) {
+    this.view.componentUpdate();
+    this.notify("breakpoints",this.breakpoints);
+  }
+
 
   static all = {}; // by key 
   static current = null; // current channel
@@ -65,12 +90,32 @@ export class ChannelDriver
       this.onStackHighlight(stack);
   }
 
-  static resources(rsdefs) {
+  static files(rsdefs) {
     for(var rd of rsdefs)
-      this.theirResources[rd.rqUrl] = rd;
-    document.dispatchEvent(new Event("resource-new"), true);
+      this.theirFiles[rd.rqUrl] = rd;
+    document.dispatchEvent(new Event("file-new"), true);
   }
 
+  static atBreakpoint(breakpoint) {
+    let [filename,lineno,callstack] = breakpoint;
+    this.atBreakpoint = true;
+    this.callstack = callstack;
+    ++this.variablesId;
+    this.view.onBreakpointHit(filename,lineno);
+  }
+
+  atBreakpointResponse(command,data) {
+    if(command == "step") { 
+      this.atBreakpoint = false; 
+      this.view.requestUpdate(); 
+    }
+    this.notify("atBreakpointResponse", [command,data]); // ["step",1]
+  }
+
+  static frameVariables(variables) {
+    this.variables = variables;
+    this.view.componentUpdate();
+  }
 
 
 }

@@ -25,7 +25,6 @@ public:
     SOM_PROPS(SOM_RO_VIRTUAL_PROP(windowHandle,get_windowHandle))
   SOM_PASSPORT_END
 
-
   /* sample of handling DOM events, click on <button#foo> here:
   virtual bool handle_event(HELEMENT, BEHAVIOR_EVENT_PARAMS& params) {
     sciter::dom::element target = params.heTarget;
@@ -38,6 +37,34 @@ public:
     }
     return false;
   }*/
+
+#if 0
+  // behavioral "named call" handler demo:
+  // test in script:
+  //
+  //  Window.this.xcall("debug",12,24);
+  //
+
+  BEGIN_FUNCTION_MAP
+    FUNCTION_V("debug", debug);
+  END_FUNCTION_MAP
+
+  sciter::value debug(unsigned argc, const sciter::value* argv)
+  {
+#ifdef WINDOWS
+    for (unsigned n = 0; n < argc; ++n)
+    {
+      if (n) OutputDebugStringW(L",");
+      auto s = argv[n].to_string(CVT_JSON_LITERAL);
+      OutputDebugStringW(s.c_str());
+    }
+    OutputDebugStringW(L"\n");
+#endif
+    return sciter::value();
+  }
+#endif
+  
+
 
 };
 
@@ -93,7 +120,7 @@ int uimain(std::function<int()> run ) {
     pwin->load(WSTR("this://app/default-else.htm"));
 #endif // WINDOWS
 
-  pwin->expand();
+  //pwin->expand(); // script will do that
 
   //sciter::value r = pwin->call_function("test", sciter::value(42));
   //sciter::value r = pwin->eval(const_wchars("test(32)"));

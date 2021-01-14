@@ -1,0 +1,1 @@
+curl -L https://unpkg.com/preact?module > preact.js

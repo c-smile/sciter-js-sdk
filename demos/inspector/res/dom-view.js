@@ -69,6 +69,9 @@ export class DOMView extends View
 
   render() {
 
+    if(!this.channel.connected)
+      return <div></div>;
+
     function atts(nd) {
       var list = [];
       for(var n in nd.atts) 
@@ -140,7 +143,7 @@ export class DOMView extends View
     }
   }
 
-  ["on change"](evt) 
+  ["on input"](evt) 
   {
     let UID = this.value;
     let found = this.findTheirNodeByUID(UID, this.root);
@@ -157,6 +160,8 @@ export class DOMView extends View
 
   static header(channel)
   {
+    if(!channel.connected)
+      return <div/>;
     var list = [];
     function atts(se) {
       let id = se.atts.id;
@@ -225,7 +230,7 @@ class ElementMetrics extends View {
     </section>;
   }
 
-  ["on change at button.units"](evt,button) 
+  ["on input at button.units"](evt,button) 
   {
     this.viewstate.units = button.getAttribute("value");
     console.log(this.viewstate.units);
@@ -255,6 +260,10 @@ export class ElementDetailsView extends View
   }
 
   render() {
+
+    if(!this.channel.connected)
+      return <div></div>;
+
     this.checkDetails();
 
     const list = [];

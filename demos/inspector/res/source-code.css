@@ -1,0 +1,56 @@
+
+@set source-code < std-plaintext-numbers 
+{
+  :root { 
+    prototype: SourceCode url(source-code.js); 
+    overflow: scroll-indicator; 
+    border:none;
+  }
+  
+  text { white-space:pre; height:1.2em; padding-left:4em; margin:0; }
+
+  /*highlightup*/  
+  text::highlight(tag) { color: olive; } /*background-color: #f0f0fa;*/
+  text::highlight(tag-id) { color: red; } /*background-color: #f0f0fa;*/
+
+  /*source*/  
+  text::highlight(number) { color: brown; }
+  text::highlight(number-unit) { color: brown; }
+  text::highlight(string) { color: teal; }
+  text::highlight(keyword) { color: blue; }
+  text::highlight(symbol) { color: brown; }
+  text::highlight(literal) { color: brown; }
+  text::highlight(comment) { color: green; }
+  
+  text[syntax=script] {  background-color: #FFFAF0; }
+  text[syntax=markup] {  background-color: #FFF;  }
+  text[syntax=style]  {  background-color: #FAFFF0; }
+
+  :root[atbreakpoint] text:current,
+  text:visited { background-color:gold; }
+
+  text::marker {
+    behavior:clickable;
+    height:*;
+    width:4em;
+    cursor:pointer;
+    z-index:1;
+  }
+
+  text.breakpoint::marker {
+    background-image: url(path:M25,50 a 25,25 0 1,1 50,0 a 25,25 0 1,1 -50,0);
+    background-size:1em 1em;
+    background-position: 0.1em 50%;
+    background-repeat:no-repeat;
+    stroke: #FF4500;
+    stroke-width:1px;
+  }
+
+  text.breakpoint.enabled::marker {
+    fill: #FF4500;
+  }
+
+}
+
+plaintext { style-set: source-code; }
+

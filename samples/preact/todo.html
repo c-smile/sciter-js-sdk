@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<style> 
+  //input, button {display:block;}
+</style>
+
+<script type="module">
+
+  import { h, Component, render } from 'preact';
+  
+  JSX = h;
+
+	class TodoList extends Component {
+	    state = { todos: [], text: '' };
+
+	    setText = (e) => {
+	      this.setState({ text: e.target.value });
+	    };
+
+	    addTodo = () => {
+	      let { todos, text } = this.state;
+	      todos = todos.concat({ text });
+	      this.setState({ todos, text: '' });
+	    };
+
+	    render({ }, { todos, text }) 
+      {
+	        return (
+            <div>
+	            <form onSubmit={this.addTodo} action="javascript:">
+	                <input type="text" value={text} onInput={this.setText} />
+	                <button type="submit">Add</button>
+	                <ul>
+	                    { todos.map( todo => (
+	                        <li>{todo.text}</li>
+	                    )) }
+	                </ul>
+	            </form>
+            </div>
+	        );
+	    }
+	}
+
+  render(<TodoList/>, document.body);
+</script>
+</head>
+
+<body>
+</body>
+
+</html>

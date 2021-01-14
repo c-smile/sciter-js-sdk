@@ -1,8 +1,9 @@
 import { ChannelLog } from "channel-log.js";
 import { View } from "view.js";
-import { ResourcesView } from "resources-view.js";
+import { FilesView } from "files-view.js";
 import { DOMView, ElementDetailsView } from "dom-view.js";
 import { MemoryView } from "memory-view.js";
+import { DebuggerView } from "debugger.js";
 
 export class ChannelView extends Element {
   
@@ -12,24 +13,7 @@ export class ChannelView extends Element {
     super();
     this.channel = props.channel;
     this.viewstate = this.channel.viewstate;
-  }
-
-  componentDidMount() {
-    document.on("resource-show.channel-view", (evt) => {
-
-      const newState = { 
-        currentView: "ResourcesView", 
-        filetoshow : evt.detail 
-      };
-      if(evt.detail.withDetails)
-        newState.currentDetailsView = "ResourcesDetailsView";
-
-      this.componentUpdate(newState); 
-      return false; 
-    });
-  }
-  componentWillUnmount() {
-    document.off(".channel-view");
+    this.channel.view = this;
   }
   
   render(props) {
@@ -37,17 +21,18 @@ export class ChannelView extends Element {
     let viewContent;
     let headerViewContent;
     let detailsViewContent;
+    
     switch(this.currentView) {
       default:
       case "DOMView": 
         viewContent = <DOMView channel={this.channel} />;
         headerViewContent = DOMView.header(this.channel);
         break;
-      case "ResourcesView": 
+      case "FilesView": 
       {
         let filetoshow = this.filetoshow; this.filetoshow = null;
-        viewContent = <ResourcesView channel={this.channel} filetoshow={filetoshow}/>
-        headerViewContent = ResourcesView.header(this.channel);
+        viewContent = <FilesView channel={this.channel} filetoshow={filetoshow}/>
+        headerViewContent = FilesView.header(this.channel);
       }
       break;
       case "MemoryView": 
@@ -59,18 +44,18 @@ export class ChannelView extends Element {
     switch(this.currentDetailsView) {
       default:
       case "ElementDetailsView": detailsViewContent = <ElementDetailsView channel={this.channel} />; break;
-      case "ResourcesDetailsView": detailsViewContent = <div />; break;
+      case "FilesDetailsView": detailsViewContent = <DebuggerView channel={this.channel} />; break;
       case "MemoryDetailsView": detailsViewContent = <div/>; break;
     } 
 
-    //console.log("ChannelView render",this.channel.theirResources.length);
-    let nResources = Object.values(this.channel.theirResources).length;
+    //console.log("ChannelView render",this.channel.theirFiles.length);
+    let nFiles = Object.values(this.channel.theirFiles).length;
 
     return <main>
       <frameset cols="*,300px">
         <section .tabs #channel-view>
           <header>
-            <label#ResourcesView detailsId="ResourcesDetailsView" current={ this.currentView == "ResourcesView"}>Resources({nResources})</label>
+            <label#FilesView detailsId="FilesDetailsView" current={ this.currentView == "FilesView"}>Files({nFiles})</label>
             <label#MemoryView detailsId="MemoryDetailsView" current={ this.currentView == "MemoryView"}>Memory</label>
             <label#DOMView detailsId="ElementDetailsView" current={ this.currentView == "DOMView"}>DOM</label>
             {headerViewContent}
@@ -97,6 +82,9 @@ export class ChannelView extends Element {
   get currentDetailsView() { return this.viewstate.detailsView || "ElementDetailsView"; }
   set currentDetailsView(v) { this.viewstate.detailsView = v; }
 
+  //componentUpdate(newState) {
+  //  super.componentUpdate(newState);
+  //}
 
   ["on click at label:not(:current)"](evt,label) 
   {
@@ -109,6 +97,35 @@ export class ChannelView extends Element {
     this.componentUpdate();
     return false;
   }
+
+  ["on file-show"](evt) {
+    const newState = { 
+      currentView: "FilesView", 
+      filetoshow : evt.detail 
+    };
+    if(evt.detail.withDetails)
+      newState.currentDetailsView = "FilesDetailsView";
+
+    this.componentUpdate(newState); 
+    
+    return false; 
+  }
+
+  onBreakpointHit(filename,lineno, callstack)
+  {
+    const newState = { 
+      currentView: "FilesView", 
+      currentDetailsView: "FilesDetailsView",
+      filetoshow : { url: filename, lineno: lineno },
+    };
+    this.componentUpdate(newState); 
+  }
+
+  requestUpdate() {
+    this.timer(1000,this.componentUpdate);
+  }
+
+
 
 
 }

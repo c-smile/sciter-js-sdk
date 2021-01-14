@@ -1,13 +1,12 @@
 import { $, on } from "@sciter";
-import { launch } from "@env";
+import { launch, home, PLATFORM } from "@env";
+import * as sys from "@sys";
 import { DropZone } from "drop-zone.js";
+import * as Settings from "settings.js";
 
-const APP_NAME = "jsciter.app";
+const APP_NAME = "usciter.js.app";
 
-//include "settings.js";
-//include "drop-zone.js";
 //include "live-reload.tis";
-
 
 const view = Window.this;
 
@@ -33,7 +32,8 @@ function loadFile(fn)
 {
   //liveReload.reset();
   filename = fn;
-  content.frame.loadFile(fn, true);
+  content.frame.debugMode = true;
+  content.frame.loadFile(fn);
   $("button#reload").state.disabled = false;
   inspectorButton.state.disabled = false;
   //if(debugIsActive)
@@ -119,6 +119,23 @@ on("click", "button#glass", function()
   //saveState();
 });
 
+on("click", "button#inspector", async function() 
+{
+  const SUFFIX = { Windows: ".exe", OSX: ".app" };
+  const PREFIX = { Windows: "\\", OSX: "/../../../" };
+
+  let inspectorPath = home((PREFIX[PLATFORM] || "") + "inspector" + (SUFFIX[PLATFORM] || ""));
+
+  try {
+    await sys.fs.stat(inspectorPath);
+    launch(inspectorPath);
+  } catch (e) {
+    Window.modal(<alert>Cannot find {inspectorPath}</alert>);
+  }
+  
+});
+
+
 DropZone { 
   container: content,
   accept: "*.htm;*.html;*.xhtml;*.svg",
@@ -128,7 +145,13 @@ DropZone {
     else 
       loadFile(files);
     }
-}
+};
+
+Settings.init(APP_NAME).then(function(){
+  Window.this.state = Window.WINDOW_SHOWN;
+});
+
+
 
 /*var liveReload = new LiveReload(function() {
   if( filename ) {
@@ -197,28 +220,5 @@ event change-processed {
   };
 });
 
-
-event click $(button#inspector)
-{
-  if( var connectToInspector = view.connectToInspector ) {
-
-    const SUFFIX = { Windows: ".exe", OSX: ".app" };
-    const PREFIX = { Windows: "", OSX: "../../../" };
-
-    var inspectorPath = System.home((PREFIX[System.PLATFORM] || "") + "inspector" + (SUFFIX[System.PLATFORM] || ""));
-    
-    if( !System.scanFiles(inspectorPath) ) {
-      view.msgbox(#alert, "Cannot find " + inspectorPath);
-      return;
-    }
-    Sciter.launch(inspectorPath);
-    self.timer(500ms, function() { connectToInspector($(frame#content)) });
-    
-  }
-}
-
-function self.ready() {
-  Settings.restore();
-}
 */
 

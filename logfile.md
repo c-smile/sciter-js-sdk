@@ -13,6 +13,7 @@ By this release Sciter.JS has reached BETA phase.
 
 * + support of JavaScript debugger in scapp, usciter and user applications. Window shall be created with SW_ENABLE_DEBUG flag in order to be debugable. 
 * Element.onclick and other property-ehandlers.
+* `window.xcall("name"[,arg0,... argN])` and `element.xcall("name"[,arg0,... argN])` - calling methods of native behaviors attached to window and elements.
 
 #### Frameworks
 

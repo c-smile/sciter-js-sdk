@@ -1,0 +1,91 @@
+<html>
+
+<head>
+
+  <style>
+
+    body {
+      aspect: Particles; // see function Particles() below
+      background:#020030;
+      vertical-align: middle;
+      text-align: center;
+      color: #fff;
+      font-size:20pt;
+    }
+
+  </style>
+
+  <script>
+
+    function Particles() {
+
+      let particles = [];
+      let particleSize = 4;
+      let maxParticles = 40;
+      let threshold = 100;
+
+      for (let i = 0; i < maxParticles; i++) {
+        let particle = {
+          x: Math.random() * 800,
+          y: Math.random() * 600,
+          vx: Math.random(),
+          vy: Math.random()
+        }
+        particles.push(particle);
+      }
+     
+      function paint(context) 
+      {
+        let [width,height] = this.state.box("dimension","inner");
+
+        function line(particle, particle2) {
+          context.beginPath();
+          context.moveTo(particle.x, particle.y);
+          context.lineTo(particle2.x, particle2.y);
+          context.stroke();
+        }
+
+        context.fillStyle = '#fff';
+
+        for (let i = 0; i < maxParticles; i++) {
+          let particle = particles[i];
+          context.fillRect(particle.x - particleSize / 2, particle.y - particleSize / 2, particleSize, particleSize);
+          for (let j = 0; j < maxParticles; j++) {
+            if (i != j) {
+              let particle2 = particles[j];
+              let distanceX = Math.abs(particle.x - particle2.x);
+              let distanceY = Math.abs(particle.y - particle2.y);
+              if (distanceX < threshold && distanceY < threshold) {
+                context.lineWidth = ((threshold * 2) - (distanceX + distanceY)) / 50;
+                let color = 200 - Math.floor(distanceX + distanceY);
+                context.strokeStyle = 'rgb(' + color + ',' + color + ',' + color + ')';
+                line(particle, particle2);
+              }
+            }
+          }
+          particle.x = particle.x + particle.vx;
+          particle.y = particle.y + particle.vy;
+          
+          if (particle.x > width - particleSize) { particle.x = width - particleSize; particle.vx = -particle.vx; }
+          if (particle.x < particleSize) { particle.x = particleSize; particle.vx = -particle.vx; }
+
+          if (particle.y > height - particleSize) { particle.y = height - particleSize; particle.vy = -particle.vy; }
+          if (particle.y < particleSize) { particle.y = particleSize; particle.vy = -particle.vy; }
+
+        }
+        this.requestPaint(); // request next painting
+      }
+
+      // setup paint handler:
+      this.paintContent = paint; // above background layer but 
+                                 // before native content painting of the element
+    }
+   
+  </script>
+
+</head>
+
+<body>
+  Immediate mode painting demo.
+</body>
+</html>

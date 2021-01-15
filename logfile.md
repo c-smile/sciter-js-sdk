@@ -1,3 +1,15 @@
+## 4.4.5.10, revision 8422, 2021-01-15
+
+### New
+
+#### JS Runtime
+
+* Immediate mode drawing support, element.paintBackground, element.paintForeground, element.paintContent and element.paintOutline properties/methods.
+
+### Fixes
+
+* debugger/inspector support by sciter.dll and scapp.exe
+
 ## 4.4.5.10, revision 8420, 2021-01-13
 
 By this release Sciter.JS has reached BETA phase.

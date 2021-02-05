@@ -1,7 +1,7 @@
 # sciter-js-sdk
 Sciter.JS - Sciter but with QuickJS on board instead of my TIScript
 
-### [Developement logfile](logfile.md)
+### [Developement logfile](logfile.md) and [documentation](docs/md/index.md) in docs/md folder.
 
 ## Script
 

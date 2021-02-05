@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <title></title>
+    <style>
+      select { display:block; height:*; width: 20em; }
+      option > code { color:red; 
+                      display:inline-block; 
+                      border:1px solid #DCB; 
+                      width:1.4em; 
+                      margin-right:2px; 
+                      text-align:center; 
+                      }
+      option:current > code { border-color:transparent;  }
+
+    </style>
+    <script>
+
+      var select = document.$("select");
+
+      document.on("click", "#get", evt => console.log( select.value) );
+
+      document.on("click", "#set1", evt => select.value = "Transition Metals" );
+      document.on("click", "#set2", evt => select.value = "Na" );
+      document.on("click", "#clear", evt => select.value = undefined );
+
+      document.on("click", "#set-by-dom-ref", evt => select.$("option[value=K]").execCommand("set-current") );
+
+      select.on("input", evt => console.log(select.value) )
+
+    </script>
+  </head>
+<body>
+  value <button #get>get</button>
+        <button #set1>set "Transition Metals"</button> 
+        <button #set2>set "Na"</button> 
+        <button #clear>clear</button>
+        <button #set-by-dom-ref>set by DOM reference</button>
+
+  <select #dd type="tree" size=16 >
+    <option expanded value="Metals">
+      <caption>Metals</caption>
+      <option expanded value="Alkaline Metals">
+        <caption>Alkaline Metals</caption>
+        <option value="Li"><code>Li</code>Lithium</option>
+        <option value="Na"><code>Na</code>Sodium</option>
+        <option value="K"><code>K</code>Potassium</option>
+      </option>
+      <option expanded value="Transition Metals">
+        <caption>Transition Metals</caption>
+        <option value="Sc"><code>Sc</code>Scandium</option>
+        <option value="Ti"><code>Ti</code>Titanium</option>
+        <option value="V"><code>V</code>Vanadium</option>
+      </option>
+    </option>
+    <option expanded value="Halogens">
+        <caption>Halogens</caption>
+        <option value="F"><code>F</code>Fluorine</option>
+        <option value="Cl"><code>Cl</code>Chlorine</option>
+        <option value="Br"><code>Br</code>Bromine</option>
+    </option>
+    <option value="He"><code>He</code>Helium</option>
+  </select> 
+</body>
+</html>

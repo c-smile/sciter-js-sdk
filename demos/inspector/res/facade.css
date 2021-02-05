@@ -385,3 +385,5 @@ var.string {
 var.string::before { content:'"'; }
 var.string::after { content:'"'; }
 
+var.null,var.undefined { color:brown; }
+

@@ -1,0 +1,57 @@
+<html 
+  window-frame="transparent" 
+  window-width=420px 
+  window-height=420px >
+    <head>
+        <title>Test</title>
+        <style>
+
+html { 
+  background:transparent; 
+  overflow:none;
+}
+
+body {
+  width:400px;
+  height:400px;
+  border-radius:200px;
+  margin:*;
+  background:gold;
+  box-shadow:2px 2px 4px #333;
+  vertical-align: middle;
+  text-align: center;
+  transform: scale(0.1);
+}
+
+body.ready {
+  transform: scale(1);
+  transition: transform 400ms quad-out;
+}
+
+body > button {
+  display:block;
+  margin:0 *;
+}
+
+        </style>
+        <script>
+
+document.on("click", "button#close", function() {
+  Window.this.close();
+});
+
+post(function() { document.body.classList.add("ready") });
+
+        </script>
+    </head>
+
+    <body>
+
+<div role="window-caption">
+  <p>window-frame="transparent"</p>
+  <p>window may have arbitrary shape</p>
+</div>
+<button #close>Close</button>
+
+    </body>
+</html>

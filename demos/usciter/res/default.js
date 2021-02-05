@@ -72,24 +72,24 @@ on("click", "button#open-in-view", function() {
     view.load(fn);
 })
 
-function setTheme(lightAmbience, blurbehind) {
+function setTheme(lightAmbience, blurBehind) {
   var bg = $("button#glass");
   if( lightAmbience ) {
-    view.windowBlurbehind = blurbehind ? "light" : "none";
+    view.blurBehind = blurBehind ? "light" : "none";
     document.attributes["theme"] = "light";
     bg.state.checked = true;
   }
   else {
-    view.windowBlurbehind = blurbehind ? "dark" : "none";
-    self.attributes["theme"] = "dark";
+    view.blurBehind = blurBehind ? "dark" : "none";
+    document.attributes["theme"] = "dark";
     bg.state.checked = false;
   }
 }
 
 function onMediaChange() {
-  var blurbehind = view.mediaVar("ui-blurbehind"); // WM is blurbehind capable and uses it now
+  var blurBehind = view.mediaVar("ui-blurbehind"); // WM is blurbehind capable and uses it now
   var lightAmbience = view.mediaVar("ui-ambience") == "light"; // WM uses light theme
-  setTheme(lightAmbience, blurbehind);
+  setTheme(lightAmbience, blurBehind);
 }
 
 function setSystemGlass(onOff) {
@@ -107,16 +107,16 @@ function setSystemGlass(onOff) {
   }
 }
 
-on("click", "button#system-glass", function()
+on("click", "button#system-glass", function(evt,button)
 {
-  setSystemGlass(this.value);
-  //saveState();
+  setSystemGlass(button.value);
+  Settings.saveState();
 });
 
-on("click", "button#glass", function()
+on("click", "button#glass", function(evt,button)
 {
-  setTheme(this.value, true);
-  //saveState();
+  setTheme(button.value, true);
+  Settings.saveState();
 });
 
 on("click", "button#inspector", async function() 
@@ -152,6 +152,28 @@ Settings.init(APP_NAME).then(function(){
 });
 
 
+Settings.add
+{
+  store: function(data)
+    {
+      data.glass = 
+      {
+        useSystem : document.$("button#system-glass").state.checked,
+        lightTheme : document.$("button#glass").state.checked
+      };
+    },
+  restore: function(data) 
+    {
+      if(data.glass) {
+        setSystemGlass(data.glass.useSystem);
+        if( !data.glass.useSystem ) {
+          var lightAmbience = data.glass.lightTheme;
+          setTheme(lightAmbience, view.mediaVar("ui-blurbehind"));
+        }
+      }
+    }
+};
+
 
 /*var liveReload = new LiveReload(function() {
   if( filename ) {
@@ -176,27 +198,6 @@ event click $(button#live-reload)
 event change-processed {
   $(button#live-reload).state.visited = false;
 }*/
-
-/*Settings.add
-{
-  store: function(data)
-    {
-      data.glass = {
-        useSystem : $(button#system-glass).state.checked;  
-        lightTheme : $(button#glass).state.checked; 
-      };
-    },
-  restore: function(data) 
-    {
-      if(data.glass) {
-        setSystemGlass(data.glass.useSystem);
-        if( !data.glass.useSystem ) {
-          var lightAmbience = data.glass.lightTheme;
-          setTheme(lightAmbience, view.mediaVar("ui-blurbehind"));
-        }
-      }
-    }
-};*/
 
 
 /*on("click", "button#help", function() 

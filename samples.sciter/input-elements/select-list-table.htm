@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<title>Select table</title>
+		<style>
+        
+        select
+        { 
+          display:block;
+          flow: table;
+          
+          height:max-content; 
+          width:250px;
+          
+          padding:0; 
+          border:1px solid grey;
+        }
+        select option { flow:table-row; }
+        select option span { border:1px solid grey; padding:4px 8px; }
+        select option:current span:last-child { background:gold; }
+        select option span:nth-child(2) 
+        { 
+          width:*;
+          overflow-x:hidden;
+          white-space: nowrap;
+          text-overflow:ellipsis;
+        } 
+		</style>
+	</head>
+	<body>
+    <p>Table as &lt;select|list&gt;, keyboard navigation is operational</p>
+		<select|list multiple>
+        <option value="1">
+          <span>Option 1</span>
+          <span>*Short*</span>
+          <span>123456</span>
+        </option>
+        <option value="2">
+          <span>Option 2</span>
+          <span>******* LOONG ********</span>
+          <span>123456</span>
+        </option>
+        <option value="3">
+          <span>Option 3</span>
+          <span>*Short*</span>
+          <span>123456</span>
+        </option>
+		</select>
+	</body>
+</html>

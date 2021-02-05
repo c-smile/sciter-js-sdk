@@ -1,0 +1,63 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<html>
+  <head>
+    <title></title>
+    <style>
+      select { display:block; height:*; font: system; }
+      
+            
+      option > code { color:red; 
+                      display:inline-block; 
+                      border:1px solid #DCB; 
+                      width:1.4em; 
+                      margin-right:2px; 
+                      text-align:center; 
+                      }
+      
+      option:not(:node) { padding-left:0; } /* leaf item*/
+      option:current > code { border-color:transparent;  }
+
+    </style>
+    <script>
+
+      const select = document.$("select");
+    
+      document.on("click", "#get", function() { console.log(select.value); });
+      document.on("click", "#set1", function() { select.value = "Transition Metals"; });
+      document.on("click", "#set2", function() { select.value = "Na"; });
+      document.on("click", "#clear", function() { select.value = undefined; });
+
+    </script>
+  </head>
+<body>
+  value <button #get>get</button>
+        <button #set1>set "Transition Metals"</button> 
+        <button #set2>set "Na"</button> 
+        <button #clear>clear</button>
+
+  <select #dd type="tree" size=16 treelines>
+    <option expanded value="Metals">
+      <caption>Metals</caption>
+      <option expanded value="Alkaline Metals">
+        <caption>Alkaline Metals</caption>
+        <option value="Li"><code>Li</code>Lithium</option>
+        <option value="Na"><code>Na</code>Sodium</option>
+        <option value="K"><code>K</code>Potassium</option>
+      </option>
+      <option expanded value="Transition Metals">
+        <caption>Transition Metals</caption>
+        <option value="Sc"><code>Sc</code>Scandium</option>
+        <option value="Ti"><code>Ti</code>Titanium</option>
+        <option value="V"><code>V</code>Vanadium</option>
+      </option>
+    </option>
+    <option expanded value="Halogens">
+        <caption>Halogens</caption>
+        <option value="F"><code>F</code>Fluorine</option>
+        <option value="Cl"><code>Cl</code>Chlorine</option>
+        <option value="Br"><code>Br</code>Bromine</option>
+    </option>
+    <option value="He"><code>He</code>Helium</option>
+  </select> 
+</body>
+</html>

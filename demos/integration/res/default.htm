@@ -1,0 +1,192 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+form {
+  border:1px solid;
+  flow: row(label, input output);
+  width: max-content;
+  padding:1em;
+  border-spacing: 0.5em;
+}
+
+form > * { display: block; }
+form > label { width: max-content; text-align: right; }
+form > label::after { content: ":" }
+
+main {flow:horizontal-wrap; border-spacing:2em; }
+
+        </style>
+        <script>
+
+const win = Window.this; // the window we are in
+
+document.on("input", "form#asset1", function(evt,form) {
+  var {a,b} = form.value;
+  var r = win.assetInterface.integerSum(a,b); // calling native function
+  form.value = { result: r };
+});
+
+document.on("input", "form#asset2", function(evt,form) {
+  var {a,b} = form.value;
+  var r = win.assetInterface.stringSum(a,b); // calling native function
+  form.value = { result: r };
+});
+
+document.on("input", "form#asset3", function(evt,form) {
+  var {list,multiplier} = form.value;
+  function toInt(s) { return parseInt(s); }
+  var ints = list.split(",").map(toInt);
+  var r = win.assetInterface.vectorIntegerMul(ints, toInt(multiplier));
+  form.value = { result: r.join(",") };
+});
+
+// creation of native object
+var nativeObj = win.assetInterface.makeNativeObject();
+
+// Use of native object
+  document.on("click", "button#inc-native", function() {
+    const output = document.$("#objectOutput");
+    var r = nativeObj.inc();
+    output.innerText = `${nativeObj} inc() : ${ r }`;
+  });
+
+  document.on("click", "button#dec-native", function() {
+    const output = document.$("#objectOutput");
+    var r = nativeObj.dec();
+    output.innerText = `${nativeObj} dec() : ${ r }`;
+  });
+
+
+document.on("click", "button#task-start", function(evt, button) {
+  const progress = document.$("#task-progress");
+  button.state.disabled = true;
+
+  function onDone(n) {
+    progress.value = n;
+    button.state.disabled = false;
+  }
+
+  function onProgress(n) {
+    progress.value = n;
+  }
+  
+  win.assetInterface.startNativeThread(onDone,onProgress);
+});
+
+
+// xcall test
+document.on("input", "form#xcall", function(evt,form) {
+  var a = form.value.a;
+  var r = win.xcall("xcallTest",a); // native function call
+  form.value = { result: r };
+});
+
+
+// API for native side:
+
+
+// to be called from native side:
+function scriptFunc(p) {
+  const output = document.$("#scriptFuncOutput");
+  output.value = `received ${p} from native side`;
+}
+
+// using class as a namespace with static functions (ES6 feature).
+class scriptNS 
+{
+  // this function will be called by native side
+  static testFunc(obj) {
+    const output = document.$("pre#jsonOutput");
+    output.innerText = JSON.stringify(obj);
+  }
+}
+
+        </script>
+    </head>
+    <body>
+
+<h1>Sciter.JS integration and API demo.</h1>
+
+<h2>Calling native functions from script</h2>
+
+<h3>Asset interface demo</h3>
+
+<p>These will test native functions defined in <code>SOM_PASSPORT_BEGIN_EX / SOM_PASSPORT_END</code> block</p>
+
+<main>
+
+  <section>
+    <p>Calls <code>win.assetInterface.integerSum(a,b)</code> on input</p>
+    <form #asset1>
+       <label>a</label><input|integer(a) min=0 max=100 step=1 />
+       <label>b</label><input|integer(b) min=0 max=100 step=1 />
+       <label>result</label><output(result) />
+    </form>
+  </section>
+
+  <section>
+    <p>Calls <code>win.assetInterface.stringSum(a,b)</code> on input</p>
+    <form #asset2>
+       <label>a</label><input|text(a) />
+       <label>b</label><input|text(b) />
+       <label>result</label><output(result) />
+    </form>
+  </section>
+
+  <section>
+    <p>Calls <code>win.assetInterface.vectorIntegerMul(list,mul)</code> on input</p>
+    <form #asset3>
+       <label>comma separated ints</label><input|text(list) value="1,2,3" />
+       <label>multiplier</label><input|integer(multiplier) min=0 max=100 step=1 />
+       <label>result</label><output(result) />
+    </form>
+  </section>
+
+  <section>
+    <p>Calls <code>win.xcall("mappedFunctionName", ...)</code></p>
+    <form #xcall>
+       <label>a</label><input|integer(a) min=0 max=100 step=1 />
+       <label>result</label><output(result) />
+    </form>
+  </section>
+
+</main>
+
+<h2>Use of native objects</h2>
+
+<section>
+  <p>Creates native object and uses its methods:</p>
+  <button #inc-native>Increment</button>
+  <button #dec-native>Decrement</button>
+  <pre #objectOutput />
+</section>
+
+<h2>Running long tasks in worker threads</h2>
+
+<section>
+  <progress #task-progress max=100 value=0 />
+  <button #task-start>Start task</button>
+</section>
+
+<h2>Calling script function from native side</h2>
+
+<p>These will use native <code>handle_event()</code> handler and call functions on script side from native side</p>
+
+<main>
+  <section>
+    <button #test-script-func-1>Call function scriptFunc(p)</button>
+    <output #scriptFuncOutput />
+  </section>
+
+  <section>
+    <button #test-script-func-2>Call function scriptNS.testFunc(obj)</button>
+    <pre #jsonOutput></pre>
+  </section>
+</main>
+
+
+
+    </body>
+</html>

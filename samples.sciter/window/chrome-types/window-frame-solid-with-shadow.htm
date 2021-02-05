@@ -1,0 +1,38 @@
+<html window-frame="solid-with-shadow">
+    <head>
+        <title>Test</title>
+        <style>
+
+html { border:1px solid #000; }
+html > header { background:gold; font:system; line-height:2em; }
+html > header > caption { text-align:center; }
+
+        </style>
+        <script>
+
+Window.this.minSize = [400*devicePixelRatio,300*devicePixelRatio];
+Window.this.maxSize = [1000*devicePixelRatio,800*devicePixelRatio];
+
+document.on("click", "button#close", function() {
+  Window.this.close();
+});
+
+        </script>
+    </head>
+
+    <header>
+      <caption role="window-caption">Window caption</caption>
+    </header>
+
+    <body>
+
+<p>window-frame="solid-with-shadow"</p>
+
+<p>window.minSize = [400px,300px]</p>
+<p>window.maxSize = [1000px,800px]</p>
+
+
+<button #close>Close</button> 
+
+    </body>
+</html>

@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style></style>
+
+        <script>
+          console.log("test log output");
+          console.log("test data", {foo:"text of foo bar zot zap", bar:123456});
+          console.log("test data 2", [1,2,3,4]);
+          console.warn("test warning");
+          
+          document.$("div#time").innerText = (new Date()).toString();
+
+          document.on("click", "button#error", function() {
+            foo = bar + 42;  
+          }); 
+
+          document.on("click", "button#doc", function() {
+            console.log("test doc output", document);
+          }); 
+          document.on("click", "button#body", function() {
+            console.log("test doc output", document.body);
+          }); 
+
+          document.on("click", "button#null", function() {
+            console.log("test null and undefined output", null, undefined);
+          }); 
+
+
+          function Level1() 
+          {
+            var test = 42;
+            return function(param) {
+              return test + param;
+            }
+          }
+
+          function Level2() {
+
+            var foo = Level1();
+            var bar = foo(12);
+            
+            console.log(bar);
+          }
+
+          document.on("click", "button#closure", function() {
+            Level2();            
+          }); 
+
+
+        </script>
+    </head>
+    <body>
+      <p>Try F5 to reload</p>
+      <div #time />
+      <button#error>Generate error</button>
+      <button#doc>log document</button>
+      <button#body>log document.body</button>
+      <button#null>log null</button>
+
+      <button#closure>Call closure (debugger)</button>
+
+      <button|checkbox #foo .bar>Test</button>
+      <div foo="bar">
+        <p>One</p>
+        <p>Two</p>
+        <p>Three</p>
+      </div>
+    </body>
+</html>

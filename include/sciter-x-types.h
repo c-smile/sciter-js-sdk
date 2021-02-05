@@ -273,16 +273,9 @@ enum GFX_LAYER
 
   #define WINDOWLESS
 
-  #include <uchar.h>
+  //#include <uchar.h>
   #include <string.h>
 
-  #ifndef SBOOL
-  typedef signed char        SBOOL;
-  #endif
-  #ifndef TRUE
-  #define TRUE (1)
-  #define FALSE (0)
-  #endif
   typedef unsigned int       UINT;
   typedef int                INT;
   typedef unsigned long long UINT64;

@@ -1,0 +1,70 @@
+<html theme="light">
+    <head>
+        <title>Test</title>
+        <style>
+
+          html:theme(light) { background:#fff; color: #000; }
+          html:theme(dark) { background:#000; color: #fff; }
+
+          form#config {
+            flow:horizontal-wrap;
+            border-spacing:*;
+            margin-bottom:0.5em;
+          }
+
+          form#config > div {
+            width:max-content;
+          }
+
+          html[ui-size=compact] { font-size:9pt;  }
+
+
+        </style>
+        <script>
+
+          var theme = "default-unisex/theme.css";
+
+          document.on("input","form#config", function(evt,form) {
+            var config = form.value;
+            var frame = document.$("frame");
+            frame.frame.document.attributes["ui-size"] = form.value.size;
+            document.attributes["theme"] = form.value.mode;
+
+            if(theme != config.theme) {
+              theme = config.theme;
+              frame.attributes["content-style"] = theme;
+              frame.frame.loadFile(frame.frame.document.url());
+            }
+
+          }); 
+
+          /*document.on("click","radio(size)", function() {
+            self.attributes["ui-size"] = document.$("form#config").size;
+          });*/ 
+
+ 
+        </script>
+    </head>
+    <body>
+      <form #config> 
+        <div>
+          Theme: <select|dropdown(theme)>
+            <option value="default" selected value="default-unisex/theme.css">Sciter Unisex, default</option>
+            <option value="flat" value="windows-flat/theme.css">Windows Flat</option>
+            <option value="material" value="android-material/theme.css">Android/Material</option>
+          </select>
+        </div>
+        <div>
+          Sizing: <button|radio(size) checked value="normal">Normal</button>
+                  <button|radio(size) value="compact">Compact</button>
+        </div>
+        <div>
+          Mode: <button|radio(mode) checked value="light">Light</button> 
+                <button|radio(mode) value="dark">Dark</button>
+        </div>
+      </form>
+
+      <frame src="elements.htm" content-style="default-unisex/theme.css" />
+
+    </body>
+</html>

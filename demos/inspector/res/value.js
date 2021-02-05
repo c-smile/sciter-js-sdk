@@ -126,14 +126,25 @@ function crackText(text)
 
 export function SublimatedValue(channel, val, key, forLog = false) 
 {
-  if(!key) key = val.toString();
+  if(!key) key = JSON.stringify(val);
+
+  if( val === null )
+    return <var .null key={key}>null</var>; 
+  else if( val === undefined )
+    return <var .undefined key={key}>undefined</var>; 
 
   switch(typeof val) {
-    case "string": return forLog ? <span .string key={key}>{crackText(val)}</span>
-                                 : <var .string key={key}>{val}</var>; 
-    case "number": return <var .number key={key}>{val.toString()}</var>;
-    case "object": return <SublimatedObject channel={channel} def={val} key={key} />; 
-    default: return <var .other key={key}>{val}</var>; 
+    case "string": 
+      return forLog ? <span .string key={key}>{crackText(val)}</span>
+                    : <var .string key={key}>{val}</var>; 
+    case "number": 
+      return <var .number key={key}>{val.toString()}</var>;
+    case "object": 
+      if( val !== null )
+        return <SublimatedObject channel={channel} def={val} key={key} />; 
+      // else fall through
+    default: 
+      return <var .other key={key}>{JSON.stringify(val)}</var>; 
   }
 }
 

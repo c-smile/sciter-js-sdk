@@ -1,0 +1,20 @@
+
+
+/* radio button */
+@set std-radio < std-radio { :root {display:block;} }
+radio { style-set: std-radio; }
+
+/* checkbox button */
+@set std-checkbox < std-checkbox { :root {display:block;} }
+checkbox { style-set: std-checkbox; }
+
+@set std-edit < std-edit { :root {display:block;} }
+editbox { style-set:std-edit; }
+
+@set std-hslider < std-hslider { :root {display:block;} }
+slider { display:inline-block; style-set:std-hslider; }
+
+input { display:block; width:8em; }
+
+.hbox { flow: horizontal; border-spacing: 0.5em; }
+

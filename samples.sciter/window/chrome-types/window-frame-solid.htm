@@ -1,0 +1,29 @@
+<html window-frame="solid">
+    <head>
+        <title>Test</title>
+        <style>
+
+html { border:3px solid #000; }
+
+        </style>
+        <script>
+
+document.on("click", "button#close", function() {
+  Window.this.close();
+});
+
+        </script>
+    </head>
+
+    <header>
+      <caption role="window-caption">Window caption</caption>
+    </header>
+
+    <body>
+
+<p>window-frame="solid"</p>
+
+<button #close>Close</button> 
+
+    </body>
+</html>

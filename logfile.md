@@ -1,3 +1,32 @@
+## 4.4.5.12
+
+### New samples
+
+* demos/integration - demonstrates native code <-> JavaScript interaction, running native worker threads, exposing native classes and objects, etc.  
+* docs/md - documentation as part of SDK, markdown formatted. 
+* samples.sciter/input-elements/ - home of various samples of built-in input elements.
+* samples.sciter/themes/ - demo of built-in theme (light/dark), MS Metro and Android Material.
+* samples.sciter/tray-icon/ - tray icon demo.
+* samples.sciter/window/ - demo of different types of window chromes (window frame types).
+* samples/markdown/ - demo of RemarkableJS library.
+
+### New features
+
+* graphics.push/popLayer() - clipping(rect,path,bitmap), filters, opacity layers. 
+* graphics.draw(path|text|image|element, {options}) - drawing those objects. 
+* class [Graphics.Text](docs/md/Graphics.Text.md) - text drawing and measurement.
+* class [Graphics.Path](docs/md/Graphics.Path.md) - paths 
+* class [Graphics.Color](docs/md/Graphics.Color.md) - color object (RGBA/HSLA/HSLV) 
+* element.style.colorOf(prop) - getting used color values
+* element.style.pixelsOf(prop) - getting used length values
+* window.isResizable, isMinimizable and other prperties. 
+
+### New builds
+
+* Sciter.JS.Lite - Windows
+* Sciter.JS.Skia - Windows
+* Sciter.JS.Lite - Android
+
 ## 4.4.5.10, revision 8422, 2021-01-15
 
 ### New

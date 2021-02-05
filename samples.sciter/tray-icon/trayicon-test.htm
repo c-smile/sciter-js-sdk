@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+          ol#events { 
+            height:*; 
+            overflow:auto; 
+            vertical-align:bottom;
+          }
+
+
+        </style>
+        <script>
+
+          document.on("click", "button#set", async function(evt,button) 
+          {
+            var r = Window.this.trayIcon({
+              image: await Graphics.Image.load(__DIR__ + "i32.png"),
+              text: "I am trayIcon\ncreated at: " + new Date()
+            });
+            if( r )
+              button.state.disabled = true;
+          }); 
+
+          document.on("click", "button#remove", function(evt,button) 
+          {
+            var r = Window.this.trayIcon("remove");
+            if( r )
+              document.$("button#set").state.disabled = false;
+          }); 
+
+          document.on("click", "button#place", function() {
+            var [x,y,w,h] = Window.this.trayIcon("place");
+            document.$("span#place").innerText = `x:${x},y:${y},w:${w},h:${h}`;
+          }); 
+
+          document.on("click", "button#update", function() {
+            Window.this.trayIcon({ text: "updated at: " + new Date() });
+          }); 
+
+          document.ready = function() 
+          {
+            const ol = document.$("ol#events");
+
+            function append(name,details) {
+              ol.append(<li>{name} x:{details.screenX} y:{details.screenY} buttons:{details.buttons}</li>);
+              if(ol.length > 100)
+                ol.firstElementChild.remove();
+            }
+ 
+            Window.this.on("trayiconclick", evt =>
+            { 
+              append("trayiconclick",evt.data); 
+
+              if(evt.data.buttons == 2)
+              {
+                var [sx,sy] = Window.this.box("position","client","screen");
+                //self.popup($(menu#tray), 2, evt.x - sx, evt.y - sy );
+                var menu = document.$("menu#tray");
+                var {screenX,screenY} = evt.data;
+                menu.popupAt(screenX - sx, screenY - sy, 2);
+              }                
+            }); 
+          }
+
+          document.on("click", "button#hide", evt => {
+            Window.this.state = Window.WINDOW_HIDDEN;
+          });
+
+          document.on("click", "menu#tray > li#reveal", evt => {
+            Window.this.state = Window.WINDOW_SHOWN;
+          });   
+
+          document.on("click", "menu#tray > li#exit", evt => {
+            // exiting the application
+            Window.this.trayIcon("remove");
+            Window.this.close();
+          });
+
+        </script>
+        <menu.popup #tray>
+          <li#reveal>Show window</li>
+          <li#exit>Exit</li>
+        </menu>
+    </head>
+    <body>
+
+       <p>Note: this also demonstrates popup menu on RIGHT CLICK on tray icon.</p>
+
+       <div>
+         <button#set>Set Icon</button><br>
+         <button#remove>Remove icon</button><br>
+         <button#update>Update text</button>
+         <button#place>Get place:</button><span#place /><br>
+         <button#hide>Hide window</button>
+       </div>
+       
+       trayIcon Events:
+       <ol#events>
+       </ol>
+
+    </body>
+</html>

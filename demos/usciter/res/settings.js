@@ -72,7 +72,7 @@ add({
     }
 });
   
-function saveState()
+export function saveState()
 {
   if(!document.window) {
     Window.this.off(saveState); // document is unloaded

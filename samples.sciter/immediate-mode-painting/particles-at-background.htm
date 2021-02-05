@@ -6,11 +6,14 @@
 
     body {
       aspect: Particles; // see function Particles() below
-      background:#020030;
-      vertical-align: middle;
-      text-align: center;
-      color: #fff;
-      font-size:20pt;
+      background:#F4A460;
+    }
+
+    text.particles-text {
+       color: #fff;
+       width:max-content;
+       height:max-content;
+       font-size:20pt;
     }
 
   </style>
@@ -19,10 +22,16 @@
 
     function Particles() {
 
-      let particles = [];
-      let particleSize = 4;
-      let maxParticles = 40;
-      let threshold = 100;
+      const particles = [];
+      const particleSize = 6;
+      const maxParticles = 40;
+      const threshold = 100;
+
+      const text = new Graphics.Text("Immediate mode painting demo","particles-text");
+
+      const circle = new Graphics.Path();
+      circle.arc(0, 0, particleSize, 0, 2 * Math.PI);
+      circle.close();
 
       for (let i = 0; i < maxParticles; i++) {
         let particle = {
@@ -32,6 +41,12 @@
           vy: Math.random()
         }
         particles.push(particle);
+      }
+
+      function distance(p1,p2) {
+        let dx = p1.x - p2.x;
+        let dy = p1.y - p2.y;
+        return Math.sqrt(dx*dx + dy*dy);
       }
      
       function paint(context) 
@@ -46,19 +61,17 @@
         }
 
         context.fillStyle = '#fff';
+        context.strokeStyle = '#fff';
 
         for (let i = 0; i < maxParticles; i++) {
           let particle = particles[i];
-          context.fillRect(particle.x - particleSize / 2, particle.y - particleSize / 2, particleSize, particleSize);
+          context.draw(circle, particle);
           for (let j = 0; j < maxParticles; j++) {
             if (i != j) {
               let particle2 = particles[j];
-              let distanceX = Math.abs(particle.x - particle2.x);
-              let distanceY = Math.abs(particle.y - particle2.y);
-              if (distanceX < threshold && distanceY < threshold) {
-                context.lineWidth = ((threshold * 2) - (distanceX + distanceY)) / 50;
-                let color = 200 - Math.floor(distanceX + distanceY);
-                context.strokeStyle = 'rgb(' + color + ',' + color + ',' + color + ')';
+              let d = distance(particle,particle2);
+              if (d < threshold) {
+                context.lineWidth = (threshold - d) / threshold * 4;
                 line(particle, particle2);
               }
             }
@@ -73,6 +86,12 @@
           if (particle.y < particleSize) { particle.y = particleSize; particle.vy = -particle.vy; }
 
         }
+
+        // draw text on the middle of canvas:
+        context.pushLayer("content-box","drop-shadow(1px,1px,3px,#000)");
+          context.draw(text, {x: width/2, y: height/2, alignment:5});
+        context.popLayer();
+
         this.requestPaint(); // request next painting
       }
 
@@ -86,6 +105,6 @@
 </head>
 
 <body>
-  Immediate mode painting demo.
+  
 </body>
 </html>

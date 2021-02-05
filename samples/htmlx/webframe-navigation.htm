@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+@import url(webframe-navigation.css);
+
+        </style>
+        <script>
+
+
+document.on("click","button#load1", function() {
+  document.$("frame").src = __DIR__ + "tests/test-basic.htm";
+});
+
+
+        </script>
+    </head>
+    <body>
+
+      <button#load1>test-basic.htm</button>
+
+      <toolbar|web>
+        <button #back />
+        <button #fore />
+        <input|text #url />
+      </toolbar>
+
+      <frame|web />
+    </body>
+</html>

@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+@import url(markdown.css);
+
+frameset {
+  size:*;
+}
+
+section#html 
+{
+  size:*;
+  border:1px solid #ccc;
+  overflow: scroll-indicator;
+  padding: 0 2em;
+  style-set: markdown-content;
+}
+
+plaintext#editor {
+  overflow: scroll-indicator;
+}
+
+plaintext#editor > text {
+  white-space:pre;
+  height:1.4em;
+  line-height:1.4em;
+}
+
+        </style>
+        <script type="module">
+
+          import * as sys from '@sys';
+          import * as sciter from '@sciter';
+          import * as env from '@env';
+        
+          import { Remarkable } from 'remarkable/index.js';
+          import { HeaderIds } from 'remarkable/plugins/header-ids.js';
+
+
+          const editor = document.$("plaintext#editor");
+          const output = document.$("section#html");
+
+          const md = new Remarkable();          
+          md.use( HeaderIds({ anchorText:" " }));
+
+          function render() {
+            output.innerHTML = md.render(editor.value);
+          }
+
+          editor.on("input",function() {
+            editor.timer(100, render); // throttling render call
+          });
+
+          document.on("^click","section#html a[href]", function(evt, a) {
+            evt.stopPropagation();            
+            let href = a.getAttribute("href");
+            if( href.startsWith("#") ) {
+              let target = output.$(href);
+              console.log(href,target);
+              if(target) target.scrollIntoView(true);
+            } else {
+              // external URL
+              env.launch(href);
+            }
+            
+          });
+
+          async function load() {
+            try {
+              let text = await sys.fs.readFile( URL.toPath( __DIR__ + "test.md") );
+              editor.value = sciter.decode(text,"utf-8");
+              render();
+            } catch(e) {
+              editor.value = e.message; 
+            }
+          }
+          load();   
+
+        </script>
+    </head>
+    <body>
+
+<frameset cols="*,*">
+  <plaintext#editor />
+  <splitter/>
+  <section#html />
+</frameset>
+
+    </body>
+</html>

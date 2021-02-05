@@ -1,3 +1,5 @@
+# class Window
+
 Instances of the Window class represent desktop windows.
 
 `Window.this` is a reference to current window object - instance of Window class where HTML document is loaded.

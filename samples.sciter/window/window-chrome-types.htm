@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style></style>
+        <script type="module">
+
+document.on("click","button#window-frame-default", () => {
+  var wnd = new Window({ 
+      url   : __DIR__ + "chrome-types/window-frame-default.htm", 
+      state : Window.WINDOW_SHOWN
+  });
+});
+
+document.on("click","button#window-frame-extended", () => {
+  var wnd = new Window({ 
+      url   : __DIR__ + "chrome-types/window-frame-extended.htm", 
+      state : Window.WINDOW_SHOWN
+  });
+});
+
+document.on("click","button#window-frame-extended-blurbehind", () => {
+  var wnd = new Window({ 
+      url   : __DIR__ + "chrome-types/window-frame-extended-blurbehind.htm", 
+      state : Window.WINDOW_SHOWN
+  });
+});
+
+
+document.on("click","button#window-frame-solid", () => {
+  var wnd = new Window({ 
+      url   : __DIR__ + "chrome-types/window-frame-solid.htm", 
+      state : Window.WINDOW_SHOWN
+  });
+});
+
+document.on("click","button#window-frame-solid-with-shadow", () => {
+  var wnd = new Window({ 
+      url   : __DIR__ + "chrome-types/window-frame-solid-with-shadow.htm", 
+      state : Window.WINDOW_SHOWN
+  });
+});
+
+document.on("click","button#window-frame-transparent", () => {
+  var wnd = new Window({ 
+      url   : __DIR__ + "chrome-types/window-frame-transparent.htm", 
+      state : Window.WINDOW_SHOWN,
+      alignment: 5, // in the center of screen
+  });
+});
+
+
+document.on("click","button#window-frame-tool", () => {
+  var wnd = new Window({ 
+      type  : Window.TOOL_WINDOW,
+      url   : __DIR__ + "chrome-types/window-frame-tool.htm", 
+      state : Window.WINDOW_SHOWN,
+  });
+});
+
+        </script>
+    </head>
+    <body>
+
+window-frame="...":
+<ul>
+    <li><button#window-frame-default>window-frame="default"</button></li>
+    <li><button#window-frame-extended>window-frame="extended"</button>
+        <button#window-frame-extended-blurbehind>window-frame="extended" window-blurbehind="dark"</button></li> 
+    <li><button#window-frame-solid>window-frame="solid"</button></li> 
+    <li><button#window-frame-solid-with-shadow>window-frame="solid-with-shadow"</button> + min/maxSize demo</li>
+    <li><button#window-frame-transparent>window-frame="transparent"</button></li>
+</ul>
+
+type:Window.XXXX:
+<ul>
+  <li><button#window-frame-tool>type:Window.TOOL_WINDOW</button></li> 
+</ul>
+
+    </body>
+</html>

@@ -1,0 +1,64 @@
+﻿<html> <!-- add lang="ru" to test -->
+	<head>
+		<title>Date Time controls demo</title>
+    <style>
+      body { font-family:verdana; font-size:10pt }
+      
+      input.custom td.today { background-color:yellow; }
+      input.custom td.today:current { background-color:orange; }
+      input.custom span.today-legend { background-color:yellow; }
+      input.custom span.today-caption { content:"Сегодня"; }
+
+      //:invalid {color:red;}
+      
+      /* Example: localization of input|date for Russian language */
+      input:lang(ru) span.year:empty { content:"гггг"; }
+      input:lang(ru) span.month:empty { content:"м"; }
+      input:lang(ru) span.day:empty { content:"д"; }
+
+      /* Example: localization of input|time for Russian language */
+      input:lang(ru) span.hour:empty { content:"ч"; }
+      input:lang(ru) span.minute:empty { content:"м"; }
+      input:lang(ru) span.second:empty { content:"с"; }
+      
+    </style>
+
+    <script>
+
+      document.on("click", "button#to-set-time", function(evt,button) {
+        button.$p(".group").$("#time-to-set").value = new Date();
+      });
+      
+      document.on("click", "button#to-clear-time", function(evt,button) {
+        button.$p(".group").$("#time-to-set").value = undefined;
+      });
+
+    </script>
+
+	</head>
+	<body>
+    <h3>input type="calendar"</h3> 
+    <input type="calendar" name="calendar" value="2004-07-24"/>
+    Custom styling: <input type="calendar" .custom />
+    <h3>input type="date"</h3>     
+    <text .group>
+      <input type="date" name="date" value="2004-01-24" />, 
+      date with no value set: <input type="date" name="date" value="" #time-to-set /> <button #to-set-time>Set to current date</button> <button #to-clear-time>Clear</button>,
+      today date: <input type="date" name="date" value="today" />  
+    </text>
+    
+    <h3>input type="time"</h3>         
+    <text .group>
+      <input type="time" name="time" value="11:00:00" /> , 
+      time with no value set: <input type="time" name="time" #time-to-set /> <button #to-set-time>Set to current time</button> <button #to-clear-time>Clear</button>, 
+      current time: <input type="time" name="time" value="now" />
+    </text>      
+    <p>No seconds:</p>
+    <text .group>
+      <input type="time" name="time" value="11:00:00" no-seconds /> , 
+      time with no value set: <input type="time" name="time" #time-to-set no-seconds /> <button #to-set-time>Set to current time</button> <button #to-clear-time>Clear</button>, 
+      current time: <input type="time" name="time" value="now" no-seconds />     
+    </text> 
+    
+	</body>
+</html>

@@ -31,12 +31,11 @@ async function handleConnection(driverFactory,conn)
 
   bstream.unpack(data, (message) => {
     const [name,needresp,data] = message;
-    if( name == "hello" ) { // first client message
-      driver = driverFactory(outbound);
-      driver.handle(name,data);
+    if( name == "hello" ) { 
+      // first client message
+      driver = driverFactory(outbound,data);
     }
-    else if( name == "activate" ) {
-      // other instance is trying to run
+    else if( name == "activate" ) { // other instance of inspector is trying to run
       Window.this.activate();
       conn.close();
       conn = undefined;
@@ -68,7 +67,7 @@ async function handleConnection(driverFactory,conn)
   }
   //console.log('empty message, connection closed?', typeof message);
   if(driver)
-    driver.gone();
+    driver.gone(outbound);
   conn = undefined;
   document.off(closeconn);
 }

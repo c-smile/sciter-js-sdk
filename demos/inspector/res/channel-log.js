@@ -10,8 +10,12 @@ function LogListItem(props)
 {
   const logitem = props.logitem;
   const channel = props.channel;
-  const content = logitem.items.map((val,key) => SublimatedValue(channel,val,key,true)); 
-  return <li class={ CLASS_NAMES[logitem.severity] + ' ' + SUBSYTEM_NAMES[logitem.subsystem]}>{content}</li>;
+  if(logitem === "---")
+    return <hr/>;
+  else { 
+    const content = logitem.items.map((val,key) => SublimatedValue(channel,val,key,true)); 
+    return <li class={ CLASS_NAMES[logitem.severity] + ' ' + SUBSYTEM_NAMES[logitem.subsystem]}>{content}</li>;
+  }
 }
 
 export class ChannelLog extends Element 

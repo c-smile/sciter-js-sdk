@@ -21,17 +21,28 @@ export class ChannelDriver
   viewstate = {}; // storage of view states
   view = null;    // ChannelView
 
-  constructor(outboundRq) 
+  constructor(outboundRq, theirId) 
   {
+    this.key = theirId;
+    this.request = function(name,params) { return new Promise((resolve,reject) => { outboundRq(name,params,resolve); }); }
+    this.notify = outboundRq;
+  }
+
+  reconnect(outboundRq) {
     this.request = function(name,params) { return new Promise((resolve,reject) => { outboundRq(name,params,resolve); }); }
     this.notify = outboundRq;
   }
 
   get connected() { return this.request !== null; }
+  
   // debugee is gone, channel closed
-  gone() {
-    this.request = null;
-    document.dispatchEvent(new Event("channel-gone"),true);
+  gone(outboundRq) {
+    if(this.notify === outboundRq) {
+      this.request = null;
+      this.notify = null;
+      document.dispatchEvent(new Event("channel-gone"),true);
+    }
+    // otherwise it was recconnected
   }
 
   // handle inbound message from debugee
@@ -60,9 +71,20 @@ export class ChannelDriver
   static all = {}; // by key 
   static current = null; // current channel
 
-  static factory(outboundRq) 
+  static factory(outboundRq, theirId) 
   {
-    return new ChannelDriver(outboundRq);
+    let channel = ChannelDriver.all[theirId];
+    if( channel ) {
+      channel.reconnect(outboundRq);
+      channel.theirLogs.push("---");
+      document.dispatchEvent(new Event("log-new", {detail:this}), true);
+    } else {
+      channel = new ChannelDriver(outboundRq,theirId);
+      ChannelDriver.all[theirId] = channel;
+    }
+    ChannelDriver.current = channel;    
+    document.dispatchEvent(new Event("channel-new"),true);
+    return channel;
   }
 
   // particular message drivers 
@@ -73,16 +95,12 @@ export class ChannelDriver
     document.dispatchEvent(new Event("log-new", {detail:this}), true);
   }
 
-  static hello(theirId) {
-    this.key = theirId; 
-    ChannelDriver.all[theirId] = this;
-    ChannelDriver.current = this;
-    document.dispatchEvent(new Event("channel-new"),true);
-  }
 
   static snapshot(imageBytes) {
     if(this.onSnapshotBytes)
       this.onSnapshotBytes(imageBytes);
+    if(this.onContentChange)
+      this.onContentChange();
   }
 
   static highlighted(stack) {

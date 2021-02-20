@@ -37,6 +37,8 @@ sys is built on top of [libuv](https://github.com/libuv/libuv) that Sciter.JS us
 * `fs.copyfile()`
 * `fs.readdir()`
 * `fs.readFile()`
+* [`fs.watch()`](sys.fs/watch.md)
+* [`fs.splitpath()`](sys.fs/splitpath.md)
 
 #### classes
 

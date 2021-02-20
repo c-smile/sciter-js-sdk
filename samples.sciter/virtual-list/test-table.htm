@@ -1,0 +1,134 @@
+<html>
+    <head>
+        <title>behavior:virtual-list</title>
+        <style>
+
+table {
+  size:*;
+  border:1px solid #ccc;
+}
+
+tbody 
+{
+  behavior: virtual-list;
+  prototype: Tape;
+  overflow:scroll-indicator;
+  size:*;
+}
+
+table > thead { border-bottom:1px solid #ccc; }
+table > thead > tr > th:nth-child(1) { width: 8em; }
+table > thead > tr > th:nth-child(2) { width: 8em; }
+table > thead > tr > th:nth-child(3) { width: *; }
+
+table > tbody > tr > td { white-space: nowrap; }
+table > tbody > tr > td:nth-child(3) { width: *; overflow-x:hidden; }
+
+        </style>
+        <script>
+
+  const ipsums = [
+    "**Lorem ipsum** dolor sit amet, consectetur adipisicing elit.:\n```JavaScript\nfunction loremIpsum() {\n  return 'Can be inserted';\n}\n```",
+    "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." ,
+    "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." ,
+    "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." ,
+    "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." ,
+    "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness." ,
+    "No one rejects, dislikes, or avoids pleasure itself, because it is pleasure,\n\n but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful." ,
+    "Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure." ,
+    "To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it?" ,
+    "But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?" ,
+    "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga." ,
+    "Et harum quidem rerum facilis est et expedita distinctio." ];
+
+class Tape extends Element {
+
+  nItems = 20000;
+
+  // scroll down
+  appendElements(index,n) 
+  {
+    if( index === undefined ) index = 0;
+    let elements = [];
+    for(let i = 0; i < n; ++i, ++index) {
+      if(index >= this.nItems) break;
+      elements.push( this.renderItem(index) );
+    }
+    this.append(elements);
+    return { moreafter: (this.nItems - index) }; // return estimated number of items below this chunk
+  }
+
+  // scroll up
+  prependElements(index,n) 
+  {
+    if( index === undefined ) index = this.nItems - 1;
+    let elements = [];
+    for(let i = 0; i < n; ++i, --index) {
+      if(index < 0) break;
+      elements.push( this.renderItem(index) );
+    }
+    elements.reverse();
+    this.prepend(elements);    
+    return { morebefore: (index < 0 ? 0 : index) }; // return estimated number of items above this chunk
+  }
+
+  // scroll to
+  replaceElements(index,n) 
+  {
+    let elements = [];
+    let start = index;
+    for(let i = 0; i < n; ++i, ++index) {
+      if(index >= this.nItems) break;
+      elements.push( this.renderItem(index) );
+    }
+    this.patch(elements);
+    return { 
+      morebefore: (start <= 0 ? 0 : start),
+      moreafter:  (this.nItems - index) 
+    }; // return estimated number of items before and above this chunk
+  }
+
+  renderItem(index) 
+  {
+    return <tr key={index}>
+     <td>item { index }</td>
+     <td>some text</td>
+     <td>{ipsums[index % ipsums.length]}</td>
+    </tr>;
+  }
+  
+  oncontentrequired(evt)
+  {
+
+    let {length, start, where} = evt.data;
+
+    if(where > 0)
+      // scrolling down, need to append more elements
+      evt.data = this.appendElements(start,length);
+    else if(where < 0)
+      // scrolling up, need to prepend more elements
+      evt.data = this.prependElements(start,length);
+    else 
+      // scrolling to index
+      evt.data = this.replaceElements(start,length);
+
+    return true;
+  }
+}
+
+        </script>
+    </head>
+    <body>
+
+<table fixedlayout>
+  <thead>
+    <th>column 1</th>
+    <th>column 2</th>
+    <th>column 3</th>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+    </body>
+</html>

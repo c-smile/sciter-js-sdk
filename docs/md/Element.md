@@ -44,7 +44,7 @@ class Element represents DOM element and extends [Node](Node.md) and so all its 
 * `element.getAttributeNames()`
 * `element.removeAttribute()`
 * `element.setAttribute()`
-* `element.dispatchEvent(event: CustomEvent [,post: boolean)` sends or posts instance of [Event](https://github.com/c-smile/sciter-js-sdk/wiki/DOM.Event) class. The _post_ is a Sciter specific flag - if it is provided and is `true` then the function places event into event queue for later dispatch. 
+* `element.dispatchEvent(event: CustomEvent [,post: boolean)` sends or posts instance of [Event](Event.md) class. The _post_ is a Sciter specific flag - if it is provided and is `true` then the function places event into event queue for later dispatch. 
 * `element.scrollTo()`
 * `element.scrollIntoView()`
 * `element.click()` - generates click event on the element 
@@ -73,6 +73,17 @@ class Element represents DOM element and extends [Node](Node.md) and so all its 
   
   Starts timer on element. If the element already has timer with that callback it first gets removed and new timer started instead. This allows to implement effective throttling. If the callback function returns `true` value then the timer will keep ticking (like interval timer). The callback is called with `this` set to the element. 
 
+* `element.post(function | event)`
+
+  Posts either function or event to event queue. 
+
+  `element.post(function)` conceptually is equivalent to `setTimeout(function,0)` but with two differences:  
+  1. The function will be called with `this` set to the element;
+  2. `element.post` checks input queue before sending and if input queue already contains that element/function pair the function will be called only once. 
+
+  `element.post(event)` is equivalent to `element.dispatchEvent()` but instead of immediate dispatch execution it will post the event into event queue for later execution.
+
+
 * `element.checkCommand(command [, params]): flags`
 * `element.executeCommand(command [, params]): flags`
 
@@ -96,6 +107,8 @@ class Element represents DOM element and extends [Node](Node.md) and so all its 
 * `element.popupFor(anchorElement)`
 
   Shows this element as out of canvas popup relative to anchorElement.
+
+
 
 #### Methods (Sciter.JS/Reactor specific):
 

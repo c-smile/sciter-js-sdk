@@ -1,3 +1,21 @@
+## 4.4.6.0
+
+### New features
+
+* `behavior:virtual-list` - native virtual list;
+* `element.post(function | event)` - posts either function or event to the element;
+* [JS runtime] `sys.fs.watch(path,callback)` - watch changes on FS (folders and files);
+* [JS runtime] `sys.fs.splitpath(path) -> [dirpath,file]` ;
+* [usctier] LiveReload functionality is operational;
+
+### New samples
+
+* samples.sciter/virtual-list - vurtual list samples;
+
+### New builds/assemblies
+
+* Sciter.JS.Lite - Linux 
+
 ## 4.4.5.12
 
 ### New samples

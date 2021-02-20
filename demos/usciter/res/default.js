@@ -3,6 +3,7 @@ import { launch, home, PLATFORM } from "@env";
 import * as sys from "@sys";
 import { DropZone } from "drop-zone.js";
 import * as Settings from "settings.js";
+import * as LiveReload from "live-reload.js";
 
 const APP_NAME = "usciter.js.app";
 
@@ -28,17 +29,7 @@ globalThis.test = function(param) {
   return param;
 }
 
-function loadFile(fn)
-{
-  //liveReload.reset();
-  filename = fn;
-  content.frame.debugMode = true;
-  content.frame.loadFile(fn);
-  $("button#reload").state.disabled = false;
-  inspectorButton.state.disabled = false;
-  //if(debugIsActive)
-  //  view.launchDebugView();
-
+function updateCaption() {
   var croot = content.frame.document;
   if(!croot) return;
   var title = croot.$("head>title");
@@ -51,6 +42,23 @@ function loadFile(fn)
   }
 }
 
+function loadFile(fn)
+{
+  //liveReload.reset();
+  filename = fn;
+  content.frame.debugMode = true;
+  content.frame.loadFile(fn);
+  $("button#reload").state.disabled = false;
+  inspectorButton.state.disabled = false;
+  updateCaption();
+}
+
+function reloadFile()
+{
+  content.frame.loadFile(filename);
+  updateCaption();
+}
+
 on("click","button#open", function() {
     var fn = view.selectFile("open",file_filter);
     if( fn ) 
@@ -59,11 +67,8 @@ on("click","button#open", function() {
 
 on("click","button#reload", function () {
     //liveReload.reset();
-    if( filename ) {
-      loadFile(filename);
-      //if(debugIsActive)
-      //  view.launchDebugView();
-    }
+    if( filename )
+      reloadFile();
   })
 
 on("click", "button#open-in-view", function() {
@@ -174,31 +179,29 @@ Settings.add
     }
 };
 
+const btnLiveReload = $("button#live-reload");
 
-/*var liveReload = new LiveReload(function() {
-  if( filename ) {
-    content.load(filename);
-    if(debugIsActive)
-      view.launchDebugView();
-  }
-});
+LiveReload.attachTo(content);
 
-event click $(button#live-reload)
+LiveReload.onReload( function () {
+  if( filename )
+    loadFile(filename);
+  // indication of pending change reload
+  btnLiveReload.state.visited = false;
+}); 
+
+LiveReload.onChange( function() {
+  btnLiveReload.state.visited = true;
+}); 
+
+btnLiveReload.on("click", function(evt,button)
 {
-  if(this.value) {
-    liveReload.start();
-  } else {
-    liveReload.stop();
-  }
-}*/
-
-/*event change-detected {
-  $(button#live-reload).state.visited = true;
-}
-event change-processed {
-  $(button#live-reload).state.visited = false;
-}*/
-
+  if(button.value)
+    LiveReload.start(filename);
+  else
+    LiveReload.stop();
+  return true;
+});
 
 /*on("click", "button#help", function() 
 {

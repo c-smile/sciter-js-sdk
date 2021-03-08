@@ -26,8 +26,8 @@
 ### Fixes
 
 * *inspector* fix of style url reporting, see: https://sciter.com/forums/topic/inspector-cant-loads-css-files/
-* `<frame>`, fix of `frame.attributes["src"] = ...;``
-* [core] `flow:vertical-wrap;`` fix of stack overflow when percent units used.
+* `<frame>`, fix of `frame.attributes["src"] = ...;`
+* [core] `flow:vertical-wrap;` fix of stack overflow when percent units used.
 
 
 ## 4.4.6.0

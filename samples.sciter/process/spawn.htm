@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+          plaintext { display:block; size:*; border:1dip solid;}
+          plaintext > text.stderr {  background: pink; }
+        </style>
+        <script type="module">
+
+
+          import * as sys from '@sys';
+          import * as env from '@env';
+          import * as sciter from '@sciter';
+
+          const out = document.$("plaintext");
+
+          const EOL = env.PLATFORM == "Windows" ? "\r\n" : "\n";
+
+          var tracert;
+
+          async function pipeReader(pipe, name) {
+            try {
+              var cline = "";
+              reading: while(pipe) {
+                var text = await pipe.read(); 
+                text = sciter.decode(text);
+                while(text) {
+                  var eolpos = text.indexOf(EOL);
+                  if(eolpos < 0) { cline += text; continue reading; }  
+                  cline += text.substr(0, eolpos);
+                  text = text.substr(eolpos + EOL.length);
+                  out.append(<text class={name}>{ cline }</text>);
+                  cline = "";
+                }
+              }
+            } catch(e) {
+              out.append(<text class="error">{ e.toString() }</text>);
+            }
+
+          }
+
+          document.on("click", "#exec", async function() {
+            var cmd = env.PLATFORM == "Windows" ? "tracert" : "traceroute";
+            tracert = sys.spawn([cmd,"sciter.com"], { stdout:"pipe", stderr:"pipe"} );
+            pipeReader(tracert.stdout,"stdout");
+            pipeReader(tracert.stderr,"stderr");
+          });
+
+        </script>
+    </head>
+    <body>
+
+      <button #exec>Show trace route</button>
+
+      <plaintext></plaintext>
+
+    </body>
+</html>

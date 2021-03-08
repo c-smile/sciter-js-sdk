@@ -1,0 +1,285 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0A7133E9FE707D5B835B9229 /* sciter-osx-main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3F895EB1839D2FE3776EB4F1 /* sciter-osx-main.mm */; };
+		1817955824A247CA9F871398 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5C1300C9792D32A5828940 /* CoreFoundation.framework */; };
+		188E199B287345CD14E6CFDB /* sciter-sqlite-db.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3432F723D61C9315CD43A563 /* sciter-sqlite-db.cpp */; };
+		713678D803C442CA6C9CE718 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BACC980CF188B320DBC2FC0 /* IOKit.framework */; };
+		DA632659EA48528BD6BBDC99 /* sciter-sqlite-rs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4003F501E1ED90F3D914A341 /* sciter-sqlite-rs.cpp */; };
+		ECEF3455B37D2BC7217F5295 /* usciter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD72B87D42E977AFB185CEBD /* usciter.cpp */; };
+		F8E8DBA28B76A594F44F49E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D6BC6AA50D7885C8F7B2CEA /* Cocoa.framework */; };
+		FAA520B50CCEFD6740BFE6F5 /* sqlite-wrap.c in Sources */ = {isa = PBXBuildFile; fileRef = 291C1E9D22DDDB0F5CDCDCDD /* sqlite-wrap.c */; };
+		FB58B8551625270719F5BE95 /* sciter-sqlite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A81D583D154566AF16D8567D /* sciter-sqlite.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0BACC980CF188B320DBC2FC0 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		291C1E9D22DDDB0F5CDCDCDD /* sqlite-wrap.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "sqlite-wrap.c"; path = "../../sqlite/sqlite-wrap.c"; sourceTree = "<group>"; };
+		3432F723D61C9315CD43A563 /* sciter-sqlite-db.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "sciter-sqlite-db.cpp"; path = "../../sqlite/sciter-sqlite-db.cpp"; sourceTree = "<group>"; };
+		3617EE077A669379BC8DCC47 /* sciter-sqlite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sciter-sqlite.h"; path = "../../sqlite/sciter-sqlite.h"; sourceTree = "<group>"; };
+		3F895EB1839D2FE3776EB4F1 /* sciter-osx-main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objc; name = "sciter-osx-main.mm"; path = "../../include/sciter-osx-main.mm"; sourceTree = "<group>"; };
+		4003F501E1ED90F3D914A341 /* sciter-sqlite-rs.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "sciter-sqlite-rs.cpp"; path = "../../sqlite/sciter-sqlite-rs.cpp"; sourceTree = "<group>"; };
+		458CC9BF9C1A3431749347FF /* sqlite3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = sqlite3.h; path = ../../sqlite/sqlite3.h; sourceTree = "<group>"; };
+		49D499B7ECC2C0697BE89FF7 /* usciter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = usciter.app; path = usciter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		580232A751C3EF198BC2F0E7 /* sqlite-wrap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sqlite-wrap.h"; path = "../../sqlite/sqlite-wrap.h"; sourceTree = "<group>"; };
+		7F397281B01D6A73C335A0C1 /* sqlite3ext.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = sqlite3ext.h; path = ../../sqlite/sqlite3ext.h; sourceTree = "<group>"; };
+		8D6BC6AA50D7885C8F7B2CEA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		A81D583D154566AF16D8567D /* sciter-sqlite.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = "sciter-sqlite.cpp"; path = "../../sqlite/sciter-sqlite.cpp"; sourceTree = "<group>"; };
+		AD72B87D42E977AFB185CEBD /* usciter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = usciter.cpp; path = ../../demos/usciter/usciter.cpp; sourceTree = "<group>"; };
+		EA5C1300C9792D32A5828940 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D2E84BA7773AE959897331E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1817955824A247CA9F871398 /* CoreFoundation.framework in Frameworks */,
+				F8E8DBA28B76A594F44F49E2 /* Cocoa.framework in Frameworks */,
+				713678D803C442CA6C9CE718 /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		150F3E6CB85AC79ED32B94AC /* sqlite */ = {
+			isa = PBXGroup;
+			children = (
+				3432F723D61C9315CD43A563 /* sciter-sqlite-db.cpp */,
+				4003F501E1ED90F3D914A341 /* sciter-sqlite-rs.cpp */,
+				A81D583D154566AF16D8567D /* sciter-sqlite.cpp */,
+				3617EE077A669379BC8DCC47 /* sciter-sqlite.h */,
+				291C1E9D22DDDB0F5CDCDCDD /* sqlite-wrap.c */,
+				580232A751C3EF198BC2F0E7 /* sqlite-wrap.h */,
+				458CC9BF9C1A3431749347FF /* sqlite3.h */,
+				7F397281B01D6A73C335A0C1 /* sqlite3ext.h */,
+			);
+			name = sqlite;
+			sourceTree = "<group>";
+		};
+		552008FFE82B61F13060573F /* usciter */ = {
+			isa = PBXGroup;
+			children = (
+				8A2CBBB8DA40506A5CBE81F8 /* demos */,
+				5E8C725002DF100215175890 /* include */,
+				150F3E6CB85AC79ED32B94AC /* sqlite */,
+				BBF76781A7E87333FA200DC1 /* Frameworks */,
+				A6C936B49B3FADE6EA134CF4 /* Products */,
+			);
+			name = usciter;
+			sourceTree = "<group>";
+		};
+		5E8C725002DF100215175890 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				3F895EB1839D2FE3776EB4F1 /* sciter-osx-main.mm */,
+			);
+			name = include;
+			sourceTree = "<group>";
+		};
+		8A2CBBB8DA40506A5CBE81F8 /* demos */ = {
+			isa = PBXGroup;
+			children = (
+				A754A78DBE6742BFAE833DCD /* usciter */,
+			);
+			name = demos;
+			sourceTree = "<group>";
+		};
+		A6C936B49B3FADE6EA134CF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				49D499B7ECC2C0697BE89FF7 /* usciter.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A754A78DBE6742BFAE833DCD /* usciter */ = {
+			isa = PBXGroup;
+			children = (
+				AD72B87D42E977AFB185CEBD /* usciter.cpp */,
+			);
+			name = usciter;
+			sourceTree = "<group>";
+		};
+		BBF76781A7E87333FA200DC1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EA5C1300C9792D32A5828940 /* CoreFoundation.framework */,
+				8D6BC6AA50D7885C8F7B2CEA /* Cocoa.framework */,
+				0BACC980CF188B320DBC2FC0 /* IOKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AF0496BD208FAF2FCF90D4FD /* usciter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C1239406657631B877AE7A46 /* Build configuration list for PBXNativeTarget "usciter" */;
+			buildPhases = (
+				42CFCC47E72269F9F95AB287 /* Resources */,
+				AC7CE59E50CF83506307CBDE /* Sources */,
+				D2E84BA7773AE959897331E7 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = usciter;
+			productInstallPath = "$(HOME)/Applications";
+			productName = usciter;
+			productReference = 49D499B7ECC2C0697BE89FF7 /* usciter.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "usciter" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = 552008FFE82B61F13060573F /* usciter */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AF0496BD208FAF2FCF90D4FD /* usciter.app */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		42CFCC47E72269F9F95AB287 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AC7CE59E50CF83506307CBDE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ECEF3455B37D2BC7217F5295 /* usciter.cpp in Sources */,
+				0A7133E9FE707D5B835B9229 /* sciter-osx-main.mm in Sources */,
+				188E199B287345CD14E6CFDB /* sciter-sqlite-db.cpp in Sources */,
+				DA632659EA48528BD6BBDC99 /* sciter-sqlite-rs.cpp in Sources */,
+				FB58B8551625270719F5BE95 /* sciter-sqlite.cpp in Sources */,
+				FAA520B50CCEFD6740BFE6F5 /* sqlite-wrap.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2718B628CB6B53DADDA39C68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEVICE=DESKTOP",
+					NDEBUG,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OBJROOT = obj/x64/Release/usciter;
+				ONLY_ACTIVE_ARCH = NO;
+				SYMROOT = ../../bin/macosx/x64;
+				USER_HEADER_SEARCH_PATHS = (
+					../../include,
+				);
+			};
+			name = Release;
+		};
+		2B4D086ECE9891A0E9695EAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEVICE=DESKTOP",
+					DEBUG,
+					_DEBUG,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OBJROOT = obj/x64/Debug/usciter;
+				ONLY_ACTIVE_ARCH = YES;
+				SYMROOT = ../../bin/macosx/x64;
+				USER_HEADER_SEARCH_PATHS = (
+					../../include,
+				);
+			};
+			name = Debug;
+		};
+		31629FC6532E4CF88FE37606 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../../bin/macosx/x64;
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = "\"$(HOME)/Applications\"";
+				PRODUCT_NAME = usciter;
+			};
+			name = Release;
+		};
+		A31FE1CCCB5A9A7EB2F6280C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../../bin/macosx/x64;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = "\"$(HOME)/Applications\"";
+				PRODUCT_NAME = usciter;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "usciter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B4D086ECE9891A0E9695EAE /* Debug */,
+				2718B628CB6B53DADDA39C68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C1239406657631B877AE7A46 /* Build configuration list for PBXNativeTarget "usciter.app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A31FE1CCCB5A9A7EB2F6280C /* Debug */,
+				31629FC6532E4CF88FE37606 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+};
+rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

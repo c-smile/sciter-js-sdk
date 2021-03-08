@@ -1,0 +1,434 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		02B90F1DC947068F37492D5D /* vulkan.c in Sources */ = {isa = PBXBuildFile; fileRef = 6055DA05F5CC99376468F045 /* vulkan.c */; };
+		033CE2FD9D96CBEFD9CF313D /* behavior_drawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7C2720A51A082157F18666E5 /* behavior_drawing.cpp */; };
+		04A21B91112CCE038C1199D1 /* basic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0762AA59E67FC48BC2892099 /* basic.cpp */; };
+		1817955824A247CA9F871398 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5C1300C9792D32A5828940 /* CoreFoundation.framework */; };
+		1A9931E5BC82CDD7B3A9E025 /* context.c in Sources */ = {isa = PBXBuildFile; fileRef = 22DB6F4DF0FEC2FF780D158D /* context.c */; };
+		1F94C1D3108C2FC57C8FB013 /* egl_context.c in Sources */ = {isa = PBXBuildFile; fileRef = 0CD13D5BA51E230DD365239B /* egl_context.c */; };
+		3B95C4479596DB395CDDD287 /* cocoa_monitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 225AC08F3D272F4140F7C6CF /* cocoa_monitor.m */; };
+		3E6ACFFB95D042ED47DE5E3B /* input.c in Sources */ = {isa = PBXBuildFile; fileRef = C2EC9703F4E5E1B56EC51D43 /* input.c */; };
+		4E86155F42855ED1C770739F /* cocoa_init.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B6F51275F8322595354A767 /* cocoa_init.m */; };
+		69B5D13348586CA5FD3A6F73 /* osmesa_context.c in Sources */ = {isa = PBXBuildFile; fileRef = B5197DBBB4BC60EDEF1113FB /* osmesa_context.c */; };
+		6DBE2E83DAE63CF5DC792CC3 /* init.c in Sources */ = {isa = PBXBuildFile; fileRef = CA040C0B1767023D8D86024B /* init.c */; };
+		713678D803C442CA6C9CE718 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BACC980CF188B320DBC2FC0 /* IOKit.framework */; };
+		794477A785CF2A1900B3F5E7 /* cocoa_window.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1B84EFAD389F218941FB2F /* cocoa_window.m */; };
+		8532862B271C221D1E43346B /* monitor.c in Sources */ = {isa = PBXBuildFile; fileRef = E3365C33B159AFE538680273 /* monitor.c */; };
+		9223EFD8340D8BCA2B349E18 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 606C44802E8F9832B59DEAC0 /* CoreVideo.framework */; };
+		C248E65FCED398D149B8649F /* nsgl_context.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA3D42739C0EE5915CA4A67 /* nsgl_context.m */; };
+		C359784B89E76FBDF7E9968B /* window.c in Sources */ = {isa = PBXBuildFile; fileRef = FDD41753934AD68501E72D93 /* window.c */; };
+		DA44AA21CE43F393532F0861 /* cocoa_time.c in Sources */ = {isa = PBXBuildFile; fileRef = FA57E2C93E6BB3FB323D3909 /* cocoa_time.c */; };
+		EB6D92D7CA102E497EF23117 /* cocoa_joystick.m in Sources */ = {isa = PBXBuildFile; fileRef = F956371FF8F91A51334DCD5F /* cocoa_joystick.m */; };
+		EF703D6FFBFAEFE176DFBBAF /* posix_thread.c in Sources */ = {isa = PBXBuildFile; fileRef = 22E3623702007C69DE09D877 /* posix_thread.c */; };
+		F569C34F0793A0013B84898F /* glad.c in Sources */ = {isa = PBXBuildFile; fileRef = 7E486957780A25C9B2092797 /* glad.c */; };
+		F8E8DBA28B76A594F44F49E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D6BC6AA50D7885C8F7B2CEA /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0762AA59E67FC48BC2892099 /* basic.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = basic.cpp; path = "../../demos.lite/sciter-glfw-opengl/basic.cpp"; sourceTree = "<group>"; };
+		0BACC980CF188B320DBC2FC0 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		0BFD2CCFA44A1281D291130F /* sciter-x-window.hpp */ = {isa = PBXFileReference; lastKnownFileType = text; name = "sciter-x-window.hpp"; path = "../../include/sciter-x-window.hpp"; sourceTree = "<group>"; };
+		0C92150DF0D91D3F74C64B4D /* sciter-x-debug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sciter-x-debug.h"; path = "../../include/sciter-x-debug.h"; sourceTree = "<group>"; };
+		0CD13D5BA51E230DD365239B /* egl_context.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = egl_context.c; path = ../../demos.lite/glfw/src/egl_context.c; sourceTree = "<group>"; };
+		0D35DEE5DB59329762678525 /* sciter-om-def.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sciter-om-def.h"; path = "../../include/sciter-om-def.h"; sourceTree = "<group>"; };
+		0E2506BF0DC7E9F1481C9CFF /* cocoa_platform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = cocoa_platform.h; path = ../../demos.lite/glfw/src/cocoa_platform.h; sourceTree = "<group>"; };
+		150613BBF4232DEDD02C89FB /* sciter-x-video-api.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sciter-x-video-api.h"; path = "../../include/sciter-x-video-api.h"; sourceTree = "<group>"; };
+		1B6F51275F8322595354A767 /* cocoa_init.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = cocoa_init.m; path = ../../demos.lite/glfw/src/cocoa_init.m; sourceTree = "<group>"; };
+		1D43FBC51CE6DEF7573B9205 /* osmesa_context.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = osmesa_context.h; path = ../../demos.lite/glfw/src/osmesa_context.h; sourceTree = "<group>"; };
+		1D9E3BD161B20D0355839211 /* sciter-x-request.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sciter-x-request.h"; path = "../../include/sciter-x-request.h"; sourceTree = "<group>"; };
+		225AC08F3D272F4140F7C6CF /* cocoa_monitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = cocoa_monitor.m; path = ../../demos.lite/glfw/src/cocoa_monitor.m; sourceTree = "<group>"; };
+		22DB6F4DF0FEC2FF780D158D /* context.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = context.c; path = ../../demos.lite/glfw/src/context.c; sourceTree = "<group>"; };
+		22E3623702007C69DE09D877 /* posix_thread.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = posix_thread.c; path = ../../demos.lite/glfw/src/posix_thread.c; sourceTree = "<group>"; };
+		353A18F3CD86FEA5FBCDFF33 /* stdafx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stdafx.h; path = "../../demos.lite/sciter-glfw-opengl/stdafx.h"; sourceTree = "<group>"; };
+		379670FF1BDD79319FCAA73F /* sciter-x-dom.hpp */ = {isa = PBXFileReference; lastKnownFileType = text; name = "sciter-x-dom.hpp"; path = "../../include/sciter-x-dom.hpp"; sourceTree = "<group>"; };
+		3A34D933CFAB98653E47EF73 /* sciter-x-api.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sciter-x-api.h"; path = "../../include/sciter-x-api.h"; sourceTree = "<group>"; };
+		4528DB6F550E07A1418191AF /* sciter-x-host-callback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sciter-x-host-callback.h"; path = "../../include/sciter-x-host-callback.h"; sourceTree = "<group>"; };
+		4A3645A1E2832B5310CA2BE1 /* sciter-x-graphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sciter-x-graphics.h"; path = "../../include/sciter-x-graphics.h"; sourceTree = "<group>"; };
+		4BA5D1CDE11C90FF4FB8E80D /* sciter-x-msg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sciter-x-msg.h"; path = "../../include/sciter-x-msg.h"; sourceTree = "<group>"; };
+		5390CBE5755C7917B211A225 /* sciter-x.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sciter-x.h"; path = "../../include/sciter-x.h"; sourceTree = "<group>"; };
+		5AA3D42739C0EE5915CA4A67 /* nsgl_context.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = nsgl_context.m; path = ../../demos.lite/glfw/src/nsgl_context.m; sourceTree = "<group>"; };
+		6055DA05F5CC99376468F045 /* vulkan.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = vulkan.c; path = ../../demos.lite/glfw/src/vulkan.c; sourceTree = "<group>"; };
+		606C44802E8F9832B59DEAC0 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		615FA3B7899A5C697135E9F7 /* aux-cvt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "aux-cvt.h"; path = "../../include/aux-cvt.h"; sourceTree = "<group>"; };
+		6290A09141ADBAC31DB716D1 /* sciter-x-request.hpp */ = {isa = PBXFileReference; lastKnownFileType = text; name = "sciter-x-request.hpp"; path = "../../include/sciter-x-request.hpp"; sourceTree = "<group>"; };
+		6AC5C3FB7CEFA0ADB0E08A3B /* sciter-x-lite.hpp */ = {isa = PBXFileReference; lastKnownFileType = text; name = "sciter-x-lite.hpp"; path = "../../include/sciter-x-lite.hpp"; sourceTree = "<group>"; };
+		6F633B3D32CEFCEF7172A17D /* aux-asset.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "aux-asset.h"; path = "../../include/aux-asset.h"; sourceTree = "<group>"; };
+		7065E18508B2C73736F9C7C5 /* egl_context.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = egl_context.h; path = ../../demos.lite/glfw/src/egl_context.h; sourceTree = "<group>"; };
+		73296C15B73D3D47AB0EC255 /* sciter-x-threads.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sciter-x-threads.h"; path = "../../include/sciter-x-threads.h"; sourceTree = "<group>"; };
+		765D34619129A31394FA3AA1 /* sciter-x-graphics.hpp */ = {isa = PBXFileReference; lastKnownFileType = text; name = "sciter-x-graphics.hpp"; path = "../../include/sciter-x-graphics.hpp"; sourceTree = "<group>"; };
+		7C2720A51A082157F18666E5 /* behavior_drawing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = behavior_drawing.cpp; path = ../../include/behaviors/behavior_drawing.cpp; sourceTree = "<group>"; };
+		7E486957780A25C9B2092797 /* glad.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = glad.c; path = ../../demos.lite/glfw/deps/glad.c; sourceTree = "<group>"; };
+		8D6BC6AA50D7885C8F7B2CEA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		8FC9FB5D6EE7158F4AF0719D /* nsgl_context.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = nsgl_context.h; path = ../../demos.lite/glfw/src/nsgl_context.h; sourceTree = "<group>"; };
+		912BB91590CE9C47CB234F55 /* cocoa_joystick.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = cocoa_joystick.h; path = ../../demos.lite/glfw/src/cocoa_joystick.h; sourceTree = "<group>"; };
+		9B15673F33624CF161A94D7F /* sciter-x-behavior.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sciter-x-behavior.h"; path = "../../include/sciter-x-behavior.h"; sourceTree = "<group>"; };
+		9B7E2701C1A456B328AB4D41 /* value.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = value.h; path = ../../include/value.h; sourceTree = "<group>"; };
+		A6AA6EFF3C212E31AABD853F /* sciter-x-dom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sciter-x-dom.h"; path = "../../include/sciter-x-dom.h"; sourceTree = "<group>"; };
+		A6D76F9D3C4E2ECFAAEA85DD /* sciter-x-def.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sciter-x-def.h"; path = "../../include/sciter-x-def.h"; sourceTree = "<group>"; };
+		B43B3DDADA616D8C4168641A /* glfw-opengl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "glfw-opengl.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5197DBBB4BC60EDEF1113FB /* osmesa_context.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = osmesa_context.c; path = ../../demos.lite/glfw/src/osmesa_context.c; sourceTree = "<group>"; };
+		B739005D7AA4C20FB948669D /* aux-slice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "aux-slice.h"; path = "../../include/aux-slice.h"; sourceTree = "<group>"; };
+		C2EC9703F4E5E1B56EC51D43 /* input.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = input.c; path = ../../demos.lite/glfw/src/input.c; sourceTree = "<group>"; };
+		C38043875BCD29398A1429C7 /* aux-fs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "aux-fs.h"; path = "../../demos.lite/sciter-glfw-opengl/aux-fs.h"; sourceTree = "<group>"; };
+		CA040C0B1767023D8D86024B /* init.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = init.c; path = ../../demos.lite/glfw/src/init.c; sourceTree = "<group>"; };
+		CCB36D69B0FA759B34E7A3A9 /* sciter-x-types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sciter-x-types.h"; path = "../../include/sciter-x-types.h"; sourceTree = "<group>"; };
+		CDF5E739B23CEF6B362A1D79 /* sciter-x-value.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sciter-x-value.h"; path = "../../include/sciter-x-value.h"; sourceTree = "<group>"; };
+		CE1B84EFAD389F218941FB2F /* cocoa_window.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = cocoa_window.m; path = ../../demos.lite/glfw/src/cocoa_window.m; sourceTree = "<group>"; };
+		D4AFF9AD981BBB5FD6BF5FED /* sciter-om.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sciter-om.h"; path = "../../include/sciter-om.h"; sourceTree = "<group>"; };
+		DDE149C1061C0273EDB79001 /* value.hpp */ = {isa = PBXFileReference; lastKnownFileType = text; name = value.hpp; path = ../../include/value.hpp; sourceTree = "<group>"; };
+		E3365C33B159AFE538680273 /* monitor.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = monitor.c; path = ../../demos.lite/glfw/src/monitor.c; sourceTree = "<group>"; };
+		E93362E3F9188F15E58C1923 /* sciter-x-lite-keycodes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sciter-x-lite-keycodes.h"; path = "../../include/sciter-x-lite-keycodes.h"; sourceTree = "<group>"; };
+		EA5C1300C9792D32A5828940 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		EDBD3B01CCDA5533A8E3B141 /* posix_thread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = posix_thread.h; path = ../../demos.lite/glfw/src/posix_thread.h; sourceTree = "<group>"; };
+		F4B532078A2BF139F8C84847 /* aux-platform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "aux-platform.h"; path = "../../include/aux-platform.h"; sourceTree = "<group>"; };
+		F4E083E9B84C459BF6EFEA29 /* nullptr.hpp */ = {isa = PBXFileReference; lastKnownFileType = text; name = nullptr.hpp; path = ../../include/nullptr.hpp; sourceTree = "<group>"; };
+		F956371FF8F91A51334DCD5F /* cocoa_joystick.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = cocoa_joystick.m; path = ../../demos.lite/glfw/src/cocoa_joystick.m; sourceTree = "<group>"; };
+		FA57E2C93E6BB3FB323D3909 /* cocoa_time.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = cocoa_time.c; path = ../../demos.lite/glfw/src/cocoa_time.c; sourceTree = "<group>"; };
+		FDD41753934AD68501E72D93 /* window.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = window.c; path = ../../demos.lite/glfw/src/window.c; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		66D4564A09C27CFC98E85C8A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1817955824A247CA9F871398 /* CoreFoundation.framework in Frameworks */,
+				F8E8DBA28B76A594F44F49E2 /* Cocoa.framework in Frameworks */,
+				713678D803C442CA6C9CE718 /* IOKit.framework in Frameworks */,
+				9223EFD8340D8BCA2B349E18 /* CoreVideo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		289000DA4EB6308CB5BD271A /* src */ = {
+			isa = PBXGroup;
+			children = (
+				1B6F51275F8322595354A767 /* cocoa_init.m */,
+				912BB91590CE9C47CB234F55 /* cocoa_joystick.h */,
+				F956371FF8F91A51334DCD5F /* cocoa_joystick.m */,
+				225AC08F3D272F4140F7C6CF /* cocoa_monitor.m */,
+				0E2506BF0DC7E9F1481C9CFF /* cocoa_platform.h */,
+				FA57E2C93E6BB3FB323D3909 /* cocoa_time.c */,
+				CE1B84EFAD389F218941FB2F /* cocoa_window.m */,
+				22DB6F4DF0FEC2FF780D158D /* context.c */,
+				0CD13D5BA51E230DD365239B /* egl_context.c */,
+				7065E18508B2C73736F9C7C5 /* egl_context.h */,
+				CA040C0B1767023D8D86024B /* init.c */,
+				C2EC9703F4E5E1B56EC51D43 /* input.c */,
+				E3365C33B159AFE538680273 /* monitor.c */,
+				8FC9FB5D6EE7158F4AF0719D /* nsgl_context.h */,
+				5AA3D42739C0EE5915CA4A67 /* nsgl_context.m */,
+				B5197DBBB4BC60EDEF1113FB /* osmesa_context.c */,
+				1D43FBC51CE6DEF7573B9205 /* osmesa_context.h */,
+				22E3623702007C69DE09D877 /* posix_thread.c */,
+				EDBD3B01CCDA5533A8E3B141 /* posix_thread.h */,
+				6055DA05F5CC99376468F045 /* vulkan.c */,
+				FDD41753934AD68501E72D93 /* window.c */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		52188B82BC2B0D745555F9C2 /* glfw-opengl */ = {
+			isa = PBXGroup;
+			children = (
+				807D00F0978F9C2287AB9730 /* demos.lite */,
+				5E8C725002DF100215175890 /* include */,
+				BBF76781A7E87333FA200DC1 /* Frameworks */,
+				A6C936B49B3FADE6EA134CF4 /* Products */,
+			);
+			name = "glfw-opengl";
+			sourceTree = "<group>";
+		};
+		5E8C725002DF100215175890 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				6F633B3D32CEFCEF7172A17D /* aux-asset.h */,
+				615FA3B7899A5C697135E9F7 /* aux-cvt.h */,
+				F4B532078A2BF139F8C84847 /* aux-platform.h */,
+				B739005D7AA4C20FB948669D /* aux-slice.h */,
+				759EAD619DD966138574F3A1 /* behaviors */,
+				F4E083E9B84C459BF6EFEA29 /* nullptr.hpp */,
+				0D35DEE5DB59329762678525 /* sciter-om-def.h */,
+				D4AFF9AD981BBB5FD6BF5FED /* sciter-om.h */,
+				3A34D933CFAB98653E47EF73 /* sciter-x-api.h */,
+				9B15673F33624CF161A94D7F /* sciter-x-behavior.h */,
+				0C92150DF0D91D3F74C64B4D /* sciter-x-debug.h */,
+				A6D76F9D3C4E2ECFAAEA85DD /* sciter-x-def.h */,
+				A6AA6EFF3C212E31AABD853F /* sciter-x-dom.h */,
+				379670FF1BDD79319FCAA73F /* sciter-x-dom.hpp */,
+				4A3645A1E2832B5310CA2BE1 /* sciter-x-graphics.h */,
+				765D34619129A31394FA3AA1 /* sciter-x-graphics.hpp */,
+				4528DB6F550E07A1418191AF /* sciter-x-host-callback.h */,
+				E93362E3F9188F15E58C1923 /* sciter-x-lite-keycodes.h */,
+				6AC5C3FB7CEFA0ADB0E08A3B /* sciter-x-lite.hpp */,
+				4BA5D1CDE11C90FF4FB8E80D /* sciter-x-msg.h */,
+				1D9E3BD161B20D0355839211 /* sciter-x-request.h */,
+				6290A09141ADBAC31DB716D1 /* sciter-x-request.hpp */,
+				73296C15B73D3D47AB0EC255 /* sciter-x-threads.h */,
+				CCB36D69B0FA759B34E7A3A9 /* sciter-x-types.h */,
+				CDF5E739B23CEF6B362A1D79 /* sciter-x-value.h */,
+				150613BBF4232DEDD02C89FB /* sciter-x-video-api.h */,
+				0BFD2CCFA44A1281D291130F /* sciter-x-window.hpp */,
+				5390CBE5755C7917B211A225 /* sciter-x.h */,
+				9B7E2701C1A456B328AB4D41 /* value.h */,
+				DDE149C1061C0273EDB79001 /* value.hpp */,
+			);
+			name = include;
+			sourceTree = "<group>";
+		};
+		759EAD619DD966138574F3A1 /* behaviors */ = {
+			isa = PBXGroup;
+			children = (
+				7C2720A51A082157F18666E5 /* behavior_drawing.cpp */,
+			);
+			name = behaviors;
+			sourceTree = "<group>";
+		};
+		807D00F0978F9C2287AB9730 /* demos.lite */ = {
+			isa = PBXGroup;
+			children = (
+				AD8C3B8BAE3F387D222109CB /* glfw */,
+				AB1730FD4D00CCEF4427DF3D /* sciter-glfw-opengl */,
+			);
+			name = demos.lite;
+			sourceTree = "<group>";
+		};
+		A6C936B49B3FADE6EA134CF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B43B3DDADA616D8C4168641A /* glfw-opengl.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AB1730FD4D00CCEF4427DF3D /* sciter-glfw-opengl */ = {
+			isa = PBXGroup;
+			children = (
+				C38043875BCD29398A1429C7 /* aux-fs.h */,
+				0762AA59E67FC48BC2892099 /* basic.cpp */,
+				353A18F3CD86FEA5FBCDFF33 /* stdafx.h */,
+			);
+			name = "sciter-glfw-opengl";
+			sourceTree = "<group>";
+		};
+		AD8C3B8BAE3F387D222109CB /* glfw */ = {
+			isa = PBXGroup;
+			children = (
+				FE3C596246AD3D948B4C0FA2 /* deps */,
+				289000DA4EB6308CB5BD271A /* src */,
+			);
+			name = glfw;
+			sourceTree = "<group>";
+		};
+		BBF76781A7E87333FA200DC1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EA5C1300C9792D32A5828940 /* CoreFoundation.framework */,
+				8D6BC6AA50D7885C8F7B2CEA /* Cocoa.framework */,
+				0BACC980CF188B320DBC2FC0 /* IOKit.framework */,
+				606C44802E8F9832B59DEAC0 /* CoreVideo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FE3C596246AD3D948B4C0FA2 /* deps */ = {
+			isa = PBXGroup;
+			children = (
+				7E486957780A25C9B2092797 /* glad.c */,
+			);
+			name = deps;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D145C280CAABC3F2BE4720C0 /* glfw-opengl */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 550F9EA9F7FDC55B8723A4E9 /* Build configuration list for PBXNativeTarget "glfw-opengl" */;
+			buildPhases = (
+				D6BBD6EA79A9FD9C08CFDD2A /* Resources */,
+				4068F041E35716F3727CF681 /* Sources */,
+				66D4564A09C27CFC98E85C8A /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "glfw-opengl";
+			productInstallPath = "$(HOME)/Applications";
+			productName = "glfw-opengl";
+			productReference = B43B3DDADA616D8C4168641A /* glfw-opengl.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+			};
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "glfw-opengl" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 52188B82BC2B0D745555F9C2 /* glfw-opengl */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D145C280CAABC3F2BE4720C0 /* glfw-opengl */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D6BBD6EA79A9FD9C08CFDD2A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4068F041E35716F3727CF681 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F569C34F0793A0013B84898F /* glad.c in Sources */,
+				4E86155F42855ED1C770739F /* cocoa_init.m in Sources */,
+				EB6D92D7CA102E497EF23117 /* cocoa_joystick.m in Sources */,
+				3B95C4479596DB395CDDD287 /* cocoa_monitor.m in Sources */,
+				DA44AA21CE43F393532F0861 /* cocoa_time.c in Sources */,
+				794477A785CF2A1900B3F5E7 /* cocoa_window.m in Sources */,
+				1A9931E5BC82CDD7B3A9E025 /* context.c in Sources */,
+				1F94C1D3108C2FC57C8FB013 /* egl_context.c in Sources */,
+				6DBE2E83DAE63CF5DC792CC3 /* init.c in Sources */,
+				3E6ACFFB95D042ED47DE5E3B /* input.c in Sources */,
+				8532862B271C221D1E43346B /* monitor.c in Sources */,
+				C248E65FCED398D149B8649F /* nsgl_context.m in Sources */,
+				69B5D13348586CA5FD3A6F73 /* osmesa_context.c in Sources */,
+				EF703D6FFBFAEFE176DFBBAF /* posix_thread.c in Sources */,
+				02B90F1DC947068F37492D5D /* vulkan.c in Sources */,
+				C359784B89E76FBDF7E9968B /* window.c in Sources */,
+				04A21B91112CCE038C1199D1 /* basic.cpp in Sources */,
+				033CE2FD9D96CBEFD9CF313D /* behavior_drawing.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AE600E51B1D0E083333D8491 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++1z";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEVICE=DESKTOP",
+					DEBUG,
+					_DEBUG,
+					WINDOWLESS,
+					_GLFW_COCOA,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OBJROOT = "obj/x64/Debug/glfw-opengl";
+				ONLY_ACTIVE_ARCH = YES;
+				SYMROOT = ../../bin.lite/macosx/x64;
+				USER_HEADER_SEARCH_PATHS = "../../include ../../demos.lite/sciter-glfw-opengl ../../demos.lite/glfw/include ../../demos.lite/glfw/deps";
+			};
+			name = Debug;
+		};
+		B8EDF8EF7C59BAA1BAFD5F2F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../../bin.lite/macosx/x64;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = "\"$(HOME)/Applications\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_NAME = "glfw-opengl";
+			};
+			name = Debug;
+		};
+		BB04C0CB5DF2E77DED18C70B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++1z";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEVICE=DESKTOP",
+					NDEBUG,
+					WINDOWLESS,
+					_GLFW_COCOA,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OBJROOT = "obj/x64/Release/glfw-opengl";
+				ONLY_ACTIVE_ARCH = NO;
+				SYMROOT = ../../bin.lite/macosx/x64;
+				USER_HEADER_SEARCH_PATHS = "../../include ../../demos.lite/sciter-glfw-opengl ../../demos.lite/glfw/include ../../demos.lite/glfw/deps";
+			};
+			name = Release;
+		};
+		F3130BA9407601DBB69501E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../../bin.lite/macosx/x64;
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = "\"$(HOME)/Applications\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "glfw-opengl";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "glfw-opengl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE600E51B1D0E083333D8491 /* Debug */,
+				BB04C0CB5DF2E77DED18C70B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		550F9EA9F7FDC55B8723A4E9 /* Build configuration list for PBXNativeTarget "glfw-opengl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B8EDF8EF7C59BAA1BAFD5F2F /* Debug */,
+				F3130BA9407601DBB69501E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style></style>
+        <script>
+  
+          document.on("click", "button#play", async function(evt,btn) {
+            btn.state.disabled = true;
+            var audio = await Audio.load(__DIR__ + "/hasta-lavista-baby.mp3");
+            await audio.play();
+            btn.state.disabled = false;
+          });
+
+        </script>
+    </head>
+    <body>
+
+       <button#play>Play</button>
+
+    </body>
+</html>

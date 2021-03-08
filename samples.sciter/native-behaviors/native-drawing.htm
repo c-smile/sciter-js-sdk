@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <title></title>
+    <style>
+    
+      html { background: #fff; color:#000; }
+    
+      clock {
+        behavior: native-clock; /* will paint content layer */
+        display:block;
+        size:*;
+      }
+        
+    </style>
+    <script>
+        
+      document.ready = function() {
+      
+        var clock = document.$("clock");
+        var path = null;
+        var w,h;
+        const drawParams = { fill:true, stroke:true, x:0, y:0 };
+        
+        var image = clock.nativeClock.getImage(20,20);
+        
+        clock.paintBackground = function(gfx) {
+
+          if( path === null ) return;
+
+          var gradient = Graphics.Brush.createLinearGradient(0,0,0,h);
+              gradient.addColorStop(0,Color.RGB(248,255,248))
+                      .addColorStop(1,Color.RGB(128,200,128));
+
+          gfx.strokeStyle = Color.RGB(128,200,128);
+          gfx.lineWidth = 3;            
+          gfx.fillStyle = gradient;
+          gfx.draw(path, drawParams)
+             .draw(image, {x:0,y:0})
+             .draw(image, {x:w-20,y:0})
+             .draw(image, {x:w-20,y:h-20})
+             .draw(image, {x:0,y:h-20});
+        };
+        
+        function step() {
+          [w,h] = clock.state.box("dimension");
+          var t = Window.ticks() / 1000.0;
+          // getting paths from native code
+          path = clock.nativeClock.getPath(0,0,w,h,t,true);
+          clock.requestPaint();
+          requestAnimationFrame(step);
+        }
+
+        requestAnimationFrame(step);
+
+      }
+    
+    </script>
+  </head>
+<body>
+
+  <h2>Native drawing behavior demo</h2>
+  <p>See: sdk/include/behaviors/behavior_drawing.cpp</p>
+  <p>Face clock gets drawn by native side on content layer</p>
+  <p>Script is drawing the graph on background layer using paths generated on native side</p>
+  
+
+  <clock></clock>
+
+</body>
+</html>

@@ -19,5 +19,6 @@ Represents color value with red, blue. green and alpha components.
 #### Static methods:
 
 * `Color.rgb( r, g, b [,a]) : Color` - creates color instance from r,g,b,a components - float numbers in `0.0 .. 1.0` range.
+* `Color.RGB(0..255,0..255,0..255[,0..255])` same as above but components are integers in 0...255 range.
 * `Color.hsv( h, s, v [,a]) : Color` - creates color instance from HSV components - float numbers in `0.0 .. 1.0` range but `h` is in `0.0 .. 360.0` range.
 * `Color.hsl( h, s, l [,a]) : Color` - creates color instance from HSL components - float numbers in `0.0 .. 1.0` range but `h` is in `0.0 .. 360.0` range.

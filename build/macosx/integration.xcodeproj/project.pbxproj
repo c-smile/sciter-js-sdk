@@ -1,0 +1,253 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0A7133E9FE707D5B835B9229 /* sciter-osx-main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3F895EB1839D2FE3776EB4F1 /* sciter-osx-main.mm */; };
+		1817955824A247CA9F871398 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5C1300C9792D32A5828940 /* CoreFoundation.framework */; };
+		713678D803C442CA6C9CE718 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BACC980CF188B320DBC2FC0 /* IOKit.framework */; };
+		93DE2FF25A6C2764C86E4E32 /* frame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F49709AB4C02FCC235C86DA /* frame.cpp */; };
+		F8E8DBA28B76A594F44F49E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D6BC6AA50D7885C8F7B2CEA /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0BACC980CF188B320DBC2FC0 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		1F49709AB4C02FCC235C86DA /* frame.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = frame.cpp; path = ../../demos/integration/frame.cpp; sourceTree = "<group>"; };
+		3F895EB1839D2FE3776EB4F1 /* sciter-osx-main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objc; name = "sciter-osx-main.mm"; path = "../../include/sciter-osx-main.mm"; sourceTree = "<group>"; };
+		8A9EC11CB0C4F0CE17CBE75C /* integration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = integration.app; path = integration.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D6BC6AA50D7885C8F7B2CEA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		EA5C1300C9792D32A5828940 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B7C4888C5AB2AF3EE9D88ECC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1817955824A247CA9F871398 /* CoreFoundation.framework in Frameworks */,
+				F8E8DBA28B76A594F44F49E2 /* Cocoa.framework in Frameworks */,
+				713678D803C442CA6C9CE718 /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5E8C725002DF100215175890 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				3F895EB1839D2FE3776EB4F1 /* sciter-osx-main.mm */,
+			);
+			name = include;
+			sourceTree = "<group>";
+		};
+		8A2CBBB8DA40506A5CBE81F8 /* demos */ = {
+			isa = PBXGroup;
+			children = (
+				FE7C47B72047F4E95CFD1DF7 /* integration */,
+			);
+			name = demos;
+			sourceTree = "<group>";
+		};
+		A6C936B49B3FADE6EA134CF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8A9EC11CB0C4F0CE17CBE75C /* integration.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BBF76781A7E87333FA200DC1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EA5C1300C9792D32A5828940 /* CoreFoundation.framework */,
+				8D6BC6AA50D7885C8F7B2CEA /* Cocoa.framework */,
+				0BACC980CF188B320DBC2FC0 /* IOKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CED9B30438EC34F6D2172144 /* integration */ = {
+			isa = PBXGroup;
+			children = (
+				8A2CBBB8DA40506A5CBE81F8 /* demos */,
+				5E8C725002DF100215175890 /* include */,
+				BBF76781A7E87333FA200DC1 /* Frameworks */,
+				A6C936B49B3FADE6EA134CF4 /* Products */,
+			);
+			name = integration;
+			sourceTree = "<group>";
+		};
+		FE7C47B72047F4E95CFD1DF7 /* integration */ = {
+			isa = PBXGroup;
+			children = (
+				1F49709AB4C02FCC235C86DA /* frame.cpp */,
+			);
+			name = integration;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D7C4E582D12AE6F4C4C643C2 /* integration */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5FFD0EB48EDF79DD813D72B /* Build configuration list for PBXNativeTarget "integration" */;
+			buildPhases = (
+				27AC092CCA9A2FDE59C00F6C /* Resources */,
+				9159228334474935C36D28C3 /* Sources */,
+				B7C4888C5AB2AF3EE9D88ECC /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = integration;
+			productInstallPath = "$(HOME)/Applications";
+			productName = integration;
+			productReference = 8A9EC11CB0C4F0CE17CBE75C /* integration.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "integration" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = CED9B30438EC34F6D2172144 /* integration */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D7C4E582D12AE6F4C4C643C2 /* integration.app */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		27AC092CCA9A2FDE59C00F6C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9159228334474935C36D28C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93DE2FF25A6C2764C86E4E32 /* frame.cpp in Sources */,
+				0A7133E9FE707D5B835B9229 /* sciter-osx-main.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0BF4F30DAEE319BF3E08F94D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEVICE=DESKTOP",
+					NDEBUG,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OBJROOT = obj/x64/Release/integration;
+				ONLY_ACTIVE_ARCH = NO;
+				SYMROOT = ../../bin/macosx/x64;
+				USER_HEADER_SEARCH_PATHS = (
+					../../include,
+				);
+			};
+			name = Release;
+		};
+		33DD096B813FFF9DF75EFFAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../../bin/macosx/x64;
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = "\"$(HOME)/Applications\"";
+				PRODUCT_NAME = integration;
+			};
+			name = Release;
+		};
+		BDBAC813C12B9A4542983E53 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEVICE=DESKTOP",
+					DEBUG,
+					_DEBUG,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OBJROOT = obj/x64/Debug/integration;
+				ONLY_ACTIVE_ARCH = YES;
+				SYMROOT = ../../bin/macosx/x64;
+				USER_HEADER_SEARCH_PATHS = (
+					../../include,
+				);
+			};
+			name = Debug;
+		};
+		F8399E31BBA55FE3FA490471 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../../bin/macosx/x64;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = "\"$(HOME)/Applications\"";
+				PRODUCT_NAME = integration;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "integration" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BDBAC813C12B9A4542983E53 /* Debug */,
+				0BF4F30DAEE319BF3E08F94D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A5FFD0EB48EDF79DD813D72B /* Build configuration list for PBXNativeTarget "integration.app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F8399E31BBA55FE3FA490471 /* Debug */,
+				33DD096B813FFF9DF75EFFAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+};
+rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

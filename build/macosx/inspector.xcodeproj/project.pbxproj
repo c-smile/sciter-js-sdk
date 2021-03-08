@@ -1,0 +1,253 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0A7133E9FE707D5B835B9229 /* sciter-osx-main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3F895EB1839D2FE3776EB4F1 /* sciter-osx-main.mm */; };
+		0CBF5D7D8119A26FFEFD2BBD /* inspector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 85A106A597CAE357CBBBCCE5 /* inspector.cpp */; };
+		1817955824A247CA9F871398 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5C1300C9792D32A5828940 /* CoreFoundation.framework */; };
+		713678D803C442CA6C9CE718 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BACC980CF188B320DBC2FC0 /* IOKit.framework */; };
+		F8E8DBA28B76A594F44F49E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D6BC6AA50D7885C8F7B2CEA /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0BACC980CF188B320DBC2FC0 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		3F895EB1839D2FE3776EB4F1 /* sciter-osx-main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objc; name = "sciter-osx-main.mm"; path = "../../include/sciter-osx-main.mm"; sourceTree = "<group>"; };
+		85A106A597CAE357CBBBCCE5 /* inspector.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = inspector.cpp; path = ../../demos/inspector/inspector.cpp; sourceTree = "<group>"; };
+		8D6BC6AA50D7885C8F7B2CEA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		D035236FE747BEA1D763B9AF /* inspector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = inspector.app; path = inspector.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA5C1300C9792D32A5828940 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9FD8B95FA3498B9124B62F9F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1817955824A247CA9F871398 /* CoreFoundation.framework in Frameworks */,
+				F8E8DBA28B76A594F44F49E2 /* Cocoa.framework in Frameworks */,
+				713678D803C442CA6C9CE718 /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5E8C725002DF100215175890 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				3F895EB1839D2FE3776EB4F1 /* sciter-osx-main.mm */,
+			);
+			name = include;
+			sourceTree = "<group>";
+		};
+		765759B7F99CB72922E437F7 /* inspector */ = {
+			isa = PBXGroup;
+			children = (
+				8A2CBBB8DA40506A5CBE81F8 /* demos */,
+				5E8C725002DF100215175890 /* include */,
+				BBF76781A7E87333FA200DC1 /* Frameworks */,
+				A6C936B49B3FADE6EA134CF4 /* Products */,
+			);
+			name = inspector;
+			sourceTree = "<group>";
+		};
+		8A2CBBB8DA40506A5CBE81F8 /* demos */ = {
+			isa = PBXGroup;
+			children = (
+				9AAC797DE31D5DAF27BC2FBD /* inspector */,
+			);
+			name = demos;
+			sourceTree = "<group>";
+		};
+		9AAC797DE31D5DAF27BC2FBD /* inspector */ = {
+			isa = PBXGroup;
+			children = (
+				85A106A597CAE357CBBBCCE5 /* inspector.cpp */,
+			);
+			name = inspector;
+			sourceTree = "<group>";
+		};
+		A6C936B49B3FADE6EA134CF4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D035236FE747BEA1D763B9AF /* inspector.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BBF76781A7E87333FA200DC1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EA5C1300C9792D32A5828940 /* CoreFoundation.framework */,
+				8D6BC6AA50D7885C8F7B2CEA /* Cocoa.framework */,
+				0BACC980CF188B320DBC2FC0 /* IOKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D21EC975D2D1C66746B397B5 /* inspector */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8E1401BE9184D3F012F177FE /* Build configuration list for PBXNativeTarget "inspector" */;
+			buildPhases = (
+				0FC039FF13310C31949DB03F /* Resources */,
+				796D53567CDE2588FE4AC996 /* Sources */,
+				9FD8B95FA3498B9124B62F9F /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = inspector;
+			productInstallPath = "$(HOME)/Applications";
+			productName = inspector;
+			productReference = D035236FE747BEA1D763B9AF /* inspector.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "inspector" */;
+			compatibilityVersion = "Xcode 3.2";
+			hasScannedForEncodings = 1;
+			mainGroup = 765759B7F99CB72922E437F7 /* inspector */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D21EC975D2D1C66746B397B5 /* inspector.app */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0FC039FF13310C31949DB03F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		796D53567CDE2588FE4AC996 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0CBF5D7D8119A26FFEFD2BBD /* inspector.cpp in Sources */,
+				0A7133E9FE707D5B835B9229 /* sciter-osx-main.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A764AF7E6AD07130A97415BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../../bin/macosx/x64;
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = "\"$(HOME)/Applications\"";
+				PRODUCT_NAME = inspector;
+			};
+			name = Release;
+		};
+		CF56A82673A945D885E18E66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEVICE=DESKTOP",
+					DEBUG,
+					_DEBUG,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OBJROOT = obj/x64/Debug/inspector;
+				ONLY_ACTIVE_ARCH = YES;
+				SYMROOT = ../../bin/macosx/x64;
+				USER_HEADER_SEARCH_PATHS = (
+					../../include,
+				);
+			};
+			name = Debug;
+		};
+		DB6AA384FD3650B639EB79C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../../bin/macosx/x64;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = "\"$(HOME)/Applications\"";
+				PRODUCT_NAME = inspector;
+			};
+			name = Debug;
+		};
+		F40923E0F779F61278E69A20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEVICE=DESKTOP",
+					NDEBUG,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OBJROOT = obj/x64/Release/inspector;
+				ONLY_ACTIVE_ARCH = NO;
+				SYMROOT = ../../bin/macosx/x64;
+				USER_HEADER_SEARCH_PATHS = (
+					../../include,
+				);
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "inspector" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF56A82673A945D885E18E66 /* Debug */,
+				F40923E0F779F61278E69A20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8E1401BE9184D3F012F177FE /* Build configuration list for PBXNativeTarget "inspector.app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB6AA384FD3650B639EB79C4 /* Debug */,
+				A764AF7E6AD07130A97415BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+};
+rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

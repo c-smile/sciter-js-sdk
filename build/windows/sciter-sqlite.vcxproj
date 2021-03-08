@@ -107,7 +107,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\bin\windows\x64\</OutDir>
-    <IntDir>obj\x64\Debug\</IntDir>
+    <IntDir>obj\x64\Debug\sciter-sqlite\</IntDir>
     <TargetName>sciter-sqlite</TargetName>
     <TargetExt>.dll</TargetExt>
   </PropertyGroup>
@@ -128,7 +128,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>..\..\bin\windows\x64\</OutDir>
-    <IntDir>obj\x64\Release\</IntDir>
+    <IntDir>obj\x64\Release\sciter-sqlite\</IntDir>
     <TargetName>sciter-sqlite</TargetName>
     <TargetExt>.dll</TargetExt>
   </PropertyGroup>

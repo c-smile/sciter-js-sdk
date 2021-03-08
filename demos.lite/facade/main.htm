@@ -1,0 +1,18 @@
+<html theme="dark">
+<head>
+  <title>&#xb5;Sciter</title>
+  <style src="main.css" />
+  <script src="main.js" />
+</head>
+<header><caption>Sciter.Lite, FPS: <span #fps /></caption></header>
+<body aria-label="Sciter Frame Body">
+  <toolbar role="toolbar">
+    <button|radio(view) #select title="load file selector" />  
+    <button|radio(view) checked #home title="load sys-info" />
+    <button|radio(view) #test title="test drawing" />
+    <hr>
+    <button|checkbox #theme checked title="set day/night mode" /> 
+  </toolbar>
+  <frame #content src="sys-info.htm" />
+</body>
+</html>

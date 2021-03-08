@@ -1,0 +1,23 @@
+<html>
+
+<head>
+
+  <script src="zepto.js"></script>
+
+  <script>
+    $("div").html("Hello <b>Universe</b>!");
+
+    var counter = 0;
+
+    $( "button" ).on( "click", function() {
+      $( this ).text( `clicked ${ ++counter } times` );
+    });
+  </script>
+
+
+</head>
+<body>
+  <div style="width:100px;height:100px;border:1px solid black"></div>
+  <button>Click me</button>
+</body>
+</html>

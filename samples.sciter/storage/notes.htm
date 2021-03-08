@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+html { 
+  background:color(panel); 
+  color: color(widget-text);
+}
+
+#list {
+  size:*;
+  overflow-y:auto;
+  border-spacing:1em;
+}
+
+#new {
+  flow:horizontal;
+  height:3.6em;
+}
+
+#new > plaintext {
+  size:*;
+}
+
+#new > plaintext:empty::marker {
+  content:attr(novalue);
+  size:*;
+  color:#888;
+  z-index:-1;
+  text-align:center;
+  vertical-align:middle;
+}
+
+#new > button {
+  display:block;
+  padding:* 1em;
+}
+
+        </style>
+        <script type="module">
+
+import * as DB from "notesdb.js";
+import md2htm from "../virtual-list/snarkdown/index.js";
+
+class NoteList extends Element {
+
+  // note: in reality that should be virtual list.
+
+  constructor() {
+    super();
+    document.on("new-note", () => this.componentUpdate());
+  }
+
+  render() {
+
+    var list = [];
+
+    function linesOf(text) { return text.split("\n").map(line => <text>{line}</text>); }
+
+    for(let note of DB.Note.all()) {
+      list.push(<div.note key={note.id}>
+          <header>{note.date.toLocaleString()}</header>
+          <div.text state-html={md2htm(note.text)} /></div>);
+    }
+    return <section>{list}</section>
+  }
+}
+
+class NewNote extends Element {
+
+  render() {
+    return <form>
+      <plaintext novalue="type Markdown text here" />
+      <button disabled="">Add</button>
+    </form>;
+  }
+
+  ["on input at plaintext"](evt,plaintext) {
+    this.$("button").state.disabled = !plaintext.value;
+  }
+  ["on click at button"](evt,button) {
+    let plaintext = this.$("plaintext");
+    new DB.Note(plaintext.value);
+    plaintext.value = "";
+  }
+
+}
+
+// export them into global namespace
+globalThis.NoteList = NoteList;
+globalThis.NewNote = NewNote;
+
+        </script>
+    </head>
+    <body>
+
+<reactor|NoteList #list />
+<reactor|NewNote #new />
+
+    </body>
+</html>

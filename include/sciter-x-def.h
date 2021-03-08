@@ -631,12 +631,12 @@ SBOOL SCAPI SciterRenderOnDirectXTexture(HWINDOW hwnd, HELEMENT elementToRenderO
 
  SBOOL SCAPI     SciterSetHomeURL(HWINDOW hWndSciter, LPCWSTR baseUrl);
 
-#if defined(OSX)
+#if defined(OSX) && !defined(WINDOWLESS)
    HWINDOW SCAPI  SciterCreateNSView( LPRECT frame ); // returns NSView*
   typedef LPVOID SciterWindowDelegate; // Obj-C id, NSWindowDelegate and NSResponder
-#elif defined(WINDOWS)
+#elif defined(WINDOWS) && !defined(WINDOWLESS)
   typedef LRESULT SC_CALLBACK SciterWindowDelegate(HWINDOW hwnd, UINT msg, WPARAM wParam, LPARAM lParam, LPVOID pParam, SBOOL* handled);
-#elif defined(LINUX)
+#elif defined(LINUX) && !defined(WINDOWLESS)
   typedef LPVOID SciterWindowDelegate;
 #endif
 
@@ -654,6 +654,7 @@ enum SCITER_CREATE_WINDOW_FLAGS {
    SW_OWNS_VM      = (1 << 10), // it has its own script VM
 };
 
+#if !defined(WINDOWLESS)
 /** Create sciter window.
  *  On Windows returns HWND of either top-level or child window created.
  *  On OS X returns NSView* of either top-level window or child view .
@@ -671,6 +672,7 @@ enum SCITER_CREATE_WINDOW_FLAGS {
                                             LPVOID delegateParam,
                                             HWINDOW parent);
 
+#endif
 
 /** SciterSetupDebugOutput - setup debug output function.
  *

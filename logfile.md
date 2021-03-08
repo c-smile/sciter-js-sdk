@@ -1,3 +1,33 @@
+### New builds/assemblies
+
+* Sciter.JS.Lite - GLFW based demo in demos.lite/sciter-glfw-opengl/
+* Sciter.JS.Lite builds on:
+  * Windows
+  * MacOS
+  * Linux
+
+### New features
+
+1. *CSS* - support of `@keyframes` inside `@set`'s;
+2. *video* - new event "videocoordinate" - allows to coordinate output of multiple `<video>'`s. Coordinated output allows to reduce FPS rate of several videos running at the same time. See: sdk/samples/video/video-25-videos.htm
+3. *Audio*, ausio playback, see: sdk.js/samples.sciter/audio/test-basic.htm;
+4. [module @storage](docs/md/storage/README.md) - persistent storage, NoSQL DB built into JS runtime.
+5. `sys.fs.$readdir()`` - sync version of readdir.
+6. `Color.RGB(0..255,0..255,0..255[,0..255])``
+
+### New samples
+
+1. The `$` - Zepto (micro jQuery) sample, see: sdk.js/samples/$
+2. samples.sciter/sys/folder.htm - `sys.fs.readdir()` demo.
+3. amples.sciter/process/spawn.htm - process spawning demo with stdout redirection. 
+
+### Fixes
+
+* *inspector* fix of style url reporting, see: https://sciter.com/forums/topic/inspector-cant-loads-css-files/
+* `<frame>`, fix of `frame.attributes["src"] = ...;``
+* [core] `flow:vertical-wrap;`` fix of stack overflow when percent units used.
+
+
 ## 4.4.6.0
 
 ### New features

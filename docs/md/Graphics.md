@@ -14,6 +14,7 @@ Class Graphics also is a namespace that contains classes:
 * [Graphics.Image](Graphics.Image.md)
 * [Graphics.Text](Graphics.Text.md)
 * [Graphics.Path](Graphics.Path.md)
+* [Graphics.Brush](Graphics.Brush.md)
 
 #### Properties:
 

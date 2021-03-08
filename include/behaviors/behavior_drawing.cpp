@@ -1,4 +1,4 @@
-#include "stdafx.h"
+//#include "stdafx.h"
 #include "sciter-x.h"
 #include "sciter-x-behavior.h"
 #include "sciter-x-graphics.hpp"
@@ -141,15 +141,8 @@ struct native_clock: public event_handler
 
     // generation of Graphics.Path object on native side to be passed to script for drawing
     
-    sciter::value nativeGetPath(sciter::value vx, sciter::value vy, sciter::value vw, sciter::value vh, sciter::value vt, sciter::value vclosed) 
+    sciter::value getPath(float x, float y, float w, float h, float t, bool closed)
     {
-      float x = vx.get<float>();
-      float y = vy.get<float>();
-      float w = vw.get<float>();
-      float h = vh.get<float>();
-      float t = vt.get<float>();
-      bool  closed = vclosed.get<bool>();
-
       float samples[6];
 	    float sx[6], sy[6];
 	    float dx = w/5.0f;
@@ -178,7 +171,6 @@ struct native_clock: public event_handler
         p.line_to(x+0,y+h,false);
         p.close_path();
       }
-
        // .line_to(points[n],points[n+1]);
      return p.to_value(); // wrap the path into sciter::value;
     }
@@ -194,27 +186,24 @@ struct native_clock: public event_handler
       }
     };
 
-    sciter::value nativeImage(sciter::value v_width, sciter::value v_height)
+    sciter::value getImage(int width, int height)
     {
-        UINT width = (UINT) v_width.get<int>();
-        UINT height = (UINT) v_height.get<int>();
+      BYTE *b = new BYTE[width * height * 4];
+      memset(b, 127, width * height * 4);
 
-        BYTE *b = new BYTE[width * height * 4];
-        memset(b, 127, width * height * 4);
+      sciter::image img = sciter::image::create(width, height, false, b);
 
-        sciter::image img = sciter::image::create(width, height, false, b);
-
-        IMGPainter painter;
-        img.paint(&painter);
-
-        return img.to_value();
+      IMGPainter painter;
+      img.paint(&painter);
+      return img.to_value();
     }
 
-
-    BEGIN_FUNCTION_MAP
-      FUNCTION_6("nativeGetPath", nativeGetPath); 
-      FUNCTION_2("nativeImage", nativeImage); 
-    END_FUNCTION_MAP
+    SOM_PASSPORT_BEGIN_EX(nativeClock,native_clock)
+      SOM_FUNCS(
+        SOM_FUNC(getPath),
+        SOM_FUNC(getImage)
+      )
+    SOM_PASSPORT_END
 
 };
 

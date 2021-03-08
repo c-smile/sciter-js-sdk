@@ -15,7 +15,7 @@
 3. *Audio*, ausio playback, see: sdk.js/samples.sciter/audio/test-basic.htm;
 4. [module @storage](docs/md/storage/README.md) - persistent storage, NoSQL DB built into JS runtime.
 5. `sys.fs.$readdir()` - sync version of readdir.
-6. `Color.RGB(0..255,0..255,0..255[,0..255])``
+6. `Color.RGB(0..255,0..255,0..255[,0..255])`
 
 ### New samples
 

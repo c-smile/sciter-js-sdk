@@ -1,6 +1,6 @@
-# Behaviors - native extensisons of standard DOM elements
+# Behaviors - native extensions of standard DOM elements
 
-Behavors in Sciter are native "DOM element controllers" that get attached to DOM elements by CSS:
+Behavors in Sciter are native "DOM element controllers" that are attached to DOM elements by CSS:
 
 ```CSS
 div.editable {
@@ -56,6 +56,7 @@ Here is a list of such built-in behaviors that are available out of the box in S
   * [form](form.md) 
   * [frame](frame.md) 
   * [frameset](frame-set.md) 
+  * [pager](pager.md) - print and print preview frame.
 * outputs 
   * [output](output.md) 
   * [progress](progress.md) 
@@ -68,3 +69,4 @@ Here is a list of such built-in behaviors that are available out of the box in S
   * [menu-bar](menu-bar.md) 
 * auxiliary 
   * [scrollbar](scrollbar.md)
+  

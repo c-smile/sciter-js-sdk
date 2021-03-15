@@ -34,7 +34,8 @@
                 }
               }
             } catch(e) {
-              out.append(<text class="error">{ e.toString() }</text>);
+              if(e.message != "socket is not connected")
+                out.append(<text class="error">{ e.message }</text>);
             }
 
           }
@@ -44,6 +45,8 @@
             tracert = sys.spawn([cmd,"sciter.com"], { stdout:"pipe", stderr:"pipe"} );
             pipeReader(tracert.stdout,"stdout");
             pipeReader(tracert.stderr,"stderr");
+            var r = await tracert.wait();
+            out.append(<text class="done">Done with result:{ r.exit_status } and {r.term_signal}</text>);
           });
 
         </script>

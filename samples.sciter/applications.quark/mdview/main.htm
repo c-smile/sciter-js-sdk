@@ -1,0 +1,32 @@
+<html theme="light" 
+      window-frame="extended" 
+      window-resizable="yes"
+      window-icon="images/markdown.svg">
+  <head>
+    <title>Markdown View</title>
+    <style src="main.css" />
+    <style src="chrome.css" />
+    <script type="module" src="main.js" />
+  </head>
+  <header>
+    <img role=window-icon src="images/markdown.svg">
+    <toolbar>
+      <button #home disabled />
+      <button #back disabled />
+      <button #fore disabled />
+      <button|checkbox #watch />
+      <button|checkbox #print />
+      <button|checkbox #daynight />
+    </toolbar>
+    <window-caption role=window-caption>Markdown View</window-caption>
+    <window-buttons>
+      <window-button role="window-minimize"></window-button>
+      <window-button role="window-maximize"></window-button>
+      <window-button role="window-close"></window-button>
+    </window-buttons>
+  </header>
+  <body>
+    <frame #content history content-style="content/style.css" />
+    <frame #overlay hidden />
+  </body>
+</html>

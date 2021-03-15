@@ -1,0 +1,133 @@
+
+@media platform == "Windows" || platform == "Linux" {
+
+  html { 
+    var(accent-color): window-accent-color; 
+    border: window-frame-width solid transparent; 
+  }
+
+  html:owns-focus {
+    border-color: morph(color(accent-color), opacity:50%);   
+  }
+
+  html > header { width:*; background-color: color(widget-back); color: color(widget-text); }
+
+  html > header > window-buttons { display:block; flow:horizontal; width:max-content; height:*; }
+  html > header > window-buttons > window-button { 
+    behavior:clickable; 
+    display:block; 
+    height:*; 
+    width:window-button-width; 
+    foreground-size: 11dip;
+    foreground-repeat: no-repeat;
+    foreground-position:50% 50%;
+    stroke:color(button-text);
+    stroke-width:1dip;
+    transition: background-color linear 100ms;
+  }
+  html > header > window-buttons > window-button:hover { 
+    background:rgba(0,0,0,0.25);   
+  }
+  html > header > window-buttons > window-button[role="window-close"] { stroke-width:1.44dip; foreground-image: url(path:M0 0 L10 10 M10 0 L0 10); }
+  html > header > window-buttons > window-button[role="window-close"]:hover { background:rgb(232,17,35); stroke:#fff; }
+
+  html > header > window-buttons > window-button[role="window-maximize"] { foreground-image: url(path:M0 0 H10 V10 H0 Z); }
+
+  html > header > img { display:block; fill:color(button-text); width:window-caption-height; height:*; foreground-size:contain; padding:4px;}
+
+  html[window-state="maximized"] { border-color:transparent; }
+  html[window-state="maximized"] > header > window-buttons > window-button[role="window-maximize"] { foreground-image: url(path:M0 2 h8 v8 h-8 Z M2 2 v-2 h8 v8 h-2); }
+  html > header > window-buttons > window-button[role="window-minimize"] { foreground-image: url(path:M0 0 M0 5 H10 M10 10); }
+
+}
+
+@media platform == "OSX" {
+  html > header > img { visibility:none; }
+  html > header > window-buttons { visibility:none; }
+}
+
+html > header { width:*; flow:horizontal; height:window-caption-height; margin:0; } 
+html > header > window-caption { 
+  display:block; 
+  line-height:window-caption-height; 
+  width:*; 
+  padding:0 1em; 
+  color:color(button-text); 
+  text-align:center;
+  text-overflow:path-ellipsis;
+  overflow-x:hidden;
+  white-space: no-wrap;
+}
+
+html > header > toolbar { 
+  background: color(panel);
+  height:*; 
+  width:max-content; 
+  padding:2px;
+}
+html > header > toolbar > button { 
+  width:2em; height:*; 
+  fill: color(panel-text);
+  background-repeat:no-repeat;
+  background-size: 16px;
+  background-position: 50% 50%;
+}
+
+html > header > toolbar > button:disabled { 
+  fill: color(widget-disabled-text);
+}
+
+toolbar > button#home { background-image: url(path:M63.663,29.424c-0.143-1.093-0.701-2.065-1.575-2.737l-11.715-9.021V8.608c0-2.275-1.851-4.126-4.125-4.126
+      c-2.273,0-4.125,1.851-4.125,4.126v2.705l-7.758-5.975c-0.718-0.551-1.612-0.856-2.517-0.856c-0.906,0-1.801,0.304-2.519,0.857
+      L1.606,26.687c-1.802,1.389-2.139,3.983-0.751,5.785c0.788,1.022,1.979,1.608,3.271,1.608c0.664,0,1.302-0.153,1.88-0.451V55.09
+      c0,2.275,1.851,4.127,4.126,4.127h18.534V39.732h6.351v19.482h18.271c2.274,0,4.125-1.85,4.125-4.127V33.472
+      c0.649,0.399,1.387,0.608,2.157,0.608c1.289,0,2.482-0.586,3.27-1.606C63.514,31.601,63.807,30.518,63.663,29.424z M59.819,30.144
+      c-0.08,0.105-0.189,0.122-0.247,0.122c-0.069,0-0.132-0.021-0.188-0.065L53.6,25.748V55.09c0,0.173-0.14,0.312-0.311,0.312H38.832
+      l0.001-19.484H24.852v19.484H10.132c-0.171,0-0.31-0.141-0.31-0.312V25.96L4.315,30.2c-0.056,0.043-0.119,0.065-0.188,0.065
+      c-0.059,0-0.167-0.017-0.248-0.121c-0.065-0.084-0.07-0.171-0.062-0.229c0.007-0.058,0.034-0.141,0.118-0.205L31.661,8.363
+      c0.138-0.105,0.239-0.106,0.379,0l13.899,10.703V8.608c0-0.172,0.14-0.311,0.311-0.311s0.312,0.139,0.312,0.311v10.935
+      l13.205,10.166c0.084,0.064,0.108,0.147,0.116,0.205C59.891,29.975,59.885,30.062,59.819,30.144z); }
+toolbar > button#back { background-size:13px; background-image: url(path:M83.999,43.999H21.656l21.172-21.172c1.562-1.562,1.561-4.094,0-5.657c-1.562-1.562-4.094-1.562-5.657,0l-28,28
+      c-1.562,1.562-1.562,4.095-0.001,5.656l28,28c0.781,0.781,1.805,1.172,2.829,1.172c1.023,0,2.047-0.391,2.829-1.173
+      c1.562-1.561,1.561-4.094,0-5.655L21.655,51.999h62.344c2.209,0,4.001-1.792,4-4C87.999,45.79,86.208,43.999,83.999,43.999z); }
+toolbar > button#fore { background-size:13px; background-image: url(path:M12,52h62.344L53.172,73.172c-1.562,1.562-1.562,4.094,0,5.656c1.562,1.562,4.095,1.562,5.657,0l28-28
+      c1.562-1.562,1.562-4.095,0-5.656l-28-28C58.048,16.391,57.024,16,56,16c-1.023,0-2.047,0.391-2.828,1.172
+      c-1.562,1.562-1.562,4.095,0,5.656L74.344,44H12c-2.209,0-4,1.791-4,4S9.791,52,12,52z); }
+toolbar > button#print { background-size: 18px; background-image: url(path:M482,182.58V135c0-24.813-20.187-45-45-45h-23.787L327.617,4.404c-0.018-0.018-0.039-0.035-0.057-0.054
+      c-2.659-2.638-6.352-4.277-10.328-4.339C317.154,0.01,317.079,0,317.001,0H105c-8.284,0-15,6.716-15,15v75H75
+      c-24.813,0-45,20.187-45,45v47.58C12.541,188.772,0,205.445,0,225v182c0,24.813,20.187,45,45,45h45v45c0,8.284,6.716,15,15,15h302
+      c8.284,0,15-6.716,15-15v-45h45c24.813,0,45-20.187,45-45V225C512,205.445,499.459,188.772,482,182.58z M422,120h15
+      c8.271,0,15,6.729,15,15v45h-30V120z M332,51.213L370.787,90H332V51.213z M120,30h182v75c0,8.284,6.716,15,15,15h75v60H120V30z
+       M60,135c0-8.271,6.729-15,15-15h15v60H60V135z M392,482H120V332h272V482z M482,407c0,8.271-6.729,15-15,15h-45v-90h15
+      c8.284,0,15-6.716,15-15s-6.716-15-15-15c-12.246,0-344.772,0-362,0c-8.284,0-15,6.716-15,15s6.716,15,15,15h15v90H45
+      c-8.271,0-15-6.729-15-15V225c0-8.271,6.729-15,15-15c18.142,0,401.331,0,422,0c8.271,0,15,6.729,15,15V407z
+      M347,362H165c-8.284,0-15,6.716-15,15s6.716,15,15,15h182c8.284,0,15-6.716,15-15S355.284,362,347,362z
+      M347,422H165c-8.284,0-15,6.716-15,15s6.716,15,15,15h182c8.284,0,15-6.716,15-15S355.284,422,347,422z
+      M105,240H75c-8.284,0-15,6.716-15,15s6.716,15,15,15h30c8.284,0,15-6.716,15-15S113.284,240,105,240z); }
+toolbar > button#daynight { background-image: url(path:M52,4v8c0,2.209-1.791,4-4,4s-4-1.791-4-4V4c0-2.209,1.791-4,4-4S52,1.791,52,4z M48,80c-2.209,0-4,1.791-4,4v8
+      c0,2.209,1.791,4,4,4s4-1.791,4-4v-8C52,81.791,50.209,80,48,80z M14.059,14.059c-1.562,1.562-1.562,4.095,0,5.657l5.657,5.657
+      c1.562,1.562,4.095,1.562,5.657,0c1.562-1.562,1.562-4.096,0-5.657l-5.657-5.657C18.153,12.497,15.621,12.497,14.059,14.059z
+       M70.627,70.627c-1.562,1.562-1.562,4.096,0,5.657l5.657,5.657c1.562,1.562,4.095,1.562,5.657,0c1.562-1.562,1.562-4.095,0-5.657
+      l-5.657-5.657C74.722,69.065,72.189,69.065,70.627,70.627z M0,48c0,2.209,1.791,4,4,4h8c2.209,0,4-1.791,4-4s-1.791-4-4-4H4
+      C1.791,44,0,45.791,0,48z M80,48c0,2.209,1.791,4,4,4h8c2.209,0,4-1.791,4-4s-1.791-4-4-4h-8C81.791,44,80,45.791,80,48z
+       M14.059,81.941c1.562,1.562,4.095,1.562,5.657,0l5.656-5.657c1.562-1.562,1.562-4.095,0-5.657c-1.562-1.562-4.094-1.562-5.656,0
+      l-5.657,5.657C12.497,77.847,12.497,80.379,14.059,81.941z M70.627,25.373c1.562,1.562,4.095,1.562,5.657,0l5.657-5.657
+      c1.562-1.562,1.562-4.095,0-5.657c-1.562-1.562-4.095-1.562-5.657,0l-5.657,5.657C69.065,21.277,69.065,23.811,70.627,25.373z
+       M72,48c0,13.255-10.745,24-24,24S24,61.255,24,48s10.745-24,24-24S72,34.745,72,48z M64,48c0-8.837-7.163-16-16-16
+      s-16,7.163-16,16s7.163,16,16,16S64,56.837,64,48z); }
+toolbar > button#watch { background-image: url(path:M48,12C16,12,0,48.166,0,48.166S16,84,48,84s48-36,48-36S80,12,48,12z M48,76C26.854,76,13.503,56.118,9.003,48.148
+      C13.5,40.102,26.854,20,48,20c21.15,0,34.502,19.998,38.998,28C82.494,56.016,69.145,76,48,76z M48,32c-8.836,0-16,7.164-16,16
+      c0,8.837,7.164,16,16,16c8.837,0,16-7.163,16-16C64,39.164,56.837,32,48,32z M48,56c-4.411,0-8-3.589-8-8s3.589-8,8-8
+      s8,3.589,8,8S52.411,56,48,56z); }
+
+html[mode="pager"] button#home { visibility:hidden; }
+html[mode="pager"] button#back { visibility:hidden; }
+html[mode="pager"] button#fore { visibility:hidden; }
+html[mode="pager"] button#daynight { visibility:hidden; }
+html[mode="pager"] button#watch { visibility:hidden; }
+
+frame { 
+  size:*; 
+  background-color: color(widget-back); 
+  color: color(widget-text); 
+}

@@ -174,6 +174,11 @@ int uimain(std::function<int()> run ) {
 
   pwin->expand();
 
+  BEHAVIOR_EVENT_PARAMS evt = {0};
+  evt.name = WSTR("application-event");
+  evt.data.set_item("somedata", sciter::value(42));
+  frame::broadcast_event(evt); // this will post the event to all windows in the app
+
   //sciter::value r = pwin->call_function("test", sciter::value(42));
   //sciter::value r = pwin->eval(const_wchars("test(32)"));
 

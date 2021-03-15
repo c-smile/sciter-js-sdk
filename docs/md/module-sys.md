@@ -26,17 +26,22 @@ sys is built on top of [libuv](https://github.com/libuv/libuv) that Sciter.JS us
 #### functions
 
 * `fs.open()`
-* `fs.stat()`
-* `fs.lstat()`
+* `fs.stat(): promise(stat)`
+* `fs.$stat(): stat` - sync version of the above;
+* `fs.lstat(): promise(stat)`
+* `fs.$lstat(): stat` - sync version of the above;
 * `fs.realpath()`
 * `fs.unlink()`
 * `fs.rename()`
 * `fs.mkdtemp()`
 * `fs.mkstemp()`
 * `fs.rmdir()`
+* `fs.$mkdir(path)` - creates folder (synchronous).
 * `fs.copyfile()`
 * `fs.readdir()`
-* `fs.readFile()`
+* `fs.$readdir(): filelist` - reads folder content synchronously
+* `fs.readfile() : promise` - async fileread;
+* `fs.$readfile() : ArrayBuffer` - synchronous version of the above; 
 * [`fs.watch()`](sys.fs/watch.md)
 * [`fs.splitpath()`](sys.fs/splitpath.md)
 

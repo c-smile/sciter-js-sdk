@@ -1,0 +1,10 @@
+
+@import url(printview/style.css);
+
+body { 
+  flow:stack;
+  margin:0; 
+}
+
+frame#content { size:*; overflow: scroll-indicator; }
+frame#overlay { size:*; }

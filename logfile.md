@@ -1,3 +1,23 @@
+## 4.4.6.2
+
+### New builds/assemblies
+
+* MacOS/ARM - MacOS binaries are universal now - contain as x64 as ARM (M1) code.
+
+### New features
+
+* Sciter.JS.Quark is operational now. Use bat/sh files in bin/quark. Source code of the Quark is in /quark folder.
+* JSX support of HTML style no-value attributes like: <input disabled />
+* `sys.fs.$readfile()` - synchronous file read.
+* `canvas.canvasUpdate(function(gfx){...});` - transactional painitng on `<canvas>`, see [discussion](https://sciter.com/forums/topic/how-to-free-graphics-image/).
+* [API] window::broadcast_event(BEHAVIOR_EVENT_PARAMS event); post/send customs events to all windows of the application. See demos/integration project.
+
+### New samples
+
+* MDView at sdk.js/samples.sciter/applications.quark/mdview - viewer of MD files:
+  * can be compiled as Quark monolitic application;
+  * demonstrates Sciter.JS printing support;
+
 ## 4.4.6.1
 
 ### New builds/assemblies

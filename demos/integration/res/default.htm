@@ -103,6 +103,12 @@ class scriptNS
   }
 }
 
+// subscribe to application (global) events 
+Window.this.on("application-event",function(evt) {
+  document.$("pre#appEventsOutput").innerText = JSON.stringify(evt.data);
+});
+
+
         </script>
     </head>
     <body>
@@ -185,6 +191,11 @@ class scriptNS
     <pre #jsonOutput></pre>
   </section>
 </main>
+
+<section>
+  <p>This receives application events - broadcasted to all windows:</p>
+  <pre #appEventsOutput></pre>
+</section>
 
 
 

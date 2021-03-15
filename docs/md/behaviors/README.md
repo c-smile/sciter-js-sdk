@@ -4,7 +4,7 @@ Behavors in Sciter are native "DOM element controllers" that are attached to DOM
 
 ```CSS
 div.editable {
-  behavior:edit; // makes this div to behave as text editing field
+  behavior:edit; /* makes this div to behave as text editing field */
   white-space:pre;
   overflow:hidden-scroll;
   border:1px solid;

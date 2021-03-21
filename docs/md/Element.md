@@ -100,6 +100,10 @@ class Element represents DOM element and extends [Node](Node.md) and so all its 
 
   Immediate mode drawing "ports". Functions assigned to these properties will be called when the element is rendered on screen so they can draw anything on top (or below) of default HTML/CSS rendering.
 
+* `element.requestPaint()` 
+
+  Schedules re-paint of the element. This will trigger `element.paintXXXX` later calls (if any). On Windows this will end up in [InvalidateRect](https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-invalidaterect) call.
+
 * `element.popupAt(screenX,screenY,alignment)`
 
   Shows this element as out of canvas popup on screen. _alignment_ is a number in 0..9 range (see keyboard numpad for the meaning). Example `div.popupAt(1000,1000,3)` will show the element with bottom/right corner at 1000/1000 screen pixel. 

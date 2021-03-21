@@ -47,6 +47,7 @@ Instances of the Window class represent desktop windows.
   * `window.isTopmost` - read/write, boolean, true if window is topmost at z-order.
   * `window.isEnabled` - read/write, boolean, true if the window is allowed to accept user's input.
   * `window.aspectRatio` - read/write, float, width to height ratio to keep on window resizes.
+  * `window.eventRoot = element | null` - if set by element, short circuits all UI events to that element and its children as if the window contains only that element. Used in lightbox dialog scenarios (see: samples.sciter/lightbox-dialog).
 
 #### methods:
 

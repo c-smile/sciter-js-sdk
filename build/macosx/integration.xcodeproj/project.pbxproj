@@ -170,7 +170,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OBJROOT = obj/x64/Release/integration;
 				ONLY_ACTIVE_ARCH = NO;
-				SYMROOT = ../../bin/macosx/x64;
+				SYMROOT = ../../bin/macosx;
 				USER_HEADER_SEARCH_PATHS = (
 					../../include,
 				);
@@ -181,7 +181,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CONFIGURATION_BUILD_DIR = ../../bin/macosx/x64;
+				CONFIGURATION_BUILD_DIR = ../../bin/macosx;
 				GCC_DYNAMIC_NO_PIC = NO;
 				INSTALL_PATH = "\"$(HOME)/Applications\"";
 				PRODUCT_NAME = integration;
@@ -207,7 +207,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OBJROOT = obj/x64/Debug/integration;
 				ONLY_ACTIVE_ARCH = YES;
-				SYMROOT = ../../bin/macosx/x64;
+				SYMROOT = ../../bin/macosx;
 				USER_HEADER_SEARCH_PATHS = (
 					../../include,
 				);
@@ -218,7 +218,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CONFIGURATION_BUILD_DIR = ../../bin/macosx/x64;
+				CONFIGURATION_BUILD_DIR = ../../bin/macosx;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_DYNAMIC_NO_PIC = NO;
 				INSTALL_PATH = "\"$(HOME)/Applications\"";

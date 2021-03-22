@@ -42,11 +42,15 @@
 
           document.on("click", "#exec", async function() {
             var cmd = env.PLATFORM == "Windows" ? "tracert" : "traceroute";
-            tracert = sys.spawn([cmd,"sciter.com"], { stdout:"pipe", stderr:"pipe"} );
-            pipeReader(tracert.stdout,"stdout");
-            pipeReader(tracert.stderr,"stderr");
-            var r = await tracert.wait();
-            out.append(<text class="done">Done with result:{ r.exit_status } and {r.term_signal}</text>);
+            try {
+              tracert = sys.spawn([cmd,"sciter.com"], { stdout:"pipe", stderr:"pipe"} );
+              pipeReader(tracert.stdout,"stdout");
+              pipeReader(tracert.stderr,"stderr");
+              var r = await tracert.wait();
+              out.append(<text class="done">Done with result:{ r.exit_status } and {r.term_signal}</text>);
+            } catch (e) {
+              out.append(<text class="error">{ e.message }</text>);
+            }
           });
 
         </script>

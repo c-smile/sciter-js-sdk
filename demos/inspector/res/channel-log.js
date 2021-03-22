@@ -39,7 +39,7 @@ export class ChannelLog extends Element
   }
 
   ensureLastVisible() {
-    this.$("list").lastElementChild.scrollIntoView {behavior:"smooth"};
+    this.$("list").lastElementChild?.scrollIntoView {behavior:"smooth"};
   }
 
   render(props)

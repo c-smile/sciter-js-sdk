@@ -1,3 +1,25 @@
+## 4.4.6.3
+
+### New builds/assemblies
+
+* MacOS - inspector.app and usciter.app
+
+### New features
+
+* [sciter.js/JSX] + support of numeric and boolean attributes <td cols=2 valid=true> 
+* [sciter.js] + sample : sdk.js/samples.sciter/lightbox-dialog.
+* [Sciter.JS] window.load(url) - loads document into this window.
+
+### Fixes
+
+* [Sciter][Sciter.JS] Reactor fix of <select|dropdown> reconciliation. See: https://sciter.com/forums/topic/select-behaves-erratically-in-reactor-component/
+* [Sciter.JS] better console.log() output when inspector is not present.
+* [Sciter.JS] behavior:virtual-list - scroll animation outside of virtual scroll functionality.
+* [linux] fix of AV on msgbox close.
+* [inspector/debugger] fix of breakpoint set.
+* [frameset] fix of https://sciter.com/forums/topic/frameset-column-changes-height-when-container-is-resized/ issue.
+* [reactor] fix of missed didMount/willUnmount() call when element changes prototype.
+
 ## 4.4.6.2
 
 ### New builds/assemblies

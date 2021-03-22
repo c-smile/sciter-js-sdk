@@ -41,12 +41,7 @@
 
 }
 
-@media platform == "OSX" {
-  html > header > img { visibility:none; }
-  html > header > window-buttons { visibility:none; }
-}
-
-html > header { width:*; flow:horizontal; height:window-caption-height; margin:0; } 
+html > header { width:*; flow:horizontal; height:window-caption-height; min-height:24px; margin:0; } 
 html > header > window-caption { 
   display:block; 
   line-height:window-caption-height; 
@@ -130,4 +125,10 @@ frame {
   size:*; 
   background-color: color(widget-back); 
   color: color(widget-text); 
+}
+
+@media platform == "OSX" {
+  html > header > img { visibility:none; }
+  html > header > window-buttons { visibility:none; }
+  html > header > toolbar { margin-left: 68px; }
 }

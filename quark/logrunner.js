@@ -30,7 +30,10 @@ export class LogRunner extends Element
     async function readPipe(pipe, name) {
       try {
         while(pipe) {
-          var text = sciter.decode(await pipe.read()); 
+          var buffer = await pipe.read();
+          if(buffer.byteLength == 0)
+            break;
+          var text = sciter.decode(buffer); 
           LogRunner.add(text,name);
         }
       } catch(e) {}

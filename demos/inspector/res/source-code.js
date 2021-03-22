@@ -254,7 +254,8 @@ export class SourceCode extends Element
     if(this.filename != props.filename) {
       this.filename = props.filename;
       var text = props.text;
-      post(() => {
+      this.post(() => {
+        //console.print("text",text);
         this.value = text;
         gotoline(props.lineno);
       });
@@ -262,7 +263,7 @@ export class SourceCode extends Element
     else 
       gotoline(props.lineno);
 
-    post(() => this.updateBreakpoints());
+    this.post(() => this.updateBreakpoints());
     let atts = atbreakpoint ? {atbreakpoint:true} : {};
     
     return <plaintext.source-code id="text-view" {atts} mimetype={this.type} readonly="on" linenumbers="on" />;

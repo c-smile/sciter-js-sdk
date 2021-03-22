@@ -1,0 +1,366 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4952782B260688710002A42C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4952782A260688710002A42C /* AppDelegate.m */; };
+		4952782D260688740002A42C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4952782C260688740002A42C /* Assets.xcassets */; };
+		49527830260688740002A42C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4952782E260688740002A42C /* MainMenu.xib */; };
+		4952783E260688FF0002A42C /* sciter-osx-main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4952783D260688FF0002A42C /* sciter-osx-main.mm */; };
+		49527841260689360002A42C /* usciter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49527840260689360002A42C /* usciter.cpp */; };
+		4952784B260689E90002A42C /* sqlite-wrap.c in Sources */ = {isa = PBXBuildFile; fileRef = 49527847260689E80002A42C /* sqlite-wrap.c */; };
+		4952784C260689E90002A42C /* sciter-sqlite-rs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49527848260689E80002A42C /* sciter-sqlite-rs.cpp */; };
+		4952784D260689E90002A42C /* sciter-sqlite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49527849260689E80002A42C /* sciter-sqlite.cpp */; };
+		4952784E260689E90002A42C /* sciter-sqlite-db.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4952784A260689E90002A42C /* sciter-sqlite-db.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		49527826260688710002A42C /* usciterjs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = usciterjs.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		49527829260688710002A42C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		4952782A260688710002A42C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		4952782C260688740002A42C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4952782F260688740002A42C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		49527831260688740002A42C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49527834260688740002A42C /* usciterjs.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = usciterjs.entitlements; sourceTree = "<group>"; };
+		4952783D260688FF0002A42C /* sciter-osx-main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = "sciter-osx-main.mm"; path = "../../../../include/sciter-osx-main.mm"; sourceTree = "<group>"; };
+		49527840260689360002A42C /* usciter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = usciter.cpp; path = ../usciter.cpp; sourceTree = "<group>"; };
+		49527847260689E80002A42C /* sqlite-wrap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = "sqlite-wrap.c"; path = "../../../sqlite/sqlite-wrap.c"; sourceTree = "<group>"; };
+		49527848260689E80002A42C /* sciter-sqlite-rs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "sciter-sqlite-rs.cpp"; path = "../../../sqlite/sciter-sqlite-rs.cpp"; sourceTree = "<group>"; };
+		49527849260689E80002A42C /* sciter-sqlite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "sciter-sqlite.cpp"; path = "../../../sqlite/sciter-sqlite.cpp"; sourceTree = "<group>"; };
+		4952784A260689E90002A42C /* sciter-sqlite-db.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "sciter-sqlite-db.cpp"; path = "../../../sqlite/sciter-sqlite-db.cpp"; sourceTree = "<group>"; };
+		4952785226068DC00002A42C /* libsciter.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libsciter.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		4952786E2606C3F00002A42C /* libsciter.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libsciter.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		49527823260688710002A42C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4952781D260688710002A42C = {
+			isa = PBXGroup;
+			children = (
+				4952784A260689E90002A42C /* sciter-sqlite-db.cpp */,
+				49527848260689E80002A42C /* sciter-sqlite-rs.cpp */,
+				49527849260689E80002A42C /* sciter-sqlite.cpp */,
+				49527847260689E80002A42C /* sqlite-wrap.c */,
+				49527840260689360002A42C /* usciter.cpp */,
+				49527828260688710002A42C /* usciterjs */,
+				49527827260688710002A42C /* Products */,
+				4952785126068DC00002A42C /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		49527827260688710002A42C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				49527826260688710002A42C /* usciterjs.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		49527828260688710002A42C /* usciterjs */ = {
+			isa = PBXGroup;
+			children = (
+				4952783D260688FF0002A42C /* sciter-osx-main.mm */,
+				49527829260688710002A42C /* AppDelegate.h */,
+				4952782A260688710002A42C /* AppDelegate.m */,
+				4952782C260688740002A42C /* Assets.xcassets */,
+				4952782E260688740002A42C /* MainMenu.xib */,
+				49527831260688740002A42C /* Info.plist */,
+				49527834260688740002A42C /* usciterjs.entitlements */,
+			);
+			path = usciterjs;
+			sourceTree = "<group>";
+		};
+		4952785126068DC00002A42C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4952786E2606C3F00002A42C /* libsciter.dylib */,
+				4952785226068DC00002A42C /* libsciter.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		49527825260688710002A42C /* usciterjs */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49527837260688740002A42C /* Build configuration list for PBXNativeTarget "usciterjs" */;
+			buildPhases = (
+				49527822260688710002A42C /* Sources */,
+				49527823260688710002A42C /* Frameworks */,
+				49527824260688710002A42C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = usciterjs;
+			productName = usciterjs;
+			productReference = 49527826260688710002A42C /* usciterjs.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4952781E260688710002A42C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					49527825260688710002A42C = {
+						CreatedOnToolsVersion = 12.4;
+					};
+				};
+			};
+			buildConfigurationList = 49527821260688710002A42C /* Build configuration list for PBXProject "usciterjs" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4952781D260688710002A42C;
+			productRefGroup = 49527827260688710002A42C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				49527825260688710002A42C /* usciterjs */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		49527824260688710002A42C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4952782D260688740002A42C /* Assets.xcassets in Resources */,
+				49527830260688740002A42C /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		49527822260688710002A42C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4952782B260688710002A42C /* AppDelegate.m in Sources */,
+				4952783E260688FF0002A42C /* sciter-osx-main.mm in Sources */,
+				49527841260689360002A42C /* usciter.cpp in Sources */,
+				4952784D260689E90002A42C /* sciter-sqlite.cpp in Sources */,
+				4952784C260689E90002A42C /* sciter-sqlite-rs.cpp in Sources */,
+				4952784E260689E90002A42C /* sciter-sqlite-db.cpp in Sources */,
+				4952784B260689E90002A42C /* sqlite-wrap.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4952782E260688740002A42C /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4952782F260688740002A42C /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		49527835260688740002A42C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		49527836260688740002A42C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		49527838260688740002A42C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = usciterjs/usciterjs.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = ../../../bin/macosx;
+				DEVELOPMENT_TEAM = 642T6M376L;
+				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = ../../../include;
+				INFOPLIST_FILE = usciterjs/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = terrainformatica.usciterjs;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		49527839260688740002A42C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = usciterjs/usciterjs.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CONFIGURATION_BUILD_DIR = ../../../bin/macosx;
+				DEVELOPMENT_TEAM = 642T6M376L;
+				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = ../../../include;
+				INFOPLIST_FILE = usciterjs/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = terrainformatica.usciterjs;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		49527821260688710002A42C /* Build configuration list for PBXProject "usciterjs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49527835260688740002A42C /* Debug */,
+				49527836260688740002A42C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		49527837260688740002A42C /* Build configuration list for PBXNativeTarget "usciterjs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49527838260688740002A42C /* Debug */,
+				49527839260688740002A42C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4952781E260688710002A42C /* Project object */;
+}

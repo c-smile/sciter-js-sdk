@@ -19,8 +19,8 @@ newoption {
 defines { "DEVICE=" .. _OPTIONS["device"] }
 
 
---if( _TARGET_OS ~= "macosx") then  -- we are not auto generating XCode solutions for a while
---                                  -- structure of typical XCode is not trivial - requires manual inputs.
+if( _TARGET_OS ~= "macosx") then  -- we are not auto generating XCode solutions for a while
+                                  -- structure of typical XCode is not trivial - requires manual inputs.
 
 function osabbr() 
   return _TARGET_OS
@@ -148,6 +148,7 @@ project "usciter"
 
   filter "system:macosx"
     files {"include/sciter-osx-main.mm"}
+    targetdir ("bin/" .. osabbr())
   filter "system:linux"
     files {"include/sciter-gtk-main.cpp"}
     buildoptions {
@@ -189,6 +190,7 @@ project "inspector"
 
   filter "system:macosx"
     files {"include/sciter-osx-main.mm"}
+    targetdir ("bin/" .. osabbr())
   filter "system:linux"
     files {"include/sciter-gtk-main.cpp"}
     buildoptions {
@@ -230,6 +232,7 @@ project "integration"
 
   filter "system:macosx"
     files {"include/sciter-osx-main.mm"}
+    targetdir ("bin/" .. osabbr())
   filter "system:linux"
     files {"include/sciter-gtk-main.cpp"}
     buildoptions {
@@ -353,7 +356,7 @@ project "glfw-opengl"
       "demos.lite/glfw/src/osmesa_context.c",
     } 
     links { "CoreVideo.framework" }
-
+    targetdir ("bin/" .. osabbr())   
   filter "system:linux"  
     linkoptions { 
       "-Wall", 
@@ -374,3 +377,4 @@ project "glfw-opengl"
     
   filter {}
 
+end

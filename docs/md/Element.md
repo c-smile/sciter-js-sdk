@@ -69,6 +69,22 @@ class Element represents DOM element and extends [Node](Node.md) and so all its 
   
   Unsubscribe event handlers by function reference;
 
+* `element.onGlobalEvent(eventname: string, handler: function): Element`
+
+  jQuery style event subscription to application wide events:
+  
+  * eventname may contain namespace part: `"click.myns"` ;
+  * the handler is called with `this` set to the element;
+  * the method returns element itself allowing to chain `onGlobalEvent` calls;
+
+The element gets unsubscribed automatically when it gets disconnected from DOM.
+
+See [global-events](../../samples.sciter/global-events/README.md) for the rationale.
+
+* `element.offGlobalEvent([eventname: string | handler: function]): Element`
+
+  Unsubscribe event handlers either by name  `"click"` or by namespace `".myns"` or by handler reference. If no parameter provided then the function will unsubscribe this element from any global event.
+
 * `element.timer(milliseconds, callback: function): true | false`
   
   Starts timer on element. If the element already has timer with that callback it first gets removed and new timer started instead. This allows to implement effective throttling. If the callback function returns `true` value then the timer will keep ticking (like interval timer). The callback is called with `this` set to the element. 

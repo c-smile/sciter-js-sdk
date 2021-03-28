@@ -1,3 +1,16 @@
+## 4.4.6.4
+
+### New features
+
+* + `Element.selection` support.
+* + `Element.onGlobalEvent()` and `Element.offGlobalEvent()`, see : samples.sciter/global-events/README.md for the idea.
+
+### Fixes
+
+* [JSX] fix of line number reports when JSX is used in presence of tabs (`\t`);
+* [Sciter.JS, Reactor] fix of "falsy" values handling.
+* [OSX] better font ascent/descent calculation.
+
 ## 4.4.6.3
 
 ### New builds/assemblies

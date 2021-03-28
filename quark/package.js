@@ -157,9 +157,9 @@ export async function assemble(params) {
           var p = Object.assign({},params,{icofile:icofile});
           assembleExe(target,scapp,datfile,exefile,p);
         } break;
-        case "macX64": { // TODO: build proper .app bundle folder here
+        case "mac": { // TODO: build proper .app bundle folder here
           const scapp = checkFile( env.home("scapp") ) || checkFile( env.home("../../bin.osx/scapp"));
-          const exefile = makePath(params.out, ["macos","x64"], params.exe);
+          const exefile = makePath(params.out, ["macos"], params.exe);
           assembleExe(target,scapp,datfile,exefile);
         } break;
         case "linuxX64": {

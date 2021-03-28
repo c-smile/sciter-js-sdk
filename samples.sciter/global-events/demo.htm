@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style></style>
+        <script src="component-a.js" />
+        <script src="component-b.js" />
+        <script>
+
+class Main extends Element 
+{
+  showB = false;
+
+  render() {
+    return <main>
+      <button type="checkbox" id="trigger">Show ComponentB</button>
+      { this.showB && <ComponentB /> }
+    </main>;
+  }
+
+  ["on change at #trigger"](evt,trigger) {
+    this.componentUpdate {
+      showB: trigger.value
+    };
+  }
+}
+
+        </script>
+    </head>
+    <body>
+
+<reactor|ComponentA />
+
+
+<reactor|Main />
+
+    </body>
+</html>

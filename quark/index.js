@@ -113,8 +113,7 @@ export class ProjectView extends Element {
               <option value="winX32">Windows X32</option>
               <option value="winX64">Windows X64</option>
               <option value="winARM64">Windows/ARM64</option>
-              <option value="macX64">Mac OSX</option>
-              <option value="macARM64" disabled>Mac OSX/ARM64</option>
+              <option value="mac">Mac OSX</option>
               <option value="linuxX64">Linux</option>
               <option value="linuxARM32">Linux/ARM32</option>
               <option value="linuxARM64" disabled>Linux/ARM64</option>

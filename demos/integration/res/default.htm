@@ -104,7 +104,8 @@ class scriptNS
 }
 
 // subscribe to application (global) events 
-Window.this.on("application-event",function(evt) {
+
+document.onGlobalEvent("application-event",function(evt) {
   document.$("pre#appEventsOutput").innerText = JSON.stringify(evt.data);
 });
 

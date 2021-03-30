@@ -1,3 +1,9 @@
+## 4.4.6.5
+
+### Fixes
+
+* fix of breakpoint handling in inspector
+
 ## 4.4.6.4
 
 ### New features

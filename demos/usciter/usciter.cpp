@@ -6,7 +6,7 @@
 
 class uSciter: public sciter::window {
 public:
-  uSciter() : window(SW_TITLEBAR | SW_RESIZEABLE | SW_CONTROLS | SW_MAIN | SW_GLASSY) {}
+  uSciter() : window(SW_TITLEBAR | SW_RESIZEABLE | SW_CONTROLS | SW_MAIN | SW_GLASSY /*| SW_ENABLE_DEBUG - frame sets it manually*/) {}
 
   //int foo(int p) { return p + 42; }
   //int bar(int p1, int p2) { return p1 + p2; }

@@ -8,6 +8,8 @@ body {
   width:*;
   max-width:800px;
   margin:0.5em fx(0.001,1em); /* a.k.a. margin-width:0.001*, min-margin-width:1em */
+  overflow-x: hidden;
+  behavior: selectable;
 }
 
 pre {
@@ -43,4 +45,12 @@ a[href]:theme(dark) {
 
 [id]:hover > a.header-anchor {
   display:block;
+}
+
+img {
+  max-width: 100%;
+}
+
+li {
+  margin-top: 4dip;
 }

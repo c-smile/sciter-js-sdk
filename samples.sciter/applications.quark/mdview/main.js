@@ -19,6 +19,7 @@ md.use( HeaderIds({ anchorText:" " }));
 export async function load(href = null) {
   try {
     href = href || content.frame.document.url();
+    if (!href.endsWith(".md")) return;
     //let text = sys.fs.$readfile( URL.toPath(href) );
     //let body = sciter.decode(text,"utf-8");
     var r = await fetch(href);
@@ -30,6 +31,33 @@ export async function load(href = null) {
   } catch(e) {
     console.error(e.message);
   }
+}
+
+function loadFolder(path) {
+  var FolderElement = document.$("#folder");
+  
+  function readDir(at, caption = null) {
+    at += "\\";
+    var files = sys.fs.$readdir(at);
+    if (!files) return "";
+    var html = "<option expanded>";
+    if (caption) html += `<caption>${caption}</caption>`;
+
+    for (var file of files) {
+      if (file.type === 1) {
+        if (file.name.endsWith(".md"))
+            html += `<option value="${URL.toPath(at + file.name)}">${file.name.slice(0, -3)}</option>`;
+      } else {
+        html += readDir(at + file.name, file.name);
+      }
+    }
+
+    return html += "</option>";
+  }
+
+  FolderElement.innerHTML = readDir(path);
+  FolderElement.on("change", () => {load(FolderElement.value)});
+  FolderElement.$$("option")[1]?.click();
 }
 
 document.on("^click","a[href]", function(evt, a) {
@@ -161,7 +189,12 @@ document.ready = function() {
     let path = argv[argv.length - 1];
     if( path.endsWith(".md") )
       href = path;
+    else if (argv[1]) {
+      loadFolder(argv[1]);
+      return;
+    }
   }
+  document.$("#folder").attributes["hidden"] = true;
   href = URL.fromPath(href);
   load(href);
 }

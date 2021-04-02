@@ -55,11 +55,9 @@ Having the ```root``` variable containing persistent root object, we can access 
 
 ```JavaScript
 // printout elements of root.children collection (array)
-
-  let root = storage.root;
-  for( let child of root.children ) 
-    console.log(child.name, child.nickname);
-}
+let root = storage.root;
+for( let child of root.children ) 
+  console.log(child.name, child.nickname);
 ```
 
 In the same way, to populate the data in storage we use standard JavaScript means:
@@ -69,7 +67,6 @@ var collection = root.children; // plain JS array
   collection.push( { name: "Mikky", age: 7 } ); // calling Array's method push() to add 
   collection.push( { name: "Olly", age: 6 } );  // objects to the collection
   collection.push( { name: "Linus", age: 5 } );
-} 
 ```
 
 Nothing special as you see – the code is not anyhow different from ordinary script code accessing and populating any data in script heap.
@@ -191,6 +188,7 @@ class Note {
     return storage.root.notesById.get(id); // will fetch object from DB and do 
                                            // Object.setPrototypeOf(note,Note.prototype)
   }
+  
 }
 ```
 
@@ -204,7 +202,7 @@ That particular application uses Sciter/TIScript but principles are the same. Yo
 
 ```JavaScript
 //|
-//| open database and initialze it if needed
+//| open database and initialize it if needed
 //|
 
 function openDatabase(pathname)

@@ -24,7 +24,7 @@
 #### Sciter specific objects
 
 * [Window](Window.md) - desktop window defined by HTML loaded in it. 
-* [Audion](Audio.md) - audio playback. 
+* [Audio](Audio.md) - audio playback. 
 
 #### Sciter specific modules
 
@@ -32,5 +32,5 @@
 * [@sys](module-sys.md) - System, File system and communication primitives (close to Node.JS runtime).
 * [@env](module-env.md) - Running environment primitives.
 * [@storage](storage/README.md) - Persistent storage - NoSQL DB built into JS runtime.
-* [@bjson](mpdule-bjson.md) - "binary JSON".
+* [@bjson](module-bjson.md) - "binary JSON".
 

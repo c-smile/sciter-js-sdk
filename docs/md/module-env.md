@@ -17,8 +17,8 @@ The module represents current OS and running environment.
 * `env.domainName()` - machine network domain.
 * `env.launch(path)` - method to open documents and start applications;
     Example: `env.launch("https://sciter.com")` will open default browser with that url.
-* `env.home([relpath]): string` - converts rleative path to absolute path using location of sciter.dll as a base. 
-* `env.path(name): string` - returns loaction of well known folders on user machine, name is one of: 
+* `env.home([relpath]): string` - converts relative path to absolute path using location of sciter.dll as a base. 
+* `env.path(name): string` - returns location of well known folders on user machine, name is one of: 
   * "USER_HOME"
   * "SYSTEM"
   * "SYSTEM_BIN"
@@ -28,7 +28,7 @@ The module represents current OS and running environment.
   * "USER_DOCUMENTS"
   * "COMMON_DOCUMENTS"
   * "DOWNLOADS"
-* `env.variable(name:string[,toset:string | null]): string` - TBD
+* `env.variable(name:string [,toset:string | null]): string` - TBD
 * `env.variables(): object` - TBD
 
 

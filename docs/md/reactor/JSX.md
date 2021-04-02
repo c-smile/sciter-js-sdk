@@ -5,7 +5,7 @@ Note: this document is written intentionally close to [ReactJS/JSX introduction
 
 Consider this variable declaration:
 
-```
+```JavaScript
 const velement = <h1 id="hw">Hello, world!</h1>;
 ```
 
@@ -13,7 +13,7 @@ It is called JSX, and it is an integral part of SciterJS  syntax - parsing of s
 
 That above is neither a string nor HTML but is a "tuple" declaration (array in JavaScript terms):
 
-```
+```JavaScript
 const velement = ["h1", { id:"hw"}, ["Hello, world!"] ];
 ```
 
@@ -23,29 +23,28 @@ Technically JSX is not strictly required - we can use such tuple literals direct
 
 Here we declare a variable *name* and use it in tuple construction:
 
-```
+```JavaScript
 const name = "Alice";
 const velement = <h1>Hello, {name}</h1>;
 ```
 
 That above can be written exactly as this:
 
-```
+```JavaScript
 const velement = ["h1", {}, [name] ];
 ```
 
 And you can put any valid JS expression inside those curly braces:
 
-```
+```JavaScript
 const velement = <div>1 + 1 is { 1 + 1 }</div>;
-
 ```
 
 ## JSX is an expression too
 
 As JSX literal is actually a tuple literal then we can use it in our code as any other literals:
 
-```
+```JavaScript
 function getGreeting(user) {
   if (user)
     return <h1>Hello, {formatName(user)}!</h1>;
@@ -60,13 +59,13 @@ The above function returns one of two tuples defined there.
 
 You may use quotes to specify string literals as attributes:
 
-```
+```JavaScript
 const velement = <div tabindex="0"></div>;
 ```
 
 You may also provide value of attribute from a variable or expression:
 
-```
+```JavaScript
 const velement = <img src={user.avatarUrl}></img>;
 ```
 
@@ -76,7 +75,7 @@ Note: you should either use quotes (for string values) or curly braces (for expr
 
 If tag is empty then you may close it immediately with `/>` :
 
-```
+```JavaScript
 const velement = <img src={user.avatarUrl} />;
 ```
 
@@ -84,7 +83,7 @@ Note: JSX does not support "tail-less" HTML tags like: `<img>`, `<input>` or�
 
 Yet JSX may contain children:
 
-```
+```JavaScript
 const velement = 
   <div> 
     <h1>Hello!</h1>
@@ -96,7 +95,7 @@ const velement =
 
 Along with attributes you may want to define runtime states of elements:
 
-```
+```JavaScript
 const velement = 
   <li state-expanded={ isOpen(item) } > 
     <caption>Hello!</caption>
@@ -110,7 +109,7 @@ States here correspond to so called pseudo-classes in CSS: `:active`, `:hover`
 
 To specify current runtime value of `<input>` elements use `state-value` runtime state attribute - it reflects current value of the input at runtime:
 
-```
+```JavaScript
 <input|text(firstname) state-value="John" />
 ```
 
@@ -120,14 +119,14 @@ Note that just *value* attribute: `<input|text(firstname) value="Initial valu
 
 In some cases you may need to set HTML content of an element from a string. In order to do that use `state-html` attribute in JSX: 
 
-```
+```JavaScript
 const htmlContent = "<b>some</b> literal <i>HTML</i>";
 <div state-html={Content} />
 ```
 
 That above will generate 
 
-```
+```JavaScript
 <div>
   <b>some</b> literal <i>HTML</i>
 </div>
@@ -146,19 +145,19 @@ JSX follows HTML parsing shortcut rules used in SciterJS and so:
 
 Under the hood, this code:  
 
-```
+```JavaScript
 const velement = <h1 id="hw">Hello, world!</h1>;
 ```
 
 is translated into a call of built-in JSX function:
 
-```
+```JavaScript
 const velement = JSX("h1", {id:"hw"}, ["Hello, world!"]);
 ```
 
 Default implementation of that JSX function simply does this:
 
-```
+```JavaScript
 function JSX(tagName,attributes,children) {
   return [tagName,attributes,children];
 }
@@ -166,7 +165,7 @@ function JSX(tagName,attributes,children) {
 
 So by default JSX generates tuple literals (arrays with predefined structure). Tuples of such structure are known as *VNODE*s - virtual DOM node definitions:
 
-```
+```JavaScript
 ["tag", {attributes}, [children] ]
 
 ```
@@ -179,7 +178,7 @@ Where:
 
 > Note: **JSX function can be redefined in JavaScript**. 
 > For example in MithrilJS case it may look like as:
-  ```
+  ```JavaScript
   JSX = m; // m is a Mithril's function - constructor of vnodes
   ```
 
@@ -187,13 +186,13 @@ Where:
 
 Some methods of Element class allow to populate DOM by the vnode definitions:
 
-```
+```JavaScript
 container.content(<div>Hello wonderful world</div>);
 ```
 
 After that the container will have single child element: `<div>`
 
-```
+```JavaScript
 var arr = [1,2,3];
 var children = arr.map( (n) => <li>item #{n}</li> );
 container.content(children);

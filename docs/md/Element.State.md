@@ -55,11 +55,14 @@ rule to be applied.
 * `value` - any value - runtime value coerced to particular type. Actual for input elements.
 
 Properties of Element.State may cause CSS pseudo-class rules to be triggered: 
-```
+
+```JavaScript
 section.state.expanded = true;
 ```
+
 will trigger second rule here
-```
+
+```CSS
 section > div.content { visibility:none; /* a.k.a. display:none */ }
 section:expanded > div.content { visibility:visible; }
 ```

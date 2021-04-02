@@ -4,7 +4,7 @@ We can build collections of elements and include them in JSX using curly braces�
 
 Below, we loop through the numbers array using the `map()` function. We return a `<li>` element for each item. Finally, we assign the resulting array of elements to listItems:
 
-```
+```JavaScript
 const numbers = [1, 2, 3, 4, 5];
 const listItems = numbers.map((number) =>
   <li>{number}</li>
@@ -13,7 +13,7 @@ const listItems = numbers.map((number) =>
 
 Then we include the entire `listItems` array inside a `<ul>` element, and render it to the DOM:
 
-```
+```JavaScript
 document.body.content(<ul>{listItems}</ul>);
 ```
 
@@ -23,7 +23,7 @@ But if we plan to update the list using `Element.patch()` we need to add keys 
 
 The best way to pick a key is to use a string that uniquely identifies a list item among its siblings. Most often you would use IDs from your data as keys:
 
-```
+```JavaScript
 const todoItems = todos.map( todo =>
   <li key={todo.id} status={todo.status}>
     {todo.text}
@@ -40,7 +40,7 @@ Keys used within arrays should be unique among their siblings. However they don�
 
 JSX allows to embed any expression in curly braces so we could inline the `map()` result too:
 
-```
+```JavaScript
 function NumberList(props) {
   const numbers = props.numbers;
   return

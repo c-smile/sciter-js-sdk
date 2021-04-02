@@ -13,6 +13,7 @@
 * `event.type`
 * `event.data`
 * `event.details`
+* `event.keyCode`
 * `event.altKey`
 * `event.ctrlKey`
 * `event.metaKey`

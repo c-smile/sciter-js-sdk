@@ -150,4 +150,4 @@ See [global-events](../../samples.sciter/global-events/README.md) for the ration
      var vnode = element.render();  // 3. calls .render() that must return vnode (JSX expression)
      element.patch(vnode);          // 4. reconciliation / patching
    });
-
+  ```

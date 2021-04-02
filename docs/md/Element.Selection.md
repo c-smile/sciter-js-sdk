@@ -16,7 +16,7 @@ Represents current selection on elements that supports selection:
 * `element.selection.rangeCount:uint` - number of ranges in the selection
 * `element.selection.type: string` - one of:
   *  "Caret" - collapsed selection - only caret is visible, 
-  *  "Selection" - continious text selection,
+  *  "Selection" - continuous text selection,
   *  "Element" - whole element is selected (Sciter specific),
   *  "TableCells" - range of table cells is selected (Sciter specific);
 

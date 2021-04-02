@@ -5,7 +5,7 @@ Note: this chapter is modelled after [RectJS/State and Lifecycle](https://react
 
 Sciter's Reactor, in general, is all about components that employ Model-View-Controller idiom.
 
-You have some *data* to be presented to the user. User is able a) to *view* the data and manipulate it. Manipulation of data is a set of code functions and event handlers that, as a group, are named as *Controller*.
+You have some *data* to be presented to the user. User is able to *view* the data and manipulate it. Manipulation of data is a set of code functions and event handlers that, as a group, are named as *Controller*.
 
 ### Component Class
 
@@ -13,7 +13,7 @@ Let's transform our [ticking clock sample](https://sciter.com/docs/content/reac
 
 Each Reactor class based component shall have `render()` method:
 
-```
+```JavaScript
 class Clock extends Element {
   function render() {
     return <div>
@@ -30,7 +30,7 @@ The `render()` method will be called each time an update happens, but as long 
 
 By convention local data storage of a component is located in instance's `this.data` field:
 
-```
+```JavaScript
 class Clock extends Element 
 {
   // declaring local data storage with initial value 
@@ -53,7 +53,7 @@ Class Clock, in its current version, just renders static time determined at the 
 
 We want to set up a timer whenever the `Clock` is rendered to the DOM for the first time - when real DOM element is created. In ReactJS this is called “mounting”. Sciter runtime will call `componentDidMount()` method when instance of a class is attached to the DOM element:
 
-```
+```JavaScript
 class Clock extends Element 
 {
   time = new Date(); // setting initial state 
@@ -78,7 +78,7 @@ You see here new entity - implementation of the componentDidMount() method tha
 
 The timer callback function is where the magic happens:
 
-```
+```JavaScript
 () => {
   this.componentUpdate({ time:new Date() });
   return true; // to keep the timer ticking
@@ -99,7 +99,7 @@ Built-in class `Element` in Sciter represents DOM element.
 
 Among other methods and properties, the class provides native implementation of `componentUpdate()` method that implements logic close to this:
 
-```
+```JavaScript
 class Element
 {
   componentUpdate(newdata = null) {
@@ -149,7 +149,7 @@ When you call `componentUpdate(newdata)`, fields of the object you provide are 
 
 Therefore your code may issue `componentUpdate()` requests for different parts of the data and they will end up in single reconciliation action between real DOM element and result of `render()` call, so these:
 
-```
+```JavaScript
 clock.componentUpdate { time:new Date() };
 ...
 clock.componentUpdate { greeting: "John" };

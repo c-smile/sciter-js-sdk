@@ -9,7 +9,7 @@ Conceptually, components are script functions. They accept arbitrary inputs (cal
 
 The simplest way to define a component is to write a script function:
 
-```
+```JavaScript
 function Welcome(props) {
   return <h1>Hello, {props.name}</h1>;
 }
@@ -19,7 +19,7 @@ This function is a valid Reactor component because it accepts a single "props" o
 
 You can also use classes to define a component:
 
-```
+```JavaScript
 class Welcome extends Element {
   function this(props) { 
     this.props = props; 
@@ -53,7 +53,7 @@ Where:
 
 Example, this declaration:
 
-```
+```XML
 <FunctionComponent mode="start">
    <div>bar</div>
 </FunctionComponent>
@@ -66,7 +66,7 @@ will get call of FunctionComponent() with this parameters:
 
 Constructors of class components follow the same convention:
 
-```
+```JavaScript
 class ClassComponent extends Element {
   constructor(props,kids,parent) {...} 
 }
@@ -78,13 +78,13 @@ The *parent* argument receives DOM element - future or existing container DOM 
 
 Previously, we only encountered Reactor virtual elements that represent DOM tags:
 
-```
+```JavaScript
 const velement = <div />;
 ```
 
 However, elements can also represent user-defined components:
 
-```
+```JavaScript
 const velement = <Welcome name="John" />;
 ```
 
@@ -92,7 +92,7 @@ When script compiler sees an element representing a user-defined component, it p
 
 For example, this code renders “Hello, Ivan!” on the page:
 
-```
+```JavaScript
 function Welcome(props) {
   return <h1>Hello, {props.name}!</h1>;
 }
@@ -100,7 +100,6 @@ function Welcome(props) {
 const velement = <Welcome name="Ivan" />;
 
 document.body.content(velement);
-
 ```
 
 Let us recap what happens in the example above:
@@ -116,7 +115,7 @@ Components can refer to other components in their output. This lets us use the s
 
 For example, we can create an `App` component that renders `Welcome` many times:
 
-```
+```JavaScript
 function Welcome(props) {
   return <h1>Hello, {props.name}!</h1>;
 }
@@ -138,7 +137,7 @@ Don’t be afraid to split components into smaller components.
 
 For example, consider this `Comment` component:
 
-```
+```JavaScript
 function Comment(props) {
   return
     <div .comment>
@@ -158,7 +157,7 @@ This component can be tricky to change and maintain because of all the nesting, 
 
 Let’s extract a few components from it. First, we will extract `Avatar`:
 
-```
+```JavaScript
 function Avatar(props) {
   return <img.avatar
           src={props.user.avatarUrl}
@@ -168,7 +167,7 @@ function Avatar(props) {
 
 Next, we will extract a `UserInfo` component that renders an `Avatar` next to the user’s name:
 
-```
+```JavaScript
 function UserInfo(props) {
   return <div.userinfo>
       <Avatar user={props.user} />
@@ -179,7 +178,7 @@ function UserInfo(props) {
 
 And finally simplified `Comment` that is composed from the above:
 
-```
+```JavaScript
 function Comment(props) {
   return <div.comment>
    <UserInfo user={props.author} />

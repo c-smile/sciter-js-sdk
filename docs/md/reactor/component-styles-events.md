@@ -10,7 +10,7 @@ Reactor (Sciter's internal code in fact) offers simple way to define component s
 Let's redefine our `Clock` class that we used earlier :
 
 
-```
+```JavaScript
 class Clock extends Element 
 {
   const styleset = ["clock", $url(clock.css)]; // style set declaration
@@ -37,7 +37,7 @@ Note: `styleset={__DIR__ + "styles.css#clock"}` attribute above, it resolves to
 
 And here is a content of clock.css file:
 
-```
+```CSS
 @set clock 
 {
   :root {
@@ -61,9 +61,9 @@ Note that style sets in Sciter are not polluting global list of style rules and 
 
 In contrast with ReactJS Sciter does not require any special constructs for handling events - we can use normal (for the Sciter) event handling definitions in classes.
 
-Sample of small component that encapsulates search block enclosing <input> and <button> in one entity:
+Sample of small component that encapsulates search block enclosing `<input>` and `<button>` in one entity:
 
-```
+```JavaScript
 class Search extends Element {
 
   render() {
@@ -93,7 +93,7 @@ Word about event handling functions like `\["on change at input"\]\(evt,input\)`
 
 That format is a standard JS/ES2020 way of defining functions with [computable names](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions#computed_property_names) or names that include namespaces. It is just in Sciter event handlers are using this form to describe event handling functions that have the following signatures:    
 
-```
+```JavaScript
 ["on eventname"](event) {}
 ["on eventname at selector"](event, selectorElement) {}
 ```
@@ -113,7 +113,7 @@ Reactor Components are executable entities even if they look as HTML.
 
 Normally in ReactJS you see JSX code only inside `<script>` sections and JS code files like here:
 
-```
+```JavaScript
 function App() {
   return
     <main>
@@ -130,7 +130,7 @@ While this works in general it may look non-natural or inconvenient to someone.
 
 Alternatively Sciter offers special `<reactor>` HTML element as a mounting point:
 
-```
+```XML
 <body>
    <p>Test of Tabs component.</p>
       
@@ -150,7 +150,7 @@ The <reactor> element expects two attributes:
 
 Please note that, while it looks like HTML, content between `<reactor>` and `</reactor>` is parsed by script rules (JSX in this case). Essentially you may think as the whole `<reactor>` section is just `<script>` element:
 
-```
+```XML
 <body>
    <p>Test of &lt;Tabs> component.</p>
       
@@ -165,7 +165,7 @@ Please note that, while it looks like HTML, content between `<reactor>` and `
 
 The only major difference of the `<reactor>`: it is a placeholder element - as soon as component gets instantiated it **replaces** the `<reactor>` DOM element. Therefore final DOM after `<reactor>`'s *execution* will look like:
 
-```
+```XML
 <body>
    <p>Test of &lt;Tabs> component.</p>
       

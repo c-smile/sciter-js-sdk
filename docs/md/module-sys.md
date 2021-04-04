@@ -4,12 +4,13 @@ This module contains runtime methods modelled after NodeJS primitives.
 
 To get reference to sys module use:
 
-```
+```JavaScript
 import * as sys from "@sys"; // '@' is mandatory
 ```
 
 All methods in the sys module follow NodeJS calling convention with the only exception - callbacks are not used - functions return promises instead so use them in async functions, like:
-```
+
+```JavaScript
 const p = new sys.Pipe();
 
 async function connect() {

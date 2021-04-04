@@ -12,7 +12,7 @@ Index object in persistent storage.
 
 Indexes support ```for(of)``` enumeration style:
 
-```JavaScript:
+```JavaScript
 // log all objects in the index 
 for( var obj in index ) 
   console.log(obj);
@@ -37,7 +37,7 @@ for( var obj in index )
 
   Returns selection in the Index based on criteria min-key, max-key, ascent or descent order, start-inclusive, end-inclusive. Default values: ```ascending:true```, ```startInclusive:true``` and ```endInclusive:true```.
 
-  The method is intendeded to be used in ```for(of)``` enumerations:
+  The method is intended to be used in ```for(of)``` enumerations:
 
    ```JavaScript:
    for( var obj in index.select(minVal, maxVal) ) { ... }

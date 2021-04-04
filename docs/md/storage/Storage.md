@@ -16,7 +16,7 @@ Represents persistent storage.
 
 * ```storage.close()```
 
-  Closes underlying Storage object. Commits all data before cloasing. After closing the storage all persistent objects that are still in use are set to non-persistent state.
+  Closes underlying Storage object. Commits all data before closing. After closing the storage all persistent objects that are still in use are set to non-persistent state.
 
 * ```storage.commit()```
 

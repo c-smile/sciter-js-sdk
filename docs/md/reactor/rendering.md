@@ -4,7 +4,7 @@ Note: this document is written intentionally close to [ReactJS/Rendering-Elemen
 
 Reactor's virtual DOM element is a definition of real DOM element. At some point real DOM element will be created using virtual one as a prototype.
 
-```
+```JavaScript
 const velement = <h1>Hello, world</h1>;
 ```
 
@@ -14,7 +14,7 @@ Unlike physical DOM elements, Reactor elements are plain script array literals, 
 
 Let’s say there is a `<div>` somewhere in your HTML file:
 
-```
+```XML
 <div id="root"></div>
 ```
 
@@ -24,7 +24,7 @@ Applications that use Reactor may have as a single root DOM node as many isolate
 
 To render a Reactor element into a root DOM node, call `element.patch(velement)` method:
 
-```
+```JavaScript
 const velement = <div id="root"><h1>Hello, world</h1></div>;
 document.$("div#root").patch(velement);
 ```
@@ -37,7 +37,7 @@ To update already rendered element we simply call `element.patch(velement)` ag
 
 Consider this ticking clock example:
 
-```
+```JavaScript
 function tick() {
   const velement = <div id="root">
       <h1>Hello, world!</h1>

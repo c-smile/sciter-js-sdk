@@ -6,13 +6,13 @@ To get reference to style collection use ```element.style``` property.
 
 #### Properties:  
 
-Properties of Element.Style are CSS properties defined in CSS. To get set them use either camelCase notation as: 
+To get/set a property use either camelCase notation as: 
 
 ```JavaScript
 var bgColor = element.style.backgroundColor;
 ```
 
-or the "hyphen case" form:
+or the "hyphen-case" form:
 
 ```JavaScript
 var bgColor = element.style["background-color"];

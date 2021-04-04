@@ -4,14 +4,14 @@ Represents an image.
 
 #### Properties:
 
-* `image.src` - read/only, url of the image.
-* `image.width` - read/only, integer.
-* `image.height` - read/only, integer.
-* `image.packaging` - read/only, string, "png","webp", etc.
+* `image.src` - read-only, url of the image.
+* `image.width` - read-only, integer.
+* `image.height` - read-only, integer.
+* `image.packaging` - read-only, string, "png","webp", etc.
 
 #### Constructors:
 
-`new Image(width, height, painter(graphics) [,initColor])` - TBD
+`new Image(width, height, painter(graphics) [,initColor])` - TBD  
 `new Image(width, height, element)` - render DOM element into bitmap.
 
 #### Methods:

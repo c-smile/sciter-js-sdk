@@ -1,6 +1,6 @@
 # class Node 
 
-Node is an abstract class that is inherited by [Element](Element.md), [Text](#TextNode) and [Comment](#CommentNode) classes.
+Node is an abstract class that is inherited by [Element](Element.md), [Text](#class-text-extends-class-node) and [Comment](#class-comment-extends-class-node) classes.
 
 #### properties:
 
@@ -27,21 +27,21 @@ Node is an abstract class that is inherited by [Element](Element.md), [Text](#Te
 * `node.isSameNode()`
 
 
-# <a name="Text"></a>class Text, extends class Node
+# class Text, extends class Node
 
 The Text represents html text nodes.
 
 #### properties:
 
-* `text.data` read-write
+* `text.data` read/write
 * `text.length` read-only
 * `text.wholeText` read-only
 
-# <a name="Comment"></a>class Comment, extends class Node
+# class Comment, extends class Node
 
 The Comment represents html comment nodes.
 
 #### properties:
 
-* `comment.data` read-write
+* `comment.data` read/write
 * `comment.length` read-only

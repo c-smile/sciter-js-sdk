@@ -23,14 +23,14 @@ The Range represents a fragment of a document that can contain nodes and parts o
 * `range.setEndAfter(node)`
 * `range.selectNode(node)`
 * `range.selectNodeContents(node)`
-* `range.getRangeAt(index:uint):Range` - returns [Range](Range.md) object at given index.
+* `range.getRangeAt(index:uint):Range` - returns Range object at given index.
 * `range.selectNodeContent(node)` - selects the node.
 * `range.collapse([toStart:bool])` - sets either end or start positions.
 * `range.cloneRange():Range` - returns copy of this range object.
 
 #### Methods (Sciter specific):
 
-* `range.applyMark(name | [name1, name2,...])` - applys mark[s] to the range so it can be styles by CSS `::mark(name) {...}`.
+* `range.applyMark(name | [name1, name2,...])` - apply mark(s) to the range so it can be styles by CSS `::mark(name) {...}`.
 * `range.highlight(name | [name1, name2,...])` - synonym of `applyMark`.
-* `range.clearMark(name | [name1, name2,...])` - removes mark[s] from the range.
+* `range.clearMark(name | [name1, name2,...])` - removes mark(s) from the range.
 * `range.clearHighlight()` - synonym of `clearMark`

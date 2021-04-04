@@ -23,7 +23,6 @@ Audio represents an object that allows to play audio, e.g. mp3 files.
 This code loads and plays hello phrase:
 
 ```JavaScript
-
 async function sayHello() {
   let audio = await Audio.load(__DIR__ + "/sounds/hello.mp3");
   console.log("playing started");

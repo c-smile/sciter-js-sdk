@@ -4,7 +4,7 @@ Instances of the Window class represent desktop windows.
 
 `Window.this` is a reference to current window object - instance of Window class where HTML document is loaded.
 
-#### contructor:
+#### constructor:
 
 * `new Window {params}`
 
@@ -81,7 +81,7 @@ Instances of the Window class represent desktop windows.
 
     _boxPart_ defines what part of the box to return, is one of:
 
-    * `"xywh"`or `"rectw"`  - [x,y,w,h], array, position and dimension of the rectangle.
+    * `"xywh"` or `"rectw"`  - [x,y,w,h], array, position and dimension of the rectangle.
     * `"rect"` - [x1,y1,x2,y2], array, positions of origin and corner of the rectangle.
     * `"position"` - [x,y], array, position of the rectangle.
     * `"dimension"` - [w,h], array, dimension of the rectangle.
@@ -102,7 +102,7 @@ Use `Window.this.on("eventname", handler)` to subscribe to these events:
   * `"statechange"` - `window.state` flag have changed. 
   * `"resolutionchange"` - after window moved to another monitor with different resolution, or user have changed screen resolution. 
   * `"mediachange"` - one or several CSS media variables have changed. 
-  * `"activate"` - the window was deactiavated (evt.reason == 0) or got focus (evt.reason > 0)
+  * `"activate"` - the window was deactivated (evt.reason == 0) or got focus (evt.reason > 0)
   * `"replacementstart"` 
   * `"replacementend"` - user start/end moving or resizing window chrome.
   * `"move"` - user moved the window.

@@ -1,5 +1,5 @@
 
-/* @import url(printview/style.css); */
+@import url(printview/style.css);
 
 body { 
   flow:stack;
@@ -15,6 +15,14 @@ frameset .splitter { hit-margin: 10dip; }
 #folder {
   display: block;
   overflow: scroll-indicator;
-  size: *;
-  font-size: 16dip;
+  height: *;
+  font: system;
+  border:none;
 }
+
+#folder > option:not(:node){
+  margin-left:16dip;
+}
+
+#folder option[index]{ font-weight:bold; }
+

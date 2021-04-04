@@ -1,5 +1,5 @@
 import { $, on } from "@sciter";
-import { launch, home, PLATFORM } from "@env";
+import { launch, home, PLATFORM, exec } from "@env";
 import * as sys from "@sys";
 import { DropZone } from "drop-zone.js";
 import * as Settings from "settings.js";
@@ -203,26 +203,12 @@ btnLiveReload.on("click", function(evt,button)
   return true;
 });
 
-/*on("click", "button#help", function() 
+on("click", "button#help", function() 
 {
-  var path = System.home("../doc/main.htm");
-  if(!System.scanFiles(path))
-    path = System.home("../../doc/main.htm");
-  if(!System.scanFiles(path)) {
-    view.msgbox(#alert, path + " not found");
-    return true;
-  }
-
-  view.window 
-  {
-    url: URL.fromPath(path),
-    type: View.FRAME_WINDOW,
-    state: View.WINDOW_SHOWN,
-    alignment:5,
-    width: 1024,
-    height: 800
-  };
+  const scappn = PLATFORM == "Windows" ? "scapp.exe" : "scapp";
+  const scapp = home(scappn);
+  const mdview = home("../../../samples.sciter/applications.quark/mdview/main.htm");
+  const docfolder = home("../../../docs/md");
+  exec(scapp,mdview,docfolder);
 });
-
-*/
 

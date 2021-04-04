@@ -1,6 +1,6 @@
 //========================================================================
 // Simple GLFW example by Camilla Berglund <elmindreda@glfw.org>
-// 
+//
 // Modified for Sciter integration purposes by Andrew Fedoniouk <andrew@sciter.com>
 //========================================================================
 //! [code]
@@ -19,7 +19,7 @@
   #include "GLFW/glfw3.h"
   //#include "GLFW/glfw3native.h"
   #include "linmath.h"
-//#endif  
+//#endif
 
 
 #include <stdlib.h>
@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
 {
     //SciterSetOption(NULL, SCITER_SET_UX_THEMING, TRUE);
 
-    // these two calls are optional, used here to enable communication with inspector.exe (CTRL+SHIFT+I with running inspector) 
+    // these two calls are optional, used here to enable communication with inspector.exe (CTRL+SHIFT+I with running inspector)
     SciterSetOption(NULL, SCITER_SET_SCRIPT_RUNTIME_FEATURES,
       ALLOW_FILE_IO |
       ALLOW_SOCKET_IO |
@@ -60,12 +60,12 @@ int main(int argc, char *argv[])
     sciter::debug_output_console yes;
 
     //SciterSetOption(NULL, SCITER_SET_DEBUG_MODE, TRUE);
-    
+
     glfwSetErrorCallback(error_callback);
 
     if (!glfwInit())
         exit(EXIT_FAILURE);
-#ifdef OSX
+#if defined(OSX)
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
@@ -74,11 +74,16 @@ int main(int argc, char *argv[])
     glfwWindowHint(GLFW_COCOA_RETINA_FRAMEBUFFER, GLFW_TRUE);
     glfwWindowHint(GLFW_COCOA_GRAPHICS_SWITCHING, GLFW_TRUE);
     glfwSwapInterval(1);
+#elif DEVICE==IOT
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
 #else
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
 #endif
-    
+
+    glfwWindowHint(GLFW_SAMPLES, 0);
+
     GLFWwindow* window = glfwCreateWindow(700, 900, "Lite OpenGL example", NULL, NULL);
     if (!window)
     {
@@ -94,7 +99,7 @@ int main(int argc, char *argv[])
     glfwSetKeyCallback(window, key_callback);
     glfwSetCharCallback(window, char_callback);
     glfwSetWindowFocusCallback(window, focus_callback);
-    
+
 	  glfwMakeContextCurrent( window );
     gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
     glfwSwapInterval(1);
@@ -128,7 +133,7 @@ int main(int argc, char *argv[])
       UINT ticks = UINT(glfwGetTime() * 1000); // in milliseconds
       // give sciter a chance to process animations, timers and other timed things
       SciterProcX(window, SCITER_X_MSG_HEARTBIT(ticks));
-      
+
       int width, height;
       glfwGetFramebufferSize(window, &width, &height);
       if (width != used_width || height != used_height)
@@ -171,7 +176,7 @@ static void mouse_button_callback(GLFWwindow * window, int button, int action, i
     case GLFW_MOUSE_BUTTON_2: mbutton = PROP_MOUSE_BUTTON; break;
     case GLFW_MOUSE_BUTTON_3: mbutton = MIDDLE_MOUSE_BUTTON; break;
   }
-  //KEYBOARD_STATES 
+  //KEYBOARD_STATES
   UINT ks = 0;
   if (modifiers & GLFW_MOD_SHIFT) ks |= SHIFT_KEY_PRESSED;
   if (modifiers & GLFW_MOD_CONTROL) ks |= CONTROL_KEY_PRESSED;
@@ -179,7 +184,7 @@ static void mouse_button_callback(GLFWwindow * window, int button, int action, i
 
   double x, y; glfwGetCursorPos(window, &x, &y);
   POINT pos = {int(x),int(y)};
-  
+
   SciterProcX(window, SCITER_X_MSG_MOUSE(me, mbutton, KEYBOARD_STATES(ks),pos));
   if (me == MOUSE_UP)
     mbutton = MOUSE_BUTTONS(0);

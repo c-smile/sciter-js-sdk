@@ -114,6 +114,8 @@
       value(const std::array<T,N>& arr) { ValueInit(this); for (unsigned i = 0; i < N; ++i) set_item(int(i), value(arr[i])); }
       value( const native_function_t& nfr );
 #endif
+
+      template<typename T> value(const T& v) : value(setter(v)) {;}
           
       static value currency( INT64 v )  { value t; ValueInt64DataSet(&t, v, T_CURRENCY, 0); return t;}
       static value date( INT64 v, bool is_utc = true /* true if ft is UTC*/ )      { value t; ValueInt64DataSet(&t, v, T_DATE, is_utc);  return t;}
@@ -368,7 +370,7 @@
         return defv;
       }
 
-      template<typename T> T get() const { return getter(static_cast<T *>(0)); }
+      template<typename T> T get() const { return getter(*this,static_cast<T *>(0)); }
 
       static value from_string(const WCHAR* s, size_t len = 0, VALUE_STRING_CVT_TYPE ct = CVT_SIMPLE)
       {
@@ -599,32 +601,34 @@
         return false;
       }
 
-      // C++ is so ... C++, sigh. Welcome to ugly thunks, gentlemen: 
-      int      getter(int*) const { return get(0); }
-      unsigned getter(unsigned*) const { return (unsigned)get(0); }
-      bool     getter(bool*) const { return get(false); }
-      double   getter(double*) const { return get(0.0); }
-      float    getter(float*) const { return (float)get(0.0); }
-      string   getter(string*) const { return to_string(); }
-#ifdef CPP11
-      astring  getter(astring*) const { aux::w2utf a(to_string()); return astring(a.c_str(), a.length()); }
-#endif
-      value    getter(value*) const { return *this; }
-
-      std::vector<byte> 
-               getter(std::vector<byte>*) const { aux::bytes bs = get_bytes(); return std::vector<byte>(bs.start, bs.end()); }
-
-      template<typename T> std::vector<T> 
-               getter(std::vector<T>*) const {
-                 std::vector<T> out;
-                 if (this->is_array_like()) { 
-                   int n = this->length();
-                   for (int i = 0; i < n; ++i) out.push_back(this->get_item(i).get<T>());
-                 }
-                 return out;
-               }
-
     };
+
+    inline int getter(const value& v, int*) { return v.get(0); }
+    inline unsigned getter(const value& v, unsigned*) { return (unsigned)v.get(0); }
+    inline bool     getter(const value& v, bool*) { return v.get(false); }
+    inline double   getter(const value& v, double*) { return v.get(0.0); }
+    inline float    getter(const value& v, float*) { return (float)v.get(0.0); }
+    inline string   getter(const value& v, string*) { return v.to_string(); }
+#ifdef CPP11
+    inline astring  getter(const value& v, astring*) { aux::w2utf a(v.to_string()); return astring(a.c_str(), a.length()); }
+#endif
+    inline value    getter(const value& v, value*) { return v; }
+
+    inline std::vector<byte>
+      getter(const value& v, std::vector<byte>*) { aux::bytes bs = v.get_bytes(); return std::vector<byte>(bs.start, bs.end()); }
+
+    template<typename T> inline std::vector<T>
+      getter(const value& v, std::vector<T>*) {
+        std::vector<T> out;
+        if (v.is_array_like()) {
+          int n = v.length();
+          for (int i = 0; i < n; ++i) out.push_back(v.get_item(i).get<T>());
+        }
+        return out;
+      }
+
+     template<typename T> 
+       inline value setter(const T& v);
       
     // value by key bidirectional proxy/accessor 
     class value_key_a

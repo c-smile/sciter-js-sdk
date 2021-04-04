@@ -35,29 +35,49 @@ export async function load(href = null) {
 
 function loadFolder(path) {
   var FolderElement = document.$("#folder");
-  
-  function readDir(at, caption = null) {
-    at += "\\";
-    var files = sys.fs.$readdir(at);
-    if (!files) return "";
-    var html = "<option expanded>";
-    if (caption) html += `<caption>${caption}</caption>`;
 
-    for (var file of files) {
-      if (file.type === 1) {
-        if (file.name.endsWith(".md"))
-            html += `<option value="${URL.toPath(at + file.name)}">${file.name.slice(0, -3)}</option>`;
-      } else {
-        html += readDir(at + file.name, file.name);
-      }
-    }
-
-    return html += "</option>";
+  function File(props) {
+    const {name,folder} = props;
+    const atts = (name == "index.md" || name == "README.md") ? {"index":true} : {};
+    return <option .file {atts} value={URL.toPath(folder + name)}><caption>{name.slice(0, -3)}</caption></option>;
   }
 
-  FolderElement.innerHTML = readDir(path);
+  let folderContent;
+
+  function Folder(props) {
+    const {name,folder} = props;
+    const content = folderContent(folder + "/" + name);
+    if( content.length )
+      return <option .folder collapsed=""><caption>{name}</caption>{content}</option>;
+    else 
+      return "";
+  }
+
+  folderContent = function(path) {
+    const at = path + "/";
+    let files = sys.fs.$readdir(at);
+    if (!files) return "";
+    let content = [];
+    for (let file of files) {
+      if (file.type === 1) {
+        if (file.name.endsWith(".md"))
+          content.push(<File name={file.name} folder={at} />);
+      } else {
+         content.push(<Folder name={file.name} folder={at} />);
+      }
+    }
+    return content;   
+  }
+
+  FolderElement.content(folderContent(path));
+
   FolderElement.on("change", () => {load(FolderElement.value)});
-  FolderElement.$$("option")[1]?.click();
+
+  const index = FolderElement.$(":root>option[index]");
+  if(index) {
+    index.click();
+    load(index.attributes["value"]);
+  }
 }
 
 document.on("^click","a[href]", function(evt, a) {
@@ -180,6 +200,11 @@ Settings.add({
   }
 });
 
+function isFolder(path) {
+  console.log("isFolder", path, sys.fs.$stat(path).st_mode, sys.fs.S_IFDIR);
+  return sys.fs.$stat(path)?.st_mode & sys.fs.S_IFDIR;
+}
+
 Settings.init(APP_NAME);
 
 document.ready = function() {
@@ -187,12 +212,12 @@ document.ready = function() {
   let href = (__DIR__ + "hello.md");
   if( argv ) {
     let path = argv[argv.length - 1];
-    if( path.endsWith(".md") )
-      href = path;
-    else if (argv[1]) {
-      loadFolder(argv[1]);
+    if (isFolder(path)) {
+      loadFolder(path);
       return;
     }
+    else if( path.endsWith(".md") )
+      href = path;
   }
   document.$("#folder").attributes["hidden"] = true;
   href = URL.fromPath(href);

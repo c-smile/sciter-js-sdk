@@ -1,3 +1,29 @@
+## 4.4.6.6
+
+### New builds/assemblies
+
+* Linux/iot/arm32 - Sciter.JS.Lite for Raspberry Pi.
+
+### Fixes
+
+* [scrollable] 1px off at last position.
+* [inspector.js] enabling F5...F11 shortcuts in debugger.
+* [inspector.js/debug] more reliable debug output in frames.
+* [Sciter.JS] `input.value = null` support.
+* [behavior:calendar] $(input).calendar.mode = "months"; or <input|calendar mode="months" />
+* [behavior:virtual-list] fix of element.vlist.navigate("start"|"end") method;
+
+### New features
+
+* [SDK/headers], custom to/from sciter::value serialization support:
+  ```
+  T getter(const sciter::value& v, T*);
+  sciter::value setter(const T& t); 
+  ```
+* `scrollanimationstart` and `scrollanimationend` events.
+* [SciterJS] usciter + help button is operational. 
+* [SciterJS] mdview update with the help of [MustafHi](https://github.com/c-smile/sciter-js-sdk/pull/66)  
+
 ## 4.4.6.5
 
 ### Fixes

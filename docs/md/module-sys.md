@@ -26,7 +26,7 @@ sys is built on top of [libuv](https://github.com/libuv/libuv) that Sciter.JS us
 
 #### functions
 
-* `fs.open()`
+* `fs.open(): promise(File)`
 * `fs.stat(): promise(stat)`
 * `fs.$stat(): stat` - sync version of the above;
 * `fs.lstat(): promise(stat)`

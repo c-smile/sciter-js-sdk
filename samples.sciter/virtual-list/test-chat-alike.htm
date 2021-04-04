@@ -1,58 +1,82 @@
 <html>
-    <head>
-        <title>behavior:virtual-list</title>
-        <style>
+<head>
+    <title>behavior:virtual-list</title>
+    <style>
+        tape {
+            behavior: virtual-list;
+            prototype: Tape url(test-chat-tape.js);
+            display: block;
+            flow: vertical;
+            overflow: scroll-indicator;
+            size: *;
+            vertical-align: bottom;
+            // last "messages" are seen first
+        }
 
-tape {
-  behavior: virtual-list;
-  prototype: Tape url(test-chat-tape.js);
-  display:block;
-  flow:vertical;
-  overflow:scroll-indicator;
-  size:*;
-  vertical-align: bottom; // last "messages" are seen first
-}
+            tape > div {
+                min-height: 2em;
+                flow: horizontal;
+                border-spacing: 1em;
+                padding: 0.5em;
+                font: 12pt Verdana, sans-serif;
+            }
 
-tape > div {
-  min-height:2em;
-  flow: horizontal;
-  border-spacing:1em; 
-  padding:0.5em;
-  font: 12pt Verdana, sans-serif;
-}
+                tape > div > img {
+                    size: 48px;
+                }
 
-tape > div > img {
-  size:48px;
-}
+                tape > div > div {
+                    width: 0.8*;
+                    max-width: max-content;
+                    border-radius: 0 0.5em 0.5em 0.5em;
+                    background: #FFF8DC;
+                    padding: 0.25em 0.5em;
+                }
 
-tape > div > div {
-  width:0.8*;
-  max-width:max-content;
-  border-radius: 0 0.5em 0.5em 0.5em;
-  background: #FFF8DC;
-  padding:0.25em 0.5em; 
-}
+                tape > div[mine] {
+                    horizontal-align: right;
+                }
 
-tape > div[mine] {
-  horizontal-align: right;
-}
+                    tape > div[mine] > div {
+                        background: #F0F8FF;
+                        border-radius: 0.5em 0 0.5em 0.5em;
+                    }
 
-tape > div[mine] > div {
-  background: #F0F8FF;
-  border-radius: 0.5em 0 0.5em 0.5em;
-}
+                tape > div > div pre {
+                    border: 1px dashed #ccc;
+                    padding: 0.25em 0.5em;
+                }
+    </style>
+    <script type="module">
+        import * as env from "@env";
+        import * as DS from "test-chat-data-source.js";
 
-tape > div > div pre {
-  border:1px dashed #ccc;
-  padding:0.25em 0.5em;
-}
+        var tape = document.$("tape#chat-items");
 
-        </style>
-        <script type="module">
-        </script>
-    </head>
-    <body>
-      <h2>Test of <code>behavior:virtual-list</code>:</h2>
-      <tape/>
-    </body>
+        document.on('click', 'button#btn-add-item', () => {
+          tape.vlist.navigate("end"); // scroll        
+          let [message,index] = DS.messageNew(); 
+          tape.appendElements(index,1);
+          tape.lastElementChild.scrollIntoView({behavior:"smooth"});
+        });
+
+        document.on('click', 'button#btn-del-item', () => {
+          let message = DS.messageAt(4);
+          DS.messageDelete(message.id);
+          tape.replaceElements( tape.vlist.firstBufferIndex, tape.vlist.lastBufferIndex - tape.vlist.firstBufferIndex + 1 );
+        });
+
+        document.on('click', 'button#btn-repl-items', () => {
+          DS.reset();          
+          tape.vlist.navigate("start"); // scroll        
+        });
+    </script>
+</head>
+<body>
+    <h2>Test of <code>behavior:virtual-list</code>:</h2>
+    <tape #chat-items />
+    <button #btn-add-item>add item</button>
+    <button #btn-del-item>delete item</button>
+    <button #btn-repl-items>replace all items</button>
+</body>
 </html>

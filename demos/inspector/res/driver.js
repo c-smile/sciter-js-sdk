@@ -31,6 +31,7 @@ export class ChannelDriver
   reconnect(outboundRq) {
     this.request = function(name,params) { return new Promise((resolve,reject) => { outboundRq(name,params,resolve); }); }
     this.notify = outboundRq;
+    this.notify("breakpoints",this.breakpoints);
   }
 
   get connected() { return this.request !== null; }
@@ -66,7 +67,6 @@ export class ChannelDriver
     this.view.componentUpdate();
     this.notify("breakpoints",this.breakpoints);
   }
-
 
   static all = {}; // by key 
   static current = null; // current channel

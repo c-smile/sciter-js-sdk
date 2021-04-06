@@ -47,12 +47,11 @@ document.ready = function() {
 
 // global hyperlink handler
 document.on("^click", "[href]", function(evt, hlink) {
-
   const data = {
     url: hlink.getAttribute("href"),
     lineno: hlink.getAttribute("lineno")
   };
-  evt.preventDefault()
+  evt.preventDefault();
   evt.stopPropagation();
   hlink.dispatchEvent(new Event("file-show",{bubbles:true, detail:data}),true);
 });

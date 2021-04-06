@@ -2,7 +2,7 @@
 
 class frame: public sciter::window {
 public:
-  frame() : window(SW_MAIN | SW_TITLEBAR | SW_RESIZEABLE | SW_CONTROLS) {}
+  frame() : window(SW_MAIN | SW_TITLEBAR | SW_RESIZEABLE | SW_CONTROLS /*| SW_ENABLE_DEBUG*/) {}
 };
 
 #include "resources.cpp"

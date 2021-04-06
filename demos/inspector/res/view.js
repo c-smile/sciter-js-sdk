@@ -23,9 +23,9 @@ export function FileUrl(props) {
   let lineno = props.lineno;
   if(isLink) {
     if( lineno )
-      return <a .url href={url} lineno={lineno}><span .path>{prefix}</span><b .filename>{filename}</b><span .lineno>{lineno}</span></a>;
+      return <a .url href={surl} lineno={lineno}><span .path>{prefix}</span><b .filename>{filename}</b><span .lineno>{lineno}</span></a>;
     else 
-      return <a .url href={url}><span .path>{prefix}</span><b .filename>{filename}</b></a>;
+      return <a .url href={surl}><span .path>{prefix}</span><b .filename>{filename}</b></a>;
   } else 
     return <span .url><span .path>{prefix}</span><b .filename>{filename}</b></span>;
 }

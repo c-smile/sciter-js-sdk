@@ -255,7 +255,6 @@ export class SourceCode extends Element
       this.filename = props.filename;
       var text = props.text;
       this.post(() => {
-        //console.print("text",text);
         this.value = text;
         gotoline(props.lineno);
       });

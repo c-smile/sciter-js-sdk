@@ -129,7 +129,7 @@ export class DebuggerView extends View
       </li>;
 */      
 
-return <li key={index.toString()} {atts}>
+    return <li key={index.toString()} {atts}>
         <caption><b .funcname>{item.name}</b><FileUrl href={item.filename} lineno={item.lineno} /></caption>
         {variables}
       </li>;

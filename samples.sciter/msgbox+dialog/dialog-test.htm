@@ -6,8 +6,8 @@
 
 document.on("click","button#show", function() {
   var retval = Window.this.modal {
-    url: "dialog.htm",
-    alignment:-8
+    url: __DIR__ + "dialog.htm",
+    alignment:-8,
   };
   console.log(JSON.stringify(retval));
 });

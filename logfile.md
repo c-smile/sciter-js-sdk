@@ -1,3 +1,17 @@
+## 4.4.6.7
+
+[Sciter.API] Sciter and Sciter.Lite use the same struct SciterAPI {} so non-C++ language wrappers can be used as for Sciter as for Sciter.Lite. Functions that are not available in Sciter.Lite are just NULLs in SciterAPI struct.
+
+### Fixes
+
+* <frameset>, more Reactor friendly.
+* [inspector] breakpoint handling fixes.
+
+### New features
+
+* support of element.onsizechange = function(){} 
+* element.style.setCursor(image) - set custom cursor.
+
 ## 4.4.6.6
 
 ### New builds/assemblies

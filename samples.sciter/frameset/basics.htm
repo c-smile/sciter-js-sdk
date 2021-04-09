@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+body { margin:0; }
+div {min-width:min-content;}
+frameset {min-height:min-content;}
+
+splitter { border:none; }
+splitter:hover { background:red; }
+
+section { background:gold; }
+
+        </style>
+    </head>
+    <body>
+
+      <frameset rows="64px,*">
+        <frameset cols="64px,*">
+           <div>Framesets can</div>
+           <splitter/>
+           <div>host</div>
+        </frameset> 
+        <splitter/>
+        <frameset cols="2*,1*">
+           <div>any arbitrary DOM element</div>
+           <splitter/>
+           <section>as a split panels</section>
+        </frameset> 
+      </frameset>
+
+    </body>
+</html>

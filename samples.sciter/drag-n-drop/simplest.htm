@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+.draggable {
+  background:gold;
+  width:max-content;
+  padding:0.5em;
+}
+
+.drop-target {
+   border:2px dashed;
+   padding:1em;
+   margin:*;
+}
+
+html[dnd] .drop-target:hover {
+  background:yellow;
+}
+
+        </style>
+        <script>
+
+function doDrag(element,evt, callback) {
+
+  let {x,y} = evt;
+  let lasttarget = null;
+
+  function onmove(evt) { lasttarget = evt.target; }
+
+  document.post(function() { 
+    // 1. setup cursor by rendering element into bitmap and making cursor from that bitmap
+    let image = new Graphics.Image(element);
+    element.style.setCursor(image,x,y);
+
+    // 2. hide the element itself
+    element.style.visibility = "hidden";
+    
+    // 3. short circuit mouse moves to document 
+    document.state.capture(true);
+    document.attributes["dnd"] = "";
+    document.on("mousemove",onmove);
+
+    // 4. run "mouse modal loop" until mouse depressed
+    let r = Window.this.doEvent("untilMouseUp");
+
+    // 5. return things back
+    document.state.capture(false);
+    document.off(onmove);
+    element.style.setCursor(null);
+    element.style.visibility = undefined;
+    document.attributes["dnd"] = undefined;
+
+    // 6. notify completion 
+    if(r && lasttarget && callback) {
+      const droptarget = lasttarget.$p(".drop-target");
+      if( droptarget ) {
+        callback(droptarget);
+        return;
+      }
+    }
+    callback(null);
+  });
+
+}
+
+document.$(".draggable").on("mousedragrequest", function(evt) {
+  doDrag(this,evt, where => {
+    if(where)
+      Window.this.modal(<info>Dropped {this} onto {where}</info>);
+  });
+  return true;
+});
+
+        </script>
+    </head>
+    <body>
+
+      <div.draggable>Draggable</div>
+
+      <div.drop-target>Target</div>
+
+    </body>
+</html>

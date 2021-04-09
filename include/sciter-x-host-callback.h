@@ -322,7 +322,7 @@ namespace sciter
     bool  isHtml = false;
     if( pszExt == 0 || _wcsicmp(pszExt,L"HTML") == 0 || _wcsicmp(pszExt,L"HTM") == 0)
     {
-      hrsrc = ::FindResourceW(hinst, pszName, RT_HTML);
+      hrsrc = ::FindResourceW(hinst, pszName, MAKEINTRESOURCEW(23) /*RT_HTML*/);
       isHtml = true;
     }
     else

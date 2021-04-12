@@ -26,7 +26,7 @@ export class Tape extends Element
     }
     elements.reverse();
     this.prepend(elements);
-    return { morebefore: (index < 0 ? 0 : index) }; // return estimated number of items above this chunk
+    return { morebefore: (index <= 0 ? 0 : index + 1) }; // return estimated number of items above this chunk
   }
 
   // scroll to

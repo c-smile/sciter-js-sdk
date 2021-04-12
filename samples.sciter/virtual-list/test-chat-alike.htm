@@ -70,6 +70,11 @@
           DS.reset();          
           tape.vlist.navigate("start"); // scroll        
         });
+
+        document.on('click', 'button#check', () => {
+          console.log(tape.vlist.firstBufferIndex,tape.vlist.lastBufferIndex);
+        });
+
     </script>
 </head>
 <body>
@@ -78,5 +83,6 @@
     <button #btn-add-item>add item</button>
     <button #btn-del-item>delete item</button>
     <button #btn-repl-items>replace all items</button>
+    <button #check>show stats</button>
 </body>
 </html>

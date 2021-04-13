@@ -71,7 +71,18 @@
           tape.vlist.navigate("start"); // scroll        
         });
 
+        function isAtTheEnd(tape) {
+            console.log(typeof tape.vlist.lastVisibleItem);
+            if (tape.vlist.lastVisibleItem.nextElementSibling)
+                return false; // not the last item in buffer
+            if (tape.vlist.lastBufferIndex < DS.messageCount() - 1)
+                return false; // buffer is not the last one
+            // OK, last record of last buffer is seen on screen
+            return true;
+        }
+
         document.on('click', 'button#check', () => {
+          console.log("isAtTheEnd : " + isAtTheEnd(tape));          
           console.log(tape.vlist.firstBufferIndex,tape.vlist.lastBufferIndex);
         });
 

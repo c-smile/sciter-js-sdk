@@ -177,7 +177,7 @@ document.on("beforeunload", () => {
 
 document.on("click", "button#watch", (evt,button) => {
   updateMonitor();
-  saveState();
+  Settings.saveState();
   return true;
 });
 

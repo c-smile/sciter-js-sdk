@@ -87,13 +87,21 @@ Instances of the Window class represent desktop windows.
     * `"dimension"` - [w,h], array, dimension of the rectangle.
     * `"left"`,`"top"`,`"right"`,`"bottom"`,`"width"`,`"height"` - individual integers.
 
+  * `Window.this.modal(JSX) : any` - shows message box: `<info>..</info>`, `<alert>..</alert>`, `<error>..</error>`, `<question>..</question>`.
+  * `Window.this.modal{params} : any` - shows new window as dialog, for params see `new Window {params}` above. The function returns window close value of `Window.this.close(valToReturn)` call inside the window. 
 
+  * `Window.this.performDrag(data:object, mode: "copy" | "move", dragIcon: Image | Element[, dragIconXoff:int, dragIconYoff:int] ): null | "copy" | "move"` - performs drag-and-drop using system D&D mechanism.
+
+    `data` is an object that may contain one or several fields: 
+    * `text: string` - plain text data;
+    * `html: string` - HTML data; 
+    * `file : [path1,path2,...] | path0` - single or multiple file names;
+    * `json`: any - any data that can be JSON.stringify'ed;
+    
 #### class methods and properties:
 
   * `Window.this` - instance of Window class - this window reference;
   * `Window.screenBox(monitor:integer, what, boxPart)` - reports geometry and information of the given monitor. For _what_ and _boxPart_ parameters see window.screenBox() method above.
-  * `Window.modal(JSX) : any` - shows message boxes: `<info>..</info>`, `<alert>..</alert>`, `<error>..</error>`, `<question>..</question>`.
-  * `Window.modal{params} : any` - shows window as dialog, for params see `new Window {params}` above. The function returns window close value of `Window.this.close(valToReturn)` call in the window. 
 
 #### events
 

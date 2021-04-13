@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title></title>
+    <style>
+    
+      div { size:100px; background:gold; }
+    
+    </style>
+    <script>
+
+      document.$("div").on("mousedragrequest", async function(evt) {
+
+        var img = await Graphics.Image.load(__DIR__ + "../images/spade.png");
+
+        var data = {
+          text: "the spade image",
+        };
+        
+        let r = Window.this.performDrag(data, "copy",img,20,20 );
+        console.log(r);
+      });
+     
+      
+    </script>
+  </head>
+<body>
+  <div>Drag this one</div>
+</body>
+</html>

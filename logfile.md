@@ -1,3 +1,16 @@
+## 4.4.6.8
+
+### New features
+
+* `Windows.this.performDrag()` - initiates Drag-n-Drop from your code side. This way you can support dragging of text,html,files,JSON from your application to outside. + D&D samples in samples.sciter/drag-n-drop-system/
+
+### Fixes
+
+* fix of scrollables rendering;
+* [Sciter.JS/SDK] `value::date()`` conversion fix.
+* `behavior:virtual-list` fix of first/lastVisibleElement properties.
+* more docs on behaviors (still not complete but closer).
+
 ## 4.4.6.7
 
 [Sciter.API] Sciter and Sciter.Lite use the same struct SciterAPI {} so non-C++ language wrappers can be used as for Sciter as for Sciter.Lite. Functions that are not available in Sciter.Lite are just NULLs in SciterAPI struct.

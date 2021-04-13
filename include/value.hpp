@@ -627,9 +627,13 @@
         return out;
       }
 
-     template<typename T> 
-       inline value setter(const T& v);
-      
+    // setter - free standing conversion of T to sciter::value.
+    // NOTE this function is deliberatly left not implemented - it is just a prototype
+    template<typename T>
+      inline value setter(const T& v);
+
+    inline value setter(const unsigned& v) { return value(int(v)); }
+
     // value by key bidirectional proxy/accessor 
     class value_key_a
     {

@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <title></title>
+    <style>
+      
+      div.file-drop-zone {
+        prototype: FileDropZone;
+        size:200px;
+        color: gray;
+        border: 4px dashed;
+        vertical-align:middle;
+        text-align:center;
+        margin:1em;
+      }
+      div.file-drop-zone.active-target {
+        background:gold;
+      }
+      
+    </style>
+    <script>
+    
+    class FileDropZone extends Element 
+    {
+      files = []; // filtered files
+
+      ondragaccept(evt) {
+        if(evt.detail.dataType == "file") {
+          this.files = evt.detail.data;
+          if(!Array.isArray(this.files))
+            this.files = [this.files];
+          return true; // accept only files
+        }
+      }
+
+      ondragenter(evt) 
+      {
+        this.classList.add("active-target");
+        return true;
+      }  
+
+      ondragleave(evt) 
+      {
+        this.classList.remove("active-target");
+        return true;
+      }  
+
+      ondrag(evt) 
+      {
+        console.log(evt.x,evt.y);
+        return true;
+      }  
+
+      ondrop(evt) 
+      {
+        this.classList.remove("active-target");
+        Window.this.modal(<info>Dropped:{JSON.stringify(this.files,null,"  ")}</info>);
+        return true;
+      }  
+      
+    }
+    
+    </script>
+  </head>
+<body>
+
+  <h2>D&amp;D files from system shell to DOM elements</h2> 
+
+  <div.file-drop-zone>
+    Drop any file here
+  </div>
+
+</body>
+</html>

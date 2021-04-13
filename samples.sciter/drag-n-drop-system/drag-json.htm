@@ -1,0 +1,77 @@
+﻿<html>
+  <head>
+    <title></title>
+    <style>
+
+       form { flow:row(label,input);  }
+       form > label { white-space:nowrap; }
+
+       .target {
+          width:max-content;
+          padding:1em;
+          border:2px dashed;
+          margin:*;
+       }
+
+       .target.allow-drop {
+          background:gold;
+       }
+
+    </style>
+    <script>
+    
+      document.$("form").on("mousedragrequest", function(evt) {
+        var data = { json: this.value };
+        
+        var r = Window.this.performDrag( data, "copy", this );
+        //co.println(r);
+        return true;
+      });
+     
+
+      function DropZone(container) {
+
+        if(!(container instanceof Element))
+          throw "no container";
+
+
+        container.on("dragaccept",function(evt) {
+          // accept everything
+          evt.stopPropagation(); // consume the event
+        });      
+
+        container.on("dragenter",function(evt) {
+          container.classList.add("allow-drop");
+        });
+
+        container.on("dragleave",function(evt) {
+          container.classList.remove("allow-drop");
+        });
+
+        container.on("drag",function(evt) {
+          evt.stopPropagation(); // consume the event
+        });
+
+        container.on("drop",function(evt) {
+          container.classList.remove("allow-drop");
+          container.innerText = JSON.stringify(evt.data, null, "  ");
+          evt.stopPropagation(); // consume the event
+        });
+
+      }
+
+      DropZone( document.$("pre.target"));
+      
+    </script>
+  </head>
+<body>
+  Dragabble form data:
+  <form>
+    <label>first name</label><input(firstName) value="АЯ" />
+    <label>last name</label><input(lastName) />
+  </form>
+
+  <pre.target>target</pre>
+  
+</body>
+</html>

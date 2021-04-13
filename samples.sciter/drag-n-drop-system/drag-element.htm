@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title></title>
+    <style>
+    
+    /*a { display:inline-block; } */
+    
+    </style>
+    <script>
+    
+      document.$("picture").on("mousedragrequest", function(evt) {
+        var data = {
+          file: document.url( this.attributes["src"] ), 
+        };
+        var r = Window.this.performDrag( data, "copy", this);
+        console.log(r);
+        return true;
+      });
+      
+      document.$("a[href]").on("mousedragrequest", function(evt) {
+        var data = {
+          text: this.text,
+          //html: this,
+          html: this.outerHTML,
+          //link: { caption: this.text, url:this.attributes["href"] },
+          //link: this.attributes["href"]
+        };
+        
+        var r = Window.this.performDrag( data, "copy", this);
+        console.log(r);
+        return true;
+      });      
+      
+    </script>
+  </head>
+<body>
+  <picture src="../images/tref.png" /> 
+  
+  <p>You can drag that one <a href="https://sciter.com">Sciter</a> too</p>
+  
+  
+</body>
+</html>

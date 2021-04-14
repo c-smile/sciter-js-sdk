@@ -11,8 +11,8 @@ Represents an image.
 
 #### Constructors:
 
-`new Image(width, height, painter(graphics) [,initColor])` - TBD  
-`new Image(width, height, element)` - render DOM element into bitmap.
+`new Graphics.Image(width, height, painter(graphics) [,initColor])` - TBD  
+`new Graphics.Image(width, height, element)` - render DOM element into bitmap.
 
 #### Methods:
 

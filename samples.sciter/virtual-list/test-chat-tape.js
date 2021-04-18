@@ -1,5 +1,33 @@
 import * as DS from "test-chat-data-source.js";
 
+class MineItem extends Element {
+
+  render(prop) {
+    const item = prop.item;
+    return <div mine="" >
+      <div.text state-html={item.html} />
+      <img src={ item.avatar } /></div>;
+  }
+}
+
+class TheirItem extends Element {
+
+  render(prop) {
+    const item = prop.item;
+    return <div>
+      <img src={ item.avatar } />
+      <div.text state-html={item.html} /></div>;
+  }
+}
+
+function Item(props) {
+  if(props.item.mine)
+    return <MineItem item={props.item} />;
+  else       
+    return <TheirItem item={props.item} />;
+}
+
+
 export class Tape extends Element 
 {
   // scroll down
@@ -48,15 +76,7 @@ export class Tape extends Element
   renderItem(index) 
   {
     let item = DS.messageAt(index);
-
-    if(item.mine)
-      return <div key={index} mine="" >
-                <div.text state-html={item.html} />
-                <img src={ item.avatar } /></div>;
-    else       
-      return <div key={index} >
-                <img src={ item.avatar } />
-                <div.text state-html={item.html} /></div>;
+    return <Item key={item.id} item={item}/>;
   }
 
   oncontentrequired(evt)

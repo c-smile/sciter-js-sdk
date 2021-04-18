@@ -1,3 +1,16 @@
+## 4.4.7.0
+
+Unified API: ISciterAPI uses the same structure (list of functions) on all platforms and variants (Sciter and Sciter.Lite). Functions that are not available on particular platform/variant are set to NULL. 
+
+Note: that is breaking change for Rust/Go/Python/C# wrappers - they need to be updated.
+
+### Fixes:
+
+* fix of scrollable rendering;
+* [select|dropdown] fix of first item set when @novalue is used.
+* [drawing] fix of position:absolute / outline drawing.
+* behavior:virtual-list; fix of https://sciter.com/forums/topic/bug-scroll-indicator-not-work/ 
+
 ## 4.4.6.8
 
 ### New features

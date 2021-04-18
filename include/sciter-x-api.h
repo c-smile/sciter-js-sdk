@@ -41,7 +41,11 @@
 struct SciterGraphicsAPI;
 struct SCITER_X_MSG;
 
-#define SCITER_API_VERSION 8
+#ifdef WINDOWLESS
+  #define SCITER_API_VERSION 0x10009
+#else 
+  #define SCITER_API_VERSION 9
+#endif
 
 typedef struct _ISciterAPI {
 
@@ -54,6 +58,9 @@ typedef struct _ISciterAPI {
 #if defined(WINDOWS)
   LRESULT SCFN( SciterProc )(HWINDOW hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
   LRESULT SCFN( SciterProcND )(HWINDOW hwnd, UINT msg, WPARAM wParam, LPARAM lParam, SBOOL* pbHandled);
+#else 
+  LPVOID   SciterProc; // NULL
+  LPVOID   SciterProcND; // NULL
 #endif
   SBOOL    SCFN( SciterLoadFile )(HWINDOW hWndSciter, LPCWSTR filename);
 
@@ -70,7 +77,9 @@ typedef struct _ISciterAPI {
   SBOOL    SCFN( SciterEval )( HWINDOW hwnd, LPCWSTR script, UINT scriptLength, SCITER_VALUE* pretval);
   VOID    SCFN( SciterUpdateWindow)(HWINDOW hwnd);
 #if defined(WINDOWS)
-  SBOOL    SCFN( SciterTranslateMessage )(MSG* lpMsg);
+  SBOOL    SCFN(SciterTranslateMessage)(MSG* lpMsg);
+#else 
+  LPVOID   SciterTranslateMessage; // NULL
 #endif
   SBOOL    SCFN( SciterSetOption )(HWINDOW hWnd, UINT option, UINT_PTR value );
   VOID    SCFN( SciterGetPPI )(HWINDOW hWndSciter, UINT* px, UINT* py);
@@ -79,14 +88,22 @@ typedef struct _ISciterAPI {
   SBOOL    SCFN( SciterRenderD2D )(HWINDOW hWndSciter, IUnknown* /*ID2D1RenderTarget**/ prt);
   SBOOL    SCFN( SciterD2DFactory )(IUnknown** /*ID2D1Factory ***/ ppf);
   SBOOL    SCFN( SciterDWFactory )(IUnknown** /*IDWriteFactory ***/ ppf);
+#else 
+  LPVOID   SciterRenderD2D;
+  LPVOID   SciterD2DFactory;
+  LPVOID   SciterDWFactory;
 #endif
   SBOOL    SCFN( SciterGraphicsCaps )(LPUINT pcaps);
   SBOOL    SCFN( SciterSetHomeURL )(HWINDOW hWndSciter, LPCWSTR baseUrl);
 #if defined(OSX)
   HWINDOW SCFN( SciterCreateNSView )( LPRECT frame ); // returns NSView*
+#else 
+  LPVOID SciterCreateNSView; // NULL
 #endif
 #if defined(LINUX)
   HWINDOW SCFN( SciterCreateWidget )( LPRECT frame ); // returns GtkWidget
+#else 
+  LPVOID SciterCreateWidget; // NULL
 #endif
   HWINDOW SCFN( SciterCreateWindow )( UINT creationFlags,LPRECT frame, SciterWindowDelegate* delegate, LPVOID delegateParam, HWINDOW parent);
 
@@ -256,6 +273,10 @@ typedef struct _ISciterAPI {
   SBOOL SCFN( SciterCreateOnDirectXWindow ) (HWINDOW hwnd, IUnknown* pSwapChain); // IDXGISwapChain
   SBOOL SCFN( SciterRenderOnDirectXWindow ) (HWINDOW hwnd, HELEMENT elementToRenderOrNull, SBOOL frontLayer);
   SBOOL SCFN( SciterRenderOnDirectXTexture ) (HWINDOW hwnd, HELEMENT elementToRenderOrNull, IUnknown* surface); // IDXGISurface
+#else 
+  LPVOID SciterCreateOnDirectXWindow;
+  LPVOID SciterRenderOnDirectXWindow;
+  LPVOID SciterRenderOnDirectXTexture;
 #endif
 
   SBOOL SCFN(SciterProcX)(HWINDOW hwnd, SCITER_X_MSG* pMsg ); // returns TRUE if handled

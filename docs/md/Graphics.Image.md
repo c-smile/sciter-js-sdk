@@ -11,8 +11,8 @@ Represents an image.
 
 #### Constructors:
 
-`new Image(width, height, painter(graphics) [,initColor])` - TBD  
-`new Image(width, height, element)` - render DOM element into bitmap.
+`new Graphics.Image(width, height, painter(graphics) [,initColor])` - TBD  
+`new Graphics.Image(width, height, element)` - render DOM element into bitmap.
 
 #### Methods:
 
@@ -22,5 +22,5 @@ Represents an image.
 
 #### Static methods:
 
-* `Image.fromBytes( data: ArrayBuffer ) : Image` - construct image from bytes (PNG,JPEG, etc).
-* `async Image.load( url ) : Image` - loads image from url. Note it is an async function (returns promise actually).
+* `Graphics.Image.fromBytes( data: ArrayBuffer ) : Image` - construct image from bytes (PNG,JPEG, etc).
+* `async Graphics.Image.load( url ) : Promise(Image)` - loads image from url. Note it is an async function (returns promise actually).

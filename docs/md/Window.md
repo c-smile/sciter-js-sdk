@@ -70,7 +70,7 @@ Instances of the Window class represent desktop windows.
 
   * `window.trayIcon("remove")` - remove tray icon.
   * `window.trayIcon("place") : [x,y,w,h]` - reports location of the icon on desktop, coordinates are in screen pixels.
-  * `Window.screenBox(what [, boxPart])` - reports geometry of monitor this window is on. 
+  * `window.screenBox(what [, boxPart])` - reports geometry of monitor this window is on. 
 
     _what_ defines what information to return, is one of:
 
@@ -78,6 +78,7 @@ Instances of the Window class represent desktop windows.
     * `"workarea"` - physical position and size of work area on the monitor ( frame minus taskbar )
     * `"device"` - string, name of the monitor.
     * `"isPrimary"` - boolean, true is that is primary monitor.
+    * `"snapshot"` - Graphics.Image, returns snapshot (screenshot) of the monitor.
 
     _boxPart_ defines what part of the box to return, is one of:
 

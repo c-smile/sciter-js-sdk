@@ -44,7 +44,7 @@ Besides of standard set of events (mouse, keyboard, focus) *behavior:lottie* g
 
 * `"animationstart"` - the animation has been loaded successfully and animation has been started.
 * `"animationloop"` - last frame shown and animation restarted from its beginning.
-* `"animationend"`` - animation playback stopped.
+* `"animationend"` - animation playback stopped.
 
 ## Value
 

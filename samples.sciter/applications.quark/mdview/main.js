@@ -13,20 +13,22 @@ const view = Window.this; // current window
 const content = document.$("frame#content"); // content frame
 const overlay = document.$("frame#overlay"); // content frame
 
-const md = new Remarkable();
+const md = new Remarkable({html: true});
 md.use( HeaderIds({ anchorText:" " }));
 
 export async function load(href = null) {
   try {
     href = href || content.frame.document.url();
-    if (!href.endsWith(".md")) return;
+    let url = new URL(href);
+    if (url.extension !== "md") return;
     //let text = sys.fs.$readfile( URL.toPath(href) );
     //let body = sciter.decode(text,"utf-8");
-    var r = await fetch(href);
+    var r = await fetch(url.href);
     let body = r.text();
     body = md.render(body);
     let html = `<html><body>${body}</body></html>`;
     content.frame.loadHtml(html,href);
+    if (url.hash) content.frame.document.$(url.hash)?.scrollIntoView({behavior: "smooth", "block":"start", "inline":"start"});
     setCaption();
   } catch(e) {
     console.error(e.message);

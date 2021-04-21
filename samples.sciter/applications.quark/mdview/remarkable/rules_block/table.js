@@ -106,7 +106,7 @@ export default function table(state, startLine, endLine, silent) {
 
     lineText = getLine(state, nextLine).trim();
     if (lineText.indexOf('|') === -1) { break; }
-    rows = lineText.replace(/^\||\|$/g, '').split('|');
+    rows = lineText.replaceAll('\\\|', '%7C').replace(/^\||\|$/g, '').split('|');
 
     state.tokens.push({ type: 'tr_open', level: state.level++ });
     for (i = 0; i < rows.length; i++) {
@@ -118,7 +118,7 @@ export default function table(state, startLine, endLine, silent) {
       ).trim();
       state.tokens.push({
         type: 'inline',
-        content: cell,
+        content: unescape(cell),
         level: state.level,
         children: []
       });

@@ -4,15 +4,21 @@ This application is a viewer of Markdown files.
 
 ## Intended usage
 
-This application should be compiled with [Sciter.Quark](https://quark.sciter.com) to produce ```mdviewer``` executable on target platform.
+This application should be compiled with [Sciter.Quark](https://quark.sciter.com) to produce ```mdview``` executable on target platform.
 
 Then the executable can be called with a .md file name to view it:
 
 ```
-> mdviewer file/to/view.md
+> mdview file/to/view.md
 ```
 
 You also can configure your desktop to open .md files in the viewer by clicking on filename in Explorer, etc. 
+
+You can also view entire folder, this will list .md files.
+
+```
+> mdview folder/to/view
+```
 
 ## Features
 

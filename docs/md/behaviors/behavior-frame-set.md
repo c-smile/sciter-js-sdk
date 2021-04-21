@@ -1,8 +1,8 @@
-# behavior:frame-set
+# behavior: frame-set
 
-This element handles functionality of `<frameset>` elements - containers of blocks-panes separated by so called splitters allowing to adjust the relative sizes of the panes.
+This behavior handles functionality of `<frameset>` elements - containers of blocks-panes separated by so called splitters allowing to adjust the relative sizes of the panes.
 
-The behavior can be applied to any block container, <div> or <section> for example.
+it can be applied to any block container, `<div>` or `<section>` for example.
 
 ## Elements
 
@@ -12,13 +12,13 @@ These elements have *behavior:frame-set* applied by default:
 
 ## Model
 
-In Sciter <frameset> element may contain as <frame> elements as any other block containers like <div> or <section> as panes.
+In Sciter `<frameset>` element may contain as `<frame>` elements as any other block containers like `<div>` or `<section>` as panes.
 
-Panes can be split by <splitter> elements if some special styling of splitters is required.
+Panes can be split by `<splitter>` elements if some special styling of splitters is required.
 
 Example, typical help window layout:
 
-```
+```XML
 <frameset cols="120px,*">
    <div id="help-index">
       <a href="first-topic.htm" target="help-content">First topic</a> 
@@ -26,14 +26,13 @@ Example, typical help window layout:
    <splitter/>
    <frame id="help-content">Select topic from index</frame>
 </frameset>
-
 ```
 
-First pane here is <div> element having static content. <frame> is a container of selected topic element and <splitter> element used for interactive size adjustment.
+First pane here is `<div>` element having static content. `<frame>` is a container of selected topic element and `<splitter>` element used for interactive size adjustment.
 
 ## Attributes
 
-<frame> attributes that have special meaning:
+`<frame>` attributes that have special meaning:
 
 * `cols="widths list"` - declares column layout and specifies initial size of columns in a `<frameset>`;
 * `rows="height list"` - declares rows layout and specifies initial size of rows in a `<frameset>`;

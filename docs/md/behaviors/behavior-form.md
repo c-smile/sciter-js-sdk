@@ -1,6 +1,5 @@
 
-
-# behavior:form
+# behavior: form
 
 This element handles extended functionality of `<form>` elements. The behavior can be applied to any container where "compound value" is needed.
 
@@ -23,12 +22,11 @@ Value of the form is always compound (aggregate, map ) JSON value.
 
 Example, value of the form:
 
-```
+```XML
 <form>
    First name: <input|text name="first" value="Foo"> 
    Last name: <input|text name="last" value="Bar">
 </form>
-
 ```
 
 is
@@ -38,7 +36,6 @@ is
   first: "Foo",
   last: "Bar" 
 }
-
 ```
 
 ### Radio groups and check boxes
@@ -69,22 +66,20 @@ is
   adult: "mature",
   ownsCadddilac: undefined
 }
-
 ```
 
 ### Field groups
 
 Some fields can be grouped into named containers forming sub-objects in value map:
 
-```
+```XML
 <form>
    <div name="credentials">
      User name: <input|text name="un" value="Peter">
      Password: <input|password name="pwd" value="12345">
    </div>
-   Save login: <input|checkbox name="parsistLogin" value="true" checked>
+   Save login: <input|checkbox name="persistLogin" value="true" checked>
 </form>
-
 ```
 
 produces this value:
@@ -96,7 +91,6 @@ produces this value:
      pwd: "12345" },
    persistLogin: true; 
 }
-
 ```
 
 ## Attributes
@@ -130,10 +124,9 @@ name/value map - object in script terms with names corresponding to name attribu
 
 ### `on()` subscription
 
-```
+```JavaScript
 var frm = document.$("form#some");
 frm.on("change", function() { var formValue = this.value; ... });
 document.on("change", "form#some", function(evt, form) { var formValue = form.value; ... });
-
 ```
 

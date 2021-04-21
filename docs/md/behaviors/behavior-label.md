@@ -1,4 +1,4 @@
-# behavior:label
+# behavior: label
 
 This element redirects its mouse events to its labeled element. Therefore mouse click on the label will cause labeled element to receive focus or generate click event.
 
@@ -29,10 +29,9 @@ N/A
 
 This markup:
 
-```
+```XML
 <label>Click me <input|text></label>
 <label for="buddy">And me too</label> <input|text id="buddy">
-
 ```
 
 will create two labeled input elements.

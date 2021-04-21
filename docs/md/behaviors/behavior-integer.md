@@ -13,16 +13,15 @@ that have this behavior applied by default:
 
 Upon initialization the behavior creates following DOM structure:
 
-```
+```XML
 <input>
   <caption /> 
   <button.plus />
   <button.minus />
 </input>
-
 ```
 
-Where <caption> will have `behavior:edit` applied with corresponding filter set. `<button.plus>`/`<button.minus>` sub-elements will be created if the input has attribute `step` defined.
+Where `<caption>` will have [`behavior:edit`](behavior-edit.md) applied with corresponding filter set. `<button.plus>`/`<button.minus>` sub-elements will be created if the input has attribute `step` defined.
 
 All sub-elements will have `:synthetic` state flag set on them.
 
@@ -65,4 +64,4 @@ integer or undefined, reflects current status of internal editing buffer.
 
 ## Methods
 
-N/A - this input element has no specific methods but <caption> sub-element has behavior:edit specific methods.
+N/A - this input element has no specific methods but `<caption>` sub-element has behavior:edit specific methods.

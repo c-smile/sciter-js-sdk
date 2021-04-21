@@ -1,4 +1,4 @@
-# behavior:history
+# behavior: history
 
 This behavior provides navigation history support, close to what browsers do on go-back go-forward buttons clicks.
 
@@ -8,7 +8,7 @@ This behavior provides navigation history support, close to what browsers do on 
 
 ## Model
 
-This bevavior is applicable to any elements containing frames inside. For example it can be applied to `<frameset>`` if needed.
+This behavior is applicable to any elements containing frames inside. For example it can be applied to `<frameset>` if needed.
 
 ## Attributes
 

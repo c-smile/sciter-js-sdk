@@ -1,4 +1,4 @@
-# behavior:masked-edit
+# behavior: masked-edit
 
 This behavior provides masked input editing functionality - editable "islands" separated by static text.
 
@@ -15,7 +15,7 @@ that have this behavior applied by default to:
 
 Upon initialization the input contains following structure:
 
-```
+```XML
 <input|masked>
   <span>editable</span>
   separator
@@ -23,7 +23,6 @@ Upon initialization the input contains following structure:
   separator
   ...
 </input>
-
 ```
 
 `<span>` elements represent editable text and text nodes represent static separators.
@@ -42,7 +41,7 @@ Current editable span will have `:current` state flag. Numeric span with inva
 
 ## Methods
 
-* `masked.selectGroup(group:integer)`` - Selects particular editing group.
+* `masked.selectGroup(group:integer)` - Selects particular editing group.
 * `masked.selectAll()` - Selects all editing groups.
 
 ## Properties
@@ -65,7 +64,7 @@ Current editable span will have `:current` state flag. Numeric span with inva
 
 ## Events
 
-* `"change"`` | `"input"` - posted when value is changed.
+* `"change"` | `"input"` - posted when value is changed.
 * `"statechange"` - posted when editor highlights other editable group.
 
 ## Value
@@ -76,26 +75,25 @@ Is either `string` or `array of values`  when mask was defined by `this.ma
 
 Declaration of IP4 address input field:
 
-```
+```XML
 <input|masked mask="000.000.000.000">
-
 ```
 
 More precise declaration of IP4 address input field using aspect function for initialization, markup:
 
-```
+```XML
 <input|masked.ip4 mask="000.000.000.000">
 ```
 
 CSS:
 
-```
+```CSS
 input.ip4 { aspect:IP4 }
 ```
 
 Script:
 
-```
+```JavaScript
 function IP4() {
   const ipmask = [
             { type:"integer", width:3, min:0, max:255, "leading-zero":true }, ".",

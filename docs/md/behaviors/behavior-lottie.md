@@ -1,8 +1,8 @@
-# behavior:lottie
+# behavior: lottie
 
-This behavior provides playback of Lottie animations.  It parses [Adobe After Effects](http://www.adobe.com/products/aftereffects.html) animations exported as json with [Bodymovin](https://github.com/airbnb/lottie-web) and renders them natively inside the Sciter.
+This behavior provides playback of Lottie animations. It parses [Adobe After Effects](http://www.adobe.com/products/aftereffects.html) animations exported as json with [Bodymovin](https://github.com/airbnb/lottie-web) and renders them natively inside the Sciter.
 
-## [Elements](undefined)
+## Elements
 
 that have this behavior applied by default to:
 
@@ -10,7 +10,7 @@ that have this behavior applied by default to:
 * `<param path="keyPath" property="propName" value="propVal" />` inside `<lottie>` \- redefines variable in the animation,
   used for parametrization and theming. For the meaning of attributes see [below](#redefining).
 
-## [Attributes](undefined)
+## Attributes
 
 this behavior knows about:
 
@@ -36,7 +36,7 @@ this behavior knows about:
 * `lottie.load( url : string ) : bool` - load (potentially asynchronously) animation from JSON file at URL.
 * `lottie.play( [ firstFrame : integer, lastFrame : integer ] ) : bool` - start playback. If first/last frame is provided will play only frames in the range.
 * `lottie.stop() : bool` - stop (pause) animation.
-* `lotie.update( keyPath: string, propName : string, value : color | float | integer ) : bool` - update animation properties dynamically at runtime. For *keyPath*, *propName* and *value* see [below](#redefining).
+* `lottie.update( keyPath: string, propName : string, value : color | float | integer ) : bool` - update animation properties dynamically at runtime. For *keyPath*, *propName* and *value* see [below](#redefining).
 
 ## Events
 

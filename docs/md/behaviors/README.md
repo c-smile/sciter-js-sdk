@@ -1,6 +1,6 @@
-# Behaviors - native extensisons of standard DOM elements
+# Behaviors - native extensions of standard DOM elements
 
-Behavors in Sciter are native "DOM element controllers" that get attached to DOM elements by CSS:
+Behaviors in Sciter are native "DOM element controllers" that get attached to DOM elements by CSS:
 
 ```CSS
 div.editable {
@@ -24,47 +24,48 @@ el.edit.setRange(0,10); // call of behavior method
 Here is a list of such built-in behaviors that are available out of the box in Sciter:
 
 * buttons 
-  * [button](button.md) 
-  * [clickable](clickable.md) 
-  * [hyperlink](hyperlink.md) 
-  * [check](check.md) 
-  * [radio](radio.md) 
-  * [label](label.md) 
-  * [slider](slider.md) 
+  * [button](behavior-button.md) 
+  * [clickable](behavior-clickable.md) 
+  * [hyperlink](behavior-hyperlink.md) 
+  * [check](behavior-check.md) 
+  * [radio](behavior-radio.md) 
+  * [label](behavior-label.md) 
+  * [slider](behavior-slider.md) 
 * editors 
-  * [edit](edit.md) 
-  * [password](password.md) 
-  * [masked-edit](masked-edit.md) 
-  * [integer](integer.md) 
-  * [decimal](decimal.md) 
-  * [number](number.md) 
-  * [textarea](textarea.md) 
-  * [plaintext](plaintext.md) 
-  * [richtext](richtext.md) 
+  * [edit](behavior-edit.md) 
+  * [password](behavior-password.md) 
+  * [masked-edit](behavior-masked-edit.md) 
+  * [integer](behavior-integer.md) 
+  * [decimal](behavior-decimal.md) 
+  * [number](behavior-number.md) 
+  * [textarea](behavior-textarea.md) 
+  * [plaintext](behavior-plaintext.md) 
+  * [richtext](behavior-richtext.md) 
 * selects 
-  * [select](select.md) 
-  * [select-multiple](select-multiple.md) 
-  * [select-checkmarks](select-checkmarks.md) 
-  * [tree-view](tree-view.md) 
-  * [tree-checkmarks](tree-checkmarks.md) 
-  * [dropdown-select](select-dropdown.md) 
+  * [select](behavior-select.md) 
+  * [select-multiple](behavior-select-multiple.md) 
+  * [select-checkmarks](behavior-select-checkmarks.md) 
+  * [tree-view](behavior-tree-view.md) 
+  * [tree-checkmarks](behavior-tree-checkmarks.md) 
+  * [dropdown-select](behavior-select-dropdown.md) 
 * date/time input 
-  * [calendar](calendar.md) 
-  * [date](date.md) 
-  * [time](time.md) 
+  * [calendar](behavior-calendar.md) 
+  * [date](behavior-date.md) 
+  * [time](behavior-time.md) 
 * containers 
-  * [form](form.md) 
-  * [frame](frame.md) 
-  * [frameset](frame-set.md) 
+  * [form](behavior-form.md) 
+  * [frame](behavior-frame.md) 
+  * [frameset](behavior-frame-set.md) 
 * outputs 
-  * [output](output.md) 
-  * [progress](progress.md) 
-  * [video](video.md) 
-  * [lottie](lottie.md) 
+  * [output](behavior-output.md) 
+  * [progress](behavior-progress.md) 
+  * [video](behavior-video.md) 
+  * [lottie](behavior-lottie.md) 
 * lists
-  * [vlist](vlist.md)
+  * [virtual-list](behavior-virtual-list.md)
+  * [expandable-list](behavior-expandable-list.md)
 * menu 
-  * [menu](menu.md) 
-  * [menu-bar](menu-bar.md) 
+  * [menu](behavior-menu.md) 
+  * [menu-bar](behavior-menu-bar.md) 
 * auxiliary 
-  * [scrollbar](scrollbar.md)
+  * [scrollbar](behavior-scrollbar.md)

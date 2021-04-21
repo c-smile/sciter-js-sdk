@@ -1,8 +1,8 @@
-# behavior:frame
+# behavior: frame
 
-This element handles functionality of `<frame>`/`<iframe>` elements - containers of sub-documents inside host document.
+This behavior handles functionality of `<frame>`/`<iframe>` elements - containers of sub-documents inside host document.
 
-The behavior can be applied to any block element, <div> or <section> for example.
+The behavior can be applied to any block element, `<div>` or `<section>` for example.
 
 ## Elements
 
@@ -15,32 +15,30 @@ In Sciter, `<frame>` is an ordinary DOM element that can appear in any context
 
 ## Model
 
-`<frame>` element can have any arbitrary content initially. In this respect <frame> is not anyhow different from <div> or <section>.
+`<frame>` element can have any arbitrary content initially. In this respect `<frame>` is not anyhow different from `<div>` or `<section>`.
 
-```
+```XML
 <frame>
    <p>Select document to load</p> 
 </frame>
-
 ```
 
 After content loading ( due to *src* attribute handling or `.load()` method call ) the frame will have single child element - root element of loaded document, `<html>` for example.
 
 The `<frame>` with loaded document:
 
-```
+```XML
 <frame>
    <html>
      <head>...</head>  
      <body>...</body>  
    </html>
 </form>
-
 ```
 
 To access loaded document from script use `el.frame.document` property that will return child document element:
 
-```
+```JavaScript
 var frm = document.$("frame#main");
 var childDoc = frm.frame.document;
 var someBtn = childDoc.$("button#some");
@@ -84,11 +82,10 @@ N/A
 
 ## Frame events handling in script
 
-```
+```JavaScript
 var frame = document.$("frame#some");
 frame.on("complete", function(evt)
 {
   ...
 }
-
 ```

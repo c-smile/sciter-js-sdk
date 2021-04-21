@@ -19,7 +19,7 @@ Those are Sciter specific elements, most of them have a custom [behavior](behavi
 | Element | Description |
 | ------- | ----------- |
 | `<popup>` | popup element (preferred to be placed in `<head>`)
-| `<menu .context>`  | [context-menu styled](CSS/css-sciter.md) element
+| [`<menu .context>`](behaviors/behavior-menu.md)  | [context-menu styled](CSS/css-sciter.md) element
 | [`<plaintext>`](behaviors/behavior-plaintext.md) | Multiline text editor, each line is a `<text>` element
 | `<htmlarea>` | WYSIWYG editor with [richtext behavior](behaviors/behavior-richtext.md)
 | [`<frameset>`](behaviors/behavior-frame-set.md) | child elements to be resizable window blocks

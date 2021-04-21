@@ -1,5 +1,5 @@
 
-# behavior:menu-bar
+# behavior: menu-bar
 
 This behavior provides horizontal menu bar - top level container for popup menus.
 
@@ -13,7 +13,7 @@ No elements has this behavior applied by default.  {sdk}/samples/menu/std-menu.
 
 Example of menu declaration in Sciter:
 
-```
+```XML
 <ul id="menu-bar">
   <li>
     <caption>File</caption>
@@ -26,7 +26,6 @@ Example of menu declaration in Sciter:
    <li>
    ...
 </ul>
-
 ```
 
 ## Attributes
@@ -52,9 +51,8 @@ N/A
 
 ### `on()` subscription
 
-```
+```JavaScript
 document.on("click", "li#file-open", function(evt) {
   // 'this' here is that li#file-open item
 });
-
 ```

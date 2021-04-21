@@ -1,5 +1,5 @@
 
-@import url(printview/style.css);
+@import url(printview/print.css);
 
 body { 
   flow:stack;
@@ -8,9 +8,6 @@ body {
 
 frame#content { size:*; overflow: scroll-indicator; padding-bottom: 4em; }
 frame#overlay { size:*; }
-
-frameset splitter { hit-margin: 10dip; }
-frameset .splitter { hit-margin: 10dip; }
 
 #folder {
   display: block;

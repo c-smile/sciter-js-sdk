@@ -17,10 +17,17 @@ pre {
   padding:0.5em;
   background: #fafaff; 
 }
-pre:theme(dark) { background: #445; }
+pre:theme(dark) { background: #242526; }
 
-code { background: #fafaff; }
-code:theme(dark) { background: #445; }
+code {
+  behavior: selectable;
+  display: inline-block;
+  padding: 3dip;
+  border-radius: 2dip;
+  background: #fafaff;
+  outline: none;
+}
+code:theme(dark) { background: #242526; }
 
 a.header-anchor {
   display:none;
@@ -53,4 +60,41 @@ img {
 
 li {
   margin-top: 4dip;
+}
+
+table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+table th {
+  font-weight: 600;
+}
+
+table td,
+table th {
+  padding: 6dip 13dip;
+  border: 1px solid #dfe2e5;
+}
+table td:theme(dark),
+table th:theme(dark) {
+  border-color: #4f5154;
+}
+
+table tr {
+  background-color: #fff;
+  border-top: 1px solid #c6cbd1;
+}
+table tr:theme(dark) {
+  background-color: #191919;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+table tr:nth-child(2n):theme(dark) {
+  background-color: #313232;
 }

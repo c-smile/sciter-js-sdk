@@ -1,0 +1,245 @@
+
+
+<html>
+    <head>
+        <title>Flexbox versus flow/flex</title>
+        <style>
+
+section { margin:1em; }
+section > header { font:10pt Verdana, sans-serif; padding:1em; text-align:center; }
+section > pre { padding:1em; border:thin solid #ddd; }
+
+section > :nth-child(1) { background:#eff; }
+section > :nth-child(2) { background:#ffe; }
+
+section > .parent { border:thin solid #888; }
+section > .parent > .child { font-size:5vw; border:thin solid #bbb; text-align:center; background:gold; }
+
+/* browser */
+@supports (display:flex)  
+{
+  section { display: flex; }
+  section > * { flex: 1; margin:1em; } 
+
+  #A .parent { display:flex; flex-direction: row; }
+  #B .parent { display:flex; flex-direction: column; }
+
+  #C .parent { display: flex; flex-wrap: wrap; }
+  #C .parent .child { width:100px; }
+
+  #D .parent { display:flex; flex-direction: row; justify-content: space-between; }
+
+  #E .parent { display:flex; flex-direction: row; align-items: stretch; }
+  #E .child:nth-child(3)  { align-self: flex-start; }
+
+  #F .parent { display:flex; flex-direction: row; height:8vw; align-items:center; }
+  #F .child:nth-child(3)  { align-self: flex-start; }
+
+  #G .parent { display:flex; flex-direction: row; }
+  #G .child:nth-child(3) { flex: 1; }
+
+}
+
+/* sciter */
+@supports (flow:horizontal)
+{
+  section { flow:horizontal; }
+  section > * { width:1*; margin:1em; }
+
+  #A .parent { flow:horizontal; }
+  #B .parent { flow:vertical; }
+
+  #C .parent { flow:horizontal-wrap; } 
+  #C .parent .child { width:100px; }
+
+  #D .parent { flow:horizontal; border-spacing:*; } 
+
+  #E .parent { flow:horizontal; height:8vw; }
+  #E .child { height:*; }
+  #E .child:nth-child(3) { height:max-content; }
+
+  #F .parent { flow:horizontal; height:8vw; }
+  #F .child { margin-top:*; margin-bottom:*; }
+  #F .child:nth-child(3) { margin-top:0; margin-bottom:*; }
+
+  #G .parent { flow:horizontal; }
+  #G .child:nth-child(3) { width: 1*; }
+
+}
+
+        </style>
+    </head>
+    <body>
+
+<h1>Comparison of <code>display:flex</code> (browser) and <code>flow/flex</code> units (Sciter)</h1>
+
+<p>This document can be viewed as in browser as in Sciter.</p>
+<p>Note that <code>display:flex</code> breaks existing CSS box model so dimensions of .child elements may not match exactly.</p>
+
+<section id="header">
+  <header>browser:flexbox</header>
+  <header>sciter:flow/flex</header>
+  <header>result</header>
+</section>
+
+<h2>direction: horizontal</h2>
+<section id="A">
+  <pre>.parent { 
+  display:flex; 
+  flex-direction: row; 
+}</pre>
+  <pre>.parent { flow:horizontal; }</pre>
+  <div class="parent">
+    <div class="child">1</div>
+    <div class="child">2</div>
+    <div class="child">3</div>
+    <div class="child">4</div>
+  </div>
+</section>
+
+<h2>direction: vertical</h2>
+<section id="B">
+  <pre>.parent { 
+  display:flex; 
+  flex-direction: column; 
+}</pre>
+  <pre>.parent { flow:vertical; }</pre>
+  <div class="parent">
+    <div class="child">1</div>
+    <div class="child">2</div>
+    <div class="child">3</div>
+    <div class="child">4</div>
+  </div>
+</section>
+
+<h2>direction horizontal wrap</h2>
+<section id="C">
+  <pre>.parent { 
+  display: flex; 
+  flex-wrap: wrap; 
+}
+.child { 
+  width:100px; 
+} </pre>
+  <pre>.parent { 
+  flow:horizontal-wrap; 
+}
+.child { 
+  width:100px; 
+}</pre>
+  <div class="parent">
+    <div class="child">1</div>
+    <div class="child">2</div>
+    <div class="child">3</div>
+    <div class="child">4</div>
+  </div>
+</section>
+
+<h2>horizontal justify-content space-between</h2>
+<section id="D">
+  <pre>.parent { 
+  display:flex; 
+  flex-direction: row; 
+  justify-content: space-between; 
+}</pre>
+  <pre>.parent { 
+  flow:horizontal; 
+  border-spacing:*; 
+}</pre>
+  <div class="parent">
+    <div class="child">1</div>
+    <div class="child">2</div>
+    <div class="child">3</div>
+    <div class="child">4</div>
+  </div>
+</section>
+
+<h2>horizontal, vertical flex</h2>
+<section id="E">
+  <pre>.parent { 
+  display:flex; 
+  flex-direction: row; 
+  height:8vw; 
+  align-items:stretch;
+}
+.child:nth-child(3) { 
+  align-self: flex-start; 
+}</pre>
+  <pre>.parent { 
+  flow:horizontal; 
+  height:8vw; 
+}
+.child { 
+  height:*;
+}
+.child:nth-child(3) { 
+  height:max-content;
+}</pre>
+  <div class="parent">
+    <div class="child">1</div>
+    <div class="child">2</div>
+    <div class="child">3</div>
+    <div class="child">4</div>
+  </div>
+</section>
+
+
+<h2>horizontal, vertical align</h2>
+<section id="F">
+  <pre>.parent { 
+  display:flex; 
+  flex-direction: row; 
+  height:8vw; 
+  align-items:center;
+}
+.child:nth-child(3) { 
+  align-self: flex-start; 
+}</pre>
+  <pre>.parent { 
+  flow:horizontal; 
+  height:8vw; 
+}
+.child { 
+  margin-top:*; 
+  margin-bottom:*; 
+}
+.child:nth-child(3) { 
+  margin-top:0; 
+}</pre>
+  <div class="parent">
+    <div class="child">1</div>
+    <div class="child">2</div>
+    <div class="child">3</div>
+    <div class="child">4</div>
+  </div>
+</section>
+
+
+<h2>horizontal, horizontal flex</h2>
+<section id="G">
+  <pre>.parent { 
+  display:flex; 
+  flex-direction: row; 
+}
+.child:nth-child(3) { 
+  flex: 1;
+}</pre>
+  <pre>.parent { 
+  flow:horizontal; 
+}
+.child:nth-child(3) { 
+  width:1*; 
+}</pre>
+  <div class="parent">
+    <div class="child">1</div>
+    <div class="child">2</div>
+    <div class="child">3</div>
+    <div class="child">4</div>
+  </div>
+</section>
+
+
+    </body>
+</html>
+
+

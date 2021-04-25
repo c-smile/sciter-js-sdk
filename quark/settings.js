@@ -30,12 +30,12 @@ export async function store()
   }
 }
 
-async function restore() 
+function restore() 
 {
   var buffer;
 
   try {
-    buffer = await sys.fs.$readfile(path,"r");
+    buffer = sys.fs.$readfile(path,"r");
   } catch(e) {
     return false;
   }

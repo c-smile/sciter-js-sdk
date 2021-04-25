@@ -35,9 +35,9 @@ export function messageDelete(messageId) {
   messages.splice(idx, 1);
 }
 
-export function reset() {
+export function reset(n = 500) {
   messages = [];
-  for(let index = 0; index < 500; ++index) {
+  for(let index = 0; index < n; ++index) {
     const uid = Sciter.uuid();
     messages.push({
         id: uid,

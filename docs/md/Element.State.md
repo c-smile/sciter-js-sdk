@@ -72,8 +72,6 @@ section:expanded > div.content { visibility:visible; }
 * `element.state.contentWidths() : [minWidth,maxWidth]`
 * `element.state.contentHeight(forWidth) : height`
 * `element.state.metrics(...)` - returns various metrics of the element (that is `element.box()` in Sciter), TBD. 
-* `element.state.showPopup(...)` - TBD. 
-* `element.state.closePopup()` - TBD. 
 * `element.state.capture(false | true)` set/remove mouse capture, where:
   * `false` - remove capture if the element owns capture now;
   * `true` - captures mouse events by the element. Mouse events will be delivered to the element only.

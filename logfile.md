@@ -1,3 +1,13 @@
+## 4.4.7.1
+
+### Fixes:
+
+* fix of https://sciter.com/forums/topic/svg-does-not-render-until-hover/
+* fix of https://sciter.com/forums/topic/widthmax-intrinsic-bug-on-hover/
+* css: horizontal-align / flow:vertical combination fix.
+* `&lt;select&gt;` uses `@as="string"` by default in Sciter.JS.
+* fix of https://sciter.com/forums/topic/aspect/
+
 ## 4.4.7.0
 
 Unified API: ISciterAPI uses the same structure (list of functions) on all platforms and variants (Sciter and Sciter.Lite). Functions that are not available on particular platform/variant are set to NULL. 

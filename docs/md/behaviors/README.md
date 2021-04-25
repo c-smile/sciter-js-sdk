@@ -39,8 +39,8 @@ Here is a list of such built-in behaviors that are available out of the box in S
   * [decimal](behavior-decimal.md) 
   * [number](behavior-number.md) 
   * [textarea](behavior-textarea.md) 
-  * [plaintext](behavior-plaintext.md) 
-  * [richtext](behavior-richtext.md) 
+  * [plaintext](behavior-plaintext.md) - plaintext multiline editor
+  * [richtext](behavior-richtext.md) - WYSIWYG HTML editor
 * selects 
   * [select](behavior-select.md) 
   * [select-multiple](behavior-select-multiple.md) 
@@ -53,9 +53,11 @@ Here is a list of such built-in behaviors that are available out of the box in S
   * [date](behavior-date.md) 
   * [time](behavior-time.md) 
 * containers 
+  * [selection](behavior-selection.md) - HTML range selection
   * [form](behavior-form.md) 
   * [frame](behavior-frame.md) 
   * [frameset](behavior-frame-set.md) 
+  * [pager](behavior-pager.md) - print and print preview frame
 * outputs 
   * [output](behavior-output.md) 
   * [progress](behavior-progress.md) 

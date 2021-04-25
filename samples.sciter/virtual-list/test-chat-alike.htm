@@ -67,8 +67,8 @@
         });
 
         document.on('click', 'button#btn-repl-items', () => {
-          DS.reset();          
-          tape.vlist.navigate("start"); // scroll        
+          DS.reset(200);          
+          tape.vlist.navigate("end"); // scroll
         });
 
         function isAtTheEnd(tape) {

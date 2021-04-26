@@ -1,3 +1,10 @@
+## 4.4.7.2
+
+### Fixes:
+
+* fix of issues in behavior:virtual-list; 
+* [css] fix of max-width handling;
+
 ## 4.4.7.1
 
 ### Fixes:

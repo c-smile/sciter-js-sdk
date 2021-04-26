@@ -29,10 +29,11 @@ Together with the standard set of events (mouse, keyboard, focus) *behavior: bu
 
 * event.reason is one of
 
-* const BY\_INS\_CHAR = 3; // changing by typing single character.
-* const BY\_INS\_CHARS = 4; // pasting from clipboard
-* const BY\_DEL\_CHAR = 5; // by DELETE/BACKSPACE click
-* const BY\_DEL\_CHARS = 6; // by selection removal
+  * const BY\_INS\_CHAR = 3; // changing by typing single character.
+  * const BY\_INS\_CHARS = 4; // pasting from clipboard
+  * const BY\_DEL\_CHAR = 5; // by DELETE/BACKSPACE click
+  * const BY\_DEL\_CHARS = 6; // by selection removal
+
 * event.data - string, read/write. Contains character(s) to be inserted if reason is one of BY\_INS\_\*\*\* values;
 
 ## Value

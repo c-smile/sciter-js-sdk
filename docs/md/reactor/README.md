@@ -52,3 +52,4 @@ But Facebook::ReactJS is a JavaScript library and SciterJS::Reactor is a native 
 * [Component state and lifecycle](component-update.md) - componentUpdate(state), etc.
 * [Styles, Events and Mounting points](component-styles-events.md)
 * [Lists and Keys](lists-and-keys.md)
+* [Technical details: Reactor vs ReactJS](reactor-vs-reactjs.md)

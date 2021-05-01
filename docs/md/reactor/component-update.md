@@ -15,7 +15,7 @@ Each Reactor class based component shall have `render()` method:
 
 ```JavaScript
 class Clock extends Element {
-  function render() {
+  render() {
     return <div>
         <h1>Hello, world!</h1>
         <h2>It is {this.time.toLocaleTimeString()}.</h2>
@@ -36,7 +36,7 @@ class Clock extends Element
   // declaring local data storage with initial value 
   time = new Date(); 
 
-  function render() {
+  render() {
     return <div>
         <h1>Hello, world!</h1>
         <h2>It is {this.time.toLocaleTimeString()} now.</h2>
@@ -58,14 +58,14 @@ class Clock extends Element
 {
   time = new Date(); // setting initial state 
 
-  function componentDidMount() { // instance of the class is attached to real DOM
+  componentDidMount() { // instance of the class is attached to real DOM
     this.timer(1000, () => {
       this.componentUpdate({ time:new Date() });
       return true; // to keep the timer ticking
     });
   }
 
-  function render() {
+  render() {
     return <div>
       <h1>Hello, world!</h1>
       <h2>It is {this.time.toLocaleTimeString()} now.</h2>

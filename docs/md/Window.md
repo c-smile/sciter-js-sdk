@@ -51,6 +51,25 @@ Instances of the Window class represent desktop windows.
 
 #### methods:
 
+  * `window.box(boxPart,boxOf[,"screen"]):[...]` reports geometry of the window, where:
+  
+    _boxPart_ defines what part of the box to return, is one of:
+  
+    * `"xywh"` or `"rectw"`  - [x,y,w,h], array, position and dimension of the rectangle.
+    * `"rect"` - [x1,y1,x2,y2], array, positions of origin and corner of the rectangle.
+    * `"position"` - [x,y], array, position of the rectangle.
+    * `"dimension"` - [w,h], array, dimension of the rectangle.
+    * `"left"`,`"top"`,`"right"`,`"bottom"`,`"width"`,`"height"` - individual integers.
+
+    _boxOf_ is one of:
+
+    * `"border"` - border area of the window that includes window caption and borders arouns client area;
+    * `"client"` - client (content) area of the window.  
+
+    If _"screen"_ parameter is provided then function returns coordinates relative to screen. 
+
+    Note: the function returns values in screen pixels.
+  
   * `window.move(x,y [,width, height [, "client" ]])` - move/size window;
   * `window.close([value])` - request to close the window, the value is a return value used in modal dialogs;
   * `window.selectFile(...)` - file open/save dialog, TBD;

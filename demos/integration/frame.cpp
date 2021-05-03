@@ -28,7 +28,39 @@ public:
     SOM_PASSPORT_END
 };
 
+#if 0
 
+// "native functions as values"
+
+bool BeginDownload() { return false; }
+bool ShellOpen(bool) { return false; }
+bool DisableRestart(int) { return false; }
+
+// these function when called from script will return map of native functions
+// suitable for native-API-for-script alike cases
+sciter::value CallbacksA() //api definition
+{
+  sciter::value api_map;
+  api_map.set_item("beginDownload", sciter::value(BeginDownload));
+  api_map.set_item("shellOpen", sciter::value(ShellOpen));
+  api_map.set_item("disableRestart", sciter::value(DisableRestart));
+  return api_map;
+}
+
+sciter::value CallbacksB() //api definition
+{
+  // same as the above but with lambdas
+  std::function<bool()>     BeginDownload = [=]() -> bool { return false; };
+  std::function<bool(bool)> ShellOpen = [=](bool) -> bool { return false; };
+  std::function<bool(int)>  DisableRestart = [=](int) -> bool { return false; };
+  sciter::value api_map;
+  api_map.set_item("beginDownload", sciter::value(BeginDownload));
+  api_map.set_item("shellOpen", sciter::value(ShellOpen));
+  api_map.set_item("disableRestart", sciter::value(DisableRestart));
+  return api_map;
+}
+
+#endif
 class frame: public sciter::window {
 public:
   frame() : window(SW_TITLEBAR | SW_RESIZEABLE | SW_CONTROLS | SW_MAIN) {}

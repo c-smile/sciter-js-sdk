@@ -155,3 +155,24 @@ Table editing operations. These operations are available only if selection is in
 * `richtext.contentToSource() : \[html:string, url:string, selStart:integer, selEnd:integer\]`
   
   returns content and selection as an array of three elements;
+
+* `richtext.update(mutator:function(tctx) {}) : bool`
+  
+  Transactional update (mutation) of the content. Multiple mutations made through *tctx* transactional context interface are combined into single transaction that is undoable as a single operation. Tctx is an object that has following content mutation methods:
+
+  *  `tctx.removeAttribute(element,attributeName:string)` - removes one attribute; 
+  *  `tctx.setAttribute(element,attributeName:string,attributeValue:string)` - adds or changes value of one attribute;
+  *  `tctx.setTag(element,tagName:string)` - changes tag of the element, used to change `<p>` to `<li>` for example;
+  *  `tctx.setText(node,text:string)` - change node text;
+  *  `tctx.insertHTML(node,offset, html:string): [nodes...]` - insert HTML at given node/offset position, retuns list of nodes inserted;
+  *  `tctx.insertText(node,offset, text:string): [node,offset]` - insert text at given node/offset position;
+  *  `tctx.insertNode(node,offset, node): [node,offset]` - insert node at given node/offset position;
+  *  `tctx.deleteSelection(): [node,offset]` - delete current selected range (if any);
+  *  `tctx.deleteRange(node1,offset1,node2,offset2): [node,offset]` - delete given range;
+  *  `tctx.deleteNode(node)` - delete given node or element;
+  *  `tctx.split(node,offset,until:element): [node,offset]` - splits node at offset position until the parent element. Similar to pressing ENTER in the middle of paragraph - text node and p[aragraph] element will be split in two paragraphs; 
+  *  `tctx.wrap(node1,offset1,node2,offset2,element)` - wraps the range into element. Similar to wrapping selection into `b` element; 
+  *  `tctx.unwrap(element)` - opposite operation to wrap; 
+  *  `tctx.execCommand(command:string [,params])` - same as `element.execCommand()` above but all mutations will go into this transaction;
+
+  The mutator function shall return *true* to commit transaction or *false* to discard all changes.

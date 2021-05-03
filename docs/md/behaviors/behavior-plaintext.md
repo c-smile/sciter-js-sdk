@@ -140,3 +140,7 @@ editor.plaintext.load("file://users/documents/readme.txt");
   
   removes line\[s\] at the position;
 
+* `plaintext.update(mutator:function(tctx) {}) : bool`
+
+  Performs transactional update, see [tichtext.update](behavior-richtext.md);
+

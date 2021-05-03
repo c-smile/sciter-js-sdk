@@ -7,6 +7,7 @@ Node is an abstract class that is inherited by [Element](Element.md), [Text](#cl
 * `node.nodeName`
 * `node.nodeType`
 * `node.nodeValue`
+* `node.nodeIndex`
 * `node.firstChild`
 * `node.lastChild`
 * `node.nextSibling`
@@ -25,6 +26,7 @@ Node is an abstract class that is inherited by [Element](Element.md), [Text](#cl
 * `node.hasChildNodes()`
 * `node.isEqualNode()`
 * `node.isSameNode()`
+* `node.remove()`
 
 
 # class Text, extends class Node

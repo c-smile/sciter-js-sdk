@@ -2,8 +2,6 @@
 <head>
   <style>
 
-  @import url(lightbox-dialog.css);
-
   body {
     font:system;
     margin:0;
@@ -30,44 +28,51 @@
 
   <script type="module">
 
-    import { dialog } from "lightbox-dialog.js";
+    import { lightbox } from "lightbox.js";
 
     document.on("click", "#button1", function()
     {
       document.$("#result1").innerText = "waiting...";
 
       // show the dialog:      
-      var res = dialog { 
-        caption:"Simple!",
-        body: <form #simple-dialog>
+      var res = lightbox(<dialog>
+        <header>Simple!</header>
+        <form #simple-dialog>
           <label>Title:</label>  
           <input(title) type="text" />
         </form>
-      };
+        <footer>
+          <button #ok>OK</button>
+          <button #cancel>Cancel</button>
+        </footer>
+      </dialog>);
+
       document.$("#result1").innerText = JSON.stringify(res);
+
     });
 
     document.on("click", "#button2", function() {
 
       document.$("#result2").innerText = "waiting...";
 
-      const form = <form#data-dialog>
-          <label>First name:</label>   <input name="first-name" type="text" />
-          <label>Second name:</label>  <input name="last-name" type="text" />
-          <label>Birthday:</label>     <input name="birthday" type="date" />
+      const dialog = <dialog>
+        <header>Please identify yourself:</header>
+        <form#data-dialog>
+          <label>First name:</label>   <input|text(first-name) />
+          <label>Second name:</label>  <input|text(last-name) />
+          <label>Birthday:</label>     <input|date(birthday) />
           <label>Gender:</label>       <div><button name="gender" type="radio" value="male">Male</button>
                                        <button name="gender" type="radio" value="female">Female</button></div>
           <label>What do you want<br/>to ask Santa about?</label><textarea name="secret-wish" rows="4" cols="30" />
-      </form>;
+        </form>
+        <footer>
+          <button #ok>Yep</button>
+          <button #cancel>No way</button>
+        </footer>
+      </dialog>;
       
-
       // show the dialog:      
-      var res = dialog({ 
-        caption : "Please identify yourself:",
-        body    : form,
-        buttons : [ <button #ok>Yep</button>,
-                    <button #cancel>No way</button> ]
-      });
+      var res = lightbox(dialog);
 
       document.$("#result2").innerText = JSON.stringify(res);
     });

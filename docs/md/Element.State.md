@@ -52,7 +52,9 @@ rule to be applied.
 * `pressed`
 * `popup`
 * `ready`
+* `reactive` - `element.state.reconciliation = false;` will prevent reconciliation of element's content by Reactor
 * `value` - any value - runtime value coerced to particular type. Actual for input elements.
+
 
 Properties of Element.State may cause CSS pseudo-class rules to be triggered: 
 

@@ -1,3 +1,15 @@
+## 4.4.7.3
+
+### New features:
+
+ * [behavior:richtext and behavior:plaintext] method `richtext|plaintex.update(function(tctx){})`` - transactional updates.
+
+### Fixes:
+
+* [sdk, C++ headers] sciter::vfunc() was replaced by sciter::value() constructors;
+* fix of sys.fs.$readfile(), was not closing the file properly;
+* [reactor.js] reconciliation fix.
+
 ## 4.4.7.2
 
 ### Fixes:

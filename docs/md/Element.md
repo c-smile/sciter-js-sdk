@@ -6,6 +6,7 @@ class Element represents DOM element and extends [Node](Node.md) and so all its 
 
 * `element.className`
 * `element.id`
+* `element.elementIndex`
 * `element.tagName`
 * `element.innerHTML`
 * `element.outerHTML`

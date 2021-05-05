@@ -29,7 +29,7 @@ When you will make any change in any object or collection under that root object
 Idiomatic code to open or create database looks like this:
 
 ```JavaScript
-import * as Storage from "storage"; // or "@storage" if Sciter.JS
+import * as Storage from "@storage";
 
 var storage = Storage.open("path/to/data/file.db");
 var root = storage.root || initDb(storage); // get root data object or initialize DB

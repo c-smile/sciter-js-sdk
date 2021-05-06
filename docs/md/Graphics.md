@@ -78,14 +78,6 @@ TBD
 
 Layer(clip) with rectangular clip with optional opacity or filter.
 
-##### `graphics.pushLayer(path [,opacity|filter] )` 
-
-Layer(clip) by arbitrary [Path](Graphics.Path.md) with optional opacity or filter.
-
-##### `graphics.pushLayer(mask:Image, useAlpha [,opacity] )` 
-
-[Image](Graphics.Image.md) mask clip with optional opacity.
-
 ##### `graphics.pushLayer(clipAreaName[,opacity|filter])` 
 
 Element area clip with optional opacity. Area name is one of:
@@ -95,6 +87,15 @@ Element area clip with optional opacity. Area name is one of:
   * `"padding-box"`,
   * `"margin-box"`,
   * `"content-box"`
+  
+##### `graphics.pushLayer(path [,opacity] )` 
+
+Layer(clip) by arbitrary [Path](Graphics.Path.md) with optional opacity or filter.
+
+##### `graphics.pushLayer(mask:Image, useAlpha [,opacity] )` 
+
+[Image](Graphics.Image.md) mask clip with optional opacity.
+
 
 ##### `graphics.popLayer()` 
 

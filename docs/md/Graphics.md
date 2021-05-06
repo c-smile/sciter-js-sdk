@@ -58,20 +58,47 @@ Class Graphics also is a namespace that contains classes:
 
 #### Methods (Sciter.JS specific):
 
-* `graphics.draw(path, {params})` - TBD
-* `graphics.draw(image, {params})` - TBD
-* `graphics.draw(text, {params})`  - TBD 
-* `graphics.draw(element, {params})` - TBD 
+##### `graphics.draw(path, {params})`
 
-* `graphics.pushLayer(x,y,w,h[,opacity|filter])` rect clip with optional opacity or filter
-* `graphics.pushLayer(imageMask, useAlpha [,opacity] )` image mask clip with optional opacity
-* `graphics.pushLayer(clipAreaName[,opacity] )` area clip with optional opacity. Area name is one of:
+TBD
+
+##### `graphics.draw(image, {params})` 
+
+TBD
+
+##### `graphics.draw(text, {params})` 
+
+TBD 
+
+##### `graphics.draw(element, {params})` 
+
+TBD 
+
+##### `graphics.pushLayer(x,y,w,h[,opacity|filter])` 
+
+Layer(clip) with rectangular clip with optional opacity or filter.
+
+##### `graphics.pushLayer(path [,opacity|filter] )` 
+
+Layer(clip) by arbitrary [Path](Graphics.Path.md) with optional opacity or filter.
+
+##### `graphics.pushLayer(mask:Image, useAlpha [,opacity] )` 
+
+[Image](Graphics.Image.md) mask clip with optional opacity.
+
+##### `graphics.pushLayer(clipAreaName[,opacity|filter])` 
+
+Element area clip with optional opacity. Area name is one of:
+
   * `"background-area"` - element background area accounting border-radius;
   * `"border-box"`,
   * `"padding-box"`,
   * `"margin-box"`,
   * `"content-box"`
-* `graphics.popLayer()` 
+
+##### `graphics.popLayer()` 
+
+Pop layer created by previous pushLayer() 
 
 
 

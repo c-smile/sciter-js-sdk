@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style></style>
+        <script type="module">
+
+import {VirtualSelect} from "virtual-select.js";
+
+function generate() {
+  let items = [];
+  for(let i = 0; i < 2000; ++i)
+    items.push({key:i, text:`item # ${i}`});
+  return items;
+}
+
+let items = generate();
+
+function renderOption(item, isCurrent, isSelected) {
+  return <option key={item.key} 
+                 state-current={isCurrent} 
+                 state-checked={isSelected}>{item.text}</option>;
+}
+
+document.on("input", "#vselect", function(evt, vselect) {
+  console.log("value change", vselect.value);
+});
+
+document.body.patch(
+  <body>
+    <VirtualSelect id="vselect"
+                   items={items} 
+                   renderItem={renderOption} />
+  </body>);
+
+        </script>
+    </head>
+    <body />
+</html>

@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+htmlarea { size:*; }
+
+        </style>
+        <script type="module">
+
+import * as Environment from "@env";
+
+const htmlarea = document.$("htmlarea");
+
+// hyperlink handler: here we load all links in a browser 
+document.on("^click","[href]",function(evt,hyperlink) {
+  Environment.launch(hyperlink.attributes["href"]);
+  evt.preventDefault();  
+});
+
+
+document.on("click","button#wrap",function() {
+  htmlarea.richtext.update( ctx => {
+    const {anchorNode,anchorOffset,focusNode,focusOffset} = htmlarea.selection;
+    const a = Element.create(<a href="https://sciter.com" />);
+    try {
+      // wrap range into <a> element:
+      ctx.wrap(anchorNode,anchorOffset,focusNode,focusOffset,a);
+      return true;
+    } catch(e) {
+      return false;
+    }
+
+  });
+});
+
+        </script>
+    </head>
+    <body>
+
+<div>
+  <button#wrap>Apply &lt;a&gt;</button>
+</div>
+
+<htmlarea>
+  <p>Paragraph with hyperlink to <a href="https://sciter.com">Sciter</a></p>
+
+  <p>List:</p>
+  <ol>
+    <li>First item</li>
+    <li>Second item</li>
+  </ol>
+  </htmlarea>
+
+
+    </body>
+</html>

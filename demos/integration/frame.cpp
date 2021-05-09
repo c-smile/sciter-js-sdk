@@ -28,37 +28,12 @@ public:
     SOM_PASSPORT_END
 };
 
-#if 0
+#if 1
 
 // "native functions as values"
 
-bool BeginDownload() { return false; }
-bool ShellOpen(bool) { return false; }
-bool DisableRestart(int) { return false; }
-
-// these function when called from script will return map of native functions
-// suitable for native-API-for-script alike cases
-sciter::value CallbacksA() //api definition
-{
-  sciter::value api_map;
-  api_map.set_item("beginDownload", sciter::value(BeginDownload));
-  api_map.set_item("shellOpen", sciter::value(ShellOpen));
-  api_map.set_item("disableRestart", sciter::value(DisableRestart));
-  return api_map;
-}
-
-sciter::value CallbacksB() //api definition
-{
-  // same as the above but with lambdas
-  std::function<bool()>     BeginDownload = [=]() -> bool { return false; };
-  std::function<bool(bool)> ShellOpen = [=](bool) -> bool { return false; };
-  std::function<bool(int)>  DisableRestart = [=](int) -> bool { return false; };
-  sciter::value api_map;
-  api_map.set_item("beginDownload", sciter::value(BeginDownload));
-  api_map.set_item("shellOpen", sciter::value(ShellOpen));
-  api_map.set_item("disableRestart", sciter::value(DisableRestart));
-  return api_map;
-}
+int add(int a, int b) { return a + b; }
+int sub(int a, int b) { return a - b; }
 
 #endif
 class frame: public sciter::window {
@@ -110,13 +85,38 @@ public:
     return (int)(intptr_t)get_hwnd();
   }
 
+  // these function when called from script will return map of native functions
+  // suitable for native-API-for-script alike cases
+  sciter::value nativeFunctionsA() //api definition
+  {
+    sciter::value api_map;
+    api_map.set_item("add", sciter::value(add));
+    api_map.set_item("sub", sciter::value(sub));
+    return api_map;
+  }
+
+  sciter::value nativeFunctionsB() //api definition
+  {
+    // same as the above but with lambdas
+    std::function<bool()>     BeginDownload = [=]() -> bool { return false; };
+    std::function<bool(bool)> ShellOpen = [=](bool) -> bool { return false; };
+    std::function<bool(int)>  DisableRestart = [=](int) -> bool { return false; };
+    sciter::value api_map;
+    api_map.set_item("beginDownload", sciter::value(BeginDownload));
+    api_map.set_item("shellOpen", sciter::value(ShellOpen));
+    api_map.set_item("disableRestart", sciter::value(DisableRestart));
+    return api_map;
+  }
+
   SOM_PASSPORT_BEGIN_EX(assetInterface, frame)
     SOM_FUNCS(
       SOM_FUNC(stringSum),
       SOM_FUNC(integerSum),
       SOM_FUNC(vectorIntegerMul),
       SOM_FUNC(makeNativeObject),
-      SOM_FUNC(startNativeThread)
+      SOM_FUNC(startNativeThread),
+      SOM_FUNC(nativeFunctionsA),
+      SOM_FUNC(nativeFunctionsB),
     )
     SOM_PROPS(
       SOM_RO_VIRTUAL_PROP(windowHandle,get_windowHandle)

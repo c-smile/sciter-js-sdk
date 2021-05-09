@@ -1,0 +1,95 @@
+
+@const DIALOG-SHOW-DURATION: 400ms;
+@const DIALOG-SHOW-EASING: quad-in;
+
+body.dialog-shown {
+  filter: blur(15px);
+  foreground-color:rgba(0,0,0,0.1);
+}
+
+body {
+  transition: foreground-color @DIALOG-SHOW-EASING @DIALOG-SHOW-DURATION;
+}
+
+
+@set dialog {
+  
+  :root 
+  {
+    display: block;
+    flow:vertical;
+    position:absolute;
+    font: system;
+    width: max-content;
+    min-width: 300px;
+    height: max-content;
+    left: *;
+    right: *;
+    top: 0.4*;
+    bottom: 0.6*;
+
+    border-radius: 0 0 1em 1em;
+    background-color: #fff;
+    box-shadow: 2px 2px 5px #888888;
+    
+    cursor:default;
+    padding:10px;
+
+    opacity:0.01;
+    transition: opacity @DIALOG-SHOW-EASING @DIALOG-SHOW-DURATION;  
+  }
+
+  :root.shown {
+    opacity:1.0;
+  }
+
+  /* dialog "window" caption */
+  :root > header 
+  {
+    font-weight: bold;
+    line-height: 28px;
+    padding:0 10px;
+  }
+
+  /* dialog body element */
+  :root > :nth-child(2) 
+  {
+    height: *;
+    padding: 10px;
+  }
+
+  form {
+    flow: row(label,input select textarea div);
+    horizontal-align:center;
+    border-spacing:0.5em 0.25em;
+  }
+
+  form > label {
+    margin:* 0 * *;
+    white-space:nowrap;
+  }
+
+  form > div { display:block; flow:horizontal; border-spacing:0.25em; }
+
+  /* dialog button bar */
+  :root > footer
+   {
+    margin:20px 10px 10px *;
+    width: max-intrinsic;
+    white-space: nowrap;
+    border-spacing:10px;
+    flow:horizontal;
+  }
+
+  /* button on dialog button bar */
+  :root > footer > button 
+  {
+    width: 55px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 5px 10px;
+  }
+
+  
+
+}

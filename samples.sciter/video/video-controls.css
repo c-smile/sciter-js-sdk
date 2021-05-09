@@ -1,0 +1,55 @@
+
+video[controls] { 
+  style-set: "video-controls"; 
+  prototype: VideoControls url(video-controls.js);
+}
+
+@set video-controls 
+{
+  :root { 
+    background:#CCD; flow:vertical; overflow:hidden; 
+  }
+ 
+  
+  div.bar {
+    width:*; 
+    height:30dip; 
+    margin-top:* 0 0 0;
+    transform:translate(0,0);
+    flow:horizontal;
+    vertical-align:middle;
+    horizontal-align:center;
+    border-top: 1px solid rgba(245,245,245,0.5); 
+    background-color: rgba(45,45,45,0.75); 
+    color:rgb(255,255,255);
+    padding:4dip;
+    border-spacing:4dip;
+    transition: transform quart-in-out 400ms;
+    var(accent):rgb(255,255,255); // sliders 
+  }
+
+  div.bar[shown=false] {
+    transform:translate(0,100%);
+  }
+
+  button.command {
+    appearance:none;
+    display:block; 
+    size:30dip; background:transparent; border-radius:4dip;
+    foreground: no-repeat 50% 50%;
+    foreground-size: 12px;
+    fill:none; 
+    stroke:#fff;
+  }  
+  
+  button.command:hover { background:rgba(255,255,255,0.5); }
+  button.command:active { background:rgba(204,204,221,0.5); }
+
+  button.command[mode=stopped] { foreground-image: url(path:M 11,10 21,17 11,24 z); }
+  button.command[mode=playing] { foreground-image: url(path:M 10,10 15,10 15,24 10,24 z M 19,10 24,10 24,24 19,24 z); }
+  button.command[mode=ended]   { foreground-image: url(path:M 9,10 14,10 14,24 9,24 z M 14,17 24,10 24,24 z); }
+
+  input.position { height:1px; display:block; width:*; max-width:8em; min-width:2em }
+  input.volume { height:1px; display:block; width:*; max-width:4em;  min-width:1em }
+ 
+}

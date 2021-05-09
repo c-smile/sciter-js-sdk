@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style></style>
+        <script type="module">
+
+import {VirtualSelect} from "virtual-select.js";
+
+let items = [];
+let maxItems = 5000;
+
+// select with virtual data source
+class MySelect extends VirtualSelect {
+
+  itemAt(at) { 
+    while(at >= items.length) {
+      let index = items.length;
+      items.push({key:index, text:`item # ${index}`});
+    }
+    return items[at];
+  }
+  totalItems() { 
+    return maxItems; 
+  }
+  indexOf(item) {  
+    return items.indexOf(item);
+  }
+}
+
+function renderOption(item, isCurrent, isSelected) {
+  return <option key={item.key} 
+                 state-current={isCurrent} 
+                 state-checked={isSelected}>{item.text}</option>;
+}
+
+document.on("input", "#vselect", function(evt, vselect) {
+  console.log("value change", vselect.value);
+});
+
+document.on("click", "button#change-items", function() {
+  for(let item of items) 
+    item.text += " changed";
+  document.$("#vselect").componentUpdate();
+});
+
+document.on("click", "button#change-length", function() {
+  maxItems = 2000;
+  items.splice(maxItems);
+  document.$("#vselect").componentUpdate();
+});
+
+document.body.patch(
+  <body>
+    <MySelect id="vselect" renderItem={renderOption} />
+    <button#change-items>Change items</button>
+    <button#change-length>Change length of set</button>
+  </body>);
+
+        </script>
+    </head>
+    <body />
+</html>

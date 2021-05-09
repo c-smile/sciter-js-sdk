@@ -116,6 +116,11 @@
 * `"parsed"` 
 * `"complete"` 
 
+#### Element's state change
+
+* `sizechange` - change of element dimensions, use `element.onsizechange = function() {}` to setup the event handler;
+* `visibilitychange` -  - change of element visibility status,  use `element.onvisibilitychange = function() {}` to setup the event handler;
+
 #### Image 
 
 * `"load"`
@@ -144,3 +149,4 @@
 
 * `"videocoordinate"`
 * `"videoframeready"`
+

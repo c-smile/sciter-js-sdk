@@ -58,6 +58,26 @@ var nativeObj = win.assetInterface.makeNativeObject();
     output.innerText = `${nativeObj} dec() : ${ r }`;
   });
 
+// native functors
+  document.on("click", "button#native-add", function() {
+    const output = document.$("#functorsOutput");
+
+    const api = win.assetInterface.nativeFunctionsA();
+    const r = api.add(2,2); // invocation of native functors
+    
+    output.innerText = `api.add(2,2) : ${ r }`;
+  });
+
+  document.on("click", "button#native-sub", function() {
+    const output = document.$("#functorsOutput");
+
+    const api = win.assetInterface.nativeFunctionsA();
+    const r = api.sub(2,2); // invocation of native functors
+    
+    output.innerText = `api.sub(2,2) : ${ r }`;
+  });
+
+
 
 document.on("click", "button#task-start", function(evt, button) {
   const progress = document.$("#task-progress");
@@ -169,6 +189,16 @@ document.onGlobalEvent("application-event",function(evt) {
   <button #dec-native>Decrement</button>
   <pre #objectOutput />
 </section>
+
+<h2>Use of native functors</h2>
+
+<section>
+  <p>requests native API (as map of functions) and uses them:</p>
+  <button #native-add>2 + 2</button>
+  <button #native-sub>2 - 2</button>
+  <pre #functorsOutput />
+</section>
+
 
 <h2>Running long tasks in worker threads</h2>
 

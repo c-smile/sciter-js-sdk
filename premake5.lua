@@ -250,6 +250,26 @@ project "integration"
   filter {}
 
 
+if( _TARGET_OS == "windows") then 
+
+  project "sciter-dx"
+    kind "WindowedApp"
+    language "C++"
+
+    dpiawareness "HighPerMonitor"
+
+    files { "demos/windows-directx/*.*" }
+
+    files {"include/sciter-*.h",
+           "include/sciter-*.hpp",
+           "include/aux-*.*"}
+
+    settargetdir()
+
+    removeplatforms { "x64" }
+    removeconfigurations { "*skia" }
+    filter {}
+end
 
 -- sciter extension library - SQLite
 project "sciter-sqlite"

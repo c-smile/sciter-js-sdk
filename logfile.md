@@ -1,3 +1,30 @@
+## 4.4.7.4
+
+### New features:
+
+* [windows] new demo sdk.js/demos/windows-directx demo project, demonstrates 
+  * mixin style of Sciter integration;
+  * use of Sciter on DirectX windows;
+
+* `behavior:video`, "assetified", documented and sampled, see: sdk.js/samples.sciter/video/
+
+* `printf(format, ...): string` - C-style [`printf()`](https://www.cplusplus.com/reference/cstdio/printf/) as a global function.
+* `scanf(format, str): [...]` - C-style [`scanf()`](https://www.cplusplus.com/reference/cstdio/scanf/) as a global function.
+
+* `fetch()` refactoring:
+  * Request/Response split; 
+  * samples/fetch(AJAX)/test-upload.htm - test of file upload
+
+* transactional updates in &lt;plaintext&gt; , see samples.sciter/editor-plaintext/transactional-update.htm
+
+### Fixes:
+
+* fix of `element.innerText` for elements with behaviors.
+* fix of AV in window event handlers - Window.this.on("...", function) - automatic un-subscription of subscribed documents.
+* fix in `element.selection.setBaseAndExtent()` - offsets normalization.
+* fix of asset methods calling in external behaviors.
+* Implementation of missed `sciter::dom::element::call_method(...)`, `sciter::dom::element::call_function(...)`
+
 ## 4.4.7.3
 
 ### New features:

@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <title></title>
+    <style>
+    
+      html { background: transparent; }
+
+      video-stack {
+        prototype: VideoStack;
+        display:block;
+        flow:stack;
+        size:*;
+      }
+      
+      video-stack > video { size: *; foreground-size:contain;  }
+      video-stack > div   { 
+        size: *; 
+        background: url(in-memory:video-frame) no-repeat 50% 50%; 
+        background-size:cover;
+        filter: blur(30px); 
+      }
+    
+    </style>
+    <script>
+
+      class VideoStack extends Element  
+      {
+        onstart() {
+           //  binding video frame image with "in-memory:video-frame" URL 
+           //  so it can be used by CSS. See video-stack > div rule above
+           var img = this.$("video").style.imageOf("foreground-image");
+           document.bindImage("in-memory:video-frame",img);
+        }
+      }
+
+    </script>
+  </head>
+<body>
+<p>Dynamic blurred background.</p>
+
+  <video-stack>
+     <div/>
+     <video src="movies/carribean.wmv" />
+  </video-stack>
+
+</body>
+</html>

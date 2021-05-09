@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <title></title>
+    <style>
+    
+      html { background: transparent; }
+      
+      video {
+        /*background: gray;*/
+        size: *;
+        transition: transform quart-in-out 0.5s;
+      }
+      
+      video:hover
+      { 
+        transform:rotate(15deg) scale(.75);        
+      }
+    
+      #abs-overlay {
+        position:absolute;
+        size:100px;
+        background: rgba(255,0,0,0.5);
+        top:*;
+        left:*;
+        right:*;
+        bottom:*;
+      }
+    
+    </style>
+    <script type="text/tiscript"></script>
+  </head>
+<body>
+<p>Basic video rendering test. Hover mouse to see rotated video.</p>
+<video src="movies/carribean.wmv" />
+<div #abs-overlay>test overlay</div>
+</body>
+</html>

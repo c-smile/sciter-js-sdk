@@ -1,0 +1,63 @@
+﻿<html>
+    <head>
+        <title>Test</title>
+
+        <script>
+
+          const emap = [
+            [":)","🙂"],
+            [":D", "😁"],
+          ];
+
+          function replace(editor,node,offset,from,to) {
+            const startOffset = offset - from.length;
+            let caretNode, caretOffset;
+            editor.richtext.update(function(tctx) {
+              // 1. remove range:
+              const [inode,ioffset]   = tctx.deleteRange(node,startOffset,node,offset);
+              // 2. insert text at its place:
+              [caretNode,caretOffset] = tctx.insertText(inode,ioffset,to);
+              // 3. commit transaction:
+              return true; 
+            });
+            editor.selection.setBaseAndExtent(caretNode,caretOffset,caretNode,caretOffset);
+          }
+
+          function checkForReplacement(editor,caretNode,caretPos)
+          {
+            var text = caretNode.data;
+            var start = text.substr(0,caretPos);
+            for( var [ema,emr] of emap ) {
+              if( !start.endsWith(ema) ) 
+                continue;
+              replace(editor,caretNode,caretPos,ema,emr);
+              return true; // handled 
+            }            
+          }
+
+          const CHANGE_BY_INS_CHAR = 0;  // single char insertion
+          const CHANGE_BY_INS_CHARS = 1; // character range insertion, clipboard
+          const CHANGE_BY_DEL_CHAR = 2;  // single char deletion
+          const CHANGE_BY_DEL_CHARS = 3; // character range deletion (selection)
+          const CHANGE_BY_UNDO_REDO = 4;
+          const CHANGE_BY_INS_CONSECUTIVE_CHAR = 5; // single char insertion, previous character was inserted in previous position  
+          const CHANGE_BY_CODE = 6; 
+
+          document.on("change", "htmlarea", function (evt,htmlarea) 
+          {
+            const reason = evt.reason;
+            if(reason == CHANGE_BY_INS_CONSECUTIVE_CHAR || reason == CHANGE_BY_INS_CHAR) {
+              const {focusNode,focusOffset} = htmlarea.selection;
+              checkForReplacement(htmlarea,focusNode,focusOffset);
+            }
+          });
+
+        </script>
+    </head>
+    <body>
+      <p>Test of emojis substitution, only :) and :D are recognized</p>
+      <htmlarea>
+        <p>test</p>
+      </htmlarea>    
+    </body>
+</html>

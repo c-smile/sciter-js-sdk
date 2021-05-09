@@ -13,20 +13,20 @@ class FileView extends View
   getFileDefinition(url) {
     let resdef = this.channel.theirFiles[url] ;
     if(!resdef) {
-      let rq = fetch(url,{sync:true});
-      if(rq) {
-        const mt = rq.responseMimeType;
+      let response = fetch(url,{sync:true});
+      if(response) {
+        const mt = response.mimeType;
         const astext = mt.startsWith("text/") || mt.endsWith("/json") || mt.endsWith("javascript");
         resdef = {
-          rqType: rq.context,
-          rqMethod: rq.method,
-          rqUrl: rq.url,
-          rsUrl: rq.responseUrl,
-          rqHeaders: rq.requestHeaders,    
-          rsStatus: rq.status,
-          rsHeaders: rq.responseHeaders,
-          rsMimeType: rq.responseMimeType,
-          rsData: astext ? rq.text() : rq.arrayBuffer()
+          rqType: response.request.context,
+          rqMethod: response.request.method,
+          rqUrl: response.request.url,
+          rsUrl: response.url,
+          rqHeaders: response.request.headers,    
+          rsStatus: response.status,
+          rsHeaders: response.headers,
+          rsMimeType: mt,
+          rsData: astext ? response.text() : response.arrayBuffer()
         }
       }
     }

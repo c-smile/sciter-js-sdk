@@ -2,22 +2,28 @@
 
 class Element represents DOM element and extends [Node](Node.md) and so all its methods are available on element.
 
-#### Properties:
+## Properties:
 
-* `element.className`
 * `element.id`
 * `element.elementIndex`
 * `element.tagName`
+* `element.tag` - lower case version of .tagName
+* `element.className`
+
 * `element.innerHTML`
 * `element.outerHTML`
 * `element.innerText`
+
 * `element.firstElementChild`
 * `element.lastElementChild`
 * `element.nextElementSibling`
 * `element.previousElementSibling`
+* `element.childElementCount`
+
 * `element.value`
 * `element.style` - returns reference to [Element.Style](Element.Style.md) class.
 * `element.state` - returns reference to [Element.State](Element.State.md) class (Sciter.JS specific).
+
 * `element.classList` : 
    * `element.classList.item(n)`
    * `element.classList.add(name, ...)`
@@ -26,32 +32,47 @@ class Element represents DOM element and extends [Node](Node.md) and so all its 
    * `element.classList.contains(name)`
    * `element.classList.length`
    * `element.classList.entries()` - array, list of classes
+
+* `element.children` : list of child DOM elements
+   * `element.children[n]` - Nth child element;
+   * `element.children.item(n)` - Nth child element;
+   * `element.children.length: integer` - quantity of children;
+   * `for(let child of element.children)` - iteration of chidren.
+
 * `element.disabled`
 * `element.readonly` 
 * `element.src`
 
-#### Methods:
+## Methods:
 
 * `element.appendChild(node)`
 * `element.insertBefore(node, refNode)`
 * `element.insertAfter(node, refNode)`
 * `element.removeChild(node)`
 * `element.replaceChild(newNode,oldNode)`
+* `element.childElement(n)`
 * `element.insertAdjacentHTML(where, html)`
+
 * `element.querySelector(selector)`
 * `element.querySelectorAll(selector)`
-* `element.addEventListener(...)`
+
 * `element.getAttribute()`
 * `element.getAttributeNames()`
 * `element.removeAttribute()`
 * `element.setAttribute()`
-* `element.dispatchEvent(event: CustomEvent [,post: boolean)` sends or posts instance of [Event](Event.md) class. The _post_ is a Sciter specific flag - if it is provided and is `true` then the function places event into event queue for later dispatch. 
+
 * `element.scrollTo()`
 * `element.scrollIntoView()`
+
 * `element.click()` - generates click event on the element 
 * `element.focus()` - sets input focus to the element
 
-#### Methods (Sciter.JS specific):
+* `element.addEventListener(name, eventHandler [,flags])` 
+* `element.removeEventListener(name, eventHandler)` 
+* `element.dispatchEvent(event)` 
+* `element.postEvent(event)` sciter specific, async version of .dispatchEvent()
+
+## Methods (Sciter.JS specific):
 
 * `element.on(eventname: string, [selector: string,] handler: function): Element`
 
@@ -131,7 +152,7 @@ See [global-events](../../samples.sciter/global-events/README.md) for the ration
 
 
 
-#### Methods (Sciter.JS/Reactor specific):
+## Methods (Sciter.JS/Reactor specific):
 
 * `element.append( vnode )` - appends element defined by JSX expression:
   

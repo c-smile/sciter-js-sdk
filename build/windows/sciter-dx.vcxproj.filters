@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="demos">
+      <UniqueIdentifier>{3DD3490F-A9E7-71C0-7269-1520DE3C6EF1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="demos\windows-directx">
+      <UniqueIdentifier>{D77A395E-43E7-F458-0CDB-8CB6780617C1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{89AF369E-F58E-B539-FEA6-40106A051C9B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\demos\windows-directx\Resource.h">
+      <Filter>demos\windows-directx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\demos\windows-directx\sciter-dx.h">
+      <Filter>demos\windows-directx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\demos\windows-directx\stdafx.h">
+      <Filter>demos\windows-directx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\demos\windows-directx\targetver.h">
+      <Filter>demos\windows-directx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\aux-asset.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\aux-cvt.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\aux-platform.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\aux-slice.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\sciter-om-def.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\sciter-om.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\sciter-x-api.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\sciter-x-behavior.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\sciter-x-debug.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\sciter-x-def.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\sciter-x-dom.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\sciter-x-dom.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\sciter-x-graphics.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\sciter-x-graphics.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\sciter-x-host-callback.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\sciter-x-lite-keycodes.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\sciter-x-lite.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\sciter-x-msg.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\sciter-x-request.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\sciter-x-request.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\sciter-x-threads.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\sciter-x-types.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\sciter-x-value.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\sciter-x-video-api.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\sciter-x-window.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\sciter-x.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\demos\windows-directx\sciter-dx.cpp">
+      <Filter>demos\windows-directx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\demos\windows-directx\stdafx.cpp">
+      <Filter>demos\windows-directx</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\demos\windows-directx\ReadMe.txt">
+      <Filter>demos\windows-directx</Filter>
+    </None>
+    <None Include="..\..\demos\windows-directx\dpi-aware.manifest">
+      <Filter>demos\windows-directx</Filter>
+    </None>
+    <None Include="..\..\demos\windows-directx\sciter-dx.ico">
+      <Filter>demos\windows-directx</Filter>
+    </None>
+    <None Include="..\..\demos\windows-directx\small.ico">
+      <Filter>demos\windows-directx</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\..\demos\windows-directx\sciter-dx.rc">
+      <Filter>demos\windows-directx</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

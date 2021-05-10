@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Create a report to help us improve. If you just have a question like "How to do ..." please post it into [Discussions](https://github.com/c-smile/sciter-js-sdk/discussions) here or on [Sciter's web site](https://sciter.com/forums/).
+about: Create a report to help us improve. If you just have a question please post it into Discussions here or on https://sciter.com/forums/.
 title: ''
 labels: ''
 assignees: ''

@@ -20,66 +20,58 @@ this behavior knows about:
   * *contain* - video frame always seen in full, 
   * *cover* - frame always covers content box in full, some parts of the frame can be clipped out.
 
-## Methods
+## Properties
 
-### video.isPlaying
-
+* #### `video.isPlaying` 
+  
   read-only, boolean, reports playback status. If *true* then video is playing at the moment.
 
-### video.isEnded
-
+* #### `video.isEnded` 
+  
   read-only, boolean, *true* if video playback has reached the end of the movie.
 
-### video.duration
-
+* #### `video.duration` 
+   
   read-only, float, reports duration in seconds of the movie. If duration is not available it returns 0.
 
-### video.position
+* #### `video.position`
   
-  read/write, float, reports current playback position, in seconds.
+  read/write, float, reports current playback position, in seconds. Sets current playback position, in econds.
 
-  Sets current playback position, in seconds.
-  
-### video.height
-### video.width
+* #### `video.height`,`video.width`
+ 
+  read-only, integer, screen pixels. Reports natural width and height of video frame of the movie.
 
-  read-only, integer, screen pixels. 
+* #### `video.renderingBox` 
 
-  Reports natural width and height of video frame of the movie.
+  read-only, `[x,y,width,height]`, reports video box rectangle in pixels relative to the content box of the element. Note if *sizing* attribute is "cover" then either *x* or *y* can be negative.
 
-### video.renderingBox
+* #### `video.audioVolume` 
+ 
+  read/write, float (0.0...1.0). Current volume level of audio track. 1.0 correspond to 0db, 0.0 (mute) -100db.
 
-  read-only, `[x,y,width,height]`,  reports video box rectangle in pixels relative to the content box of the element. 
+* #### `video.audioBalance` 
+ 
+  read/write, float ( -1.0 ... +1.0  ). Current stereo balance.
 
-  Note if *sizing* attribute is "cover" then either *x* or *y* can be negative.
+## Methods
 
-### video.load(*movieUrl* : string) : *true* | *false*
+* #### `video.load(movieUrl : string) : true | false`
 
   Loads video file into the player. It does not start playback automatically.
 
-### video.unload()
+* #### `video.unload()`
 
   Stops video playback and unloads the movie.
 
-### video.play()
+* #### `video.play()`
   
   Starts playback at current *position* 
 
-### video.stop()
+* #### `video.stop()`
 
   stops playback.
 
-### video.audioVolume
-  
-  read/write, float (0.0...1.0)
-  
-  Current volume level of audio track. 1.0 correspond to 0db, 0.0 (mute) -100db.
-
-### video.audioBalance
-
-  read/write, float ( -1.0 ... +1.0  )
-  
-  Current stereo balance.
 
 ## Events
 

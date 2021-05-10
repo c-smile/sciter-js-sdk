@@ -80,7 +80,7 @@ To show the menu you shall call `menuOwnerElement.popup(menuElement, ...)`. Whe
 
 N/A
 
-## Menu item clicks handling in scriptraw `onControlEvent` handler
+## Menu item clicks handling in script
 
 ```JavaScript
 var menuitem = document.$("menu#some>li:first-child");

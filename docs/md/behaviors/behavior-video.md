@@ -20,7 +20,7 @@ this behavior knows about:
   * *contain* - video frame always seen in full, 
   * *cover* - frame always covers content box in full, some parts of the frame can be clipped out.
 
-## Properties
+## Properties 
 
 * #### `video.isPlaying` 
   

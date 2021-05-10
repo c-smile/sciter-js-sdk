@@ -22,7 +22,7 @@ Example of menu declaration in Sciter:
 </menu>
 ```
 
-`<li>` elements or any other block element that has `role=menu-item` attribute defined are treated as selectable menu items and can generate MENU\_ITEM\_CLICK events.
+`<li>` elements or any other block element that has `role=menu-item` attribute defined are treated as selectable menu items and so generate "click" events.
 
 For example, this markup:
 
@@ -80,7 +80,7 @@ To show the menu you shall call `menuOwnerElement.popup(menuElement, ...)`. Whe
 
 N/A
 
-## Menu item clicks handling in scriptraw `onControlEvent` handler
+## Menu item clicks handling in script
 
 ```JavaScript
 var menuitem = document.$("menu#some>li:first-child");

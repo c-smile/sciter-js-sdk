@@ -93,7 +93,7 @@ Indexes are created by ```storage.createIndex(type[,unique]) : Index``` method, 
 
 * *type* defines type of keys in the index. It can be "string", "integer", "long", "float" or "date".
 * *unique* is either
-  * *true* if the index support only unique keys, or
+  * *true* if the index supports only unique keys, or
   * *false* if records with the same key values are allowed in the index.
 
 #### Example #3: creating indexes, simple storage of notes:

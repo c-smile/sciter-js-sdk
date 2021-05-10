@@ -7,8 +7,6 @@ assignees: ''
 
 ---
 
-** If you just have a question like "How to do ..." please post it into [Discussions](https://github.com/c-smile/sciter-js-sdk/discussions) here or on [Sciter's web site](https://sciter.com/forums/).
-
 **Describe the bug**
 A clear and concise description of what the bug is.
 

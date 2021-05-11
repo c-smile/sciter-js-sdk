@@ -48,6 +48,7 @@ Instances of the Window class represent desktop windows.
   * `window.isEnabled` - read/write, boolean, true if the window is allowed to accept user's input.
   * `window.aspectRatio` - read/write, float, width to height ratio to keep on window resizes.
   * `window.eventRoot = element | null` - if set by element, short circuits all UI events to that element and its children as if the window contains only that element. Used in lightbox dialog scenarios (see: samples.sciter/lightbox-dialog).
+  * `focus` - read/write, DOM element in focus.
 
 #### methods:
 
@@ -117,6 +118,18 @@ Instances of the Window class represent desktop windows.
     * `html: string` - HTML data; 
     * `file : [path1,path2,...] | path0` - single or multiple file names;
     * `json`: any - any data that can be JSON.stringify'ed;
+
+  * ##### `Window.this.focusable(dir [,reference:element]): element`
+    
+    The functions allows to enumerate elements in tab order. _dir_ there is one of:
+
+    * "next" - next focusable element after the _reference_;
+    * "prior" - previous focusable element after the _reference_;
+    * "first" - first focusable DOM element on the window;
+    * "last" - last focusable DOM element on the window;
+
+    You can assign found element to `window.focus = element` set focus on it.
+
     
 #### class methods and properties:
 

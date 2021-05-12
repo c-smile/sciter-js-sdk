@@ -108,13 +108,14 @@
 
 #### Document lifecycle
 
-* `"close"` | `"unload"`
-* `"beforeunload"`
-* `"closerequest"`
+* `"close"` | `"unload"` - document is closed and about to be deleted soon.
+* `"beforeunload"` - document is about to be unloaded, script namespace is still operational.
+* `"closerequest"` - first phase of document closure, it can be rejected at this point by calling `event.preventDefault()`. 
 
-* `"ready"` | `"DOMContentLoaded"` 
-* `"parsed"` 
-* `"complete"` 
+* `"parsed"` - document just got a DOM structure, scripts are not run yet. This event can be handled by document container only (window or frame). 
+* `"ready"` | `"DOMContentLoaded"` - document loaded, DOM is parsed, scripts are loaded and run.
+* `"complete"` - document loaded in full scripts wer run, all resources defined in HTML are loaded.
+
 
 #### Element's state change
 

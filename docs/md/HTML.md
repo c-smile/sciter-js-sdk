@@ -20,8 +20,8 @@ Those are Sciter specific elements, most of them have a custom [behavior](behavi
 | ------- | ----------- |
 | `<popup>` | popup element (preferred to be placed in `<head>`)
 | [`<menu .context>`](behaviors/behavior-menu.md)  | [context-menu styled](CSS/css-sciter.md) element
-| [`<plaintext>`](behaviors/behavior-plaintext.md) | Multiline text editor, each line is a `<text>` element
-| `<htmlarea>` | WYSIWYG editor with [richtext behavior](behaviors/behavior-richtext.md)
+| [`<plaintext>`](behaviors/behavior-plaintext.md) | Multiline text editor
+| [`<htmlarea>`](behaviors/behavior-richtext.md) | WYSIWYG/richtext/html editor
 | [`<frameset>`](behaviors/behavior-frame-set.md) | child elements to be resizable window blocks
 | [`<select\|tree>`](behaviors/behavior-tree-view.md) | Tree-list select element, one of [behavior select](behaviors/README.md) types
 
@@ -31,7 +31,7 @@ Those are Sciter specific elements, most of them have a custom [behavior](behavi
 | Attribute  | Description |
 | ---------  | ----------- |
 | `spellcheck` | true/false enable or disable spellcheck
-| `selectable` | assign [behavior: selectable](behaviors/behavior-selectable.md)
+| `selectable` | allow content selection
 | `novalue`    | synonym of `placeholder`
 | `role="window-caption"` | Allow to drag the window through this element
 
@@ -43,15 +43,17 @@ Window (`<html>`) specific attributes
 | Attribute | Description |
 | --------- | ----------- |
 | `window-frame` | `default\|standard\|solid\|solid-with-shadow\|extended\|transparent` define window type
-| `window-icon`  | Window icon
+| `window-icon`  | Window icon URL
 | `window-title` | Window title
 | `window-width` | initial width of the window
 | `window-height`| initial height of the window
-| `lang` | ISO 639-1 value, define dictionary for spellcheck
+| `window-resizable`  | `true\|false\|LENGTH-UNIT` i.e. `10px` counted from window frame inwards
+| `window-blurbehind` | `auto\|dark\|light` translucent effect.
+| `lang` | ISO 639-1 value, define dictionary for spellcheck, Date...
 
 
 ## Misc
 
 - Sciter allow the use of the custom element tags, make sure to give it a default style.
-- You can show popup with [`Element.popupAt`](Element.md).
-
+- You can show popup with [`Element.popupAt`](Element.md#popup).
+- String `&platform-cmd-mod;` is replace with `Ctrl/CMD...`

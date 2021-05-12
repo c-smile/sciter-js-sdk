@@ -1,6 +1,6 @@
-# behavior:output
+# behavior: output
 
-Formatted output behavior. The behavior can be applied to any text container, e.g. <span>, <em>, etc.
+Formatted output behavior. The behavior can be applied to any text container, e.g. `<span>`, `<em>`, etc.
 
 ## Elements
 
@@ -10,7 +10,7 @@ that have this behavior applied by default:
 
 Note that you can use shortcut notations with the output in Sciter, so these three declarations are equivalent:
 
-```
+```XML
 <output name="first" type="text" />
 <output|text(first)/>
 ```
@@ -19,7 +19,7 @@ Note that you can use shortcut notations with the output in Sciter, so these thr
 
 * `type` \- formatter type, one of:
 
-  * `"text"` \- plain text output, the value is rendered as it is after toString() conversion;
+  * `"text"` \- plain text output, the value is rendered as it is after *toString()* conversion;
   * `"integer"` \- integer output;
   * `"decimal"` \- decimal (float) formatter. Value is formatted and rendered according current locale rules;
   * `"currency"`  - currency formatter. Value is formatted and rendered according current locale rules;

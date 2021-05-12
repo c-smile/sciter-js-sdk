@@ -60,4 +60,5 @@
 * [@env](module-env.md) - Running environment primitives.
 * [@storage](storage/README.md) - Persistent storage - NoSQL DB built into JS runtime.
 * [@bjson](module-bjson.md) - "binary JSON".
+* [@debug](module-debug.md)
 

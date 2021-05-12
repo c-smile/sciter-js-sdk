@@ -148,5 +148,5 @@ Use `Window.this.on("eventname", handler)` to subscribe to these events:
   * `"replacementend"` - user start/end moving or resizing window chrome.
   * `"move"` - user moved the window.
   * `"size"` - user changed size of the window.
-  * <a name="trayiconclick"></a>`"trayiconclick"` - click on tray icon.
+  * <a id="trayiconclick"></a>`"trayiconclick"` - click on tray icon.
 

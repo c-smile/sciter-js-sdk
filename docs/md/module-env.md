@@ -30,5 +30,6 @@ The module represents current OS and running environment.
   * "DOWNLOADS"
 * `env.variable(name:string [,toset:string | null]): string` - TBD
 * `env.variables(): object` - TBD
+* `exec` execute comma-separated arguments. `exec("scapp", "main.html")`
 
 

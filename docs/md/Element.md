@@ -53,8 +53,8 @@ class Element represents DOM element and extends [Node](Node.md) and so all its 
 * `element.childElement(n)`
 * `element.insertAdjacentHTML(where, html)`
 
-* `element.querySelector(selector)`
-* `element.querySelectorAll(selector)`
+* `element.querySelector(selector)`    | `element.$(selector)`
+* `element.querySelectorAll(selector)` | `element.$$(selector)`
 
 * `element.getAttribute()`
 * `element.getAttributeNames()`
@@ -142,7 +142,7 @@ See [global-events](../../samples.sciter/global-events/README.md) for the ration
 
   Schedules re-paint of the element. This will trigger `element.paintXXXX` later calls (if any). On Windows this will end up in [InvalidateRect](https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-invalidaterect) call.
 
-* `element.popupAt(screenX,screenY,alignment)`
+* <a id="popup"></a>`element.popupAt(screenX,screenY,alignment)`
 
   Shows this element as out of canvas popup on screen. _alignment_ is a number in 0..9 range (see keyboard numpad for the meaning). Example `div.popupAt(1000,1000,3)` will show the element with bottom/right corner at 1000/1000 screen pixel. 
 

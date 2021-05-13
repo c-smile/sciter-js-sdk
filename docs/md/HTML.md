@@ -2,7 +2,7 @@
 
 Sciter extends regular HTML with elements, features and easier ways of doing the same things.
 
-The following is a table of the what can be done in 'Sciter-way' instead
+The following is a table of the what can be done in 'Sciter-way' instead (can be mixed)  
 
 | Sciter | Regular HTML |
 | ------ | ------------ |
@@ -24,6 +24,7 @@ Those are Sciter specific elements, most of them have a custom [behavior](behavi
 | [`<htmlarea>`](behaviors/behavior-richtext.md) | WYSIWYG/richtext/html editor
 | [`<frameset>`](behaviors/behavior-frame-set.md) | child elements to be resizable window blocks
 | [`<select\|tree>`](behaviors/behavior-tree-view.md) | Tree-list select element, one of [behavior select](behaviors/README.md) types
+| `<include src=""/>` | Inserts HTML file in place.
 
 
 ## Attributes
@@ -31,7 +32,7 @@ Those are Sciter specific elements, most of them have a custom [behavior](behavi
 | Attribute  | Description |
 | ---------  | ----------- |
 | `spellcheck` | true/false enable or disable spellcheck
-| `selectable` | allow content selection
+| `selectable` | allow content selection (behavior)
 | `novalue`    | synonym of `placeholder`
 | `role="window-caption"` | Allow to drag the window through this element
 
@@ -48,7 +49,7 @@ Window (`<html>`) specific attributes
 | `window-width` | initial width of the window
 | `window-height`| initial height of the window
 | `window-resizable`  | `true\|false\|LENGTH-UNIT` i.e. `10px` counted from window frame inwards
-| `window-blurbehind` | `auto\|dark\|light` translucent effect.
+| `window-blurbehind` | `auto\|dark\|light\|ultra-dark\|ultra-light` translucent effect.
 | `lang` | ISO 639-1 value, define dictionary for spellcheck, Date...
 
 
@@ -56,4 +57,6 @@ Window (`<html>`) specific attributes
 
 - Sciter allow the use of the custom element tags, make sure to give it a default style.
 - You can show popup with [`Element.popupAt`](Element.md#popup).
-- String `&platform-cmd-mod;` is replace with `Ctrl/CMD...`
+- Attribute events (onclick..) are not supported. (unless you implements method for it to work).
+- String `&platform-cmd-mod;` is replaced with `Ctrl/CMD...`
+- [List of input elements](https://sciter.com/developers/for-web-programmers/input-elements-map/)

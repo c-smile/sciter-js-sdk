@@ -7,9 +7,11 @@ It can represent and render as single as multi-line texts.
 `Graphics.Text` instances can be styled as by implicit `text.style = "..."` as by CSS in document styles using class names `text.style = "..."`.
 
 Full set of block and text styles is supported, so you may define
+
 ```JavaScript
   text.style = "border:1px solid red; font: 12pt Roboto, sans-serif; width:max-content";  
 ```
+
 to have a bordered text box.
 
 #### Properties:

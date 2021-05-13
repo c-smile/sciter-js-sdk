@@ -5,7 +5,7 @@ Class Graphics represents 2D graphics primitives.
 In Sciter.JS Graphics is available :
 
 1. at `<canvas>` element where it represents its offscreen buffer.
-2. in `element.paintXXXX(graphics)` [methods](Element.md#paintXXX) to support so called immediate mode painting.
+2. in `element.paintXXXX(graphics)` [methods](../Element.md#paintXXX) to support so called immediate mode painting.
 3. in `new Image(painter(graphics))` constructor to draw on Image surface.
 
 Class Graphics also is a namespace that contains classes:

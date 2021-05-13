@@ -85,7 +85,7 @@ Variable is declared as a property but with name wrapped into `var(...)` constru
 ```CSS
 body {
   var(text-color): #000;
-  var(base-width) : 100dip; 
+  var(base-width): 100dip; 
 }
 ```
 
@@ -102,7 +102,7 @@ Examples of variable use:
 
 ```CSS
 div {
-  background-color: color(back-color); /* #ccc */
+  color: color(text-color);  /* #000 */
   width: length(base-width); /* 100dip */
   height: var(base-height,80dip); /* 80dip as base-height was not defined */
 }
@@ -113,7 +113,7 @@ div {
 Constents can be declared globally as followed:
 
 ```CSS
-@DARK : #222;
+@const DARK : #222;
 body {
   background: @DARK;
 }
@@ -130,7 +130,8 @@ div {
   style-set-base: parentStyle //| inherit styleset from
 }
 
-@set myStyle { //| inheritance is allowed, myStyle < parentStyle
+@set myStyle //| inheritance is allowed, myStyle < parentStyle
+{ 
   :root { //| Element itself (div)
     ...
   }
@@ -144,6 +145,24 @@ You can assign it from HTML
 
 ```XML
 <div styleset="#myStyle"></div>
+```
+
+## Mixin
+
+named set of CSS properties that can be applied by @name to CSS rules.
+
+```CSS
+@mixin LIKE-BUTTON 
+{
+  behavior:button;
+  color: #ffffff;
+  background: linear-gradient(top, #3498db, #2980b9);
+}
+
+div {
+  @LIKE-BUTTON;
+  ...
+}
 ```
 
 ## ImageMap
@@ -167,4 +186,6 @@ You can assign it from HTML
 
 - [Style sets in Sciter](https://sciter.com/style-sets-in-h-smile-core/)
 
-- [Sciter CSS and Browser CSS in one file](https://sciter.com/road-to-sciter-js-step-i-supports-px-ppx-dip/)
+- [Sciter CSS and Browser CSS in single file](https://sciter.com/road-to-sciter-js-step-i-supports-px-ppx-dip/)
+
+- [@mixin feature in Sciter’s CSS](https://sciter.com/mixin-feature-in-sciters-css/)

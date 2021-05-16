@@ -2,7 +2,7 @@
 
 HTML WYSIWYG editing behavior.
 
-The behavior supports document container mode similar to <frame>/behavior:frame - it supports loading full <html>...</html> document in it.
+The behavior supports document container mode similar to [behavior:frame](behavior-frame.md) - it supports loading full `<html>...</html>` document in it.
 
 ## Elements
 
@@ -86,7 +86,7 @@ Formatting commands:
 
 The `htmlarea.execCommand(command,attributes)` method executes undoable editing command. The *command* string identifies command to execute.
 
-Editing commands common to all editable elements ( <input|text>, <textarea>, <plaintext>, <htmlarea> ):
+Editing commands common to all editable elements ( `<input|text>, <textarea>, <plaintext>, <htmlarea>` ):
 
 * `"edit:cut"` \- cut selection - copy selection to the clipboard and remove it;
 * `"edit:copy"` \- copy selection to the clipboard;
@@ -156,7 +156,7 @@ Table editing operations. These operations are available only if selection is in
   
   returns content and selection as an array of three elements;
 
-* `richtext.update(mutator:function(tctx) {}) : bool`
+* <a id="update"></a>`richtext.update(mutator:function(tctx) {}) : bool`
   
   Transactional update (mutation) of the content. Multiple mutations made through *tctx* transactional context interface are combined into single transaction that is undoable as a single operation. Tctx is an object that has following content mutation methods:
 

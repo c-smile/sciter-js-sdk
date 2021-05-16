@@ -1,4 +1,4 @@
-### class Event
+## class Event
 
 #### properties:
 
@@ -12,7 +12,8 @@
 * `event.data`
 * `event.details`
 * `event.keyCode`
-* `event.altKey`
+* `event.code` string representation of keyCode "KeyENTER", "KeyF1"...
+* `event.altKey` true/false
 * `event.ctrlKey`
 * `event.metaKey`
 * `event.shiftKey`
@@ -151,3 +152,6 @@
 * `"videocoordinate"`
 * `"videoframeready"`
 
+## MISC
+
+- [Event handling in Sciter](https://sciter.com/event-handling-in-sciter/)

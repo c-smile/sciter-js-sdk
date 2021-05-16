@@ -1,4 +1,4 @@
-# behavior:video
+# behavior: video
 
 This behavior provides video playback.
 
@@ -12,7 +12,7 @@ that have this behavior applied by default to:
 
 this behavior knows about:
 
-* `src` - string, url of the movie. If provided the behavior will start playing the movie immedieately after loading.
+* `src` - string, url of the movie. If provided the behavior will start playing the movie immediately after loading.
 * `sizing` - string, either:  "*cover*" or "*contain*" (default). 
   
   Frame box sizing modes:
@@ -36,7 +36,7 @@ this behavior knows about:
 
 * #### `video.position`
   
-  read/write, float, reports current playback position, in seconds. Sets current playback position, in econds.
+  read/write, float, reports current playback position, in seconds. Sets current playback position, in seconds.
 
 * #### `video.height`,`video.width`
  
@@ -79,8 +79,8 @@ Besides of the standard set of events (mouse, keyboard, focus) *behavior:video*
 
 * `"ready"` - the video has been loaded successfully and video.width/height and video.duration are available.
 * `"start"` - the video just started, first frame rendered.
-* `"stop"` - the video has stoped.
+* `"stop"`  - the video has stopped.
 
 ## Value
 
-N/A, the behaivor does not implement value concept
+N/A, the behavior does not implement value concept

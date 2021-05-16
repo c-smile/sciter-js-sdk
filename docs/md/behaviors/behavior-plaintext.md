@@ -6,7 +6,7 @@ Multiline editting behavior that is optimized to handle relatively large (thousa
 
 that have this behavior applied by default:
 
-* `<plaintext>...</plaintext>` display:block editor;
+* `<plaintext>...</plaintext>`
 
 ## Attributes
 
@@ -17,9 +17,9 @@ that this behavior knows about:
 
 ## Model
 
-Plaintext parses each line of text into separate <text> element:
+Plaintext parses each line of text into separate `<text>` element:
 
-```
+```XML
 <plaintext>
    <text>Line 1</text>
    <text>Line 2</text>
@@ -71,8 +71,8 @@ Commands supported by the behavior through `Element.execCommand()` and `Eleme
 * `"edit:insert-text"` \- inserts text at current position: `element.execCommand("edit:insert-text", text);`
 * navigational commands, move caret:
   * `"navigate:backward"`
-  * `"navigate:word-start`
   * `"navigate:forward"`
+  * `"navigate:word-start`
   * `"navigate:word-end`
   * `"navigate:up"`
   * `"navigate:down"`
@@ -85,7 +85,7 @@ Commands supported by the behavior through `Element.execCommand()` and `Eleme
 
 Note: API of plaintext is accessible on element by using *.plaintext.* interface modifier:
 
-```
+```JavaScript
 const editor = document.$("plaintext#editor");
 editor.plaintext.load("file://users/documents/readme.txt");
 ```
@@ -142,5 +142,5 @@ editor.plaintext.load("file://users/documents/readme.txt");
 
 * `plaintext.update(mutator:function(tctx) {}) : bool`
 
-  Performs transactional update, see [tichtext.update](behavior-richtext.md);
+  Performs transactional update, see [richtext.update](behavior-richtext.md#update);
 

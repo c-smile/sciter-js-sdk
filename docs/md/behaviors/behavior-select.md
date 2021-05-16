@@ -1,6 +1,6 @@
-# behavior:select
+# behavior: select
 
-Standard behavior of <select> lists. In principle it can be applied to any DOM element.
+Standard behavior of `<select>` lists. In principle it can be applied to any DOM element.
 
 ## Elements
 
@@ -13,13 +13,13 @@ These elements have behavior:select applied by default:
 
 The `<select>` may contain `<option>` elements contained in arbitrary markup.
 
-The behavior treats <option>'s or any other DOM element with attribute `role="option"` as a selectable entity.
+The behavior treats `<option>'s` or any other DOM element with attribute `role="option"` as a selectable entity.
 
 Selected option will have `:current`  state flag set.
 
 Examples, simple select:
 
-```
+```XML
 <select>
   <option value="#ff0000" selected>Red</option>
   <option value="#00ff00">Green</option>
@@ -27,9 +27,9 @@ Examples, simple select:
 </select>
 ```
 
-and <table> behaving as a select:
+and `<table>` behaving as a select:
 
-```
+```XML
 <style>
   table.select > tbody { behavior:select; }
   table.select > tbody > tr:current { color:white; background:blue; }
@@ -48,7 +48,7 @@ and <table> behaving as a select:
 
 This behavior knows about:
 
-* `size=integer` \- number of visible elements in the list. Note: height of the select element can be overriden by CSS.
+* `size=integer` \- number of visible elements in the list. Note: height of the select element can be overridden by CSS.
 * `name="name"` \- standard attribute *name* \- name of the input element on a form.
 * `novalue="text"` \- if select has no `<option selected>` initially it will have this text rendered.
 * `as="type"` \- defines `<option value="...">` interpretation rule, accepts:
@@ -89,14 +89,14 @@ any, read/write. value of selected option. Value of the option is its value attr
 
 ### raw `onchange` handler
 
-```
+```JavaScript
 var sel = document.$("select#some");
 sel.onchange = function() { var v = this.value; ... }
 ```
 
 ### `on()` subscription
 
-```
+```JavaScript
 var sel = document.$("select#some");
 sel.on("change", function() { ... event handling code ... });
 document.on("change", "select#some", function() { ... event handling code ... });

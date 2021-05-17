@@ -1,4 +1,4 @@
-## class Event
+### class Event
 
 #### properties:
 
@@ -23,6 +23,10 @@
 * `event.clientY`
 * `event.screenX`
 * `event.screenY`
+
+* `event.deltaX` - wheel deltas
+* `event.deltaY`
+
 
 #### properties (Sciter specific):
 
@@ -109,9 +113,13 @@
 
 #### Document lifecycle
 
+Closing:
+
 * `"close"` | `"unload"` - document is closed and about to be deleted soon.
 * `"beforeunload"` - document is about to be unloaded, script namespace is still operational.
 * `"closerequest"` - first phase of document closure, it can be rejected at this point by calling `event.preventDefault()`. 
+
+Loading:
 
 * `"parsed"` - document just got a DOM structure, scripts are not run yet. This event can be handled by document container only (window or frame). 
 * `"ready"` | `"DOMContentLoaded"` - document loaded, DOM is parsed, scripts are loaded and run.

@@ -162,7 +162,7 @@ See [global-events](../../samples.sciter/global-events/README.md) for the ration
 
 * `element.prepend( vnode )` - insert the element as first child
 
-* `element.patch( vnode )` - patches content of the element by `vnode` using rules of ReactJS .
+* `element.patch( vnode [, onlyChildren:true] )` - patches content of the element by `vnode` using rules of React[or]. If second parameter is provided and is _true_ the function patches only children but not element itself.
 
 * `element.componentUpdate( obj )` - does the following:  
 

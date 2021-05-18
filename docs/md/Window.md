@@ -48,7 +48,9 @@ Instances of the Window class represent desktop windows.
   * `window.isEnabled` - read/write, boolean, true if the window is allowed to accept user's input.
   * `window.aspectRatio` - read/write, float, width to height ratio to keep on window resizes.
   * `window.eventRoot = element | null` - if set by element, short circuits all UI events to that element and its children as if the window contains only that element. Used in lightbox dialog scenarios (see: samples.sciter/lightbox-dialog).
-  * `focus` - read/write, DOM element in focus.
+  * `window.focus` - read/write, DOM element in focus.
+  * `window.parent` - read-only, Window | null - parent window of this one.
+  * `window.document` - read-only, Document - root document of the window.
 
 #### methods:
 

@@ -18,9 +18,7 @@
 
 * `cancelAnimationFrame(aid)`
 
-* `globalThis` global namespace, aliased as `window` for compatibility with browsers.
-
-* `fetch` - [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+* `fetch()` - [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 
 * `getComputedStyle(element[, pseudoEl]): Style`
 
@@ -39,6 +37,11 @@
 
   Takes *input* string and parses it according the *format* specification using C-style [scanf conventions](https://en.cppreference.com/w/c/io/fscanf). Returns list (array) of successfully parsed values. 
 
+#### global properties
+
+* `globalThis` - object, global namespace, aliased as `window` for compatibility with browsers.
+
+* `devicePixelRatio` - float, number of physical screen pixels in logical CSS px (dip).
 
 #### Standard DOM objects
 

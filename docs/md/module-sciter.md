@@ -23,6 +23,6 @@ The module contains Sciter specific functions.
   * `$("selector")` - returns first matched DOM element in current document.
   * `$$("selector")` - returns list (array) of matched DOM elements.
 
-  * `encode` (data, codec) : buffer
-  * `decode` (buffer, codec) : data
+  * `encode` (data: string, encoding: string) : ArrayBuffer` - _encoding_ is [IANA encoding](https://www.iana.org/assignments/character-sets/character-sets.xhtml) identifier 
+  * `decode` (buffer: ArrayBuffer, encoding: string) : string
 

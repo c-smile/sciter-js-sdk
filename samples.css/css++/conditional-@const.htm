@@ -28,11 +28,11 @@
     
     </style>
 
-    <script type="text/tiscript"> 
-      function self.ready() {
+    <script> 
+      document.ready = function() {
         // this shall print different colors:
-        for(var el in $$(p)) {
-          stdout.println(el.style.constant("MAIN_COLOR"));
+        for(var el of document.$$("p")) {
+          console.log(el.style.getPropertyValue("color"));
         }
       }
     </script>    

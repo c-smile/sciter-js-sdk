@@ -15,14 +15,17 @@
  
 	</style>
   
-  <script type="text/tiscript"> 
-    $(button#set).on("click", function(){
-      var img = this.loadImage("images/cursor.png");
-      $(div).style.cursor(img,24,24);
+  <script> 
+    
+    document.on("click", "button#set", async function(evt) {
+      var img = await Graphics.Image.load(__DIR__ + "images/cursor.png");
+      document.$("div").style.setCursor(img, 24, 24);
     });
-    $(button#reset).on("click", function(){
-      $(div).style.cursor(null);
+
+    document.on("click", "button#reset", function(){
+      document.$("div").style.setCursor(null);
     });
+
   </script>
   
 	</head>

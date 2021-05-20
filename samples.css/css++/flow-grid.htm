@@ -24,35 +24,33 @@
       
     </style>
     
-    <script type="text/tiscript">
-    
-      const grid_flow = [grid:[1,  2,  3,  4,  5,  13], 
-                              [6,  6,  8,  9,  9,  14],
-                              [6,  6,  10, 11, 15, 17],
-                              [12, 12, 7,  16, 18, 17]];
-                              
-      const rows_flow = [row: #div, #div, #div, #div ]; // four columns grid
-      
-      //var g = $(.grid).style#flow = flow;
-      var g = $(.grid);
-      $(form).on("change", function() {
-        var flow = this.value.flow;     
-        g.style#size = "max-content"; 
+    <script>
+      const grid_flow = `grid(1 2 3 4 5 13,
+                              6 6 8 9 9 14,
+                              6 6 10 11 15 17,
+                              12 12 7 16 18 17)`;
+
+      const rows_flow = "row('div', 'div', 'div', 'div')"; // four columns grid      
+      var g = document.$(".grid");
+
+      document.on("change", "form", function(evt, form) {
+        var flow = form.value.flow;     
+        g.style.setProperty("size", "max-content"); 
         if( flow == "grid" ) {
-          g.style#flow = grid_flow;
-          g.style#width = undefined;
+          g.style.setProperty("flow", grid_flow);
+          g.style.removeProperty("width");
         }
         else if( flow == "rows" ) {
-          g.style#flow = rows_flow;
-          g.style#width = undefined;
+          g.style.setProperty("flow", rows_flow);
+          g.style.removeProperty("width");
         }
         else if( flow == "hf" ) {
-          g.style#flow = "horizontal-flow";
-          g.style#width = fx(100);
+          g.style.setProperty("flow", "horizontal-flow");
+          g.style.setProperty("width", "100%");
         }
       });
       
-      stdout.printf("flow=%V\n", g.style#flow );      
+      console.log( printf("flow=%V\n", g.style.getPropertyValue("flow")) );      
       
     </script>
     

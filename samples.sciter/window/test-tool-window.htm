@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style></style>
+        <script type="module">
+
+import {ToolWindow} from "tool-window/tool-window.js";
+
+class TestContent extends Element 
+{
+
+  render() {
+    return <main>
+      <caption role="window-caption">caption</caption>
+      <div>
+        Test Content <button id="close-by-code">Close window</button> 
+      </div>
+    </main>
+  }
+
+  ["on click at button#close-by-code"]() {
+    this.parentWindow.close("by-code"); // NOTE: "by-code" will go to window.closeData
+  }
+}
+
+
+document.on("click","button#show", function() {
+  let wnd = new ToolWindow(<TestContent/>);
+  wnd.on("closerequest", function(evt) {
+    console.log("closerequest", evt.data);
+  });
+});
+
+
+        </script>
+    </head>
+    <body>
+
+<button#show>Show tool window</button>
+
+    </body>
+</html>

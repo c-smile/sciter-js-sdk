@@ -1,0 +1,103 @@
+<html>
+<head>
+  <style>
+
+  @import url(lightbox.css);
+
+  body {
+    font:system;
+    margin:0;
+    background-color: white;
+    padding:10dip;
+    size:*;
+  }
+
+  form { 
+    font:system; 
+    padding:4dip;
+    border-spacing:4dip;
+    flow: row(label, input div textarea);
+  }
+  
+  form > label 
+  {
+    white-space:nowrap;
+    text-align:right;
+    vertical-align:top;
+  }
+  
+  </style>
+
+  <script type="module">
+
+    import { lightboxAsync } from "lightbox.js";
+
+    document.on("click", "#button1", function()
+    {
+      document.$("#result1").innerText = "waiting...";
+
+      // show the dialog:      
+      var dlg = lightboxAsync(<dialog>
+        <header>Simple!</header>
+        <form #simple-dialog>
+          <label>Title:</label>  
+          <input(title) type="text" />
+        </form>
+        <footer>
+          <button #ok>OK</button>
+          <button #cancel>Cancel</button>
+        </footer>
+      </dialog>);
+
+      dlg.onclose = function(res) {
+        document.$("#result1").innerText = JSON.stringify(res);
+      }
+
+    });
+
+    document.on("click", "#button2", function() {
+
+      document.$("#result2").innerText = "waiting...";
+
+      const dialog = <dialog>
+        <header>Please identify yourself:</header>
+        <form#data-dialog>
+          <label>First name:</label>   <input|text(first-name) />
+          <label>Second name:</label>  <input|text(last-name) />
+          <label>Birthday:</label>     <input|date(birthday) />
+          <label>Gender:</label>       <div><button name="gender" type="radio" value="male">Male</button>
+                                       <button name="gender" type="radio" value="female">Female</button></div>
+          <label>What do you want<br/>to ask Santa about?</label><textarea name="secret-wish" rows="4" cols="30" />
+        </form>
+        <footer>
+          <button #ok>Yep</button>
+          <button #cancel>No way</button>
+        </footer>
+      </dialog>;
+      
+      // show the dialog:      
+      var dlg = lightboxAsync(dialog);
+
+      dlg.onclose = function(res) {
+        document.$("#result2").innerText = JSON.stringify(res);
+      }
+
+    });
+
+  </script>
+
+  
+</head>
+
+<body>
+  <h1>Asynchronous (non-modal) lightbox dialog demo</h1>
+  <p>Input: <input type="text" value="text"></p>
+  <p><button #button1>simple dialog</button> <span id="result1" /></p>
+  <p><button #button2>dialog with custom buttons</button> <span id="result2" /></p>
+
+  <div style="background:gold; size:100px">
+    test
+  </div>
+
+</body>
+</html>

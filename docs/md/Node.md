@@ -15,7 +15,7 @@ Node is an abstract class that is inherited by [Element](Element.md), [Text](#cl
 * `node.ownerDocument`
 * `node.parentNode`
 * `node.parentElement`
-* `node.parentWindow` - instance of Window where this element resides
+* `node.parentWindow` - instance of Window that hosts this node;
 * `node.textContent`
 
 #### methods:

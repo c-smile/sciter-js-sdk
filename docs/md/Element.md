@@ -72,7 +72,7 @@ class Element represents DOM element and extends [Node](Node.md) and so all its 
 * `element.dispatchEvent(event)` 
 * `element.postEvent(event)` sciter specific, async version of .dispatchEvent()
 
-## Methods (Sciter.JS specific):
+## Methods (Sciter specific):
 
 * `element.on(eventname: string, [selector: string,] handler: function): Element`
 
@@ -142,14 +142,53 @@ See [global-events](../../samples.sciter/global-events/README.md) for the ration
 
   Schedules re-paint of the element. This will trigger `element.paintXXXX` later calls (if any). On Windows this will end up in [InvalidateRect](https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-invalidaterect) call.
 
-* <a id="popup"></a>`element.popupAt(screenX,screenY,alignment)`
+* <a name="popupAt"></a>`element.popupAt(screenX,screenY,alignment)`
 
   Shows this element as out of canvas popup on screen. _alignment_ is a number in 0..9 range (see keyboard numpad for the meaning). Example `div.popupAt(1000,1000,3)` will show the element with bottom/right corner at 1000/1000 screen pixel. 
 
-* `element.popupFor(anchorElement)`
+* <a name="popupFor"></a>`element.popupFor(anchorElement)`
 
   Shows this element as out of canvas popup relative to anchorElement.
 
+* <a name="animate"></a> `element.animate(params:object)` - various animation effects, where *params* contains following fields:
+
+  * `params.duration` - integer, milliseconds - duration of the animation;
+  * `params.ease` - string, name of ease function, one of: 
+    
+    "linear","ease","ease-in","ease-in-out","ease-out","quad-in","quad-out","quad-in-out","cubic-in","cubic-out","cubic-in-out",
+    "quart-in","quart-out","quart-in-out","quint-in","quint-out","quint-in-out","sine-in","sine-out","sine-in-out",
+    "expo-in","expo-out","expo-in-out","circ-in","circ-out","circ-in-out","elastic-in","elastic-out","elastic-in-out",
+    "back-in","back-out","back-in-out","x-back-in","x-back-out","x-back-in-out","xx-back-in","xx-back-out","xx-back-in-out",
+    "bounce-in","bounce-out","bounce-in-out";
+  * `params.effect` - string, name of transition method, one of: 
+    * "blend",
+    * "blend-atop",
+    * "slide-top",
+    * "slide-bottom",
+    * "slide-left",
+    * "slide-right",
+    * "slide-over-top",
+    * "slide-over-bottom",
+    * "slide-over-left",
+    * "slide-over-right",
+    * "remove-top",
+    * "remove-bottom",
+    * "remove-left",
+    * "remove-right",
+    * "scroll-top",
+    * "scroll-bottom",
+    * "scroll-left",
+    * "scroll-right"
+
+* <a name="takeOff"></a> `element.takeOff([params:object])` - "airborn" DOM elements - replaced outside of host window. *params* are:
+
+  * `params.x`,`params.y` - numeric, element coordinates, *screen* pixels - new position of DOM element;
+  * `params.width`,`params.height`  - optional, numeric, new dimensions in *screen* pixels;
+  * `relativeTo` - string, defines meaning of *x* and *y*, one of: "screen","document","window","parent" or "self"
+  * `window` - string, defines type of window that will host the element, one of: 
+    * "attached" - attached window, will move in sync with the host window; 
+    * "detached" - detached window, position will be independent from the host window;
+    * "popup" - same as "detached" window, put also will be placed as topmost - on top of other windows on desktop.
 
 
 ## Methods (Sciter.JS/Reactor specific):

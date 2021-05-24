@@ -1,3 +1,24 @@
+## 4.4.7.5
+
+### New features:
+
+* [`element.animate()`](Element.md#animate) - various animation effects;
+* [`element.takeOff()`](Element.md#takeOff) - "airborn" DOM elements - replaced outside of host window;
+* [`element.popupFor()`](Element.md#popupFor) - showing popup elements using this one as anchor;
+* `node.parentWindow` - window that hosts this node;
+* `Window.this.parent`  - parent window of this one;
+* events "closerequest", "beforeunload", "close" on Window.this contain event.data of window.close(data) call;
+* [svg] SVG images used as back/foreground images inherit CSS variables from host document. This allows change colors/lengths from CSS of host document, see: samples.sciter/svg-icons demo.
+
+### Fixes:
+
+* [virtual-list] fix on initialization sequence: samples.sciter/virtual-list/test-table.htm
+* [reactor]  `render([props,kids])` - props and kids are not provided when rendering is don in response of `this.componentUpdate()`;
+* [reactor]  fix of attribute "value" handling;
+* graphics, path images, proper handling of repeat-x, repeat-y;
+* http client, support of "content-type" override;
+* Window's "size" event is generated after window size change *but* before DOM layout - can be used in cases when DOM needs to be changed in response of window size changing.
+
 ## 4.4.7.4
 
 ### New features:

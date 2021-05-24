@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+.icon {
+  var(acolor): #00F; // used inside SVG
+  background: url(icon.svg) no-repeat;
+  background-size: 2em 2em;
+  background-position: 0.25em 50%;
+  padding-left:2.5em;
+  line-height:2em;
+  border:1px solid;
+  fill:yellow;
+}
+
+.icon:hover {
+  var(acolor): #F00; // used inside SVG
+  color: color(acolor);
+}
+
+
+
+        </style>
+    </head>
+    <body>
+
+<p>This sample demonstrates use of CSS variables in SVG. The SVG image uses CSS variables defined in host element:</p>
+
+<div.icon> With icon </div>
+
+    </body>
+</html>

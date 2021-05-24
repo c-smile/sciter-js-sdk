@@ -1,56 +1,56 @@
 <html>
-  <head>
-    <title>Test</title>
-      <style>
+    <head>
+        <title>Test</title>
+        <style>
 
-        textarea {
-          display:block;
-        }
+           textarea {
+             display:block;
+           }
 
-        textarea::mark(found) { 
-          color: brown; 
-          background-color:yellow;
-        }
+           textarea::mark(found) { 
+            color: brown; 
+            background-color:yellow;
+          }
 
-      </style>
+        </style>
       <script>
 
-        var textToLookup = "bar"; 
+          var textToLookup = "bar"; 
 
-        function highlightFound(ta) 
-        {
+          function highlightFound(ta) 
+          {
           const range = new Range();
           var textNode = ta.firstChild; // getting text node of text area
           var text = textNode.textContent;             
-          // clear mark 
-          {
+             // clear mark 
+             {
             range.setStart(textNode, 0);
             range.setEnd(textNode, text.length);
             range.clearMark("found");
-          }
-          // apply mark to first found word if any
-          var pos = text.indexOf(textToLookup);
-          if( pos >= 0) {
+             }
+             // apply mark to first found word if any
+             var pos = text.indexOf(textToLookup);
+             if( pos >= 0) {
             range.setStart(textNode, pos);
             range.setEnd(textNode, pos + textToLookup.length);
             range.applyMark("found");
+             }
           }
-        }
 
-        // initial higlightion
+          // initial higlightion
         highlightFound(document.$("textarea"));
-        
+
         document.on("change","textarea", function(evt, ta) {
           highlightFound(ta);
         });
-          
+
         document.on("change","input#what", function(evt, input) {
           textToLookup = input.value; 
           highlightFound(document.$("textarea"));
         });
-      </script>
-  </head>
-  <body>
+        </script>
+    </head>
+    <body>
 
   <h2>Demo of CSS ::mark(name) pseudo-element styling</h2>
 

@@ -1,0 +1,36 @@
+<html window-frame="solid-with-shadow">
+  <head>
+    <title>?</title>
+    <style>
+
+body { margin:0; }
+
+html > button#close {
+  appearance:none;
+  display:block;
+  position:absolute; right:4px; top:4px; 
+  behavior:clickable;
+  size:16px;
+  padding:0;
+  border-radius:8px;
+  background: transparent no-repeat 50% 50%;
+  background-image: url(stock:cross-x);
+  foreground-size: 8px;
+  fill:#fff;
+  visibility:hidden;
+  transition: visibility linear 200ms, background-color linear 200ms;
+}
+
+html:hover > button#close {
+  visibility:visible; 
+  background-color: #c00;
+}
+
+    </style>
+    <script type="module">
+document.body.content(Window.this.parameters);
+    </script>
+  </head>
+  <body></body>
+  <button #close role="window-close" />
+</html>

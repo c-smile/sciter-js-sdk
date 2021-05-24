@@ -1,0 +1,139 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+          form {
+            font:system;
+          }
+
+          #content {
+            size:*;
+          }
+
+          #content > div {
+            size:*;
+            flow:vertical-wrap;
+            border-spacing: 4px;
+            padding: 4px;
+            overflow-x:auto;
+          }
+
+          #content > div > div {
+            width:15vw;
+            border:1px solid;
+            color:#fff;
+          }
+
+        </style>
+        <script type="module">
+
+          const content = document.$("section#content");
+
+          var params = {
+            effect:"blend", 
+            ease:"sine-in-out",
+            duration:600,
+          };
+
+          document.on("change","form",function(evt, form) {
+            params = Object.assign(params,form.value);  
+          });
+
+          function rand(max) {
+            return Math.floor(Math.random() * max);
+          } 
+
+          function bc() {
+            return printf("background:#%02x%02x%02x", rand(255), rand(255), rand(255));
+          }           
+
+          function gc() {
+            return printf("background: linear-gradient(to bottom, #fff, #%02x%02x%02x)", rand(255), rand(255), rand(255));
+          }
+
+          document.on("click", "button#go", async function(evt,button) {
+            function changer() { 
+              let nelements = rand(100);
+              let list = [];
+              for( let n = 1; n <= nelements; ++n )
+                list.push( <div style={bc()}>item {n}</div>);
+              this.content(<div style={gc()}>{list}</div>);
+            }
+            button.state.disabled = true;
+            await content.animate(changer, params);
+            button.state.disabled = false;
+          });
+
+        </script>
+    </head>
+    <body>
+      <form>
+        <label>Effect:</label>
+        <select|dropdown(effect)>
+          <option selected>blend</option>
+          <option>blend-atop</option>
+          <option>slide-top</option>
+          <option>slide-bottom</option>
+          <option>slide-left</option>
+          <option>slide-right</option>
+          <option>slide-over-top</option>
+          <option>slide-over-bottom</option>
+          <option>slide-over-left</option>
+          <option>slide-over-right</option>
+          <option>remove-top</option>
+          <option>remove-bottom</option>
+          <option>remove-left</option>
+          <option>remove-right</option>
+          <option>scroll-top</option>
+          <option>scroll-bottom</option>
+          <option>scroll-left</option>
+          <option>scroll-right</option>
+        </select>
+        <label>Ease function:</label>
+        <select|dropdown(ease)>
+          <option>linear</option>       
+          <option>quad-in</option>      
+          <option>quad-out</option>     
+          <option>quad-in-out</option>  
+          <option>cubic-in</option>     
+          <option>cubic-out</option>    
+          <option>cubic-in-out</option> 
+          <option>quart-in</option>     
+          <option>quart-out</option>    
+          <option>quart-in-out</option> 
+          <option>quint-in</option>     
+          <option>quint-out</option>    
+          <option>quint-in-out</option> 
+          <option>sine-in</option>      
+          <option>sine-out</option>     
+          <option selected>sine-in-out</option>  
+          <option>expo-in</option>      
+          <option>expo-out</option>     
+          <option>expo-in-out</option>  
+          <option>circ-in</option>      
+          <option>circ-out</option>     
+          <option>circ-in-out</option>  
+          <option>elastic-in</option>   
+          <option>elastic-out</option>  
+          <option>elastic-in-out</option>    
+          <option>back-in</option>      
+          <option>back-out</option>     
+          <option>back-in-out</option>  
+          <option>x-back-in</option>    
+          <option>x-back-out</option>   
+          <option>x-back-in-out</option>
+          <option>xx-back-in</option>   
+          <option>xx-back-out</option>  
+          <option>xx-back-in-out</option>    
+          <option>bounce-in</option>    
+          <option>bounce-out</option>   
+          <option>bounce-in-out</option>  
+        </select>
+        <button #go>Go!</button>
+      </form>
+
+      <section#content>Press Go to change content here</section>
+
+    </body>
+</html>

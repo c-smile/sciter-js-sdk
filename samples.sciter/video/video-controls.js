@@ -28,11 +28,11 @@ export class VideoControls extends Element {
 
       var times = printf("%d:%02d:%02d of %d:%02d:%02d", th,tm,ts,mh,mm,ms);
 
-      content = <div.bar shown={this.barIsShown}>
-            <button.command mode={this.status}/>
-            <input|hslider.position min="0.0" max={m} state-value={t} />
-            <span.times>{times}</span>
-            <input|hslider.volume min="1" max="10" state-value={vol} />
+      content = <div class="bar" shown={this.barIsShown}>
+            <button class="command" mode={this.status}/>
+            <input type="hslider" class="position" min="0.0" max={m} state-value={t} />
+            <span class="times">{times}</span>
+            <input type="hslider" class="volume" min="1" max="10" state-value={vol} />
       </div>;
     }
 

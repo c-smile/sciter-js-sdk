@@ -4,7 +4,7 @@ class Element represents DOM element and extends [Node](Node.md) and so all its 
 
 ## Properties:
 
-* `element.id`
+* `element.id` - readonly
 * `element.elementIndex`
 * `element.tagName`
 * `element.tag` - lower case version of .tagName

@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style src="main.css" />
+        <script type="module">
+
+import {Initial} from "views/initial.js";
+import {Quick} from "views/quick.js";
+import {Special} from "views/special.js";
+
+const routes = { // routename: view
+  "initial" : <Initial/>,
+  "quick" : <Quick/>,
+  "special" : <Special/>,
+  // ...
+}; 
+
+// Note: this uses Reactor - built-in ReactJS implementation
+
+// implements router abstraction
+class App extends Element {
+
+  routeName; // current route name
+  routeView; // current route VNode
+  routeParams; // optional
+
+  constructor() {
+    super();
+    this.routeName = "initial";
+    this.routeView = routes["initial"];
+  }
+
+  render() {
+    return <body>
+      <nav><a href="route:initial">Home</a>
+           <a href="route:quick">Quick</a>
+           <a href="route:special">Special</a></nav>
+      {this.routeView}
+    </body>;
+    //return <body>hi</body>;
+  }
+
+  navigateTo(routeName,routeParams = null) {
+    let routeView = routes[routeName];
+    if(routeView) {
+      this.componentUpdate({
+        routeView: routeView, 
+        routeName: routeName,
+        routeParams: routeParams
+      });
+      return true;
+    }
+  }
+
+  // event handlers:
+  onnavigateto(event) {
+    let {route,params} = event.data;
+    return navigateTo(routeName,params); // true - event consumed
+  }
+
+  // click on <a href="route:..."> or <button href="route:...">
+  ["on click at [href^='route:']"](event, hyperlink) {
+    const routeName = hyperlink.attributes["href"].substr(6);
+    return this.navigateTo(routeName);
+  }
+
+}
+
+// Let's rock-n-roll
+document.body.patch(<App/>);
+
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+
+
+main {
+  size:*; // spans whole body
+}
+
+main > footer {
+  flow:horizontal;
+  border-top: 1px solid #ccc;
+  border-spacing: *;
+}
+
+main > section {
+  size:*; // spans the rest left in main from header and footer
+}
+
+nav {
+  flow:horizontal;
+  border-spacing: 1em;
+}
+
+nav > a {
+  display:block;
+  width:max-content;
+}

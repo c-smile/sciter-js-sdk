@@ -101,7 +101,8 @@ section.tabs > header > caption { width:max-content; display:block; height:*; pa
        
 @set channel-log {
   :root {
-    font: system;
+    font: monospace, system;
+    context-menu: selector(menu#for-log-list);
   }
 
   list {

@@ -66,4 +66,29 @@ export class ChannelLog extends Element
     return false; // do not propagate, consumed
   }
 
+  list2clipboard() {
+    var text = "";
+    for(var opt of this.$$("li")) {
+      text += opt.textContent;
+    }  
+    Clipboard.writeText(text);
+  }
+
+  ["on keydown"] (evt) {
+    if( evt.code === "KeyC" && evt.ctrlKey) { 
+      this.list2clipboard(); 
+      return true; 
+    }
+  }
+  
+  ["on click at menu#for-log-list>li[command='edit:copy']"](evt, menu) { 
+    this.list2clipboard();
+    return true;
+  }
+  
+  ["on click at menu#for-log-list>li[command='edit:clear']"](evt, menu) {
+    this.channel.theirLogs = [];
+    this.componentUpdate();
+    return true;
+  }
 }

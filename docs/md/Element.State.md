@@ -73,8 +73,42 @@ section:expanded > div.content { visibility:visible; }
 
 * `element.state.contentWidths() : [minWidth,maxWidth]`
 * `element.state.contentHeight(forWidth) : height`
+
 * `element.state.metrics(...)` - returns various metrics of the element (that is `element.box()` in Sciter), TBD. 
+
 * `element.state.capture(false | true)` set/remove mouse capture, where:
   * `false` - remove capture if the element owns capture now;
   * `true` - captures mouse events by the element. Mouse events will be delivered to the element only.
 
+* #### `element.state.box(what,boxOf,relativeTo[, asPpx: bool ])
+
+  Returns various metrics of the element. 
+
+  _what_ determines structure of return value and is one of:
+
+  * "xywh" - function returns [x,y,width,height] values of the rectangle; 
+  * "position" - [x,y], position of the rectangle;
+  * "dimension" - [width,height];
+  * "left", "right", "top", "bottom" - single number;
+  * "width", "height" - single number;
+
+  _boxOf_ defines particular metric of the element:
+
+  * "inner" - inner box of the element in terms of CSS box model;
+  * "border" - border box of the element;
+  * "padding" - padding box of the element;
+  * "margin" - margin box of the element;
+  * "client" - client box of the element - scrollable area of the element, usually that is padding box minus scrollbars;
+  * "content" - content outline of the element. For scrollable elements that is size of scrollable content;
+  * "caret" - caret postion (if any);
+  * "icon" - position of foreground image of the element;
+
+  _relativeTo_ defines offset of x/y values of returned box, one of:
+
+  * "screen" - relative to screen - absolute coordinates of the element on screen (desktop);
+  * "window" - relative to client area of the window;
+  * "document" - relative to root element - document;
+  * "parent" - relative to DOM parent of the element;
+  * "container" - relative to layout container - for position'ed elements this tells position relative to nearest positioned container;
+
+  _asPpx_ if defined and is _true_ tells the function to return coordinates in screen pixels. By default the function returns logical CSS pixels, a.k.a. DIPs - logical units, 1/96 of inch.   

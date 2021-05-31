@@ -80,7 +80,7 @@ section:expanded > div.content { visibility:visible; }
   * `false` - remove capture if the element owns capture now;
   * `true` - captures mouse events by the element. Mouse events will be delivered to the element only.
 
-* #### `element.state.box(what,boxOf,relativeTo[, asPpx: bool ])
+* #### `element.state.box(what,boxOf,relativeTo[, asPpx: bool ])`
 
   Returns various metrics of the element. 
 

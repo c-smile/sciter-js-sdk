@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style></style>
+        <script type="module">
+
+import {VirtualList} from "virtual-select.js";
+
+// select with virtual data source
+class List extends VirtualList {
+
+  list; // array of items
+
+  constructor(props) { 
+    super(props); 
+    this.list = props.list;
+  }
+
+  itemAt(at) { return this.list[at]; }
+  totalItems() { return this.list.length; }
+  indexOf(item) { return this.list.indexOf(item); }
+
+  // overridable
+  renderItem(item, isCurrent, isSelected) {
+    return <option key={item.key} 
+                   state-current={isCurrent} 
+                   state-checked={isSelected}>{item.text}</option>;
+  }
+}
+
+
+class App extends Element {
+
+  list = [];
+
+  constructor() {
+    super();
+    for(let n = 0; n < 1000; ++n) { 
+      this.list.push({key:n, text:`option # ${n}`});
+    }
+  }
+
+  render() {
+    return <body>
+      <List id="list" list={this.list} />
+      <button#change-items>Change items</button>
+      <button#change-length>Change length of set</button>
+      <button#remove-item>Remove 10th item</button>
+    </body>
+  }
+
+  ["on input at #vselect"](evt, vselect) {
+    console.log("value change", vselect.value);
+  }
+
+  ["on click at button#change-items"]() {
+    for(let item of this.list) 
+      item.text += " changed";
+    this.componentUpdate();
+  }
+
+  ["on click at button#change-length"]() {
+    this.list.splice(500);
+    this.componentUpdate();
+  }
+
+  ["on click at button#remove-item"]() {
+    this.list.splice(10,1);
+    this.componentUpdate();
+  }
+}
+
+
+document.body.patch(<App/>);
+
+        </script>
+    </head>
+    <body />
+</html>

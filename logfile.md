@@ -1,3 +1,15 @@
+## 4.4.7.6
+
+### New features:
+
+* [Clipboard](docs/md/Clipboard.md) support; 
+
+### Fixes:
+
+* `clearInterval()`` fix, see: https://sciter.com/forums/topic/calling-clearinterval-inside-setinterval-has-no-effect/
+* [zepto.js] compatibility, element.style.cssText prop support;
+* behavior: virtual-list fixes;
+
 ## 4.4.7.5
 
 ### New features:

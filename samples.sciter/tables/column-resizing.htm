@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+  table 
+  { 
+    font:system;
+    border:1px solid; 
+    flow:table-fixed;
+    width:*; 
+    height:*; // spans whole view
+    padding:0;
+    border-spacing:0;
+    border-collapse: collapse;
+    overflow-x: auto;
+  }
+
+  table > thead {
+    behavior:column-resizer; /* column sizing by user*/
+  }
+    
+  table > tbody {
+    size:*;
+    overflow-y: scroll-indicator;  
+  }
+
+  table th,table td { border:1px solid; padding:4px; }
+
+
+        </style>
+        <script>
+
+
+    function rows(N) {
+       let list = []; 
+       for(let n = 0; n < N; ++n)
+         list.push(<tr><td>{n}</td><td>Item {n}</td><td>status</td></tr>);
+       return list;
+    }
+
+    document.$("table>tbody").content( rows(300) );
+
+
+        </script>
+    </head>
+    <body>
+
+<table>
+  <thead>
+    <th style="width:100px">First</th>
+    <th style="width:*">Second (flex)</th>
+    <th style="width:100px">Third</th></tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+
+    </body>
+</html>

@@ -15,10 +15,10 @@ export class SublimatedObject extends Element
   }
 
   render(props) {
-    if(props.def)
+    if(props?.def)
       this.def = props.def;
-    if(!props.def)
-      return [];
+    
+    if(!this.def) return [];
     return this.def.type == "Array" 
       ? this.renderArray() 
       : this.renderObject();
@@ -59,7 +59,7 @@ export class SublimatedObject extends Element
       atts = { expanded:"" };
       let n = 0;
       let list = [];
-      if(this.def.properties) {
+      if(this.def?.properties) {
         for(let [key,val] of Object.entries(this.def.properties))
         {
           list.push(<span>{key} :</span>);

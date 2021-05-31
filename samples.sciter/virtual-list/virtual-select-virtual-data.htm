@@ -12,6 +12,8 @@ let maxItems = 5000;
 // select with virtual data source
 class MySelect extends VirtualSelect {
 
+  constructor(props) { super(props); }
+
   itemAt(at) { 
     while(at >= items.length) {
       let index = items.length;
@@ -25,13 +27,17 @@ class MySelect extends VirtualSelect {
   indexOf(item) {  
     return items.indexOf(item);
   }
+
+  renderItem(item, isCurrent, isSelected) {
+    console.log(item, isCurrent);
+    return <option key={item.key} 
+                   state-current={isCurrent} 
+                   state-checked={isSelected}>*{item.text}</option>;
+  }
+
+
 }
 
-function renderOption(item, isCurrent, isSelected) {
-  return <option key={item.key} 
-                 state-current={isCurrent} 
-                 state-checked={isSelected}>{item.text}</option>;
-}
 
 document.on("input", "#vselect", function(evt, vselect) {
   console.log("value change", vselect.value);
@@ -49,11 +55,18 @@ document.on("click", "button#change-length", function() {
   document.$("#vselect").componentUpdate();
 });
 
+document.on("click", "button#remove-item", function() {
+  items.splice(10,1);
+  document.$("#vselect").componentUpdate();
+});
+
+
 document.body.patch(
   <body>
-    <MySelect id="vselect" renderItem={renderOption} />
+    <MySelect id="vselect" />
     <button#change-items>Change items</button>
     <button#change-length>Change length of set</button>
+    <button#remove-item>Remove 10th item</button>
   </body>);
 
         </script>

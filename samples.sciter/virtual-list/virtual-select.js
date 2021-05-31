@@ -1,53 +1,57 @@
 
 
-export class VirtualSelect extends Element {
+export class VirtualList extends Element {
 
-  items = [];
   currentItem = null; // item, one of items
   selectedItems;// TODO: = new WeakSet();
+  styleSet;
 
   constructor(props) {
     super();
-    this.items = props.items || [];
     this.renderItem = props.renderItem || this.renderItem;
     this.renderList = props.renderList || this.renderList;
+    this.styleset = props.styleset || (__DIR__ + "virtual-select.css#virtual-select");
   }
 
-  itemAt(at) {     // virtual function, can be overriden
-    return this.items?.[at];
+  itemAt(at) {     // virtual function, must be overriden
+    return null;
   }
-  totalItems() {   // virtual function, can be overriden
-    return this.items?.length || 0; 
+  totalItems() {   // virtual function, must be overriden
+    return 0; 
   }
-  indexOf(item) {  // virtual function, can be overriden
-    return this.items?.indexOf(item);
+  indexOf(item) {  // virtual function, must be overriden
+    return -1;
   }
 
   render(props) {
 
-    if((props.items && (this.items !== props.items)) || !this.vlist) {
-      this.items = props.items || [];
-      if(this.totalItems())
-        this.post( () => { this.vlist.navigate("start") } );
-      return this.renderList([]);
-    }
-
-    let firstIndex = this.vlist?.firstBufferIndex;
-    let lastIndex = this.vlist?.lastBufferIndex;
-
-    let totalItems = this.totalItems();
-
-    if( lastIndex >= totalItems )  // number of items reduced so buffer is past total count
-      this.post( () => { this.vlist.navigate("end") } );
-    else if(this.vlist.itemsTotal != totalItems) // number of items reduced, update scroll
-      this.post( () => { this.vlist.itemsAfter = totalItems - this.vlist.itemsBefore - this.children.length; });
-
     let list = [];
-    let {currentItem, selectedItems } = this;
-    for( let index = firstIndex; index <= lastIndex; ++index ) {
-      let item = this.itemAt(index);
-      list.push(this.renderItem(item,item === currentItem, selectedItems?.has(item)));
-    }
+
+    if(this.vlist) {
+      let firstIndex = this.vlist.firstBufferIndex;
+      let lastIndex = this.vlist.lastBufferIndex;
+
+      let totalItems = this.totalItems();
+
+      if(firstIndex === undefined)
+        this.post( () => { this.vlist.navigate("start") } );
+      else if( lastIndex >= totalItems ) {  // number of items reduced so buffer is past total count
+        lastIndex = totalItems - 1;
+        this.post( () => { this.vlist.navigate("end") } );
+      }
+      else if(this.vlist.itemsTotal != totalItems) { // number of items reduced, update scroll
+        lastIndex = firstIndex + Math.min(totalItems,this.vlist.slidingWindowSize) - 1;
+        this.post( () => { this.vlist.itemsAfter = totalItems - this.vlist.itemsBefore - this.children.length; });
+      }
+
+      let {currentItem, selectedItems } = this;
+      for( let index = firstIndex; index <= lastIndex; ++index ) {
+        let item = this.itemAt(index);
+        list.push(this.renderItem(item,item === currentItem, selectedItems?.has(item)));
+      }
+    } else 
+      this.componentUpdate(); 
+    
     return this.renderList(list);
   }
 
@@ -102,7 +106,7 @@ export class VirtualSelect extends Element {
 
   renderList(items) // overridable
   { 
-     return <virtual-select styleset={__DIR__ + "virtual-select.css#virtual-select"}>{ items }</virtual-select>; 
+    return <virtual-select styleset={this.styleset}>{ items }</virtual-select>; 
   }
 
   renderItem(item,index) // overridable
@@ -177,19 +181,44 @@ export class VirtualSelect extends Element {
     }
   }
 
-  onmousedown(evt) { if(evt.button == 1) this.setCurrentOption(evt.target); }
-  onmousemove(evt) { if(evt.button == 1) this.setCurrentOption(evt.target); }
+  ["on mousedown"](evt) { if(evt.button == 1) this.setCurrentOption(evt.target); }
+  ["on mousemove"](evt) { if(evt.button == 1) this.setCurrentOption(evt.target); }
 
   get value() {
     if(!this.currentItem) return undefined;
     return this.currentItem;
   }
 
-  /*
-  onanimationstart(evt) {
-    console.log("animated scroll start");
-  }
-  onanimationend(evt) {
-    console.log("animated scroll end");
-  }*/
 }
+
+
+export class VirtualSelect extends VirtualList {
+    items = [];
+
+    constructor(props) {
+      super(props);
+      this.items = props.items || [];
+    }
+
+    itemAt(at) {     // virtual function, can be overriden
+      return this.items?.[at];
+    }
+    totalItems() {   // virtual function, can be overriden
+      return this.items?.length || 0; 
+    }
+    indexOf(item) {  // virtual function, can be overriden
+      return this.items?.indexOf(item);
+    }
+
+    render(props) {
+      if((props?.items && (this.items !== props.items)) || !this.vlist) {
+        this.items = props?.items || [];
+        this.post( () => { this.vlist.navigate("start") } );
+        return this.renderList([]);
+      }
+      return super.render();
+    }
+
+
+}
+

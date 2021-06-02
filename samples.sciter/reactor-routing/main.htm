@@ -55,7 +55,7 @@ class App extends Element {
   // event handlers:
   onnavigateto(event) {
     let {route,params} = event.data;
-    return navigateTo(routeName,params); // true - event consumed
+    return this.navigateTo(routeName,params); // true - event consumed
   }
 
   // click on <a href="route:..."> or <button href="route:...">

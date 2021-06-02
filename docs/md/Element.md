@@ -56,6 +56,7 @@ class Element represents DOM element and extends [Node](Node.md) and so all its 
 * `element.querySelector(selector)`    | `element.$(selector)`
 * `element.querySelectorAll(selector)` | `element.$$(selector)`
 
+* `element.hasAttribute(attribute)`
 * `element.getAttribute(attribute)`
 * `element.getAttributeNames()`
 * `element.removeAttribute(attribute)`

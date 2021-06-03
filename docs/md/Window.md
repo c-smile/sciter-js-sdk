@@ -6,7 +6,7 @@ Instances of the Window class represent desktop windows.
 
 #### constructor:
 
-* `new Window {params}`
+* `new Window({params})`
 
   where `params` is an object with the fields:
 
@@ -27,6 +27,16 @@ Instances of the Window class represent desktop windows.
   * `params.client` : true | false - if `true` then x,y,w,h are coordinates of desired window client box on the screen;
   * `params.alignment` : 1..9 - optional, alignment of the window on monitor, if -1..-9 and parent is provided then it aligns the window against parent window.
   * `params.screen` : integer - optional, number of monitor on multi-home systems.
+  * `params.state` : - optional - window state, is one of:
+
+    * `Window.WINDOW_HIDDEN`
+    * `Window.WINDOW_SHOWN` - default type
+    * `Window.WINDOW_MAXIMIZED`
+    * `Window.WINDOW_MINIMIZED`
+    * `Window.WINDOW_FULL_SCREEN`
+
+  * `params.url` : string - optional, window html source code file.
+  * `params.parameters` : array | string | object, ... - optional, extra parameters to pass to the new window.
 
 #### properties:
  
@@ -37,7 +47,7 @@ Instances of the Window class represent desktop windows.
     * `Window.WINDOW_FULL_SCREEN`
     * `Window.WINDOW_HIDDEN`
   * `window.graphicsBackend` - read-only, string, reports current graphics backend used: "direct2d", "Skia/OpenGL", etc. 
-  * `window.minSize = [w,h]` - get/set minimal size of resizable window. 
+  * `window.minSize = [w,h]` - get/set minimal size of resizable window.
   * `window.maxSize = [w,h]` - get/set maximum size of resizable window.
   * `window.blurBehind = "none" | "auto" | "dark" | "ultra-dark" | "light" | "ultra-light"` - blur-behind effect configuration.
   * `window.isActive` - read-only, boolean, reports if window has input focus.
@@ -111,7 +121,7 @@ Instances of the Window class represent desktop windows.
     * `"left"`,`"top"`,`"right"`,`"bottom"`,`"width"`,`"height"` - individual integers.
 
   * `Window.this.modal(JSX) : any` - shows message box: `<info>..</info>`, `<alert>..</alert>`, `<error>..</error>`, `<question>..</question>`.
-  * `Window.this.modal{params} : any` - shows new window as dialog, for params see `new Window {params}` above. The function returns window close value of `Window.this.close(valToReturn)` call inside the window. 
+  * `Window.this.modal({params}) : any` - shows new window as dialog, for params see `new Window({params})` above. The function returns window close value of `Window.this.close(valToReturn)` call inside the window. 
 
   * `Window.this.performDrag(data:object, mode: "copy" | "move", dragIcon: Image | Element[, dragIconXoff:int, dragIconYoff:int] ): null | "copy" | "move"` - performs drag-and-drop using system D&D mechanism.
 

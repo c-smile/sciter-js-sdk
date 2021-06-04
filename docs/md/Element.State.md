@@ -54,9 +54,14 @@ rule to be applied.
 * `ready`
 * `reactive` - `element.state.reconciliation = false;` will prevent reconciliation of element's content by Reactor
 * `value` - any value - runtime value coerced to particular type. Actual for input elements.
+* `occluded:integer` - read-only, reports visibility status of the element, if `0` then the element is visible in full, otherwise combination of these flags:
+  * `0x1` - left side of border box is clipped out (invisible).
+  * `0x2` - top side is clipped.
+  * `0x4` - right side is clipped.
+  * `0x8` - bottom side is clipped.
+  `0xf` value means that the element is completely clipped out - invisible.
 
-
-Properties of Element.State may cause CSS pseudo-class rules to be triggered: 
+Some properties of Element.State may cause CSS pseudo-class rules to be triggered:
 
 ```JavaScript
 section.state.expanded = true;
@@ -80,7 +85,7 @@ section:expanded > div.content { visibility:visible; }
   * `false` - remove capture if the element owns capture now;
   * `true` - captures mouse events by the element. Mouse events will be delivered to the element only.
 
-* #### `element.state.box(what,boxOf,relativeTo[, asPpx: bool ])`
+* #### `element.state.box(what,boxOf[,relativeTo[, asPpx: bool ]])`
 
   Returns various metrics of the element. 
 
@@ -110,5 +115,6 @@ section:expanded > div.content { visibility:visible; }
   * "document" - relative to root element - document;
   * "parent" - relative to DOM parent of the element;
   * "container" - relative to layout container - for position'ed elements this tells position relative to nearest positioned container;
+  * "self" - default, relative to the element itself, "inner" x/y are 0 in this case;
 
   _asPpx_ if defined and is _true_ tells the function to return coordinates in screen pixels. By default the function returns logical CSS pixels, a.k.a. DIPs - logical units, 1/96 of inch.   

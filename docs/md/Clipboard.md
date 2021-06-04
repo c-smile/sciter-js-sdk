@@ -27,7 +27,7 @@ Clipboard data object is a plain JS object that may contain following properties
 * `text`: string - text;
 * `html`: string - html fragment;
 * `json`: value - arbitrary JSON data;
-* `file`: [url0,url1, ...] - list of file urls, for local files it contains "file://..." urls;
+* `file`: [path0,path1, ...] - list of file paths;
 * `link`: { caption: string, url: string} - link to some file / location;
 * `image`: Graphics.Image - image object;
 

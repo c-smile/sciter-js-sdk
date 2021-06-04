@@ -2,7 +2,7 @@
 
 Multiline editting behavior for relatively small multiline texts.
 
-For potentntially large texts use [plaintext](behavior-plaintext.md).
+For potentntially large texts use [plaintext](behavior-textarea.md).
 
 ## Elements
 
@@ -58,29 +58,29 @@ editor.textarea.insertText("foo");
   
   read-only, integer, indexes of start and end of the selection. selectionEnd is an index of character next to selected text. 
 
-* `plaintext.selectionText`
+* `textarea.selectionText`
 
   read-only, string, selected text or empty sting if there is no selection or selection is collapsed.
 
 ### Methods
 
-* `plaintext.selectAll()`
+* `textarea.selectAll()`
   
   selects whole text.
 
-* `plaintext.selectRange(start:integer, end:integer)`
+* `textarea.selectRange(start:integer, end:integer)`
   
   selects text range, *end* position is not included into selection.
 
-* `plaintext.appendText(text:string): true|false`
+* `textarea.appendText(text:string): true|false`
   
   appends the text at the end of the text;
 
-* `plaintext.insertText(text:string): true|false`
+* `textarea.insertText(text:string): true|false`
   
   Removes selected text (if any) and inserts the text at current position. 
 
-* `plaintext.removeText() : true|false`
+* `textarea.removeText() : true|false`
   
   removes selected text;
 

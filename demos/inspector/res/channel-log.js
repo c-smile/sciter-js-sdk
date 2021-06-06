@@ -63,8 +63,7 @@ export class ChannelLog extends Element
       items: [toeval]
     })
     this.channel.notify("toeval",toeval);
-    evt.preventDefault(); // prevents a new line in the eval input unless the user holds shift
-    return false; // do not propagate, consumed
+    return true; // do not propagate, consumed
   }
 
   list2clipboard() {

@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+div#test {
+    border:1px solid;
+}
+
+        </style>
+        <script>
+
+document.on("contextmenu","div#test", function(evt,div) {
+  
+  evt.source = Element.create(<menu.context>
+      <li>Veni</li>
+      <li>Vidi</li>
+      <li>Vici</li>
+    </menu>);
+  return true;
+});
+
+        </script>
+    </head>
+    <body>
+
+    <div #test>Right click to see context menu</div>
+
+
+    </body>
+</html>

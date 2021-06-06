@@ -64,7 +64,13 @@ TBD
 
 ##### `graphics.draw(image, {params})` 
 
-TBD
+draws image, params is an object with:
+
+* `x`, `y` - numbers, destination coordinates;
+* `width` ,`height` - optional, numbers, dimension of destination box;
+* `srcX`, `srcY` - optional, integer, origin of source box (sprite);
+* `srcWidth`, `srcHeight` - optional, integer, dimension of source box (sprite);
+* `opacity`, optional, 0.0 ... 1.0 , opacity (blending);
 
 ##### `graphics.draw(text, {params})` 
 

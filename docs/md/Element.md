@@ -142,13 +142,15 @@ See [global-events](../../samples.sciter/global-events/README.md) for the ration
 
   Schedules re-paint of the element. This will trigger `element.paintXXXX` later calls (if any). On Windows this will end up in [InvalidateRect](https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-invalidaterect) call.
 
-* <a name="popupAt"></a>`element.popupAt(screenX,screenY,alignment)`
+* <a name="popup"></a>`element.popup(popup:Element | VNode, params : Object )`
 
-  Shows this element as out of canvas popup on screen. _alignment_ is a number in 0..9 range (see keyboard numpad for the meaning). Example `div.popupAt(1000,1000,3)` will show the element with bottom/right corner at 1000/1000 screen pixel. 
+  Shows the _popup_ element or VNode (JSX) in out-of-canvas popup window on desktop. Params is an object that may have following fields:
 
-* <a name="popupFor"></a>`element.popupFor(anchorElement)`
+  * _anchorAt_ - 1..9, reference point on anchor border box (see keyboard numpad for the meaning);
+  * _popupAt_ - 1..9, reference point on popup's margin box; 
+  * _x_, _y_ - optional, explicit window coordinates of _popupAt_ point.
 
-  Shows this element as out of canvas popup relative to anchorElement.
+  Engine tries to replace popup so _popupAt_ position is at _anchorAt_ on screen.
 
 * <a name="animate"></a> `element.animate(params:object)` - various animation effects, where *params* contains following fields:
 

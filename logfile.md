@@ -1,3 +1,29 @@
+## 4.4.7.7
+
+### New features:
+
+* new global functions:
+  * `decode(arraybuffer,encoding): string`, character encoding/decoding 
+  * `encode(string,encoding): arraybuffer` 
+  * `btoa(arraybuffer): string` - Base64 encoding/decoding 
+  * `atob(string): arraybuffer`
+* `element.popup(element | vnode,options)` - popup generalization. This makes element.popupAt/For() functions obsolete;  
+* `element.animate(stepfunc,options)` - another mode of animate function.  
+* `element.state.occluded` - reports occlusion state of the element (partial or full invisibility);
+* `Window.elementAt(screenX,screenY)` - find DOM element by screen coordinates;
+* [reactor] + reactor-routing sample;
+* sdk.js/samples.sciter/input-elements-styling - custom styling demos;
+* sdk.js/samples.sciter/menu - menu samples;
+
+### Fixes:
+
+* fix of `element.onmouseXXXX()` handlers;
+* [reactor] tunelling key attribute;
+* scroll, 1ppx extra fix;
+* [virtual-list] initialization fix;
+* [css] fix of `currentcolor` handling;
+* [dom] fix of `element.attributes["style"] = ...` updates (memory consumption);
+
 ## 4.4.7.6
 
 ### New features:

@@ -16,7 +16,10 @@ tbody
   size:*;
 }
 
-table > thead { border-bottom:1px solid #ccc; }
+table > thead { 
+   border-bottom:1px solid #ccc; 
+   behavior: column-resizer;
+ }
 table > thead > tr > th:nth-child(1) { width: 8em; }
 table > thead > tr > th:nth-child(2) { width: 8em; }
 table > thead > tr > th:nth-child(3) { width: *; }

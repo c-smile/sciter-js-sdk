@@ -6,23 +6,23 @@
 * `console.warn(...)`
 * `console.error(...)`
 
-* `setTimeout(func,milliseconds)`
+* #### `setTimeout(func,milliseconds)`
 
-* `clearTimeout(tid)`
+* #### `clearTimeout(tid)`
 
-* `setInterval(func,milliseconds)`
+* #### `setInterval(func,milliseconds)`
 
-* `clearInterval(iid)`
+* #### `clearInterval(iid)`
 
-* `requestAnimationFrame(func): aid`
+* #### `requestAnimationFrame(func): aid`
 
-* `cancelAnimationFrame(aid)`
+* #### `cancelAnimationFrame(aid)`
 
-* `fetch()` - [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+* #### `fetch()` - [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 
-* `getComputedStyle(element[, pseudoEl]): Style`
+* #### `getComputedStyle(element[, pseudoEl]): Style`
 
-* `printf(format:string, ...):string` 
+* #### `printf(format:string, ...):string` 
   
   The function does formatting of arguments using C-style [printf conventions](https://en.cppreference.com/w/cpp/io/c/fprintf).
   
@@ -33,17 +33,35 @@
   * `%v` - takes argument and prints it as `JSON.stringify(arg)`;
   * `%V` - takes argument and prints it as `JSON.stringify(arg, null, "  ")`;
 
-* `scanf(format:string, input: string) : [...]`
+* #### `scanf(format:string, input: string) : [...]`
 
   Takes *input* string and parses it according the *format* specification using C-style [scanf conventions](https://en.cppreference.com/w/c/io/fscanf). Returns list (array) of successfully parsed values. 
 
-#### global properties
+* #### `encode(text: string, encoding: string="utf-8") : ArrayBuffer` 
 
-* `globalThis` - object, global namespace, aliased as `window` for compatibility with browsers.
+  Encodes text to sequence of bytes (ArrayBuffer). 
 
-* `devicePixelRatio` - float, number of physical screen pixels in logical CSS px (dip).
+  _ encoding_ is [IANA encoding](https://www.iana.org/assignments/character-sets/character-sets.xhtml) identifier 
 
-#### Standard DOM objects
+* #### `decode(buffer: ArrayBuffer, encoding: string) : string`
+
+  Decodes sequence of bytes of buffer to string.
+
+* #### `btoa(buffer: ArrayBuffer) : string`
+
+  Produces Base64 string from binary data. 
+
+* #### `atob(base64: string) : ArrayBuffer`
+
+  Restores binary data from Base64 encoded string.  
+
+## global properties
+
+* #### `globalThis` - object, global namespace, aliased as `window` for compatibility with browsers.
+
+* #### `devicePixelRatio` - float, number of physical screen pixels in logical CSS px (dip).
+
+## Standard DOM objects
 
 * [Document](Document.md)
 * [Element](Element.md)
@@ -51,12 +69,12 @@
 * [Event](Event.md)
 * [Graphics](Graphics/README.md) 2D graphics and associated classes.
 
-#### Sciter specific objects
+## Sciter specific objects
 
 * [Window](Window.md) - desktop window defined by HTML loaded in it. 
 * [Audio](Audio.md) - audio playback. 
 
-#### Sciter specific modules
+## Sciter specific modules
 
 * [@sciter](module-sciter.md) - Sciter's general methods.
 * [@sys](module-sys.md) - System, File system and communication primitives (close to Node.JS runtime).

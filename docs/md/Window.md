@@ -4,9 +4,9 @@ Instances of the Window class represent desktop windows.
 
 `Window.this` is a reference to current window object - instance of Window class where HTML document is loaded.
 
-#### constructor:
+## constructor:
 
-* `new Window({params})`
+* `new Window {params}`
 
   where `params` is an object with the fields:
 
@@ -38,7 +38,7 @@ Instances of the Window class represent desktop windows.
   * `params.url` : string - optional, window html source code file.
   * `params.parameters` : array | string | object, ... - optional, extra parameters to pass to the new window.
 
-#### properties:
+## properties:
  
   * `window.state` - read/write, one of:
     * `Window.WINDOW_SHOWN`
@@ -47,7 +47,7 @@ Instances of the Window class represent desktop windows.
     * `Window.WINDOW_FULL_SCREEN`
     * `Window.WINDOW_HIDDEN`
   * `window.graphicsBackend` - read-only, string, reports current graphics backend used: "direct2d", "Skia/OpenGL", etc. 
-  * `window.minSize = [w,h]` - get/set minimal size of resizable window.
+  * `window.minSize = [w,h]` - get/set minimal size of resizable window. 
   * `window.maxSize = [w,h]` - get/set maximum size of resizable window.
   * `window.blurBehind = "none" | "auto" | "dark" | "ultra-dark" | "light" | "ultra-light"` - blur-behind effect configuration.
   * `window.isActive` - read-only, boolean, reports if window has input focus.
@@ -62,7 +62,7 @@ Instances of the Window class represent desktop windows.
   * `window.parent` - read-only, Window | null - parent window of this one.
   * `window.document` - read-only, Document - root document of the window.
 
-#### methods:
+## methods:
 
   * `window.box(boxPart,boxOf[,"screen"]):[...]` reports geometry of the window, where:
   
@@ -131,7 +131,7 @@ Instances of the Window class represent desktop windows.
     * `file : [path1,path2,...] | path0` - single or multiple file names;
     * `json`: any - any data that can be JSON.stringify'ed;
 
-  * ##### `Window.this.focusable(dir [,reference:element]): element`
+  * #### `Window.this.focusable(dir [,reference:element]): element`
     
     The functions allows to enumerate elements in tab order. _dir_ there is one of:
 
@@ -143,12 +143,31 @@ Instances of the Window class represent desktop windows.
     You can assign found element to `window.focus = element` set focus on it.
 
     
-#### class methods and properties:
+## class methods and properties:
 
-  * `Window.this` - instance of Window class - this window reference;
-  * `Window.screenBox(monitor:integer, what, boxPart)` - reports geometry and information of the given monitor. For _what_ and _boxPart_ parameters see window.screenBox() method above.
+  * `Window.this` 
+    
+    instance of Window class - this window reference;
 
-#### events
+  * `Window.screenBox(monitor:integer, what, boxPart)` 
+   
+    reports geometry and information of the given monitor. For _what_ and _boxPart_ parameters see window.screenBox() method above.
+
+  * `Window.elementAt(screenX,screenY):Element` 
+  
+    returns DOM element under screenX/screenY position. 
+    Note: this method may return DOM element belonging to any Sciter window in current process. 
+
+  * `Window.ticks():milliseconds`
+
+    returns value of internal timer. 
+
+  * `Window.post( ge: Event )`
+
+    posts global event *ge* to all windows in current process.   
+
+
+## events
 
 Use `Window.this.on("eventname", handler)` to subscribe to these events: 
 

@@ -8,8 +8,7 @@ input.plus {
   prototype: EditPlus /*url(editplus.js)*/; 
 }
 
-popup.plus {
-  cursor: default;
+input.plus menu.popup {
   color:#000;
   width:*;
   padding:10px;
@@ -19,14 +18,7 @@ popup.plus {
   border-radius:1em;
 }
 
-popup.plus > div { border-top:1px solid #ccc; }
-popup.plus > ol > li {
-  behavior:clickable;
-}
-
-popup.plus > ol > li:hover {
-  background-color: color(highlight-focus);
-}
+input.plus menu.popup > div { border-top:1px solid #ccc; }
 
         </style>
         <script>
@@ -34,26 +26,19 @@ popup.plus > ol > li:hover {
 class EditPlus extends Element {
   
   ["on focus"]()  {
-    document.head.append(<popup.plus>
-      <ol><li>A</li>
-          <li>B</li>
-          <li>C</li>
-          <li>D</li></ol>
-      <div>other menus</div>
-    </popup>);
-    this.popup = document.head.$("popup.plus");
-    this.popup.popupFor(this);
+    this.pel = this.popup(<menu.popup>
+          <li>A item</li>
+          <li>B item</li>
+          <li>C item</li>
+          <li>D item</li>
+          <div>other menus</div>
+        </menu>);
   } 
 
   ["on focusout"]() {
-    if(this.popup)
-      this.popup.state.popup = false; // hide it
-  }
-
-  ["on popupdismissed"](evt) {
-    if(this.popup === evt.target) {
-      this.popup.remove(); // remove it from DOM
-      this.popup = null;   // forget it
+    if(this.pel) {
+      this.pel.state.popup = false; // hide it
+      this.pel = null;
     }
   }
 

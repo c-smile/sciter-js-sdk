@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+           div {
+              size:300px;
+              border:1px solid;
+              stroke: #f00;
+              stroke-width:2px;
+           }
+
+        </style>
+        <script|module>
+
+          document.on("click", "div", async function(evt,div) {
+
+            let p = 0;
+            let [w,h] = div.state.box("dimension");
+
+            div.paintForeground = function(graphics) {
+               graphics.beginPath();
+               graphics.moveTo(w * p, 0);
+               graphics.lineTo(w * (1 - p), h);
+               graphics.stroke();
+            };
+
+            function step(progress) { p = progress; div.requestPaint(); return true; }
+
+            await div.animate(step,{ease:"sine-in-out",duration:600});
+
+            div.paintForeground = null;
+          });
+
+        </script>
+    </head>
+    <body>
+
+       <div>Click to animate</div>
+
+
+    </body>
+</html>

@@ -13,7 +13,6 @@ Let's redefine our `Clock` class that we used earlier :
 ```JavaScript
 class Clock extends Element 
 {
-  const styleset = ["clock", $url(clock.css)]; // style set declaration
 
   time = new Date(); // setting initial state 
 

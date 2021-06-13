@@ -13,6 +13,7 @@ Let's redefine our `Clock` class that we used earlier :
 ```JavaScript
 class Clock extends Element 
 {
+  const styleset = ["clock", $url(clock.css)]; // style set declaration
 
   time = new Date(); // setting initial state 
 
@@ -88,7 +89,7 @@ class Search extends Element {
 In this example we are handling two events: click on the button and change of the input.
 
 
-Word about event handling functions like `["on change at input"](evt,input)` above.
+Word about event handling functions like `\["on change at input"\]\(evt,input\)` above.
 
 That format is a standard JS/ES2020 way of defining functions with [computable names](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions#computed_property_names) or names that include namespaces. It is just in Sciter event handlers are using this form to describe event handling functions that have the following signatures:    
 
@@ -101,7 +102,7 @@ Where:
 
 * **on**\[space\] part marks the function as event handler;     
 * *eventname* is a name of event - either standard HTML's one like click, input, focus, ... or custom event name;     
-* [space]**at**[space], if present, signifies that selector will follow;    
+* \[space\]**at**\[space\], if present, signifies that selector will follow;    
 * *selector* is CSS selector of child element inside this element. When event handler will be triggered selectorElement argument of the function will get reference to the matching child that generated the event.   
 
 Such class based event handlers are especially effective in cases when there are many elements at the same time on screen. Such event subscription schema does not require addEventHandler calls for each element.

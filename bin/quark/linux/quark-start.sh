@@ -1,1 +1,1 @@
-../../bin/linux/x64/scapp ../../../quark/index.htm
+../../linux/x64/scapp…/../../quark/index.htm

@@ -21,11 +21,10 @@ You can also use classes to define a component:
 
 ```JavaScript
 class Welcome extends Element {
-  constructor(props) { 
-    super();
+  function this(props) { 
     this.props = props; 
   }
-  render() {
+  function render() {
     return <h1>Hello, {this.props.name}</h1>;
   }
 }

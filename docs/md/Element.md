@@ -152,17 +152,20 @@ See [global-events](../../samples.sciter/global-events/README.md) for the ration
 
   Engine tries to replace popup so _popupAt_ position is at _anchorAt_ on screen.
 
-* <a name="animate"></a> `element.animate(params:object)` - various animation effects, where *params* contains following fields:
+* <a name="animate"></a> `element.animate(changer:function,params:object)`  
+  
+  various animation effects, where *params* contains following fields:
 
   * `params.duration` - integer, milliseconds - duration of the animation;
   * `params.ease` - string, name of ease function, one of: 
     
-    "linear","ease","ease-in","ease-in-out","ease-out","quad-in","quad-out","quad-in-out","cubic-in","cubic-out","cubic-in-out",
+    <a name="animate-ease"></a> "linear","ease","ease-in","ease-in-out","ease-out","quad-in","quad-out","quad-in-out","cubic-in","cubic-out","cubic-in-out",
     "quart-in","quart-out","quart-in-out","quint-in","quint-out","quint-in-out","sine-in","sine-out","sine-in-out",
     "expo-in","expo-out","expo-in-out","circ-in","circ-out","circ-in-out","elastic-in","elastic-out","elastic-in-out",
     "back-in","back-out","back-in-out","x-back-in","x-back-out","x-back-in-out","xx-back-in","xx-back-out","xx-back-in-out",
     "bounce-in","bounce-out","bounce-in-out";
-  * `params.effect` - string, name of transition method, one of: 
+
+  * **`params.effect`** - string, name of transition method, one of: 
     * "blend",
     * "blend-atop",
     * "slide-top",
@@ -182,6 +185,17 @@ See [global-events](../../samples.sciter/global-events/README.md) for the ration
     * "scroll-left",
     * "scroll-right"
 
+* <a name="animate-step"></a> `element.animate(step:function,params:object)`
+
+  The method offers "manual" animation support. The _step_ function has following signature `function step(progress:0.0 ... 1.0): true | false`
+
+  Sciter will call step function with animation frame rate passing current progress value. If the function returns *false* animation stops.
+
+  *params* may contain following fields:
+
+  * `params.duration` - integer, milliseconds - duration of the animation;
+  * `params.ease` - string, optional, name of ease function, see [params.ease](#animate-ease) above. This parameter detemines curvature of *progress* values. 
+
 * <a name="takeOff"></a> `element.takeOff([params:object])` - "airborn" DOM elements - replaced outside of host window. *params* are:
 
   * `params.x`,`params.y` - numeric, element coordinates, *screen* pixels - new position of DOM element;
@@ -193,8 +207,6 @@ See [global-events](../../samples.sciter/global-events/README.md) for the ration
     * "popup" - same as "detached" window, put also will be placed as topmost - on top of other windows on desktop.
 
 
-## Methods (Sciter.JS/Reactor specific):
-
 * `element.append( vnode )` - appends element defined by JSX expression:
   
    ```JavaScript
@@ -203,14 +215,20 @@ See [global-events](../../samples.sciter/global-events/README.md) for the ration
 
 * `element.prepend( vnode )` - insert the element as first child
 
+* `element.content( vnode )` - replaces element content by the VNode
+
 * `element.patch( vnode [, onlyChildren:true] )` - patches content of the element by `vnode` using rules of React[or]. If second parameter is provided and is _true_ the function patches only children but not element itself.
 
-* `element.componentUpdate( obj )` - does the following:  
+* `element.componentUpdate( obj )` - does roughly the following:  
 
-   ```JavaScript
-   Object.assign(element,obj);      // 1. merge properties
-   element.post( (element) => {     // 2. enqueue update
-     var vnode = element.render();  // 3. calls .render() that must return vnode (JSX expression)
-     element.patch(vnode);          // 4. reconciliation / patching
-   });
+  ```JavaScript
+  if(Object.assignIf(element,obj))    // 1. merge properties and if they are different
+     element.post( (element) => {     // 2. enqueue update
+       var vnode = element.render();  // 3. calls .render() that must return vnode (JSX expression)
+       element.patch(vnode);          // 4. reconciliation / patching
+     });
   ```
+
+* `element.rangeFromPoint(x,y) : Range | null` 
+
+  Returns collapsed range (caret position) at point x/y. x/a are local coordinates - relative to origin of element's inner box.   

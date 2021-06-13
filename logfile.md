@@ -1,3 +1,27 @@
+## 4.4.7.8
+
+### New features:
+
+* highlightion API, new methods:
+  * `range.marks()`
+  * `range.setToMark(name)` 
+  * `element.rangeFromPoint(x,y)` 
+  
+  See /samples.sciter/editor-plaintext/highlighting-marks.htm
+
+* `fetch()` API - POSTing JSON and other textual or binary data;
+
+* sdk.js/samples.sciter/reactor-form/ - forms handling in reactor, inspired by Formik/ReactJS;
+
+* SDK headers: SOM_PROP_EX + SOM_RO_PROP_EX
+
+### Fixes:
+
+* fix of window.close(val) for main window;
+* virtual-list scroll fixes;
+* fix of css::prototype and JS subclassing;
+* optimiziation of `<img src="....svg">` handling;
+
 ## 4.4.7.7
 
 ### New features:

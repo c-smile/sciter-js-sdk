@@ -1,0 +1,16 @@
+
+
+@set form {
+
+    :root {
+       flow: row(label, input textarea select group, div);
+       border-spacing:0.25em; 
+    }
+
+    label { white-space:pre; display:block; text-align:right; line-height:2em; }
+    div   { white-space:pre; line-height:2em; }
+
+    input,textarea,select { display:block; }
+    group { display:block; flow:horizontal; }
+
+}

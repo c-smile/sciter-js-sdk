@@ -34,3 +34,5 @@ The Range represents a fragment of a document that can contain nodes and parts o
 * `range.highlight(name | [name1, name2,...])` - synonym of `applyMark`.
 * `range.clearMark(name | [name1, name2,...])` - removes mark(s) from the range.
 * `range.clearHighlight()` - synonym of `clearMark`
+* `range.marks():[]` - returns list (array) of mark names inside this range.
+* `range.setToMark(name)` - sets the range to start/end of character range having _name_ mark set.

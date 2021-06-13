@@ -1,0 +1,87 @@
+<html>
+
+<head>
+<title>Test</title>
+<style>
+  plaintext {
+    overflow: scroll-indicator;
+    background: #fafaff; 
+    font-family: monospace;
+    font-size: 14pt;
+    color: black;
+  }
+
+  plaintext > text::mark(error) { 
+    text-decoration:wavy underline red;
+  }
+
+  //can hover to change style
+  plaintext > text::mark(error):hover { 
+    text-decoration:wavy underline blue;
+  }
+
+  popup.error {
+    cursor: default;
+    color:#000;
+    width: auto;
+    padding:10px;
+    margin:8px 0;
+    background: yellow;
+  }
+
+</style>
+
+<script|module>
+
+  import { $ } from "@sciter";
+  
+  class PlainText extends Element {
+
+    componentDidMount() {
+     
+        const errorRange = new Range();
+        const line = this.children[1].firstChild;
+        errorRange.setStart(line, 8);
+        errorRange.setEnd(line, 13);
+        errorRange.applyMark("error");
+
+        const line2 = this.children[3].firstChild;
+        errorRange.setStart(line2, 13);
+        errorRange.setEnd(line2, 19);
+        errorRange.applyMark("error");
+    }
+    
+    ["on mouseidle"](evt) {
+        if( this.shownPopup ) return true;
+        let range = this.rangeFromPoint(evt.x,evt.y);
+        if( !range ) return;
+        console.log(range, range.marks());
+        if( !range.marks().includes("error") ) return;
+        const pup = <popup.error> This is just a test </popup>;
+        const params = {x: evt.windowX, y: evt.windowY };
+        this.shownPopup = this.popup(pup,params);
+        return true;
+    }
+
+    ["on popupdismissing"](evt) {
+        this.shownPopup = null;
+    }
+
+    render(props,kids){
+      return <plaintext>
+          <text>Need a popup when hover over the squiggly line</text>
+          <text>testing error, mark hover and popup</text>
+          <text>The popup shows on each line when mouseidle</text>
+          <text>Although css :hover does work</text>
+          <text>How do we query pseudo-element?</text>
+        </plaintext>;
+    }
+
+  }
+  document.body.append(<PlainText />);
+</script>
+</head>
+<body>
+</body>
+
+</html>

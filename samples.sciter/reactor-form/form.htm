@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+.error { color:red; }
+
+        </style>
+        <script|module>
+
+import {Form,FormError} from "form.js";
+
+let initialValue = { email: 'a@b.com', password: '' };
+
+function validate(values) {
+    const errors = {};
+    if (!values.email) {
+        errors.email = 'Required';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+        errors.email = 'Invalid email address';
+    }
+
+    if(values.password.length < 8)
+       errors.password = 'Too short';
+
+    if(values.sex === undefined)
+       errors.sex = 'Must be set';      
+
+    return errors;
+}
+
+document.body.append(
+    <Form #theform value={initialValue} validate={validate}>
+      <label>email</label>
+        <input|text(email) />
+          <FormError(email) />
+      
+      <label>password</label>
+        <input|password(password) />
+          <FormError(password) />
+      
+      <label>sex</label>
+         <group><button(sex)|radio value="male">Male</button>
+                <button(sex)|radio value="female">Female</button></group>
+           <FormError(sex) />
+      
+      <label>description</label>
+         <textarea(description) />  
+           <FormError(description) />
+
+      <button|submit>Submit</button>
+    </Form>);
+
+
+document.$("#theform").on("submit", function(evt){
+  Window.this.modal(<info>Success: {JSON.stringify(evt.data)}</info>);
+});
+
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

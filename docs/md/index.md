@@ -67,7 +67,7 @@
 * [Element](Element.md)
 * [Node](Node.md): [Text](Node.md#Text) and [Comment](Node.md#Comment)
 * [Event](Event.md)
-* [Graphics](Graphics/README.md) 2D graphics and associated classes.
+* [Graphics](graphics/README.md) 2D graphics and associated classes.
 
 ## Sciter specific objects
 

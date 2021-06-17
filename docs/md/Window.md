@@ -120,10 +120,15 @@ Instances of the Window class represent desktop windows.
     * `"dimension"` - [w,h], array, dimension of the rectangle.
     * `"left"`,`"top"`,`"right"`,`"bottom"`,`"width"`,`"height"` - individual integers.
 
-  * #### `window.modal(JSX) : any` - shows message box: `<info>..</info>`, `<alert>..</alert>`, `<error>..</error>`, `<question>..</question>`.
-  * #### `window.modal({params}) : any` - shows new window as dialog, for params see `new Window({params})` above. The function returns window close value of `Window.this.close(valToReturn)` call inside the window. 
+  * ##### `Window.this.modal(JSX) : any` 
+    
+    shows message box: `<info>..</info>`, `<alert>..</alert>`, `<error>..</error>`, `<question>..</question>`.
+  
+  * ##### `Window.this.window.modal({params}) : any`
+    
+    shows new window as dialog, for params see `new Window({params})` above. The function returns window close value of `Window.this.close(valToReturn)` call inside the window. 
 
-  * `Window.this.performDrag(data:object, mode: "copy" | "move", dragIcon: Image | Element[, dragIconXoff:int, dragIconYoff:int] ): null | "copy" | "move"` - performs drag-and-drop using system D&D mechanism.
+  * `Window.this..performDrag(data:object, mode: "copy" | "move", dragIcon: Image | Element[, dragIconXoff:int, dragIconYoff:int] ): null | "copy" | "move"` - performs drag-and-drop using system D&D mechanism.
 
     `data` is an object that may contain one or several fields: 
     * `text: string` - plain text data;
@@ -131,7 +136,7 @@ Instances of the Window class represent desktop windows.
     * `file : [path1,path2,...] | path0` - single or multiple file names;
     * `json`: any - any data that can be JSON.stringify'ed;
 
-  * #### `window.focusable(dir [,reference:element]): element`
+  * ##### `window.focusable(dir [,reference:element]): element`
     
     The functions allows to enumerate elements in tab order. _dir_ there is one of:
 

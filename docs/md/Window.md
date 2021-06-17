@@ -4,6 +4,8 @@ Instances of the Window class represent desktop windows.
 
 `Window.this` is a reference to current window object - instance of Window class where HTML document is loaded.
 
+NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.this` but not that strange "window" thing of browsers. 
+
 ## constructor:
 
 * `new Window {params}`
@@ -94,7 +96,7 @@ Instances of the Window class represent desktop windows.
   * `window.off("eventname" | handler)` - unsubscribe event handler either by name, namespace or handler reference  
   * `window.xcall(name:string [, arg0, ..., argN]): any`
 
-    Interaction with native behaviors attached to the window. `Window.this.xcall("foo")` will end up in [`handle_scripting_call()`](https://github.com/c-smile/sciter-js-sdk/blob/main/include/sciter-x-behavior.h#L749) of native behavior attached to the window using [SciterWindowAttachEventHandler](https://github.com/c-smile/sciter-js-sdk/blob/main/include/sciter-x-behavior.h#L898) API.
+    Interaction with native behaviors attached to the window. `window.xcall("foo")` will end up in [`handle_scripting_call()`](https://github.com/c-smile/sciter-js-sdk/blob/main/include/sciter-x-behavior.h#L749) of native behavior attached to the window using [SciterWindowAttachEventHandler](https://github.com/c-smile/sciter-js-sdk/blob/main/include/sciter-x-behavior.h#L898) API.
 
   * `window.trayIcon({image: Graphics.Image, text: string})` - show tray icon with the image and tooltip text.
 
@@ -120,15 +122,15 @@ Instances of the Window class represent desktop windows.
     * `"dimension"` - [w,h], array, dimension of the rectangle.
     * `"left"`,`"top"`,`"right"`,`"bottom"`,`"width"`,`"height"` - individual integers.
 
-  * ##### `Window.this.modal(JSX) : any` 
+  * ##### `window.modal(JSX) : any` 
     
     shows message box: `<info>..</info>`, `<alert>..</alert>`, `<error>..</error>`, `<question>..</question>`.
   
-  * ##### `Window.this.window.modal({params}) : any`
+  * ##### `window.modal({params}) : any`
     
-    shows new window as dialog, for params see `new Window({params})` above. The function returns window close value of `Window.this.close(valToReturn)` call inside the window. 
+    shows new window as dialog, for params see `new Window({params})` above. The function returns window close value of `window.close(valToReturn)` call inside the window. 
 
-  * `Window.this..performDrag(data:object, mode: "copy" | "move", dragIcon: Image | Element[, dragIconXoff:int, dragIconYoff:int] ): null | "copy" | "move"` - performs drag-and-drop using system D&D mechanism.
+  * `window.performDrag(data:object, mode: "copy" | "move", dragIcon: Image | Element[, dragIconXoff:int, dragIconYoff:int] ): null | "copy" | "move"` - performs drag-and-drop using system D&D mechanism.
 
     `data` is an object that may contain one or several fields: 
     * `text: string` - plain text data;
@@ -174,7 +176,7 @@ Instances of the Window class represent desktop windows.
 
 ## events
 
-Use `Window.this.on("eventname", handler)` to subscribe to these events: 
+Use `window.on("eventname", handler)` to subscribe to these events: 
 
   * `"statechange"` - `window.state` flag have changed. 
   * `"resolutionchange"` - after window moved to another monitor with different resolution, or user have changed screen resolution. 

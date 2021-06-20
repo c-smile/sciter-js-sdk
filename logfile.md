@@ -3,7 +3,7 @@
 ### New features:
 
 * CSS variables: 
-  * now support all types of values (used to be kust lengths and colors);
+  * now support all types of values (used to be just lengths and colors);
   * Sciter supports as its own `var(name)` as standard `--name` variable declarations. See /samples.css/css-variables;
 * [html-window] window-min-width/height, window-max-width/height attributes.
 * [css] svg image used as background/foreground image inherits stroke, fill colors and set of CSS variables of element where it is applied.

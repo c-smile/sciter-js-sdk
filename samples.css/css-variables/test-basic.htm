@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <style>
+            :root{
+                var(fw): 700;
+                var(text): "variable";
+            }
+
+            div.test1 {
+                font-weight: 700;
+            }
+
+            div.test2 {
+                font-weight: var(fw, 400);
+            }
+
+            div.test2::after {
+                content: var(text);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="test1">Bold by value
+        </div>
+
+        <div class="test2">Bold by var and after content:
+        </div>
+
+    </body>
+</html>

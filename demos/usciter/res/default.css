@@ -1,6 +1,6 @@
 
-    html:theme(dark) { var(text-color): #fff; var(back-color):#333; var(disbaled-color): #aaa; }
-    html:theme(light) { var(text-color): #000; var(back-color):#eee; var(disbaled-color): #777;}
+    html:theme(dark) { var(text-color): #fff; var(back-color):#333; var(disabled-color): #aaa; }
+    html:theme(light) { var(text-color): #000; var(back-color):#eee; var(disabled-color): #777;}
           
     html 
     { 
@@ -41,7 +41,7 @@
       stroke:none;
     }
 
-    toolbar > button:disabled { fill:color(disbaled-color); } 
+    toolbar > button:disabled { fill:color(disabled-color); } 
     
     frame#content{ size:*; background: transparent ; }
     frame#content > div#intro

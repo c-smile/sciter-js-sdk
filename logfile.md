@@ -1,3 +1,21 @@
+## 4.4.8.0
+
+### New features:
+
+* CSS variables: 
+  * now support all types of values (used to be kust lengths and colors);
+  * Sciter supports as its own `var(name)` as standard `--name` variable declarations. See /samples.css/css-variables;
+* [html-window] window-min-width/height, window-max-width/height attributes.
+* [css] svg image used as background/foreground image inherits stroke, fill colors and set of CSS variables of element where it is applied.
+* zepto patch for mouseenter/mouseleave to work in Sciter. Sciter supports mouseenter/leave events but not mouseove/out.
+
+### Fixes:
+
+* [JS DOM API] fix of <select|dropdown> handling, os it is compatible now with Mithril/PReact, Vue, etc.;
+* dispatchEvent preventing recursive call;
+* virtual-list fixes;
+* [QuickJS] `getTimezoneOffset()` implementation for Windows so Date reports values properly.
+
 ## 4.4.7.8
 
 ### New features:

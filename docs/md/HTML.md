@@ -46,8 +46,12 @@ Window (`<html>`) specific attributes
 | `window-frame` | `default\|standard\|solid\|solid-with-shadow\|extended\|transparent` define window type
 | `window-icon`  | Window icon URL
 | `window-title` | Window title
-| `window-width` | initial width of the window
-| `window-height`| initial height of the window
+| `window-width` | initial width of the window, CSS length units
+| `window-height`| initial height of the window, CSS length units
+| `window-min-width` | minimal width of the window, CSS length units
+| `window-min-height`| minimal height of the window, CSS length units
+| `window-max-width` | maximal width of the window, CSS length units
+| `window-max-height`| maximal height of the window, CSS length units
 | `window-resizable`  | `true\|false\|LENGTH-UNIT` i.e. `10px` counted from window frame inwards
 | `window-blurbehind` | `auto\|dark\|light\|ultra-dark\|ultra-light` translucent effect.
 | `lang` | ISO 639-1 value, define dictionary for spellcheck, Date...

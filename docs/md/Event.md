@@ -33,6 +33,7 @@
 * `event.x` - sciter specific, coordinates are relative
 * `event.y` - to `event.currentTarget`
 * `event.source` - used in some events to indicate auxiliary "source" element. 
+* `event.isOnIcon` - mouse events, it is "truthy" when mouse is on element's icon. Element icon is an element's foreground-image (if any) so event.isOnIcon is on when mouse is over area where the image is rendered.
 
 #### methods:
 

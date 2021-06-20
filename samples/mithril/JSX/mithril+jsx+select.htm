@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style></style>
+        <script src="../mithril.js" />
+        <script>
+
+JSX = m;   // let's  use Mithril as a driver of JSX expressions        
+
+const ctrl = {
+  selected: 50000,
+  updateStuff: () => { console.log('value selected:',ctrl, ctrl.selected)},
+  opts: [0, 1000, 5000, 10000, 50000, 100000, 250000, 1000000]
+}
+
+class App {
+  view() { 
+    return <main>
+        <label for="mul">Choose:</label>
+        <select name="mul" 
+          value={ctrl.selected}
+          oninput={ e => {
+              ctrl.selected=e.target.value;
+              ctrl.updateStuff();
+            }
+          } >
+          { ctrl.opts.map(o => <option value={o}>{o.toLocaleString()}</option>) }
+        </select>
+        <span> {ctrl.selected}</span>
+    </main>;
+  }
+}
+
+m.mount(document.body, new App());
+
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

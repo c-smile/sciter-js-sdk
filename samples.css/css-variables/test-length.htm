@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <style>
+
+            div {
+                background: gold;
+                width: var(width,100px);
+            }
+
+        </style>
+        <script>
+          const div = document.$("div");
+          let w = 100; let delta = 1;
+          document.timer(20, function() {
+            w += delta;
+            if( w < 100 ) {
+                w = 100; delta = 1;
+            }
+            else if( w > 400 ) {
+                w = 400; delta = -1;
+            }
+
+            div.style.variables { width: `${w}px` };
+            return true;
+          });
+        </script>
+    </head>
+    <body>
+        <div>Changing size</div>
+    </body>
+</html>

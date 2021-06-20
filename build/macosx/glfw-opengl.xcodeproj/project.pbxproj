@@ -50,6 +50,7 @@
 		379670FF1BDD79319FCAA73F /* sciter-x-dom.hpp */ = {isa = PBXFileReference; lastKnownFileType = text; name = "sciter-x-dom.hpp"; path = "../../include/sciter-x-dom.hpp"; sourceTree = "<group>"; };
 		3A34D933CFAB98653E47EF73 /* sciter-x-api.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sciter-x-api.h"; path = "../../include/sciter-x-api.h"; sourceTree = "<group>"; };
 		4528DB6F550E07A1418191AF /* sciter-x-host-callback.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sciter-x-host-callback.h"; path = "../../include/sciter-x-host-callback.h"; sourceTree = "<group>"; };
+		49138FB5262D1245002483E1 /* libsciter.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libsciter.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A3645A1E2832B5310CA2BE1 /* sciter-x-graphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sciter-x-graphics.h"; path = "../../include/sciter-x-graphics.h"; sourceTree = "<group>"; };
 		4BA5D1CDE11C90FF4FB8E80D /* sciter-x-msg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sciter-x-msg.h"; path = "../../include/sciter-x-msg.h"; sourceTree = "<group>"; };
 		5390CBE5755C7917B211A225 /* sciter-x.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sciter-x.h"; path = "../../include/sciter-x.h"; sourceTree = "<group>"; };
@@ -72,7 +73,7 @@
 		9B7E2701C1A456B328AB4D41 /* value.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = value.h; path = ../../include/value.h; sourceTree = "<group>"; };
 		A6AA6EFF3C212E31AABD853F /* sciter-x-dom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sciter-x-dom.h"; path = "../../include/sciter-x-dom.h"; sourceTree = "<group>"; };
 		A6D76F9D3C4E2ECFAAEA85DD /* sciter-x-def.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sciter-x-def.h"; path = "../../include/sciter-x-def.h"; sourceTree = "<group>"; };
-		B43B3DDADA616D8C4168641A /* glfw-opengl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "glfw-opengl.app"; path = "glfw-opengl.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B43B3DDADA616D8C4168641A /* glfw-opengl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "glfw-opengl.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5197DBBB4BC60EDEF1113FB /* osmesa_context.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = osmesa_context.c; path = ../../demos.lite/glfw/src/osmesa_context.c; sourceTree = "<group>"; };
 		B739005D7AA4C20FB948669D /* aux-slice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "aux-slice.h"; path = "../../include/aux-slice.h"; sourceTree = "<group>"; };
 		C2EC9703F4E5E1B56EC51D43 /* input.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = input.c; path = ../../demos.lite/glfw/src/input.c; sourceTree = "<group>"; };
@@ -232,6 +233,7 @@
 		BBF76781A7E87333FA200DC1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				49138FB5262D1245002483E1 /* libsciter.dylib */,
 				EA5C1300C9792D32A5828940 /* CoreFoundation.framework */,
 				8D6BC6AA50D7885C8F7B2CEA /* Cocoa.framework */,
 				0BACC980CF188B320DBC2FC0 /* IOKit.framework */,
@@ -274,14 +276,21 @@
 /* Begin PBXProject section */
 		08FB7793FE84155DC02AAC07 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "glfw-opengl" */;
 			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+				Base,
+			);
 			mainGroup = 52188B82BC2B0D745555F9C2 /* glfw-opengl */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D145C280CAABC3F2BE4720C0 /* glfw-opengl.app */,
+				D145C280CAABC3F2BE4720C0 /* glfw-opengl */,
 			);
 		};
 /* End PBXProject section */
@@ -324,9 +333,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		AE600E51B1D0E083333D8491 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -350,12 +356,7 @@
 				OBJROOT = "obj/x64/Debug/glfw-opengl";
 				ONLY_ACTIVE_ARCH = YES;
 				SYMROOT = ../../bin/macosx;
-				USER_HEADER_SEARCH_PATHS = (
-					../../include,
-					"../../demos.lite/sciter-glfw-opengl",
-					../../demos.lite/glfw/include,
-					../../demos.lite/glfw/deps,
-				);
+				USER_HEADER_SEARCH_PATHS = "../../include ../../demos.lite/sciter-glfw-opengl ../../demos.lite/glfw/include ../../demos.lite/glfw/deps";
 			};
 			name = Debug;
 		};
@@ -363,11 +364,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CONFIGURATION_BUILD_DIR = ../../bin/macosx;
+				CONFIGURATION_BUILD_DIR = ../../bin.lite/macosx;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_DYNAMIC_NO_PIC = NO;
 				INSTALL_PATH = "\"$(HOME)/Applications\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = "glfw-opengl";
+				SYMROOT = ../../bin.lite/macosx;
 			};
 			name = Debug;
 		};
@@ -390,12 +393,7 @@
 				OBJROOT = "obj/x64/Release/glfw-opengl";
 				ONLY_ACTIVE_ARCH = NO;
 				SYMROOT = ../../bin/macosx;
-				USER_HEADER_SEARCH_PATHS = (
-					../../include,
-					"../../demos.lite/sciter-glfw-opengl",
-					../../demos.lite/glfw/include,
-					../../demos.lite/glfw/deps,
-				);
+				USER_HEADER_SEARCH_PATHS = "../../include ../../demos.lite/sciter-glfw-opengl ../../demos.lite/glfw/include ../../demos.lite/glfw/deps";
 			};
 			name = Release;
 		};
@@ -403,10 +401,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CONFIGURATION_BUILD_DIR = ../../bin/macosx;
+				CONFIGURATION_BUILD_DIR = ../../bin.lite/macosx;
 				GCC_DYNAMIC_NO_PIC = NO;
 				INSTALL_PATH = "\"$(HOME)/Applications\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = "glfw-opengl";
+				SYMROOT = ../../bin.lite/macosx;
 			};
 			name = Release;
 		};
@@ -422,7 +422,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		550F9EA9F7FDC55B8723A4E9 /* Build configuration list for PBXNativeTarget "glfw-opengl.app" */ = {
+		550F9EA9F7FDC55B8723A4E9 /* Build configuration list for PBXNativeTarget "glfw-opengl" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B8EDF8EF7C59BAA1BAFD5F2F /* Debug */,
@@ -432,6 +432,6 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
-};
-rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
 }

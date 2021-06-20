@@ -950,7 +950,7 @@ window.$ === undefined && (window.$ = Zepto)
       specialEvents={},
       focusinSupported = 'onfocusin' in window,
       focus = { focus: 'focusin', blur: 'focusout' },
-      hover = { mouseenter: 'mouseover', mouseleave: 'mouseout' }
+      hover = { mouseenter: 'mouseenter', mouseleave: 'mouseleave' }
 
   specialEvents.click = specialEvents.mousedown = specialEvents.mouseup = specialEvents.mousemove = 'MouseEvents'
 

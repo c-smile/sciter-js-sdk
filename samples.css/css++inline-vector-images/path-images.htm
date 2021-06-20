@@ -36,16 +36,20 @@
       
       
     </style>
-    <script type="text/tiscript">
+    <script>
     
       function IconClick() {
-        var onIcon;
-        this.on("mousedown", function(evt) { onIcon = evt.isOnIcon; } );
-        this.on("mouseup", function(evt) { if( onIcon && evt.isOnIcon) this.postEvent("icon-click"); } );
+        let onIcon;
+        this.on("mousedown", evt => { onIcon = evt.isOnIcon === this; } );
+        this.on("mouseup", evt => { 
+          if( onIcon && evt.isOnIcon === this) 
+            this.post(new Event("icon-click",{bubbles:true})) 
+          onIcon = null;
+        });
       }
       
-      self.on("icon-click", "input.search", function() {
-        view.msgbox(#information, "click on icon");
+      document.on("icon-click", "input.search", function() {
+        Window.this.modal(<info>click on icon</info>);
       });
     
     </script>

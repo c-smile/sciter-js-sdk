@@ -16,7 +16,7 @@
           document.on("click", "button#set", async function(evt,button) 
           {
             var r = Window.this.trayIcon({
-              image: await Graphics.Image.load(__DIR__ + "i32.png"),
+              image: await Graphics.Image.load(__DIR__ + "app.svg"),
               text: "I am trayIcon\ncreated at: " + new Date()
             });
             if( r )

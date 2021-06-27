@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style></style>
+        <script|module>
+
+import * as rt from "@sciter";
+import * as sys from "@sys";
+
+(function() {
+  
+  let arrayBuffer = sys.fs.$readfile(URL.toPath(__DIR__ + "test.txt"));
+
+  document.$("pre#original").innerText = rt.decode(arrayBuffer,"utf-8"); 
+
+  let md5 = rt.md5(arrayBuffer);
+
+  document.$("pre#md5").innerText = md5; 
+
+})();
+
+        </script>
+    </head>
+    <body>
+
+text: 
+<pre#original />
+md5: 
+<pre#md5 />
+    </body>
+</html>

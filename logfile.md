@@ -1,9 +1,27 @@
+## 4.4.8.1
+
+### New features:
+
+* [css] + support of + general sibling combinator (`~`):  `p ~ span { color: red; }`
+* `behavior:hyperlink` support of `target="@system"` attribute to open link in system's default application (default browser for example) rather than Sciter.
+* [module sciter], new functions
+  * `sciter.compress()`
+  * `sciter.decompress()`
+  * `sciter.toBase64()`
+  * `sciter.fromBase64()`
+  * `sciter.md5()`
+  * `sciter.crc32()`
+
+### Fixes:
+
+* `devicePixelRatio` fix.
+
 ## 4.4.8.0
 
 ### New features:
 
 * CSS variables: 
-  * now support all types of values (used to be kust lengths and colors);
+  * now support all types of values (used to be just lengths and colors);
   * Sciter supports as its own `var(name)` as standard `--name` variable declarations. See /samples.css/css-variables;
 * [html-window] window-min-width/height, window-max-width/height attributes.
 * [css] svg image used as background/foreground image inherits stroke, fill colors and set of CSS variables of element where it is applied.

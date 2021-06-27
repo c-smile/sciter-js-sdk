@@ -13,8 +13,11 @@ These elements have this behavior by default:
 
 This behavior knows about:
 
-* `href="url"` - hyperlink url;
-* `target="ID"` - ID of frame element where to load the URL content.
+* `href="url"` - hyperlink url;
+* `target="ID"` - ID of frame element where to load the URL content.
+* `target="@system"` - this will instruct the engine to open the url in default application registered in the system for this file type.
+  
+   So `href="test.txt" target="@system"` will be opened in notepad.exe (or its equivalent) and `href="https://sciter.com" target="@system"` will be openeed in default browser. 
 
 ## Events
 

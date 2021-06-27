@@ -38,7 +38,7 @@ int sub(int a, int b) { return a - b; }
 #endif
 class frame: public sciter::window {
 public:
-  frame() : window(SW_TITLEBAR | SW_RESIZEABLE | SW_CONTROLS | SW_MAIN) {}
+  frame() : window(SW_TITLEBAR | SW_RESIZEABLE | SW_CONTROLS | SW_MAIN | SW_ENABLE_DEBUG) {}
 
   int counter = 0;
   

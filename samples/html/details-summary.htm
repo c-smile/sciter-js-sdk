@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+details.custom {
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    padding: 0.5em 0.5em 0;
+}
+
+details.custom > summary {
+    font-weight: bold;
+    margin: -0.5em -0.5em 0;
+    padding: 0.5em 0.5em 0.5em 1.2em;
+}
+
+details.custom:expanded {
+    padding: 0.5em;
+}
+
+details.custom:expanded summary {
+    border-bottom: 1px solid #aaa;
+    margin-bottom: 0.5em;
+}
+
+
+        </style>
+    </head>
+    <body>
+
+<p>&lt;details/summary&gt;, default styling:</p>    
+
+<details>
+    <summary>Details</summary>
+    Something small enough to escape casual notice.
+</details>
+
+<p>Custom styling:</p>
+
+<details class="custom">
+    <summary>Details</summary>
+    Something small enough to escape casual notice.
+</details>
+
+
+    </body>
+</html>

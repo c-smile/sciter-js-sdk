@@ -133,7 +133,6 @@ project "usciter"
   settargetdir()
 
   filter "system:windows"
-    removeplatforms { "x64" }
     removeconfigurations { "*skia" }
     files {"include/sciter-*.h",
            "include/sciter-*.hpp",
@@ -176,7 +175,6 @@ project "inspector"
   settargetdir()
 
   filter "system:windows"
-    removeplatforms { "x64" }
     removeconfigurations { "*skia" }
     files {"include/sciter-*.h",
            "include/sciter-*.hpp",

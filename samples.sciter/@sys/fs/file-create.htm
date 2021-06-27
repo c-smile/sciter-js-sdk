@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style></style>
+        <script|module>
+
+import * as sys from "@sys";
+
+document.on("click","button", async function() {
+   const path = URL.toPath(__DIR__ + "test.txt");
+   console.log(path);
+   const file = await sys.fs.open(path,"w+",0o666)
+   await file.write("test");
+   await file.close();
+});
+
+        </script>
+    </head>
+    <body>
+
+<input|text id="text" novalue="text to write" />
+<button>write to test.txt</button>
+
+    </body>
+</html>

@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+
+form { flow: row(label,select output); border-spacing:0.5em; }
+
+label { display:block; white-space: nowrap; line-height:2.2em} 
+output { line-height:2.2em } 
+
+
+        </style>
+        <script|module>
+
+import * as rt from "@sciter";
+import * as sys from "@sys";
+
+function show() {
+
+  let form = document.$("form");
+  
+  let arrayBuffer = sys.fs.$readfile(URL.toPath(__DIR__ + "test.txt"));
+
+  let alg = form.value.alg;
+
+  let arrayBufferCompressed = rt.compress(arrayBuffer,alg);
+  let arrayBufferDecompressed = rt.decompress(arrayBufferCompressed,alg);
+
+  if( arrayBuffer.compare(arrayBufferDecompressed) )
+    throw new Error("WTF?");
+
+  form.value = {
+    original: arrayBuffer.byteLength, 
+    compressed: arrayBufferCompressed.byteLength,
+  };
+
+}
+
+document.on("change","form",show);
+
+show();
+
+        </script>
+    </head>
+    <body>
+
+<form>
+
+    <label>compress algorithm</label>
+    <select(alg)>
+      <option value="gz">gz</option>
+      <option value="gzip">gzip</option>
+      <option value="lzf">lzf</option>
+    </select>
+
+    <label>original length</label>
+    <output|integer(original) />
+    <label>compressed length</label> 
+    <output|integer(compressed) />
+
+</form>
+
+    </body>
+</html>

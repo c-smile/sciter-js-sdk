@@ -69,6 +69,7 @@ export class ChannelLog extends Element
   list2clipboard() {
     var text = "";
     for(var opt of this.$$("li")) {
+      if(text) text += "\r\n";
       text += opt.textContent;
     }  
     Clipboard.writeText(text);

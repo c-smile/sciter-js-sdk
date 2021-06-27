@@ -29,8 +29,8 @@
 
 ### Fixes:
 
-* [JS DOM API] fix of <select|dropdown> handling, os it is compatible now with Mithril/PReact, Vue, etc.;
-* dispatchEvent preventing recursive call;
+* [JS DOM API] fix of <select|dropdown> handling, it is compatible now with Mithril/PReact, Vue, etc.;
+* `dispatchEvent`, fix preventing recursive call;
 * virtual-list fixes;
 * [QuickJS] `getTimezoneOffset()` implementation for Windows so Date reports values properly.
 

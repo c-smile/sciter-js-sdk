@@ -58,13 +58,13 @@ string, reflects current status of internal editing buffer.
 ## Methods
 
 * `element.edit.selectAll()` - select whole content.
-* `element.edit.selectRange(\[start:int \[, end:int\]\])` - selects text between *start* (included) and *end* (excluded) position. If start and end are omitted - removes selection.
+* `element.edit.selectRange([start:int [, end:int]])` - selects text between *start* (included) and *end* (excluded) position. If start and end are omitted - removes selection.
 * `element.edit.removeText()` - removes selected text (if any).
 * `element.edit.insertText(text: string)` - insert text at caret position, if selection is not empty removes selected text before insertion.
 * `element.edit.appendText(text: string)` - appends the text at the end of existing text. 
 
 ## Properties
 
-* `selectionStart: int` -  returns start position of the selection, or caret position if there is no selection.
-* `selectionEnd: int` -  returns end position of the selection, or caret position if there is no selection.
-* `selectionText: string` - returns selected text or empty string if there is no selection.
+* `element.edit.selectionStart: int` -  returns start position of the selection, or caret position if there is no selection.
+* `element.edit.selectionEnd: int` -  returns end position of the selection, or caret position if there is no selection.
+* `element.edit.selectionText: string` - returns selected text or empty string if there is no selection.

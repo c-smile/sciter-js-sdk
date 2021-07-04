@@ -30,15 +30,15 @@ export class VirtualList extends Element {
     if(this.vlist) {
       let firstIndex = this.vlist.firstBufferIndex;
       let lastIndex = this.vlist.lastBufferIndex;
+      let firstVisibleIndex = this.vlist.firstVisibleItem?.elementIndex || 0;
+      let lastVisibleIndex = this.vlist.lastVisibleItem?.elementIndex || lastIndex;
 
       let totalItems = this.totalItems();
 
-      if(firstIndex === undefined)
+      if(firstVisibleIndex == 0)
         this.post( () => { this.vlist.navigate("start") } );
-      else if( lastIndex >= totalItems ) {  // number of items reduced so buffer is past total count
-        lastIndex = totalItems - 1;
+      else if( lastVisibleIndex >= totalItems ) // number of items reduced so buffer is past total count
         this.post( () => { this.vlist.navigate("end") } );
-      }
       else if(this.vlist.itemsTotal != totalItems) { // number of items reduced, update scroll
         lastIndex = firstIndex + Math.min(totalItems,this.vlist.slidingWindowSize) - 1;
         this.post( () => { this.vlist.itemsAfter = totalItems - this.vlist.itemsBefore - this.children.length; });
@@ -47,7 +47,7 @@ export class VirtualList extends Element {
       let {currentItem, selectedItems } = this;
       for( let index = firstIndex; index <= lastIndex; ++index ) {
         let item = this.itemAt(index);
-        list.push(this.renderItem(item,item === currentItem, selectedItems?.has(item)));
+        if(item) list.push(this.renderItem(item,item === currentItem, selectedItems?.has(item)));
       }
     } else 
       this.componentUpdate(); 

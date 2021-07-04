@@ -24,7 +24,7 @@ html[dnd] .drop-target:hover {
 
 function doDrag(element,evt, callback) {
 
-  let {x,y} = evt;
+  let {clientX: x,clientY: y} = evt;
   let lasttarget = null;
 
   function onmove(evt) { lasttarget = evt.target; }
@@ -32,7 +32,7 @@ function doDrag(element,evt, callback) {
   document.post(function() { 
     // 1. setup cursor by rendering element into bitmap and making cursor from that bitmap
     let image = new Graphics.Image(element);
-    element.style.setCursor(image,x,y);
+    document.style.setCursor(image,x,y);
 
     // 2. hide the element itself
     element.style.visibility = "hidden";
@@ -48,7 +48,7 @@ function doDrag(element,evt, callback) {
     // 5. return things back
     document.state.capture(false);
     document.off(onmove);
-    element.style.setCursor(null);
+    document.style.setCursor(null);
     element.style.visibility = undefined;
     document.attributes["dnd"] = undefined;
 

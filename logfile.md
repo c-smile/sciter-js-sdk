@@ -1,3 +1,20 @@
+## 4.4.8.3
+
+### New features:
+
+* [reactor] `this(props,kids)` method in reactive components, a.k.a Reactor's constructor.
+* components, support of `>` in event handling selectors ["on click at >child"]() to match immediate child of `this`.
+
+### Fixes:
+
+* [css variables] fix of variable value resolving in cascaded rules.
+* [vue|preact] compatibility, element.checked property.
+* Fix of AV in timer in some cases.
+* `fetch()`, allow use of relative URLs.
+* [virtual-list] first|lastVisibleItem, fix of AV on empty list.
+* [virtual-list] touchpad scrolling fix on MacOS.
+* fix of sdk.js/samples.sciter/drag-n-drop/simplest.htm demo.
+
 ## 4.4.8.2
 
 ### Fixes:

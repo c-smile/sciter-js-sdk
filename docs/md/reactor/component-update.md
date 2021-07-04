@@ -9,7 +9,7 @@ You have some *data* to be presented to the user. User is able to *view* the
 
 ### Component Class
 
-Let's transform our [ticking clock sample](https://sciter.com/docs/content/reactor/rendering.htm##updating-the-rendered-element) into reusable Clock component.
+Let's transform our [ticking clock sample](rendering.htm#updating-the-rendered-element) into reusable Clock component.
 
 Each Reactor class based component shall have `render()` method:
 
@@ -87,11 +87,22 @@ The timer callback function is where the magic happens:
 
 On each timer tick it calls built-in `Element.prototype.componentUpdate(newdata)`method with the new data.
 
-Sciter out of the box provides three lifecycle methods:
+## Lifecycle methods of class components
 
-* `componentDidMount()` \- called by runtime when the element is attached to the DOM tree and
-* `componentWillUnmount()` \- when the element is deleted from the DOM tree. In this particular sample we are not using it if to compare our Clock with the [React's one](https://reactjs.org/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class). `Element.timer()` in Sciter creates timer for concrete DOM element, and as soon as element is destroyed all its timers are freed too.     
+Sciter out of the box supports following lifecycle methods:
+
+* `constructor(props,kids)` - optional, JavaScript standard constructor, called once by runtime when the element is created. 
+* `this(props,kids)` - called by runtime in these two cases:
+  
+  * on initial construction - called immediately after `constructor()` invocation and before `render()`;
+  * on rendering by parent component - called before `render()`;
+  
+  In other words: `this(props,kids)` method is called each time when the component recives props and/or kids. 
+
+* `componentDidMount()` - called by runtime when the element is attached to the DOM tree - real DOM element is created.
+* `componentWillUnmount()` - "destructor" method, invoked when the element is deleted from the DOM tree.
 * `componentUpdate(props)` - you call this method to update state of the element.
+* `render([props,kids])` - mandatory, this method is called each time when the component needs to be [re]rendered. It shall return valid JSX literal defining element's DOM.
 
 ## Updating component state
 
@@ -129,14 +140,14 @@ There are three things you should know about `componentUpdate(newdata)`.
 
 For example, this will not re-render a component:
 
-```
+```JavaScript
 // WRONG!
 this.comment = "Hello";
 ```
 
 Instead, use `componentUpdate()`:
 
-```
+```JavaScript
 // Correct
 this.componentUpdate({comment: "Hello"});
 ```

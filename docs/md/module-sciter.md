@@ -4,19 +4,19 @@ The module contains Sciter specific functions.
 
 ## constants:
 <details>
-<summary>`VERSION` </summary>
+<summary><code>VERSION</code></summary>
 
 Constant string, current engine version in the form "X.X.X.X";
 
 </details>
 <details>
-<summary>`REVISION`</summary>
+<summary><code>REVISION</code></summary>
 
 Cconstant string, SVN build revision;
 
 </details>
 <details>
-<summary>`QUICKJS_VERSION`</summary>
+<summary><code>QUICKJS_VERSION</code></summary>
 
 QuickJS version
 
@@ -24,7 +24,7 @@ QuickJS version
 
 ## functions:
 <details>
-<summary>`devicePixels(length: int | string[,axis])` </summary>
+<summary><code>devicePixels(length: int | string[,axis])</code></summary>
    
 Converts _length_ to device (screen) pixels:
 
@@ -33,7 +33,7 @@ Converts _length_ to device (screen) pixels:
 - _axis_ is either "width" or "height", note axis parameter makes sense only for devices that have different resolution on x/y axis.
 </details>
 <details>
-<summary>`loadLibrary("name"): any`</summary>
+<summary><code>loadLibrary("name"): any</code></summary>
 
 Loads Sciter extension native library (dll,so,dylib). 
 
@@ -42,49 +42,49 @@ the "name" is dll name without extension.
 The dll shall reside in the same folder as executable. See /sqlite project that can be used to produce sciter-sqlite extension dll.  
 </details>
 <details>
-  <summary>`on("eventname" [, "selector" ], handler)`</summary>
+  <summary><code>on("eventname" [, "selector" ], handler)</code></summary>
 
 Subscribe to any DOM event, conceptually close to `document.on(...)`
 
 </details>
 <details>
-<summary>`off("eventname" | handler)`</summary>
+<summary><code>off("eventname" | handler)</code></summary>
 
 Unsubscribe event handler from DOM event.
 
 </details>
 <details>
-<summary>`$("selector")`</summary>
+<summary><code>$("selector")</code></summary>
 
 Returns first matched DOM element in current document.
 
 </details>
 <details>
-<summary>`$$("selector")`</summary>
+<summary><code>$$("selector")</code></summary>
 
 Returns list (array) of matched DOM elements.
 
 </details>
 <details>
-<summary>`uuid():string`</summary>
+<summary><code>uuid():string</code></summary>
 
 Returns [uuid](https://en.wikipedia.org/wiki/Universally_unique_identifier) as a string.
 
 </details>
 <details>
-<summary>`encode(text:string,[encoding]):arrayBuffer`</summary>
+<summary><code>encode(text:string,[encoding]):arrayBuffer</code></summary>
 
 Returns encoded _text_ as arrayBuffer. Default _encoding_ is "utf-8".
 
 </details>
 <details>
-<summary>`decode(bytes:arrayBuffer,[encoding]):string`</summary>
+<summary><code>decode(bytes:arrayBuffer,[encoding]):string</code></summary>
 
 Returns decoded bytes as string. Default _encoding_ is "utf-8".
 
 </details>
 <details>
-<summary>`compress(in:arrayBuffer,[method]):arrayBuffer`</summary>
+<summary><code>compress(in:arrayBuffer,[method]):arrayBuffer</code></summary>
 
 Returns compressed _in_ buffer.
 
@@ -92,7 +92,7 @@ Where _method_ is one of "gz","gzip" or "lzf" (default).
 
 </details>
 <details>
-<summary>`decompress(in:arrayBuffer,[method]):arrayBuffer`</summary>
+<summary><code>decompress(in:arrayBuffer,[method]):arrayBuffer</code></summary>
 
 Returns decompressed _in_ buffer.
 
@@ -100,25 +100,25 @@ _method_ is one of "gz","gzip" or "lzf" (default).
 
 </details>
 <details>
-<summary>`toBase64(in:arrayBuffer):string`</summary>
+<summary><code>toBase64(in:arrayBuffer):string</code></summary>
 
 Returns string - base64 encoded _in_ buffer.
 
 </details>
 <details>
-<summary>`fromBase64(in:string):arrayBuffer`</summary>
+<summary><code>fromBase64(in:string):arrayBuffer</code></summary>
 
 Restores array buffer from base64 encoded string.
 
 </details>
 <details>
-<summary>`md5(in:arrayBuffer):string`</summary>
+<summary><code>md5(in:arrayBuffer):string</code></summary>
 
 Returns md5 digest (a.k.a. hash) of the _in_ data.
 
 </details>
 <details>
-<summary>`crc32(in:arrayBuffer):integer`</summary>
+<summary><code>crc32(in:arrayBuffer):integer</code></summary>
 
 Returns crc32 hash of the _in_ data.
 

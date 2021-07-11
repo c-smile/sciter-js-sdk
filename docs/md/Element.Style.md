@@ -20,11 +20,53 @@ var bgColor = element.style["background-color"];
 
 #### Methods:
 
-* `element.style.getPropertyValue(name)`
-* `element.style.setProperty(name, value [,important])`
-* `element.style.removeProperty(name)`
-* `element.style.colorOf(name)` reports color property _name_ as instance of [`Graphics.Color`](Graphics/Graphics.Color.md) class.
-* `element.style.variables() : {}` reports CSS variables seen by the element, reports the set as {name:value, ...} map.
-* `element.style.variables({name:value,...})` sets CSS variables on the element.
-* `element.style.setCursor(image | null,hotspotX,hotspotY)` set/reset element's cursor by image.
+<details>
+<summary>element.style.<b>getPropertyValue</b>(name)</summary>
 
+returns a string containing the value of a specified CSS property.
+
+</details>
+<details>
+<summary>element.style.<b>setProperty</b>(name, value [,important])</summary>
+
+sets a new value for a CSS property.
+
+</details>
+<details>
+<summary>element.style.<b>removeProperty</b>(name)</summary>
+
+removes a property value previously set by setProperty.
+
+</details>
+<details>
+<summary>element.style.<b>colorOf</b>(name)</summary>
+
+reports a value of property _name_ as instance of [`Graphics.Color`](Graphics/Graphics.Color.md) class. Returns null if the propety is not a color.
+
+</details>
+<details>
+<summary>element.style.<b>pixelsOf</b>(name): number</summary>
+
+reports used value of property _name_ as number of CSS pixels. Returns null if the propety is not a length.
+
+</details>
+<details>
+<summary>element.style.<b>imageOf</b>(name):Image</summary>
+
+reports used value of property _name_ as instance of [`Graphics.Image`](Graphics/Graphics.Image.md). Returns null if the propety is not an image.
+
+</details>
+<details>
+<summary>element.style.<b>variables</b>([{name:value,...}]):Image</summary>
+
+if parameter is not provided reports CSS variables seen by the element, returns the set as {name:value, ...} map.
+
+Otherwise, if the parameter is an object (name/value map), sets CSS variables on the element.
+
+</details>
+<details>
+<summary>element.style.<b>setCursor</b>(null | image, hotspotX, hotspotY)</summary>
+
+sets/resets element's cursor.
+
+</details>

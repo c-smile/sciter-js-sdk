@@ -54,6 +54,7 @@ Window (`<html>`) specific attributes
 | `window-max-height`| maximal height of the window, CSS length units
 | `window-resizable`  | `true\|false\|LENGTH-UNIT` i.e. `10px` counted from window frame inwards
 | `window-blurbehind` | `auto\|dark\|light\|ultra-dark\|ultra-light` translucent effect.
+| `window-state` | `shown\|minimized\|maximized\|full-screen\|hidden`
 | `lang` | ISO 639-1 value, define dictionary for spellcheck, Date...
 
 

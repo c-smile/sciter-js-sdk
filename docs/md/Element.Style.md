@@ -57,7 +57,7 @@ reports used value of property _name_ as instance of [`Graphics.Image`](Graphics
 
 </details>
 <details>
-<summary>element.style.<b>variables</b>([{name:value,...}]):Image</summary>
+<summary>element.style.<b>variables</b>([{name:value,...}]):{name:value, ...}</summary>
 
 if parameter is not provided reports CSS variables seen by the element, returns the set as {name:value, ...} map.
 

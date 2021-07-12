@@ -56,10 +56,11 @@ class Element represents DOM element and extends [Node](Node.md) and so all its 
 * `element.querySelector(selector)`    | `element.$(selector)`
 * `element.querySelectorAll(selector)` | `element.$$(selector)`
 
-* `element.getAttribute()`
+* `element.hasAttribute(attribute)`
+* `element.getAttribute(attribute)`
 * `element.getAttributeNames()`
-* `element.removeAttribute()`
-* `element.setAttribute()`
+* `element.removeAttribute(attribute)`
+* `element.setAttribute(attribute, value)`
 
 * `element.scrollTo()`
 * `element.scrollIntoView()`

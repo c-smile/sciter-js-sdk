@@ -1,0 +1,51 @@
+<html>
+<head>
+    <style>
+        html {
+            var(red-channel): 0%;
+            var(green-channel): 0%;
+            var(blue-channel): 0%;
+            var(alpha-channel): 100%;
+            var(back): rgba(var(red-channel),var(green-channel),var(blue-channel),var(alpha-channel));
+        }
+
+        div { 
+            background:var(back); 
+            size:*;
+        }
+
+        form {
+            flow:row(label,input);
+            border-spacing: 0.5em 0;
+        }
+
+        output { font-family:monospace; }
+        
+    </style>
+</head>
+<body>
+    <form>
+       <label>red</label><input|hslider(red) min="0" max="100" value="0"/>
+       <label>green</label><input|hslider(green) min="0" max="100" value="0"/>
+       <label>blue</label><input|hslider(blue) min="0" max="100" value="0"/>
+       <label>alpha</label><input|hslider(alpha) min="0" max="100" value="100"/>
+    </form>
+    <output#rgba1 /> <output#rgba2 />
+    <div></div>
+</body>
+<script|module>
+
+    document.on("change", "form", function(ev, form){
+       const v = form.value;
+       document.style.variables {
+         "red-channel": v.red + "%",
+         "green-channel": v.green + "%",
+         "blue-channel": v.blue + "%",
+         "alpha-channel": v.alpha + "%",
+       };
+       document.$("#rgba1").value = printf("rgba(%d%%,%d%%,%d%%,%d%%)", v.red, v.green, v.blue, v.alpha);
+       document.$("#rgba2").value = printf("#%02x%02x%02x%02x", v.red * 2.55 + 0.5, v.green * 2.55 + 0.5, v.blue * 2.55 + 0.5, v.alpha * 2.55 + 0.5);
+    });
+
+</script>
+</html>

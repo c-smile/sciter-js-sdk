@@ -1,3 +1,19 @@
+## 4.4.8.4
+
+### New features:
+
+* [css] rgba(255,255,255,var(opacity)) - rgb() and rgba() may use variables now.
+* `window-state="hidden" | "shown" | "minimized" | "maximized" | "full-screen"` attribute support on HTML element element. This attribute defines initial state of the window.
+
+### Fixes:
+
+* element.append/insert/children fixes;
+* `element.takeOff(...)`  parameters are in dips (CSS pixels);
+* fix of cascaded css vars;
+* `element.componentDidMount()` invocation fix;
+* behavior:pager fix of AV.
+* [Storage] fixes.
+
 ## 4.4.8.3
 
 ### New features:

@@ -12,7 +12,7 @@ Constant string, current engine version in the form "X.X.X.X";
 <details>
 <summary><code>REVISION</code></summary>
 
-Cconstant string, SVN build revision;
+Constant string, SVN build revision;
 
 </details>
 <details>

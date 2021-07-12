@@ -16,6 +16,7 @@
 		4952784C260689E90002A42C /* sciter-sqlite-rs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49527848260689E80002A42C /* sciter-sqlite-rs.cpp */; };
 		4952784D260689E90002A42C /* sciter-sqlite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49527849260689E80002A42C /* sciter-sqlite.cpp */; };
 		4952784E260689E90002A42C /* sciter-sqlite-db.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4952784A260689E90002A42C /* sciter-sqlite-db.cpp */; };
+		49A80B632696A87A00FB2936 /* behavior_video_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A80B622696A87A00FB2936 /* behavior_video_generator.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		4952784A260689E90002A42C /* sciter-sqlite-db.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "sciter-sqlite-db.cpp"; path = "../../../sqlite/sciter-sqlite-db.cpp"; sourceTree = "<group>"; };
 		4952785226068DC00002A42C /* libsciter.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libsciter.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		4952786E2606C3F00002A42C /* libsciter.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; path = libsciter.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		49A80B622696A87A00FB2936 /* behavior_video_generator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = behavior_video_generator.cpp; path = ../../../include/behaviors/behavior_video_generator.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +52,7 @@
 		4952781D260688710002A42C = {
 			isa = PBXGroup;
 			children = (
+				49A80B622696A87A00FB2936 /* behavior_video_generator.cpp */,
 				4952784A260689E90002A42C /* sciter-sqlite-db.cpp */,
 				49527848260689E80002A42C /* sciter-sqlite-rs.cpp */,
 				49527849260689E80002A42C /* sciter-sqlite.cpp */,
@@ -161,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4952782B260688710002A42C /* AppDelegate.m in Sources */,
+				49A80B632696A87A00FB2936 /* behavior_video_generator.cpp in Sources */,
 				4952783E260688FF0002A42C /* sciter-osx-main.mm in Sources */,
 				49527841260689360002A42C /* usciter.cpp in Sources */,
 				4952784D260689E90002A42C /* sciter-sqlite.cpp in Sources */,

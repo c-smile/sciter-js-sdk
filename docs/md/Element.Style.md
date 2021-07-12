@@ -41,19 +41,19 @@ removes a property value previously set by setProperty.
 <details>
 <summary>element.style.<b>colorOf</b>(name)</summary>
 
-reports a value of property _name_ as instance of [`Graphics.Color`](Graphics/Graphics.Color.md) class. Returns null if the propety is not a color.
+reports a value of property _name_ as an instance of [`Graphics.Color`](Graphics/Graphics.Color.md) class. Returns null if the propety is not a color.
 
 </details>
 <details>
 <summary>element.style.<b>pixelsOf</b>(name): number</summary>
 
-reports used value of property _name_ as number of CSS pixels. Returns null if the propety is not a length.
+reports used value of property _name_ as a number of CSS pixels. Returns null if the propety is not a length.
 
 </details>
 <details>
 <summary>element.style.<b>imageOf</b>(name):Image</summary>
 
-reports used value of property _name_ as instance of [`Graphics.Image`](Graphics/Graphics.Image.md). Returns null if the propety is not an image.
+reports used value of property _name_ as an instance of [`Graphics.Image`](Graphics/Graphics.Image.md). Returns null if the propety is not an image.
 
 </details>
 <details>

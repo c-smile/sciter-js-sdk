@@ -365,6 +365,7 @@ var.coll[expanded] > caption {
 var.coll > .details {
   flow:row(span,var);
   padding:3px;
+  width:max-content;
 }
 
 var.coll[expanded] > .details > span { /* item caption */
@@ -379,8 +380,8 @@ var.string {
   white-space:nowrap;
   overflow-x: hidden;
   text-overflow: ellipsis; 
-  max-width: max-content;
-  width:*;
+  width: max-content;
+  max-width: 20em;
   line-height: 1.2em;
 }
 var.string::before { content:'"'; }

@@ -86,8 +86,9 @@ html[ui-size="compact"] {
     width:2.24em; 
     height:1.05em;
     background:var(back,threedlight);
-    border:length(border-width) solid color(border);
+    border:var(border-width,0.14em) solid var(border,#000);
     border-radius:0.7em;
+
     margin:* * * 0.21em;
     foreground-image:url(stock:disk);
     foreground-repeat:no-repeat;

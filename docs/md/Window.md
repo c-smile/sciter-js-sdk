@@ -80,6 +80,7 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
 
     * `"border"` - border area of the window that includes window caption and borders arouns client area;
     * `"client"` - client (content) area of the window.  
+    * `"caret"` - caret position, relative to client area of the window.
 
     If _"screen"_ parameter is provided then function returns coordinates relative to screen. 
 

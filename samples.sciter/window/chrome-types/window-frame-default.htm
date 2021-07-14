@@ -2,12 +2,20 @@
     <head>
         <title>Test</title>
         <style></style>
-        <script></script>
+<script|module>
+
+document.on("change","#full-screen", function(evt,checkbox) {
+  Window.this.state = checkbox.value ? Window.WINDOW_FULL_SCREEN : Window.WINDOW_SHOWN;
+});
+
+        </script>
     </head>
     <body>
 
 <p>window-frame="default"</p>
 <p>type=Window.FRAME_WINDOW</p>
+
+<button|checkbox #full-screen>Full screen</button>
 
     </body>
 </html>

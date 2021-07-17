@@ -20,6 +20,9 @@
 
 * #### `fetch()` - [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 
+  Fetch can also be used synchronously as follow
+  `fetch(..., {sync: true})`
+
 * #### `getComputedStyle(element[, pseudoEl]): Style`
 
 * #### `printf(format:string, ...):string` 

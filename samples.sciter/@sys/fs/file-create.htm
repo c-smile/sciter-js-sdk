@@ -6,11 +6,15 @@
 
 import * as sys from "@sys";
 
-document.on("click","button", async function() {
+document.on("click", "button", async function() {
    const path = URL.toPath(__DIR__ + "test.txt");
    console.log(path);
-   const file = await sys.fs.open(path,"w+",0o666)
-   await file.write("test");
+
+   const file = await sys.fs.open(path, "w+", 0o666)
+
+   const element = document.$("input");
+
+   await file.write(element.value || "test");
    await file.close();
 });
 
@@ -18,7 +22,7 @@ document.on("click","button", async function() {
     </head>
     <body>
 
-<input|text id="text" novalue="text to write" />
+<input|text placeholder="text to write" />
 <button>write to test.txt</button>
 
     </body>

@@ -1,8 +1,8 @@
 # behavior: textarea
 
-Multiline editting behavior for relatively small multiline texts.
+Multiline editing behavior for relatively small multiline texts.
 
-For potentntially large texts use [plaintext](behavior-textarea.md).
+For potentially large texts use [plaintext](behavior-textarea.md).
 
 ## Elements
 

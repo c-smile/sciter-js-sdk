@@ -26,7 +26,7 @@ sys is built on top of [libuv](https://github.com/libuv/libuv) that Sciter.JS us
 
 #### functions
 
-* `fs.open(): promise(File)`
+* `fs.open(path, flags[, mode]): promise(File)` - [flags](https://nodejs.org/api/fs.html#fs_fspromises_open_path_flags_mode), mode sets the file mode (permission and sticky bits) if the file is created. Default: 0o666
 * `fs.stat(): promise(stat)`
 * `fs.$stat(): stat` - sync version of the above;
 * `fs.lstat(): promise(stat)`
@@ -137,7 +137,3 @@ sys is built on top of [libuv](https://github.com/libuv/libuv) that Sciter.JS us
 * `sys.tmpdir()`
 * `sys.exepath()`
 * `sys.random()`
-
-
-
-

@@ -1,6 +1,6 @@
 # behavior: plaintext
 
-Multiline editting behavior that is optimized to handle relatively large (thousands of lines) texts.
+Multiline editing behavior that is optimized to handle relatively large (thousands of lines) texts.
 
 ## Elements
 
@@ -17,7 +17,7 @@ that this behavior knows about:
 
 ## Model
 
-Plaintext parses each line of text into separate `<text>` element:
+Plaintext parses each line of text into a separate `<text>` element:
 
 ```XML
 <plaintext>

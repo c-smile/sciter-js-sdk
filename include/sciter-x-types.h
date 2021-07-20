@@ -122,6 +122,8 @@ enum GFX_LAYER
     #define TARGET_32
   #endif
 
+  #define SCITER_DLL_NAME "sciter.dll"
+
 #elif defined(OSX)
 
   //#ifdef __OBJC__

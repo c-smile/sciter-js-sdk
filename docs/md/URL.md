@@ -26,8 +26,3 @@ The URL class provides a convenient interface for creating and parsing URLs.
 * `URL.guessMimeType()`
 * `URL.fromPath(path):string`
 * `URL.toPath(url):string`
-* `URL.`
-* `URL.`
-* `URL.`
-* `URL.`
-* `URL.`

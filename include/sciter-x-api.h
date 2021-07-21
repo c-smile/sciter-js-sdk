@@ -303,8 +303,6 @@ typedef ISciterAPI* (SCAPI *SciterAPI_ptr)();
 
 // getting ISciterAPI reference:
 
-#ifndef CUSTOM_LOADER
-
 #if defined(STATIC_LIB) || defined(SCITER_BUILD)
 
     EXTERN_C ISciterAPI* SCAPI SciterAPI();
@@ -505,8 +503,14 @@ inline ISciterAPI *_SAPI(ISciterAPI *ext) {
 
 #endif
 
+
   inline ISciterAPI* SAPI() {
+#if defined(__cplusplus) && !defined(PLAIN_API_ONLY)
     static ISciterAPI* _api = _SAPI(NULL);
+#else 
+    static ISciterAPI* _api = NULL;
+    if (!_api) _api = _SAPI(NULL);
+#endif
     return _api;
   }
 
@@ -519,6 +523,7 @@ inline ISciterAPI *_SAPI(ISciterAPI *ext) {
   {
     return SAPI()->GetSciterRequestAPI();
   }
+
 
   // defining "official" API functions:
 
@@ -717,7 +722,5 @@ inline ISciterAPI *_SAPI(ISciterAPI *ext) {
 
   inline UINT   SCAPI SciterNodeUnwrap(const VALUE* pval, HNODE* ppNode) { return SAPI()->SciterNodeUnwrap(pval, ppNode); }
   inline UINT   SCAPI SciterNodeWrap(VALUE* pval, HNODE pNode) { return SAPI()->SciterNodeWrap(pval, pNode); }
-
-#endif
 
 #endif

@@ -16,7 +16,7 @@ The module contains Sciter debugging functions.
 
 * `setConsoleOutputHandler(function)` - redirect console output
 
-  works when the application is not connected to the inspector. [https://sciter.com/forums/topic/debug-2/]](https://sciter.com/forums/topic/debug-2/)
+  works when the application is not connected to the inspector. [https://sciter.com/forums/topic/debug-2/](https://sciter.com/forums/topic/debug-2/)
 
   ```js
   import * as debug from "@debug";

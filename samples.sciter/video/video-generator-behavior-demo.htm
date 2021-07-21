@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <title></title>
+    <style>
+    
+      body { background:gold; }
+		
+			video.generator {
+				behavior: video-generator video;
+				size: *;
+				foreground-size:contain;
+				border:1px solid #000;
+			}
+		
+		</style>
+    <script|module>
+
+    import * as sys from "@sys";
+
+    const video = document.$("video");
+		
+		video.onsizechange = function() {
+		  let [w,h] = this.state.box("dimension");
+			document.$("form").value = { width:w, height:h };
+		}
+
+    document.on("click","#snapshot", async function() {
+      let frame = video.style.imageOf("foreground-image");
+
+      let arrayBuffer = frame.toBytes("png");
+
+      const path = URL.toPath(__DIR__ + "frame.png");
+      const file = await sys.fs.open(path, "w+", 0o666)
+
+      await file.write(arrayBuffer);
+      await file.close(); 
+ 
+    });
+
+		</script>
+  </head>
+<body>
+  <p>This demo simulates partial video frame update. See sdk/include/behaviors/behavior_video_generator.cpp source.
+  On each frame (24 FPS) it updates portion of the frame.</p>
+  <button #snapshot>Save current frame</button>
+  <form>pixels <output(width)/>x<output(height)/></form>
+  <video.generator />
+</body>
+</html>

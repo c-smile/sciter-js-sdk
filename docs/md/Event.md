@@ -24,16 +24,17 @@
 * `event.screenX`
 * `event.screenY`
 
-* `event.deltaX` - wheel deltas
-* `event.deltaY`
+* `event.deltaX:float` - wheel deltas
+* `event.deltaY:float`
+* `event.deltaMode|int` - 0 - deltaX/Y are pixels coming from touch devices, 1 - deltaX/Y are in "lines" (a.k.a. mouse wheel "ticks"). 
 
 
 #### properties (Sciter specific):
 
 * `event.x` - sciter specific, coordinates are relative
-* `event.y` - to `event.currentTarget`
+* `event.y` - to `event.currentTarget` - the element this event handler is attached to.
 * `event.source` - used in some events to indicate auxiliary "source" element. 
-* `event.isOnIcon` - mouse events, it is "truthy" when mouse is on element's icon. Element icon is an element's foreground-image (if any) so event.isOnIcon is on when mouse is over area where the image is rendered.
+* `event.isOnIcon:Element` - mouse events, it is set to element when mouse is on icon of that element. Element icon is an element's foreground-image (if any) so event.isOnIcon is on when mouse is over area where the image is rendered.
 
 #### methods:
 

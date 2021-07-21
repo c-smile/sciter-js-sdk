@@ -139,6 +139,7 @@ project "usciter"
            "include/aux-*.*",
            "include/sciter-win-main.cpp",
            "include/behaviors/behavior_drawing.cpp",
+           "include/behaviors/behavior_video_generator.cpp",
            "demos/usciter/win-res/usciter.rc",
            "demos/usciter/win-res/dpi-aware.manifest" }
     prebuildcommands { 
@@ -160,6 +161,7 @@ project "usciter"
        "-pthread",
        "-Wl,--no-undefined",
        "-ldl",
+       "-no-pie"
     }
 
   filter {}
@@ -201,6 +203,7 @@ project "inspector"
        "-pthread",
        "-Wl,--no-undefined",
        "-ldl",
+       "-no-pie"
     }
 
   filter {}

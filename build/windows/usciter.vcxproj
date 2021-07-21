@@ -369,6 +369,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\demos\usciter\usciter.cpp" />
     <ClCompile Include="..\..\include\behaviors\behavior_drawing.cpp" />
+    <ClCompile Include="..\..\include\behaviors\behavior_video_generator.cpp" />
     <ClCompile Include="..\..\include\sciter-win-main.cpp" />
     <ClCompile Include="..\..\sqlite\sciter-sqlite-db.cpp" />
     <ClCompile Include="..\..\sqlite\sciter-sqlite-rs.cpp" />
@@ -380,6 +381,11 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\..\demos\usciter\win-res\usciter.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\build.js\windows\sciter.vcxproj">
+      <Project>{af4d5b1b-9bef-85f1-84aa-994570eb0c42}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

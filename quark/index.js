@@ -74,7 +74,7 @@ export class ProjectView extends Element {
     return vals.name 
         && vals.exe
         && vals.resources
-        && vals.entyFileExists
+        && vals.entryFileExists
         && vals.targets 
         && vals.targets.length
         && vals.out;
@@ -105,7 +105,7 @@ export class ProjectView extends Element {
         <label>Resources</label>
               <FolderSelector(resources) novalue="app resources folder"/>
         <label>Entry file</label>
-              <input|text(enty) novalue="main.htm was not found" readonly/>
+              <input|text(entry) novalue="main.htm was not found" readonly/>
         <label>Product</label>
               <input|text(productName) novalue="product name"/>
         <label>Version</label>
@@ -134,10 +134,10 @@ export class ProjectView extends Element {
 
   ["on change at form"] (evt,form) { 
     var vals = form.value;
-    vals.entyFileExists = fs.$stat(`${vals.resources}/main.htm`) ? true : false;
+    vals.entryFileExists = fs.$stat(`${vals.resources}/main.htm`) ? true : false;
     Data.updateCurrentProject(vals);
     this.$("button#assemble").state.disabled = !ProjectView.validate(vals);
-    this.$("input(enty)").value = vals.entyFileExists ? "main.htm found" : "";
+    this.$("input(entry)").value = vals.entryFileExists ? "main.htm found" : "";
   }
 
   ["on click at button#assemble"]() {

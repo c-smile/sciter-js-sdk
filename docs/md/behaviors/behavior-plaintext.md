@@ -128,6 +128,10 @@ editor.plaintext.load("file://users/documents/readme.txt");
   
   selects text range;
 
+* `plaintext.selectAll()`
+  
+  selects all text;
+
 * `plaintext.appendLine(text:string | lines: array): true|false`
   
   appends line at the end of the text;

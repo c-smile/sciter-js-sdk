@@ -50,8 +50,8 @@ sys is built on top of [libuv](https://github.com/libuv/libuv) that Sciter.JS us
 
 ### fs.File class - represents file. 
 
-* `file.read()`
-* `file.write()`
+* `file.read(lengthToRead:int, filePosition:int]) : promise(ArrayBuffer)`
+* `file.write(string|ArrayBuffer [,filePosition:int])`
 * `file.close()`
 * `file.fileno()`
 * `file.stat()`

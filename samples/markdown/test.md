@@ -201,7 +201,7 @@ lazy:
 
 *   This is a list item with two paragraphs.
 
-    This is the second paragraph in the list item. You're
+    This is the second paragraph in the list item. You're 
 only required to indent the first line. Lorem ipsum dolor
 sit amet, consectetuer adipiscing elit.
 
@@ -221,6 +221,17 @@ to be indented *twice* -- 8 spaces or two tabs:
 *   A list item with a code block:
 
         <code goes here>
+
+### Definition lists
+
+Term 1
+  
+: Definition 1
+
+Test 2
+  
+~ Definition 2a  
+~ Definition 2b
 
 ### Code Blocks
 

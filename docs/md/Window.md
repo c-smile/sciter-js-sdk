@@ -42,12 +42,14 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
 
 ## properties:
  
-  * `window.state` - read/write, one of:
+  * `window.state:int` - read/write, one of:
     * `Window.WINDOW_SHOWN`
     * `Window.WINDOW_MINIMIZED`
     * `Window.WINDOW_MAXIMIZED`
     * `Window.WINDOW_FULL_SCREEN`
     * `Window.WINDOW_HIDDEN`
+  
+  * `window.screen:int` - read-only, returns screen (monitor) index this window is on at the moment. Integer [0 ... Window.screens)
   * `window.graphicsBackend` - read-only, string, reports current graphics backend used: "direct2d", "Skia/OpenGL", etc. 
   * `window.minSize = [w,h]` - get/set minimal size of resizable window. 
   * `window.maxSize = [w,h]` - get/set maximum size of resizable window.
@@ -63,6 +65,7 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
   * `window.focus` - read/write, DOM element in focus.
   * `window.parent` - read-only, Window | null - parent window of this one.
   * `window.document` - read-only, Document - root document of the window.
+  * `window.screen` - read-only, integer - screen (monitor) number where this window is on at the moment.
 
 ## methods:
 
@@ -123,11 +126,22 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
     * `"dimension"` - [w,h], array, dimension of the rectangle.
     * `"left"`,`"top"`,`"right"`,`"bottom"`,`"width"`,`"height"` - individual integers.
 
-  * ##### `window.modal(JSX) : any` 
+  * #### `window.doEvent(mode) : any`     
+    
+    Performs system event(s) in application message queue, _mode_ is one of:
+
+    * "wait" - waits for the next event and executes it;
+    * "noWait" - if next event is available executes it otherwise returns immediately;
+    * "untilMouseUp" - executes events until _mouseup_ event arrives, used for various drag cases;
+    * "untilQuit" - performs run loop - executes all events until application quit message arrives;
+    * "I/O" - performs events associated with I/O;
+
+
+  * #### `window.modal(JSX) : any` 
     
     shows message box: `<info>..</info>`, `<alert>..</alert>`, `<error>..</error>`, `<question>..</question>`.
   
-  * ##### `window.modal({params}) : any`
+  * #### `window.modal({params}) : any`
     
     shows new window as dialog, for params see `new Window({params})` above. The function returns window close value of `window.close(valToReturn)` call inside the window. 
 
@@ -139,7 +153,7 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
     * `file : [path1,path2,...] | path0` - single or multiple file names;
     * `json`: any - any data that can be JSON.stringify'ed;
 
-  * ##### `window.focusable(dir [,reference:element]): element`
+  * #### `window.focusable(dir [,reference:element]): element`
     
     The functions allows to enumerate elements in tab order. _dir_ there is one of:
 
@@ -153,13 +167,19 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
     
 ## class methods and properties:
 
-  * `Window.this` 
+  * `Window.this: Window` 
     
     instance of Window class - this window reference;
 
-  * `Window.screenBox(monitor:integer, what, boxPart)` 
+  * `Window.screens: int` 
+    
+    returns number of screens (monitors) in the system;
+
+  * `Window.screenBox(screen:integer, what[, boxPart])` 
    
-    reports geometry and information of the given monitor. For _what_ and _boxPart_ parameters see window.screenBox() method above.
+    reports geometry and information of the given _screen_ (monitor). For _what_ and _boxPart_ parameters see window.screenBox() method above.
+
+    Additionally _what_ supports "devicePixelRatio" value, in this case the function returns the ratio of the resolution in physical pixels to the resolution in CSS pixels for the given monitor.
 
   * `Window.elementAt(screenX,screenY):Element` 
   

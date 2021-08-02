@@ -1,3 +1,36 @@
+## 4.4.8.5
+
+### New features:
+
+* `new Graphics.Image(w,h,painter(gfx))` - generation of image by painting on it.
+* `Window.this.screen:int` - reports monitor index this window is on;
+* `Window.screens:int` - number of screens/monitors; 
+* `Window.screenBox(N, "devicePixelRatio")` - reports dip/ppx ratio on Nth monitor; 
+* New `EDIT_VALUE_CHANGE` event (JS: "change"). Sequence now: 
+ 
+  * `EDIT_VALUE_CHANGING` (JS: "changing") - before changes, sync event;
+  * `EDIT_VALUE_CHANGE` (JS: "change") - immediately after changes but before screen update, sync event;
+  * `EDIT_VALUE_CHANGED` (JS: "input") - after changes, after screen update, async/posted event.
+  * `behavior:video` -> `VIDEO_FRAME_REQUEST` event (a.k.a. animation frame)
+  * `element.state.pixelsIn("1em")` - method to convert CSS length units to CSS pixels.
+  * [DOM] attribute "selectable" - enables "HTML range selection" and copying on given element.
+  * new sample sdk.js/samples.sciter/menu/custom-shape-menu.htm
+
+### Fixes:
+
+* SDK headers reorganization: sciter-x-primitives.h - non-GUI primitive types;
+* fix of console.log() interaction with inspector;
+* `placeholder` runtime change fix;
+* [CSS] `html:owns-focus` flag on active window;
+* [js] persistence fixes;
+* virtual-list mouse hover fix;
+* fix of mouse-over-scrollbar issue, see: https://sciter.com/forums/topic/sciter-scroll-popup-issue/
+* `event.windowX/Y` are in CSS pixels (dips) now.
+* color to string conversion fix.
+* fix of behavior:virtual-list samples.
+* [osx] window update fix on MacOS Mojave.
+* websocket events notification fix.
+
 ## 4.4.8.4
 
 ### New features:

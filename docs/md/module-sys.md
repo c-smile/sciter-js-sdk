@@ -50,12 +50,12 @@ sys is built on top of [libuv](https://github.com/libuv/libuv) that Sciter.JS us
 
 ### fs.File class - represents file. 
 
-* `file.read()`
-* `file.write()`
-* `file.close()`
-* `file.fileno()`
-* `file.stat()`
-* `file.path`
+* `file.read([lengthToRead:int [, filePosition:int]]): Promise(Uint8Array)`
+* `file.write(string|***Array|ArrayBuffer[,filePosition:int]) : Promise(result:int)` 
+* `file.close() : Promise(result:int)`
+* `file.fileno() : int`
+* `file.stat() : Promise(object)`
+* `file.path : string`
 
 ### fs.Dir class - directory visitor 
 
@@ -64,7 +64,7 @@ sys is built on top of [libuv](https://github.com/libuv/libuv) that Sciter.JS us
 * `dir.next()`
 * `[async iterator]`
 
-## Network functions.
+## Network functions
 
 ### TCP socket class 
 
@@ -137,3 +137,7 @@ sys is built on top of [libuv](https://github.com/libuv/libuv) that Sciter.JS us
 * `sys.tmpdir()`
 * `sys.exepath()`
 * `sys.random()`
+
+
+
+

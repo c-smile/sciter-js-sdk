@@ -20,7 +20,7 @@ element:visited {
 
 rule to be applied.
 
-#### Properties:  
+## Properties:  
 
 * `link`
 * `hover`
@@ -74,16 +74,22 @@ section > div.content { visibility:none; /* a.k.a. display:none */ }
 section:expanded > div.content { visibility:visible; }
 ```
 
-#### Methods:
+## Methods:
 
-* `element.state.contentWidths() : [minWidth,maxWidth]`
-* `element.state.contentHeight(forWidth) : height`
+* #### `element.state.contentWidths() : [minWidth,maxWidth]`
+  
+  Computes current min and max widths of the element content.
 
-* `element.state.metrics(...)` - returns various metrics of the element (that is `element.box()` in Sciter), TBD. 
+* #### `element.state.contentHeight(forWidth) : height`
 
-* `element.state.capture(false | true)` set/remove mouse capture, where:
+  Computes current height of the element content.
+
+* #### `element.state.capture(false | true |"strict" )` 
+  
+  set/remove mouse capture, where:
   * `false` - remove capture if the element owns capture now;
-  * `true` - captures mouse events by the element. Mouse events will be delivered to the element only.
+  * `true` - captures mouse events by the element and its sub elements. 
+  * `"strict"` - mouse events will be delivered to the element only.
 
 * #### `element.state.box(what,boxOf[,relativeTo[, asPpx: bool ]])`
 
@@ -118,3 +124,13 @@ section:expanded > div.content { visibility:visible; }
   * "self" - default, relative to the element itself, "inner" x/y are 0 in this case;
 
   _asPpx_ if defined and is _true_ tells the function to return coordinates in screen pixels. By default the function returns logical CSS pixels, a.k.a. DIPs - logical units, 1/96 of inch.   
+
+* #### `element.state.pixelsIn(length:string [,"horizontal" | "vertical"] ): number | undefined` 
+  
+  parses _length_ string as CSS length units or percentage and then converts them to CSS pixels. Perecentage values are computed against element dimensions (inner box). Examples:
+
+  ```JavaScript
+     let a = el.state.pixelsIn("1.2em");
+     let b = el.state.pixelsIn("75%","vertical"); // 75% of current height
+     let c = el.state.pixelsIn("12pt"); // pixels in 12 points
+  ```

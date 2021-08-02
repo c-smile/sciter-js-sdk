@@ -1,0 +1,129 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+#the-button > menu {
+    aspect: PopupMenu(background-color:gold, 
+                      border-radius:8px);
+    background:transparent;
+    border-width:0;
+    padding:8px;
+
+    popup-attachment: bottom-center;
+}
+
+
+        </style>
+        <script>
+
+function PopupMenu(params)
+{
+    const rad = this.state.pixelsIn(params["border-radius"]) || 3;
+    const back = params["background-color"] || "#fff";
+    const shadow = params["shadow-color"] || "#003";
+
+    //console.log(params);
+
+    const generateShape = () => {
+
+      let [x,y,w,h] = this.state.box("xywh","inner");
+      let attachment = this.attributes["popup-attachment"];
+
+      let top     = printf(" L %d %d", w - rad, 0);
+      let right   = printf(" L %d %d", w, h - rad);
+      let bottom  = printf(" L %d %d", rad, h);
+      let left    = "";
+
+      let hc;
+
+      switch(attachment) {
+        case "bottom-left": hc = 2*rad;     top = printf(" L %d %d L %d %d L %d %d", hc,-rad,hc+rad,0, w-rad, 0); break;
+        case "bottom-right": hc = w-2*rad;  top = printf(" L %d %d L %d %d L %d %d", hc-rad, 0, hc, -rad, hc+rad, 0); break;
+        case "bottom-center": hc = w/2;     top = printf(" L %d %d L %d %d L %d %d L %d %d", hc-rad, 0, hc,-rad,hc+rad,0, w-rad, 0); break;
+
+        case "right-top":     hc = 2*rad;   left = printf(" L %d %d L %d %d L %d %d", 0, hc+rad,-rad,hc,0,rad); break;
+        case "right-bottom":  hc = h-2*rad; left = printf(" L %d %d L %d %d L %d %d", -rad,hc,0,hc-rad,0,rad); break;
+        case "right-middle":  hc = h/2;     left = printf(" L %d %d L %d %d L %d %d L %d %d", 0, hc+rad,-rad,hc,0,hc-rad,0,rad); break;
+
+        case "top-right":  hc = w-2*rad;    bottom = printf(" L %d %d L %d %d L %d %d", hc, h+rad, hc-rad, h, rad, h); break;
+        case "top-left":   hc = 2*rad;      bottom = printf(" L %d %d L %d %d L %d %d", hc+rad, h, hc, h+rad, hc-rad, h); break;
+        case "top-center": hc = w/2;        bottom = printf(" L %d %d L %d %d L %d %d L %d %d", hc+rad,h, hc,h+rad, hc-rad,h, rad, h); break;
+
+        case "left-top":     hc = 2*rad;    right = printf(" L %d %d L %d %d L %d %d", w+rad, hc,w,hc+rad,w,h-rad); break;
+        case "left-bottom":  hc = h-2*rad;  right = printf(" L %d %d L %d %d L %d %d", w,hc-rad,w+rad,hc,w,h-rad); break;
+        case "left-middle":  hc = h/2;      right = printf(" L %d %d L %d %d L %d %d L %d %d", w, hc-rad,w+rad,hc,w,hc+rad,w,h-rad); break;
+      }        
+
+      return new Graphics.Path(
+          printf("M 0 %d", rad)
+        + printf(" A %d %d 0 0 1 %d 0", rad, rad, rad)
+        + top
+        + printf(" A %d %d 0 0 1 %d %d", rad, rad, w, rad)
+        + right
+        + printf(" A %d %d 0 0 1 %d %d", rad, rad, w-rad, h)
+        + bottom
+        + printf(" A %d %d 0 0 1 0 %d", rad, rad, h-rad)
+        + left
+        + " Z");
+   };
+
+   console.log(printf("drop-shadow(1px,1px,3px,%s)",shadow));
+
+   this.paintBackground = (gfx) => {
+     let path = generateShape();
+     gfx.fillStyle = back;
+     gfx.pushLayer("border-box", printf("drop-shadow(1px,1px,3px,%s)",shadow));
+      gfx.draw(path, {fill:true});
+     gfx.popLayer();
+
+   }
+
+}
+
+document.on("change", "form", function(evt,form) {
+  let menu = document.$("#the-button > menu");
+  let v = form.value;
+  menu.style["popup-attachment"] = v.attachment;
+});
+
+        </script>
+    </head>
+    <body>
+
+<form>
+  <div>Popup attachment:</div> 
+
+  <div>
+     <button|radio(attachment) value="top-left">top-left</button>
+     <button|radio(attachment) value="top-center">top-center</button>
+     <button|radio(attachment) value="top-right">top-right</button>
+
+     <button|radio(attachment) value="right-top">right-top</button>
+     <button|radio(attachment) value="right-middle">right-middle</button>
+     <button|radio(attachment) value="right-bottom">right-bottom</button>
+
+     <button|radio(attachment) value="bottom-left">bottom-left</button>
+     <button|radio(attachment) value="bottom-center" checked>bottom-center</button>
+     <button|radio(attachment) value="bottom-right">bottom-right</button>
+
+     <button|radio(attachment) value="left-top">left-top</button>
+     <button|radio(attachment) value="left-middle">left-middle</button>
+     <button|radio(attachment) value="left-bottom">left-bottom</button>
+
+  </div>
+
+</form>
+
+
+<button|menu #the-button>
+  With menu
+  <menu.popup>
+    <li>Veni</li>
+    <li>Vidi</li>
+    <li>Vici</li>
+  </menu>
+</button>
+
+    </body>
+</html>

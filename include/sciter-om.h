@@ -3,6 +3,8 @@
 #ifndef __SCITER_OM_H__
 #define __SCITER_OM_H__
 
+#include "sciter-x-primitives.h"
+#include "sciter-x-value.h"
 
 struct som_passport_t;
 

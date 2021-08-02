@@ -2,7 +2,8 @@
 
 #include "sqlite-wrap.h"
 
-#include "../include/sciter-x.h"
+#include "../include/sciter-om-def.h"
+#include "../include/sciter-x-api.h"
 
 extern const char sqlite3_version[];
 

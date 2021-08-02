@@ -40,7 +40,7 @@ OBJDIR = obj/x64/Debug/usciter
 DEFINES += -DDEVICE=DESKTOP -D_GNU_SOURCE -DDEBUG -D_DEBUG
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -g `pkg-config fontconfig --cflags` -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl `pkg-config gtk+-3.0 --cflags`
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -g -std=c++14 `pkg-config fontconfig --cflags` -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl `pkg-config gtk+-3.0 --cflags`
-ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64 `pkg-config gtk+-3.0 --libs` `pkg-config fontconfig --libs` -fPIC -pthread -Wl,--no-undefined -ldl
+ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64 `pkg-config gtk+-3.0 --libs` `pkg-config fontconfig --libs` -fPIC -pthread -Wl,--no-undefined -ldl -no-pie
 
 else ifeq ($(config),debug_arm32)
 TARGETDIR = ../../../bin/linux/arm32
@@ -49,7 +49,7 @@ OBJDIR = obj/arm32/Debug/usciter
 DEFINES += -DDEVICE=DESKTOP -D_GNU_SOURCE -DDEBUG -D_DEBUG
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -g `pkg-config fontconfig --cflags` -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl `pkg-config gtk+-3.0 --cflags`
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -g -std=c++14 `pkg-config fontconfig --cflags` -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl `pkg-config gtk+-3.0 --cflags`
-ALL_LDFLAGS += $(LDFLAGS) `pkg-config gtk+-3.0 --libs` `pkg-config fontconfig --libs` -fPIC -pthread -Wl,--no-undefined -ldl
+ALL_LDFLAGS += $(LDFLAGS) `pkg-config gtk+-3.0 --libs` `pkg-config fontconfig --libs` -fPIC -pthread -Wl,--no-undefined -ldl -no-pie
 
 else ifeq ($(config),release_x64)
 TARGETDIR = ../../../bin/linux/x64
@@ -58,7 +58,7 @@ OBJDIR = obj/x64/Release/usciter
 DEFINES += -DDEVICE=DESKTOP -D_GNU_SOURCE -DNDEBUG
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -flto -Os `pkg-config fontconfig --cflags` -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl `pkg-config gtk+-3.0 --cflags`
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -flto -Os -std=c++14 `pkg-config fontconfig --cflags` -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl `pkg-config gtk+-3.0 --cflags`
-ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64 -flto -s `pkg-config gtk+-3.0 --libs` `pkg-config fontconfig --libs` -fPIC -pthread -Wl,--no-undefined -ldl
+ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64 -flto -s `pkg-config gtk+-3.0 --libs` `pkg-config fontconfig --libs` -fPIC -pthread -Wl,--no-undefined -ldl -no-pie
 
 else ifeq ($(config),release_arm32)
 TARGETDIR = ../../../bin/linux/arm32
@@ -67,7 +67,7 @@ OBJDIR = obj/arm32/Release/usciter
 DEFINES += -DDEVICE=DESKTOP -D_GNU_SOURCE -DNDEBUG
 ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -flto -Os `pkg-config fontconfig --cflags` -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl `pkg-config gtk+-3.0 --cflags`
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -flto -Os -std=c++14 `pkg-config fontconfig --cflags` -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl `pkg-config gtk+-3.0 --cflags`
-ALL_LDFLAGS += $(LDFLAGS) -flto -s `pkg-config gtk+-3.0 --libs` `pkg-config fontconfig --libs` -fPIC -pthread -Wl,--no-undefined -ldl
+ALL_LDFLAGS += $(LDFLAGS) -flto -s `pkg-config gtk+-3.0 --libs` `pkg-config fontconfig --libs` -fPIC -pthread -Wl,--no-undefined -ldl -no-pie
 
 else
   $(error "invalid configuration $(config)")

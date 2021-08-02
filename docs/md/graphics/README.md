@@ -20,9 +20,10 @@ Class Graphics also is a namespace that contains classes:
 
 * `graphics.lineCap` 
 * `graphics.lineJoin`
-* `graphics.strokeStyle`, color | string
-* `graphics.lineWidth`, width
-* `graphics.fillStyle`, color | string
+* `graphics.strokeStyle`, color | string | Image
+* `graphics.lineWidth`, width (in CSS pixels, a.k.a. dips)
+* `graphics.strokeWidth`, synonym of `graphics.lineWidth`
+* `graphics.fillStyle`, color | string | Image
 * `graphics.font`, string
 
 #### Methods:

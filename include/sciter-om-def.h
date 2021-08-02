@@ -3,8 +3,7 @@
 #ifndef __SCITER_OM_DEF_H__
 #define __SCITER_OM_DEF_H__
 
-#include "sciter-x-types.h"
-#include "sciter-x-value.h"
+#include "sciter-om.h"
 
 #ifdef __cplusplus
 #include <exception>

@@ -1,0 +1,23 @@
+{
+    "name": "remarkable-emoji",
+    "version": "0.1.3",
+    "description": "Plugin to add emoji support to https://github.com/jonschlinkert/remarkable",
+    "author": "Askabt (info@askabt.in)",
+    "homepage": "http://scrollback.io",
+    "keywords": [
+        "remarkable-plugin", "remarkable", "emoji", "emoticons"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/scrollback/remarkable-emoji"
+    },
+    "bugs": "https://github.com/scrollback/remarkable-emoji/issues",
+    "contributors": [
+        {
+            "name": "Amal Antony",
+            "email": "amal@scrollback.io"
+        }
+    ],
+    "license": "MIT",
+    "main": "./index.js"
+}

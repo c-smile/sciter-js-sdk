@@ -353,6 +353,7 @@
     <ClInclude Include="..\..\include\sciter-x-lite-keycodes.h" />
     <ClInclude Include="..\..\include\sciter-x-lite.hpp" />
     <ClInclude Include="..\..\include\sciter-x-msg.h" />
+    <ClInclude Include="..\..\include\sciter-x-primitives.h" />
     <ClInclude Include="..\..\include\sciter-x-request.h" />
     <ClInclude Include="..\..\include\sciter-x-request.hpp" />
     <ClInclude Include="..\..\include\sciter-x-threads.h" />
@@ -381,11 +382,6 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\..\demos\usciter\win-res\usciter.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\build.js\windows\sciter.vcxproj">
-      <Project>{af4d5b1b-9bef-85f1-84aa-994570eb0c42}</Project>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

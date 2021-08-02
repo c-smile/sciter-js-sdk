@@ -69,6 +69,9 @@
     <ClInclude Include="..\..\include\sciter-x-msg.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\include\sciter-x-primitives.h">
+      <Filter>include</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\include\sciter-x-request.h">
       <Filter>include</Filter>
     </ClInclude>

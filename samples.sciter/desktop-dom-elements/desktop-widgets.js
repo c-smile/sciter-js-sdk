@@ -21,9 +21,9 @@ export class Widget extends Element
   
   get placement() 
   { 
-    const THRESHOLD = 64;
-    var [vx1,vy1,vx2,vy2] = Window.this.box("rect","border");
-    var [x1,y1,x2,y2] = this.state.box("rect","border","window");
+    const THRESHOLD = 64 * devicePixelRatio;
+    var [vx1,vy1,vx2,vy2] = Window.this.box("rect","border",true);
+    var [x1,y1,x2,y2] = this.state.box("rect","border","window",true); // screen pixels
     
     if( y1 > vy2 + THRESHOLD) return "far-bottom";
     if( y1 > vy2) return "bottom";
@@ -49,8 +49,8 @@ export class Widget extends Element
 	  
   dragEnded()
   {
-    var [vx1,vy1,vx2,vy2] = Window.this.box("rect","border");
-    var [x,y,w,h] = this.state.box("xywh","inner","window");
+    var [vx1,vy1,vx2,vy2] = Window.this.box("rect","border",true);
+    var [x,y,w,h] = this.state.box("xywh","inner","window", true);
     var [bx1,by1,bx2,by2] = this.state.box("rect","border","inner",true); // border+padding widths, in screen units
     
     switch( this.placement )
@@ -70,8 +70,10 @@ export class Widget extends Element
   // animated move
   animoveTo(posX,posY, onEnd = null)
   {
+    posX /= devicePixelRatio;
+    posY /= devicePixelRatio;
     const MAX_STEP = 20;
-    var [x,y] = this.state.box("position", "inner", "window");
+    var [x,y] = this.state.box("position", "inner", "window", false);
     this.timer(10,() => 
     {
       var delta_x = (x - posX) / 2;
@@ -100,8 +102,8 @@ export class Widget extends Element
     {
       if(this.homeX !== null)
         [this.homeX,this.homeY] = this.state.box("position", "inner", "window");
-      this.xoff = evt.x * devicePixelRatio; 
-      this.yoff = evt.y * devicePixelRatio;
+      this.xoff = evt.x; 
+      this.yoff = evt.y;
       this.dragging = true;
       this.state.capture(true);
       this.doDrag();

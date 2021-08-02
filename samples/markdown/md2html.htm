@@ -37,13 +37,15 @@ plaintext#editor > text {
         
           import { Remarkable } from 'remarkable/index.js';
           import { HeaderIds } from 'remarkable/plugins/header-ids.js';
-
+          import  RemarkableEmoji from 'remarkable/plugins/emoji/index.js';
 
           const editor = document.$("plaintext#editor");
           const output = document.$("section#html");
 
-          const md = new Remarkable();          
+          const md = new Remarkable(); 
+          md.block.ruler.enable(['footnote','deflist']);         
           md.use( HeaderIds({ anchorText:" " }));
+          md.use( RemarkableEmoji );
 
           function render() {
             output.innerHTML = md.render(editor.value);
@@ -73,7 +75,7 @@ plaintext#editor > text {
               editor.value = sciter.decode(text,"utf-8");
               render();
             } catch(e) {
-              editor.value = e.message; 
+              console.error(e.message,e.stack);
             }
           }
           load();   

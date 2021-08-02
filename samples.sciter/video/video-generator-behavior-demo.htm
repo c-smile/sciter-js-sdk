@@ -30,7 +30,7 @@
       let arrayBuffer = frame.toBytes("png");
 
       const path = URL.toPath(__DIR__ + "frame.png");
-      const file = await sys.fs.open(path, "w+", 0o666)
+      const file = await sys.fs.open(path, "w+", 0o666);
 
       await file.write(arrayBuffer);
       await file.close(); 

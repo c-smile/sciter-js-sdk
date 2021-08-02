@@ -1,7 +1,7 @@
 #ifndef __value_h__
 #define __value_h__
 
-#include "sciter-x-types.h"
+#include "sciter-x-primitives.h"
 
 typedef enum VALUE_RESULT
 {

@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+lottie {
+  width:150dip;
+  height:150dip;
+  border:1dip solid;
+  var(shape-color): #FFD700; // color used by lottie through param
+}
+        </style>
+
+<script|module>
+
+document.$("lottie").timer(20, function(){
+
+  var markers = this.lottie.markers;
+  // touchDownStart .. touchDownEnd
+  this.lottie.play(markers[1][1],markers[2][1]);
+});
+
+</script>        
+    </head>
+    <body>
+      <p>Lottie play range sample</p>
+      <p>Playing frames between touchDownStart .. touchDownEnd markers in twitter-heart.json</p>
+
+      <lottie src="lotties/twitter-heart.json"/>
+
+    </body>
+</html>

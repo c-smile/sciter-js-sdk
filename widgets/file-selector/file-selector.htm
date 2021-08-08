@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+  @import url(folder-view.css);
+  html { background: color(back-color); }
+  body { margin:0; }
+  folder { size:*; }
+  footer { text-align:right; padding:1em; }
+        </style>
+
+<script>
+  var button = document.$("button#activate");
+  var folder = document.$("folder");
+  var path;
+  var type;
+
+  document.on("input", "folder", function(evt) {
+    let t = evt.data;
+    path = t.path;
+    type = t.type;
+    button.state.disabled = !path;
+  });
+
+  document.on("click", "button#activate", function(evt){
+    if(type == "file")
+      this.post(new Event("file-activate",{data:path, bubbles:true}));
+    else
+      folder.navigateTo(path);
+  });
+
+</script>
+
+    </head>
+    <body>
+
+<folder filter="*.htm;*.html" path="home://../../../samples.sciter/" />
+
+<footer>
+  <button disabled #activate>Open</button>
+</footer>
+    </body>
+</html>

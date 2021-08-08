@@ -501,10 +501,8 @@ namespace sciter {
       struct member_getter_function<Ret(Type::*)() const> {
         template <Ret(Type::*Func)() const> static SBOOL thunk(som_asset_t* thing, SOM_VALUE* p_value)
         {
-          //try { *p_value = SOM_VALUE((static_cast<Type*>(thing)->*Func)()); return TRUE; }
-          //catch (exception& e) { *p_value = SOM_VALUE::make_error(e.what()); return TRUE; }
-          *p_value = SOM_VALUE((static_cast<Type*>(thing)->*Func)());
-          return TRUE;
+          try { *p_value = SOM_VALUE((static_cast<Type*>(thing)->*Func)()); return TRUE; }
+          catch (exception& e) { *p_value = SOM_VALUE::make_error(e.what()); return TRUE; }
         }
       };
 

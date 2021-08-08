@@ -48,14 +48,16 @@ var nativeObj = win.assetInterface.makeNativeObject();
 // Use of native object
   document.on("click", "button#inc-native", function() {
     const output = document.$("#objectOutput");
-    var r = nativeObj.inc();
-    output.innerText = `${nativeObj} inc() : ${ r }`;
+    var r = nativeObj.inc(); // method
+    var c = nativeObj.vcounter; // virtual property
+    output.innerText = `${nativeObj} inc() : ${ r } vcounter: ${ c }`;
   });
 
   document.on("click", "button#dec-native", function() {
     const output = document.$("#objectOutput");
     var r = nativeObj.dec();
-    output.innerText = `${nativeObj} dec() : ${ r }`;
+    var c = nativeObj.counter; // direct property
+    output.innerText = `${nativeObj} dec() : ${ r } counter: ${ c }`;
   });
 
 // native functors

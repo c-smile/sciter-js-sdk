@@ -133,7 +133,7 @@ project "usciter"
   settargetdir()
 
   filter "system:windows"
-    removeconfigurations { "*skia" }
+    --removeconfigurations { "*skia" }
     files {"include/sciter-*.h",
            "include/sciter-*.hpp",
            "include/aux-*.*",

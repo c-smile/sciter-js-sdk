@@ -8,12 +8,14 @@
 class NativeObject : public sciter::om::asset<NativeObject>
 {
 public:
-  int counter;
+  int counter; // exposed as a property directly
   NativeObject(int c = 0) : counter(c) {}
   int inc() { return ++counter; }
   int dec() { return --counter; }
-  std::string toString() { return "NativeObject"; }
-  int         valueOf() { return counter; }
+  std::string toString() const { return "NativeObject"; }
+  int         valueOf() const { return counter; }
+  // sample of virtual property
+  int ref_counter() const { return counter; }
 
   SOM_PASSPORT_BEGIN(NativeObject)
     SOM_FUNCS(
@@ -24,6 +26,7 @@ public:
     )
     SOM_PROPS(
       SOM_PROP(counter),
+      SOM_RO_VIRTUAL_PROP(vcounter, ref_counter)
     )
     SOM_PASSPORT_END
 };

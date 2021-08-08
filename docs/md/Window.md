@@ -69,7 +69,7 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
 
 ## methods:
 
-  * `window.box(boxPart,boxOf[,"screen"]):[...]` reports geometry of the window, where:
+  * `window.box(boxPart,boxOf[,relTo[, asPPX : bool ]]):[...]` reports geometry of the window, where:
   
     _boxPart_ defines what part of the box to return, is one of:
   
@@ -82,14 +82,34 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
     _boxOf_ is one of:
 
     * `"border"` - border area of the window that includes window caption and borders arouns client area;
-    * `"client"` - client (content) area of the window.  
-    * `"caret"` - caret position, relative to client area of the window.
+    * `"client"` - client (content) area of the window;
+    * `"caret"` - caret position, relative to client area of the window;
 
-    If _"screen"_ parameter is provided then function returns coordinates relative to screen. 
+    _relTo_ is one of:
 
-    Note: the function returns values in screen pixels.
+    * `"desktop"` - coordinates are relative to desktop (outline of all monitors in the system);
+    * `"monitor"` - coordinates are relative to the monitor this window is replaced on;
+    * `"self"` - coordinates are relative to the origin of window's client area;
+   
+   _asPPX_ is a boolean:
+
+    * `true` - coordinates are in physical device pixels; 
+    * `false` - coordinates are in CSS pixels - 1/96 of inch;
   
-  * `window.move(x,y [,width, height [, "client" ]])` - move/size window;
+  * `window.move(x, y [,width, height [, "client" ]])`
+     
+      move/size window.  
+
+      _x_, _y_, _width_, _height_ are in PPX (physical screen pixels).
+      
+      If _"client"_ is provided then _x_, _y_, _width_, _height_ are treated as window client area coordinates.
+
+  * `window.moveTo(monitor, x, y [,width, height [, "client" ]])`
+  
+    move/size window to particular monitor;
+    
+    _x_, _y_, _width_, _height_ are in DIPs - device independent pixels (a.k.a. CSS pixels).
+
   * `window.close([value])` - request to close the window, the value is a return value used in modal dialogs;
   * `window.selectFile(...)` - file open/save dialog, TBD;
   * `window.selectFolder(...)` - folder open dialog, TBD;

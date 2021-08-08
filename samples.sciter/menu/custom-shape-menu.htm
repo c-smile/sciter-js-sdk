@@ -4,8 +4,9 @@
         <style>
 
 #the-button > menu {
-    aspect: PopupMenu(background-color:gold, 
-                      border-radius:8px);
+    aspect: PopupMenu(background-color:white, 
+                      border-radius:8px,
+                      shadow-color: rgba(0,0,20,0.7));
     background:transparent;
     border-width:0;
     padding:8px;
@@ -21,7 +22,7 @@ function PopupMenu(params)
 {
     const rad = this.state.pixelsIn(params["border-radius"]) || 3;
     const back = params["background-color"] || "#fff";
-    const shadow = params["shadow-color"] || "#003";
+    const shadow = params["shadow-color"] || "#0007";
 
     //console.log(params);
 

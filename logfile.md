@@ -1,3 +1,17 @@
+## 4.4.8.6
+
+### New features:
+
+* lottie playback API and samples in samples.sciter/lottie/
+* `Window.this.monitor:int` - reports monitor index this window is on;
+* `Window.monitors:int` - number of screens/monitors;
+
+### Fixes:
+
+* [JSX] fix of `<div tabindex state-selected={selected}>` parsing.
+* [API/SOM] _integration.exe_, test of const methods.
+* fix of Color values passing to built-in methods.
+
 ## 4.4.8.5
 
 ### New features:

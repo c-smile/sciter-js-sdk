@@ -47,85 +47,85 @@
 
 #### Mouse
 
-* `"mousemove"`
-* `"mouseenter"`
-* `"mouseleave"`
-* `"mouseidle"` - mouse stays not moving in the element, the event triggers tooltip show.
-* `"mousetick"` - mouse is pressed for some time in element, periodic event
-* `"mousedown"`
-* `"mouseup"`
-* `"mousewheel"`
-* `"mousedragrequest"`
-* `"dblclick"` | `"doubleclick"`
-* `"tripleclick"`
+* `mousemove`
+* `mouseenter`
+* `mouseleave`
+* `mouseidle` - mouse stays not moving in the element, the event triggers tooltip show.
+* `mousetick` - mouse is pressed for some time in element, periodic event
+* `mousedown`
+* `mouseup`
+* `mousewheel`
+* `mousedragrequest`
+* `dblclick` | `doubleclick`
+* `tripleclick`
 
 #### Behaviors
 
-* `"click"`
-* `"input"` | `"change"` 
-* `"press"` 
-* `"changing"` 
-* `"submit"` 
-* `"reset"`  
-* `"expand"`  
-* `"collapse"`  
-* `"statechange"` 
-* `"visualstatechange"` 
-* `"disabledstatechange"` 
-* `"readonlystatechange"` 
+* `click`
+* `input` | `change` 
+* `press` 
+* `changing` 
+* `submit` 
+* `reset`  
+* `expand`  
+* `collapse`  
+* `statechange` 
+* `visualstatechange` 
+* `disabledstatechange` 
+* `readonlystatechange` 
 
-* `"contextmenu"` - context menu request for the element
-* `"contextmenusetup"` - notification to setup context menu, context menu DO< element is event.source
-* `"animationend"`
-* `"animationstart"` 
-* `"animationloop"` 
-* `"mediachange"` 
-* `"contentchange"` 
-* `"inputlangchange"` 
-* `"pastehtml"` 
-* `"pastetext"` 
-* `"pasteimage"` 
-* `"popuprequest"`  
-* `"popupready"`    
-* `"popupdismissing"` 
-* `"popupdismissed"`  
+* `contextmenu` - context menu request for the element
+* `contextmenusetup` - notification to setup context menu, context menu DO< element is event.source
+* `animationend`
+* `animationstart` 
+* `animationloop` 
+* `mediachange` 
+* `contentchange` 
+* `inputlangchange` 
+* `pastehtml` 
+* `pastetext` 
+* `pasteimage` 
+* `popuprequest`  
+* `popupready`    
+* `popupdismissing` 
+* `popupdismissed`  
 
-* `"tooltiprequest"` 
+* `tooltiprequest` 
 
 #### Focus
 
-* `"focusin"`
-* `"focusout"` 
-* `"focus"` 
-* `"blur"` 
+* `focusin`
+* `focusout` 
+* `focus` 
+* `blur` 
 
 #### Keyboard
 
-* `"keydown"`
-* `"keyup"`  
-* `"keypress"`
-* `"compositionstart"`
-* `"compositionend"`
+* `keydown`
+* `keyup`  
+* `keypress`
+* `compositionstart`
+* `compositionend`
 
 #### Scroll
 
-* `"scroll"`
-* `"scrollanimationstart"` 
-* `"scrollanimationend"` 
+* `scroll`
+* `scrollanimationstart` 
+* `scrollanimationend` 
 
 #### Document lifecycle
 
 Closing:
 
-* `"close"` | `"unload"` - document is closed and about to be deleted soon.
-* `"beforeunload"` - document is about to be unloaded, script namespace is still operational.
-* `"closerequest"` - first phase of document closure, it can be rejected at this point by calling `event.preventDefault()`. 
+* `close` | `unload` - document is closed and about to be deleted soon.
+* `beforeunload` - document is about to be unloaded, script namespace is still operational.
+* `closerequest` - first phase of document closure, it can be rejected at this point by calling `event.preventDefault()`. 
 
 Loading:
 
-* `"parsed"` - document just got a DOM structure, scripts are not run yet. This event can be handled by document container only (window or frame). 
-* `"ready"` | `"DOMContentLoaded"` - document loaded, DOM is parsed, scripts are loaded and run.
-* `"complete"` - document loaded in full scripts wer run, all resources defined in HTML are loaded.
+* `parsed` - document just got a DOM structure, scripts are not run yet. This event can be handled by document container only (window or frame). 
+* `ready` | `DOMContentLoaded` - document loaded, DOM is parsed, scripts are loaded and run.
+* `complete` - document loaded in full scripts wer run, all resources defined in HTML are loaded.
 
 
 #### Element's state change
@@ -135,32 +135,32 @@ Loading:
 
 #### Image 
 
-* `"load"`
-* `"error"`
+* `load`
+* `error`
 
 #### Pager (print preview)
 
-* `"paginationstart"`
-* `"paginationpage"` 
-* `"paginationend"` 
+* `paginationstart`
+* `paginationpage` 
+* `paginationend` 
 
 #### Drag-n-drop
 
-* `"drag"`
-* `"dragenter"` 
-* `"dragleave"` 
-* `"drop"` 
-* `"dragcancel"` 
-* `"dragaccept"` 
-* `"willacceptdrop"`
+* `drag`
+* `dragenter` 
+* `dragleave` 
+* `drop` 
+* `dragcancel` 
+* `dragaccept` 
+* `willacceptdrop`
 
 #### Video 
 
-* `"play"`
-* `"ended"`
+* `play`
+* `ended`
 
-* `"videocoordinate"`
-* `"videoframeready"`
+* `videocoordinate`
+* `videoframeready`
 
 ## MISC
 

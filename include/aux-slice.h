@@ -22,7 +22,7 @@
 #include <assert.h>
 #include "limits.h"
 #include <vector>
-#include "sciter-x-types.h"
+#include "sciter-x-primitives.h"
 
 namespace aux
 {

@@ -70,7 +70,6 @@ workspace "sciter.sdk"
     defines { "_GNU_SOURCE" }
     buildoptions {
      "`pkg-config gtk+-3.0 --cflags`",      
-     "`pkg-config fontconfig --cflags`",
      "-fPIC",
      "-Wno-unknown-pragmas",
      "-Wno-write-strings",

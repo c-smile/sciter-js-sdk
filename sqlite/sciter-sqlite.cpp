@@ -8,7 +8,7 @@ __attribute__((visibility("default")))
 SBOOL SCAPI SciterLibraryInit(ISciterAPI* psapi, SCITER_VALUE* plibobject)
 {
   _SAPI(psapi); // set reference to Sciter API provided by host application including scapp(quark)
-  static sciter::om::hasset<sqlite::SQLite> sqlite_root = new sqlite::SQLite(); // invloked once (C++ static convention)
+  static sciter::om::hasset<sqlite::SQLite> sqlite_root = new sqlite::SQLite(); // invoked once (C++ static convention)
   *plibobject = sciter::value::wrap_asset(sqlite_root);
   return TRUE;
 }

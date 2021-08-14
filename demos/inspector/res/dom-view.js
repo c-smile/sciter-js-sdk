@@ -253,7 +253,7 @@ class ElementMetrics extends View {
   ["on input at button.units"](evt,button) 
   {
     this.viewstate.units = button.getAttribute("value");
-    console.log(this.viewstate.units);
+    //console.log(this.viewstate.units);
     this.componentUpdate();
     return false;
   }
@@ -270,6 +270,7 @@ export class ElementDetailsView extends View
     const fetch = async () => {
       let content = await this.channel.request("detailsOf",this.viewstate.currentUid);
       this.viewstate.elementDetails = content;
+      //console.log(JSON.stringify(this.viewstate.elementDetails));
       this.componentUpdate();
     };
     let current = this.viewstate.stack?.last;

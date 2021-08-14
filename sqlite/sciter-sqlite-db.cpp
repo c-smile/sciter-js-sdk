@@ -1,5 +1,4 @@
 #include "sciter-sqlite.h"
-#include "aux-cvt.h"
 
 namespace sqlite {
 
@@ -57,7 +56,7 @@ namespace sqlite {
       auto bytes = arg.get_bytes();
       sqlite3_bind_blob(pst, n, bytes.start, bytes.length, SQLITE_STATIC);
     }
-    else 
+    else
       return false;
 
     return true;
@@ -74,7 +73,7 @@ namespace sqlite {
   }
 
 
-  // function DB.exec(sql [,param1,param2,...]): [int,int] | recordset - executes SQL statement on the DB. 
+  // function DB.exec(sql [,param1,param2,...]): [int,int] | recordset - executes SQL statement on the DB.
 
   sciter::value DB::exec(sciter::string sql, std::vector<sciter::value> params)
   {
@@ -92,7 +91,7 @@ namespace sqlite {
     int r = sqlite3_prepare16(pDb, statement.start, statement.length * sizeof(statement[0]), &pst, (const void**)&end);
     if (r != SQLITE_OK)
       throw sciter::om::exception(sqlite3_errmsg(pDb));
-   
+
     if (!bind_params(pst, aux::elements_of(params)))
     {
       sqlite3_finalize(pst);

@@ -31,7 +31,7 @@
 
   #include "aux-slice.h"
   #include "aux-cvt.h"
-  #include "sciter-x-types.h"
+  #include "sciter-x-primitives.h"
 
 #if defined(_MSC_VER) && (_MSC_VER < 1600) // MSVC version < 8
      #include "nullptr.hpp"

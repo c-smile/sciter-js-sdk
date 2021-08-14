@@ -1,3 +1,13 @@
+## 4.4.8.7
+
+### Fixes:
+
+* inspector exe fix to show real DOM structure;
+* [osx] fix of ligatures handling in inputs;
+* [osx] fix of transparent windows handling;
+* [virtual-list] fix of scrollable table;
+* [DOM] <div tabindex> === <div tabindex="0">
+
 ## 4.4.8.6
 
 ### New features:

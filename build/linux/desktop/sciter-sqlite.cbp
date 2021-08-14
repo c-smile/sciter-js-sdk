@@ -25,7 +25,6 @@
 					<Add option="-DDEBUG" />
 					<Add option="-D_DEBUG" />
 					<Add option="`pkg-config gtk+-3.0 --cflags`" />
-					<Add option="`pkg-config fontconfig --cflags`" />
 					<Add option="-fPIC" />
 					<Add option="-Wno-unknown-pragmas" />
 					<Add option="-Wno-write-strings" />
@@ -61,7 +60,6 @@
 					<Add option="-D_GNU_SOURCE" />
 					<Add option="-DNDEBUG" />
 					<Add option="`pkg-config gtk+-3.0 --cflags`" />
-					<Add option="`pkg-config fontconfig --cflags`" />
 					<Add option="-fPIC" />
 					<Add option="-Wno-unknown-pragmas" />
 					<Add option="-Wno-write-strings" />
@@ -96,7 +94,6 @@
 					<Add option="-DDEBUG" />
 					<Add option="-D_DEBUG" />
 					<Add option="`pkg-config gtk+-3.0 --cflags`" />
-					<Add option="`pkg-config fontconfig --cflags`" />
 					<Add option="-fPIC" />
 					<Add option="-Wno-unknown-pragmas" />
 					<Add option="-Wno-write-strings" />
@@ -129,7 +126,6 @@
 					<Add option="-D_GNU_SOURCE" />
 					<Add option="-DNDEBUG" />
 					<Add option="`pkg-config gtk+-3.0 --cflags`" />
-					<Add option="`pkg-config fontconfig --cflags`" />
 					<Add option="-fPIC" />
 					<Add option="-Wno-unknown-pragmas" />
 					<Add option="-Wno-write-strings" />

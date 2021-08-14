@@ -4,11 +4,12 @@
 
 #include "../include/sciter-om-def.h"
 #include "../include/sciter-x-api.h"
+#include "../include/aux-cvt.h"
 
 extern const char sqlite3_version[];
 
 namespace sqlite {
-      
+
   class DB : public sciter::om::asset<DB>
   {
     sqlite3 *pDb = nullptr;
@@ -22,20 +23,20 @@ namespace sqlite {
 
     int close();
     int lastRowId();
-    
+
     sciter::value exec(sciter::string sql, std::vector<sciter::value> params);
 
     SOM_PASSPORT_BEGIN(DB)
       SOM_FUNCS(
         SOM_FUNC(exec),
-        SOM_FUNC(close), 
+        SOM_FUNC(close),
         SOM_FUNC(lastRowId) )
     SOM_PASSPORT_END
 
   };
 
 
-  // namespace object: 
+  // namespace object:
 
   class SQLite : public sciter::om::asset<SQLite> {
   public:
@@ -68,18 +69,18 @@ namespace sqlite {
     Recordset(sqlite3_stmt *pstatement);
 
     ~Recordset();
-    
-    // function rs.next() : true | false 
+
+    // function rs.next() : true | false
     //     - advances recordset to the next record.
     //     - returns 'true' if operation is successfull and so record buffer is valid.
     //               If end-of-set reached than RS will be auto-finalized (closed).
     bool next();
 
-    // function rs.close() 
+    // function rs.close()
     //     - finalizes this thing.
     bool close();
 
-    // function rs.name( colno:int [,which: #logical | #field | #table | #database ] ):string 
+    // function rs.name( colno:int [,which: #logical | #field | #table | #database ] ):string
     //     - returns requested name of the field.
     sciter::string name(int column_no, sciter::string which);
 
@@ -115,12 +116,12 @@ namespace sqlite {
         SOM_FUNC(isValid),
         SOM_FUNC(close)
       )
-      SOM_PROPS( 
-        SOM_RO_VIRTUAL_PROP(length,get_length) 
+      SOM_PROPS(
+        SOM_RO_VIRTUAL_PROP(length,get_length)
       )
       SOM_ITEM_GET(get_item)
       //SOM_PROP_GET(get_prop) //-- see https://sciter.com/forums/topic/recordset-props-fails-if-data-has-column-name/
-      //SOM_PROP_SET(set_prop) //-- 
+      //SOM_PROP_SET(set_prop) //--
       //SOM_ITEM_NEXT(get_next)
     SOM_PASSPORT_END
 

@@ -2,31 +2,32 @@
 
 Node is an abstract class that is inherited by [Element](Element.md), [Text](#class-text-extends-class-node) and [Comment](#class-comment-extends-class-node) classes.
 
-#### properties:
+## properties:
 
-* `node.nodeName`
-* `node.nodeType`
-* `node.nodeValue`
-* `node.nodeIndex`
-* `node.firstChild`
-* `node.lastChild`
-* `node.nextSibling`
-* `node.previousSibling`
-* `node.ownerDocument`
-* `node.parentNode`
-* `node.parentElement`
+* `node.nodeName` - read-only
+* `node.nodeType` - read-only
+* `node.nodeValue` - value of the current node
+* `node.nodeIndex` - read-only
+* `node.childNodes` - read-only, returns a nodeList containing all children
+* `node.firstChild` - read-only
+* `node.lastChild` - read-only
+* `node.nextSibling` - read-only
+* `node.previousSibling` - read-only
+* `node.ownerDocument` - read-only
+* `node.parentNode` - read-only
+* `node.parentElement` - read-only
 * `node.parentWindow` - instance of Window that hosts this node;
-* `node.textContent`
+* `node.textContent` - textual content of an element and all its descendants
 
-#### methods:
+## methods:
 
 * `node.cloneNode()`
 * `node.contains()`
 * `node.compareDocumentPosition()` - not yet
 * `node.getRootNode()`
-* `node.hasChildNodes()`
-* `node.isEqualNode()`
-* `node.isSameNode()`
+* `node.hasChildNodes(): bool`
+* `node.isEqualNode(): bool`
+* `node.isSameNode(): bool`
 * `node.remove()`
 
 
@@ -34,7 +35,7 @@ Node is an abstract class that is inherited by [Element](Element.md), [Text](#cl
 
 The Text represents html text nodes.
 
-#### properties:
+## properties:
 
 * `text.data` read/write
 * `text.length` read-only
@@ -44,7 +45,7 @@ The Text represents html text nodes.
 
 The Comment represents html comment nodes.
 
-#### properties:
+## properties:
 
 * `comment.data` read/write
 * `comment.length` read-only

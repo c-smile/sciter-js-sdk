@@ -371,7 +371,12 @@
         return defv;
       }
 
-      template<typename T> T get() const { return getter(*this,static_cast<T *>(nullptr)); }
+      template<class T>
+      using UT = std::remove_const_t<std::remove_reference_t<T>>;
+
+      template<typename T> UT<T> get() const { 
+        return getter(*this,static_cast<UT<T>*>(nullptr));
+      }      
 
       static value from_string(const WCHAR* s, size_t len = 0, VALUE_STRING_CVT_TYPE ct = CVT_SIMPLE)
       {

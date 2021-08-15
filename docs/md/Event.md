@@ -62,7 +62,8 @@
 #### Behaviors
 
 * `click`
-* `input` | `change` 
+* `input` - posted event, arrived after user changes something.
+* `change` - synchronous event, arrived on user's change and before screen update.
 * `press` 
 * `changing` 
 * `submit` 

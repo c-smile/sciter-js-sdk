@@ -31,11 +31,11 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
   * `params.screen` : integer - optional, number of monitor on multi-home systems.
   * `params.state` : - optional - window state, is one of:
 
-    * 1 `Window.WINDOW_SHOWN` - default state
-    * 2 `Window.WINDOW_MINIMIZED`
-    * 3 `Window.WINDOW_MAXIMIZED`
-    * 4 `Window.WINDOW_HIDDEN`
-    * 5 `Window.WINDOW_FULL_SCREEN`
+    1. `Window.WINDOW_SHOWN` - default state
+    2. `Window.WINDOW_MINIMIZED`
+    3. `Window.WINDOW_MAXIMIZED`
+    4. `Window.WINDOW_HIDDEN`
+    5. `Window.WINDOW_FULL_SCREEN`
 
   * `params.url` : string - optional, window html source code file.
   * `params.parameters` : array | string | object, ... - optional, extra parameters to pass to the new window.

@@ -2,6 +2,7 @@
 const APP_NAME = "sciter-js-quark";
 
 import * as Sciter from "@sciter";
+import { fs } from "@sys";
 import * as Settings from "settings.js";
 import * as Data from "data.js";
 import { FileSelector, FolderSelector } from "utils.js";
@@ -73,6 +74,7 @@ export class ProjectView extends Element {
     return vals.name 
         && vals.exe
         && vals.resources
+        && vals.entryFileExists
         && vals.targets 
         && vals.targets.length
         && vals.out;
@@ -102,6 +104,8 @@ export class ProjectView extends Element {
               <FileSelector(logo) novalue="SVG icon" />
         <label>Resources</label>
               <FolderSelector(resources) novalue="app resources folder"/>
+        <label>Entry file</label>
+              <input|text(entry) novalue="main.htm was not found" readonly/>
         <label>Product</label>
               <input|text(productName) novalue="product name"/>
         <label>Version</label>
@@ -130,8 +134,10 @@ export class ProjectView extends Element {
 
   ["on change at form"] (evt,form) { 
     var vals = form.value;
+    vals.entryFileExists = fs.$stat(`${vals.resources}/main.htm`) ? true : false;
     Data.updateCurrentProject(vals);
     this.$("button#assemble").state.disabled = !ProjectView.validate(vals);
+    this.$("input(entry)").value = vals.entryFileExists ? "main.htm found" : "";
   }
 
   ["on click at button#assemble"]() {

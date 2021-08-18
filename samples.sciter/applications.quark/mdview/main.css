@@ -9,12 +9,25 @@ body {
 frame#content { size:*; overflow: scroll-indicator; padding-bottom: 4em; }
 frame#overlay { size:*; }
 
+#nav {
+  flow: vertical;
+  display: block;
+  size: *;
+}
+
+#search {
+  padding: .5em 1em;
+  margin: 1em;
+  width: *;
+}
+
 #folder {
+  padding-top: 2em;
   display: block;
   overflow: scroll-indicator;
-  height: *;
   font: system;
   border:none;
+  size: *;
 }
 
 #folder > option:not(:node){
@@ -22,4 +35,13 @@ frame#overlay { size:*; }
 }
 
 #folder option[index]{ font-weight:bold; }
+
+#result {
+  padding-top: 2em;
+  display: block;
+  overflow: scroll-indicator;
+  font: system;
+  border:none;
+  size: *;
+}
 

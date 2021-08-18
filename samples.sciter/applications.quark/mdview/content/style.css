@@ -59,7 +59,13 @@ img {
 }
 
 li {
-  margin-top: 4dip;
+  margin-top: 6dip;
+}
+
+li h1,li h2, li h3, li h4, li h5, li h6 {
+  margin-bottom: 0;
+  margin-top: .5em;
+  font-weight: normal;
 }
 
 table {
@@ -97,4 +103,15 @@ table tr:nth-child(2n) {
 }
 table tr:nth-child(2n):theme(dark) {
   background-color: #313232;
+}
+
+details {
+  margin-bottom: .5em;
+}
+
+*::mark(found) {
+  background: orange;
+}
+*::mark(focus) {
+  background: red;
 }

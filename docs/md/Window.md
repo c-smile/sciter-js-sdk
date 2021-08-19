@@ -182,9 +182,9 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
     * "first" - first focusable DOM element on the window;
     * "last" - last focusable DOM element on the window;
 
-    _reference_ must be a focusable element.
+    _reference_ must be a focusable element : tabindex >= 0, element.state.focusable = true or STATE_FOCUSABLE in native code
 
-    You can assign found element to `window.focus = element` set focus on it.
+    You can assign the found element to `window.focus = element` set the focus on it.
 
     
 ## class methods and properties:

@@ -175,14 +175,16 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
 
   * #### `window.focusable(dir [,reference:element]): element`
     
-    The functions allows to enumerate elements in tab order. _dir_ there is one of:
+    The function allows to enumerate elements in tab order. _dir_ there is one of:
 
     * "next" - next focusable element after the _reference_;
     * "prior" - previous focusable element after the _reference_;
     * "first" - first focusable DOM element on the window;
     * "last" - last focusable DOM element on the window;
 
-    You can assign found element to `window.focus = element` set focus on it.
+    _reference_ must be a focusable element : tabindex >= 0, element.state.focusable = true or STATE_FOCUSABLE in native code
+
+    You can assign the found element to `window.focus = element` set the focus on it.
 
     
 ## class methods and properties:

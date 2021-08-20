@@ -21,6 +21,8 @@ md.use( HeaderIds({ anchorText:" " }));
 export async function load(href = null) {
   try {
     href = href || content.frame.document.url();
+    let url = new URL(href);
+    if (url.extension !== "md") return;
 
     for (var f of Search.docs)
       if (f.path == href)
@@ -30,9 +32,7 @@ export async function load(href = null) {
         content.frame.loadHtml(html,href);
         return;
       }
-
-    let url = new URL(href);
-    if (url.extension !== "md") return;
+    
     //let text = sys.fs.$readfile( URL.toPath(href) );
     //let body = sciter.decode(text,"utf-8");
     var r = await fetch(url.href);
@@ -40,7 +40,8 @@ export async function load(href = null) {
     body = md.render(body);
     let html = `<html><body>${body}</body></html>`;
     content.frame.loadHtml(html,href);
-    if (url.hash) content.frame.document.$(url.hash)?.scrollIntoView({behavior: "smooth", "block":"start", "inline":"start"});
+    if (url.hash)
+      content.frame.document.$(printf("%s, (%s)", url.hash, url.hash.slice(1)))?.scrollIntoView({behavior: "smooth", "block": "start"});
     setCaption();
   } catch(e) {
     console.error(e.message);
@@ -278,7 +279,7 @@ Search.highlight = (query, index = 0) =>
     let text = node.textContent;
     
     range.setStart(node, 0);
-    range.setEnd(node, text.length);
+    range.  setEnd(node, text.length);
     range.clearMark(["focus", "found"]);
   
     let matches = text.matchAll(query);
@@ -287,8 +288,11 @@ Search.highlight = (query, index = 0) =>
       range.setStart(node, m.index);
       range.  setEnd(node, m.index + m[0].length);
       range.applyMark( indexes == index ? "focus" : "found" );
-
+      
+      let dtl = node.parentElement.$p("details");
+      if (dtl)  dtl.state.expanded = true;
       if (indexes == index) node.parentElement.scrollIntoView(); indexes++;
+
     }
   }
 

@@ -31,11 +31,11 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
   * `params.screen` : integer - optional, number of monitor on multi-home systems.
   * `params.state` : - optional - window state, is one of:
 
-    1. `Window.WINDOW_SHOWN` - default state
-    2. `Window.WINDOW_MINIMIZED`
-    3. `Window.WINDOW_MAXIMIZED`
-    4. `Window.WINDOW_HIDDEN`
-    5. `Window.WINDOW_FULL_SCREEN`
+    * `Window.WINDOW_SHOWN` - default state
+    * `Window.WINDOW_MINIMIZED`
+    * `Window.WINDOW_MAXIMIZED`
+    * `Window.WINDOW_HIDDEN`
+    * `Window.WINDOW_FULL_SCREEN`
 
   * `params.url` : string - optional, window html source code file.
   * `params.parameters` : array | string | object, ... - optional, extra parameters to pass to the new window.
@@ -43,11 +43,11 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
 ## properties:
  
   * `window.state:int` - read/write, one of:
-    * `Window.WINDOW_SHOWN`
-    * `Window.WINDOW_MINIMIZED`
-    * `Window.WINDOW_MAXIMIZED`
-    * `Window.WINDOW_FULL_SCREEN`
-    * `Window.WINDOW_HIDDEN`
+    * 1 `Window.WINDOW_SHOWN` - default state
+    * 2 `Window.WINDOW_MINIMIZED`
+    * 3 `Window.WINDOW_MAXIMIZED`
+    * 4 `Window.WINDOW_HIDDEN`
+    * 5 `Window.WINDOW_FULL_SCREEN`
   
   * `window.screen:int` - read-only, returns screen (monitor) index this window is on at the moment. Integer [0 ... Window.screens)
   * `window.graphicsBackend` - read-only, string, reports current graphics backend used: "direct2d", "Skia/OpenGL", etc. 

@@ -2,6 +2,17 @@
 
 The module contains Sciter debugging functions.
 
+Debug and log can be viewed in `Inspector` application.
+
+## Enabling
+
+- uSciter : click the cog icon to launch Inspector
+
+- Scapp : must be launched with `--debug` argument, `scapp main.html --debug`
+
+- Native : `SciterSetOption(nullptr, SCITER_SET_DEBUG_MODE, TRUE);` in main function.
+
+
 ## functions:
 
 * `setUnhandledExeceptionHandler(function)` - handle unhandeld exceptions

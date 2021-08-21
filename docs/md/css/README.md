@@ -80,24 +80,29 @@ The `morph()` function accepts one of several parameters:
 
 ## Variables
 
-Variable is declared as a property but with name wrapped into `var(...)` construct, example:
+Variable is declared as a property but with name wrapped into `var(...)` construct,
+or default CSS `--name`, example:
 
 ```CSS
 body {
   var(text-color): #000;
-  var(base-width): 100dip; 
+  var(base-width): 100dip;
+  /* 4.4.8.0+ */
+  --text-color: #000;
+  --text-font : Arial;
 }
 ```
 
-Variables are inherited from parent to child. if variable is declared on `<body>` element it will be available in all its children.
+Variables are inherited from parent to child. 
 
-Variables can be used in other property value declarations - all places where color or length units are expected by using either:
+Variables can be used in other property value declarations - all places where string, color or length units are expected by using either:
 
-- `var(name,defaultValue)` - substitutes the declaration by value of the name or, if it's not declared, by the defaultValue (color or length unit)
+- `var(name,defaultValue)` - substitutes the declaration by _defaultValue_ if _name_ not declared.
 
-- `length(name)` - substitutes the declaration by value of the name. If variable with that name is not declared or is not a length result is undefined.
+- `length(name)`
 
-- `color(name)` - substitutes the declaration by value of the name. If variable with that name is not declared or is not a color result is undefined.
+- `color(name)`
+
 Examples of variable use:
 
 ```CSS
@@ -105,6 +110,7 @@ div {
   color: color(text-color);  /* #000 */
   width: length(base-width); /* 100dip */
   height: var(base-height,80dip); /* 80dip as base-height was not defined */
+  font: var(--text-font); /* Arial */
 }
 ```
 
@@ -141,7 +147,7 @@ div {
 }
 ```
 
-You can assign it from HTML
+You can assign it from HTML, `file.css#myStyle` if the style file is not included.
 
 ```XML
 <div styleset="#myStyle"></div>
@@ -149,18 +155,18 @@ You can assign it from HTML
 
 ## Mixin
 
-named set of CSS properties that can be applied by @name to CSS rules.
+Named set of CSS properties that can be applied by @name to CSS rules, can use params.
 
 ```CSS
-@mixin LIKE-BUTTON 
+@mixin LIKE-BUTTON(basecolor)
 {
   behavior:button;
   color: #ffffff;
-  background: linear-gradient(top, #3498db, #2980b9);
+  background: linear-gradient(top, tint(basecolor,+0.3), basecolor);
 }
 
 div {
-  @LIKE-BUTTON;
+  @LIKE-BUTTON(#fff);
   ...
 }
 ```

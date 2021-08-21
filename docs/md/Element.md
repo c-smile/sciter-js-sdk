@@ -7,19 +7,19 @@ class Element represents DOM element and extends [Node](Node.md) and so all its 
 * `element.id`
 * `element.elementIndex`
 * `element.tagName`
-* `element.tag` - lower case version of .tagName
+* `element.tag` - lower case version of `.tagName`
 * `element.className`
 
 * `element.innerHTML`
 * `element.outerHTML`
 * `element.innerText`
-
+---
 * `element.firstElementChild`
 * `element.lastElementChild`
 * `element.nextElementSibling`
 * `element.previousElementSibling`
 * `element.childElementCount`
-
+---
 * `element.value`
 * `element.style` - returns reference to [Element.Style](Element.Style.md) class.
 * `element.state` - returns reference to [Element.State](Element.State.md) class (Sciter.JS specific).
@@ -37,7 +37,7 @@ class Element represents DOM element and extends [Node](Node.md) and so all its 
    * `element.children[n]` - Nth child element;
    * `element.children.item(n)` - Nth child element;
    * `element.children.length: integer` - quantity of children;
-   * `for(let child of element.children)` - iteration of chidren.
+   * `for(let child of element.children)` - iteration of children.
 
 * `element.disabled`
 * `element.readonly` 
@@ -52,22 +52,24 @@ class Element represents DOM element and extends [Node](Node.md) and so all its 
 * `element.replaceChild(newNode,oldNode)`
 * `element.childElement(n)`
 * `element.insertAdjacentHTML(where, html)`
-
+---
 * `element.querySelector(selector)`    | `element.$(selector)`
 * `element.querySelectorAll(selector)` | `element.$$(selector)`
-
+* `element.$p(selector)` parent element selector
+* `element.$o(selector)` owner element selector, useful to get owner of menu.
+---
 * `element.hasAttribute(attribute)`
 * `element.getAttribute(attribute)`
 * `element.getAttributeNames()`
 * `element.removeAttribute(attribute)`
 * `element.setAttribute(attribute, value)`
-
+---
 * `element.scrollTo()`
 * `element.scrollIntoView()`
 
 * `element.click()` - generates click event on the element 
 * `element.focus()` - sets input focus to the element
-
+---
 * `element.addEventListener(name, eventHandler [,flags])` 
 * `element.removeEventListener(name, eventHandler)` 
 * `element.dispatchEvent(event)` 
@@ -122,6 +124,7 @@ See [global-events](../../samples.sciter/global-events/README.md) for the ration
 
   `element.post(event)` is equivalent to `element.dispatchEvent()` but instead of immediate dispatch execution it will post the event into event queue for later execution.
 
+---
 
 * `element.checkCommand(command [, params]): flags`
 * `element.executeCommand(command [, params]): flags`
@@ -195,7 +198,9 @@ See [global-events](../../samples.sciter/global-events/README.md) for the ration
   *params* may contain following fields:
 
   * `params.duration` - integer, milliseconds - duration of the animation;
-  * `params.ease` - string, optional, name of ease function, see [params.ease](#animate-ease) above. This parameter detemines curvature of *progress* values. 
+  * `params.ease` - string, optional, name of ease function, see [params.ease](#animate-ease) above. This parameter determines curvature of *progress* values. 
+
+---
 
 * <a name="takeOff"></a> `element.takeOff([params:object])` - "airborn" DOM elements - replaced outside of host window. *params* are:
 

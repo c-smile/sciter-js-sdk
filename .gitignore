@@ -1,3 +1,13 @@
 
 demos/usciter/macos/.DS_Store
 *.user
+*.ilk
+*.iobj
+*.ipdb
+*.pdb
+*.exp
+*.log
+*.obj
+*.res
+*.tlog
+*.idb

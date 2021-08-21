@@ -49,7 +49,7 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
     * 4 `Window.WINDOW_HIDDEN`
     * 5 `Window.WINDOW_FULL_SCREEN`
   
-  * `window.screen:int` - read-only, returns screen (monitor) index this window is on at the moment. Integer [0 ... Window.screens)
+  * `window.screen:int` - read-only, returns screen (monitor) index this window is on at the moment. Integer [0 ... Window.screens]
   * `window.graphicsBackend` - read-only, string, reports current graphics backend used: "direct2d", "Skia/OpenGL", etc. 
   * `window.minSize = [w,h]` - get/set minimal size of resizable window. 
   * `window.maxSize = [w,h]` - get/set maximum size of resizable window.
@@ -81,7 +81,7 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
 
     _boxOf_ is one of:
 
-    * `"border"` - border area of the window that includes window caption and borders arouns client area;
+    * `"border"` - border area of the window that includes window caption and borders around client area;
     * `"client"` - client (content) area of the window;
     * `"caret"` - caret position, relative to client area of the window;
 
@@ -91,43 +91,12 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
     * `"monitor"` - coordinates are relative to the monitor this window is replaced on;
     * `"self"` - coordinates are relative to the origin of window's client area;
    
-   _asPPX_ is a boolean:
+    _asPPX_ is a boolean:
 
     * `true` - coordinates are in physical device pixels; 
     * `false` - coordinates are in CSS pixels - 1/96 of inch;
-  
-  * `window.move(x, y [,width, height [, "client" ]])`
-     
-      move/size window.  
 
-      _x_, _y_, _width_, _height_ are in PPX (physical screen pixels).
-      
-      If _"client"_ is provided then _x_, _y_, _width_, _height_ are treated as window client area coordinates.
 
-  * `window.moveTo(monitor, x, y [,width, height [, "client" ]])`
-  
-    move/size window to particular monitor;
-    
-    _x_, _y_, _width_, _height_ are in DIPs - device independent pixels (a.k.a. CSS pixels).
-
-  * `window.close([value])` - request to close the window, the value is a return value used in modal dialogs;
-  * `window.selectFile(...)` - file open/save dialog, TBD;
-  * `window.selectFolder(...)` - folder open dialog, TBD;
-  * `window.mediaVar(varname[,value])` - gets/sets media variable that can be used in CSS as `@media varname {...}`
-  * `window.mediaVars([values:object])` - gets/sets media variables. 
-  * `window.addEventHandler("eventname", handler)` - subscribe to window related events 
-  * `window.on("eventname", handler)` - subscribe to window related events 
-  * `window.off("eventname" | handler)` - unsubscribe event handler either by name, namespace or handler reference  
-  * `window.xcall(name:string [, arg0, ..., argN]): any`
-
-    Interaction with native behaviors attached to the window. `window.xcall("foo")` will end up in [`handle_scripting_call()`](https://github.com/c-smile/sciter-js-sdk/blob/main/include/sciter-x-behavior.h#L749) of native behavior attached to the window using [SciterWindowAttachEventHandler](https://github.com/c-smile/sciter-js-sdk/blob/main/include/sciter-x-behavior.h#L898) API.
-
-  * `window.trayIcon({image: Graphics.Image, text: string})` - show tray icon with the image and tooltip text.
-
-    Tray icon will generate ["trayiconclick"](#trayiconclick) event on user clicks.
-
-  * `window.trayIcon("remove")` - remove tray icon.
-  * `window.trayIcon("place") : [x,y,w,h]` - reports location of the icon on desktop, coordinates are in screen pixels.
   * `window.screenBox(what [, boxPart])` - reports geometry of monitor this window is on. 
 
     _what_ defines what information to return, is one of:
@@ -145,6 +114,44 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
     * `"position"` - [x,y], array, position of the rectangle.
     * `"dimension"` - [w,h], array, dimension of the rectangle.
     * `"left"`,`"top"`,`"right"`,`"bottom"`,`"width"`,`"height"` - individual integers.
+  
+---
+
+  * `window.move(x, y [,width, height [, "client" ]])`
+     
+      move/size window.  
+
+      _x_, _y_, _width_, _height_ are in PPX (physical screen pixels).
+      
+      If _"client"_ is provided then _x_, _y_, _width_, _height_ are treated as window client area coordinates.
+
+  * `window.moveTo(monitor, x, y [,width, height [, "client" ]])`
+  
+    move/size window to particular monitor;
+    
+    _x_, _y_, _width_, _height_ are in DIPs - device independent pixels (a.k.a. CSS pixels).
+
+
+  * <a id="select"></a>`window.selectFile({params})` - file open/save dialog
+    * `mode` : "save"|"open"
+    * `filter` : "title|ext1;ext2", `"HTML File (*.htm,*.html)|*.html;*.htm|All Files (*.*)|*.*"`
+    * `extension` : default file extension, "html"
+    * `caption` : Title of dialog, "Save As"
+    * `path` : initial directory
+
+  * `window.selectFolder(...)` - folder open dialog, TBD;
+
+---
+
+  * `window.mediaVar(varname[,value])` - gets/sets media variable that can be used in CSS as `@media varname {...}`
+  * `window.mediaVars([values:object])` - gets/sets media variables. 
+  * `window.addEventHandler("eventname", handler)` - subscribe to window related events 
+  * `window.on("eventname", handler)` - subscribe to window related events 
+  * `window.off("eventname" | handler)` - unsubscribe event handler either by name, namespace or handler reference  
+  * `window.xcall(name:string [, arg0, ..., argN]): any`
+
+    Interaction with native behaviors attached to the window. `window.xcall("foo")` will end up in [`handle_scripting_call()`](https://github.com/c-smile/sciter-js-sdk/blob/main/include/sciter-x-behavior.h#L749) of native behavior attached to the window using [SciterWindowAttachEventHandler](https://github.com/c-smile/sciter-js-sdk/blob/main/include/sciter-x-behavior.h#L898) API.
+
 
   * #### `window.doEvent(mode) : any`     
     
@@ -185,6 +192,17 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
     _reference_ must be a focusable element : tabindex >= 0, element.state.focusable = true or STATE_FOCUSABLE in native code
 
     You can assign the found element to `window.focus = element` set the focus on it.
+
+  * `window.close([value])` - request to close the window, the value is a return value used in modal dialogs;
+
+#### trayicon
+
+  * `window.trayIcon({image: Graphics.Image, text: string})` - show tray icon with the image and tooltip text.
+
+    Tray icon will generate ["trayiconclick"](#trayiconclick) event on user clicks.
+
+  * `window.trayIcon("remove")` - remove tray icon.
+  * `window.trayIcon("place") : [x,y,w,h]` - reports location of the icon on desktop, coordinates are in screen pixels.
 
     
 ## class methods and properties:

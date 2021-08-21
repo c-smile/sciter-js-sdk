@@ -26,9 +26,13 @@
     </window-buttons>
   </header>
   <body>
-    <frameset cols="2*, 7*">
-      <select #folder type="tree" treelines></select>
-    <frame #content history content-style="content/style.css" />
+    <frameset cols="260dip, *">
+      <frame #nav>
+        <input|text #search novalue="search"/>
+        <select|tree #folder treelines></select>
+        <select|tree #result treelines hidden></select>
+      </frame>
+      <frame #content history content-style="content/style.css" />
     </frameset>
     <frame #overlay hidden />
   </body>

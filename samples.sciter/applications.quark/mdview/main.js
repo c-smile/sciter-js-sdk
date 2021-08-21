@@ -11,7 +11,9 @@ const APP_NAME = "sciter.js.mdview";
 
 const view = Window.this; // current window
 const content = document.$("frame#content"); // content frame
-const overlay = document.$("frame#overlay"); // content frame
+const overlay = document.$("frame#overlay"); // print frame
+const FolderE = document.$("#folder"); // folder element (files)
+const ResultE = document.$("#result"); // result element (search)
 
 const md = new Remarkable({html: true});
 md.use( HeaderIds({ anchorText:" " }));
@@ -21,6 +23,16 @@ export async function load(href = null) {
     href = href || content.frame.document.url();
     let url = new URL(href);
     if (url.extension !== "md") return;
+
+    for (var f of Search.docs)
+      if (f.path == href)
+      {
+        let body = md.render(f.data);
+        let html = `<html><body>${body}</body></html>`;
+        content.frame.loadHtml(html,href);
+        return;
+      }
+    
     //let text = sys.fs.$readfile( URL.toPath(href) );
     //let body = sciter.decode(text,"utf-8");
     var r = await fetch(url.href);
@@ -28,7 +40,8 @@ export async function load(href = null) {
     body = md.render(body);
     let html = `<html><body>${body}</body></html>`;
     content.frame.loadHtml(html,href);
-    if (url.hash) content.frame.document.$(url.hash)?.scrollIntoView({behavior: "smooth", "block":"start", "inline":"start"});
+    if (url.hash)
+      content.frame.document.$(printf("%s, (%s)", url.hash, url.hash.slice(1)))?.scrollIntoView({behavior: "smooth", "block": "start"});
     setCaption();
   } catch(e) {
     console.error(e.message);
@@ -36,12 +49,13 @@ export async function load(href = null) {
 }
 
 function loadFolder(path) {
-  var FolderElement = document.$("#folder");
 
   function File(props) {
     const {name,folder} = props;
     const atts = (name == "index.md" || name == "README.md") ? {"index":true} : {};
-    return <option .file {atts} value={URL.toPath(folder + name)}><caption>{name.slice(0, -3)}</caption></option>;
+    const value = URL.toPath(folder + name);
+    Search.add(value);
+    return <option .file {atts} value={value}><caption>{name.slice(0, -3)}</caption></option>;
   }
 
   let folderContent;
@@ -56,7 +70,7 @@ function loadFolder(path) {
   }
 
   folderContent = function(path) {
-    const at = path + "/";
+    const at  = path + "/";
     let files = sys.fs.$readdir(at);
     if (!files) return "";
     let content = [];
@@ -65,21 +79,18 @@ function loadFolder(path) {
         if (file.name.endsWith(".md"))
           content.push(<File name={file.name} folder={at} />);
       } else {
-         content.push(<Folder name={file.name} folder={at} />);
+          content.push(<Folder name={file.name} folder={at} />);
       }
     }
     return content;   
   }
 
-  FolderElement.content(folderContent(path));
+  FolderE.content(folderContent(path));
 
-  FolderElement.on("change", () => {load(FolderElement.value)});
+  FolderE.on("change", () => {load(FolderE.value)});
 
-  const index = FolderElement.$(":root>option[index]");
-  if(index) {
-    index.click();
-    load(index.attributes["value"]);
-  }
+  const index = FolderE.$(":root>option[index]");
+  if(index) index.click();
 }
 
 document.on("^click","a[href]", function(evt, a) {
@@ -203,7 +214,6 @@ Settings.add({
 });
 
 function isFolder(path) {
-  console.log("isFolder", path, sys.fs.$stat(path).st_mode, sys.fs.S_IFDIR);
   return sys.fs.$stat(path)?.st_mode & sys.fs.S_IFDIR;
 }
 
@@ -221,8 +231,117 @@ document.ready = function() {
     else if( path.endsWith(".md") )
       href = path;
   }
-  document.$("#folder").attributes["hidden"] = true;
+  document.$("#nav").attributes["hidden"] = true;
   href = URL.fromPath(href);
   load(href);
 }
 
+
+//| Search engine
+const Search = { docs: [] };
+
+Search.add = async (path) =>
+{
+  const url = new URL(path);
+  Search.docs.push
+  ({
+    name: url.dir.substring(url.dir.slice(0, -1).lastIndexOf("/")+1) + url.filename,
+    path: path,
+    data: (await fetch(path)).text()
+  });
+};
+
+Search.find = (query) =>
+{
+  query = new RegExp(query.replaceAll("(", "\\(").replaceAll(")", "\\)"), "gi");
+  var result = [];
+  for (var doc of Search.docs)
+  {
+    var find    = { name: doc.name, path: doc.path, cache: [] },
+        matches = doc.data.matchAll(query);
+
+    for (var m of matches)
+        find.cache.push(doc.data.substring(m.index-15, m.index+25));
+
+    find.cache.length > 0 && result.push(find);
+  }
+
+  return result.length > 0 ? result : false;
+}
+
+Search.highlight = (query, index = 0) =>
+{
+  query = new RegExp(query.replaceAll("(", "\\(").replaceAll(")", "\\)"), "gi");
+  var indexes = 0;
+
+  function mark(node) {
+    const range = new Range();
+    let text = node.textContent;
+    
+    range.setStart(node, 0);
+    range.  setEnd(node, text.length);
+    range.clearMark(["focus", "found"]);
+  
+    let matches = text.matchAll(query);
+    for (var m of matches)
+    {
+      range.setStart(node, m.index);
+      range.  setEnd(node, m.index + m[0].length);
+      range.applyMark( indexes == index ? "focus" : "found" );
+      
+      let dtl = node.parentElement.$p("details");
+      if (dtl)  dtl.state.expanded = true;
+      if (indexes == index) node.parentElement.scrollIntoView(); indexes++;
+
+    }
+  }
+
+  function check(node) {
+    node = node.firstChild;
+    while (node) {
+      node.nodeType == 1 ? check(node) : mark(node);
+      node = node.nextSibling;
+    }
+  }
+
+  check(content.frame.document);
+}
+
+
+ResultE.on("change", () => {
+  for (var o of ResultE.$$("option")) {
+    if (o.checked)
+    {
+      load(o.attributes["value"]);
+      Search.highlight(
+        document.$("#search").value, 
+        [...o.parentElement.children].indexOf(o) - 1
+      );
+      break;
+    };
+  }
+});
+
+document.on("change", "#search", (evt, input) => {
+  document.timer(200, () =>
+  {
+    
+    if (input.value.trim().length < 3) { FolderE.attributes["hidden"] = undefined; ResultE.attributes["hidden"] = true; return; }
+                                  else { ResultE.attributes["hidden"] = undefined; FolderE.attributes["hidden"] = true; }
+
+    var found = Search.find(input.value);
+    if(!found){ ResultE.content(<h2 style="text-align:center; font-weight: normal;">눈_눈</h2>); return false; }
+
+    var content = [];
+    for (var f of found)
+    {
+      let cache = [];
+      for (var find of f.cache)
+        cache.push(<option value={f.path}><caption>{find}</caption></option>);
+      
+      content.push(<option expanded=""><caption>{f.name}</caption>{cache}</option>);
+    }
+    ResultE.content(content);
+
+  });
+});

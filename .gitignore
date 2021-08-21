@@ -1,5 +1,5 @@
-
-demos/usciter/macos/.DS_Store
+*.dSYM
+*.DS_Store
 *.user
 *.ilk
 *.iobj

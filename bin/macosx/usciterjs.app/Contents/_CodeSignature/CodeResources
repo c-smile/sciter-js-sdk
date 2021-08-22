@@ -10,15 +10,24 @@
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		V/MJ2hokGUZZbxX9CZ1dTtTp52E=
+		0UzyJ4Jwc3LvmEWTHaCtDUebwSA=
 		</data>
 		<key>Resources/Base.lproj/MainMenu.nib</key>
 		<data>
-		KMVpwZQSwStvG7hkcNEqHOMVy3I=
+		6Si81D83JZFoJzTXPnTUZMdq2bc=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>MacOS/usciterjs.sync-conflict-20210821-174316-7ZYXMXV</key>
+		<dict>
+			<key>cdhash</key>
+			<data>
+			AMN9BE0srzIpnMGNk6TGZqtkrQw=
+			</data>
+			<key>requirement</key>
+			<string>identifier "terrainformatica.usciterjs" and anchor apple generic and certificate leaf[subject.CN] = "Apple Development: Andrei Fedoniouk (46U3Y5E9ZC)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
+		</dict>
 		<key>Resources/AppIcon.icns</key>
 		<dict>
 			<key>hash2</key>
@@ -30,14 +39,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			eJ8XUo+uQ0GeSZ6sZ3qRxUTJ1Opzq0oEfUlG6Z2GLpE=
+			3T9aEj6zNtD2ZcOKPsPa+YBWvisP6q7+/7Cb+s6kKFM=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/MainMenu.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			N9CAGCT7jnj2X5t7p58rXbtr3EfoxV6FhGnPRazUX7A=
+			91QBSKMFNFtOr6582dvNMy6VJaXk2BlgaTFyq8FM6B8=
 			</data>
 		</dict>
 	</dict>

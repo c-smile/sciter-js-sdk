@@ -1,0 +1,54 @@
+<html window-icon="globe.svg" window-resizable="false" >
+    <head>
+        <title>Hello World!</title>
+        <style>
+
+          html { background: linear-gradient(to bottom, #FFF, #CAF0FF) }
+
+          #time 
+          {
+            display:block;
+            margin:*; // flexes on margins - move it to the middle
+            font-size:24pt;
+            line-height:1.2em;
+          } 
+
+        </style>
+        <script>
+
+          // getting reference of output element:
+          const elTime = document.$("output#time"); 
+
+          function replaceWindow() {
+            // display dimensions
+            var [sx,sy,sw,sh] = Window.this.screenBox("workarea","xywh");
+            // default window sizes: 
+            const w = 300 * devicePixelRatio; // logical px to screen px 
+            const h = 200 * devicePixelRatio; 
+            // move window in the middle of primary display:
+            Window.this.move(sx + (sw - w)/2, sy + (sh - h)/2, w, h);
+          }
+
+          // UI's main:
+          document.ready = function ()
+          {
+            // start 1 second timer 
+            elTime.timer(1000, function() {
+              elTime.value = new Date(); // show current time
+              return true;               // to keep the timer running
+            });
+
+            elTime.value = new Date(); // initial value
+
+            // position the window 
+            replaceWindow();
+          }
+
+        </script>
+    </head>
+    <body>
+
+        <output id="time" type="time-local" format="long" />
+
+    </body>
+</html>

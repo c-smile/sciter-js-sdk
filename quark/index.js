@@ -51,7 +51,7 @@ export class ProjectsView extends Element
   ["on click at button.new"]()    { Data.addNewProject(); }
   ["on click at button.clone"]()  { Data.cloneCurrentProject(); }
   ["on click at button.delete"]() { Data.deleteCurrentProject(); }
-  ["on input at select"](evt,select) { Data.selectProject(select.value); }
+  ["on change at select"](evt,select) { Data.selectProject(select.value); }
 } 
 
 globalThis.ProjectsView = ProjectsView;

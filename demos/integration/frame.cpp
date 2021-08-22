@@ -53,7 +53,8 @@ public:
   //   Window.this.assetInterface.integerSum(12,24)
   //
 
-  std::string      stringSum(std::string a, std::string b) { return a + "+" + b; }
+  std::string      stringSum(const std::string& a, const std::string& b) { return a + "+" + b; }
+  //std::string      stringSum(std::string a, std::string b) { return a + "+" + b; }
   int              integerSum(int a, int b) { return a + b; }
   std::vector<int> vectorIntegerMul(std::vector<int> vec, int multiplier) { 
     // getting vector as parameter
@@ -180,8 +181,6 @@ public:
     }
     return false;
   }
-
-
 };
 
 #include "resources.cpp"

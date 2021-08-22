@@ -77,9 +77,14 @@
 
 * `contextmenu` - context menu request for the element
 * `contextmenusetup` - notification to setup context menu, context menu DO< element is event.source
+
 * `animationend`
 * `animationstart` 
 * `animationloop` 
+
+* `transitionend`
+* `transitionstart` 
+
 * `mediachange` 
 * `contentchange` 
 * `inputlangchange` 

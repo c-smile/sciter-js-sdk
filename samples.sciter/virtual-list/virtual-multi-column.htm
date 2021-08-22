@@ -1,0 +1,130 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+.image-list {
+    size:*;
+    overflow-x:hidden;
+}
+
+.image-list header {
+    background:gold;
+    padding:0.5em;
+    font-size:150%;
+    font-weight:bold;
+}
+
+.image-list option {
+    flow:horizontal;
+    background:transparent;
+}
+
+
+.image-list picture { size:64px; }
+.image-list figure { width:64px; }
+.image-list figure > caption { 
+    text-align:center; 
+    text-overflow:ellipsis;
+    overflow-x: hidden;
+    white-space:no-wrap;
+}
+
+.image-list figure:hover { 
+    background:red;
+    color:white;
+}
+
+
+        </style>
+        <script|module>
+
+import {VirtualList} from "virtual-select.js";
+
+function generate() {
+    let groups = [];
+    const urls = [
+      __DIR__ + "avatars/a.png",
+      __DIR__ + "avatars/b.png",
+      __DIR__ + "avatars/c.png",
+    ]; 
+
+    for(let g = 0; g < 30; ++g) {
+       let items = [];
+       let n = Math.floor(Math.random() * 30);
+       for(let i = 0; i < n; ++i)
+         items.push({key: i, caption:"item " + i, url: urls[(g + i) % 3] });
+       groups.push({
+         key:g,
+         caption: "group " + g,
+         items: items 
+       });
+    }
+
+    return groups;
+}
+
+const groups = generate();
+const imagew = 64; // dips
+
+class ImageList extends VirtualList {
+
+  columns = 1;
+  items = []; // flat list
+
+  componentDidMount() {
+    this.post(this.onsizechange);
+  }
+
+  itemAt(at) {     // virtual function, must be overriden
+    return this.items[at];
+  }
+  totalItems() {   // virtual function, must be overriden
+    return this.items.length;
+  }
+  indexOf(item) {  // virtual function, must be overriden
+    return this.items.indexOf(item);
+  }
+
+  renderItem(item,index) // overridable
+  {
+    if(Array.isArray(item)) {
+      let key = item[0] + item[item.length-1];
+      return <option key={key}>{ 
+                item.map( def => <figure><picture key={def.key} src={def.url} />
+                                   <caption>{def.caption}</caption>
+                                 </figure>) 
+             }</option>;
+    } else 
+      return <header key={item.key}>{item.caption}</header>;
+  }
+
+  onsizechange() { this.relayout(false); }
+
+  relayout(force) {
+
+    let w = this.state.box("width");
+    let columns = Math.floor(w / imagew) || 2;
+    if( columns == this.columns && !force)
+      return;
+
+    let list = [];
+
+    for(let group of groups) {
+      list.push(group);
+      for(let n = 0; n < group.items.length; n += columns) 
+        list.push(group.items.slice(n,n + columns));
+    }
+
+    this.componentUpdate {items:list};
+  }
+
+}
+
+document.body.append(<ImageList class="image-list" />);
+
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

@@ -1,3 +1,18 @@
+## 4.4.8.8
+
+### Fixes:
+
+* Fix of <select|dropdown multiple>
+* Fix of `Audio.resume()`
+* Fix of https://sciter.com/forums/topic/wrong-style-attribute-in-reactor-when-new-element-has-the-same-tag/ in Sciter.TIS and .JS
+* Sciter.JS: events "change" (synchronous) and "input" (posted, asynchronous) are distinct now. 
+* [virtual-list] + scroll-manner: scroll-manner(animation:false); //to disable animated scroll
+* fix of divide by zero in esoteric situation of zero sized window.
+
+### New features:
+
++ sdk.js/samples.sciter/virtual-list/virtual-multi-column.htm sample.
+
 ## 4.4.8.7
 
 ### Fixes:

@@ -24,6 +24,8 @@ export class VirtualList extends Element {
   }
 
   render(props) {
+    if(props)
+      this.props = props;
 
     let list = [];
 
@@ -106,7 +108,7 @@ export class VirtualList extends Element {
 
   renderList(items) // overridable
   { 
-    return <virtual-select styleset={this.styleset}>{ items }</virtual-select>; 
+    return <virtual-select {this.props} styleset={this.styleset}>{ items }</virtual-select>; 
   }
 
   renderItem(item,index) // overridable
@@ -214,7 +216,7 @@ export class VirtualSelect extends VirtualList {
       if((props?.items && (this.items !== props.items)) || !this.vlist) {
         this.items = props?.items || [];
         this.post( () => { this.vlist.navigate("start") } );
-        return this.renderList([]);
+        return this.renderList([],props);
       }
       return super.render();
     }

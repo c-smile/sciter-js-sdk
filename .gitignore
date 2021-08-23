@@ -11,3 +11,4 @@
 *.res
 *.tlog
 *.idb
+*.sync-conflict-*

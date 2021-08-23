@@ -1,8 +1,16 @@
+## 4.4.8.8-bis
+
+### Fixes:
+
+* `<select|list treelines>` rendering;
+* leaflet.js compatibility fix;  
+
+
 ## 4.4.8.8
 
 ### Fixes:
 
-* Fix of <select|dropdown multiple>
+* Fix of `<select|dropdown multiple>`
 * Fix of `Audio.resume()`
 * Fix of https://sciter.com/forums/topic/wrong-style-attribute-in-reactor-when-new-element-has-the-same-tag/ in Sciter.TIS and .JS
 * Sciter.JS: events "change" (synchronous) and "input" (posted, asynchronous) are distinct now. 

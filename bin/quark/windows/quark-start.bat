@@ -1,1 +1,1 @@
-start ..\..\windows\x32\scapp.exe ..\..\..\quark\index.htm
+start ..\..\windows\x32\scapp.exe ..\..\..\quark\index.htm --debug

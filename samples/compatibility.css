@@ -1,0 +1,9 @@
+
+html {
+  prototype: DocumentEx url(compatibility.js);
+}
+
+svg {
+  prototype: SVGElement url(compatibility.js);
+  background:transparent;
+}

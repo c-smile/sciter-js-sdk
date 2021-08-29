@@ -32,8 +32,8 @@ export class VirtualList extends Element {
     if(this.vlist) {
       let firstIndex = this.vlist.firstBufferIndex;
       let lastIndex = this.vlist.lastBufferIndex;
-      let firstVisibleIndex = this.vlist.firstVisibleItem?.elementIndex || 0;
-      let lastVisibleIndex = this.vlist.lastVisibleItem?.elementIndex || lastIndex;
+      let firstVisibleIndex = firstIndex + this.vlist.firstVisibleItem?.elementIndex || 0;
+      let lastVisibleIndex = firstIndex + this.vlist.lastVisibleItem?.elementIndex;
 
       let totalItems = this.totalItems();
 

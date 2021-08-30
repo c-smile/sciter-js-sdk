@@ -1,3 +1,24 @@
+## 4.4.8.9
+
+### Fixes:
+
+* `overflow:scroll`, fix of non-overflow SB rendering. 
+* [debugging] drain logs (a.k.a. flush) before document unload. See: https://sciter.com/forums/topic/wait-for-closerequest-function-calls-to-complete/
+* leaflet.js compatibility fix, by adding document.createElementNS();  
+* command event "^exec:***" handling fix;
+* [VirtualList] fix of `render()`;
+* [websocket] fix of AV in `new WebSocket("badaddr")`;
+* `Clipboard.has("image"|"file"|"text")` - check if clipboard has needed data;
+* `self` - yet another alias to current namespace ( `self == globalThis` ) 
+* fix of splitter handling in Sciter.Lite.
+* fix of element.click() event click generation.
+
+### New features:
+
+* samples/compatibility.js/.css - compatibility layer for browsers. Not complete, features will be added when required;
+* samples/leaflet/test-geoJSON.htm sample - demo of layers in leaflet;
+
+
 ## 4.4.8.8-bis
 
 ### Fixes:

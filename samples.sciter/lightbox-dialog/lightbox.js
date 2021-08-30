@@ -41,14 +41,15 @@ export function lightbox(jsxDialog)
   // setup keyboard event handler
   dlg.on("keydown", function(evt) {
     var cmd;
-    if( evt.keyCode == "KeyESCAPE" )
+    console.log(evt.code);
+    if( evt.code == "KeyESCAPE" )
       cmd = "cancel";
-    else if( evt.keyCode == "KeyRETURN" )
+    else if( evt.code == "KeyRETURN" )
       cmd = "ok";
     else 
       return; // we handle only ESCAPE and ENTER here.
-      
-    var button = dlg.$(`footer>button[value="${cmd}"]`);
+
+    var button = dlg.$(`footer>button#${cmd}`);
     if( button )
     {
       handleValue(button);
@@ -124,14 +125,14 @@ export function lightboxAsync(jsxDialog)
   // setup keyboard event handler
   dlg.on("keydown", function(evt) {
     var cmd;
-    if( evt.keyCode == "KeyESCAPE" )
+    if( evt.code == "KeyESCAPE" )
       cmd = "cancel";
-    else if( evt.keyCode == "KeyRETURN" )
+    else if( evt.code == "KeyRETURN" )
       cmd = "ok";
     else 
       return; // we handle only ESCAPE and ENTER here.
       
-    var button = dlg.$(`footer>button[value="${cmd}"]`);
+    var button = dlg.$(`footer>button#${cmd}`);
     if( button )
     {
       handleValue(button);

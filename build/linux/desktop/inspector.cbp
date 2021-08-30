@@ -139,8 +139,16 @@
 			</Target>
 		</Build>
 		<Unit filename="../../../demos/inspector/inspector.cpp">
+			<Option target="Debug|arm32" />
+			<Option target="Release|x64" />
+			<Option target="Release|arm32" />
+			<Option target="Debug|x64" />
 		</Unit>
 		<Unit filename="../../../include/sciter-gtk-main.cpp">
+			<Option target="Debug|arm32" />
+			<Option target="Release|x64" />
+			<Option target="Release|arm32" />
+			<Option target="Debug|x64" />
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

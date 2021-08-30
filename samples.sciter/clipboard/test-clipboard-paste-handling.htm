@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style></style>
+        <script>
+
+document.$("htmlarea").on("^exec:edit:paste",function() {
+  const out = document.$("pre#content");
+  const clipboardData = Clipboard.read();
+
+  out.innerText = JSON.stringify(clipboardData, null, "  ");
+  return true;
+
+});
+
+        </script>
+    </head>
+    <body>
+
+
+    <htmlarea>Try to paste something here</htmlarea> 
+    
+
+    <pre#content />
+
+    </body>
+</html>

@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>frameset sample</title>
+      <style>
+        frameset {min-height:min-content;}
+        splitter { border:none; }
+        splitter:hover { background:red; }
+        .div {
+          opacity: 50%;
+        }
+      </style>
+  </head>
+  <body>
+    <frameset rows="*,256px">
+      <frameset cols="128px,*">
+        <div style="background-color: aqua; "><h1>Left Pane</h1>Observes how resizing this pane is very slow in sciter-lite (glfw-opengl) but not in usciter</div>
+        <splitter/>
+        <div style="background-color: blueviolet;"><h1>Right Pane</h1>Observes how resizing this pane is very slow in sciter-lite (glfw-opengl) but not in usciter</div>
+      </frameset> 
+      <splitter/>
+        <div style="background-color: deepskyblue;"><h1>Bottom Pane</h1>Resizing this pane is okay.</div>
+    </frameset>
+  </body>
+</html>

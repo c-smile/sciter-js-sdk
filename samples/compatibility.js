@@ -1,4 +1,3 @@
-
 /*
    browser compatibility classes that are not implemented in Sciter core
    but required to run libraries designed for web browsers.

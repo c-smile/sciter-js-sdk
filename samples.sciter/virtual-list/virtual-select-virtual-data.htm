@@ -29,7 +29,6 @@ class MySelect extends VirtualSelect {
   }
 
   renderItem(item, isCurrent, isSelected) {
-    console.log(item, isCurrent);
     return <option key={item.key} 
                    state-current={isCurrent} 
                    state-checked={isSelected}>*{item.text}</option>;

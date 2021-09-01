@@ -5,9 +5,11 @@ export class VirtualList extends Element {
   currentItem = null; // item, one of items
   selectedItems;// TODO: = new WeakSet();
   styleSet;
+  props;
 
-  constructor(props) {
-    super();
+  this(props) {
+    super.this?.(props);
+    this.props = props; 
     this.renderItem = props.renderItem || this.renderItem;
     this.renderList = props.renderList || this.renderList;
     this.styleset = props.styleset || (__DIR__ + "virtual-select.css#virtual-select");
@@ -23,9 +25,7 @@ export class VirtualList extends Element {
     return -1;
   }
 
-  render(props) {
-    if(props)
-      this.props = props;
+  render() {
 
     let list = [];
 
@@ -218,7 +218,7 @@ export class VirtualSelect extends VirtualList {
         this.post( () => { this.vlist.navigate("start") } );
         return this.renderList([],props);
       }
-      return super.render();
+      return super.render(props);
     }
 
 

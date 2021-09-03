@@ -8,7 +8,7 @@ import {VirtualSelect} from "virtual-select.js";
 
 function generate() {
   let items = [];
-  for(let i = 0; i < 2000; ++i)
+  for(let i = 0; i < 5; ++i)
     items.push({key:i, text:`item # ${i}`});
   return items;
 }
@@ -16,13 +16,31 @@ function generate() {
 let items = generate();
 
 function renderOption(item, isCurrent, isSelected) {
+  console.log("renderOption", item.key);
   return <option key={item.key} 
                  state-current={isCurrent} 
                  state-checked={isSelected}>{item.text}</option>;
 }
 
-document.on("input", "#vselect", function(evt, vselect) {
-  console.log("value change", vselect.value);
+document.on("click", "button#update", function(evt) {
+  for(let item of items)
+    item.text += "*";
+  console.log("before update");
+  document.$("#vselect").componentUpdate();
+});
+
+document.on("click", "button#append", function(evt) {
+  let n = items.length; 
+  for(let i = n; i < n + 50; ++i)
+    items.push({key:i, text:`item # ${i}`});
+  console.log("before append");
+  document.$("#vselect").componentUpdate();
+});
+
+document.on("click", "button#prune", function(evt) {
+  items.splice(items.length-25,25); 
+  console.log("before prune");
+  document.$("#vselect").componentUpdate();
 });
 
 document.body.patch(
@@ -30,6 +48,11 @@ document.body.patch(
     <VirtualSelect id="vselect"
                    items={items} 
                    renderItem={renderOption} />
+    
+    <button#update>Update</button>
+    <button#append>Append</button>
+    <button#prune>Prune</button>
+
   </body>);
 
         </script>

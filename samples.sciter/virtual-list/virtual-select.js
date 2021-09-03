@@ -26,34 +26,34 @@ export class VirtualList extends Element {
   }
 
   render() {
-
     let list = [];
-
-    if(this.vlist) {
-      let firstIndex = this.vlist.firstBufferIndex;
-      let lastIndex = this.vlist.lastBufferIndex;
-      let firstVisibleIndex = firstIndex + this.vlist.firstVisibleItem?.elementIndex || 0;
-      let lastVisibleIndex = firstIndex + this.vlist.lastVisibleItem?.elementIndex;
-
-      let totalItems = this.totalItems();
-
-      if(firstVisibleIndex == 0)
-        this.post( () => { this.vlist.navigate("start") } );
-      else if( lastVisibleIndex >= totalItems ) // number of items reduced so buffer is past total count
-        this.post( () => { this.vlist.navigate("end") } );
-      else if(this.vlist.itemsTotal != totalItems) { // number of items reduced, update scroll
-        lastIndex = firstIndex + Math.min(totalItems,this.vlist.slidingWindowSize) - 1;
-        this.post( () => { this.vlist.itemsAfter = totalItems - this.vlist.itemsBefore - this.children.length; });
-      }
-
-      let {currentItem, selectedItems } = this;
-      for( let index = firstIndex; index <= lastIndex; ++index ) {
-        let item = this.itemAt(index);
-        if(item) list.push(this.renderItem(item,item === currentItem, selectedItems?.has(item)));
-      }
-    } else 
-      this.componentUpdate(); 
+    if(!this.vlist) return this.renderList(list);
     
+    let firstIndex = this.vlist.firstBufferIndex;
+    let lastIndex = this.vlist.lastBufferIndex;
+    let firstVisibleIndex = firstIndex + this.vlist.firstVisibleItem?.elementIndex || 0;
+    let lastVisibleIndex = firstIndex + this.vlist.lastVisibleItem?.elementIndex;
+
+    let totalItems = this.totalItems();
+
+    if(this.vlist.itemsTotal != totalItems) { // number of items reduced, update scroll
+      if( firstVisibleIndex == 0 ) {  
+        this.post(() => {this.vlist.navigate("start")});
+        return this.renderList([]); // render empty list and request "from start" navigation
+      }
+      if( lastVisibleIndex >= totalItems ) {  
+        this.post(() => {this.vlist.navigate("end")});
+        return this.renderList([]); // render empty list and request "from end" navigation
+      }
+      lastIndex = Math.min(totalItems, firstIndex + this.vlist.slidingWindowSize) - 1;
+      this.post( () => { this.vlist.itemsAfter = totalItems - this.vlist.itemsBefore - this.children.length; });
+    }
+
+    let {currentItem, selectedItems } = this;
+    for( let index = firstIndex; index <= lastIndex; ++index ) {
+      let item = this.itemAt(index);
+      if(item) list.push(this.renderItem(item,item === currentItem, selectedItems?.has(item)));
+    }
     return this.renderList(list);
   }
 
@@ -199,7 +199,7 @@ export class VirtualSelect extends VirtualList {
 
     constructor(props) {
       super(props);
-      this.items = props.items || [];
+      this.items = props?.items || [];
     }
 
     itemAt(at) {     // virtual function, can be overriden

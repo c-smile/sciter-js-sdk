@@ -125,8 +125,11 @@ name/value map - object in script terms with names corresponding to name attribu
 ### `on()` subscription
 
 ```JavaScript
-var frm = document.$("form#some");
-frm.on("change", function() { var formValue = this.value; ... });
-document.on("change", "form#some", function(evt, form) { var formValue = form.value; ... });
+document.body.on('change', 'form', ({ target: form }) => {
+   const { value } = form;
+   const json = JSON.stringify(value, null, 2);
+   console.log(json);
+   Window.this.modal(<info>{json}</info>);
+});
 ```
 

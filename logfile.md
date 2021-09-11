@@ -1,3 +1,32 @@
+## 4.4.8.10
+
+### Fixes:
+
+* element.post() fix, see: https://sciter.com/forums/topic/virtual-list-vlist-navigate-issue/
+* WM_INPUT handling fix (might causing non-handled exceptions);
+* Windows: UIAutomation support is back, but requres SciterSetOption(NULL,SCITER_ENABLE_UIAUTOMATION,TRUE);
+* env.home(path) - returns normalized path - without ".."; 
+* flow:stack fix.
+* VirtualSelect/VirtualList fix of the issue: https://sciter.com/forums/topic/virtual-list-vlist-navigate-issue/#post-73783
+* reactor: fix of handling `(name)` as key in r13n;
+* Tokenizer: fix of freeze on EOI marker;
+* [JSX] better errors handling.
+* fix of freeze in video rendering + behavior:file-icon/shell-icon;
+* [CSS/JS] `prototype: Component`, fix of private fields handling;
+* ["on click at :root"]() handling fix;
+* Fix of hanging on `::after { position:absolute }` rules;
+* Fix of script debugger in x64 versions;
+
+### New features:
+
+* `element.matches("selector")` / `element.$is("selector")`
+*  API: `SciterEvalElementScript()` implementation for JS;
+* `Element.animate(options,onEnd)` - non-promise version;
+* `element.mapLocalToWindow(x,y)` and `element.mapWindowToLocal(x,y)`
+* `element.swapWith(otherElement)`
+* `image.colorAt(x,y): Color`
+* `image.compose(other, op)` 
+
 ## 4.4.8.9
 
 ### Fixes:

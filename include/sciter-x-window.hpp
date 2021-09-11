@@ -86,8 +86,6 @@ namespace sciter
     //sciter::om::iasset
     static const char* interface_name() { return "window.sciter.com"; }
 
-  protected:
-
     void bind() {
       if (_hwnd && !_bound) {
         _bound = true;
@@ -95,7 +93,7 @@ namespace sciter
         sciter::attach_dom_event_handler(get_hwnd(), this);
       }
     }
-
+  protected:
     virtual LRESULT on_engine_destroyed() 
     { 
       _hwnd = 0; asset_release();

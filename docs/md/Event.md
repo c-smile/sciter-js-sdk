@@ -26,14 +26,14 @@
 
 * `event.deltaX:float` - wheel deltas
 * `event.deltaY:float`
-* `event.deltaMode|int` - 0 - deltaX/Y are pixels coming from touch devices, 1 - deltaX/Y are in "lines" (a.k.a. mouse wheel "ticks").
+* `event.deltaMode|int` - 0 - deltaX/Y are pixels coming from touch devices, 1 - deltaX/Y are in "lines" (a.k.a. mouse wheel "ticks"). 
 
 
 #### properties (Sciter specific):
 
 * `event.x` - sciter specific, coordinates are relative
 * `event.y` - to `event.currentTarget` - the element this event handler is attached to.
-* `event.source` - used in some events to indicate auxiliary "source" element.
+* `event.source` - used in some events to indicate auxiliary "source" element. 
 * `event.isOnIcon:Element` - mouse events, it is set to element when mouse is on icon of that element. Element icon is an element's foreground-image (if any) so event.isOnIcon is on when mouse is over area where the image is rendered.
 
 #### methods:
@@ -64,51 +64,51 @@
 * `click`
 * `input` - posted event, arrived after user changes something.
 * `change` - synchronous event, arrived on user's change and before screen update.
-* `press`
-* `changing`
-* `submit`
-* `reset`
-* `expand`
-* `collapse`
-* `statechange`
-* `visualstatechange`
-* `disabledstatechange`
-* `readonlystatechange`
+* `press` 
+* `changing` 
+* `submit` 
+* `reset`  
+* `expand`  
+* `collapse`  
+* `statechange` 
+* `visualstatechange` 
+* `disabledstatechange` 
+* `readonlystatechange` 
 
 * `contextmenu` - context menu request for the element
 * `contextmenusetup` - notification to setup context menu, context menu DO< element is event.source
 
 * `animationend`
-* `animationstart`
-* `animationloop`
+* `animationstart` 
+* `animationloop` 
 
 * `transitionend`
-* `transitionstart`
+* `transitionstart` 
 
-* `mediachange`
-* `contentchange`
-* `inputlangchange`
-* `pastehtml`
-* `pastetext`
-* `pasteimage`
-* `popuprequest`
-* `popupready`
-* `popupdismissing`
-* `popupdismissed`
+* `mediachange` 
+* `contentchange` 
+* `inputlangchange` 
+* `pastehtml` 
+* `pastetext` 
+* `pasteimage` 
+* `popuprequest`  
+* `popupready`    
+* `popupdismissing` 
+* `popupdismissed`  
 
-* `tooltiprequest`
+* `tooltiprequest` 
 
 #### Focus
 
 * `focusin`
-* `focusout`
-* `focus`
-* `blur`
+* `focusout` 
+* `focus` 
+* `blur` 
 
 #### Keyboard
 
 * `keydown`
-* `keyup`
+* `keyup`  
 * `keypress`
 * `compositionstart`
 * `compositionend`
@@ -116,14 +116,14 @@
 #### Scroll
 
 * `scroll`
-* `scrollanimationstart`
-* `scrollanimationend`
+* `scrollanimationstart` 
+* `scrollanimationend` 
 
 #### Document lifecycle
 
 Loading:
 
-* `parsed` - document just got a DOM structure, scripts are not run yet. This event can be handled by document container only (window or frame).
+* `parsed` - document just got a DOM structure, scripts are not run yet. This event can be handled by document container only (window or frame). 
 * `ready` | `DOMContentLoaded` - document loaded, DOM is parsed, scripts are loaded and run.
 * `complete` - document loaded in full scripts wer run, all resources defined in HTML are loaded.
 
@@ -138,7 +138,7 @@ Closing:
 * `sizechange` - change of element dimensions, use `element.onsizechange = function() {}` to setup the event handler;
 * `visibilitychange` -  - change of element visibility status,  use `element.onvisibilitychange = function() {}` to setup the event handler;
 
-#### Image
+#### Image 
 
 * `load`
 * `error`
@@ -146,20 +146,20 @@ Closing:
 #### Pager (print preview)
 
 * `paginationstart`
-* `paginationpage`
-* `paginationend`
+* `paginationpage` 
+* `paginationend` 
 
 #### Drag-n-drop
 
 * `drag`
-* `dragenter`
-* `dragleave`
-* `drop`
-* `dragcancel`
-* `dragaccept`
+* `dragenter` 
+* `dragleave` 
+* `drop` 
+* `dragcancel` 
+* `dragaccept` 
 * `willacceptdrop`
 
-#### Video
+#### Video 
 
 * `play`
 * `ended`

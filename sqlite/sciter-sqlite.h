@@ -99,6 +99,14 @@ namespace sqlite {
     //       var cv = rs[no]; - by ordinal number
     bool get_item(sciter::value key_or_index, sciter::value& val);
 
+    // rs.field("name"): value
+    // rs.field(0): value
+    sciter::value field(sciter::value key_or_index) {
+      sciter::value val;
+      get_item(key_or_index,val);
+      return val;
+    }
+
     // .propName accessor implementation
     //     - supported cases:
     //       var cv = rs.columnname;
@@ -114,7 +122,8 @@ namespace sqlite {
         SOM_FUNC(next),
         SOM_FUNC(name),
         SOM_FUNC(isValid),
-        SOM_FUNC(close)
+        SOM_FUNC(close),
+        SOM_FUNC(field)
       )
       SOM_PROPS(
         SOM_RO_VIRTUAL_PROP(length,get_length)

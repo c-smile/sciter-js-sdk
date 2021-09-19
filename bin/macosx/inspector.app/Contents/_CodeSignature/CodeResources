@@ -10,7 +10,7 @@
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		as9hRwOL63qLI8zOr5SCQDSg10I=
+		jsrPSsg6lGkVHramlmmROXr88n0=
 		</data>
 		<key>Resources/Base.lproj/MainMenu.nib</key>
 		<data>
@@ -19,15 +19,6 @@
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>MacOS/inspector.sync-conflict-20210821-174316-7ZYXMXV</key>
-		<dict>
-			<key>cdhash</key>
-			<data>
-			UGEIN14O616bTJIAJPAuVdhUZYY=
-			</data>
-			<key>requirement</key>
-			<string>identifier "sciter.js.inspector" and anchor apple generic and certificate leaf[subject.CN] = "Apple Development: Andrei Fedoniouk (46U3Y5E9ZC)" and certificate 1[field.1.2.840.113635.100.6.2.1] /* exists */</string>
-		</dict>
 		<key>Resources/AppIcon.icns</key>
 		<dict>
 			<key>hash2</key>
@@ -39,7 +30,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			6HKPRQWks9UC2xySvRlIb7fkczvrRYFyQ33V/Ok/96E=
+			Ql7b7GCIbwjszB8s3EUVcvs3n0qRdEdVSH0ZnVLJ77Q=
 			</data>
 		</dict>
 		<key>Resources/Base.lproj/MainMenu.nib</key>

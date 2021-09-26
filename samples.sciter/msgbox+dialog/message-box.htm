@@ -42,6 +42,15 @@ document.on("click","button#buttons", function()
   console.log(r);
 });
 
+
+document.on("click","button#styling", function() 
+{
+  var r = Window.this.modal(<alert caption="that's a demo" styleset={__DIR__ + "custom.css#alert!"}><p>Don't worry</p>
+                      <p>That is just a demo of alert box</p></alert>);
+  console.log(r);
+});
+
+
         </script>
     </head>
     <body>
@@ -53,6 +62,8 @@ document.on("click","button#buttons", function()
       <button id="error">error message box</button>
 
       <button id="buttons">custom buttons</button>
+
+      <button id="styling">custom styling</button>
 
     </body>
 </html>

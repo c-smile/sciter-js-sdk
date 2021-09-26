@@ -17,6 +17,7 @@ Audio represents an object that allows to play audio, e.g. mp3 files.
 * `audio.play() : Promise` - plays the sound, returns promise that will be resolved at the end of playback;
 * `audio.pause()` - pauses playback;
 * `audio.resume()` - resumes paused playback;
+* `audio.stop()` - stops playback;
 
 #### example: 
 

@@ -233,7 +233,11 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
   * #### `window.trayIcon("place") : [x,y,w,h]` 
   
     reports location of the icon on desktop, coordinates are in screen pixels.
-    
+
+  * #### `window.requestAttention("info" | "alert" | "stop")`
+
+    requests user attention by flashing or bouncing window icon in task/dock bar. 
+
 ## class methods and properties:
 
   * #### `Window.this: Window` 

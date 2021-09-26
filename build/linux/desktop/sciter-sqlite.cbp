@@ -143,51 +143,51 @@
 			</Target>
 		</Build>
 		<Unit filename="../../../sqlite/sciter-sqlite-db.cpp">
-			<Option target="Debug|arm32" />
 			<Option target="Release|arm32" />
+			<Option target="Debug|arm32" />
 			<Option target="Release|x64" />
 			<Option target="Debug|x64" />
 		</Unit>
 		<Unit filename="../../../sqlite/sciter-sqlite-rs.cpp">
-			<Option target="Debug|arm32" />
 			<Option target="Release|arm32" />
+			<Option target="Debug|arm32" />
 			<Option target="Release|x64" />
 			<Option target="Debug|x64" />
 		</Unit>
 		<Unit filename="../../../sqlite/sciter-sqlite.cpp">
-			<Option target="Debug|arm32" />
 			<Option target="Release|arm32" />
+			<Option target="Debug|arm32" />
 			<Option target="Release|x64" />
 			<Option target="Debug|x64" />
 		</Unit>
 		<Unit filename="../../../sqlite/sciter-sqlite.h">
-			<Option target="Debug|arm32" />
 			<Option target="Release|arm32" />
+			<Option target="Debug|arm32" />
 			<Option target="Release|x64" />
 			<Option target="Debug|x64" />
 		</Unit>
 		<Unit filename="../../../sqlite/sqlite-wrap.c">
 			<Option compilerVar="CC" />
-			<Option target="Debug|arm32" />
 			<Option target="Release|arm32" />
+			<Option target="Debug|arm32" />
 			<Option target="Release|x64" />
 			<Option target="Debug|x64" />
 		</Unit>
 		<Unit filename="../../../sqlite/sqlite-wrap.h">
-			<Option target="Debug|arm32" />
 			<Option target="Release|arm32" />
+			<Option target="Debug|arm32" />
 			<Option target="Release|x64" />
 			<Option target="Debug|x64" />
 		</Unit>
 		<Unit filename="../../../sqlite/sqlite3.h">
-			<Option target="Debug|arm32" />
 			<Option target="Release|arm32" />
+			<Option target="Debug|arm32" />
 			<Option target="Release|x64" />
 			<Option target="Debug|x64" />
 		</Unit>
 		<Unit filename="../../../sqlite/sqlite3ext.h">
-			<Option target="Debug|arm32" />
 			<Option target="Release|arm32" />
+			<Option target="Debug|arm32" />
 			<Option target="Release|x64" />
 			<Option target="Debug|x64" />
 		</Unit>

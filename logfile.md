@@ -1,3 +1,30 @@
+## 4.4.8.11
+
+### Fixes:
+
+* fix of `element.getElementById()`, see: https://sciter.com/forums/topic/getelementbyid-return-null-after-refresh-div-list/ ;
+* fix of possible AV in textarea;
+* [Skia backend], fix of possible deadlock on rendering;
+* fix of `element.onsizechange()` callback generation in components;
+* `sys.fs.splitpath()` fixes;
+* `new Image(painter)` and `Image.update(painter)` fixes;
+* `Graphics.ellipse()` fix;
+* `Graphics.pushLayer(x,y,w,h,filter)` fix;
+* CSS/painting, fix of text-decoration and selection painting;
+* `element.append/perpend(<fragment>...</fragment>)` fix;
+* `sys.fs.match(filename,pattern)` fix of string leak;
+* VALUE API fix, correct coercion to T_BYTES in `nativeFunc(new ArrayBuffer(...))`;
+* `Graphics.pushLayer("border-box")` generates error when Image based Graphics is used.
+* [reactor] `.componentDidCatch(error,contextElement/*performing patch()*/)` - processing errors in render() methods (ReactJS notation);
+  
+### New features:
+
+* `window.requestAttention("info" | "alert" | "stop")` - app icon blinking on OSes that support that (Windows, MacOS);
+* JSX: <Foo {...props} /> support. See: https://sciter.com/forums/topic/react-spread-attributes/
+* [SQLite] + recordset.field("name") method. See: https://sciter.com/forums/topic/name-can-not-be-used-as-column-name-of-sqlite/
+* [reactor] <div attr={obj}> - warning if incompatible (non string convertible) value is passed.
+* [JSX] fragment support using notation `<>...</>`, see: https://reactjs.org/docs/fragments.html#short-syntax
+
 ## 4.4.8.10
 
 ### Fixes:

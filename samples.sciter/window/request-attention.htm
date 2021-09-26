@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style></style>
+        <script>
+
+Window.this.on("statechange", function() {
+   if(Window.this.state != Window.WINDOW_MINIMIZED) {
+      Window.this.requestAttention("stop");    
+   }
+});
+
+document.on("click","button#info", function(){
+
+  Window.this.state = Window.WINDOW_MINIMIZED;
+  
+  document.timer(1000, function() {
+    Window.this.requestAttention("info");   
+  })
+  
+});
+
+document.on("click","button#alert", function(){
+
+  Window.this.state = Window.WINDOW_MINIMIZED;
+  
+  document.timer(1000, function() {
+    Window.this.requestAttention("alert");   
+  })
+  
+});
+
+        </script>
+    </head>
+    <body>
+
+    Request attention:
+    <button#info>info</button>
+    <button#alert>alert</button>
+
+    Note: this will either flash or bounce window icon (depends on platform).
+
+    </body>
+</html>

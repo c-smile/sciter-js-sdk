@@ -19,15 +19,17 @@ The module represents current OS and running environment.
     Example: `env.launch("https://sciter.com")` will open default browser with that url.
 * `env.home([relpath]): string` - converts relative path to absolute path using location of sciter.dll as a base. 
 * `env.path(name): string` - returns location of well known folders on user machine, name is one of: 
-  * "USER_HOME"
-  * "SYSTEM"
-  * "SYSTEM_BIN"
-  * "PROGRAM_FILES"
-  * "USER_APPDATA"
-  * "COMMON_APPDATA"
-  * "USER_DOCUMENTS"
-  * "COMMON_DOCUMENTS"
-  * "DOWNLOADS"
+  * "home" - user's home folder;
+  * "applications" - applications a.k.a program files;
+  * "root" - file system root;
+  * "desktop" - desktop folder;
+  * "appdata" - applications data folder;
+  * "downloads"
+  * "documents"
+  * "music"
+  * "videos"
+  * "pictures"
+
 * `env.variable(name:string [,toset:string | null]): string` - TBD
 * `env.variables(): object` - TBD
 * `env.exec()` execute comma-separated arguments. `exec("scapp", "main.html")`

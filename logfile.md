@@ -1,3 +1,13 @@
+## 4.4.8.12
+
+### New features:
+
+* `Audio.stop()` method. 
+
+### Fixes:
+
+* various regression fixes;
+
 ## 4.4.8.11
 
 ### Fixes:

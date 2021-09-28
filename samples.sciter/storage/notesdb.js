@@ -12,7 +12,7 @@ function initDb(storage) {
   return storage.root; 
 }
 
-var storage = Storage.open(Env.path("USER_DOCUMENTS") +"/test-note.db");
+var storage = Storage.open(Env.path("documents") +"/test-note.db");
 var root = storage.root || initDb(storage); // get root data object or initialize DB
 
 document.on("beforeunload",function(){

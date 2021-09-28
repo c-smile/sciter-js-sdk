@@ -119,13 +119,13 @@
 * `scrollanimationstart` 
 * `scrollanimationend` 
 
-#### Document lifecycle
+#### Document lifecycle events
 
 Loading:
 
 * `parsed` - document just got a DOM structure, scripts are not run yet. This event can be handled by document container only (window or frame). 
 * `ready` | `DOMContentLoaded` - document loaded, DOM is parsed, scripts are loaded and run.
-* `complete` - document loaded in full scripts wer run, all resources defined in HTML are loaded.
+* `complete` - document loaded in full scripts were run, all resources defined in HTML are loaded.
 
 Closing:
 
@@ -138,7 +138,7 @@ Closing:
 * `sizechange` - change of element dimensions, use `element.onsizechange = function() {}` to setup the event handler;
 * `visibilitychange` -  - change of element visibility status,  use `element.onvisibilitychange = function() {}` to setup the event handler;
 
-#### Image 
+#### Image
 
 * `load`
 * `error`
@@ -159,7 +159,7 @@ Closing:
 * `dragaccept` 
 * `willacceptdrop`
 
-#### Video 
+#### Video
 
 * `play`
 * `ended`

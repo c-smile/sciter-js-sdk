@@ -18,6 +18,7 @@ const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
 // Quadratic Bézier curve
+ctx.strokeStyle = 'black';
 ctx.beginPath();
 ctx.moveTo(50, 20);
 ctx.quadraticCurveTo(230, 30, 50, 100);

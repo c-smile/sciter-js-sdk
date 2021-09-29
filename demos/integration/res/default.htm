@@ -122,6 +122,7 @@ document.on("input", "form#xcall", function(evt,form) {
 function scriptFunc(p) {
   const output = document.$("#scriptFuncOutput");
   output.value = `received ${p} from native side`;
+  return p;
 }
 
 // using class as a namespace with static functions (ES6 feature).

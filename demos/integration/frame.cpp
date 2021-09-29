@@ -173,7 +173,8 @@ public:
       case BUTTON_CLICK:
         if (target.test("button#test-script-func-1")) {
           // call free function, passing integer value:
-          this->call_function("scriptFunc", ++counter);
+          sciter::value rv = this->call_function("scriptFunc", ++counter);
+          assert(rv.get<int>() == counter);
           return true;
         } 
         else if (target.test("button#test-script-func-2")) 

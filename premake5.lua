@@ -19,7 +19,7 @@ newoption {
 defines { "DEVICE=" .. _OPTIONS["device"] }
 
 
-if( _TARGET_OS ~= "macosx") then  -- we are not auto generating XCode solutions for a while
+if( _TARGET_OS ~= "_macosx") then  -- we are not auto generating XCode solutions for a while
                                   -- structure of typical XCode is not trivial - requires manual inputs.
 
 function osabbr() 

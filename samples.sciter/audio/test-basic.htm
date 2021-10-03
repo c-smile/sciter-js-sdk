@@ -3,12 +3,19 @@
         <title>Test</title>
         <style></style>
         <script>
+
+          var audio;
   
           document.on("click", "button#play", async function(evt,btn) {
             btn.state.disabled = true;
-            var audio = await Audio.load(__DIR__ + "/hasta-lavista-baby.mp3");
+            audio = await Audio.load(__DIR__ + "/hasta-lavista-baby.mp3");
             await audio.play();
             btn.state.disabled = false;
+          });
+
+          document.on("click", "button#stop", function(evt,btn) {
+            audio.stop();
+            audio = null;
           });
 
         </script>
@@ -16,6 +23,7 @@
     <body>
 
        <button#play>Play</button>
+       <button#stop>Stop</button>
 
     </body>
 </html>

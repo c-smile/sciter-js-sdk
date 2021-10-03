@@ -1,3 +1,13 @@
+## 4.4.8.13
+
+### Fixes:
+
+* `Audio.stop()` fix to stop async operation;
+* [reactor] fix of fragment handling;
+* `Storage.Index.delete(key)` implementation;
+* `element.off(".ns")` fix (unsubscribe by namespace);
+* [MacOS] fix of `Clipboard.write({...})`;
+* 
 ## 4.4.8.12
 
 ### New features:

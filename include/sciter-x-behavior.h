@@ -439,7 +439,7 @@ typedef SBOOL SC_CALLBACK SciterBehaviorFactory( LPCSTR, HELEMENT, LPElementEven
       CONTEXT_MENU_REQUEST = 0x10,   // "right-click", BEHAVIOR_EVENT_PARAMS::he is current popup menu HELEMENT being processed or NULL.
                                      // application can provide its own HELEMENT here (if it is NULL) or modify current menu element.
 
-      VISIUAL_STATUS_CHANGED = 0x11, // broadcast notification, sent to all elements of some container being shown or hidden
+      VISUAL_STATUS_CHANGED = 0x11,  // broadcast notification, sent to all elements of some container being shown or hidden
       DISABLED_STATUS_CHANGED = 0x12,// broadcast notification, sent to all elements of some container that got new value of :disabled state
 
       POPUP_DISMISSING = 0x13,       // popup is about to be closed

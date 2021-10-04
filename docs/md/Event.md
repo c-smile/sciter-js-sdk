@@ -119,6 +119,10 @@
 * `scrollanimationstart` 
 * `scrollanimationend` 
 
+#### Other
+* `statechange` - `window.state` flag have changed.
+* `resolutionchange` - after window was moved to another monitor with different resolution, or user has changed screen resolution.
+
 #### Document lifecycle events
 
 Loading:

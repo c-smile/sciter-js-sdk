@@ -15,7 +15,7 @@ Note: in Sciter.JS `Document` extends [`Element`](Element.md) class - `document`
 * `document.querySelectorAll("selector")`
 * `document.$$("selector")` synonym of above
 * `document.getElementById("id")`
-* `document.createElement()`
+* `document.createElement(tagName)`
 * `document.createTextNode()`
 * `document.createComment()`
 * `document.createDocumentFragment()`

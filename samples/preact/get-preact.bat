@@ -1,1 +1,1 @@
-curl -L https://unpkg.com/preact?module > preact.js
+curl -L https://unpkg.com/htm/preact/standalone.mjs?module > preact.js

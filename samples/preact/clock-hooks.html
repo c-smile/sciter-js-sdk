@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <title>Preact Hooks</title>
+    <style></style>
+    <script type="module">
+      import { h, render, useState, useEffect, useRef } from "preact";
+
+      JSX = h; // let's use PReact::h() as a driver of JSX expressions
+
+      const Clock = () => {
+        const [time, setTime] = useState(Date.now());
+        const timer = useRef();
+
+        useEffect(() => {
+          // update time every second
+          timer.current = setInterval(() => {
+            setTime(Date.now());
+          }, 1000);
+
+          return () => {
+            // stop when not renderable
+            clearInterval(timer.current);
+          };
+        }, []);
+
+        return (
+          <h2>
+            PReact's time:<span>{new Date(time).toLocaleTimeString()}</span>
+          </h2>
+        );
+      };
+
+      // render an instance of Clock into <body>:
+      render(<Clock />, document.body);
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -134,3 +134,12 @@ section:expanded > div.content { visibility:visible; }
      let b = el.state.pixelsIn("75%","vertical"); // 75% of current height
      let c = el.state.pixelsIn("12pt"); // pixels in 12 points
   ```
+
+  * #### `element.state.mapLocalToWindow(xLocal,yLocal ): [xWindow,yWindow]` 
+  
+    maps local element coordinates to window coordinates. This method accounts affine 2D transformation the element and its parents may have.
+
+  * #### `element.state.mapWindowToLocal(xWindow,yWindow): [xLocal,yLocal]` 
+  
+    maps point on window to local coordinates of particular element. This method accounts affine 2D transformation the element and its parents may have.
+

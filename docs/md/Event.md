@@ -119,27 +119,30 @@
 * `scrollanimationstart` 
 * `scrollanimationend` 
 
-#### Document lifecycle
+#### Other
+* `statechange` - `window.state` flag have changed.
+* `resolutionchange` - after window was moved to another monitor with different resolution, or user has changed screen resolution.
 
-Closing:
-
-* `close` | `unload` - document is closed and about to be deleted soon.
-* `beforeunload` - document is about to be unloaded, script namespace is still operational.
-* `closerequest` - first phase of document closure, it can be rejected at this point by calling `event.preventDefault()`. 
+#### Document lifecycle events
 
 Loading:
 
 * `parsed` - document just got a DOM structure, scripts are not run yet. This event can be handled by document container only (window or frame). 
 * `ready` | `DOMContentLoaded` - document loaded, DOM is parsed, scripts are loaded and run.
-* `complete` - document loaded in full scripts wer run, all resources defined in HTML are loaded.
+* `complete` - document loaded in full scripts were run, all resources defined in HTML are loaded.
 
+Closing:
+
+* `close` | `unload` - document is closed and about to be deleted soon.
+* `beforeunload` - document is about to be unloaded, script namespace is still operational.
+* `closerequest` - first phase of document closure, it can be rejected at this point by calling `event.preventDefault()`.
 
 #### Element's state change
 
 * `sizechange` - change of element dimensions, use `element.onsizechange = function() {}` to setup the event handler;
 * `visibilitychange` -  - change of element visibility status,  use `element.onvisibilitychange = function() {}` to setup the event handler;
 
-#### Image 
+#### Image
 
 * `load`
 * `error`
@@ -160,7 +163,7 @@ Loading:
 * `dragaccept` 
 * `willacceptdrop`
 
-#### Video 
+#### Video
 
 * `play`
 * `ended`

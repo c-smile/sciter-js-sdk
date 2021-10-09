@@ -482,6 +482,8 @@ typedef enum SCITER_RT_OPTIONS
 
    SCITER_SET_PX_AS_DIP = 16, // value 1 - 1px in CSS is treated as 1dip, value 0 - default behavior - 1px is a physical pixel 
 
+   SCITER_ENABLE_UIAUTOMATION = 17,  // hWnd - N/A , TRUE/FALSE, enables UIAutomation support. 
+
 } SCITER_RT_OPTIONS;
 
  SBOOL SCAPI SciterSetOption(HWINDOW hWnd, UINT option, UINT_PTR value );

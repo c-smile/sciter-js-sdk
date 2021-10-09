@@ -156,7 +156,7 @@ Table editing operations. These operations are available only if selection is in
   
   returns content and selection as an array of three elements;
 
-* <a id="update"></a>`richtext.update(mutator:function(tctx) {}) : bool`
+* #### `richtext.update(mutator:function(tctx) {}) : bool`
   
   Transactional update (mutation) of the content. Multiple mutations made through *tctx* transactional context interface are combined into single transaction that is undoable as a single operation. Tctx is an object that has following content mutation methods:
 

@@ -139,25 +139,65 @@
 			</Target>
 		</Build>
 		<Unit filename="../../../demos/usciter/usciter.cpp">
+			<Option target="Release|x64" />
+			<Option target="Release|arm32" />
+			<Option target="Debug|arm32" />
+			<Option target="Debug|x64" />
 		</Unit>
 		<Unit filename="../../../include/sciter-gtk-main.cpp">
+			<Option target="Release|x64" />
+			<Option target="Release|arm32" />
+			<Option target="Debug|arm32" />
+			<Option target="Debug|x64" />
 		</Unit>
 		<Unit filename="../../../sqlite/sciter-sqlite-db.cpp">
+			<Option target="Release|x64" />
+			<Option target="Release|arm32" />
+			<Option target="Debug|arm32" />
+			<Option target="Debug|x64" />
 		</Unit>
 		<Unit filename="../../../sqlite/sciter-sqlite-rs.cpp">
+			<Option target="Release|x64" />
+			<Option target="Release|arm32" />
+			<Option target="Debug|arm32" />
+			<Option target="Debug|x64" />
 		</Unit>
 		<Unit filename="../../../sqlite/sciter-sqlite.cpp">
+			<Option target="Release|x64" />
+			<Option target="Release|arm32" />
+			<Option target="Debug|arm32" />
+			<Option target="Debug|x64" />
 		</Unit>
 		<Unit filename="../../../sqlite/sciter-sqlite.h">
+			<Option target="Release|x64" />
+			<Option target="Release|arm32" />
+			<Option target="Debug|arm32" />
+			<Option target="Debug|x64" />
 		</Unit>
 		<Unit filename="../../../sqlite/sqlite-wrap.c">
 			<Option compilerVar="CC" />
+			<Option target="Release|x64" />
+			<Option target="Release|arm32" />
+			<Option target="Debug|arm32" />
+			<Option target="Debug|x64" />
 		</Unit>
 		<Unit filename="../../../sqlite/sqlite-wrap.h">
+			<Option target="Release|x64" />
+			<Option target="Release|arm32" />
+			<Option target="Debug|arm32" />
+			<Option target="Debug|x64" />
 		</Unit>
 		<Unit filename="../../../sqlite/sqlite3.h">
+			<Option target="Release|x64" />
+			<Option target="Release|arm32" />
+			<Option target="Debug|arm32" />
+			<Option target="Debug|x64" />
 		</Unit>
 		<Unit filename="../../../sqlite/sqlite3ext.h">
+			<Option target="Release|x64" />
+			<Option target="Release|arm32" />
+			<Option target="Debug|arm32" />
+			<Option target="Debug|x64" />
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

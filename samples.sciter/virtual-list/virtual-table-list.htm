@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+            table {
+              size:*;
+              border:1px solid #ccc;
+            }
+            tbody 
+            {
+              overflow:scroll-indicator;
+              size:*;
+            }
+            table > thead { 
+               border-bottom:1px solid #ccc; 
+               behavior: column-resizer;
+             }
+            table > thead > tr > th:nth-child(1) { width: 16em; }
+            table > thead > tr > th:nth-child(2) { width: 8em; }
+            table > thead > tr > th:nth-child(3) { width: *; }
+
+        </style>
+        <script type="module">
+
+import {VirtualList} from "virtual-select.js";
+
+// select with virtual data source
+class VirtualTableBody extends VirtualList {
+
+  list; // array of items 
+
+  constructor(props) { 
+    super(props); 
+    this.list = props.list;
+  }
+
+  itemAt(at) { return this.list[at]; }
+  totalItems() { return this.list.length; }
+  indexOf(item) { return this.list.indexOf(item); }
+
+  // overridable
+  renderItem(item, isCurrent, isSelected) {
+    return  <tr key={item.key} >
+                <td>{new Date().toLocaleString()}</td>
+                <td>{item.key}</td>
+                <td>{item.text}</td> 
+            </tr>;
+  }
+
+  renderList(items) // overridable
+  { 
+    return <tbody styleset={__DIR__ + "virtual-table.css#tbody"}>{ items }</tbody>; 
+  }
+
+}
+
+class App extends Element {
+
+  list = [];
+
+  constructor() {
+    super();
+    for(let n = 0; n < 1000; ++n) { 
+      this.list.push({key:n, text:<code>test # ${n}</code>});
+    }
+  }
+
+  render() {
+    return  <body>
+                <table>
+                  <thead>
+                    <tr>
+                        <th>aaa</th>
+                        <th>bbb</th>
+                        <th>ccc</th>
+                    </tr>
+                  </thead>
+                  <VirtualTableBody list={this.list}/>
+                </table>
+              
+            </body>
+  }
+
+}
+
+document.body.patch(<App/>);
+
+        </script>
+    </head>
+    <body />
+</html>

@@ -18,7 +18,7 @@ class Welcome extends Element {
   
   Sciter's Reactor is different from ReactJS in this respect. In ReactJS React.Component is not associated directly with real DOM element, but in Reactor `this` in component methods, after mounting, refers to real DOM element. 
 
-The only method you *must* define in class component is `render()`. All the other methods of a component are optional.
+The only method you *must* define in class components is `render()`. All the other methods of a component are optional.
 
 ## The Component Lifecycle
 

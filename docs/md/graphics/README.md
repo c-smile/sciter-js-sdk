@@ -39,11 +39,15 @@ Class Graphics also is a namespace that contains classes:
 * `graphics.ellipse(x, y, radiusX, radiusY, rotation, startAngle, endAngle [, anticlockwise])`
 * `graphics.rect(x, y, width, height)`
 * `graphics.closePath()`
-* 
+
 * `graphics.stroke([path])`
 * `graphics.fill([path][,fillRule])`
+
+* `graphics.strokeRect(x,y,w,h)`
 * `graphics.fillRect(x,y,w,h)`
-* 
+
+* `graphics.fillText(text,x,y,maxWidth)`
+
 * `graphics.setLineDash(n1,n2,...)`
 
 * `graphics.save()`
@@ -55,17 +59,21 @@ Class Graphics also is a namespace that contains classes:
 * `graphics.transform(a,b,c,d,e,f)`
 * `graphics.setTransform(a,b,c,d,e,f)`
 
-* `graphics.fillText(text,x,y,maxWidth)`
 
 #### Methods (Sciter.JS specific):
 
 ##### `graphics.draw(path, {params})`
 
-TBD
+draws the path, params is an object with:
 
-##### `graphics.draw(image, {params})` 
+* `x`, `y` - numbers, destination coordinates;
+* `fill`, optional, `"evenodd"` | `"nonzero"`, if defined fills the path by current fill brush;
+* `stroke`, optional, `true` | `false`, if _true_ - pitlines the path by current stroke brush;
 
-draws image, params is an object with:
+
+##### `graphics.draw(image, {params})`
+
+draws the image, params is an object with:
 
 * `x`, `y` - numbers, destination coordinates;
 * `width` ,`height` - optional, numbers, dimension of destination box;
@@ -73,19 +81,19 @@ draws image, params is an object with:
 * `srcWidth`, `srcHeight` - optional, integer, dimension of source box (sprite);
 * `opacity`, optional, 0.0 ... 1.0 , opacity (blending);
 
-##### `graphics.draw(text, {params})` 
+##### `graphics.draw(text, {params})`
 
-TBD 
+draws the text (object of class Graphics.Text), params is an object with:  
 
-##### `graphics.draw(element, {params})` 
+* `x`, `y` - numbers, destination coordinates;
+* `alignment`: integer, 1..9, defines meaning of x/y coordinates, see NUMPAD. 5 - center of text, 7 - left/top corner, etc.
+* `fill` : Color, optional, if defined text is draw by that color. If ommited then by current fill color.
 
-TBD 
-
-##### `graphics.pushLayer(x,y,w,h[,opacity|filter])` 
+##### `graphics.pushLayer(x,y,w,h[,opacity|filter])`
 
 Layer(clip) with rectangular clip with optional opacity or filter.
 
-##### `graphics.pushLayer(clipAreaName[,opacity|filter])` 
+##### `graphics.pushLayer(clipAreaName[,opacity,filter])`
 
 Element area clip with optional opacity. Area name is one of:
 
@@ -95,16 +103,16 @@ Element area clip with optional opacity. Area name is one of:
   * `"margin-box"`,
   * `"content-box"`
   
-##### `graphics.pushLayer(path [,opacity] )` 
+##### `graphics.pushLayer(path [,opacity] )`
 
-Layer(clip) by arbitrary [Path](Graphics.Path.md) with optional opacity or filter.
+Layer(clip) by arbitrary [Path](Graphics.Path.md) with optional opacity.
 
-##### `graphics.pushLayer(mask:Image, useAlpha [,opacity] )` 
+##### `graphics.pushLayer(mask:Image, useAlpha [,opacity] )`
 
 [Image](Graphics.Image.md) mask clip with optional opacity.
 
 
-##### `graphics.popLayer()` 
+##### `graphics.popLayer()`
 
 Pop layer created by previous pushLayer() 
 

@@ -1,4 +1,3 @@
-*.dSYM
 *.DS_Store
 *.user
 *.ilk
@@ -11,4 +10,4 @@
 *.res
 *.tlog
 *.idb
-*.sync-conflict-*
+*.dSYM

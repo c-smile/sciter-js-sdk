@@ -20,6 +20,11 @@ Includes functions dealing with system clipboard.
 
   Puts the string into clipboard.  
 
+* #### `Clipboard.has(type:string):boolean` 
+
+  Checks if clipboard contains data of given _type_: "text" | "html" | "image" 
+  | "file" | "json" | "link".
+
 ## Clipboard Data Object
 
 Clipboard data object is a plain JS object that may contain following properties:

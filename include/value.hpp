@@ -68,6 +68,12 @@
     class value_idx_a;
     class value;
 
+    // setter - free standing conversion of T to sciter::value.
+    // NOTE this function is deliberatly left not implemented - it is just a prototype
+    template<typename T>
+      inline value setter(const T& v);
+
+
 #ifdef CPP11
     // native function that can be stored inside the value:
     typedef std::function<value(unsigned int argc, const value* argv)> native_function_t;
@@ -632,11 +638,6 @@
         }
         return out;
       }
-
-    // setter - free standing conversion of T to sciter::value.
-    // NOTE this function is deliberatly left not implemented - it is just a prototype
-    template<typename T>
-      inline value setter(const T& v);
 
     // value by key bidirectional proxy/accessor 
     class value_key_a

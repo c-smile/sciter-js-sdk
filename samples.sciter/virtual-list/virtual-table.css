@@ -1,0 +1,21 @@
+@set tbody {
+  :root {
+    behavior: virtual-list;
+    flow:table-body;
+    size:*;
+    overflow-x:none; 
+    overflow-y:scroll-indicator;
+  }
+ 
+  :root > tr:current { background-color:color(highlight-nf); color:color(highlight-text); }
+  :root:focus > tr:current { background-color:color(highlight-focus); }
+
+  :root > tr:hover { background-color:color(highlight-hover); }
+
+  th,td { 
+    white-space:no-wrap; 
+    overflow-x:hidden;
+    text-overflow: ellipsis;
+  }
+
+}

@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style></style>
+        <script>
+
+const file_filter = 
+   "HTML files only(*.htm,*.html)|*.htm;*.html|" +
+   "SVG files only(*.svg)|*.svg|" +
+   "All Files (*.*)|*.*";
+   
+document.on("click","button#open", function() {
+    let fn = Window.this.selectFile {
+        filter:file_filter,
+        mode:"open",
+        path: URL.toPath(__DIR__ + "load-save-file.htm")
+    };
+    console.log(fn);
+    return true;
+  })
+
+document.on("click","button#save", function() {
+    let fn = Window.this.selectFile {
+        filter:file_filter,
+        mode:"save",
+        path: URL.toPath(__DIR__ + "load-save-file.htm")
+    };
+    console.log(fn);
+    return true;
+  })
+
+
+        </script>
+    </head>
+    <body>
+
+<button#open>Open</button>
+<button#save>Save</button>
+
+    </body>
+</html>

@@ -1,3 +1,100 @@
+## 4.4.8.13
+
+### Fixes:
+
+* `Audio.stop()` fix to stop async operation;
+* [reactor] fix of fragment handling;
+* `Storage.Index.delete(key)` implementation;
+* `element.off(".ns")` fix (unsubscribe by namespace);
+* [MacOS] fix of `Clipboard.write({...})`;
+* 
+## 4.4.8.12
+
+### New features:
+
+* `Audio.stop()` method. 
+
+### Fixes:
+
+* various regression fixes;
+
+## 4.4.8.11
+
+### Fixes:
+
+* fix of `element.getElementById()`, see: https://sciter.com/forums/topic/getelementbyid-return-null-after-refresh-div-list/ ;
+* fix of possible AV in textarea;
+* [Skia backend], fix of possible deadlock on rendering;
+* fix of `element.onsizechange()` callback generation in components;
+* `sys.fs.splitpath()` fixes;
+* `new Image(painter)` and `Image.update(painter)` fixes;
+* `Graphics.ellipse()` fix;
+* `Graphics.pushLayer(x,y,w,h,filter)` fix;
+* CSS/painting, fix of text-decoration and selection painting;
+* `element.append/perpend(<fragment>...</fragment>)` fix;
+* `sys.fs.match(filename,pattern)` fix of string leak;
+* VALUE API fix, correct coercion to T_BYTES in `nativeFunc(new ArrayBuffer(...))`;
+* `Graphics.pushLayer("border-box")` generates error when Image based Graphics is used.
+* [reactor] `.componentDidCatch(error,contextElement/*performing patch()*/)` - processing errors in render() methods (ReactJS notation);
+  
+### New features:
+
+* `window.requestAttention("info" | "alert" | "stop")` - app icon blinking on OSes that support that (Windows, MacOS);
+* JSX: <Foo {...props} /> support. See: https://sciter.com/forums/topic/react-spread-attributes/
+* [SQLite] + recordset.field("name") method. See: https://sciter.com/forums/topic/name-can-not-be-used-as-column-name-of-sqlite/
+* [reactor] <div attr={obj}> - warning if incompatible (non string convertible) value is passed.
+* [JSX] fragment support using notation `<>...</>`, see: https://reactjs.org/docs/fragments.html#short-syntax
+
+## 4.4.8.10
+
+### Fixes:
+
+* element.post() fix, see: https://sciter.com/forums/topic/virtual-list-vlist-navigate-issue/
+* WM_INPUT handling fix (might causing non-handled exceptions);
+* Windows: UIAutomation support is back, but requres SciterSetOption(NULL,SCITER_ENABLE_UIAUTOMATION,TRUE);
+* env.home(path) - returns normalized path - without ".."; 
+* flow:stack fix.
+* VirtualSelect/VirtualList fix of the issue: https://sciter.com/forums/topic/virtual-list-vlist-navigate-issue/#post-73783
+* reactor: fix of handling `(name)` as key in r13n;
+* Tokenizer: fix of freeze on EOI marker;
+* [JSX] better errors handling.
+* fix of freeze in video rendering + behavior:file-icon/shell-icon;
+* [CSS/JS] `prototype: Component`, fix of private fields handling;
+* ["on click at :root"]() handling fix;
+* Fix of hanging on `::after { position:absolute }` rules;
+* Fix of script debugger in x64 versions;
+
+### New features:
+
+* `element.matches("selector")` / `element.$is("selector")`
+*  API: `SciterEvalElementScript()` implementation for JS;
+* `Element.animate(options,onEnd)` - non-promise version;
+* `element.mapLocalToWindow(x,y)` and `element.mapWindowToLocal(x,y)`
+* `element.swapWith(otherElement)`
+* `image.colorAt(x,y): Color`
+* `image.compose(other, op)` 
+
+## 4.4.8.9
+
+### Fixes:
+
+* `overflow:scroll`, fix of non-overflow SB rendering. 
+* [debugging] drain logs (a.k.a. flush) before document unload. See: https://sciter.com/forums/topic/wait-for-closerequest-function-calls-to-complete/
+* leaflet.js compatibility fix, by adding document.createElementNS();  
+* command event "^exec:***" handling fix;
+* [VirtualList] fix of `render()`;
+* [websocket] fix of AV in `new WebSocket("badaddr")`;
+* `Clipboard.has("image"|"file"|"text")` - check if clipboard has needed data;
+* `self` - yet another alias to current namespace ( `self == globalThis` ) 
+* fix of splitter handling in Sciter.Lite.
+* fix of element.click() event click generation.
+
+### New features:
+
+* samples/compatibility.js/.css - compatibility layer for browsers. Not complete, features will be added when required;
+* samples/leaflet/test-geoJSON.htm sample - demo of layers in leaflet;
+
+
 ## 4.4.8.8-bis
 
 ### Fixes:

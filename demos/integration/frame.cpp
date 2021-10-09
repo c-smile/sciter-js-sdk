@@ -63,6 +63,13 @@ public:
     return vec; // and returning vector
   }
 
+  std::vector<byte> bytesSum(std::vector<byte> vec1, std::vector<byte> vec2) {
+    std::vector<byte> out = vec1;
+    std::copy(std::begin(vec2), std::end(vec2), std::back_inserter(out));
+    return out;
+  }
+
+
   // this method returns native object to be used in script
   sciter::value    makeNativeObject() {
     sciter::value rv = sciter::value::wrap_asset(new NativeObject());
@@ -116,6 +123,7 @@ public:
     SOM_FUNCS(
       SOM_FUNC(stringSum),
       SOM_FUNC(integerSum),
+      SOM_FUNC(bytesSum),
       SOM_FUNC(vectorIntegerMul),
       SOM_FUNC(makeNativeObject),
       SOM_FUNC(startNativeThread),
@@ -165,7 +173,8 @@ public:
       case BUTTON_CLICK:
         if (target.test("button#test-script-func-1")) {
           // call free function, passing integer value:
-          this->call_function("scriptFunc", ++counter);
+          sciter::value rv = this->call_function("scriptFunc", ++counter);
+          assert(rv.get<int>() == counter);
           return true;
         } 
         else if (target.test("button#test-script-func-2")) 

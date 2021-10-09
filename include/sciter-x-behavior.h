@@ -439,7 +439,7 @@ typedef SBOOL SC_CALLBACK SciterBehaviorFactory( LPCSTR, HELEMENT, LPElementEven
       CONTEXT_MENU_REQUEST = 0x10,   // "right-click", BEHAVIOR_EVENT_PARAMS::he is current popup menu HELEMENT being processed or NULL.
                                      // application can provide its own HELEMENT here (if it is NULL) or modify current menu element.
 
-      VISIUAL_STATUS_CHANGED = 0x11, // broadcast notification, sent to all elements of some container being shown or hidden
+      VISUAL_STATUS_CHANGED = 0x11,  // broadcast notification, sent to all elements of some container being shown or hidden
       DISABLED_STATUS_CHANGED = 0x12,// broadcast notification, sent to all elements of some container that got new value of :disabled state
 
       POPUP_DISMISSING = 0x13,       // popup is about to be closed
@@ -500,6 +500,8 @@ typedef SBOOL SC_CALLBACK SciterBehaviorFactory( LPCSTR, HELEMENT, LPElementEven
                                      //   4. call sciter::video_destination::start_streaming(...) providing needed parameters
                                      //      call sciter::video_destination::render_frame(...) as soon as they are available
                                      //      call sciter::video_destination::stop_streaming() to stop the rendering (a.k.a. end of movie reached)
+
+      VIDEO_FRAME_REQUEST = 0xD8,    // animation step, a.k.a. animation frame
 
       PAGINATION_STARTS  = 0xE0,     // behavior:pager starts pagination
       PAGINATION_PAGE    = 0xE1,     // behavior:pager paginated page no, reason -> page no

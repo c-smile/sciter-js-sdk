@@ -26,6 +26,7 @@ let end =   { x: 250,   y: 100 };
 
 // Cubic Bézier curve
 ctx.beginPath();
+ctx.strokeStyle = 'black';
 ctx.moveTo(start.x, start.y);
 ctx.bezierCurveTo(cp1.x, cp1.y, cp2.x, cp2.y, end.x, end.y);
 ctx.stroke();

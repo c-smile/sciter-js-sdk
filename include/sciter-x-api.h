@@ -714,8 +714,8 @@ inline ISciterAPI *_SAPI(ISciterAPI *ext) {
 #endif
 
   inline UINT64 SCAPI SciterAtomValue(const char* name) { return SAPI()->SciterAtomValue(name); }
-  inline UINT64 SCAPI SciterAtomNameCB(UINT64 atomv, LPCSTR_RECEIVER* rcv, LPVOID rcv_param) { return SAPI()->SciterAtomNameCB(atomv, rcv, rcv_param); }
-  inline SBOOL   SCAPI SciterSetGlobalAsset(som_asset_t* pass) { return SAPI()->SciterSetGlobalAsset(pass); }
+  inline SBOOL  SCAPI SciterAtomNameCB(UINT64 atomv, LPCSTR_RECEIVER* rcv, LPVOID rcv_param) { return SAPI()->SciterAtomNameCB(atomv, rcv, rcv_param); }
+  inline SBOOL  SCAPI SciterSetGlobalAsset(som_asset_t* pass) { return SAPI()->SciterSetGlobalAsset(pass); }
 
   inline UINT   SCAPI SciterElementUnwrap(const VALUE* pval, HELEMENT* ppElement) { return SAPI()->SciterElementUnwrap(pval, ppElement); }
   inline UINT   SCAPI SciterElementWrap(VALUE* pval, HELEMENT pElement) { return SAPI()->SciterElementWrap(pval, pElement); }

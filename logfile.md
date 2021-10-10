@@ -1,3 +1,17 @@
+## 4.4.8.14
+
+### New features:
+
+* [JSX built-in internalization / translation](docs/md/reactor/JSX-i18n.md) support. Works with Reactor, ReactJS, PReact, Mithril - all libraries that provide JSX driver.
+* `debug.callStackAt(level)` method, see: https://sciter.com/forums/topic/get-js-function-name-within-function/
+* `Event.keyState("A"):boolean` - is key "A" pressed or not at the moment?
+
+### Fixes:
+
+* `slider.max` property handling fix.
+* `SciterSetValue` / `SciterGetValue` to obey property `value` defined in script.
+* `behavior:menu-bar`, keyboard operation fix.
+
 ## 4.4.8.13
 
 ### Fixes:
@@ -81,13 +95,15 @@
 * `overflow:scroll`, fix of non-overflow SB rendering. 
 * [debugging] drain logs (a.k.a. flush) before document unload. See: https://sciter.com/forums/topic/wait-for-closerequest-function-calls-to-complete/
 * leaflet.js compatibility fix, by adding document.createElementNS();  
-* command event "^exec:***" handling fix;
+* command event `"^exec:***"` handling fix;
 * [VirtualList] fix of `render()`;
 * [websocket] fix of AV in `new WebSocket("badaddr")`;
 * `Clipboard.has("image"|"file"|"text")` - check if clipboard has needed data;
 * `self` - yet another alias to current namespace ( `self == globalThis` ) 
 * fix of splitter handling in Sciter.Lite.
 * fix of element.click() event click generation.
+
+
 
 ### New features:
 

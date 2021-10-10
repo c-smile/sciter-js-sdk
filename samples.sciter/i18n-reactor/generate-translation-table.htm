@@ -1,0 +1,91 @@
+﻿<html>
+  <head>
+    <title>Translation Table Generator</title>
+    
+    <style></style>
+    
+    <script>
+      
+      // translation table
+      let translation = {};
+
+      // these tags will be automatically put into translation table
+      JSX_translateTags = {
+         caption: true,
+         p: true,
+         label: true,
+      };
+
+      JSX_translateText = function(text, attrOrTag, isText, fileName, lineNo) {
+        translation[text] = {
+          type: isText ? "text" : "attribute",
+          text,
+          attrOrTag,
+          fileName,
+          lineNo
+        };
+        return text;
+      }
+
+      JSX_translateNode = function(node, translationId, fileName, lineNo) {
+
+        let text_counter = 0;
+        let number_counter = 0;
+        let else_counter = 0;
+
+        function pdef(kid) {
+          const t = typeof kid;
+          if( t == "number" ) return "n" + (++number_counter);
+          else if( t == "string" ) return "t" + (++text_counter);
+          else return "e" + (++else_counter);
+        }
+
+        translation[translationId] = {
+          type:"node",
+          parameters: node[2].map(pdef),
+          details: node[2].join(""),
+          fileName: fileName,
+          lineNo: lineNo
+        };
+        return node;
+      }
+
+      document.on("click", "button#to-clipboard", function() {
+        let text = "{";
+        function emit_attribute(key,def) {
+          return `  // attribute ${def.attrOrTag}
+  // file ${def.fileName}(${def.lineNo})
+  "${key}":"${key}"`;
+        }
+        function emit_text(key,def) {
+          return `  // text of ${def.attrOrTag}
+  // file ${def.fileName}(${def.lineNo})
+  "${key}":"${key}"`
+        }
+
+        function emit_node(key,def) {
+          return `  // node: ${def.details}
+  // file ${def.fileName}(${def.lineNo})
+  "${key}": function(${def.parameters.join(",")}) { return null; }`; /*use node as it is by default*/
+        }
+        
+        for (const [key, def] of Object.entries(translation)) {
+          switch( def.type ) {
+            case "text": text += "\r\n" + emit_text(key,def) + ",\r\n"; break;
+            case "attribute": text += "\r\n" + emit_attribute(key,def) + ",\r\n"; break;
+            case "node": text += "\r\n" + emit_node(key,def) + ",\r\n"; break;
+          }
+        }
+        text += "\r\n}";
+        Clipboard.writeText(text);
+      });
+
+    </script>
+    
+  </head>
+  <body>
+    <button#to-clipboard>Put table to clipboard</button>
+    <frame lang="en" src="app.htm" />
+  </body>
+</html>
+

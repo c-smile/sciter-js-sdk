@@ -1,0 +1,33 @@
+﻿<html>
+    <head>
+        <title>Test</title>
+        <style></style>
+        <script|module>
+
+class App extends Element {
+
+    nmatches = 0;
+
+    render() {
+        return <body>
+            <p @title="Title test" @>UI language</p>
+            <hr/>
+            Tests: <span @>first test</span>, <span @>second test</span>
+            <hr/>
+            <label>Matches</label> : <input|integer(nmatches) min=0 max=100 step=1 value={this.nmatches} />
+            <p @>{this.nmatches} matches</p>
+        </body>;
+    }
+
+    ["on change at input(nmatches)"](evt,input) {
+        this.componentUpdate { nmatches:input.value };
+    }
+}
+
+document.body.patch(<App />);
+
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

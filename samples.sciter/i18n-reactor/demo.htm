@@ -1,0 +1,60 @@
+﻿<html>
+  <head>
+    <title>Basic UI translation sample</title>
+    
+    <style></style>
+    
+    <script>
+      
+      // translation table
+      let translation = {};
+
+      // these tags will be automatically put into translation table
+      JSX_translateTags = {
+         caption: true,
+         p: true,
+         label: true,
+      }
+
+      JSX_translateText = function(text) {
+        return translation[text] || text;           
+      }
+
+      JSX_translateNode = function(node, translationId) {
+        const handler = translation[translationId];
+        if(typeof handler != "function") return node; // as it is
+        let translatedText = handler(...node[2]); // pass list of kids as arguments
+        if(!translatedText) return node;
+        return JSX(node[0],node[1],[translatedText]); // synthesize new node
+      }
+
+      function loadTranslation(lang) {
+        let table = fetch(__DIR__ + "langs/" + lang + ".js", {sync:true}).text();
+        translation = eval("(" + table + ")");
+      }
+
+      document.on("input", "select#lang", function(evt,select) {
+          const lang = select.value;
+          loadTranslation(lang);
+          const frameEl = document.$("frame");
+          frameEl.attributes["lang"] = lang;
+          frameEl.frame.loadFile(frameEl.frame.document.url());
+      });
+
+      loadTranslation("en");
+
+    </script>
+    
+  </head>
+  <body>
+    <h2>Basic UI translation sample</h2>
+    <select #lang>
+      <option value="en">English</option>
+      <option value="ru">Русский</option>
+      <option value="zh">中文</option>
+      <option value="ar">Arabic</option>
+    </select>
+    <frame lang="en" src="app.htm" />
+  </body>
+</html>
+

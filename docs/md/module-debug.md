@@ -15,7 +15,9 @@ Debug and log can be viewed in `Inspector` application.
 
 ## functions:
 
-* `setUnhandledExeceptionHandler(function)` - handle unhandeld exceptions
+* `setUnhandledExeceptionHandler(function)` 
+ 
+  Catch unhandeld exceptions.
 
   ```js
   import * as debug from "@debug";
@@ -25,9 +27,11 @@ Debug and log can be viewed in `Inspector` application.
   });
   ```
 
-* `setConsoleOutputHandler(function)` - redirect console output
+* `setConsoleOutputHandler(function)` 
+ 
+  Redirect console output.
 
-  works when the application is not connected to the inspector. [https://sciter.com/forums/topic/debug-2/](https://sciter.com/forums/topic/debug-2/)
+  Works when the application is not connected to the inspector. [https://sciter.com/forums/topic/debug-2/](https://sciter.com/forums/topic/debug-2/)
 
   ```js
   import * as debug from "@debug";
@@ -42,6 +46,20 @@ Debug and log can be viewed in `Inspector` application.
     return true;
   });
   ```
+
+* `callStackAt(level:integer):object`
+
+  Gets call stack item at _level_
+
+  Returns object with the fields:
+
+  * `isNative` - boolean, true if that call stack frame is of native function;
+  * `functionName` - string;
+  * `functionLineNo` - line number of function declaration;
+  * `fileName` - string;
+  * `lineNo` - line number inside the function;
+
+  Use `callStackAt(0)` to get info about current function.
 
 * `setResourceArrivalHandler(function)`
 * `setBreakpointHandler()`

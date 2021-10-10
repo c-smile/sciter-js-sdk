@@ -79,7 +79,7 @@ In some cases we need more complex translation processing than just static case.
 
 ```JS
 render() {
-  return <span>{n} bottles</span>;
+  return <span @>{n} bottles</span>;
 }
 ```
 Idealy we should have output like these: "no bottles", "1 bottle", "2 bottles" ... 

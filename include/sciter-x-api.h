@@ -451,7 +451,7 @@ typedef ISciterAPI* (SCAPI *SciterAPI_ptr)();
 
 // typedef ISciterAPI* SCAPI (*SciterAPI_ptr)();
 
-inline ISciterAPI *_SAPI(ISciterAPI *ext) {
+extern inline ISciterAPI *_SAPI(ISciterAPI *ext) {
   static ISciterAPI *_api = NULL;
   if (ext) _api = ext;
   if (!_api) {
@@ -504,7 +504,7 @@ inline ISciterAPI *_SAPI(ISciterAPI *ext) {
 #endif
 
 
-  inline ISciterAPI* SAPI() {
+  extern inline ISciterAPI* SAPI() {
 #if defined(__cplusplus) && !defined(PLAIN_API_ONLY)
     static ISciterAPI* _api = _SAPI(NULL);
 #else 

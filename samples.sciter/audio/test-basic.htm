@@ -8,7 +8,13 @@
   
           document.on("click", "button#play", async function(evt,btn) {
             btn.state.disabled = true;
-            audio = await Audio.load(__DIR__ + "/hasta-lavista-baby.mp3");
+
+            try {
+              audio = await Audio.load(__DIR__ + "/hasta-lavista-baby.mp3");
+            } catch (e) {
+              console.log(`${e.message}`);
+            }
+
             await audio.play();
             btn.state.disabled = false;
           });

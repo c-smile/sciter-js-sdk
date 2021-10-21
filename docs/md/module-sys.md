@@ -24,15 +24,87 @@ sys is built on top of [libuv](https://github.com/libuv/libuv) that Sciter.JS us
 
 ## `sys.fs` namespace - file system.
 
-#### functions
+### functions
 
-* `fs.open(path, flags[, mode]): promise(File)` - [flags](https://nodejs.org/api/fs.html#fs_fspromises_open_path_flags_mode), mode sets the file mode (permission and sticky bits) if the file is created. Default: 0o666
-* `fs.stat(): promise(stat)`
-* `fs.$stat(): stat` - sync version of the above;
-* `fs.lstat(): promise(stat)`
-* `fs.$lstat(): stat` - sync version of the above;
+* #### `fs.open(path:string, flags:string [, mode:integer]): Promise(File)` 
+
+  Opens file at path.
+
+  _flags_ <string> :
+
+  * 'a': Open file for appending. The file is created if it does not exist.
+  * 'ax': Like 'a' but fails if the path exists.
+  * 'a+': Open file for reading and appending. The file is created if it does not exist.
+  * 'ax+': Like 'a+' but fails if the path exists.
+  * 'as': Open file for appending in synchronous mode. The file is created if it does not exist.
+  * 'as+': Open file for reading and appending in synchronous mode. The file is created if it does not exist.
+  * 'r': **default value**, Open file for reading. An exception occurs if the file does not exist.
+  * 'r+': Open file for reading and writing. An exception occurs if the file does not exist.
+  * 'rs+': Open file for reading and writing in synchronous mode. Instructs the operating system to bypass the local file system cache.
+
+    This is primarily useful for opening files on NFS mounts as it allows skipping the potentially stale local cache. It has a very real impact on I/O performance so using this flag is not recommended unless it is needed.
+
+    This doesn't turn fs.open() or fsPromises.open() into a synchronous blocking call. If synchronous operation is desired, something like fs.$open() should be used.
+
+  * 'w': Open file for writing. The file is created (if it does not exist) or truncated (if it exists).
+  * 'wx': Like 'w' but fails if the path exists.
+  * 'w+': Open file for reading and writing. The file is created (if it does not exist) or truncated (if it exists).
+  * 'wx+': Like 'w+' but fails if the path exists.
+
+  _mode_ Sets the file mode (permission and sticky bits) if the file is created. Default: 0o666 (readable and writable)
+
+  Returns: _Promise_ that will be fulfilled with a _fs.File_ object.
+
+  Refer to the POSIX open() documentation for more detail.
+
+  Some characters (`< > : " / \ | ? *`) are reserved under Windows as documented by Naming Files, Paths, and Namespaces. Under NTFS, if the filename contains a colon, Node.js will open a file system stream, as described by this MSDN page.
+
+* #### `fs.$open(path:string, flags:string [, mode:integer]): File` 
+
+  Synchronous version of `fs.open()`. Returns fs.File object, see below.  
+
+* #### `fs.stat(path:string): Promise(stat)`
+
+  Returns primise that resolves to the _stat_ structure (object) having this fields:
+  ```C++
+    int64     st_dev;      /* ID of device containing file */
+    int64     st_ino;      /* inode number */
+    int32     st_mode;     /* protection */
+    int64     st_nlink;    /* number of hard links */
+    int64     st_uid;      /* user ID of owner */
+    int64     st_gid;      /* group ID of owner */
+    int64     st_rdev;     /* device ID (if special file) */
+    int64     st_size;     /* total size, in bytes */
+    int64     st_blksize;  /* blocksize for file system I/O */
+    int64     st_blocks;   /* number of 512B blocks allocated */
+    float64   st_atime;    /* time of last access, seconds since 1970 */
+    float64   st_mtime;    /* time of last modification, seconds since 1970 */
+    float64   st_ctime;    /* time of last status change, seconds since 1970 */
+    float64   st_birthtime;/* time of creation, seconds since 1970 */
+  ```
+  Additionally it may have one of these:
+
+  * isFile, true is that is a file
+  * isDirectory, true is that is a directory
+  * isSymbolicLink, true is that is a link
+
+* #### `fs.$stat(): stat` - sync version of the above;
+
+  Synchronous version of the above.
+
+* #### `fs.lstat(): promise(stat)`
+
+  See [lstat](https://linux.die.net/man/2/lstat)
+
+* #### `fs.$lstat(): stat` - sync version of the above;
 * `fs.realpath()`
-* `fs.unlink()`
+
+* #### `fs.unlink(path:string) : Promise`
+   
+  Deletes the file.  If path refers to a symbolic link, then the link is removed without affecting the file or directory to which that link refers. If the path refers to a file path that is not a symbolic link, the file is deleted. See the POSIX unlink documentation for more detail.
+  ```JS
+    async function deleteFile(path) { await sys.fs.unlink(path) }
+  ```
 * `fs.rename()`
 * `fs.mkdtemp()`
 * `fs.mkstemp()`
@@ -46,13 +118,16 @@ sys is built on top of [libuv](https://github.com/libuv/libuv) that Sciter.JS us
 * [`fs.watch()`](sys.fs/watch.md)
 * [`fs.splitpath()`](sys.fs/splitpath.md)
 
-#### classes
+## classes
 
 ### fs.File class - represents file. 
 
 * `file.read([lengthToRead:int [, filePosition:int]]): Promise(Uint8Array)`
+* `file.$read([lengthToRead:int [, filePosition:int]]): Uint8Array`
 * `file.write(string|***Array|ArrayBuffer[,filePosition:int]) : Promise(result:int)` 
-* `file.close() : Promise(result:int)`
+* `file.$write(string|***Array|ArrayBuffer[,filePosition:int]) : int` 
+* `file.close() : Promise(undefined)`
+* `file.$close() : undefined
 * `file.fileno() : int`
 * `file.stat() : Promise(object)`
 * `file.path : string`

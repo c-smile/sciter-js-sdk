@@ -4,7 +4,7 @@ Audio represents an object that allows to play audio, e.g. mp3 files.
 
 #### static methods:
 
-* `Audio.load(url): Promise(audio)` - load audio file and return promise that will be resolved to Audio object. throws exception if file not found.
+* `Audio.load(url): Promise(audio)` - load audio file and return promise that will be resolved to Audio object. throws "404" exception if file not found.
 
 #### properties:
 

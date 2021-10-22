@@ -11,17 +11,19 @@
 
             try {
               audio = await Audio.load(__DIR__ + "/hasta-lavista-baby.mp3");
+              await audio.play();
             } catch (e) {
-              console.log(`${e.message}`);
+              console.log(e);
             }
 
-            await audio.play();
             btn.state.disabled = false;
           });
 
           document.on("click", "button#stop", function(evt,btn) {
-            audio.stop();
-            audio = null;
+            if (audio) {
+              audio.stop();
+              audio = null;
+            }
           });
 
         </script>

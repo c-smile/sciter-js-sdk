@@ -9,15 +9,15 @@
 
               try {
                 audio = await Audio.load(__DIR__ + "/hasta-lavista-baby.mp3");
-              } catch (e) {
-                console.log(`${e.message}`);
-              }
 
-              audio.play();
-              await new Promise((resolve) => setTimeout(resolve, 1500));
-              audio.pause();
-              await new Promise((resolve) => setTimeout(resolve, 1000));
-              audio.resume();
+                audio.play();
+                await new Promise((resolve) => setTimeout(resolve, 1000));
+                audio.pause();
+                await new Promise((resolve) => setTimeout(resolve, 1000));
+                audio.resume();
+              } catch (e) {
+                console.log(e);
+              }
             });
 
         </script>

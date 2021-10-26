@@ -221,6 +221,10 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
    
     request to update (draw) the window
 
+  * #### `window.activate(bringToFront: bool)`
+
+    set input focus on window
+
   * #### `window.trayIcon({image: Graphics.Image, text: string})` 
    
     show tray icon with the image and tooltip text.

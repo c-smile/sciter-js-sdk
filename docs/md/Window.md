@@ -245,6 +245,10 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
     
     instance of Window class - this window reference;
 
+  * #### `Window.caption: string`
+
+    read/write window title;
+
   * #### `Window.screens: int` 
     
     returns number of screens (monitors) in the system;

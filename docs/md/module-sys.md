@@ -94,6 +94,8 @@ sys is built on top of [libuv](https://github.com/libuv/libuv) that Sciter.JS us
 
 * #### `fs.lstat(): promise(stat)`
 
+  lstat() is identical to stat(), except that if path is a symbolic link, then the link itself is stat-ed, not the file that it refers to.
+
   See [lstat](https://linux.die.net/man/2/lstat)
 
 * #### `fs.$lstat(): stat` - sync version of the above;

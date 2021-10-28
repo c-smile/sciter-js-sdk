@@ -66,6 +66,7 @@ sys is built on top of [libuv](https://github.com/libuv/libuv) that Sciter.JS us
 * #### `fs.stat(path:string): Promise(stat)`
 
   Returns promise that resolves to the _stat_ structure (object) having these fields:
+
   ```C++
     int64     st_dev;      /* ID of device containing file */
     int64     st_ino;      /* inode number */
@@ -82,6 +83,9 @@ sys is built on top of [libuv](https://github.com/libuv/libuv) that Sciter.JS us
     float64   st_ctime;    /* time of last status change, seconds since 1970 */
     float64   st_birthtime;/* time of creation, seconds since 1970 */
   ```
+
+  Throws an `Error` exception if the file/dir does not exist.
+
   Additionally it may have one of these:
 
   * isFile, true is that is a file
@@ -90,7 +94,7 @@ sys is built on top of [libuv](https://github.com/libuv/libuv) that Sciter.JS us
 
 * #### `fs.$stat(): stat` - sync version of the above;
 
-  Synchronous version of the above.
+  Synchronous version of the above. Returns null if the file/dir does not exist.
 
 * #### `fs.lstat(): promise(stat)`
 

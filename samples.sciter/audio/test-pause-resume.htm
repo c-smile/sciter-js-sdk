@@ -5,12 +5,19 @@
         <script>
 
           document.on("click", "button#play", async function(evt,btn) {
-              var audio = await Audio.load(__DIR__ + "/hasta-lavista-baby.mp3");
-              audio.play();
-              await new Promise((resolve) => setTimeout(resolve, 1500));
-              audio.pause();
-              await new Promise((resolve) => setTimeout(resolve, 1000));
-              audio.resume();
+              var audio;
+
+              try {
+                audio = await Audio.load(__DIR__ + "/hasta-lavista-baby.mp3");
+
+                audio.play();
+                await new Promise((resolve) => setTimeout(resolve, 1000));
+                audio.pause();
+                await new Promise((resolve) => setTimeout(resolve, 1000));
+                audio.resume();
+              } catch (e) {
+                console.log(e);
+              }
             });
 
         </script>

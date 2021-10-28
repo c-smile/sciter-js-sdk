@@ -8,14 +8,22 @@
   
           document.on("click", "button#play", async function(evt,btn) {
             btn.state.disabled = true;
-            audio = await Audio.load(__DIR__ + "/hasta-lavista-baby.mp3");
-            await audio.play();
+
+            try {
+              audio = await Audio.load(__DIR__ + "/hasta-lavista-baby.mp3");
+              await audio.play();
+            } catch (e) {
+              console.log(e);
+            }
+
             btn.state.disabled = false;
           });
 
           document.on("click", "button#stop", function(evt,btn) {
-            audio.stop();
-            audio = null;
+            if (audio) {
+              audio.stop();
+              audio = null;
+            }
           });
 
         </script>

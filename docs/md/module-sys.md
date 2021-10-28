@@ -65,7 +65,7 @@ sys is built on top of [libuv](https://github.com/libuv/libuv) that Sciter.JS us
 
 * #### `fs.stat(path:string): Promise(stat)`
 
-  Returns primise that resolves to the _stat_ structure (object) having this fields:
+  Returns promise that resolves to the _stat_ structure (object) having these fields:
   ```C++
     int64     st_dev;      /* ID of device containing file */
     int64     st_ino;      /* inode number */
@@ -101,20 +101,21 @@ sys is built on top of [libuv](https://github.com/libuv/libuv) that Sciter.JS us
 
 * #### `fs.unlink(path:string) : Promise`
    
-  Deletes the file.  If path refers to a symbolic link, then the link is removed without affecting the file or directory to which that link refers. If the path refers to a file path that is not a symbolic link, the file is deleted. See the POSIX unlink documentation for more detail.
+  Deletes the file. If path refers to a symbolic link, then the link is removed without affecting the file or directory to which that link refers. If the path refers to a file path that is not a symbolic link, the file is deleted. See the POSIX unlink documentation for more detail.
   ```JS
     async function deleteFile(path) { await sys.fs.unlink(path) }
   ```
-* `fs.rename()`
-* `fs.mkdtemp()`
-* `fs.mkstemp()`
-* `fs.rmdir()`
-* `fs.$mkdir(path)` - creates folder (synchronous).
-* `fs.copyfile()`
-* `fs.readdir()`
+
+* `fs.rename() : Promise` - async file rename
+* `fs.mkdtemp(template:string) : Promise(result:string)` - create unique temporary dir. The last six characters of template must be "XXXXXX"
+* `fs.mkstemp(template:string) : Promise` - create unique temporary file. The last six characters of template must be "XXXXXX"
+* `fs.rmdir(path) : Promise` - async delete dir
+* `fs.$mkdir(path) : boolean` - creates folder (synchronous)
+* `fs.copyfile() : Promise` - async file copy
+* `fs.readdir() : Promise` - async read dir
 * `fs.$readdir(): filelist` - reads folder content synchronously
-* `fs.readfile() : promise` - async fileread;
-* `fs.$readfile() : ArrayBuffer` - synchronous version of the above; 
+* `fs.readFile() : Promise` - async file read;
+* `fs.$readfile() : ArrayBuffer` - synchronous version of the above;
 * [`fs.watch()`](sys.fs/watch.md)
 * [`fs.splitpath()`](sys.fs/splitpath.md)
 
@@ -212,7 +213,3 @@ sys is built on top of [libuv](https://github.com/libuv/libuv) that Sciter.JS us
 * `sys.tmpdir()`
 * `sys.exepath()`
 * `sys.random()`
-
-
-
-

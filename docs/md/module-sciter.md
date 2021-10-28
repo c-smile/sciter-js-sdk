@@ -72,15 +72,17 @@ Returns [uuid](https://en.wikipedia.org/wiki/Universally_unique_identifier) as a
 
 </details>
 <details>
-<summary><code>encode(text:string,[encoding]):arrayBuffer</code></summary>
+<summary><code>encode(text:string, [encoding:string="utf-8"]):arrayBuffer</code></summary>
 
-Returns encoded _text_ as arrayBuffer. Default _encoding_ is "utf-8".
+Encodes text to sequence of bytes (ArrayBuffer). Default _encoding_ is "utf-8".
+
+  _encoding_ is [IANA encoding](https://www.iana.org/assignments/character-sets/character-sets.xhtml) identifier
 
 </details>
 <details>
-<summary><code>decode(bytes:arrayBuffer,[encoding]):string</code></summary>
+<summary><code>decode(bytes:arrayBuffer, [encoding:string="utf-8"]):string</code></summary>
 
-Returns decoded bytes as string. Default _encoding_ is "utf-8".
+Decodes sequence of bytes of buffer to string. Default _encoding_ is "utf-8".
 
 </details>
 <details>

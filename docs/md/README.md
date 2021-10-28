@@ -37,16 +37,6 @@
 
   Takes *input* string and parses it according the *format* specification using C-style [scanf conventions](https://en.cppreference.com/w/c/io/fscanf). Returns list (array) of successfully parsed values. 
 
-* #### `encode(text: string, encoding: string="utf-8") : ArrayBuffer` 
-
-  Encodes text to sequence of bytes (ArrayBuffer). 
-
-  _ encoding_ is [IANA encoding](https://www.iana.org/assignments/character-sets/character-sets.xhtml) identifier 
-
-* #### `decode(buffer: ArrayBuffer, encoding: string) : string`
-
-  Decodes sequence of bytes of buffer to string.
-
 * #### `btoa(buffer: ArrayBuffer) : string`
 
   Produces Base64 string from binary data. 

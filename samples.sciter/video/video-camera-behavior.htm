@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <title></title>
+    <style>
+  
+    video.camera {
+    
+      behavior: camera video;
+      
+      width: *;
+      height: *;
+      border:1px solid black;
+      foreground-size:contain;
+    }
+    
+    #device-list { width:max-content; }
+
+    #device-list > button { display:block; }
+    
+    #container { flow:horizontal; size:*; }
+    
+    </style>
+    <script|module>
+
+    const dl = document.$("#device-list");
+    const video = document.$("video.camera");
+    
+    document.on("ready", function() {
+
+      for( let dname of video.camera.devices )
+        dl.append(<button|radio>{ dname }</button>);
+
+    });
+
+    dl.on("click", "button", function(evt, button) {
+        video.camera.streamFrom( button.elementIndex );
+    });
+
+    </script>
+  </head>
+<body>
+
+  <p>In order this demo to work you will need to enable camera capture in sdk/incluse/behaviors/behavior_camera_capture.cpp</p>  
+
+  <div #container>
+    <video.camera />
+    <section>
+      Select camera device: 
+      <div #device-list></div>
+      <!--<img src="res:busy.png">-->
+    <section>
+  </div>
+
+</body>
+</html>

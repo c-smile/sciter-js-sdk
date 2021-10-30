@@ -139,6 +139,7 @@ project "usciter"
            "include/sciter-win-main.cpp",
            "include/behaviors/behavior_drawing.cpp",
            "include/behaviors/behavior_video_generator.cpp",
+           "include/behaviors/behavior_camera_capture.cpp",
            "demos/usciter/win-res/usciter.rc",
            "demos/usciter/win-res/dpi-aware.manifest" }
     prebuildcommands { 

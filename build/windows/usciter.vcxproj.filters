@@ -119,6 +119,9 @@
     <ClCompile Include="..\..\demos\usciter\usciter.cpp">
       <Filter>demos\usciter</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\include\behaviors\behavior_camera_capture.cpp">
+      <Filter>include\behaviors</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\include\behaviors\behavior_drawing.cpp">
       <Filter>include\behaviors</Filter>
     </ClCompile>

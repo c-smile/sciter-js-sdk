@@ -1,9 +1,10 @@
-#include "stdafx.h"
-#include "sciter-x-dom.hpp"
-#include "sciter-x-behavior.h"
+
+#include "sciter-x.h"
 
 #if TRUE // change it to FALSE to disable camera functionality
 
+#include <vector>
+#include <string>
 #include "camera/camera-capture.h"
 #include "camera/camera-capture.cpp"
 
@@ -49,6 +50,7 @@ struct camera_stream: public event_handler
       return true;
     }
 
+    /*
     sciter::value get_devices() {
       camera::device_list devices;
       devices.enumerate_devices();
@@ -74,6 +76,36 @@ struct camera_stream: public event_handler
       FUNCTION_0("devices",get_devices)    // devices() : (array of strings), get list of names of devices 
       FUNCTION_1("streamFrom",stream_from) // streamFrom(indexOrName: int | string), start streaming from the camera
     END_FUNCTION_MAP
+    */
+
+    std::vector<sciter::string> get_devices() {
+      camera::device_list devices;
+      devices.enumerate_devices();
+      std::vector<sciter::string> out;
+      for (unsigned n = 0; n < devices.count(); ++n) {
+        sciter::string name;
+        if (devices.get_device_name(n, name))
+          out.push_back(name);
+      }
+      return out;
+    }
+   
+    bool stream_from(const sciter::value& device) // either int (index) or string (name)
+    {
+      if (pcapt)
+        pcapt->end_capture();
+      pcapt = camera::capture::create_instance(rendering_site, device);
+      return true;
+    }
+
+    SOM_PASSPORT_BEGIN_EX(camera, camera_stream)
+      SOM_PROPS(
+        SOM_RO_VIRTUAL_PROP(devices, get_devices),
+      )
+      SOM_FUNCS(
+        SOM_FUNC_EX(streamFrom, stream_from),
+      )
+    SOM_PASSPORT_END
    
 };
 

@@ -689,6 +689,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\demos\usciter\usciter.cpp" />
+    <ClCompile Include="..\..\include\behaviors\behavior_camera_capture.cpp" />
     <ClCompile Include="..\..\include\behaviors\behavior_drawing.cpp" />
     <ClCompile Include="..\..\include\behaviors\behavior_video_generator.cpp" />
     <ClCompile Include="..\..\include\sciter-win-main.cpp" />

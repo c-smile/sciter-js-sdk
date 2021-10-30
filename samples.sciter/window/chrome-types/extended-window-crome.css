@@ -49,6 +49,8 @@
   html[window-state="maximized"] { border-color:transparent; }
   html[window-state="maximized"] > window-header > window-buttons > window-button[role="window-maximize"] { foreground-image: url(path:M0 2 h8 v8 h-8 Z M2 2 v-2 h8 v8 h-2); }
 
+  html[window-state="full-screen"] { border-width:0; }
+
   html > window-header > window-buttons > window-button[role="window-minimize"] { foreground-image: url(path:M0 0 M0 5 H10 M10 10); }
 
   html > window-header > window-icon {

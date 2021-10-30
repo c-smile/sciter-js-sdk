@@ -5,9 +5,10 @@
         <script|module>
 
 import * as sys from "@sys";
+import * as srt from "@sciter";
 
-document.on("click", "button", async function() {
-   const path = URL.toPath(__DIR__ + "test.txt");
+document.on("click", "#async", async function() {
+   const path = URL.toPath(__DIR__ + "test1.txt");
    console.log(path);
 
    const file = await sys.fs.open(path, "w+", 0o666)
@@ -18,12 +19,26 @@ document.on("click", "button", async function() {
    await file.close();
 });
 
+document.on("click", "#sync", function() {
+   const path = URL.toPath(__DIR__ + "test2.txt");
+   console.log(path);
+
+   const file = sys.fs.$open(path, "w+", 0o666);
+
+   const element = document.$("input");
+
+   file.$write( srt.encode(element.value,"utf-8"));
+   file.$close();
+});
+
+
         </script>
     </head>
     <body>
 
 <input|text placeholder="text to write" />
-<button>write to test.txt</button>
+<button#async>write to test.txt, async</button>
+<button#sync>write to test.txt, sync</button>
 
     </body>
 </html>

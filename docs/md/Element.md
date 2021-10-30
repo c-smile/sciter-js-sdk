@@ -249,8 +249,9 @@ class Element represents DOM element and extends [Node](Node.md) and so all its 
 
   *params* may contain following fields:
 
-  * `params.duration` - integer, milliseconds - duration of the animation;
+  * `params.duration` - integer, optional, milliseconds - duration of the animation;
   * `params.ease` - string, optional, name of ease function, see [params.ease](#animate-ease) above. This parameter determines curvature of *progress* values. 
+  * `params.FPS` - integer, times per second - frequency of the _step_ function calls;
 
 ---
 

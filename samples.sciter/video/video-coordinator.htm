@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+    main {
+      size:*;
+      flow:horizontal-wrap;
+    }
+
+    video.generator {
+      behavior: video-generator video;
+      width:*;
+      height:80px;
+      foreground-size:contain;
+      border:1px solid #000;
+    }
+
+    video.generator:nth-child(5n) {
+      clear:after; // row wrap
+    }
+
+        </style>
+        <script>
+
+class Videos extends Element
+{
+  render() {
+    var videos = [];
+    for(var n = 0; n < 25; ++n)
+      videos.push(<video.generator />);
+    return <main>{videos}</main>;
+  }
+
+  
+  componentDidMount() {
+    const step = () => { 
+        this.requestPaint(); // draw all contained video at once
+        return true; // keep running
+    };
+    this.animate(step, {FPS:30});
+  }  
+
+  ["on videocoordinate"](evt) {
+    evt.source = this; // this will be video coordinator
+    return true; // consume
+  }
+}
+
+document.ready = function() {
+     
+  var deltas = [1];
+  var ptick = Window.ticks();
+  
+  this.paintForeground = function(gfx) {
+    var tick = Window.ticks();
+    deltas.push( tick - ptick );
+    if( deltas.length > 10 )
+      deltas.shift();
+    ptick = tick;
+    var avdelta = deltas.reduce((a,b) => a + b) / deltas.length;
+    Window.this.caption = "FPS:" + (1000 / avdelta).toString();
+  };
+}
+
+document.body.append(<Videos/>);
+
+        </script>
+    </head>
+    <body>
+
+<p>Coordinated video output, this video coordinator component synchronizes output of all 25 video with ~30 FPS.</p>
+
+
+    </body>
+</html>

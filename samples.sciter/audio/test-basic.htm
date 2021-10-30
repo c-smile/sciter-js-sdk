@@ -10,8 +10,8 @@
             btn.state.disabled = true;
 
             try {
-              audio = await Audio.load(__DIR__ + "/hasta-lavista-baby.mp3");
-              await audio.play();
+            audio = await Audio.load(__DIR__ + "/hasta-lavista-baby.mp3");
+            await audio.play();
             } catch (e) {
               console.log(e);
             }
@@ -21,8 +21,8 @@
 
           document.on("click", "button#stop", function(evt,btn) {
             if (audio) {
-              audio.stop();
-              audio = null;
+            audio.stop();
+            audio = null;
             }
           });
 

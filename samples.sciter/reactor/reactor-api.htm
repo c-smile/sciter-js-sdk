@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+#cloned { background:gold; }
+[key="some"] { color:green; }
+
+        </style>
+        <script>
+
+const vnode = <div id="bar" key="some">some text</div>;
+
+
+function Content() {
+  return <main>
+    <p>Reactor.isNode(n): { Reactor.isNode(vnode) }</p>
+    <p>Reactor.tagOf(n): { Reactor.tagOf(vnode) }</p>
+    <p>Reactor.propsOf(n): { JSON.stringify(Reactor.propsOf(vnode)) }</p>
+    <div>Reactor.cloneOf(n): { Reactor.cloneOf(vnode,{id:"cloned"},["cloned"]) }</div>
+  </main>;
+}
+
+document.body.content(<Content/>)
+
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

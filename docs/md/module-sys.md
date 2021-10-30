@@ -103,11 +103,12 @@ sys is built on top of [libuv](https://github.com/libuv/libuv) that Sciter.JS us
   See [lstat](https://linux.die.net/man/2/lstat)
 
 * #### `fs.$lstat(): stat` - sync version of the above;
+
 * `fs.realpath()`
 
 * #### `fs.unlink(path:string) : Promise`
    
-  Deletes the file. If path refers to a symbolic link, then the link is removed without affecting the file or directory to which that link refers. If the path refers to a file path that is not a symbolic link, the file is deleted. See the POSIX unlink documentation for more detail.
+  Deletes the file.  If path refers to a symbolic link, then the link is removed without affecting the file or directory to which that link refers. If the path refers to a file path that is not a symbolic link, the file is deleted. See the POSIX unlink documentation for more detail.
   ```JS
     async function deleteFile(path) { await sys.fs.unlink(path) }
   ```
@@ -120,8 +121,8 @@ sys is built on top of [libuv](https://github.com/libuv/libuv) that Sciter.JS us
 * `fs.copyfile() : Promise` - async file copy
 * `fs.readdir() : Promise` - async read dir
 * `fs.$readdir(): filelist` - reads folder content synchronously
-* `fs.readFile() : Promise` - async file read;
-* `fs.$readfile() : ArrayBuffer` - synchronous version of the above;
+* `fs.readfile() : Promise` - async file read;
+* `fs.$readfile() : ArrayBuffer` - synchronous version of the above; 
 * [`fs.watch()`](sys.fs/watch.md)
 * [`fs.splitpath()`](sys.fs/splitpath.md)
 

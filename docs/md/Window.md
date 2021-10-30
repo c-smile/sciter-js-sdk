@@ -55,6 +55,8 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
   * `window.maxSize = [w,h]` - get/set maximum size of resizable window.
   * `window.blurBehind = "none" | "auto" | "dark" | "ultra-dark" | "light" | "ultra-light"` - blur-behind effect configuration.
   * `window.isActive` - read-only, boolean, reports if window has input focus.
+  * `window.caption` - read-write, string, window's caption (title).
+  * `window.isAlive` - read-only, boolean, it is true if the window is alive - has valid HWINDOW. The property is false when the window was closed and destroyed.
   * `window.isResizable` - read/write, boolean, true if window can be resized by the user.
   * `window.isMaximizable` - read/write, boolean, true if window can be maximized by the user.
   * `window.isMinimizable` - read/write, boolean, true if window can be minimized by the user.
@@ -248,10 +250,6 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
   * #### `Window.this: Window` 
     
     instance of Window class - this window reference;
-
-  * #### `Window.caption: string`
-
-    read/write window title;
 
   * #### `Window.screens: int` 
     

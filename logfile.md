@@ -1,3 +1,34 @@
+## 4.4.8.15
+
+### New features:
+
+* Reactor namespace - [high-level Reactor API functions](docs/md/reactor/reactor-api.md).
+* [css] role property, allows to define element role in CSS: 
+  ```CSS
+  tr { role:"option"; }
+  header { role:"window-caption"; }
+  ```
++ [JS] `sciter.import("module")` - sync version of `import("module")` JS built-in;
++ `element.animate(stepFn, {FPS:30})` to cap animation callback frequency;
++ `<input type=slider>` fix of "change" event generation;
+* **CommonJS** modules support, `require()` function implementation: sdk.js/samples/commonJS;
+* `<html disable-debug="true" >` to disable connection with inspector.
+* [css] `var(--somename,#F00)` and `var(somename,#F00)` are equivalents now.
+
+### Fixes:
+
+* `<select|dropdown editable placeholder="...">` fix.
+* [Win,a11y] fix of accName reporting if it was redefined by CSS content:"new text".
+* [MacOS] fix of minimizable/maximizable button appearance.
+* `Window.this.modal` styling;
+* [MacOS] better painting;
+* [MacOS] fix of layered windows (window-frame=transparent) update.
+* [MacOS] date.toLocaleDateTimeString() fixes;
+* [Win] Fix of `Clipboard.write(...)` - cleans clipboard first.
+* JS, better error reporting on erroneous modules.
+* Skia backend fix that prevents re-entrant engine creation, affects Sciter.Lite on all platforms and Sciter on MacOS. 
+
+
 ## 4.4.8.14
 
 ### New features:

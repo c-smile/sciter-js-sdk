@@ -55,14 +55,17 @@
 
               if(evt.data.buttons == 2)
               {
-                var [sx,sy] = Window.this.box("position","client","screen");
-                //self.popup($(menu#tray), 2, evt.x - sx, evt.y - sy );
+                var [sx,sy] = Window.this.box("position","client","screen", true);
                 var menu = document.$("menu#tray");
                 var {screenX,screenY} = evt.data;
                 menu.popupAt(screenX - sx, screenY - sy, 2);
               }                
             }); 
           }
+
+          document.on("blur",function(evt) {
+            console.log(evt.target);
+          });
 
           document.on("click", "button#hide", evt => {
             Window.this.state = Window.WINDOW_HIDDEN;

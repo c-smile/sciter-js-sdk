@@ -1,3 +1,22 @@
+## 4.4.8.16
+
+### New features:
+
+* [Windows] acrylic blur behind [is back](https://sciter.com/windows-acrylic-blur-behind-is-back/).
+* `Window.send(event)` - send event synchronously to all windows.
+* `Window.share : object` - data shared among all windows and documents - application wide data container. 
+* `<select|dropdown>`: 
+  1. `novalue` is back
+  2. event `change` on `<select editable>`: `evt.source` is either `<caption>` or `<option>` that caused the change;
++ sdk.js/widgets/tag-list component.
+
+### Fixes:
+
+* `env.exec(...)` fix. See: https://sciter.com/forums/topic/call-executable-with-args/#post-74647
+* fix of `overflow:scroll;` handling, see: https://sciter.com/forums/topic/scroll-function-will-freeze/
+* event "change" from `<input|date>`;
+* [reactor] reconciliation / focus fix;
+
 ## 4.4.8.15
 
 ### New features:
@@ -26,7 +45,8 @@
 * [MacOS] date.toLocaleDateTimeString() fixes;
 * [Win] Fix of `Clipboard.write(...)` - cleans clipboard first.
 * JS, better error reporting on erroneous modules.
-* Skia backend fix that prevents re-entrant engine creation, affects Sciter.Lite on all platforms and Sciter on MacOS. 
+* Skia backend fix that prevents re-entrant engine creation, affects Sciter.Lite on all platforms and Sciter on MacOS.
+* `document.on("beforeunload", function() { console.log("xxx") })` fix.
 
 
 ## 4.4.8.14

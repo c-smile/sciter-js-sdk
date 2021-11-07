@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style></style>
+        <script|module>
+
+import {TagList} from "tags.js";
+
+const suggestions = [
+  {id:"a1", caption: "first"},
+  {id:"a2", caption: "second"},
+  {id:"a3", caption: "third"},
+  {id:"a4", caption: "fourth"},
+  {id:"a5", caption: "fifth"},
+  {id:"a6", caption: "sixth"},
+  {id:"a7", caption: "seventh"},
+  {id:"a8", caption: "eighth"},
+  {id:"a9", caption: "nineth"},
+  {id:"a10", caption: "tenth"},
+];
+
+const tags = [
+  suggestions[0],
+  suggestions[1],
+  suggestions[2],
+];
+
+
+function suggestor(text,alreadySelected) {
+  return suggestions.filter( su => su.caption.startsWith(text) && !alreadySelected.includes(su) );
+}
+
+document.body.append(<TagList tags={tags} suggestor={suggestor} placeholder="new tag" />);
+
+
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

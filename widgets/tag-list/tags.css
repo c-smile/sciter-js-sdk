@@ -1,0 +1,34 @@
+
+
+@set tag-list {
+  :root {
+    display:block;
+    flow:horizontal-wrap;
+    padding:0.25em;
+    border-spacing:0.25em;
+  }  
+
+  label {
+    display:block;
+    width:max-content;
+    border:1px solid var(widget-border);
+    padding:0 1.6em 0 0.6em;
+    line-height:1.85em;
+    border-radius:1em;
+    foreground:url(stock:cross-x) no-repeat;
+    foreground-position: right 0.6em top 50%; 
+    foreground-size:0.6em;
+    foreground-image-cursor:pointer;
+    fill:var(widget-border);
+  }
+
+  input {
+    display:block;
+    margin:* 0;
+  }
+}
+
+
+@set suggestions {
+  li:current { background-color:var(highlight); color:var(highlight-text); }
+}

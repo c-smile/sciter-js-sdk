@@ -20,17 +20,17 @@ main {flow:horizontal-wrap; border-spacing:2em; }
         </style>
         <script>
 
-const win = Window.this; // the window we are in
+// Window.this - the window we are in
 
 document.on("input", "form#asset1", function(evt,form) {
   var {a,b} = form.value;
-  var r = win.assetInterface.integerSum(a,b); // calling native function
+  var r = Window.this.assetInterface.integerSum(a,b); // calling native function
   form.value = { result: r };
 });
 
 document.on("input", "form#asset2", function(evt,form) {
   var {a,b} = form.value;
-  var r = win.assetInterface.stringSum(a,b); // calling native function
+  var r = Window.this.assetInterface.stringSum(a,b); // calling native function
   form.value = { result: r };
 });
 
@@ -38,7 +38,7 @@ document.on("input", "form#asset3", function(evt,form) {
   var {list,multiplier} = form.value;
   function toInt(s) { return parseInt(s); }
   var ints = list.split(",").map(toInt);
-  var r = win.assetInterface.vectorIntegerMul(ints, toInt(multiplier));
+  var r = Window.this.assetInterface.vectorIntegerMul(ints, toInt(multiplier));
   form.value = { result: r.join(",") };
 });
 
@@ -46,13 +46,13 @@ document.on("input", "form#asset4", function(evt,form) {
   var {length1,length2} = form.value;
   var bytes1 = new ArrayBuffer(length1);
   var bytes2 = new ArrayBuffer(length2);
-  var r = win.assetInterface.bytesSum(bytes1,bytes2);
+  var r = Window.this.assetInterface.bytesSum(bytes1,bytes2);
   form.value = { result: r.toString() + ", byteLength=" + r.byteLength };
 });
 
 
 // creation of native object
-var nativeObj = win.assetInterface.makeNativeObject();
+var nativeObj = Window.this.assetInterface.makeNativeObject();
 
 // Use of native object
   document.on("click", "button#inc-native", function() {
@@ -73,7 +73,7 @@ var nativeObj = win.assetInterface.makeNativeObject();
   document.on("click", "button#native-add", function() {
     const output = document.$("#functorsOutput");
 
-    const api = win.assetInterface.nativeFunctionsA();
+    const api = Window.this.assetInterface.nativeFunctionsA();
     const r = api.add(2,2); // invocation of native functors
     
     output.innerText = `api.add(2,2) : ${ r }`;
@@ -82,7 +82,7 @@ var nativeObj = win.assetInterface.makeNativeObject();
   document.on("click", "button#native-sub", function() {
     const output = document.$("#functorsOutput");
 
-    const api = win.assetInterface.nativeFunctionsA();
+    const api = Window.this.assetInterface.nativeFunctionsA();
     const r = api.sub(2,2); // invocation of native functors
     
     output.innerText = `api.sub(2,2) : ${ r }`;
@@ -103,14 +103,14 @@ document.on("click", "button#task-start", function(evt, button) {
     progress.value = n;
   }
   
-  win.assetInterface.startNativeThread(onDone,onProgress);
+  Window.this.assetInterface.startNativeThread(onDone,onProgress);
 });
 
 
 // xcall test
 document.on("input", "form#xcall", function(evt,form) {
   var a = form.value.a;
-  var r = win.xcall("xcallTest",a); // native function call
+  var r = Window.this.xcall("xcallTest",a); // native function call
   form.value = { result: r };
 });
 
@@ -157,7 +157,7 @@ document.onGlobalEvent("application-event",function(evt) {
 <main>
 
   <section>
-    <p>Calls <code>win.assetInterface.integerSum(a,b)</code> on input</p>
+    <p>Calls <code>Window.this.assetInterface.integerSum(a,b)</code> on input</p>
     <form #asset1>
        <label>a</label><input|integer(a) min=0 max=100 step=1 />
        <label>b</label><input|integer(b) min=0 max=100 step=1 />
@@ -166,7 +166,7 @@ document.onGlobalEvent("application-event",function(evt) {
   </section>
 
   <section>
-    <p>Calls <code>win.assetInterface.stringSum(a,b)</code> on input</p>
+    <p>Calls <code>Window.this.assetInterface.stringSum(a,b)</code> on input</p>
     <form #asset2>
        <label>a</label><input|text(a) />
        <label>b</label><input|text(b) />
@@ -175,7 +175,7 @@ document.onGlobalEvent("application-event",function(evt) {
   </section>
 
   <section>
-    <p>Calls <code>win.assetInterface.vectorIntegerMul(list,mul)</code> on input</p>
+    <p>Calls <code>Window.this.assetInterface.vectorIntegerMul(list,mul)</code> on input</p>
     <form #asset3>
        <label>comma separated ints</label><input|text(list) value="1,2,3" />
        <label>multiplier</label><input|integer(multiplier) min=0 max=100 step=1 />
@@ -184,7 +184,7 @@ document.onGlobalEvent("application-event",function(evt) {
   </section>
 
   <section>
-    <p>Calls <code>win.assetInterface.bytesSum(ArrayBuffer,ArrayBuffer)</code> on input</p>
+    <p>Calls <code>Window.this.assetInterface.bytesSum(ArrayBuffer,ArrayBuffer)</code> on input</p>
     <form #asset4>
        <label>ArrayBuffer #1 length</label><input|integer(length1) value="2" step="1" />
        <label>ArrayBuffer #2 length</label><input|integer(length2) value="2" step="1" />
@@ -194,7 +194,7 @@ document.onGlobalEvent("application-event",function(evt) {
 
 
   <section>
-    <p>Calls <code>win.xcall("mappedFunctionName", ...)</code></p>
+    <p>Calls <code>Window.this.xcall("mappedFunctionName", ...)</code></p>
     <form #xcall>
        <label>a</label><input|integer(a) min=0 max=100 step=1 />
        <label>result</label><output(result) />

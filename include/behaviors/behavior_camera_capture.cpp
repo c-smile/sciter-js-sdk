@@ -1,7 +1,7 @@
 
 #include "sciter-x.h"
 
-#if TRUE // change it to FALSE to disable camera functionality
+#if defined(WINDOWS) // that one uses Windows API
 
 #include <vector>
 #include <string>
@@ -50,34 +50,7 @@ struct camera_stream: public event_handler
       return true;
     }
 
-    /*
-    sciter::value get_devices() {
-      camera::device_list devices;
-      devices.enumerate_devices();
-      sciter::value r;
-      for( unsigned n = 0; n < devices.count(); ++n ) {
-        sciter::string name;
-        if(devices.get_device_name(n,name))
-          r.append( sciter::value(name) );
-      }
-      return r;
-    }
-
-    sciter::value stream_from( const sciter::value& device ) // either int (index) or string (name)
-    {
-      if(pcapt)
-        pcapt->end_capture();
-      pcapt = camera::capture::create_instance(rendering_site,device);
-      return sciter::value(true);
-    }
     
-	// scripting methods
-    BEGIN_FUNCTION_MAP
-      FUNCTION_0("devices",get_devices)    // devices() : (array of strings), get list of names of devices 
-      FUNCTION_1("streamFrom",stream_from) // streamFrom(indexOrName: int | string), start streaming from the camera
-    END_FUNCTION_MAP
-    */
-
     std::vector<sciter::string> get_devices() {
       camera::device_list devices;
       devices.enumerate_devices();

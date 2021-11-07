@@ -251,6 +251,12 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
     
     instance of Window class - this window reference;
 
+  * #### `Window.share: Object` 
+    
+    _share_ is an object shared between all documents and windows in the application.
+
+    CAUTION: use it responsibly. If temporary window or document populates shared object then it should clean the stuff in _beforeunload_.
+
   * #### `Window.screens: int` 
     
     returns number of screens (monitors) in the system;
@@ -273,6 +279,13 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
   * #### `Window.post( ge: Event )`
 
     posts global event *ge* to all windows in current process.   
+
+  * #### `Window.send( ge: Event )`
+
+    Synchronously sends global event *ge* to all windows in current process.
+
+    Sending stops on first window that will consume the event by returning _true_ from event handler of this event.
+
 
 ## events
 

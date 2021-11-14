@@ -1,3 +1,21 @@
+## 4.4.8.17
+
+### New:
+
+* `Graphics.draw(element)`, see: sdk.js/samples.sciter/immediate-mode-painting/draw-element.htm
+* [inspector] eval runs in context of 'this' that is set to current selected element.
+
+### Fixes:
+
+* win7 compatibility of usciter.exe, inspector.exe, etc. Note window-blurbehind works now on Win10 and above;
+* graphics.clearRect() fix on MacOS;
+* `sciter::value::call(...)` fix of error string generation.
+* [MacOS] font ascent / descent calculation fix.
+* [MacOS] fix of "missed idle events" bug that may manifset in non responsive UI.
+* `<toggle disabled>` styling fix.
+* [JS] `event.button` fix, see: https://sciter.com/forums/topic/bug-with-the-evt-button-processing-in-sciterjs/
+
+
 ## 4.4.8.16
 
 ### New features:

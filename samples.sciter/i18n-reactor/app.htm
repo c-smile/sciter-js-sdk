@@ -9,10 +9,15 @@ class App extends Element {
     nmatches = 0;
 
     render() {
+
+        let littext = <@>Text to translate</>;
+
         return <body>
             <p @title="Title test" @>UI language</p>
             <hr/>
-            Tests: <span @>first test</span>, <span @>second test</span>
+            {littext}
+            <hr/>
+            <p @>Tests: <span @>first test</span>,<span @>second test</span></p>
             <hr/>
             <label>Matches</label> : <input|integer(nmatches) min=0 max=100 step=1 value={this.nmatches} />
             <p @>{this.nmatches} matches</p>

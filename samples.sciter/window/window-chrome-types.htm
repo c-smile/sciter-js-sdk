@@ -4,6 +4,9 @@
         <style></style>
         <script type="module">
 
+
+Window.share.foo = "BAR";
+
 document.on("click","button#window-frame-default", () => {
   var wnd = new Window({ 
       url   : __DIR__ + "chrome-types/window-frame-default.htm", 

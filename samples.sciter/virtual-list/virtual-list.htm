@@ -11,9 +11,10 @@ class List extends VirtualList {
 
   list; // array of items
 
-  constructor(props) { 
-    super(props); 
-    this.list = props.list;
+  this(props) { 
+    let {list, ...rest} = props;
+    super.this(rest); 
+    this.list = list;
   }
 
   itemAt(at) { return this.list[at]; }

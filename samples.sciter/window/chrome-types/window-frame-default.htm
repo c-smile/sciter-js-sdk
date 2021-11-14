@@ -8,6 +8,8 @@ document.on("change","#full-screen", function(evt,checkbox) {
   Window.this.state = checkbox.value ? Window.WINDOW_FULL_SCREEN : Window.WINDOW_SHOWN;
 });
 
+document.body.append(<p>Window share: {Window.share.foo}</p>);
+
         </script>
     </head>
     <body>

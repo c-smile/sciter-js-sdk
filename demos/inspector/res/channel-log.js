@@ -48,7 +48,7 @@ export class ChannelLog extends Element
     var list = channel.theirLogs.map((item) => <LogListItem channel={channel} logitem={item} key={item.key} />);
     return <section#channel-log styleset="facade.css#channel-log">
       <list>{list}</list>
-      <textarea #toeval placeholder="eval" spellcheck="false" />
+      <textarea #toeval placeholder="eval: this - selected element" spellcheck="false" />
     </section>; 
   }
 

@@ -8,10 +8,12 @@ export class VirtualList extends Element {
   props;
 
   this(props) {
-    super.this?.(props);
-    this.props = props; 
-    this.renderItem = props.renderItem || this.renderItem;
-    this.renderList = props.renderList || this.renderList;
+
+    let {renderItem,renderList,...rest } = props;
+    super.this?.(rest);
+    this.props = rest; 
+    this.renderItem = renderItem || this.renderItem;
+    this.renderList = renderList || this.renderList;
     this.styleset = props.styleset || (__DIR__ + "virtual-select.css#virtual-select");
   }
 
@@ -197,9 +199,10 @@ export class VirtualList extends Element {
 export class VirtualSelect extends VirtualList {
     items = [];
 
-    constructor(props) {
-      super(props);
-      this.items = props?.items || [];
+    this(props) {
+      let {items, ...rest} = props;
+      super.this(rest);
+      this.items = items || [];
     }
 
     itemAt(at) {     // virtual function, can be overriden

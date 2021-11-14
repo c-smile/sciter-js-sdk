@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+figure {
+    size:*;
+    text-align:center;
+    overflow:hidden;
+}
+
+
+        </style>
+        <script>
+
+class ScaledFigure extends Element {
+  render(props,kids) {
+    return <figure><div style="size:max-content">{kids}</div></figure>;
+  }
+
+  paintContent(gfx) {
+    const [w,h] = this.state.box("dimension","inner");
+    const content = this.firstElementChild;
+    const [cw,ch] = content.state.box("dimension","border");
+    let scale = 1;
+    if(cw > w)
+      scale = w / cw;
+    if(ch * scale > h)
+      scale = h / ch;
+    gfx.translate((w - cw*scale) / 2,(h - ch*scale) / 2);      
+    gfx.scale(scale,scale);
+    gfx.draw(content);
+    return true; // we've drawn the content by ourselves
+  }
+}
+
+
+document.body.append(<ScaledFigure>
+    <picture src="https://upload.wikimedia.org/wikipedia/commons/5/53/Evariste_galois.jpg" />
+    <figcaption>Évariste Galois (1811–1832)</figcaption>
+</ScaledFigure>);
+
+
+        </script>
+    </head>
+    <body>
+Demo of auto-scaled element drawing:
+    </body>
+</html>

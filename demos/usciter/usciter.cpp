@@ -81,9 +81,9 @@ int uimain(std::function<int()> run ) {
 
   SciterSetGlobalAsset(new sqlite::SQLite()); // adding SQLite as a global namespace object
 
-//#ifdef _DEBUG
-  //sciter::debug_output_console console; //- uncomment it if you will need console window
-//#endif
+#ifdef _DEBUG
+  sciter::debug_output_console console; //- uncomment it if you will need console window
+#endif
 
   sciter::archive::instance().open(aux::elements_of(resources)); // bind resources[] (defined in "resources.cpp") with the archive
 

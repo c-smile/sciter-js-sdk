@@ -77,29 +77,47 @@ on("click", "button#open-in-view", function() {
     view.load(fn);
 })
 
-function setTheme(lightAmbience, blurBehind) {
-  var bg = $("button#glass");
+function setBlurbehind(blurBehind) {
+
+  var bb = $("button#enable-blurbehind");
+
+  if(blurBehind === undefined)
+    blurBehind = bb.state.checked && view.mediaVar("ui-blurbehind"); // WM is blurbehind capable and uses it now  
+  
+  var lightAmbience = $("button#ambience").value;
+  if( blurBehind ) {
+    view.blurBehind = lightAmbience ? "light" : "dark";
+    bb.state.checked = true;
+    document.attributes["blurbehind"] = "";
+  }
+  else {
+    view.blurBehind = "none";
+    bb.state.checked = false;
+    delete document.attributes["blurbehind"];
+  }
+}
+
+function setAmbience(lightAmbience) {
+  var bg = $("button#ambience");
   if( lightAmbience ) {
-    view.blurBehind = blurBehind ? "light" : "none";
     document.attributes["theme"] = "light";
     bg.state.checked = true;
   }
   else {
-    view.blurBehind = blurBehind ? "dark" : "none";
     document.attributes["theme"] = "dark";
     bg.state.checked = false;
   }
 }
 
 function onMediaChange() {
-  var blurBehind = view.mediaVar("ui-blurbehind"); // WM is blurbehind capable and uses it now
   var lightAmbience = view.mediaVar("ui-ambience") == "light"; // WM uses light theme
-  setTheme(lightAmbience, blurBehind);
+  setAmbience(lightAmbience);
+  setBlurbehind();
 }
 
-function setSystemGlass(onOff) {
-  var bg = $("button#glass");
-  var sbg = $("button#system-glass");
+function setSystemAmbience(onOff) {
+  var bg = $("button#ambience");
+  var sbg = $("button#system-ambience");
   if(onOff) {
     onMediaChange();
     bg.state.disabled = true; 
@@ -112,17 +130,24 @@ function setSystemGlass(onOff) {
   }
 }
 
-on("click", "button#system-glass", function(evt,button)
+on("click", "button#system-ambience", function(evt,button)
 {
-  setSystemGlass(button.value);
+  setSystemAmbience(button.value);
   Settings.saveState();
 });
 
-on("click", "button#glass", function(evt,button)
+on("click", "button#ambience", function(evt,button)
 {
-  setTheme(button.value, true);
+  setAmbience(button.value);
   Settings.saveState();
 });
+
+on("click", "button#enable-blurbehind", function(evt,button)
+{
+  setBlurbehind(button.value);
+  Settings.saveState();
+});
+
 
 on("click", "button#inspector", async function() 
 {
@@ -163,18 +188,20 @@ Settings.add
     {
       data.glass = 
       {
-        useSystem : document.$("button#system-glass").state.checked,
-        lightTheme : document.$("button#glass").state.checked
+        enabled: document.$("button#enable-blurbehind").state.checked,
+        useSystem : document.$("button#system-ambience").state.checked,
+        lightTheme : document.$("button#ambience").state.checked
       };
     },
   restore: function(data) 
     {
       if(data.glass) {
-        setSystemGlass(data.glass.useSystem);
+        setSystemAmbience(data.glass.useSystem);
         if( !data.glass.useSystem ) {
           var lightAmbience = data.glass.lightTheme;
-          setTheme(lightAmbience, view.mediaVar("ui-blurbehind"));
+          setAmbience(lightAmbience, view.mediaVar("ui-blurbehind"));
         }
+        setBlurbehind(data.glass.enabled);
       }
     }
 };

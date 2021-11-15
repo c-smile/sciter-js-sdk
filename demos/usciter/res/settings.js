@@ -56,7 +56,7 @@ export function add(persistable) { list.push(persistable); }
 add({
   store : function(data) 
     {
-       var [x,y,w,h] = Window.this.box("xywh","border","screen");
+       var [x,y,w,h] = Window.this.box("xywh","border","screen",true);
        data.window = {left:x,top:y,width:w,height:h};  
     },
   restore : function(data) 
@@ -74,7 +74,7 @@ add({
   
 export function saveState()
 {
-  if(!document.window) {
+  if(!document.parentWindow) {
     Window.this.off(saveState); // document is unloaded
     return;
   }

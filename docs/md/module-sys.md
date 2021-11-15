@@ -196,7 +196,7 @@ sys is built on top of [libuv](https://github.com/libuv/libuv) that Sciter.JS us
 * `tty.setMode()`
 * `tty.getWinSize()`
 
-## `sys.spawn()` - running processes with stdin/strout/stderr redirection.
+## `sys.spawn()` - running processes with stdin/stdout/stderr redirection.
 
 * `process.kill()`
 * `process.wait()`

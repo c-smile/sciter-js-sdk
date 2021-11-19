@@ -86,6 +86,7 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
 
     * `"border"` - border area of the window that includes window caption and borders around client area;
     * `"client"` - client (content) area of the window;
+    * `"cursor"` - mouse cursor position, like `let [cx,cy] = Window.this.box("position","cursor","desktop");`
     * `"caret"` - caret position, relative to client area of the window;
 
     _relTo_ is one of:

@@ -95,7 +95,9 @@ namespace sciter {
   void window::dismiss() {
     if(_hwnd) ::PostMessage(_hwnd, WM_CLOSE, 0, 0 ); 
   }
-
+  void window::close() {
+    if (_hwnd) ::DestroyWindow(_hwnd);
+  }
   window::window( UINT creationFlags, RECT frame): _hwnd(NULL)
   {
     asset_add_ref();

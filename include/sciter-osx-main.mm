@@ -72,6 +72,12 @@ namespace sciter {
     _hwnd = 0;
   }
 
+  void window::close() {
+    if(_hwnd) [nswindow(_hwnd) close];
+    _hwnd = 0;
+  }
+
+
   window::window( UINT creationFlags, RECT frame): _hwnd(NULL)
   {
      asset_add_ref();

@@ -79,7 +79,7 @@ async function activateOtherInstance() {
 
   try {
     await pipe.connect(PIPE_NAME);
-    pipe.write(pstream.activate(["activate",false, null]));
+    await pipe.write(bstream.pack(["activate",false, null]));
     Window.this.close();
   } catch (e) {}
 }

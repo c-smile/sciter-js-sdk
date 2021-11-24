@@ -47,5 +47,3 @@ Path: samples/mithril
 
 Sciter.JS runs [mithril](https://mithril.js.org) as it is. Only basic use cases are thested so far though.
 
-## See [Sciter.JS Wiki](https://github.com/c-smile/sciter-js-sdk/wiki)
-

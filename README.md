@@ -32,7 +32,7 @@ Linux (Raspbian on Raspberry Pi in particular)
 
 MacOS:
 
-![On MacOS](https://sciter.com/wp-content/uploads/2021/11/calc-macos.png)
+<img src="https://sciter.com/wp-content/uploads/2021/11/calc-macos.png" width="628">
 
 
 Path: samples/calc

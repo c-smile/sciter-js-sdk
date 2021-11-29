@@ -1,3 +1,27 @@
+## 4.4.8.18
+
+### New features:
+
+* [C++ api] + window::eval();
+* [C++ api] + `sciter::window::close()` to force window closure. Also `sciter::window::request_close()`
+* [integration] demos of call_function() and call_method();  
+* `SciterLoadFile()`, support paths starting "./" and "../" - to open resources relative to CWD (whatever it means);
+
+### Fixes:
+
+* scrolling / animated scrolling: "overscroll" feature and touch specific functionality are disabled for now, more problems than solutions;
+* [css] fix of `*` selector specificity handling;
+* [reactor] `element.patch()` refactoring , speed up and better support of fragments;
+* [MacOS] fullscreen fix;
+* [MacOS] `window.move(...)` 1px offset fixed;
+* [MacOS] fix of window closure delay;
+* [MacOS] fix of role="window-caption" handling in custom frames;
+* [win] scapp.exe + productDescription (David's patch);
+* `Graphics.strokeRect()` fix;
+* [inspector] fix of second instance detection handling;
+* Fix of mem-leak alike timers pileup, see: https://sciter.com/forums/topic/serious-memory-leak-that-leads-to-frequent-crashes-reproducible/ ;
+* Fix of popup closure: https://sciter.com/forums/topic/there-are-multiple-elements-on-the-page/ ;
+
 ## 4.4.8.17
 
 ### New:

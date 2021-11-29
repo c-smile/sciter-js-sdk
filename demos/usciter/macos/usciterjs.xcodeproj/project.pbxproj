@@ -308,7 +308,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = ../../../bin/macosx;
-				DEVELOPMENT_TEAM = 642T6M376L;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				HEADER_SEARCH_PATHS = ../../../include;
 				INFOPLIST_FILE = usciterjs/Info.plist;
@@ -330,7 +330,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = ../../../bin/macosx;
-				DEVELOPMENT_TEAM = 642T6M376L;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				HEADER_SEARCH_PATHS = ../../../include;
 				INFOPLIST_FILE = usciterjs/Info.plist;

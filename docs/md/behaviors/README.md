@@ -47,7 +47,7 @@ Here is a list of such built-in behaviors that are available out of the box in S
   * [select-checkmarks](behavior-select-checkmarks.md) 
   * [tree-view](behavior-tree-view.md) 
   * [tree-checkmarks](behavior-tree-checkmarks.md) 
-  * [dropdown-select](behavior-select-dropdown.md) 
+  * [dropdown-select](behavior-select-dropdown.md) - dropdown select and editable dropdown select
 * date/time input 
   * [calendar](behavior-calendar.md) 
   * [date](behavior-date.md) 

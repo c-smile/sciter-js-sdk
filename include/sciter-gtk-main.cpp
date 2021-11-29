@@ -61,13 +61,13 @@ namespace sciter {
     if(_hwnd) gtk_window_present (gwindow(_hwnd));
   }
 
-  void window::dismiss() {
-    if(_hwnd) gtk_window_close (gwindow(_hwnd)); // how to emulate PostMessage(WM_CLOSE) in GTK?
+  void window::request_close() {
+    if(_hwnd) gtk_window_close (gwindow(_hwnd)); 
     _hwnd = 0; //?
   }
 
   void window::close() {
-    if(_hwnd) gtk_window_close (gwindow(_hwnd));
+    if(_hwnd) gtk_widget_destroy (gview(_hwnd));
     _hwnd = 0; //?
   }
 

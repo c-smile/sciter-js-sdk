@@ -23,6 +23,7 @@ int main(int argc, const char * argv[])
   auto mb = [NSBundle mainBundle];
   [mb loadNibNamed:@"MainMenu" owner:application topLevelObjects:&tl];
   
+  SciterSetOption(NULL, SCITER_SET_GFX_LAYER, GFX_LAYER_SKIA);
     
   for( int i = 0; i < argc; ++i ) {
       aux::a2w w(argv[i]);
@@ -67,7 +68,7 @@ namespace sciter {
     if(_hwnd) [nswindow(_hwnd) makeKeyAndOrderFront:nil];
   }    
 
-  void window::dismiss() {
+  void window::request_close() {
     if(_hwnd) [nswindow(_hwnd) performClose: nswindow(_hwnd)];
     _hwnd = 0;
   }

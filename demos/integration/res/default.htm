@@ -141,6 +141,13 @@ document.onGlobalEvent("application-event",function(evt) {
   document.$("pre#appEventsOutput").innerText = JSON.stringify(evt.data);
 });
 
+document.body.testMethod = function(n) {
+  return n + 1;
+}
+
+function testFunction(n) {
+  return n + 2; 
+}
 
         </script>
     </head>

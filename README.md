@@ -32,8 +32,7 @@ Linux (Raspbian on Raspberry Pi in particular)
 
 MacOS:
 
-![On MacOS](https://js.sciter.com/wp-content/uploads/2020/11/sciter-js-calc-osx-4.png)
-
+<img src="https://sciter.com/wp-content/uploads/2021/11/calc-macos.png" width="628">
 
 Path: samples/calc
 
@@ -46,6 +45,3 @@ To run demo start run-calculator-browser.bat or run-calculator-sciter.bat. The l
 Path: samples/mithril
 
 Sciter.JS runs [mithril](https://mithril.js.org) as it is. Only basic use cases are thested so far though.
-
-## See [Sciter.JS Wiki](https://github.com/c-smile/sciter-js-sdk/wiki)
-

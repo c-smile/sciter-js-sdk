@@ -135,7 +135,8 @@ class Element represents DOM element and extends [Node](Node.md) and so all its 
   
   * eventname may start with `^` for handling events in capturing phase;
   * eventname may contain namespace part: `"click.myns"` ;
-  * the handler is called with `this` set to element matching the selector;
+  * the handler is called with `this` set to element the element this handler is attached to;
+  * the handler is called with two parameters `handler(evt,matchedElement)` - event and the element matching the selector;
   * the method returns element itself allowing to chain `on` calls;
 
 * ##### `element.off(eventname: string): Element`

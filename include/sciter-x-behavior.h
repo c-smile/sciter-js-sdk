@@ -151,8 +151,8 @@ typedef SBOOL SC_CALLBACK SciterBehaviorFactory( LPCSTR, HELEMENT, LPElementEven
 
       MOUSE_TCLICK = 0xF, // tripple click
 
-      MOUSE_TOUCH_START = 0xFC, // touch device pressed somehow
-      MOUSE_TOUCH_END = 0xFD,   // touch device depressed - clear, nothing on it
+      //MOUSE_TOUCH_START = 0xFC, // touch device pressed somehow
+      //MOUSE_TOUCH_END = 0xFD,   // touch device depressed - clear, nothing on it
 
       MOUSE_DRAG_REQUEST = 0xFE, // mouse drag start detected event
 
@@ -481,12 +481,18 @@ typedef SBOOL SC_CALLBACK SciterBehaviorFactory( LPCSTR, HELEMENT, LPElementEven
       REQUEST_TOOLTIP = 0x9F,        // request tooltip, evt.source <- is the tooltip element.
 
       ANIMATION         = 0xA0,      // animation started (reason=1) or ended(reason=0) on the element.
+      TRANSITION        = 0xA1,      // transition started (reason=1) or ended(reason=0) on the element.
+      SWIPE             = 0xB0,      // swipe gesture detected, reason=4,8,2,6 - swipe direction, only from behavior:swipe-touch 
 
       DOCUMENT_CREATED  = 0xC0,      // document created, script namespace initialized. target -> the document
       DOCUMENT_CLOSE_REQUEST = 0xC1, // document is about to be closed, to cancel closing do: evt.data = sciter::value("cancel");
       DOCUMENT_CLOSE    = 0xC2,      // last notification before document removal from the DOM
       DOCUMENT_READY    = 0xC3,      // document has got DOM structure, styles and behaviors of DOM elements. Script loading run is complete at this moment. 
       DOCUMENT_PARSED   = 0xC4,      // document just finished parsing - has got DOM structure. This event is generated before DOCUMENT_READY
+      //DOCUMENT_RELOAD        = 0xC5, // request to reload the document
+      DOCUMENT_CLOSING  = 0xC6, // view::notify_close
+      CONTAINER_CLOSE_REQUEST = 0xC7, // window of host document is processing DOCUMENT_CLOSE_REQUEST
+      CONTAINER_CLOSING = 0xC8,       // window of host document is processing DOCUMENT_CLOSING
 
       VIDEO_INITIALIZED = 0xD1,      // <video> "ready" notification   
       VIDEO_STARTED     = 0xD2,      // <video> playback started notification   

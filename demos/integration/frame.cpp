@@ -219,11 +219,33 @@ int uimain(std::function<int()> run ) {
 
   BEHAVIOR_EVENT_PARAMS evt = {0};
   evt.name = WSTR("application-event");
-  evt.data.set_item("somedata", sciter::value(42));
+  evt.data.set_item("somedata", 42);
   frame::broadcast_event(evt); // this will post the event to all windows in the app
 
-  //sciter::value r = pwin->call_function("test", sciter::value(42));
-  //sciter::value r = pwin->eval(const_wchars("test(32)"));
+  { // calling free function declared in global namespace:
+    sciter::value r1 = pwin->call_function("testFunction", 40);
+    assert(r1 == sciter::value(42));
+  }
+
+  { // evaluate arbitrary JS in context of loaded document
+    sciter::value r2 = pwin->eval(const_chars("testFunction(40)"));
+    assert(r2 == sciter::value(42));
+  }
+
+  { // get reference to the function and call it.
+    // use such reference when you need to call some function more than once
+    sciter::value fn = pwin->eval(const_chars("testFunction")); // get reference
+    sciter::value r2 = fn.call(40);
+    assert(r2 == sciter::value(42));
+  }
+  
+  { // calling method of the DOM element:
+    sciter::dom::element document = pwin->root();
+    sciter::dom::element body = document.find_first("body");
+    sciter::value r3 = body.call_method("testMethod", 41);
+    assert( r3 == sciter::value(42));
+  }
+
 
   return run();
 

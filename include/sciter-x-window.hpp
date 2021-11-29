@@ -64,9 +64,10 @@ namespace sciter
 
     void collapse(); // minimize
     void expand( bool maximize = false); // show or maximize
-    void dismiss(); 
-    void request_close() { dismiss(); } // requests window to be closed, note: script can reject the closure
-    void close(); // close the window
+    void request_close(); // requests window to be closed, note: script can reject the closure
+    void close(); // forced close of the window. Note: normally you shoud use request_close()
+
+    /*OBSOLETE*/ void dismiss() { request_close(); }
 
     bool load(aux::bytes utf8_html, const WCHAR* base_url = 0)
     {

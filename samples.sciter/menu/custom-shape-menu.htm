@@ -3,17 +3,21 @@
         <title>Test</title>
         <style>
 
+#the-button {
+  width:7em;
+}        
+
 #the-button > menu {
     aspect: PopupMenu(background-color:white, 
                       border-radius:8px,
                       shadow-color: rgba(0,0,20,0.7));
     background:transparent;
     border-width:0;
-    padding:8px;
-
+    //padding:8px;
+    margin:8px;
+    //padding:8px;
     popup-attachment: bottom-center;
 }
-
 
         </style>
         <script>
@@ -39,16 +43,16 @@ function PopupMenu(params)
       let hc;
 
       switch(attachment) {
-        case "bottom-left": hc = 2*rad;     top = printf(" L %d %d L %d %d L %d %d", hc,-rad,hc+rad,0, w-rad, 0); break;
-        case "bottom-right": hc = w-2*rad;  top = printf(" L %d %d L %d %d L %d %d", hc-rad, 0, hc, -rad, hc+rad, 0); break;
+        case "bottom-left": hc = 3*rad;     top = printf(" L %d %d L %d %d L %d %d L %d %d", hc-rad, 0, hc,-rad,hc+rad,0, w-rad, 0); break;
+        case "bottom-right": hc = w-3*rad;  top = printf(" L %d %d L %d %d L %d %d L %d %d", hc-rad, 0, hc, -rad, hc+rad, 0, w-rad, 0); break;
         case "bottom-center": hc = w/2;     top = printf(" L %d %d L %d %d L %d %d L %d %d", hc-rad, 0, hc,-rad,hc+rad,0, w-rad, 0); break;
 
         case "right-top":     hc = 2*rad;   left = printf(" L %d %d L %d %d L %d %d", 0, hc+rad,-rad,hc,0,rad); break;
         case "right-bottom":  hc = h-2*rad; left = printf(" L %d %d L %d %d L %d %d", -rad,hc,0,hc-rad,0,rad); break;
         case "right-middle":  hc = h/2;     left = printf(" L %d %d L %d %d L %d %d L %d %d", 0, hc+rad,-rad,hc,0,hc-rad,0,rad); break;
 
-        case "top-right":  hc = w-2*rad;    bottom = printf(" L %d %d L %d %d L %d %d", hc, h+rad, hc-rad, h, rad, h); break;
-        case "top-left":   hc = 2*rad;      bottom = printf(" L %d %d L %d %d L %d %d", hc+rad, h, hc, h+rad, hc-rad, h); break;
+        case "top-right":  hc = w-3*rad;    bottom = printf(" L %d %d L %d %d L %d %d L %d %d", hc+rad, h, hc, h+rad, hc-rad, h, rad, h); break;
+        case "top-left":   hc = 3*rad;      bottom = printf(" L %d %d L %d %d L %d %d L %d %d", hc+rad, h, hc, h+rad, hc-rad, h, rad, h); break;
         case "top-center": hc = w/2;        bottom = printf(" L %d %d L %d %d L %d %d L %d %d", hc+rad,h, hc,h+rad, hc-rad,h, rad, h); break;
 
         case "left-top":     hc = 2*rad;    right = printf(" L %d %d L %d %d L %d %d", w+rad, hc,w,hc+rad,w,h-rad); break;
@@ -69,12 +73,12 @@ function PopupMenu(params)
         + " Z");
    };
 
-   console.log(printf("drop-shadow(1px,1px,3px,%s)",shadow));
+   //console.log(printf("drop-shadow(1px,1px,3px,%s)",shadow));
 
    this.paintBackground = (gfx) => {
      let path = generateShape();
      gfx.fillStyle = back;
-     gfx.pushLayer("border-box", printf("drop-shadow(1px,1px,3px,%s)",shadow));
+     gfx.pushLayer("margin-box", printf("drop-shadow(2px,2px,3px,%s)",shadow));
       gfx.draw(path, {fill:true});
      gfx.popLayer();
 

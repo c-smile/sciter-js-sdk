@@ -23,7 +23,8 @@
 * `event.clientY`
 * `event.screenX`
 * `event.screenY`
-
+* `event.windowX`
+* `event.windowY`
 * `event.deltaX:float` - wheel deltas
 * `event.deltaY:float`
 * `event.deltaMode|int` - 0 - deltaX/Y are pixels coming from touch devices, 1 - deltaX/Y are in "lines" (a.k.a. mouse wheel "ticks"). 

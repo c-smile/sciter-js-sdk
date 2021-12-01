@@ -224,9 +224,9 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
    
     request to update (draw) the window
 
-  * #### `window.activate(bringToFront: bool)`
+  * #### `window.activate(bringToFront: boolean) : boolean`
 
-    set input focus on window
+    set input focus on window, returns false on platforms that don't support it (Sciter.Lite), otherwise true
 
   * #### `window.trayIcon({image: Graphics.Image, text: string})` 
    

@@ -20,7 +20,7 @@ render() {
 }
 ```
 
-"Ideally" here means that English and Russion versions of the application will work in the same speed and CPU load. Each time we execute `render()` function our JavaScript VM will load and output string literal with exactly the same runtime cost no matter the language we use.
+"Ideally" here means that English and Russian versions of the application will work in the same speed and CPU load. Each time we execute `render()` function our JavaScript VM will load and output string literal with exactly the same runtime cost no matter the language we use.
 
 But in reality translation adds runtime cost, for example, in [React-i18n](https://react.i18next.com/) we may see such suggestions:
 
@@ -33,7 +33,7 @@ Note that each time you call the `render()` it will a) invoke global `t()` funct
 
 Both, (a) and (b), clearly have non-zero runtime cost. Usually it is not a problem to execute both steps once but what if you have a dynamic UI? On each render it will do the same lookup steps - not good, just a waste of CPU resources.
 
-To solve the problem Sciter offers mechansim where the lookup will happen just once - at JS compilation phase - later render() invocation will use already translated string literals.
+To solve the problem Sciter offers mechanism where the lookup will happen just once - at JS compilation phase - later render() invocation will use already translated string literals.
 
 ## Static translation markers
 
@@ -45,25 +45,25 @@ In order to define HTML attribute that is subject of translation prepend its nam
   <button @title="Meeting preferences">Show preferences</button>
 ```
 At parsing of such attribute Sciter runtime will call `JSX_translateText(text)` translation hook function and 
-will place its resuslt into bytecode as a string literal. At the end DOM element will have `title` attribute translated and without `@` marker. 
+will place its result into bytecode as a string literal. At the end DOM element will have `title` attribute translated and without `@` marker.
 
 So called translationID, unique identifier of the text in translation table, will be set to initial attribute text - `"Meeting preferences"` in this case.
 
 ### Text to translate
 
-In order to mark DOM element as translatable put standaline `@` sign or `@name` as its attribute:
+In order to mark DOM element as translatable put standalone `@` sign or `@name` as its attribute:
 
 ```JS
   <button @>Show preferences</button>
 ```
 At parsing of such element Sciter runtime will call `JSX_translateText(text)` translation hook function and 
-will place its resuslt into bytecode as string literal (text). That text will appear in the final DOM.
+will place its result into bytecode as string literal (text). That text will appear in the final DOM.
 
-TranslationID in this case will be either original element's text or, if `@name` marker is used, the _name_.. 
+TranslationID in this case will be either original element's text or, if `@name` marker is used, the _name_.
 
 ### Text span to translate
 
-Sometimes we just need to translate portion of a text. In such cases we can use "translateable fragment" marker:
+Sometimes we just need to translate portion of a text. In such cases we can use "translatable fragment" marker:
 
 ```JS
 render() {
@@ -75,15 +75,16 @@ That `<@>...</>` marks fragment of text as translatable. That fragment will be i
 
 ## Dynamic translation markers
 
-In some cases we need more complex translation processing than just static case. Consider that we need to output somethnig like bottle counter:
+In some cases we need more complex translation processing than just static case. Consider that we need to output something like bottle counter:
 
 ```JS
 render() {
   return <span @>{n} bottles</span>;
 }
 ```
-Idealy we should have output like these: "no bottles", "1 bottle", "2 bottles" ... 
-In common case we cannot handle such construct with just static tables - numeral rules a) different in different languages, b) can be quite complex and c) can be different in diferent contexts.
+
+Ideally we should have output like these: "no bottles", "1 bottle", "2 bottles" ...
+In common case we cannot handle such construct with just static tables - numeral rules a) different in different languages, b) can be quite complex and c) can be different in different contexts.
 
 The only option in this case is to implement such logic as a function. Sciter runtime will call `JSX_translateNode(node)` translation hook function in this case.
 

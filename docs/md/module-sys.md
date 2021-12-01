@@ -176,16 +176,16 @@ sys is built on top of [libuv](https://github.com/libuv/libuv) that Sciter.JS us
 
 ### Pipe - IPC mostly  
 
-* `socket.close()`
-* `socket.read()`
-* `socket.write()`
+* `socket.bind(name:string) : void` - create pipe
+* `socket.listen() : void` - listen on pipe
+* `socket.connect(name:string) : Promise` - async connect to existing pipe, throws `Error` if the pipe does not exist
+* `socket.accept() : Promise(connection)` - async wait for connection on pipe
+* `socket.close() : void` - close pipe
+* `socket.read() : Promise(ArrayBuffer)` - async read from pipe
+* `socket.write(text:string) : Promise(void)` - async write to pipe
 * `socket.fileno()`
-* `socket.listen()`
-* `socket.accept()`
-* `socket.getsockname()`
-* `socket.getpeername()`
-* `socket.connect()`
-* `socket.bind()`
+* `socket.getpeername() : string`
+* `socket.getsockname() : string`
 
 ### TTY primitives 
 

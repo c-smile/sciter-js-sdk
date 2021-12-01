@@ -97,7 +97,8 @@ section:expanded > div.content { visibility:visible; }
 
   _what_ determines structure of return value and is one of:
 
-  * "xywh" - function returns [x,y,width,height] values of the rectangle; 
+  * "xywh" - function returns [x,y,width,height] values of the rectangle;
+  * "rect" - function returns [x0,y0,x1,y1] values of the rectange( coordinates of the top left and the bottom right corners);
   * "position" - [x,y], position of the rectangle;
   * "dimension" - [width,height];
   * "left", "right", "top", "bottom" - single number;

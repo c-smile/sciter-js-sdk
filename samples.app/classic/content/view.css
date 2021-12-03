@@ -1,0 +1,10 @@
+
+@set content {
+    :root {
+        width:*; // takes space left from nav and props 
+        height:*;
+        vertical-align:middle;
+        text-align:center;
+    }
+
+}

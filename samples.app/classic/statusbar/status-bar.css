@@ -1,0 +1,9 @@
+
+@set bar {
+    :root {
+        height:1.6em;
+        background:var(base95-color);
+        color:var(base95-text-color);
+        font-size:85%;
+    }
+} 

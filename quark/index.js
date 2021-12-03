@@ -110,6 +110,8 @@ export class ProjectView extends Element {
               <input|text(productName) novalue="product name"/>
         <label>Version</label>
               <input|text(productVersion) novalue="product version"/>
+        <label>Description</label>
+              <input|text(productDescription) novalue="product description"/>
         <label>Copyright</label>
               <input|text(productCopyright) novalue="product copyright"/>
         <label>Targets</label>

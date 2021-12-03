@@ -5,6 +5,7 @@
         <script type="module">
 
 import * as sys from "@sys";
+import * as sciter from "@sciter";
 
 // Sample Pipe echo server.
 //
@@ -23,7 +24,7 @@ async function handleConnection(conn)
             break;
         }
         conn.write(new Uint8Array(data));
-        list.append(<text>Received:{data.toString()}</text>);
+        list.append(<text>Received:{sciter.decode(data)}</text>);
     }
 }
 
@@ -32,11 +33,11 @@ async function handleConnection(conn)
     var p = new sys.Pipe();
     document.on("beforeunload", evt => p.close());
     try {
-
       p.bind('fooPipe');
       p.listen();
-      //document.body.innerText = `Listening on ${p.getsockname()}`; 
-      console.log(`Listening on ${p.getsockname()}`);
+
+      list.append(<text>Listening on {p.getsockname()}</text>);
+
       let conn;
       while (true) {
           conn = await p.accept();

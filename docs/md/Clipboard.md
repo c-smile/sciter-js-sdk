@@ -10,7 +10,7 @@ Includes functions dealing with system clipboard.
 
 * #### `Clipboard.readText()` 
 
-  returns either string or undefined if clipboard is doe not contain textual data.
+  returns either string or undefined if clipboard does not contain textual data.
 
 * #### `Clipboard.write(data)` 
 

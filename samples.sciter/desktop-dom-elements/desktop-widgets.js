@@ -11,15 +11,10 @@ export class Widget extends Element
 		
 		this.homeX = null;
 		this.homeY = null;
+	
   }
 
-  componentDidMount()
-  {
-    this.on("click",".go-home",()=>
-    {
-      this.goHome()}
-    );
-  }
+  ["on click at button.go-home"]() { this.goHome(); }
   
   get placement() 
   { 

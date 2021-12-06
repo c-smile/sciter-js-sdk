@@ -1,3 +1,26 @@
+## 4.4.8.19
+
+### New features:
+
+* [virtual-list] better scrollbar handling - less "jumpy".
+* [i18n]: 
+   - `let str = @"to translate"` - translatable string literals.
+   - `/*@context for translation*/` - translation context, see documentation.
+* + sdk.js/samples.app/classic - application template / prototype. 
+* sciter.dll is not using uxtheme.dll on Windows anymore. Internal "theme:" URL scheme handling is disabled;
+
+### Fixes:
+
+* [osx] fix of loading files that contain non-trivial unicode characters;
+* [osx] compatibility with 10.13;
+* [osx] behavior:shell-icon fix;
+* [osx] CoreGraphics backend regression fix;
+* `Window.this.modal(<alert caption="Bar">Foo</alert>)`, @caption fix.
+* `<input|slider min>` handling fix.
+* `<include></include>` pair parsing fix.
+* `<select>` click handling fix.
+* [windows] `@media high-contrast {...}` handling fix.
+
 ## 4.4.8.18
 
 ### New features:

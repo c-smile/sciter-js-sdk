@@ -12,11 +12,11 @@ Includes functions dealing with system clipboard.
 
   returns either string or undefined if clipboard does not contain textual data.
 
-* #### `Clipboard.write(data)` 
+* #### `Clipboard.write(data):boolean`
 
   Puts [data](#clipboard-data) into clipboard.  
 
-* #### `Clipboard.writeText(string)` 
+* #### `Clipboard.writeText(string):boolean`
 
   Puts the string into clipboard.  
 

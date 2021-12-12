@@ -1,0 +1,83 @@
+<html>
+<head>
+<title>Clipboard tests</title>
+<style>
+
+body {
+  border-spacing: 1em;
+}
+
+htmlarea {
+  height: 50%;
+}
+
+</style>
+<script type="module">
+
+/// Write text to clipboard
+document.on("click", "button#text", async function() {
+  // option 1
+  Clipboard.writeText("Some text");
+
+  // option 2
+  Clipboard.write({
+    text: "Some text"
+  });
+
+  log("Text copied to clipboard.");
+});
+
+/// Write image to clipboard (check it in paint.exe)
+document.on("click", "button#image", async function() {
+  Clipboard.write({
+    image: await Graphics.Image.load(__DIR__ + "../images/spade.png")
+  });
+
+  log("Image copied to clipboard. You can check in paint.exe.");
+});
+
+/// Write image and text to clipboard
+document.on("click", "button#imageAndText", async function() {
+  Clipboard.write({
+    image: await Graphics.Image.load(__DIR__ + "../images/diamond.png"),
+    text: "Diamond is in clipboard"
+  });
+
+  log("Image and text copied to clipboard. You can check in paint.exe.");
+});
+
+/// Read clipboard
+document.on("click", "button#read", function() {
+  log(Clipboard.read());
+});
+
+/// On htmlarea paste event
+document.on("^exec:edit:paste", "htmlarea", function(event, element) {
+  element.innerText = "";
+
+  log(Clipboard.read());
+});
+
+function log(data)
+{
+  const out = document.$("pre#content");
+
+  if (typeof data === "object")
+    out.innerText = JSON.stringify(data, null, "  ");
+  else
+    out.innerText = data;
+}
+
+</script>
+</head>
+<body>
+  <button #read>Read clipboard</button>
+  <button #text>Put text</button>
+  <button #image>Put Image</button>
+  <button #imageAndText>Put Image and Text</button>
+
+  <htmlarea>Try to paste something here</htmlarea>
+  <h4>Clipboard content</h4>
+  <pre#content />
+</body>
+</html>

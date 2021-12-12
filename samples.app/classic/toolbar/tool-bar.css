@@ -1,0 +1,16 @@
+
+@set tool-bar {
+    :root {
+        background: var(base95-color);
+        color:var(base95-text-color); 
+    }
+    :root > button {
+        size:24px;
+        foreground-repeat:no-repeat;
+        foreground-position: 50% 50%;
+        foreground-size:16px;
+        // test, just a test 
+        foreground-image: url(images/test.svg);
+    }
+
+} 

@@ -16,18 +16,19 @@
          label: true,
       };
 
-      JSX_translateText = function(text, attrOrTag, isText, fileName, lineNo) {
+      JSX_translateText = function(text, attrOrTag, type) {
         translation[text] = {
-          type: isText ? "text" : "attribute",
+          type: ["attribute","text","string"][type],
           text,
           attrOrTag,
-          fileName,
-          lineNo
+          fileName: JSX_translationFileName,
+          lineNo:   JSX_translationLineNo,
+          context:  JSX_translationContext
         };
         return text;
       }
 
-      JSX_translateNode = function(node, translationId, fileName, lineNo) {
+      JSX_translateNode = function(node, translationId) {
 
         let text_counter = 0;
         let number_counter = 0;
@@ -44,8 +45,9 @@
           type:"node",
           parameters: node[2].map(pdef),
           details: node[2].join(""),
-          fileName: fileName,
-          lineNo: lineNo
+          fileName: JSX_translationFileName,
+          lineNo:   JSX_translationLineNo,
+          context:  JSX_translationContext
         };
         return node;
       }
@@ -54,24 +56,35 @@
         let text = "{";
         function emit_attribute(key,def) {
           return `  // attribute ${def.attrOrTag}
-  // file ${def.fileName}(${def.lineNo})
+  // file: ${def.fileName}(${def.lineNo})
+  // context: ${def.context}
   "${key}":"${key}"`;
         }
         function emit_text(key,def) {
           return `  // text of ${def.attrOrTag}
-  // file ${def.fileName}(${def.lineNo})
+  // file: ${def.fileName}(${def.lineNo})
+  // context: ${def.context}
+  "${key}":"${key}"`
+        }
+
+        function emit_string(key,def) {
+          return `  // literal string
+  // file: ${def.fileName}(${def.lineNo})
+  // context: ${def.context}
   "${key}":"${key}"`
         }
 
         function emit_node(key,def) {
           return `  // node: ${def.details}
-  // file ${def.fileName}(${def.lineNo})
+  // file: ${def.fileName}(${def.lineNo})
+  // context: ${def.context}
   "${key}": function(${def.parameters.join(",")}) { return null; }`; /*use node as it is by default*/
         }
         
         for (const [key, def] of Object.entries(translation)) {
           switch( def.type ) {
             case "text": text += "\r\n" + emit_text(key,def) + ",\r\n"; break;
+            case "string": text += "\r\n" + emit_string(key,def) + ",\r\n"; break;
             case "attribute": text += "\r\n" + emit_attribute(key,def) + ",\r\n"; break;
             case "node": text += "\r\n" + emit_node(key,def) + ",\r\n"; break;
           }

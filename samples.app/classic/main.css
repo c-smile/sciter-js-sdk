@@ -1,0 +1,28 @@
+
+html { }
+
+body { margin:0; overflow:hidden; }
+
+main {
+    flow:horizontal;
+    height:*;
+}
+
+main > section {
+    height:*;
+}
+
+// color system 
+
+html {
+    var(accent-color): window-accent-color;
+    var(base-color): #fff; var(base-text-color): #000; 
+    var(base95-color): #f4f4f4; var(base95-text-color): #000; 
+    var(border-color): #f4f4f4;
+}
+
+html:theme(dark) {
+    var(base-color): #000; var(base-text-color): #fff; 
+    var(base95-color): #333; var(base95-text-color): #fff; 
+    var(border-color): #333;
+}

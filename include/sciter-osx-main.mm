@@ -23,7 +23,8 @@ int main(int argc, const char * argv[])
   auto mb = [NSBundle mainBundle];
   [mb loadNibNamed:@"MainMenu" owner:application topLevelObjects:&tl];
   
-  SciterSetOption(NULL, SCITER_SET_GFX_LAYER, GFX_LAYER_SKIA);
+  //SciterSetOption(NULL, SCITER_SET_GFX_LAYER, GFX_LAYER_CG);
+  SciterSetOption(NULL, SCITER_SET_GFX_LAYER, GFX_LAYER_SKIA_OPENGL);
     
   for( int i = 0; i < argc; ++i ) {
       aux::a2w w(argv[i]);

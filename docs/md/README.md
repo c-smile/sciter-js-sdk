@@ -18,7 +18,12 @@
 
 * #### `cancelAnimationFrame(aid)`
 
-* #### `fetch()` - [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+* #### `fetch(): Response` - [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+
+  Fetch can also be used synchronously as follow
+  `fetch(..., {sync: true})`
+
+  fetch API uses either HTTP client to get remote files or OS API for local files. In the first case return values are HTTP response codes, while in the second case error codes are coming from OS.
 
 * #### `getComputedStyle(element[, pseudoEl]): Style`
 

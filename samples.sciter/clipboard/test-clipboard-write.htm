@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style></style>
+        <script|module>
+
+document.on("click", "button#image", async function() {
+  Clipboard.write({
+    image: await Graphics.Image.load(__DIR__ + "../images/spade.png")
+  });
+});
+
+document.on("click", "button#andtext", async function() {
+  Clipboard.write({
+    image: await Graphics.Image.load(__DIR__ + "../images/diamond.png"),
+    text: "Diamond is in clipboard"
+  });
+});
+
+        </script>
+    </head>
+    <body>
+
+       <button#image>Put Image</button> 
+       <button#andtext>Put Image and Text</button>
+
+    </body>
+</html>

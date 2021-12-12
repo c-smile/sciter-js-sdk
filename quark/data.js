@@ -28,7 +28,6 @@ export function addNewProject() {
     productVersion: "",
     productCopyright: "",
     productName: "",
-    productDescription: "",
     targets: [],
     out : "",
   };

@@ -100,10 +100,12 @@ function setBlurbehind(blurBehind) {
 function setAmbience(lightAmbience) {
   var bg = $("button#ambience");
   if( lightAmbience ) {
+    view.blurBehind = "light";
     document.attributes["theme"] = "light";
     bg.state.checked = true;
   }
   else {
+    view.blurBehind = "dark";
     document.attributes["theme"] = "dark";
     bg.state.checked = false;
   }

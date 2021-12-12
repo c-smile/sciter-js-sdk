@@ -1,3 +1,25 @@
+## 4.4.8.20
+
+### New features:
+
+* JSX: <NS-Comp /> - to call NS.Comp component (fully qualified names).
+* [css] + `:window-root` selector - matches only root DOM element that is loaded into window directly.
+* `elem.state.flow` property - reports CSS flow manager used on the element.
+* `SciterSetOption(NULL,SCITER_SET_INIT_SCRIPT, (UINT_PTR) "/* JS module here */" )` - support of script injects.
+
+### Fixes:
+
+* Fix of `Clipboard.writeText("...")`, see: https://sciter.com/forums/topic/clipboard-write-bug/
+* ACRYLIC_BLURBEHIND is disabled again - too many problems, for example: https://sciter.com/forums/topic/memory-leak/, Sciter still provides blurbehind but less blurry that acrylic.
+* [osx] better handling of `window.isEnabled`.
+* [virtual-list] `vlist.navigateTo(v)` and `vlist.advanceTo(n)` fixes.
+* fix of custom scrollbar styling.
+
+NOTE: that is probaly the last release of 4.4.x.x series. 
+Next releases will switch to latest Skia version that enables Vulkan (Linux, Windows) and DirectX 12 (Windows) backends.  
+Most of the changes will be on Linux: I am dropping use of GTK - Sciter will be purely X Window based.
+Default backends on Linux will be: Vulkan -> OpenGL -> Raster with Skia graphics (no Cairo anymore).
+
 ## 4.4.8.19
 
 ### New features:

@@ -57,7 +57,7 @@ N/A
 
 ## Methods
 
-### `element.vlist.navigate(to: int | string)` 
+### `element.vlist.navigateTo(to: int | string)` 
   
   scroll to given record, where `to` is either:
 
@@ -68,6 +68,12 @@ N/A
   * "pageprior" - previous page;
   * "itemnext" - next record;
   * "itemprior" - previous record;
+
+### `element.vlist.advanceTo(recNo: int) : Element` 
+  
+  scroll to given record number. By default it performs animated scroll.
+
+  Returns DOM element representing the record.
 
 ## Properties
 

@@ -52,6 +52,7 @@ rule to be applied.
 * `pressed`
 * `popup`
 * `ready`
+* `windowroot` - readonly, true is this is a root document of the window;
 * `reactive` - `element.state.reconciliation = false;` will prevent reconciliation of element's content by Reactor
 * `value` - any value - runtime value coerced to particular type. Actual for input elements.
 * `occluded:integer` - read-only, reports visibility status of the element, if `0` then the element is visible in full, otherwise combination of these flags:
@@ -60,6 +61,11 @@ rule to be applied.
   * `0x4` - right side is clipped.
   * `0x8` - bottom side is clipped.
   `0xf` value means that the element is completely clipped out - invisible.
+* `flow` - readonly, string, reports layout manager used by the element at the moment.
+  
+  Can be one of: "default", "vertical", "horizontal", "horizontal-wrap", "vertical-wrap", "grid", 
+  "table", "table-fixed", "table-row", "table-body", "columns", 
+  "stack", "text", "null", "image", "svg", "svg-child" or "";
 
 Some properties of Element.State may cause CSS pseudo-class rules to be triggered:
 

@@ -41,7 +41,7 @@ export function reset(n = 500) {
     const uid = Sciter.uuid();
     messages.push({
         id: uid,
-        html: `<div.text>Test Message ${index + 1} id: ${uid}</div>`,
+        html: `<div.text>Test Message ${index} id: ${uid}</div>`,
         avatar: avatars[index % avatars.length],
         mine: index != 0 && ((index + 1) % 3) == 0
     });  

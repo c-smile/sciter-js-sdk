@@ -87,6 +87,19 @@
           console.log(tape.vlist.firstBufferIndex,tape.vlist.lastBufferIndex);
         });
 
+        document.on('click', 'button#navigate', () => {
+          tape.vlist.navigateTo(100);
+        });
+        document.on('click', 'button#advance-m', () => {
+          let el = tape.vlist.advanceTo(tape.vlist.firstVisibleItemIndex - 10);
+          console.log(el);
+        });
+        document.on('click', 'button#advance-p', () => {
+          let el = tape.vlist.advanceTo(tape.vlist.lastVisibleItemIndex + 10);
+          console.log(el);
+        });
+
+
     </script>
 </head>
 <body>
@@ -96,5 +109,8 @@
     <button #btn-del-item>delete item</button>
     <button #btn-repl-items>replace all items</button>
     <button #check>show stats</button>
+    <button #navigate>navigate to index 100</button>
+    <button #advance-m>advance -10</button>
+    <button #advance-p>advance +10</button>
 </body>
 </html>

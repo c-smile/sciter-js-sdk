@@ -36,9 +36,9 @@ class App extends Element {
 
   constructor() {
     super();
-    for(let n = 0; n < 1000; ++n) { 
-      this.list.push({key:n, text:`option # ${n}`});
-    }
+    //for(let n = 0; n < 1000; ++n) { 
+    //  this.list.push({key:n, text:`option # ${n}`});
+    //}
   }
 
   render() {
@@ -47,6 +47,7 @@ class App extends Element {
       <button#change-items>Change items</button>
       <button#change-length>Change length of set</button>
       <button#remove-item>Remove 10th item</button>
+      <button#populate>Populate set</button>
     </body>
   }
 
@@ -69,6 +70,14 @@ class App extends Element {
     this.list.splice(10,1);
     this.componentUpdate();
   }
+
+  ["on click at button#populate"]() {
+    for(let n = 0; n < 1000; ++n) { 
+      this.list.push({key:n, text:`option # ${n}`});
+    }
+    this.componentUpdate();
+  }
+
 }
 
 

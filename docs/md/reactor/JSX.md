@@ -141,7 +141,15 @@ JSX follows HTML parsing shortcut rules used in SciterJS and so:
 * `<input.search />` is an equivalent of *class* attribute declaration: `<input class="search" />`
 * `<input#lookup />` is an equivalent of *id* attribute declaration: `<input id="lookup" />`
 
-## JSX is a function  
+### Using compound component names in JSX
+
+If components in an application are organized in namespaces/modules like `App.ComponentA` then to use such fully qualified name use `-` instead of `.` as name separators:
+```JS
+<App-ComponentA>
+   ... content ...
+</App-ComponentA>
+```
+## JSX is a function
 
 Under the hood, this code:  
 

@@ -1,1 +1,1 @@
-./macosx/scapp ../../quark/index.htm --debug
+./scapp ../../quark/index.htm --debug

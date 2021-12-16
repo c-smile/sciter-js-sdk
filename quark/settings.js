@@ -32,6 +32,9 @@ export async function store()
 
 function restore() 
 {
+  if (sys.fs.$stat(path) === null)
+    return false;
+
   var buffer;
 
   try {

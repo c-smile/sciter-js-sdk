@@ -117,6 +117,8 @@ read only
 ---
 * ##### `element.toString()`
 ---
+* ##### `element.getBoundingClientRect()`
+---
 * ##### `element.scrollTo(x,y)`
  
   sets scroll position of scrollable.

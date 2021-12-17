@@ -149,6 +149,18 @@ read only
 * `element.removeEventListener(name, eventHandler)` 
 * `element.dispatchEvent(event)` 
 * `element.postEvent(event)` sciter specific, async version of .dispatchEvent()
+---
+* `element.closest(selectors)`
+
+  Returns the Element which is the closest ancestor of the current element (or the current element itself) which matches the selectors given in parameter.
+
+* `element.matches(selector)`
+
+  Returns a boolean value indicating whether or not the element would be selected by the specified selector string.
+
+* `element.getElementsByClassName()`
+* `element.getElementsByTagName()`
+* `element.getElementsByName()`
 
 ## Methods (Sciter specific):
 

@@ -108,6 +108,7 @@ read only
 ---
 * ##### `element.$p(selector)` parent element selector
 * ##### `element.$o(selector)` owner element selector, useful to get owner of menu.
+* ##### `element.$is(selector)`
 ---
 * ##### `element.hasAttribute(attribute)`
 * ##### `element.getAttribute(attribute)`
@@ -201,6 +202,8 @@ read only
 * ##### `element.timer(milliseconds, callback: function): true | false`
   
   Starts timer on element. If the element already has timer with that callback it first gets removed and new timer started instead. This allows to implement effective throttling. If the callback function returns `true` value then the timer will keep ticking (like interval timer). The callback is called with `this` set to the element. 
+
+* ##### `element.clear()`
 
 * ##### `element.post(function | event [, avoidDuplicates: true | false] )`
 

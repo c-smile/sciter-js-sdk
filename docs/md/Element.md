@@ -115,8 +115,6 @@ read only
 * ##### `element.removeAttribute(attribute)`
 * ##### `element.setAttribute(attribute, value)`
 ---
-* ##### `element.toString()`
----
 * ##### `element.getBoundingClientRect()`
 ---
 * ##### `element.scrollTo(x,y)`
@@ -328,3 +326,8 @@ read only
 * ##### `element.rangeFromPoint(x,y) : Range | null` 
 
   Returns collapsed range (caret position) at point x/y. x/a are local coordinates - relative to origin of element's inner box.   
+
+* ##### `element.toString() : string`
+
+  Returns element as string
+

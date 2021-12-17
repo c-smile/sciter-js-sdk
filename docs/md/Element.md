@@ -115,6 +115,8 @@ read only
 * ##### `element.removeAttribute(attribute)`
 * ##### `element.setAttribute(attribute, value)`
 ---
+* ##### `element.toString()`
+---
 * ##### `element.scrollTo(x,y)`
  
   sets scroll position of scrollable.

@@ -5,14 +5,16 @@ class Element represents DOM element and extends [Node](Node.md) and so all its 
 ## Properties:
 
 * `element.id`
-* `element.elementIndex`
+* `element.name`
 * `element.tagName`
 * `element.tag` - lower case version of `.tagName`
 * `element.className`
+* `element.elementIndex`
 
 * `element.innerHTML`
 * `element.outerHTML`
 * `element.innerText`
+* `element.value`
 ---
 * `element.firstElementChild`
 * `element.lastElementChild`
@@ -20,7 +22,24 @@ class Element represents DOM element and extends [Node](Node.md) and so all its 
 * `element.previousElementSibling`
 * `element.childElementCount`
 ---
-* `element.value`
+read only
+* `element.offsetLeft`
+* `element.offsetTop`
+* `element.offsetWidth`
+* `element.offsetHeight`
+---
+read only
+* `element.clientLeft`
+* `element.clientTop`
+* `element.clientWidth`
+* `element.clientHeight`
+---
+read only
+* `element.scrollLeft` - read only
+* `element.scrollTop` - read only
+* `element.scrollWidth`
+* `element.scrollHeight`
+---
 * `element.style` - returns reference to [Element.Style](Element.Style.md) class.
 * `element.state` - returns reference to [Element.State](Element.State.md) class (Sciter.JS specific).
 
@@ -40,7 +59,9 @@ class Element represents DOM element and extends [Node](Node.md) and so all its 
    * `for(let child of element.children)` - iteration of children.
 
 * `element.disabled`
-* `element.readonly` 
+* `element.readonly`
+* `element.checked`
+
 * `element.src`
 
 ## Methods:

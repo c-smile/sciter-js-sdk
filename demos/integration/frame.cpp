@@ -90,6 +90,22 @@ public:
     return true;
   }
 
+  // this method starts native thread and call callbacks methods
+  bool startNativeThreadWithObject(sciter::value params)
+  {
+    std::thread([=]() {
+      sciter::value doneCb = params["done"];
+      sciter::value progressCb = params["progress"];
+      // simulate long running task
+      for (int n = 0; n < 100; ++n) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        if(!progressCb.is_undefined()) progressCb.call(n);
+      }
+      if (!doneCb.is_undefined()) doneCb.call(100);
+    }).detach();
+    return true;
+  }
+
 
   // virtual property
   int get_windowHandle() {
@@ -127,6 +143,7 @@ public:
       SOM_FUNC(vectorIntegerMul),
       SOM_FUNC(makeNativeObject),
       SOM_FUNC(startNativeThread),
+      SOM_FUNC(startNativeThreadWithObject),
       SOM_FUNC(nativeFunctionsA),
       SOM_FUNC(nativeFunctionsB),
     )

@@ -1,5 +1,5 @@
 
-#include "stdafx.h"
+//#include "stdafx.h"
 #include "sciter-x.h"
 #include "sciter-x-behavior.h"
 #include "sciter-x-threads.h"

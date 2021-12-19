@@ -1,3 +1,23 @@
+## 4.4.8.21
+
+### New features:
+
+* fetch API: `options.downloadProgress(loaded,total)` - download progress callback.
+
+### Fixes:
+
+* [JSX] fix of `disabled={true|false}` attribute handling.
+* `componentDidMount`/`componentWillUnmount` fix for css::prototype definitions.
+* Fix of loading document in frame.
+* [macos] performance fixes in video rendering.
+* [macos] window level fix for dialogs.
+* Environment variable SCAPP-DEBUG=ON to enable sciter debugger in scapp and custom applications. Same as explicit `--debug` argument.
+* `window.modal()` returns `undefined` if the dialog is closed by "X" window button.
+* `Window.this.modal(<alert resizable=true>...</alert>)` to enable resizable dialog.
+* Fix of memory leak in `sciter::value::operator["key"|index]` 
+* Fix of threading issue in sciter::value, see: https://sciter.com/forums/topic/an-access-violation-occurred-while-reading-position-0x0000002c/
+
+
 ## 4.4.8.20
 
 ### New features:

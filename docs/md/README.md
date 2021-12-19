@@ -18,12 +18,14 @@
 
 * #### `cancelAnimationFrame(aid)`
 
-* #### `fetch(): Response` - [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+* #### `fetch(url:string [, options:object]): Response` - [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 
-  Fetch can also be used synchronously as follow
-  `fetch(..., {sync: true})`
+  Sciter's extras:
 
-  fetch API uses either HTTP client to get remote files or OS API for local files. In the first case return values are HTTP response codes, while in the second case error codes are coming from OS.
+  * `options.sync: boolean` - when set to _true_ fetch performs synchronous data retrieval. Synchronous fetch is useful to 
+    get local data - local file or resource content.
+  * `options.downloadProgress: function(fetched:integer, total:integer)` - callback function to be called on download progress. Note: _total_ argument can be zero if server does not provide "Content-Length" info.  
+  * fetch API uses either HTTP client to get remote files or OS API for local files. In the first case return values are HTTP response codes, while in the second case error codes are coming from OS.
 
 * #### `getComputedStyle(element[, pseudoEl]): Style`
 
@@ -41,14 +43,6 @@
 * #### `scanf(format:string, input: string) : [...]`
 
   Takes *input* string and parses it according the *format* specification using C-style [scanf conventions](https://en.cppreference.com/w/c/io/fscanf). Returns list (array) of successfully parsed values. 
-
-* #### `btoa(buffer: ArrayBuffer) : string`
-
-  Produces Base64 string from binary data. 
-
-* #### `atob(base64: string) : ArrayBuffer`
-
-  Restores binary data from Base64 encoded string.  
 
 ## global properties
 

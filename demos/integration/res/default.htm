@@ -106,6 +106,18 @@ document.on("click", "button#task-start", function(evt, button) {
   Window.this.assetInterface.startNativeThread(onDone,onProgress);
 });
 
+document.on("click", "button#task-start-object", function(evt, button) {
+  const progress = document.$("#task-progress");
+  button.state.disabled = true;
+
+  const obj = {
+    done: function (n) { progress.value = n; button.state.disabled = false; },
+    progress: function(n) { progress.value = n; }
+  };
+  
+  Window.this.assetInterface.startNativeThreadWithObject(obj);
+});
+
 
 // xcall test
 document.on("input", "form#xcall", function(evt,form) {
@@ -234,7 +246,9 @@ function testFunction(n) {
 <section>
   <progress #task-progress max=100 value=0 />
   <button #task-start>Start task</button>
+  <button #task-start-object>Start task with object</button>
 </section>
+
 
 <h2>Calling script function from native side</h2>
 

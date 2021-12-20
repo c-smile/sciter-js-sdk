@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>Test</title>
+<script type="module">
+
+import * as sys from "@sys";
+
+function log(str)
+{
+  const plaintext = document.$("plaintext");
+
+  plaintext.append(str);
+  console.log(str);
+}
+
+document.on("click", "button", async function() {
+  try {
+    const url = "https://download.sublimetext.com/sublime_text_build_4121_x64_setup.exe";
+
+    log("start download...");
+
+    const response = await fetch(url, {
+      downloadProgress: function(index, total) {
+        log(`progress - ${index} - ${total} - ${Math.round(100 * index / total)}%`);
+      }
+    });
+
+    const buffer = await response.arrayBuffer();
+
+    log("download complete");
+
+    let file = await sys.fs.open("sublime_text_build_4121_x64_setup.exe", "w+", 0o666);
+
+    await file.write(buffer);
+
+    await file.close();
+  } catch (e) {
+    log(e);
+  }
+});
+
+</script>
+</head>
+<body>
+  <h1>fetch file download with progress</h1>
+  <button>Download</button>
+  <plaintext />
+</body>
+</html>

@@ -106,10 +106,14 @@ export class ProjectView extends Element {
               <FolderSelector(resources) novalue="app resources folder"/>
         <label>Entry file</label>
               <input|text(entry) novalue="main.htm was not found" readonly/>
-        <label>Product</label>
+        <label>Name</label>
               <input|text(productName) novalue="product name"/>
         <label>Version</label>
               <input|text(productVersion) novalue="product version"/>
+        <label>Description</label>
+              <input|text(productDescription) novalue="product description"/>
+        <label>Company</label>
+              <input|text(productCompany) novalue="product company"/>
         <label>Copyright</label>
               <input|text(productCopyright) novalue="product copyright"/>
         <label>Targets</label>

@@ -25,9 +25,11 @@ export function addNewProject() {
     exe : "",
     logo: "",
     resources: "",
-    productVersion: "",
-    productCopyright: "",
     productName: "",
+    productVersion: "",
+    productDescription: "",
+    productCopyright: "",
+    productCompany: "",
     targets: [],
     out : "",
   };

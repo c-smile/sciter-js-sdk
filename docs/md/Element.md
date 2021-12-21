@@ -5,14 +5,16 @@ class Element represents DOM element and extends [Node](Node.md) and so all its 
 ## Properties:
 
 * `element.id`
-* `element.elementIndex`
+* `element.name`
 * `element.tagName`
 * `element.tag` - lower case version of `.tagName`
 * `element.className`
+* `element.elementIndex`
 
 * `element.innerHTML`
 * `element.outerHTML`
 * `element.innerText`
+* `element.value`
 ---
 * `element.firstElementChild`
 * `element.lastElementChild`
@@ -20,7 +22,24 @@ class Element represents DOM element and extends [Node](Node.md) and so all its 
 * `element.previousElementSibling`
 * `element.childElementCount`
 ---
-* `element.value`
+read only
+* `element.offsetLeft`
+* `element.offsetTop`
+* `element.offsetWidth`
+* `element.offsetHeight`
+---
+read only
+* `element.clientLeft`
+* `element.clientTop`
+* `element.clientWidth`
+* `element.clientHeight`
+---
+read only
+* `element.scrollLeft` - read only
+* `element.scrollTop` - read only
+* `element.scrollWidth`
+* `element.scrollHeight`
+---
 * `element.style` - returns reference to [Element.Style](Element.Style.md) class.
 * `element.state` - returns reference to [Element.State](Element.State.md) class (Sciter.JS specific).
 
@@ -40,7 +59,9 @@ class Element represents DOM element and extends [Node](Node.md) and so all its 
    * `for(let child of element.children)` - iteration of children.
 
 * `element.disabled`
-* `element.readonly` 
+* `element.readonly`
+* `element.checked`
+
 * `element.src`
 
 ## Methods:
@@ -87,12 +108,15 @@ class Element represents DOM element and extends [Node](Node.md) and so all its 
 ---
 * ##### `element.$p(selector)` parent element selector
 * ##### `element.$o(selector)` owner element selector, useful to get owner of menu.
+* ##### `element.$is(selector)`
 ---
 * ##### `element.hasAttribute(attribute)`
 * ##### `element.getAttribute(attribute)`
 * ##### `element.getAttributeNames()`
 * ##### `element.removeAttribute(attribute)`
 * ##### `element.setAttribute(attribute, value)`
+---
+* ##### `element.getBoundingClientRect()`
 ---
 * ##### `element.scrollTo(x,y)`
  
@@ -126,6 +150,18 @@ class Element represents DOM element and extends [Node](Node.md) and so all its 
 * `element.removeEventListener(name, eventHandler)` 
 * `element.dispatchEvent(event)` 
 * `element.postEvent(event)` sciter specific, async version of .dispatchEvent()
+---
+* `element.closest(selectors)`
+
+  Returns the Element which is the closest ancestor of the current element (or the current element itself) which matches the selectors given in parameter.
+
+* `element.matches(selector)`
+
+  Returns a boolean value indicating whether or not the element would be selected by the specified selector string.
+
+* `element.getElementsByClassName()`
+* `element.getElementsByTagName()`
+* `element.getElementsByName()`
 
 ## Methods (Sciter specific):
 
@@ -166,6 +202,8 @@ class Element represents DOM element and extends [Node](Node.md) and so all its 
 * ##### `element.timer(milliseconds, callback: function): true | false`
   
   Starts timer on element. If the element already has timer with that callback it first gets removed and new timer started instead. This allows to implement effective throttling. If the callback function returns `true` value then the timer will keep ticking (like interval timer). The callback is called with `this` set to the element. 
+
+* ##### `element.clear()`
 
 * ##### `element.post(function | event [, avoidDuplicates: true | false] )`
 
@@ -303,3 +341,8 @@ class Element represents DOM element and extends [Node](Node.md) and so all its 
 * ##### `element.rangeFromPoint(x,y) : Range | null` 
 
   Returns collapsed range (caret position) at point x/y. x/a are local coordinates - relative to origin of element's inner box.   
+
+* ##### `element.toString() : string`
+
+  Returns element as string
+

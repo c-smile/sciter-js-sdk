@@ -9,7 +9,7 @@ var list = []; // list of persistable objects
 
 // persistable settings
 
-export async function store() 
+export async function store()
 {
   if(!path)
     return;
@@ -32,6 +32,9 @@ export async function store()
 
 function restore() 
 {
+  if (sys.fs.$stat(path) === null)
+    return false;
+
   var buffer;
 
   try {
@@ -71,10 +74,10 @@ add({
       }
     }
 });
-  
+
 export function saveState()
 {
-  if(!document.window) {
+  if(!document.readyState !== "complete") {
     Window.this.off(saveState); // document is unloaded
     return;
   }

@@ -132,7 +132,19 @@ export class ProjectView extends Element {
     </section>;
   }
 
-  ["on change at form"] (evt,form) { 
+  ["on change at form"] (evt,form) {
+    this.updateForm(form);
+  }
+
+  ["on input at FileSelector"] () {
+    this.updateForm(this.$("form"));
+  }
+
+  ["on input at FolderSelector"] () {
+    this.updateForm(this.$("form"));
+  }
+
+  updateForm(form) {
     var vals = form.value;
     vals.entryFileExists = fs.$stat(`${vals.resources}/main.htm`) ? true : false;
     Data.updateCurrentProject(vals);

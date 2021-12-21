@@ -7,6 +7,7 @@ Note: in Sciter.JS `Document` extends [`Element`](Element.md) class - `document`
 * `document.body`
 * `document.head`
 * `document.documentElement`
+* `document.readyState` - "complete" or "interactive"
 
 ## Methods:
 

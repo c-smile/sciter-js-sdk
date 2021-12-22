@@ -1,11 +1,12 @@
 # sciter-js-sdk
-Sciter.JS - Sciter but with QuickJS on board instead of my TIScript
 
-### [Developement logfile](logfile.md) and [documentation](docs/md/index.md) in docs/md folder.
+Build cross platform desktop applications with HTML, CSS and javascript.
+
+### [Tutorials](https://sciter.com/tutorials/), [Documentation](docs/md/README.md) and [Developement logfile](logfile.md).
 
 ## Script
 
-Sciter.JS uses [QuickJS](https://bellard.org/quickjs/) in particular [QuickJS++ ](https://github.com/c-smile/quickjspp).
+Sciter.JS uses [QuickJS](https://bellard.org/quickjs/) in particular [QuickJS++](https://github.com/c-smile/quickjspp).
 
 * ES6: async/await, classes, modules, destructuring;
 * BigInt, BigFloat, BigDecimal - arbitrary precision IEEE 754 floating point operations and transcendental functions with exact rounding (currency, etc);

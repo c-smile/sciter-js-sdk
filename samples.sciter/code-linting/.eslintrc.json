@@ -6,9 +6,8 @@
     "extends": [
         "eslint:recommended", "google"
     ],
-    "parser": "@babel/eslint-parser",
     "parserOptions": {
-        "ecmaVersion": 12,
+        "ecmaVersion": 13,
         "sourceType": "module",
         "ecmaFeatures": {
             "jsx": true

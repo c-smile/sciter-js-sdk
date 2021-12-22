@@ -58,6 +58,15 @@
         "spaced-comment": [
             "warn"
         ],
+        "camelcase": [
+            "error"
+        ],
+        "no-multiple-empty-lines": [
+            "error"
+        ],
+        "no-unused-private-class-members": [
+            "error"
+        ],
         "require-jsdoc": [
             "off"
         ],

@@ -25,7 +25,7 @@ import {encode,decode} from "@sciter";
     this.innerHTML = `<button>inc</button> clicked <span.counter>${this.counter}</span> times`+" "  +  ' ';
   }
 
-  ["on click at button"](evt,button){
+  ["on click at button"](   evt,button   ){
         ++this.counter
         this.Render()
       }

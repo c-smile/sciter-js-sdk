@@ -30,6 +30,10 @@ npm install
 
 [https://eslint.org/docs/user-guide/getting-started](https://eslint.org/docs/user-guide/getting-started)
 
-## top 3 code styles compared
+## code styles
+
+standard, airbnb, google and xo
+
+### top 3 code styles compared
 
 [https://betterprogramming.pub/comparing-the-top-three-style-guides-and-setting-them-up-with-eslint-98ea0d2fc5b7](https://betterprogramming.pub/comparing-the-top-three-style-guides-and-setting-them-up-with-eslint-98ea0d2fc5b7)

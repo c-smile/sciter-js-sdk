@@ -2,9 +2,7 @@
 
 Linting is the automated checking of your source code for programmatic and stylistic errors.
 
-In this example, we are linting javascript code.
-
-Code linting uses [eslint](https://github.com/eslint/eslint) and requires [Node.js](https://nodejs.dev/) and its package manager `npm` to be installed.
+In this example, we are linting javascript code using [eslint](https://github.com/eslint/eslint) and eslint requires [Node.js](https://nodejs.dev/) and its package manager `npm` to be installed.
 
 ## install linter
 
@@ -18,9 +16,20 @@ npm install
 ./node_modules/.bin/eslint test/*
 ```
 
-## fix errors
+## review and fix code errors
 
 ```sh
-# fix errors
 ./node_modules/.bin/eslint --fix test/*
 ```
+
+## eslint rules
+
+[https://eslint.org/docs/rules/](https://eslint.org/docs/rules/)
+
+## eslint getting started
+
+[https://eslint.org/docs/user-guide/getting-started](https://eslint.org/docs/user-guide/getting-started)
+
+## top 3 code styles compared
+
+[https://betterprogramming.pub/comparing-the-top-three-style-guides-and-setting-them-up-with-eslint-98ea0d2fc5b7](https://betterprogramming.pub/comparing-the-top-three-style-guides-and-setting-them-up-with-eslint-98ea0d2fc5b7)

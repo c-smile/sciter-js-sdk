@@ -7,7 +7,7 @@
         "eslint:recommended", "google"
     ],
     "parserOptions": {
-        "ecmaVersion": 13,
+        "ecmaVersion": "latest",
         "sourceType": "module",
         "ecmaFeatures": {
             "jsx": true
@@ -35,46 +35,41 @@
             "error",
             "always"
         ],
-        "no-unused-vars": [
-            "warn"
-        ],
+        "no-unused-vars": "warn",
         "max-len": [
             "warn",
             120
         ],
-        "new-cap": [
-            "error"
-        ],
-        "no-multi-spaces": [
-            "warn"
-        ],
+        "new-cap": "error",
+        "no-multi-spaces": "warn",
         "brace-style": [
-            "error"
+            "error",
+            "stroustrup"
         ],
         "curly": [
-            "error"
+            "error",
+            "multi-or-nest"
         ],
-        "spaced-comment": [
-            "warn"
-        ],
+        "spaced-comment": "warn",
+        "no-else-return": "error",
+        "no-empty-function": "error",
+        "no-lone-blocks": "error",
+        "no-mixed-operators": "error",
+        "block-spacing": "error",
+        "eol-last": "error",
+        "arrow-spacing": "error",
+        "comma-spacing": "error",
+        "space-before-blocks": "error",
+        "no-inline-comments": "error",
         "space-in-parens": [
             "error",
             "never"
         ],
-        "camelcase": [
-            "error"
-        ],
-        "no-multiple-empty-lines": [
-            "error"
-        ],
-        "no-unused-private-class-members": [
-            "error"
-        ],
-        "require-jsdoc": [
-            "off"
-        ],
-        "valid-jsdoc": [
-            "error"
-        ]
+        "camelcase": "error",
+        "no-multiple-empty-lines": "error",
+        "no-unused-private-class-members": "off",
+        "no-template-curly-in-string": "error",
+        "require-jsdoc": "off",
+        "valid-jsdoc": "error"
     }
 }

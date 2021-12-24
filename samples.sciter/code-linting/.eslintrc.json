@@ -24,7 +24,7 @@
             }
         ],
         "linebreak-style": [
-            "error",
+            "off",
             "unix"
         ],
         "quotes": [
@@ -69,6 +69,7 @@
         "no-multiple-empty-lines": "error",
         "no-unused-private-class-members": "off",
         "no-template-curly-in-string": "error",
+        "no-invalid-this": "off",
         "require-jsdoc": "off",
         "valid-jsdoc": "error"
     }

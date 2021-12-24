@@ -144,6 +144,10 @@ export class ProjectView extends Element {
     this.updateForm(form);
   }
 
+  ["on click at form"](evt, form) {
+    this.updateForm(form);
+  }
+
   ["on input at FileSelector"]() {
     this.updateForm(this.$("form"));
   }
@@ -155,7 +159,9 @@ export class ProjectView extends Element {
   updateForm(form) {
     const vals = form.value;
     vals.entryFileExists = fs.$stat(`${vals.resources}/main.htm`) ? true : false;
+
     Data.updateCurrentProject(vals);
+
     this.$("button#assemble").state.disabled = !ProjectView.validate(vals);
     this.$("input(entry)").value = vals.entryFileExists ? "main.htm found" : "";
   }

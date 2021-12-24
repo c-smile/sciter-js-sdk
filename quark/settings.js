@@ -1,11 +1,10 @@
-
 import * as env from "@env";
 import * as sys from "@sys";
 
 import {encode, decode} from "@sciter";
 
 let path;
-const list = []; // list of persistable objects
+let list = []; // list of persistable objects
 
 // persistable settings
 
@@ -23,6 +22,8 @@ export async function store() {
       persistable.uiStateStore(data);
 
     await file.write(encode(JSON.stringify(data, null, "  "), "utf-8"));
+
+    console.log("Settings stored");
   }
   catch (e) {
     Window.this.modal(<warning>Cannot open file {path} for writing.<br/>{e}<br/>Settings will not be saved.</warning>);
@@ -82,7 +83,7 @@ add({
 });
 
 export function saveState() {
-  if (!document.readyState !== "complete") {
+  if (document.readyState !== "complete") {
     // document is unloaded
     Window.this.off(saveState);
     return;

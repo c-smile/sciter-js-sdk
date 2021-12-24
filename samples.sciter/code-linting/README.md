@@ -13,13 +13,13 @@ npm install
 ## review code for errors
 
 ```sh
-./node_modules/.bin/eslint test/*
+./node_modules/.bin/eslint --config .eslintrc.json test/*
 ```
 
 ## review and fix code errors
 
 ```sh
-./node_modules/.bin/eslint --fix test/*
+./node_modules/.bin/eslint --config .eslintrc.json --fix test/*
 ```
 
 ## eslint rules

@@ -59,7 +59,7 @@ read only
    * `for(let child of element.children)` - iteration of children.
 
 * `element.disabled`
-* `element.readonly`
+* `element.readonly` 
 * `element.checked`
 
 * `element.src`

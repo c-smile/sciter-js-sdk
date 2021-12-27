@@ -18,7 +18,7 @@ Engine does the following in window construction phase:
 ## Document Loading
 
 > All `<script>` elements in Sciter are executed after document parsing. 
-> As if they have "defer" attribute defined in browsers: `<script defer>`
+> As if they have "defer" attribute defined in browsers:  `<script defer>`
 
 Any script element may have code executed in it directly on load and/or contain event handlers and so:
 

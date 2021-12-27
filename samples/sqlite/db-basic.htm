@@ -27,8 +27,9 @@
 
         // with params:
         db.exec("insert into stocks values (?,?,?,?,?)", ["2006-04-05", "BUY", "MSOFT", 1000, 72.00] );
-
         db.exec("insert into stocks values (?,?,?,?,?)", ["2006-04-06", "SELL", "IBM", 500, 53.00] );
+
+        //db.exec("update stocks set trans = 'U'");
 
 
     var rs = db.exec("select * from stocks order by price");

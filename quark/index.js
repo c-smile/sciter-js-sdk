@@ -136,7 +136,7 @@ export class ProjectView extends Element {
     </section>;
   }
 
-  ["on change at form"] (evt,form) {
+  ["on change at form"] (evt,form) { 
     this.updateForm(form);
   }
 

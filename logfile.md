@@ -1,3 +1,21 @@
+## 4.4.8.22
+
+### New features:
+
+* `behavior:video-coordinator` - orchestrates multiple `<video>` to be rendering in sync to minimize CPU load.
+* Code linting ports by David Monbaron: /samples.sciter/code-linting
+* [macOS] generation of event `mediachange` on Window.this when light/dark theme is applied. 
+
+### Fixes:
+
+* [rtl] fix of `input|checkbox` and `input|radio`;
+* [rtl] fix of `input|hslider`;
+* [rtl] fix of `input|number`, `select|dropdown editable`   
+* [css,js] aspect loading fix in context of scapp;
+* [macOS] internal BGRA format enforced on MacOS too.
+* usciter[exe/app] dark/light theme handling refactoring.
+
+
 ## 4.4.8.21
 
 ### New features:

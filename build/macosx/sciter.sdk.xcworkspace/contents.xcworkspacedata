@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
-   version = "1.0">
-   <FileRef
-      location = "group:../../demos/inspector/macosx/inspector.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:../../demos/usciter/macosx/usciter.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:glfw-opengl.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:integration.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:sciter-sqlite.xcodeproj">
-   </FileRef>
+	version = "1.0">
+	<FileRef
+		location = "group:glfw-opengl.xcodeproj">
+	</FileRef>
+	<FileRef
+		location = "group:inspector.xcodeproj">
+	</FileRef>
+	<FileRef
+		location = "group:integration.xcodeproj">
+	</FileRef>
+	<FileRef
+		location = "group:sciter-sqlite.xcodeproj">
+	</FileRef>
+	<FileRef
+		location = "group:usciter.xcodeproj">
+	</FileRef>
 </Workspace>

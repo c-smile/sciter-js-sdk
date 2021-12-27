@@ -9,7 +9,7 @@ var list = []; // list of persistable objects
 
 // persistable settings
 
-export async function store()
+export async function store() 
 {
   if(!path)
     return;
@@ -74,10 +74,10 @@ add({
       }
     }
 });
-
+  
 export function saveState()
 {
-  if(!document.readyState !== "complete") {
+  if(!document.parentWindow) {
     Window.this.off(saveState); // document is unloaded
     return;
   }

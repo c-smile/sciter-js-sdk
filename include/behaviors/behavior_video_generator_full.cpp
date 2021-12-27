@@ -62,7 +62,13 @@ namespace sciter
 
     static void generation_thread(sciter::om::hasset<sciter::video_destination> rendering_site) {
       // simulate video stream
-      sciter::sync::sleep(100);
+
+      static int cnt = 0;
+
+      cnt += 10;
+      // simulate video stream 
+      sciter::sync::sleep(100 + (cnt));
+
 
       const int VIDEO_WIDTH = 1200;
       const int VIDEO_HEIGHT = 800;

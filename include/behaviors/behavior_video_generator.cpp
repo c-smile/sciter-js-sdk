@@ -64,7 +64,7 @@ namespace sciter
 
       static int cnt = 0;
 
-      cnt += 10;
+      cnt += 16;
       // simulate video stream
       sciter::sync::sleep(100 + (cnt));
 

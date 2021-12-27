@@ -83,7 +83,7 @@ add({
 });
 
 export function saveState() {
-  if (document.readyState !== "complete") {
+  if (!document.parentWindow) {
     // document is unloaded
     Window.this.off(saveState);
     return;

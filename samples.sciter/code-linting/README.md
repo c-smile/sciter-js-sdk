@@ -13,13 +13,13 @@ npm install
 ## review code for errors
 
 ```sh
-./node_modules/.bin/eslint --config .eslintrc.json test/*
+npx --config .eslintrc.json test/*
 ```
 
 ## review and fix code errors
 
 ```sh
-./node_modules/.bin/eslint --config .eslintrc.json --fix test/*
+npx --config .eslintrc.json --fix test/*
 ```
 
 ## known issues with sciter

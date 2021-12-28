@@ -1,0 +1,44 @@
+<html window-frame="solid"
+      window-width="640px"
+      window-height="480px" >
+    <head>
+        <title>Test</title>
+        <style>
+
+html { background: gold; }
+body { text-align:center; vertical-align:middle; }
+
+        </style>
+        <script|module>
+
+class Splash extends Element {
+
+    counter = 16;
+
+    render() {
+        return <body>
+            Countdown {this.counter}
+        </body>;
+    }
+
+    componentDidMount() {
+       this.timer(1000, ()=>{
+          this.componentUpdate({counter: this.counter - 1});
+          if( this.counter <= 0 ) {
+            if(typeof Window.this.parameters == "function")
+                Window.this.parameters();
+            Window.this.close();
+          }
+          else 
+            return true; // keep ticking
+       }); 
+    }
+}
+
+document.body.patch(<Splash/>);
+
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style></style>
+        <script|module>
+
+Window.this.state = Window.WINDOW_HIDDEN;        
+
+new Window({
+   url: __DIR__ + "splash.htm",
+   type: Window.POPUP_WINDOW,
+   alignment: 5,
+   parameters: function() { Window.this.state = Window.WINDOW_SHOWN; }
+});
+        </script>
+    </head>
+    <body>
+
+      This window should be hidden initally (not expanded).
+
+    </body>
+</html>

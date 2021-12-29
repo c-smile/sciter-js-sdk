@@ -1,0 +1,1 @@
+This is [object-observer](https://github.com/gullerya/object-observer) as it is.

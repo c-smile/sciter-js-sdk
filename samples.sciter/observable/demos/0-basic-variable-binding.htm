@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title>Plus: very basic observable sample</title>
+    <style>
+      output { display: inline-block; border: 1px gray dotted; }
+    </style>
+    
+    <script|module>
+
+      import {Observable,Observer} from "../observer.js";
+  
+      const Data = Observable.from({ // our model 
+        greeting: "?" // observable variable 
+      });
+      
+      class Application extends Observer {
+
+        render() {
+          return <body>
+
+            <p>Input and output elements below are bound with single <code>Data.greeting</code> variable.
+               Changes in input are reflected in output, type something:</p>
+
+            <p>Whom to greet: <input|text value={this.data.greeting} /></p>
+            <p>Greeting: Hello {this.data.greeting}!</p>
+
+          </body>;
+        }
+
+        // updating observable value
+        ["on change at input"](evt,input) { Data.greeting = input.value; }
+
+      }
+
+
+      document.body.patch(<Application data={Data}/>);
+    
+    </script>
+  </head>
+
+<body>
+</body>
+</html>

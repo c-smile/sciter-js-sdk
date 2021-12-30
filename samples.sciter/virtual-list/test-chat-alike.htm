@@ -52,53 +52,54 @@
         import * as env from "@env";
         import * as DS from "test-chat-data-source.js";
 
-        var tape = document.$("tape#chat-items");
+        const tape = document.$("tape#chat-items");
 
-        document.on('click', 'button#btn-add-item', () => {
-          tape.vlist.navigate("end"); // scroll        
-          let [message,index] = DS.messageNew(); 
-          tape.appendElements(index,1);
-          tape.lastElementChild.scrollIntoView({behavior:"smooth"});
+        document.on("click", "button#btn-add-item", () => {
+          tape.vlist.navigate("end"); // scroll
+          const [message, index] = DS.messageNew();
+          tape.appendElements(index, 1);
+          tape.lastElementChild.scrollIntoView({behavior: "smooth"});
         });
 
-        document.on('click', 'button#btn-del-item', () => {
-          let message = DS.messageAt(4);
+        document.on("click", "button#btn-del-item", () => {
+          const message = DS.messageAt(4);
           DS.messageDelete(message.id);
-          tape.replaceElements( tape.vlist.firstBufferIndex, tape.vlist.lastBufferIndex - tape.vlist.firstBufferIndex + 1 );
+          tape.replaceElements(tape.vlist.firstBufferIndex, tape.vlist.lastBufferIndex - tape.vlist.firstBufferIndex + 1);
         });
 
-        document.on('click', 'button#btn-repl-items', () => {
-          DS.reset(200);          
+        document.on("click", "button#btn-repl-items", () => {
+          DS.reset(200);
           tape.vlist.navigate("end"); // scroll
         });
 
         function isAtTheEnd(tape) {
-            console.log(typeof tape.vlist.lastVisibleItem);
-            if (tape.vlist.lastVisibleItem.nextElementSibling)
-                return false; // not the last item in buffer
-            if (tape.vlist.lastBufferIndex < DS.messageCount() - 1)
-                return false; // buffer is not the last one
+          console.log(typeof tape.vlist.lastVisibleItem);
+          if (tape.vlist.lastVisibleItem.nextElementSibling)
+            return false; // not the last item in buffer
+          if (tape.vlist.lastBufferIndex < DS.messageCount() - 1)
+            return false; // buffer is not the last one
             // OK, last record of last buffer is seen on screen
-            return true;
+          return true;
         }
 
-        document.on('click', 'button#check', () => {
-          console.log("isAtTheEnd : " + isAtTheEnd(tape));          
-          console.log(tape.vlist.firstBufferIndex,tape.vlist.lastBufferIndex);
+        document.on("click", "button#check", () => {
+          console.log("isAtTheEnd : " + isAtTheEnd(tape));
+          console.log(tape.vlist.firstBufferIndex, tape.vlist.lastBufferIndex);
         });
 
-        document.on('click', 'button#navigate', () => {
+        document.on("click", "button#navigate", () => {
           tape.vlist.navigateTo(100);
         });
-        document.on('click', 'button#advance-m', () => {
-          let el = tape.vlist.advanceTo(tape.vlist.firstVisibleItemIndex - 10);
-          console.log(el);
-        });
-        document.on('click', 'button#advance-p', () => {
-          let el = tape.vlist.advanceTo(tape.vlist.lastVisibleItemIndex + 10);
+
+        document.on("click", "button#advance-m", () => {
+          const el = tape.vlist.advanceTo(tape.vlist.firstVisibleItemIndex - 10);
           console.log(el);
         });
 
+        document.on("click", "button#advance-p", () => {
+          const el = tape.vlist.advanceTo(tape.vlist.lastVisibleItemIndex + 10);
+          console.log(el);
+        });
 
     </script>
 </head>

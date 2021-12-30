@@ -37,38 +37,37 @@
 
 
         </style>
-        <script|module>
+        <script type="module">
 
 import {VirtualList} from "virtual-select.js";
 
 function generate() {
-    let groups = [];
-    const urls = [
-      __DIR__ + "avatars/a.png",
-      __DIR__ + "avatars/b.png",
-      __DIR__ + "avatars/c.png",
-    ]; 
+  const groups = [];
+  const urls = [
+    __DIR__ + "avatars/a.png",
+    __DIR__ + "avatars/b.png",
+    __DIR__ + "avatars/c.png",
+  ];
 
-    for(let g = 0; g < 30; ++g) {
-       let items = [];
-       let n = Math.floor(Math.random() * 30);
-       for(let i = 0; i < n; ++i)
-         items.push({key: i, caption:"item " + i, url: urls[(g + i) % 3] });
-       groups.push({
-         key:g,
-         caption: "group " + g,
-         items: items 
-       });
-    }
+  for (let g = 0; g < 30; ++g) {
+    const items = [];
+    const n = Math.floor(Math.random() * 30);
+    for (let i = 0; i < n; ++i)
+      items.push({key: i, caption: "item " + i, url: urls[(g + i) % 3]});
+    groups.push({
+      key: g,
+      caption: "group " + g,
+      items: items,
+    });
+  }
 
-    return groups;
+  return groups;
 }
 
 const groups = generate();
 const imagew = 64; // dips
 
 class ImageList extends VirtualList {
-
   columns = 1;
   items = []; // flat list
 
@@ -76,49 +75,55 @@ class ImageList extends VirtualList {
     this.post(this.onsizechange);
   }
 
-  itemAt(at) {     // virtual function, must be overriden
+  // virtual function, must be overriden
+  itemAt(at) {
     return this.items[at];
   }
-  totalItems() {   // virtual function, must be overriden
+
+  // virtual function, must be overriden
+  totalItems() {
     return this.items.length;
   }
-  indexOf(item) {  // virtual function, must be overriden
+
+  // virtual function, must be overriden
+  indexOf(item) {
     return this.items.indexOf(item);
   }
 
-  renderItem(item,index) // overridable
-  {
-    if(Array.isArray(item)) {
-      let key = item[0] + item[item.length-1];
-      return <option key={key}>{ 
-                item.map( def => <figure><picture key={def.key} src={def.url} />
-                                   <caption>{def.caption}</caption>
-                                 </figure>) 
-             }</option>;
-    } else 
+  // overridable
+  renderItem(item, index) {
+    if (Array.isArray(item)) {
+      const key = item[0] + item[item.length-1];
+      return <option key={key}>{
+        item.map((def) => <figure><picture key={def.key} src={def.url} />
+          <caption>{def.caption}</caption>
+        </figure>)
+      }</option>;
+    }
+    else
       return <header key={item.key}>{item.caption}</header>;
   }
 
-  onsizechange() { this.relayout(false); }
-
-  relayout(force) {
-
-    let w = this.state.box("width");
-    let columns = Math.floor(w / imagew) || 2;
-    if( columns == this.columns && !force)
-      return;
-
-    let list = [];
-
-    for(let group of groups) {
-      list.push(group);
-      for(let n = 0; n < group.items.length; n += columns) 
-        list.push(group.items.slice(n,n + columns));
-    }
-
-    this.componentUpdate {items:list};
+  onsizechange() {
+    this.relayout(false);
   }
 
+  relayout(force) {
+    const w = this.state.box("width");
+    const columns = Math.floor(w / imagew) || 2;
+    if (columns == this.columns && !force)
+      return;
+
+    const list = [];
+
+    for (const group of groups) {
+      list.push(group);
+      for (let n = 0; n < group.items.length; n += columns)
+        list.push(group.items.slice(n, n + columns));
+    }
+
+    this.componentUpdate({items: list});
+  }
 }
 
 document.body.append(<ImageList class="image-list" />);

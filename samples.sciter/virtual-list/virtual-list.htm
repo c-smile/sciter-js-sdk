@@ -8,35 +8,40 @@ import {VirtualList} from "virtual-select.js";
 
 // select with virtual data source
 class List extends VirtualList {
-
   list; // array of items
 
-  this(props) { 
-    let {list, ...rest} = props;
-    super.this(rest); 
+  this(props) {
+    const {list, ...rest} = props;
+    super.this(rest);
     this.list = list;
   }
 
-  itemAt(at) { return this.list[at]; }
-  totalItems() { return this.list.length; }
-  indexOf(item) { return this.list.indexOf(item); }
+  itemAt(at) {
+    return this.list[at];
+  }
+
+  totalItems() {
+    return this.list.length;
+  }
+
+  indexOf(item) {
+    return this.list.indexOf(item);
+  }
 
   // overridable
   renderItem(item, isCurrent, isSelected) {
-    return <option key={item.key} 
-                   state-current={isCurrent} 
-                   state-checked={isSelected}>{item.text}</option>;
+    return <option key={item.key}
+      state-current={isCurrent}
+      state-checked={isSelected}>{item.text}</option>;
   }
 }
 
-
 class App extends Element {
-
   list = [];
 
   constructor() {
     super();
-    //for(let n = 0; n < 1000; ++n) { 
+    //for(let n = 0; n < 1000; ++n) {
     //  this.list.push({key:n, text:`option # ${n}`});
     //}
   }
@@ -48,7 +53,7 @@ class App extends Element {
       <button#change-length>Change length of set</button>
       <button#remove-item>Remove 10th item</button>
       <button#populate>Populate set</button>
-    </body>
+    </body>;
   }
 
   ["on input at #vselect"](evt, vselect) {
@@ -56,7 +61,7 @@ class App extends Element {
   }
 
   ["on click at button#change-items"]() {
-    for(let item of this.list) 
+    for (const item of this.list)
       item.text += " changed";
     this.componentUpdate();
   }
@@ -67,19 +72,17 @@ class App extends Element {
   }
 
   ["on click at button#remove-item"]() {
-    this.list.splice(10,1);
+    this.list.splice(10, 1);
     this.componentUpdate();
   }
 
   ["on click at button#populate"]() {
-    for(let n = 0; n < 1000; ++n) { 
-      this.list.push({key:n, text:`option # ${n}`});
-    }
+    for (let n = 0; n < 1000; ++n)
+      this.list.push({key: n, text: `option # ${n}`});
+
     this.componentUpdate();
   }
-
 }
-
 
 document.body.patch(<App/>);
 

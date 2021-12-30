@@ -2,104 +2,106 @@
 <head>
     <title>behavior:virtual-list</title>
     <style>
-        tape {
-            behavior: virtual-list;
-            prototype: Tape url(test-chat-tape.js);
-            display: block;
-            flow: vertical;
-            overflow: scroll-indicator;
-            size: *;
-            //scroll-manner: scroll-manner(animation:false, wheel-step:100%); //to disable animated scroll, wheel step is full height of element
-            vertical-align: bottom;
-            // last "messages" are seen first
-        }
 
-            tape > div {
-                min-height: 2em;
-                flow: horizontal;
-                border-spacing: 1em;
-                padding: 0.5em;
-                font: 12pt Verdana, sans-serif;
-            }
+tape {
+  behavior: virtual-list;
+  prototype: Tape url(test-chat-tape.js);
+  display: block;
+  flow: vertical;
+  overflow: scroll-indicator;
+  size: *;
+  //scroll-manner: scroll-manner(animation:false, wheel-step:100%); //to disable animated scroll, wheel step is full height of element
+  vertical-align: bottom;
+  // last "messages" are seen first
+}
 
-                tape > div > img {
-                    size: 48px;
-                }
+tape > div {
+  min-height: 2em;
+  flow: horizontal;
+  border-spacing: 1em;
+  padding: 0.5em;
+  font: 12pt Verdana, sans-serif;
+}
 
-                tape > div > div {
-                    width: 0.8*;
-                    max-width: max-content;
-                    border-radius: 0 0.5em 0.5em 0.5em;
-                    background: #FFF8DC;
-                    padding: 0.25em 0.5em;
-                }
+tape > div > img {
+  size: 48px;
+}
 
-                tape > div[mine] {
-                    horizontal-align: right;
-                }
+tape > div > div {
+  width: 0.8*;
+  max-width: max-content;
+  border-radius: 0 0.5em 0.5em 0.5em;
+  background: #FFF8DC;
+  padding: 0.25em 0.5em;
+}
 
-                    tape > div[mine] > div {
-                        background: #F0F8FF;
-                        border-radius: 0.5em 0 0.5em 0.5em;
-                    }
+tape > div[mine] {
+  horizontal-align: right;
+}
 
-                tape > div > div pre {
-                    border: 1px dashed #ccc;
-                    padding: 0.25em 0.5em;
-                }
+tape > div[mine] > div {
+  background: #F0F8FF;
+  border-radius: 0.5em 0 0.5em 0.5em;
+}
+
+tape > div > div pre {
+  border: 1px dashed #ccc;
+  padding: 0.25em 0.5em;
+}
+
     </style>
     <script type="module">
-        import * as env from "@env";
-        import * as DS from "test-chat-data-source.js";
 
-        const tape = document.$("tape#chat-items");
+import * as DS from "test-chat-data-source.js";
 
-        document.on("click", "button#btn-add-item", () => {
-          tape.vlist.navigate("end"); // scroll
-          const [message, index] = DS.messageNew();
-          tape.appendElements(index, 1);
-          tape.lastElementChild.scrollIntoView({behavior: "smooth"});
-        });
+const tape = document.$("tape#chat-items");
 
-        document.on("click", "button#btn-del-item", () => {
-          const message = DS.messageAt(4);
-          DS.messageDelete(message.id);
-          tape.replaceElements(tape.vlist.firstBufferIndex, tape.vlist.lastBufferIndex - tape.vlist.firstBufferIndex + 1);
-        });
+document.on("click", "button#btn-add-item", () => {
+  tape.vlist.navigate("end"); // scroll
+  const [message, index] = DS.messageNew();
+  tape.appendElements(index, 1);
+  tape.lastElementChild.scrollIntoView({behavior: "smooth"});
+});
 
-        document.on("click", "button#btn-repl-items", () => {
-          DS.reset(200);
-          tape.vlist.navigate("end"); // scroll
-        });
+document.on("click", "button#btn-del-item", () => {
+  const message = DS.messageAt(4);
+  DS.messageDelete(message.id);
+  tape.replaceElements(tape.vlist.firstBufferIndex, tape.vlist.lastBufferIndex - tape.vlist.firstBufferIndex + 1);
+});
 
-        function isAtTheEnd(tape) {
-          console.log(typeof tape.vlist.lastVisibleItem);
-          if (tape.vlist.lastVisibleItem.nextElementSibling)
-            return false; // not the last item in buffer
-          if (tape.vlist.lastBufferIndex < DS.messageCount() - 1)
-            return false; // buffer is not the last one
-            // OK, last record of last buffer is seen on screen
-          return true;
-        }
+document.on("click", "button#btn-repl-items", () => {
+  DS.reset(200);
+  tape.vlist.navigate("end"); // scroll
+});
 
-        document.on("click", "button#check", () => {
-          console.log("isAtTheEnd : " + isAtTheEnd(tape));
-          console.log(tape.vlist.firstBufferIndex, tape.vlist.lastBufferIndex);
-        });
+function isAtTheEnd(tape) {
+  console.log(typeof tape.vlist.lastVisibleItem);
+  if (tape.vlist.lastVisibleItem.nextElementSibling)
+    return false; // not the last item in buffer
+  if (tape.vlist.lastBufferIndex < DS.messageCount() - 1)
+    return false; // buffer is not the last one
+    // OK, last record of last buffer is seen on screen
+  return true;
+}
 
-        document.on("click", "button#navigate", () => {
-          tape.vlist.navigateTo(100);
-        });
+document.on("click", "button#check", () => {
+  console.log("isAtTheEnd : " + isAtTheEnd(tape));
+  console.log(tape.vlist.firstBufferIndex, tape.vlist.lastBufferIndex);
+});
 
-        document.on("click", "button#advance-m", () => {
-          const el = tape.vlist.advanceTo(tape.vlist.firstVisibleItemIndex - 10);
-          console.log(el);
-        });
+document.on("click", "button#navigate", () => {
+  tape.vlist.navigateTo(100);
+});
 
-        document.on("click", "button#advance-p", () => {
-          const el = tape.vlist.advanceTo(tape.vlist.lastVisibleItemIndex + 10);
-          console.log(el);
-        });
+document.on("click", "button#advance-m", () => {
+  const el = tape.vlist.advanceTo(tape.vlist.firstVisibleItemIndex - 10);
+  console.log(el);
+});
+
+document.on("click", "button#advance-p", () => {
+  const el = tape.vlist.advanceTo(tape.vlist.lastVisibleItemIndex + 10);
+  console.log(el);
+});
 
     </script>
 </head>

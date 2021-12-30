@@ -56,6 +56,7 @@ Window (`<html>`) specific attributes
 | `window-blurbehind` | `auto\|dark\|light\|ultra-dark\|ultra-light` translucent effect.
 | `window-state` | `shown\|minimized\|maximized\|full-screen\|hidden` - initial state of HTML window
 | `lang` | ISO 639-1 value, define dictionary for spellcheck, Date...
+| `disable-debug` | do not connect to inspector
 
 
 ## Misc

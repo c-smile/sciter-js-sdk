@@ -1,13 +1,12 @@
-import { ChannelLog } from "channel-log.js";
-import { View } from "view.js";
-import { FilesView } from "files-view.js";
-import { DOMView, ElementDetailsView } from "dom-view.js";
-import { MemoryView } from "memory-view.js";
-import { DebuggerView } from "debugger.js";
+import {ChannelLog} from "channel-log.js";
+import {View} from "view.js";
+import {FilesView} from "files-view.js";
+import {DOMView, ElementDetailsView} from "dom-view.js";
+import {MemoryView} from "memory-view.js";
+import {DebuggerView} from "debugger.js";
 
 export class ChannelView extends Element {
-  
-  channel = null; 
+  channel = null;
 
   constructor(props) {
     super();
@@ -15,41 +14,40 @@ export class ChannelView extends Element {
     this.viewstate = this.channel.viewstate;
     this.channel.view = this;
   }
-  
-  render(props) {
 
+  render(props) {
     let viewContent;
     let headerViewContent;
     let detailsViewContent;
-    
-    switch(this.currentView) {
+
+    switch (this.currentView) {
       default:
-      case "DOMView": 
+      case "DOMView":
         viewContent = <DOMView channel={this.channel} />;
         headerViewContent = DOMView.header(this.channel);
         break;
-      case "FilesView": 
-      {
-        let filetoshow = this.filetoshow; this.filetoshow = null;
-        viewContent = <FilesView channel={this.channel} filetoshow={filetoshow}/>
-        headerViewContent = FilesView.header(this.channel);
-      }
-      break;
-      case "MemoryView": 
-        viewContent = <MemoryView channel={this.channel} />; 
-        headerViewContent = MemoryView.header(this.channel); 
+      case "FilesView":
+        {
+          const filetoshow = this.filetoshow; this.filetoshow = null;
+          viewContent = <FilesView channel={this.channel} filetoshow={filetoshow}/>;
+          headerViewContent = FilesView.header(this.channel);
+        }
         break;
-    } 
+      case "MemoryView":
+        viewContent = <MemoryView channel={this.channel} />;
+        headerViewContent = MemoryView.header(this.channel);
+        break;
+    }
 
-    switch(this.currentDetailsView) {
+    switch (this.currentDetailsView) {
       default:
       case "ElementDetailsView": detailsViewContent = <ElementDetailsView channel={this.channel} />; break;
       case "FilesDetailsView": detailsViewContent = <DebuggerView channel={this.channel} />; break;
       case "MemoryDetailsView": detailsViewContent = <div/>; break;
-    } 
+    }
 
-    //console.log("ChannelView render",this.channel.theirFiles.length);
-    let nFiles = Object.values(this.channel.theirFiles).length;
+    // console.log("ChannelView render",this.channel.theirFiles.length);
+    const nFiles = Object.values(this.channel.theirFiles).length;
 
     return <main>
       <frameset cols="*,300px">
@@ -73,23 +71,32 @@ export class ChannelView extends Element {
           { detailsViewContent }
         </section>
       </frameset>
-    </main>; 
-  }  
+    </main>;
+  }
 
-  get currentView() { return this.viewstate.view || "DOMView"; }
-  set currentView(v) { this.viewstate.view = v; }
+  get currentView() {
+    return this.viewstate.view || "DOMView";
+  }
 
-  get currentDetailsView() { return this.viewstate.detailsView || "ElementDetailsView"; }
-  set currentDetailsView(v) { this.viewstate.detailsView = v; }
+  set currentView(v) {
+    this.viewstate.view = v;
+  }
 
-  //componentUpdate(newState) {
+  get currentDetailsView() {
+    return this.viewstate.detailsView || "ElementDetailsView";
+  }
+
+  set currentDetailsView(v) {
+    this.viewstate.detailsView = v;
+  }
+
+  // componentUpdate(newState) {
   //  super.componentUpdate(newState);
-  //}
+  // }
 
-  ["on click at label:not(:current)"](evt,label) 
-  {
-    this.componentUpdate { currentView: label.id, 
-                           currentDetailsView: label.getAttribute("detailsId") };
+  ["on click at label:not(:current)"](evt, label) {
+    this.componentUpdate({currentView: label.id,
+      currentDetailsView: label.getAttribute("detailsId")});
     return false;
   }
 
@@ -99,33 +106,28 @@ export class ChannelView extends Element {
   }
 
   ["on file-show"](evt) {
-    const newState = { 
-      currentView: "FilesView", 
-      filetoshow : evt.detail 
+    const newState = {
+      currentView: "FilesView",
+      filetoshow: evt.detail,
     };
-    if(evt.detail.withDetails)
+    if (evt.detail.withDetails)
       newState.currentDetailsView = "FilesDetailsView";
 
-    this.componentUpdate(newState); 
-    
-    return false; 
+    this.componentUpdate(newState);
+
+    return false;
   }
 
-  onBreakpointHit(filename,lineno, callstack)
-  {
-    const newState = { 
-      currentView: "FilesView", 
+  onBreakpointHit(filename, lineno, callstack) {
+    const newState = {
+      currentView: "FilesView",
       currentDetailsView: "FilesDetailsView",
-      filetoshow : { url: filename, lineno: lineno },
+      filetoshow: {url: filename, lineno: lineno},
     };
-    this.componentUpdate(newState); 
+    this.componentUpdate(newState);
   }
 
   requestUpdate() {
-    this.timer(1000,this.componentUpdate);
+    this.timer(1000, this.componentUpdate);
   }
-
-
-
-
 }

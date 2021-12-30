@@ -1,10 +1,9 @@
 
 import {uuid} from "@sciter";
 
-export class ChannelDriver
-{
-  request = null; // function to request data from debugee 
-  notify = null; // function to notify debugee 
+export class ChannelDriver {
+  request = null; // function to request data from debugee
+  notify = null; // function to notify debugee
 
   theirLogs = [];
   theirFiles = {};
@@ -19,122 +18,128 @@ export class ChannelDriver
   variablesFrameId = 0;
 
   viewstate = {}; // storage of view states
-  view = null;    // ChannelView
+  view = null; // ChannelView
 
-  constructor(outboundRq, theirId) 
-  {
+  constructor(outboundRq, theirId) {
     this.key = theirId;
-    this.request = function(name,params) { return new Promise((resolve,reject) => { outboundRq(name,params,resolve); }); }
+    this.request = function(name, params) {
+      return new Promise((resolve, reject) => {
+        outboundRq(name, params, resolve);
+      });
+    };
     this.notify = outboundRq;
   }
 
   reconnect(outboundRq) {
-    this.request = function(name,params) { return new Promise((resolve,reject) => { outboundRq(name,params,resolve); }); }
+    this.request = function(name, params) {
+      return new Promise((resolve, reject) => {
+        outboundRq(name, params, resolve);
+      });
+    };
     this.notify = outboundRq;
-    this.notify("breakpoints",this.breakpoints);
+    this.notify("breakpoints", this.breakpoints);
   }
 
-  get connected() { return this.request !== null; }
-  
+  get connected() {
+    return this.request !== null;
+  }
+
   // debugee is gone, channel closed
   gone(outboundRq) {
-    if(this.notify === outboundRq) {
+    if (this.notify === outboundRq) {
       this.request = null;
       this.notify = null;
-      document.dispatchEvent(new Event("channel-gone"),true);
+      document.dispatchEvent(new Event("channel-gone"), true);
     }
     // otherwise it was recconnected
   }
 
   // handle inbound message from debugee
-  handle(name,data) {
-    var fcn = ChannelDriver[name];
-    if(fcn) return fcn.call(this,data);
-    else console.log("unknown message", name);
+  handle(name, data) {
+    const fcn = ChannelDriver[name];
+    if (fcn) return fcn.call(this, data);
+    console.log("unknown message", name);
   }
 
-  addBreakpoint(filename,lineno,enabled=true) {
-    this.breakpoints.push{filename,lineno,enabled};
+  addBreakpoint(filename, lineno, enabled=true) {
+    this.breakpoints.push({filename, lineno, enabled});
     this.view.componentUpdate();
-    this.notify("breakpoints",this.breakpoints);
+    this.notify("breakpoints", this.breakpoints);
   }
-  removeBreakpoint(filename,lineno) {
-    this.breakpoints = this.breakpoints.filter(item => item.filename != filename || item.lineno != lineno );
+  removeBreakpoint(filename, lineno) {
+    this.breakpoints = this.breakpoints.filter((item) => item.filename != filename || item.lineno != lineno);
     this.view.componentUpdate();
-    this.notify("breakpoints",this.breakpoints);
+    this.notify("breakpoints", this.breakpoints);
   }
   updateBreakpoint(breakpoint) {
     this.view.componentUpdate();
-    this.notify("breakpoints",this.breakpoints);
+    this.notify("breakpoints", this.breakpoints);
   }
 
-  static all = {}; // by key 
+  static all = {}; // by key
   static current = null; // current channel
 
-  static factory(outboundRq, theirId) 
-  {
+  static factory(outboundRq, theirId) {
     let channel = ChannelDriver.all[theirId];
-    if( channel ) {
+    if (channel) {
       channel.reconnect(outboundRq);
       channel.theirLogs.push("---");
-      document.dispatchEvent(new Event("log-new", {detail:this}), true);
-    } else {
-      channel = new ChannelDriver(outboundRq,theirId);
+      document.dispatchEvent(new Event("log-new", {detail: this}), true);
+    }
+    else {
+      channel = new ChannelDriver(outboundRq, theirId);
       ChannelDriver.all[theirId] = channel;
     }
-    ChannelDriver.current = channel;    
-    document.dispatchEvent(new Event("channel-new"),true);
+    ChannelDriver.current = channel;
+    document.dispatchEvent(new Event("channel-new"), true);
     return channel;
   }
 
-  // particular message drivers 
-  
+  // particular message drivers
+
   static logs(payload) {
-    for(var logItem of payload)
-      this.theirLogs.push({key:uuid(),subsystem:logItem[0],severity:logItem[1],items:logItem[2]});
-    document.dispatchEvent(new Event("log-new", {detail:this}), true);
+    for (const logItem of payload)
+      this.theirLogs.push({key: uuid(), subsystem: logItem[0], severity: logItem[1], items: logItem[2]});
+    document.dispatchEvent(new Event("log-new", {detail: this}), true);
   }
 
 
   static snapshot(imageBytes) {
-    if(this.onSnapshotBytes)
+    if (this.onSnapshotBytes)
       this.onSnapshotBytes(imageBytes);
-    if(this.onContentChange)
+    if (this.onContentChange)
       this.onContentChange();
   }
 
   static highlighted(stack) {
-    if(this.onStackHighlight)
+    if (this.onStackHighlight)
       this.onStackHighlight(stack);
   }
 
   static files(rsdefs) {
-    for(var rd of rsdefs)
+    for (const rd of rsdefs)
       this.theirFiles[rd.rqUrl] = rd;
     document.dispatchEvent(new Event("file-new"), true);
   }
 
   static atBreakpoint(breakpoint) {
-    let [filename,lineno,callstack] = breakpoint;
+    const [filename, lineno, callstack] = breakpoint;
     this.atBreakpoint = true;
     this.callstack = callstack;
     ++this.variablesId;
-    this.view.onBreakpointHit(filename,lineno);
+    this.view.onBreakpointHit(filename, lineno);
   }
 
-  atBreakpointResponse(command,data) {
-    if(command == "step") { 
-      this.atBreakpoint = false; 
-      this.view.requestUpdate(); 
+  atBreakpointResponse(command, data) {
+    if (command == "step") {
+      this.atBreakpoint = false;
+      this.view.requestUpdate();
     }
-    this.notify("atBreakpointResponse", [command,data]); // ["step",1]
+    this.notify("atBreakpointResponse", [command, data]); // ["step",1]
   }
 
   static frameVariables(variables) {
     this.variables = variables;
     this.view.componentUpdate();
   }
-
-
 }
-

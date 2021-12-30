@@ -38,8 +38,8 @@ TARGETDIR = ../../../bin.lite/linux/x64
 TARGET = $(TARGETDIR)/glfw-opengl
 OBJDIR = obj/x64/Debug/glfw-opengl
 DEFINES += -DDEVICE=DESKTOP -D_GNU_SOURCE -DDEBUG -D_DEBUG -DWINDOWLESS -D_GLFW_X11
-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -g `pkg-config gtk+-3.0 --cflags` -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -g -std=c++17 `pkg-config gtk+-3.0 --cflags` -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
+ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -g -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -g -std=c++17 -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64 -fPIC -Wall -pthread -lm -lX11 -lXrandr -lXinerama -lXcursor -lGL -lGLU -ldl
 
 else ifeq ($(config),debug_arm32)
@@ -47,8 +47,8 @@ TARGETDIR = ../../../bin.lite/linux/arm32
 TARGET = $(TARGETDIR)/glfw-opengl
 OBJDIR = obj/arm32/Debug/glfw-opengl
 DEFINES += -DDEVICE=DESKTOP -D_GNU_SOURCE -DDEBUG -D_DEBUG -DWINDOWLESS -D_GLFW_X11
-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -g `pkg-config gtk+-3.0 --cflags` -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -g -std=c++17 `pkg-config gtk+-3.0 --cflags` -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
+ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -g -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -g -std=c++17 -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
 ALL_LDFLAGS += $(LDFLAGS) -fPIC -Wall -pthread -lm -lX11 -lXrandr -lXinerama -lXcursor -lGL -lGLU -ldl
 
 else ifeq ($(config),release_x64)
@@ -56,8 +56,8 @@ TARGETDIR = ../../../bin.lite/linux/x64
 TARGET = $(TARGETDIR)/glfw-opengl
 OBJDIR = obj/x64/Release/glfw-opengl
 DEFINES += -DDEVICE=DESKTOP -D_GNU_SOURCE -DNDEBUG -DWINDOWLESS -D_GLFW_X11
-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -flto -Os `pkg-config gtk+-3.0 --cflags` -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -flto -Os -std=c++17 `pkg-config gtk+-3.0 --cflags` -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
+ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -flto -Os -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -flto -Os -std=c++17 -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64 -flto -s -fPIC -Wall -pthread -lm -lX11 -lXrandr -lXinerama -lXcursor -lGL -lGLU -ldl
 
 else ifeq ($(config),release_arm32)
@@ -65,8 +65,8 @@ TARGETDIR = ../../../bin.lite/linux/arm32
 TARGET = $(TARGETDIR)/glfw-opengl
 OBJDIR = obj/arm32/Release/glfw-opengl
 DEFINES += -DDEVICE=DESKTOP -D_GNU_SOURCE -DNDEBUG -DWINDOWLESS -D_GLFW_X11
-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -flto -Os `pkg-config gtk+-3.0 --cflags` -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -flto -Os -std=c++17 `pkg-config gtk+-3.0 --cflags` -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
+ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -flto -Os -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -flto -Os -std=c++17 -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
 ALL_LDFLAGS += $(LDFLAGS) -flto -s -fPIC -Wall -pthread -lm -lX11 -lXrandr -lXinerama -lXcursor -lGL -lGLU -ldl
 
 else

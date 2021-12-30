@@ -38,8 +38,8 @@ TARGETDIR = ../../../bin/linux/x64
 TARGET = $(TARGETDIR)/sciter-sqlite.so
 OBJDIR = obj/x64/Debug/sciter-sqlite
 DEFINES += -DDEVICE=DESKTOP -D_GNU_SOURCE -DDEBUG -D_DEBUG
-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -fPIC -g `pkg-config gtk+-3.0 --cflags` -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -fPIC -g -std=c++14 `pkg-config gtk+-3.0 --cflags` -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
+ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -fPIC -g -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -fPIC -g -std=c++14 -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64 -shared -Wl,-soname=sciter-sqlite.so -fPIC -pthread
 
 else ifeq ($(config),debug_arm32)
@@ -47,8 +47,8 @@ TARGETDIR = ../../../bin/linux/arm32
 TARGET = $(TARGETDIR)/sciter-sqlite.so
 OBJDIR = obj/arm32/Debug/sciter-sqlite
 DEFINES += -DDEVICE=DESKTOP -D_GNU_SOURCE -DDEBUG -D_DEBUG
-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -fPIC -g `pkg-config gtk+-3.0 --cflags` -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -fPIC -g -std=c++14 `pkg-config gtk+-3.0 --cflags` -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
+ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -fPIC -g -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -fPIC -g -std=c++14 -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
 ALL_LDFLAGS += $(LDFLAGS) -shared -Wl,-soname=sciter-sqlite.so -fPIC -pthread
 
 else ifeq ($(config),release_x64)
@@ -56,8 +56,8 @@ TARGETDIR = ../../../bin/linux/x64
 TARGET = $(TARGETDIR)/sciter-sqlite.so
 OBJDIR = obj/x64/Release/sciter-sqlite
 DEFINES += -DDEVICE=DESKTOP -D_GNU_SOURCE -DNDEBUG
-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -flto -Os -fPIC `pkg-config gtk+-3.0 --cflags` -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -flto -Os -fPIC -std=c++14 `pkg-config gtk+-3.0 --cflags` -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
+ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -flto -Os -fPIC -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -flto -Os -fPIC -std=c++14 -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64 -flto -shared -Wl,-soname=sciter-sqlite.so -s -fPIC -pthread
 
 else ifeq ($(config),release_arm32)
@@ -65,8 +65,8 @@ TARGETDIR = ../../../bin/linux/arm32
 TARGET = $(TARGETDIR)/sciter-sqlite.so
 OBJDIR = obj/arm32/Release/sciter-sqlite
 DEFINES += -DDEVICE=DESKTOP -D_GNU_SOURCE -DNDEBUG
-ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -flto -Os -fPIC `pkg-config gtk+-3.0 --cflags` -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
-ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -flto -Os -fPIC -std=c++14 `pkg-config gtk+-3.0 --cflags` -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
+ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -flto -Os -fPIC -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -flto -Os -fPIC -std=c++14 -fPIC -Wno-unknown-pragmas -Wno-write-strings -ldl
 ALL_LDFLAGS += $(LDFLAGS) -flto -shared -Wl,-soname=sciter-sqlite.so -s -fPIC -pthread
 
 else

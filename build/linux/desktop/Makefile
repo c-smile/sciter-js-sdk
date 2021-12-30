@@ -10,6 +10,7 @@ endif
 
 ifeq ($(config),debug_x64)
   usciter_config = debug_x64
+  gsciter_config = debug_x64
   inspector_config = debug_x64
   integration_config = debug_x64
   sciter_sqlite_config = debug_x64
@@ -17,6 +18,7 @@ ifeq ($(config),debug_x64)
 
 else ifeq ($(config),debug_arm32)
   usciter_config = debug_arm32
+  gsciter_config = debug_arm32
   inspector_config = debug_arm32
   integration_config = debug_arm32
   sciter_sqlite_config = debug_arm32
@@ -24,6 +26,7 @@ else ifeq ($(config),debug_arm32)
 
 else ifeq ($(config),release_x64)
   usciter_config = release_x64
+  gsciter_config = release_x64
   inspector_config = release_x64
   integration_config = release_x64
   sciter_sqlite_config = release_x64
@@ -31,16 +34,41 @@ else ifeq ($(config),release_x64)
 
 else ifeq ($(config),release_arm32)
   usciter_config = release_arm32
+  gsciter_config = release_arm32
   inspector_config = release_arm32
   integration_config = release_arm32
   sciter_sqlite_config = release_arm32
   glfw_opengl_config = release_arm32
 
+else ifeq ($(config),debugskia_x64)
+  usciter_config = debugskia_x64
+  gsciter_config = debugskia_x64
+  inspector_config = debugskia_x64
+  integration_config = debugskia_x64
+
+else ifeq ($(config),debugskia_arm32)
+  usciter_config = debugskia_arm32
+  gsciter_config = debugskia_arm32
+  inspector_config = debugskia_arm32
+  integration_config = debugskia_arm32
+
+else ifeq ($(config),releaseskia_x64)
+  usciter_config = releaseskia_x64
+  gsciter_config = releaseskia_x64
+  inspector_config = releaseskia_x64
+  integration_config = releaseskia_x64
+
+else ifeq ($(config),releaseskia_arm32)
+  usciter_config = releaseskia_arm32
+  gsciter_config = releaseskia_arm32
+  inspector_config = releaseskia_arm32
+  integration_config = releaseskia_arm32
+
 else
   $(error "invalid configuration $(config)")
 endif
 
-PROJECTS := usciter inspector integration sciter-sqlite glfw-opengl
+PROJECTS := usciter gsciter inspector integration sciter-sqlite glfw-opengl
 
 .PHONY: all clean help $(PROJECTS) 
 
@@ -50,6 +78,12 @@ usciter:
 ifneq (,$(usciter_config))
 	@echo "==== Building usciter ($(usciter_config)) ===="
 	@${MAKE} --no-print-directory -C . -f usciter.make config=$(usciter_config)
+endif
+
+gsciter:
+ifneq (,$(gsciter_config))
+	@echo "==== Building gsciter ($(gsciter_config)) ===="
+	@${MAKE} --no-print-directory -C . -f gsciter.make config=$(gsciter_config)
 endif
 
 inspector:
@@ -78,6 +112,7 @@ endif
 
 clean:
 	@${MAKE} --no-print-directory -C . -f usciter.make clean
+	@${MAKE} --no-print-directory -C . -f gsciter.make clean
 	@${MAKE} --no-print-directory -C . -f inspector.make clean
 	@${MAKE} --no-print-directory -C . -f integration.make clean
 	@${MAKE} --no-print-directory -C . -f sciter-sqlite.make clean
@@ -91,11 +126,16 @@ help:
 	@echo "  debug_arm32"
 	@echo "  release_x64"
 	@echo "  release_arm32"
+	@echo "  debugskia_x64"
+	@echo "  debugskia_arm32"
+	@echo "  releaseskia_x64"
+	@echo "  releaseskia_arm32"
 	@echo ""
 	@echo "TARGETS:"
 	@echo "   all (default)"
 	@echo "   clean"
 	@echo "   usciter"
+	@echo "   gsciter"
 	@echo "   inspector"
 	@echo "   integration"
 	@echo "   sciter-sqlite"

@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style></style>
+
+<script|module>
+
+  import {FileOpenDialog} from "file-open-dialog.js";
+
+  var button = document.$("button#test");
+
+  document.on("click", "button#test", function(evt){
+    const options = {
+      id: "open-files",
+      //path: ...
+      //filter: 
+      //caption: "Open HTML or SVG document"
+    }
+    FileOpenDialog.selectFile(function(path) {
+      console.log("path", path);
+    },options);
+  });
+
+</script>
+
+    </head>
+    <body>
+      <button #test>Open</button>
+    </body>
+</html>

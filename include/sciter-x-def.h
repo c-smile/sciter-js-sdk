@@ -480,13 +480,61 @@ typedef enum SCITER_RT_OPTIONS
 
    SCITER_SET_MAX_HTTP_DATA_LENGTH = 15, // hWnd - N/A , value - max request length in megabytes (1024*1024 bytes)
 
-   SCITER_SET_PX_AS_DIP = 16, // value 1 - 1px in CSS is treated as 1dip, value 0 - default behavior - 1px is a physical pixel 
+   SCITER_SET_PX_AS_DIP = 16, // value 1 - 1px in CSS is treated as 1dip, value 0 - default behavior - 1px is a physical pixel
 
    SCITER_ENABLE_UIAUTOMATION = 17,  // hWnd - N/A , TRUE/FALSE, enables UIAutomation support. 
 
 } SCITER_RT_OPTIONS;
 
+
  SBOOL SCAPI SciterSetOption(HWINDOW hWnd, UINT option, UINT_PTR value );
+
+ /** Application related operations */
+
+ typedef enum SCITER_APP_CMD {
+   SCITER_APP_STOP = 0, /// quit message pump loop
+   SCITER_APP_LOOP = 1, /// run message pump loop until SCITER_APP_STOP or main window closure
+   SCITER_APP_INIT = 2, /// pass argc/argv to application: p1 - argc, p2 - CHAR** argv 
+   SCITER_APP_SHUTDOWN = 3, /// pass argc/argv to application: p1 - argc, p2 - CHAR** argv 
+ } SCITER_APP_CMD;
+
+ /** Perform application related operation
+ *
+ * \param[in] appCmd \b SCITER_APP_CMD, application wide command
+ * \param[in] p1 \b UINT_PTR, first parameter 
+ * \param[in] p2 \b UINT_PTR, second parameter
+ *
+ * Note: SciterExec(SCITER_APP_LOOP,0,0) will not return until main window is present or SCITER_APP_STOP received
+ * 
+ **/
+ 
+ INT_PTR SCAPI SciterExec(UINT appCmd /*SCITER_APP_CMD*/, UINT_PTR p1, UINT_PTR p2);
+ 
+
+ typedef enum SCITER_WINDOW_CMD {
+   SCITER_WINDOW_SET_STATE = 1, // p1 - SCITER_WINDOW_STATE, p2 - N/A
+   SCITER_WINDOW_GET_STATE = 2, // p1 - N/A , p2 - N/A, returns SCITER_WINDOW_STATE
+ } SCITER_WINDOW_CMD;
+
+ typedef enum SCITER_WINDOW_STATE {
+   SCITER_WINDOW_STATE_CLOSED = 0, // close window
+   SCITER_WINDOW_STATE_SHOWN = 1,
+   SCITER_WINDOW_STATE_MINIMIZED = 2,
+   SCITER_WINDOW_STATE_MAXIMIZED = 3,
+   SCITER_WINDOW_STATE_HIDDEN = 4,
+   SCITER_WINDOW_STATE_FULL_SCREEN = 5,
+ } SCITER_WINDOW_STATE;
+
+ /** Perform window related operation
+ *
+ * \param[in] windowCmd \b SCITER_WINDOW_CMD, window related command
+ * \param[in] p1 \b UINT_PTR, first parameter
+ * \param[in] p2 \b UINT_PTR, second parameter
+ *
+ **/
+
+ INT_PTR SCAPI SciterWindowExec(HWINDOW hwnd, UINT windowCmd /*SCITER_WINDOW_CMD*/, UINT_PTR p1, UINT_PTR p2);
+
 
 /**Get current pixels-per-inch metrics of the Sciter window
  *

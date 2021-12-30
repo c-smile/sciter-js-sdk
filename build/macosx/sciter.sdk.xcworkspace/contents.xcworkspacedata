@@ -5,6 +5,9 @@
 		location = "group:glfw-opengl.xcodeproj">
 	</FileRef>
 	<FileRef
+		location = "group:gsciter.xcodeproj">
+	</FileRef>
+	<FileRef
 		location = "group:inspector.xcodeproj">
 	</FileRef>
 	<FileRef

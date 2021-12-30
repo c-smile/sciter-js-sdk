@@ -70,7 +70,10 @@ namespace sciter {
   }    
 
   void window::request_close() {
-    if(_hwnd) [nswindow(_hwnd) performClose: nswindow(_hwnd)];
+      if(_hwnd) {
+          NSWindow* pw = nswindow(_hwnd);
+          if(pw) [pw performClose: pw];
+      }
     _hwnd = 0;
   }
 

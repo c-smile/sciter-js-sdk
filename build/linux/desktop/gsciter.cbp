@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="gsciter" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug|x64">
+				<Option output="../../../bin/linux/x64/gsciter" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/x64/Debug/gsciter" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-m64" />
+					<Add option="-g" />
+					<Add option="-std=c++14" />
+					<Add option="-DDEVICE=DESKTOP" />
+					<Add option="-D_GNU_SOURCE" />
+					<Add option="-DDEBUG" />
+					<Add option="-D_DEBUG" />
+					<Add option="-fPIC" />
+					<Add option="-Wno-unknown-pragmas" />
+					<Add option="-Wno-write-strings" />
+					<Add option="-ldl" />
+					<Add directory="../../../include" />
+				</Compiler>
+				<Linker>
+					<Add option="-m64" />
+					<Add option="-fPIC" />
+					<Add option="-pthread" />
+					<Add option="-Wl,--no-undefined" />
+					<Add option="-ldl" />
+					<Add option="-no-pie" />
+				</Linker>
+			</Target>
+			<Target title="Release|x64">
+				<Option output="../../../bin/linux/x64/gsciter" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/x64/Release/gsciter" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-m64" />
+					<Add option="-flto" />
+					<Add option="-Os" />
+					<Add option="-std=c++14" />
+					<Add option="-DDEVICE=DESKTOP" />
+					<Add option="-D_GNU_SOURCE" />
+					<Add option="-DNDEBUG" />
+					<Add option="-fPIC" />
+					<Add option="-Wno-unknown-pragmas" />
+					<Add option="-Wno-write-strings" />
+					<Add option="-ldl" />
+					<Add directory="../../../include" />
+				</Compiler>
+				<Linker>
+					<Add option="-m64" />
+					<Add option="-flto" />
+					<Add option="-s" />
+					<Add option="-fPIC" />
+					<Add option="-pthread" />
+					<Add option="-Wl,--no-undefined" />
+					<Add option="-ldl" />
+					<Add option="-no-pie" />
+				</Linker>
+			</Target>
+			<Target title="DebugSkia|x64">
+				<Option output="../../../bin/linux/x64/gsciter" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/x64/DebugSkia/gsciter" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-m64" />
+					<Add option="-g" />
+					<Add option="-std=c++14" />
+					<Add option="-DDEVICE=DESKTOP" />
+					<Add option="-D_GNU_SOURCE" />
+					<Add option="-DDEBUG" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DSKIA_TARGET" />
+					<Add option="-fPIC" />
+					<Add option="-Wno-unknown-pragmas" />
+					<Add option="-Wno-write-strings" />
+					<Add option="-ldl" />
+					<Add directory="../../../include" />
+				</Compiler>
+				<Linker>
+					<Add option="-m64" />
+					<Add option="-fPIC" />
+					<Add option="-pthread" />
+					<Add option="-Wl,--no-undefined" />
+					<Add option="-ldl" />
+					<Add option="-no-pie" />
+				</Linker>
+			</Target>
+			<Target title="ReleaseSkia|x64">
+				<Option output="../../../bin/linux/x64/gsciter" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/x64/ReleaseSkia/gsciter" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-m64" />
+					<Add option="-flto" />
+					<Add option="-Os" />
+					<Add option="-std=c++14" />
+					<Add option="-DDEVICE=DESKTOP" />
+					<Add option="-D_GNU_SOURCE" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DSKIA_TARGET" />
+					<Add option="-fPIC" />
+					<Add option="-Wno-unknown-pragmas" />
+					<Add option="-Wno-write-strings" />
+					<Add option="-ldl" />
+					<Add directory="../../../include" />
+				</Compiler>
+				<Linker>
+					<Add option="-m64" />
+					<Add option="-flto" />
+					<Add option="-s" />
+					<Add option="-fPIC" />
+					<Add option="-pthread" />
+					<Add option="-Wl,--no-undefined" />
+					<Add option="-ldl" />
+					<Add option="-no-pie" />
+				</Linker>
+			</Target>
+			<Target title="Debug|arm32">
+				<Option output="../../../bin/linux/arm32/gsciter" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/arm32/Debug/gsciter" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-std=c++14" />
+					<Add option="-DDEVICE=DESKTOP" />
+					<Add option="-D_GNU_SOURCE" />
+					<Add option="-DDEBUG" />
+					<Add option="-D_DEBUG" />
+					<Add option="-fPIC" />
+					<Add option="-Wno-unknown-pragmas" />
+					<Add option="-Wno-write-strings" />
+					<Add option="-ldl" />
+					<Add directory="../../../include" />
+				</Compiler>
+				<Linker>
+					<Add option="-fPIC" />
+					<Add option="-pthread" />
+					<Add option="-Wl,--no-undefined" />
+					<Add option="-ldl" />
+					<Add option="-no-pie" />
+				</Linker>
+			</Target>
+			<Target title="Release|arm32">
+				<Option output="../../../bin/linux/arm32/gsciter" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/arm32/Release/gsciter" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-flto" />
+					<Add option="-Os" />
+					<Add option="-std=c++14" />
+					<Add option="-DDEVICE=DESKTOP" />
+					<Add option="-D_GNU_SOURCE" />
+					<Add option="-DNDEBUG" />
+					<Add option="-fPIC" />
+					<Add option="-Wno-unknown-pragmas" />
+					<Add option="-Wno-write-strings" />
+					<Add option="-ldl" />
+					<Add directory="../../../include" />
+				</Compiler>
+				<Linker>
+					<Add option="-flto" />
+					<Add option="-s" />
+					<Add option="-fPIC" />
+					<Add option="-pthread" />
+					<Add option="-Wl,--no-undefined" />
+					<Add option="-ldl" />
+					<Add option="-no-pie" />
+				</Linker>
+			</Target>
+			<Target title="DebugSkia|arm32">
+				<Option output="../../../bin/linux/arm32/gsciter" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/arm32/DebugSkia/gsciter" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-std=c++14" />
+					<Add option="-DDEVICE=DESKTOP" />
+					<Add option="-D_GNU_SOURCE" />
+					<Add option="-DDEBUG" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DSKIA_TARGET" />
+					<Add option="-fPIC" />
+					<Add option="-Wno-unknown-pragmas" />
+					<Add option="-Wno-write-strings" />
+					<Add option="-ldl" />
+					<Add directory="../../../include" />
+				</Compiler>
+				<Linker>
+					<Add option="-fPIC" />
+					<Add option="-pthread" />
+					<Add option="-Wl,--no-undefined" />
+					<Add option="-ldl" />
+					<Add option="-no-pie" />
+				</Linker>
+			</Target>
+			<Target title="ReleaseSkia|arm32">
+				<Option output="../../../bin/linux/arm32/gsciter" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/arm32/ReleaseSkia/gsciter" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-flto" />
+					<Add option="-Os" />
+					<Add option="-std=c++14" />
+					<Add option="-DDEVICE=DESKTOP" />
+					<Add option="-D_GNU_SOURCE" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DSKIA_TARGET" />
+					<Add option="-fPIC" />
+					<Add option="-Wno-unknown-pragmas" />
+					<Add option="-Wno-write-strings" />
+					<Add option="-ldl" />
+					<Add directory="../../../include" />
+				</Compiler>
+				<Linker>
+					<Add option="-flto" />
+					<Add option="-s" />
+					<Add option="-fPIC" />
+					<Add option="-pthread" />
+					<Add option="-Wl,--no-undefined" />
+					<Add option="-ldl" />
+					<Add option="-no-pie" />
+				</Linker>
+			</Target>
+		</Build>
+		<Unit filename="../../../demos/gsciter/gsciter.cpp" />
+		<Unit filename="../../../include/sciter-xlib-main.cpp" />
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>

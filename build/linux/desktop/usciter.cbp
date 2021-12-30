@@ -24,13 +24,10 @@
 					<Add option="-Wno-unknown-pragmas" />
 					<Add option="-Wno-write-strings" />
 					<Add option="-ldl" />
-					<Add option="`pkg-config gtk+-3.0 --cflags`" />
 					<Add directory="../../../include" />
 				</Compiler>
 				<Linker>
 					<Add option="-m64" />
-					<Add option="`pkg-config gtk+-3.0 --libs`" />
-					<Add option="`pkg-config fontconfig --libs`" />
 					<Add option="-fPIC" />
 					<Add option="-pthread" />
 					<Add option="-Wl,--no-undefined" />
@@ -58,15 +55,77 @@
 					<Add option="-Wno-unknown-pragmas" />
 					<Add option="-Wno-write-strings" />
 					<Add option="-ldl" />
-					<Add option="`pkg-config gtk+-3.0 --cflags`" />
 					<Add directory="../../../include" />
 				</Compiler>
 				<Linker>
 					<Add option="-m64" />
 					<Add option="-flto" />
 					<Add option="-s" />
-					<Add option="`pkg-config gtk+-3.0 --libs`" />
-					<Add option="`pkg-config fontconfig --libs`" />
+					<Add option="-fPIC" />
+					<Add option="-pthread" />
+					<Add option="-Wl,--no-undefined" />
+					<Add option="-ldl" />
+					<Add option="-no-pie" />
+				</Linker>
+			</Target>
+			<Target title="DebugSkia|x64">
+				<Option output="../../../bin/linux/x64/usciter" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/x64/DebugSkia/usciter" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-m64" />
+					<Add option="-g" />
+					<Add option="-m64" />
+					<Add option="-g" />
+					<Add option="-std=c++14" />
+					<Add option="-DDEVICE=DESKTOP" />
+					<Add option="-D_GNU_SOURCE" />
+					<Add option="-DDEBUG" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DSKIA_TARGET" />
+					<Add option="-fPIC" />
+					<Add option="-Wno-unknown-pragmas" />
+					<Add option="-Wno-write-strings" />
+					<Add option="-ldl" />
+					<Add directory="../../../include" />
+				</Compiler>
+				<Linker>
+					<Add option="-m64" />
+					<Add option="-fPIC" />
+					<Add option="-pthread" />
+					<Add option="-Wl,--no-undefined" />
+					<Add option="-ldl" />
+					<Add option="-no-pie" />
+				</Linker>
+			</Target>
+			<Target title="ReleaseSkia|x64">
+				<Option output="../../../bin/linux/x64/usciter" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/x64/ReleaseSkia/usciter" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-m64" />
+					<Add option="-flto" />
+					<Add option="-Os" />
+					<Add option="-m64" />
+					<Add option="-flto" />
+					<Add option="-Os" />
+					<Add option="-std=c++14" />
+					<Add option="-DDEVICE=DESKTOP" />
+					<Add option="-D_GNU_SOURCE" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DSKIA_TARGET" />
+					<Add option="-fPIC" />
+					<Add option="-Wno-unknown-pragmas" />
+					<Add option="-Wno-write-strings" />
+					<Add option="-ldl" />
+					<Add directory="../../../include" />
+				</Compiler>
+				<Linker>
+					<Add option="-m64" />
+					<Add option="-flto" />
+					<Add option="-s" />
 					<Add option="-fPIC" />
 					<Add option="-pthread" />
 					<Add option="-Wl,--no-undefined" />
@@ -91,12 +150,9 @@
 					<Add option="-Wno-unknown-pragmas" />
 					<Add option="-Wno-write-strings" />
 					<Add option="-ldl" />
-					<Add option="`pkg-config gtk+-3.0 --cflags`" />
 					<Add directory="../../../include" />
 				</Compiler>
 				<Linker>
-					<Add option="`pkg-config gtk+-3.0 --libs`" />
-					<Add option="`pkg-config fontconfig --libs`" />
 					<Add option="-fPIC" />
 					<Add option="-pthread" />
 					<Add option="-Wl,--no-undefined" />
@@ -122,14 +178,70 @@
 					<Add option="-Wno-unknown-pragmas" />
 					<Add option="-Wno-write-strings" />
 					<Add option="-ldl" />
-					<Add option="`pkg-config gtk+-3.0 --cflags`" />
 					<Add directory="../../../include" />
 				</Compiler>
 				<Linker>
 					<Add option="-flto" />
 					<Add option="-s" />
-					<Add option="`pkg-config gtk+-3.0 --libs`" />
-					<Add option="`pkg-config fontconfig --libs`" />
+					<Add option="-fPIC" />
+					<Add option="-pthread" />
+					<Add option="-Wl,--no-undefined" />
+					<Add option="-ldl" />
+					<Add option="-no-pie" />
+				</Linker>
+			</Target>
+			<Target title="DebugSkia|arm32">
+				<Option output="../../../bin/linux/arm32/usciter" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/arm32/DebugSkia/usciter" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-g" />
+					<Add option="-std=c++14" />
+					<Add option="-DDEVICE=DESKTOP" />
+					<Add option="-D_GNU_SOURCE" />
+					<Add option="-DDEBUG" />
+					<Add option="-D_DEBUG" />
+					<Add option="-DSKIA_TARGET" />
+					<Add option="-fPIC" />
+					<Add option="-Wno-unknown-pragmas" />
+					<Add option="-Wno-write-strings" />
+					<Add option="-ldl" />
+					<Add directory="../../../include" />
+				</Compiler>
+				<Linker>
+					<Add option="-fPIC" />
+					<Add option="-pthread" />
+					<Add option="-Wl,--no-undefined" />
+					<Add option="-ldl" />
+					<Add option="-no-pie" />
+				</Linker>
+			</Target>
+			<Target title="ReleaseSkia|arm32">
+				<Option output="../../../bin/linux/arm32/usciter" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/arm32/ReleaseSkia/usciter" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-flto" />
+					<Add option="-Os" />
+					<Add option="-flto" />
+					<Add option="-Os" />
+					<Add option="-std=c++14" />
+					<Add option="-DDEVICE=DESKTOP" />
+					<Add option="-D_GNU_SOURCE" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DSKIA_TARGET" />
+					<Add option="-fPIC" />
+					<Add option="-Wno-unknown-pragmas" />
+					<Add option="-Wno-write-strings" />
+					<Add option="-ldl" />
+					<Add directory="../../../include" />
+				</Compiler>
+				<Linker>
+					<Add option="-flto" />
+					<Add option="-s" />
 					<Add option="-fPIC" />
 					<Add option="-pthread" />
 					<Add option="-Wl,--no-undefined" />
@@ -139,25 +251,105 @@
 			</Target>
 		</Build>
 		<Unit filename="../../../demos/usciter/usciter.cpp">
+			<Option target="ReleaseSkia|arm32" />
+			<Option target="DebugSkia|x64" />
+			<Option target="Debug|arm32" />
+			<Option target="Release|arm32" />
+			<Option target="Debug|x64" />
+			<Option target="Release|x64" />
+			<Option target="ReleaseSkia|x64" />
+			<Option target="DebugSkia|arm32" />
 		</Unit>
-		<Unit filename="../../../include/sciter-gtk-main.cpp">
+		<Unit filename="../../../include/sciter-xlib-main.cpp">
+			<Option target="ReleaseSkia|arm32" />
+			<Option target="DebugSkia|x64" />
+			<Option target="Debug|arm32" />
+			<Option target="Release|arm32" />
+			<Option target="Debug|x64" />
+			<Option target="Release|x64" />
+			<Option target="ReleaseSkia|x64" />
+			<Option target="DebugSkia|arm32" />
 		</Unit>
 		<Unit filename="../../../sqlite/sciter-sqlite-db.cpp">
+			<Option target="ReleaseSkia|arm32" />
+			<Option target="DebugSkia|x64" />
+			<Option target="Debug|arm32" />
+			<Option target="Release|arm32" />
+			<Option target="Debug|x64" />
+			<Option target="Release|x64" />
+			<Option target="ReleaseSkia|x64" />
+			<Option target="DebugSkia|arm32" />
 		</Unit>
 		<Unit filename="../../../sqlite/sciter-sqlite-rs.cpp">
+			<Option target="ReleaseSkia|arm32" />
+			<Option target="DebugSkia|x64" />
+			<Option target="Debug|arm32" />
+			<Option target="Release|arm32" />
+			<Option target="Debug|x64" />
+			<Option target="Release|x64" />
+			<Option target="ReleaseSkia|x64" />
+			<Option target="DebugSkia|arm32" />
 		</Unit>
 		<Unit filename="../../../sqlite/sciter-sqlite.cpp">
+			<Option target="ReleaseSkia|arm32" />
+			<Option target="DebugSkia|x64" />
+			<Option target="Debug|arm32" />
+			<Option target="Release|arm32" />
+			<Option target="Debug|x64" />
+			<Option target="Release|x64" />
+			<Option target="ReleaseSkia|x64" />
+			<Option target="DebugSkia|arm32" />
 		</Unit>
 		<Unit filename="../../../sqlite/sciter-sqlite.h">
+			<Option target="ReleaseSkia|arm32" />
+			<Option target="DebugSkia|x64" />
+			<Option target="Debug|arm32" />
+			<Option target="Release|arm32" />
+			<Option target="Debug|x64" />
+			<Option target="Release|x64" />
+			<Option target="ReleaseSkia|x64" />
+			<Option target="DebugSkia|arm32" />
 		</Unit>
 		<Unit filename="../../../sqlite/sqlite-wrap.c">
 			<Option compilerVar="CC" />
+			<Option target="ReleaseSkia|arm32" />
+			<Option target="DebugSkia|x64" />
+			<Option target="Debug|arm32" />
+			<Option target="Release|arm32" />
+			<Option target="Debug|x64" />
+			<Option target="Release|x64" />
+			<Option target="ReleaseSkia|x64" />
+			<Option target="DebugSkia|arm32" />
 		</Unit>
 		<Unit filename="../../../sqlite/sqlite-wrap.h">
+			<Option target="ReleaseSkia|arm32" />
+			<Option target="DebugSkia|x64" />
+			<Option target="Debug|arm32" />
+			<Option target="Release|arm32" />
+			<Option target="Debug|x64" />
+			<Option target="Release|x64" />
+			<Option target="ReleaseSkia|x64" />
+			<Option target="DebugSkia|arm32" />
 		</Unit>
 		<Unit filename="../../../sqlite/sqlite3.h">
+			<Option target="ReleaseSkia|arm32" />
+			<Option target="DebugSkia|x64" />
+			<Option target="Debug|arm32" />
+			<Option target="Release|arm32" />
+			<Option target="Debug|x64" />
+			<Option target="Release|x64" />
+			<Option target="ReleaseSkia|x64" />
+			<Option target="DebugSkia|arm32" />
 		</Unit>
 		<Unit filename="../../../sqlite/sqlite3ext.h">
+			<Option target="ReleaseSkia|arm32" />
+			<Option target="DebugSkia|x64" />
+			<Option target="Debug|arm32" />
+			<Option target="Release|arm32" />
+			<Option target="Debug|x64" />
+			<Option target="Release|x64" />
+			<Option target="ReleaseSkia|x64" />
+			<Option target="DebugSkia|arm32" />
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

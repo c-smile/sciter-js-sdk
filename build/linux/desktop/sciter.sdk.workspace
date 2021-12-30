@@ -3,6 +3,8 @@
 	<Workspace title="sciter.sdk">
 		<Project filename="usciter.cbp" active="1">
 		</Project>
+		<Project filename="gsciter.cbp">
+		</Project>
 		<Project filename="inspector.cbp">
 		</Project>
 		<Project filename="integration.cbp">

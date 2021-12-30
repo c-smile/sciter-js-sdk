@@ -154,6 +154,57 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		52BC9C6869CF379A59EB32A8 /* ReleaseSkia */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEVICE=DESKTOP",
+					NDEBUG,
+					SKIA_TARGET,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OBJROOT = obj/x64/ReleaseSkia/inspector;
+				ONLY_ACTIVE_ARCH = NO;
+				SYMROOT = ../../bin/macosx;
+				USER_HEADER_SEARCH_PATHS = (
+					../../include,
+				);
+			};
+			name = ReleaseSkia;
+		};
+		661ED3AE090CFA609832D9EE /* DebugSkia */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEVICE=DESKTOP",
+					DEBUG,
+					_DEBUG,
+					SKIA_TARGET,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OBJROOT = obj/x64/DebugSkia/inspector;
+				ONLY_ACTIVE_ARCH = YES;
+				SYMROOT = ../../bin/macosx;
+				USER_HEADER_SEARCH_PATHS = (
+					../../include,
+				);
+			};
+			name = DebugSkia;
+		};
 		A764AF7E6AD07130A97415BE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -164,6 +215,18 @@
 				PRODUCT_NAME = inspector;
 			};
 			name = Release;
+		};
+		C698088C13FAFEBE8A19FECC /* DebugSkia */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../../bin/macosx;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = "\"$(HOME)/Applications\"";
+				PRODUCT_NAME = inspector;
+			};
+			name = DebugSkia;
 		};
 		CF56A82673A945D885E18E66 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -190,6 +253,17 @@
 				);
 			};
 			name = Debug;
+		};
+		D84B81860A44CC38842407C6 /* ReleaseSkia */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../../bin/macosx;
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = "\"$(HOME)/Applications\"";
+				PRODUCT_NAME = inspector;
+			};
+			name = ReleaseSkia;
 		};
 		DB6AA384FD3650B639EB79C4 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -234,6 +308,8 @@
 			buildConfigurations = (
 				CF56A82673A945D885E18E66 /* Debug */,
 				F40923E0F779F61278E69A20 /* Release */,
+				661ED3AE090CFA609832D9EE /* DebugSkia */,
+				52BC9C6869CF379A59EB32A8 /* ReleaseSkia */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
@@ -243,6 +319,8 @@
 			buildConfigurations = (
 				DB6AA384FD3650B639EB79C4 /* Debug */,
 				A764AF7E6AD07130A97415BE /* Release */,
+				C698088C13FAFEBE8A19FECC /* DebugSkia */,
+				D84B81860A44CC38842407C6 /* ReleaseSkia */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

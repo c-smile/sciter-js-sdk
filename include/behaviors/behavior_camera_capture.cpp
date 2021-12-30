@@ -62,7 +62,7 @@ struct camera_stream: public event_handler
       }
       return out;
     }
-   
+
     bool stream_from(const sciter::value& device) // either int (index) or string (name)
     {
       if (pcapt)
@@ -70,7 +70,7 @@ struct camera_stream: public event_handler
       pcapt = camera::capture::create_instance(rendering_site, device);
       return true;
     }
-
+    
     SOM_PASSPORT_BEGIN_EX(camera, camera_stream)
       SOM_PROPS(
         SOM_RO_VIRTUAL_PROP(devices, get_devices),

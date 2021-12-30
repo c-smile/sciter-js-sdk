@@ -177,6 +177,57 @@
 			};
 			name = Release;
 		};
+		0D263A15334C69C79A536055 /* ReleaseSkia */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEVICE=DESKTOP",
+					NDEBUG,
+					SKIA_TARGET,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OBJROOT = obj/x64/ReleaseSkia/integration;
+				ONLY_ACTIVE_ARCH = NO;
+				SYMROOT = ../../bin/macosx;
+				USER_HEADER_SEARCH_PATHS = (
+					../../include,
+				);
+			};
+			name = ReleaseSkia;
+		};
+		283B221B3F4DBD4D2F69B85B /* DebugSkia */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEVICE=DESKTOP",
+					DEBUG,
+					_DEBUG,
+					SKIA_TARGET,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OBJROOT = obj/x64/DebugSkia/integration;
+				ONLY_ACTIVE_ARCH = YES;
+				SYMROOT = ../../bin/macosx;
+				USER_HEADER_SEARCH_PATHS = (
+					../../include,
+				);
+			};
+			name = DebugSkia;
+		};
 		33DD096B813FFF9DF75EFFAB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -187,6 +238,29 @@
 				PRODUCT_NAME = integration;
 			};
 			name = Release;
+		};
+		3C0909F3D17FC925401C2033 /* ReleaseSkia */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../../bin/macosx;
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = "\"$(HOME)/Applications\"";
+				PRODUCT_NAME = integration;
+			};
+			name = ReleaseSkia;
+		};
+		528E91B98487DC6BFE6717F9 /* DebugSkia */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../../bin/macosx;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_DYNAMIC_NO_PIC = NO;
+				INSTALL_PATH = "\"$(HOME)/Applications\"";
+				PRODUCT_NAME = integration;
+			};
+			name = DebugSkia;
 		};
 		BDBAC813C12B9A4542983E53 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -234,6 +308,8 @@
 			buildConfigurations = (
 				BDBAC813C12B9A4542983E53 /* Debug */,
 				0BF4F30DAEE319BF3E08F94D /* Release */,
+				283B221B3F4DBD4D2F69B85B /* DebugSkia */,
+				0D263A15334C69C79A536055 /* ReleaseSkia */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
@@ -243,6 +319,8 @@
 			buildConfigurations = (
 				F8399E31BBA55FE3FA490471 /* Debug */,
 				33DD096B813FFF9DF75EFFAB /* Release */,
+				528E91B98487DC6BFE6717F9 /* DebugSkia */,
+				3C0909F3D17FC925401C2033 /* ReleaseSkia */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

@@ -23,6 +23,7 @@ int APIENTRY wWinMain(HINSTANCE hInstance,
 	UNREFERENCED_PARAMETER(lpCmdLine);
   UNREFERENCED_PARAMETER(nCmdShow);
 
+#if defined(MANUAL_LOOP)
   OleInitialize(0); // for system drag-n-drop
 
   // comment this out if you need system theming
@@ -42,9 +43,13 @@ int APIENTRY wWinMain(HINSTANCE hInstance,
   int r = uimain(message_pump);
 
   OleUninitialize();
-
+#else 
+  SciterExec(SCITER_APP_INIT, 0, 0);
+  int r = uimain([]() -> int { return SciterExec(SCITER_APP_LOOP, 0, 0); });
+  SciterExec(SCITER_APP_SHUTDOWN, 0, 0);
+#endif
   return r;
-	  
+  
 }
 #endif
 namespace sciter {
@@ -84,24 +89,6 @@ namespace sciter {
   {
     window* win = static_cast<window*>( pParam );
     return win->on_message( hwnd, msg, wParam, lParam,*pHandled);
-  }
-    
-  void window::collapse() { 
-    if(_hwnd) ::ShowWindow(_hwnd, SW_MINIMIZE ); 
-  }
-  void window::expand( bool maximize) { 
-    if(_hwnd) ::ShowWindow(_hwnd, maximize? SW_MAXIMIZE :SW_NORMAL ); 
-  }
-  void window::request_close() {
-    if(_hwnd) ::PostMessage(_hwnd, WM_CLOSE, 0, 0 ); 
-  }
-  void window::close() {
-    if (_hwnd) ::DestroyWindow(_hwnd);
-  }
-  window::window( UINT creationFlags, RECT frame): _hwnd(NULL)
-  {
-    asset_add_ref();
-    _hwnd = ::SciterCreateWindow(creationFlags,&frame,&msg_delegate,this,NULL);
   }
 
 }

@@ -45,7 +45,7 @@ namespace sciter
 
   namespace application
   {
-    const std::vector<sciter::string>& argv();
+    //const std::vector<sciter::string>& argv();
     HINSTANCE                          hinstance();
   }
 
@@ -54,7 +54,12 @@ namespace sciter
   {
     friend sciter::host<window>;
   public:
-    window( UINT creationFlags, RECT frame = RECT() );
+
+    window( UINT creationFlags, RECT frame = RECT() ) {
+      asset_add_ref();
+      _hwnd = ::SciterCreateWindow(creationFlags, (frame.right - frame.left) > 0 ? &frame: NULL,NULL,this,NULL);
+    }
+
     //virtual ~window() {}
 
     bool is_valid() const { return _hwnd != 0; }
@@ -62,10 +67,11 @@ namespace sciter
     virtual long asset_add_ref() { return asset::asset_add_ref(); }
     virtual long asset_release() { return asset::asset_release(); }
 
-    void collapse(); // minimize
-    void expand( bool maximize = false); // show or maximize
-    void request_close(); // requests window to be closed, note: script can reject the closure
-    void close(); // forced close of the window. Note: normally you shoud use request_close()
+    void collapse() { bind(); ::SciterWindowExec(_hwnd,SCITER_WINDOW_SET_STATE, SCITER_WINDOW_STATE_MINIMIZED,0); }
+    void expand( bool maximize = false) { bind(); ::SciterWindowExec(_hwnd,SCITER_WINDOW_SET_STATE, maximize ? SCITER_WINDOW_STATE_MAXIMIZED: SCITER_WINDOW_STATE_SHOWN,0); }
+    void request_close() // requests window to be closed, note: script can reject the closure
+                         { ::SciterWindowExec(_hwnd,SCITER_WINDOW_SET_STATE, SCITER_WINDOW_STATE_CLOSED,FALSE); }
+    void close() { ::SciterWindowExec(_hwnd,SCITER_WINDOW_SET_STATE, SCITER_WINDOW_STATE_CLOSED,TRUE); }
 
     /*OBSOLETE*/ void dismiss() { request_close(); }
 
@@ -84,7 +90,7 @@ namespace sciter
 
   // sciter::host traits:
     HWINDOW   get_hwnd() const { return _hwnd; }
-    HINSTANCE get_resource_instance() const { return application::hinstance(); }
+    HINSTANCE get_resource_instance() const { return application::hinstance();  }
 
     //sciter::om::iasset
     static const char* interface_name() { return "window.sciter.com"; }
@@ -97,10 +103,10 @@ namespace sciter
       }
     }
   protected:
-    virtual LRESULT on_engine_destroyed() 
-    { 
+    virtual LRESULT on_engine_destroyed()
+    {
       _hwnd = 0; asset_release();
-      return 0; 
+      return 0;
     }
 
 #if defined(WINDOWS)

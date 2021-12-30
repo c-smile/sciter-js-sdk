@@ -118,6 +118,7 @@
   typedef const CHAR* LPCSTR;
   typedef void VOID;
   typedef size_t UINT_PTR;
+  typedef ssize_t INT_PTR;
   typedef void* LPVOID;
   typedef const void* LPCVOID;
 
@@ -154,10 +155,13 @@
 
   typedef unsigned int UINT;
   typedef int INT;
-  typedef unsigned int UINT32;
-  typedef int INT32;
-  typedef unsigned long long UINT64;
-  typedef long long INT64;
+  typedef uint32_t UINT32;
+  typedef int32_t INT32;
+  typedef uint64_t UINT64;
+  typedef int64_t INT64;
+
+  typedef intptr_t INT_PTR;
+  typedef uintptr_t UINT_PTR;
 
   typedef unsigned char BYTE;
   typedef char16_t WCHAR;
@@ -166,7 +170,6 @@
   typedef char CHAR;
   typedef const CHAR* LPCSTR;
   typedef void VOID;
-  typedef size_t UINT_PTR;
   typedef void* LPVOID;
   typedef const void* LPCVOID;
 
@@ -299,7 +302,7 @@ typedef VOID SC_CALLBACK LPCBYTE_RECEIVER( LPCBYTE str, UINT num_bytes, LPVOID p
   namespace std {
     typedef basic_string<WCHAR> ustring;
   }
-  
+
   // Note: quote here is a string literal!
   #ifdef WINDOWS
     #define _WSTR(quote) L##quote
@@ -324,7 +327,7 @@ typedef VOID SC_CALLBACK LPCBYTE_RECEIVER( LPCBYTE str, UINT num_bytes, LPVOID p
     std::string* s = (std::string*)param;
     *s = std::string(str, str_length);
   }
-  
+
 #else
   #define EXTERN_C extern
 #endif /* __cplusplus **/

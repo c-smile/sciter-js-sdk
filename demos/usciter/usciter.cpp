@@ -94,7 +94,7 @@ int uimain(std::function<int()> run ) {
 
   bool loaded = false;
 
-  const std::vector<sciter::string>& argv = sciter::application::argv();
+  /*const std::vector<sciter::string>& argv = sciter::application::argv();
 
   // usciter.exe -o file-to-open.htm
   if (argv.size() > 1) {
@@ -106,7 +106,7 @@ int uimain(std::function<int()> run ) {
         }
     if (file_to_open.length())
       loaded = pwin->load(file_to_open.c_str());
-  }
+  }*/
 
   if(!loaded)
   // note: this:://app URL is dedicated to the sciter::archive content associated with the application

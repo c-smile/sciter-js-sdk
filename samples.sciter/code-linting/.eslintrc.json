@@ -51,7 +51,7 @@
             "multi-or-nest"
         ],
         "spaced-comment": "warn",
-        "no-else-return": "error",
+        "no-else-return": "off",
         "no-empty-function": "error",
         "no-lone-blocks": "error",
         "no-mixed-operators": "error",

@@ -13,13 +13,18 @@ export class VirtualList extends Element {
     this.styleset = props.styleset || (__DIR__ + "virtual-select.css#virtual-select");
   }
 
-  itemAt(at) { // virtual function, must be overriden
+  // virtual function, must be overriden
+  itemAt(at) {
     return null;
   }
-  totalItems() { // virtual function, must be overriden
+
+  // virtual function, must be overriden
+  totalItems() {
     return 0;
   }
-  indexOf(item) { // virtual function, must be overriden
+
+  // virtual function, must be overriden
+  indexOf(item) {
     return -1;
   }
 
@@ -41,12 +46,14 @@ export class VirtualList extends Element {
         });
         return this.renderList([]); // render empty list and request "from start" navigation
       }
+
       if (lastVisibleIndex >= totalItems) {
         this.post(() => {
           this.vlist.navigate("end");
         });
         return this.renderList([]); // render empty list and request "from end" navigation
       }
+
       lastIndex = Math.min(totalItems, firstIndex + this.vlist.slidingWindowSize) - 1;
       this.post(() => {
         this.vlist.itemsAfter = totalItems - this.vlist.itemsBefore - this.children.length;
@@ -58,6 +65,7 @@ export class VirtualList extends Element {
       const item = this.itemAt(index);
       if (item) list.push(this.renderItem(item, item === currentItem, selectedItems?.has(item)));
     }
+
     return this.renderList(list);
   }
 
@@ -107,13 +115,13 @@ export class VirtualList extends Element {
     }; // return estimated number of items before and above this chunk
   }
 
-  renderList(items) // overridable
-  {
+  // overridable
+  renderList(items) {
     return <virtual-select {this.props} styleset={this.styleset}>{ items }</virtual-select>; 
   }
 
-  renderItem(item, index) // overridable
-  {
+  // overridable
+  renderItem(item, index) {
     return <option key={index}>item { index }</option>;
   }
 
@@ -205,13 +213,18 @@ export class VirtualSelect extends VirtualList {
     this.items = items || [];
   }
 
-  itemAt(at) { // virtual function, can be overriden
+  // virtual function, can be overriden
+  itemAt(at) {
     return this.items?.[at];
   }
-  totalItems() { // virtual function, can be overriden
+
+  // virtual function, can be overriden
+  totalItems() {
     return this.items?.length || 0;
   }
-  indexOf(item) { // virtual function, can be overriden
+
+  // virtual function, can be overriden
+  indexOf(item) {
     return this.items?.indexOf(item);
   }
 

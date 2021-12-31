@@ -15,7 +15,7 @@ The Reactor is just these three features:
 The smallest Sciter's Reactor example:
 
 ```JavaScript
-$(body).patch(<body>Hello, world!</body>);
+document.body.patch(<body>Hello, world!</body>);
 ```
 
 As you would expect, execution of this line will produce this DOM structure:

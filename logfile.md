@@ -1,3 +1,16 @@
+## 4.4.8.23
+
+### Fixes:
+
+* [macosx] IME regression fix;
+* [css] `@media ... {}` handling fix inside style sets;
+* [reactor] attribute `checked` and `state-checked` are interchangeable;
+* [macosx] light/dark theme switch event, regression fix;
+
+### New features:
+
+* event "close" on window objects;
+
 ## 4.4.8.22
 
 ### New features:

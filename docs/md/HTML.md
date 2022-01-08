@@ -35,6 +35,10 @@ Those are Sciter specific elements, most of them have a custom [behavior](behavi
 | `selectable` | allow content selection (behavior)
 | `novalue`    | synonym of `placeholder`
 | `role="window-caption"` | Allow to drag the window through this element
+| `role="window-minimize"` | Instructs the element to behave as window minimize button
+| `role="window-maximize"` | Instructs the element to behave as window maximize button
+| `role="window-close"` | Instructs the element to behave as window close button
+| `role="window-icon"` | Instructs the element to behave as window icon - on Windows it shows window menu on click on it.
 
 
 ## Window Attributes

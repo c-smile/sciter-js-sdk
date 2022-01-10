@@ -219,7 +219,7 @@ namespace sciter
         SCITER_VALUE rv;
         SBOOL r = SciterCall(hwnd, name, argc, argv, &rv);
 #if !defined(SCITER_SUPPRESS_SCRIPT_ERROR_THROW)
-        if( (r == FALSE) && rv.is_error_string()) {
+        if( rv.is_error_string()) {
           aux::w2a u8 (rv.get(WSTR("")));
           throw sciter::script_error(u8.c_str());
         }
@@ -258,6 +258,10 @@ namespace sciter
         SCITER_VALUE rv;
         if(!SciterEval(hwnd, script.start, script.length, &rv))
           throw sciter::script_error("eval() error");
+        if (rv.is_error_string()) {
+          aux::w2a reason(rv.get(WSTR("")));
+          throw sciter::script_error(reason.c_str());
+        }
         return rv;
       }
 

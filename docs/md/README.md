@@ -1,6 +1,6 @@
-### DOM and Runtime implementation status
+# DOM and Runtime implementation status
 
-#### global methods
+## global methods
 
 * `console.log(...)`
 * `console.warn(...)`
@@ -43,6 +43,12 @@
 * #### `scanf(format:string, input: string) : [...]`
 
   Takes *input* string and parses it according the *format* specification using C-style [scanf conventions](https://en.cppreference.com/w/c/io/fscanf). Returns list (array) of successfully parsed values. 
+
+## JSON
+
+* #### `JSON.parse(text, [reviver:function]): JSON` Parses a JSON string, constructing the value or object described by the string. An optional reviver function can be provided to perform a transformation on the resulting object before it is returned.
+
+* #### `JSON.stringify(object, [replacer:function])` Converts a JavaScript object or value to a JSON string, optionally replacing values if a replacer function is specified or optionally including only the specified properties if a replacer array is specified.
 
 ## global properties
 

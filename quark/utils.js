@@ -1,14 +1,11 @@
-
-
-export class FileSelector extends Element
-{
+export class FileSelector extends Element {
   name = "";
   novalue = "";
   type = "file";
 
-  constructor(props) { 
+  constructor(props) {
     super(props);
-    Object.assign(this,props); 
+    Object.assign(this, props);
   }
 
   render() {
@@ -27,27 +24,26 @@ export class FileSelector extends Element
   }
 
   doSelect() {
-    return Window.this.selectFile {
-      filter: "SVG Files (*.svg)|*.svg|All Files (*.*)|*.*" , 
+    return Window.this.selectFile({
+      filter: "SVG Files (*.svg)|*.svg|All Files (*.*)|*.*",
       extension: "svg",
       mode: "open",
-      caption: "Select SVG file"
-    };
+      caption: "Select SVG file",
+    });
   }
 
-  ["on click at button.select"]() { 
-    var fn = this.doSelect(); 
-    if(fn) {
-      this.$("input").value = URL.toPath(fn); 
-      this.post(new Event("input", {bubbles:true}));
+  ["on click at button.select"]() {
+    const fn = this.doSelect();
+    if (fn) {
+      this.$("input").value = URL.toPath(fn);
+      this.post(new Event("input", {bubbles: true}));
     }
     return true;
   }
 }
 
 export class FolderSelector extends FileSelector {
-
-  constructor(props) { 
+  constructor(props) {
     super(props);
     this.type = "folder";
   }
@@ -56,4 +52,3 @@ export class FolderSelector extends FileSelector {
     return Window.this.selectFolder();
   }
 }
-

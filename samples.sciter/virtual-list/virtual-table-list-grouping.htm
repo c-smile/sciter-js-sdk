@@ -1,0 +1,138 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+            table {
+              size:*;
+              border:1px solid #ccc;
+            }
+            tbody 
+            {
+              overflow:scroll-indicator;
+              size:*;
+            }
+            table > thead { 
+               border-bottom:1px solid #ccc; 
+               behavior: column-resizer;
+             }
+            table > thead > tr > th:nth-child(1) { width: 8em; }
+            table > thead > tr > th:nth-child(2) { width: *; }
+
+            tbody tr[expanded] th { // header group
+              behavior:clickable; // will generate clicks
+              color:#fff;
+              line-height:1.6em;
+              height:1.6em;
+              padding-left:2em;
+              background:#444 no-repeat 0.5em 50%;
+              background-image: url(stock:chevron-right);
+              background-size:0.6em;
+              fill:#fff;
+            }
+
+            tbody tr[expanded=true] th { // expanded header group
+              background-image: url(stock:chevron-down);
+            }
+
+        </style>
+        <script type="module">
+
+import {VirtualList} from "virtual-select.js";
+
+// list with virtual data source
+class VirtualTableBody extends VirtualList {
+
+  data; // original grouped list
+  list; // flat list - array of items and groups
+
+  this(props) { 
+    this.data = props.data;
+    this.list = this.flatten(this.data); 
+  }
+
+  itemAt(at) { return this.list[at]; }
+  totalItems() { return this.list.length; }
+  indexOf(item) { return this.list.indexOf(item); }
+
+  flatten(groupedList) {
+    let out = [];
+    for(let group of groupedList) {
+      out.push(group); 
+      if(group.expanded) 
+        for(let item of group.items)
+          out.push(item); 
+    }
+    return out;
+  }
+
+  // overridable
+  renderItem(item, isCurrent, isSelected) {
+    if( item.items ) // that is a group header
+      return  <tr key={item.key} expanded={item.expanded}>
+                <th colspan="2">{item.text}</th>
+              </tr>;
+    else 
+      return  <tr key={item.key} >
+                  <td>{item.key}</td>
+                  <td>{item.text}</td> 
+              </tr>;
+  }
+
+  renderList(items) // overridable
+  { 
+    return <tbody styleset={__DIR__ + "virtual-table.css#tbody"}>{ items }</tbody>; 
+  }
+
+  // click on group header
+  ["on click at tr[expanded]"](evt,tr) {
+    const groupIndex = tr.attributes["key"];
+    const group = this.data[groupIndex];
+    group.expanded = !group.expanded; // toggle expanded flag
+    // update the view with new list content
+    this.componentUpdate({ 
+      list: this.flatten(this.data)  
+    });
+  }
+
+}
+
+class App extends Element {
+
+  data = []; // grouped data
+
+  constructor() {
+    super();
+    for(let n = 0; n < 100; ++n) {
+      let group = { key: n, text: `group # ${n}`, items:[], expanded:true };
+      for(let i = 0; i < 10; ++i) {
+        let key = n * 10 + i;
+        group.items.push({key, text: `${n}: item ${i}`});
+      }
+      this.data.push(group);
+    }
+  }
+
+  render() {
+
+    return  <body>
+                <table>
+                  <thead>
+                    <tr>
+                        <th>bbb</th>
+                        <th>aaa</th>
+                    </tr>
+                  </thead>
+                  <VirtualTableBody data={this.data}/>
+                </table>
+            </body>
+  }
+
+}
+
+document.body.patch(<App/>);
+
+        </script>
+    </head>
+    <body />
+</html>

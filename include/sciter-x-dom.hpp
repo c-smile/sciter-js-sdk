@@ -1005,7 +1005,7 @@ namespace dom
       SCITER_VALUE rv = SCITER_VALUE();
       SCDOM_RESULT r = SciterCallScriptingMethod(he, name, argv,argc, &rv);
 #if !defined(SCITER_SUPPRESS_SCRIPT_ERROR_THROW)
-      if( (r != SCDOM_OK) && rv.is_error_string()) {
+      if( rv.is_error_string()) {
         aux::w2a reason(rv.get(WSTR("")));
         throw sciter::script_error(reason.c_str());
       }
@@ -1052,7 +1052,7 @@ namespace dom
       SCITER_VALUE rv;
       SCDOM_RESULT r = SciterCallScriptingFunction(he, name, argv,argc, &rv);
 #if !defined(SCITER_SUPPRESS_SCRIPT_ERROR_THROW)
-      if( (r != SCDOM_OK) && rv.is_error_string()) {
+      if(rv.is_error_string()) {
         aux::w2a reason(rv.get(WSTR("")));
         throw sciter::script_error(reason.c_str());
       }

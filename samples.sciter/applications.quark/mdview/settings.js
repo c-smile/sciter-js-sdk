@@ -71,9 +71,9 @@ add({
     }
   },
 });
-
+  
 export function saveState() {
-  if (!document.window) {
+  if(!document.parentWindow) {
     Window.this.off(saveState); // document is unloaded
     return;
   }

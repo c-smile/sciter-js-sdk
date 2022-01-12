@@ -48,6 +48,13 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
     * 3 `Window.WINDOW_MAXIMIZED`
     * 4 `Window.WINDOW_HIDDEN`
     * 5 `Window.WINDOW_FULL_SCREEN`
+    
+  * `window.frameType:string` - read/write, frame type of the window, one of:
+    * `"standard"` - default frame type;
+    * `"transparent"` - transparent (a.k.a. layered) window;
+    * `"solid"` - non-transparent, rectangular window without any decorations;
+    * `"solid-with-shadow"` - non-transparent window without caption and buttons, may have rounded corners and shadow if OS supports that.
+    * `"extended"` - standard window shape but without caption bar. Caption and window buttons(exception:MacOS) shall be defined in markup/css. 
   
   * `window.screen:int` - read-only, returns screen (monitor) index this window is on at the moment. Integer [0 ... Window.screens]
   * `window.graphicsBackend` - read-only, string, reports current graphics backend used: "direct2d", "Skia/OpenGL", etc. 

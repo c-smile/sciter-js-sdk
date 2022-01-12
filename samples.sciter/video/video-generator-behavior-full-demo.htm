@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title></title>
+    <style>
+    
+      body { 
+        behavior:video-coordinator;
+        background:gold; 
+      }
+		
+			video.generator {
+				behavior: video-generator-full video;
+				size: *;
+				foreground-size:contain;
+				border:1px solid #000;
+			}
+		
+		</style>
+    <script|module>
+
+		</script>
+  </head>
+<body>
+  <p>This demo simulates full video frame update. See sdk/include/behaviors/behavior_video_generator_full.cpp source.
+  On each frame (30 FPS) it updates whole frame.</p>
+  <video.generator />
+</body>
+</html>

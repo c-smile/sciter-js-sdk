@@ -20,11 +20,12 @@ Those are Sciter specific elements, most of them have a custom [behavior](behavi
 | ------- | ----------- |
 | `<popup>` | popup element (preferred to be placed in `<head>`)
 | [`<menu .context>`](behaviors/behavior-menu.md)  | [context-menu styled](CSS/css-sciter.md) element
+| [`<menu .popup>`](behaviors/behavior-menu.md)  | [context-menu styled](CSS/css-sciter.md) element
 | [`<plaintext>`](behaviors/behavior-plaintext.md) | Multiline text editor
 | [`<htmlarea>`](behaviors/behavior-richtext.md) | WYSIWYG/richtext/html editor
 | [`<frameset>`](behaviors/behavior-frame-set.md) | child elements to be resizable window blocks
 | [`<select\|tree>`](behaviors/behavior-tree-view.md) | Tree-list select element, one of [behavior select](behaviors/README.md) types
-| `<include src=""/>` | Inserts HTML file in place.
+| `<include src="some.html"/>` | Inserts HTML fragment file in place.
 
 
 ## Attributes
@@ -35,6 +36,10 @@ Those are Sciter specific elements, most of them have a custom [behavior](behavi
 | `selectable` | allow content selection (behavior)
 | `novalue`    | synonym of `placeholder`
 | `role="window-caption"` | Allow to drag the window through this element
+| `role="window-minimize"` | Instructs the element to behave as window minimize button
+| `role="window-maximize"` | Instructs the element to behave as window maximize button
+| `role="window-close"` | Instructs the element to behave as window close button
+| `role="window-icon"` | Instructs the element to behave as window icon - on Windows it shows window menu on click on it.
 
 
 ## Window Attributes
@@ -52,10 +57,13 @@ Window (`<html>`) specific attributes
 | `window-min-height`| minimal height of the window, CSS length units
 | `window-max-width` | maximal width of the window, CSS length units
 | `window-max-height`| maximal height of the window, CSS length units
-| `window-resizable`  | `true\|false\|LENGTH-UNIT` i.e. `10px` counted from window frame inwards
+| `window-resizable` | `true\|false\|LENGTH-UNIT` i.e. `10px` counted from window frame inwards
+| `window-minimizable` | `true\|false`
+| `window-maximizable` | `true\|false`
 | `window-blurbehind` | `auto\|dark\|light\|ultra-dark\|ultra-light` translucent effect.
 | `window-state` | `shown\|minimized\|maximized\|full-screen\|hidden` - initial state of HTML window
 | `lang` | ISO 639-1 value, define dictionary for spellcheck, Date...
+| `disable-debug` | do not connect to inspector
 
 
 ## Misc

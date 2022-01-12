@@ -1,47 +1,43 @@
-
-export class SublimatedObject extends Element 
-{
-  //this.def.type;         // "Array", "Object", "Element", etc
-  //this.def.length;    - if "Array"
-  //this.def.reference;    // sublimated reference 
-  //this.def.elements   // if "Array"
-  //this.def.properties // if object
-  //this.def.caption    // toString() if object
+export class SublimatedObject extends Element {
+  // this.def.type;         // "Array", "Object", "Element", etc
+  // this.def.length;    - if "Array"
+  // this.def.reference;    // sublimated reference
+  // this.def.elements   // if "Array"
+  // this.def.properties // if object
+  // this.def.caption    // toString() if object
 
   constructor(props) {
     super();
     this.channel = props.channel;
-    this.expanded = props.expanded;    
+    this.expanded = props.expanded;
   }
 
   render(props) {
-    if(props?.def)
+    if (props?.def)
       this.def = props.def;
-    
-    if(!this.def) return [];
+
+    if (!this.def) return [];
+
     return this.def.type == "Array" 
       ? this.renderArray() 
       : this.renderObject();
   }
 
-  renderArray() 
-  {
+  renderArray() {
     let atts = {};
     let details = [];
 
-    if(this.expanded)
-    {
-      atts = { expanded:"" };
+    if (this.expanded) {
+      atts = {expanded: ""};
       let n = 0;
-      let list = [];
-      for(let val of (this.def.elements || []))
-      {
-        let key = (n++).toString();
+      const list = [];
+      for (const val of (this.def.elements || [])) {
+        const key = (n++).toString();
         list.push(<span>{key} :</span>);
-        list.push(SublimatedValue(this.channel,val,key));
-        if(n > 10) {
-          list.push(<text>{this.def.length - 10} elements more...</text>); 
-          break;  
+        list.push(SublimatedValue(this.channel, val, key));
+        if (n > 10) {
+          list.push(<text>{this.def.length - 10} elements more...</text>);
+          break;
         }
       }
       details = <div .details>{list}</div>;
@@ -50,22 +46,19 @@ export class SublimatedObject extends Element
   }
 
   renderObject() {
-
     let atts = {};
     let details = [];
 
-    if(this.expanded)
-    {
-      atts = { expanded:"" };
+    if (this.expanded) {
+      atts = {expanded: ""};
       let n = 0;
-      let list = [];
-      if(this.def?.properties) {
-        for(let [key,val] of Object.entries(this.def.properties))
-        {
+      const list = [];
+      if (this.def?.properties) {
+        for (const [key, val] of Object.entries(this.def.properties)) {
           list.push(<span>{key} :</span>);
-          list.push(SublimatedValue(this.channel,val,key));
-          if(++n > 32) {
-            list.push(<text>{this.def.length - 32} names more...</text>); 
+          list.push(SublimatedValue(this.channel, val, key));
+          if (++n > 32) {
+            list.push(<text>{this.def.length - 32} names more...</text>);
             break;
           }
         }
@@ -73,15 +66,15 @@ export class SublimatedObject extends Element
       details = <div .details>{list}</div>;
     }
 
-    if(this.def.caption)
-      return <var .coll {atts} type={this.def.type}><caption>{this.def.caption}</caption>{details}</var>; 
-    else 
-      return <var .coll {atts} type={this.def.type}><caption>Object</caption>{details}</var>; 
+    if (this.def.caption)
+      return <var .coll {atts} type={this.def.type}><caption>{this.def.caption}</caption>{details}</var>;
+    else
+      return <var .coll {atts} type={this.def.type}><caption>Object</caption>{details}</var>;
   }
 
   async requestDetails() {
-    let details = await this.channel.request("objectElements",this.def.reference);
-    if(this.def.type == "Array") {
+    const details = await this.channel.request("objectElements", this.def.reference);
+    if (this.def.type == "Array") {
       this.def.elements = details;
       this.componentUpdate();
     }
@@ -92,59 +85,60 @@ export class SublimatedObject extends Element
   }
 
   ["on click at caption"](evt) {
-    if(!this.expanded) {
-      if(!this.def.elements && !this.def.properties)
+    if (!this.expanded) {
+      if (!this.def.elements && !this.def.properties)
         this.requestDetails();
-      this.componentUpdate {expanded:true};  
-    } else 
-      this.componentUpdate {expanded:false};
+      this.componentUpdate({expanded: true});
+    }
+    else
+      this.componentUpdate({expanded: false});
     evt.stopPropagation();
   }
 }
 
 const RE_FILE_LINE = /[(](\w+:[^()]+(?:[:]\d+|[(]\d+[)]))[)]/g;
 
- 
-function crackText(text)
-{
-  var t = text.split(RE_FILE_LINE);
-  if( t.length == 1  )
+
+function crackText(text) {
+  const t = text.split(RE_FILE_LINE);
+  if (t.length == 1)
     return text;
-  let content = [];
-  for( let i = 0; i < t.length; ++i ) { 
-    let chunk = t[i];
-    if( !chunk ) continue;
-    if( i & 1 ) {
+
+  const content = [];
+  for (let i = 0; i < t.length; ++i) {
+    const chunk = t[i];
+    if (!chunk) continue;
+    if (i & 1) {
       const RE_URL_LINENO = /(\w+:[^()]+)(?:[:](\d+)|[(](\d+)[)])/g;
-      let [src,url,ln1,ln2] = RE_URL_LINENO.exec(chunk);
+      const [src, url, ln1, ln2] = RE_URL_LINENO.exec(chunk);
       content.push(<a .location href={url} lineno={ln1 || ln2}>{chunk}</a>);
-    } else 
+    }
+    else
       content.push(chunk);
   }
   return content;
 }
 
-export function SublimatedValue(channel, val, key, forLog = false) 
-{
-  if(!key) key = JSON.stringify(val);
+export function SublimatedValue(channel, val, key, forLog = false) {
+  if (!key) key = JSON.stringify(val);
 
-  if( val === null )
-    return <var .null key={key}>null</var>; 
-  else if( val === undefined )
-    return <var .undefined key={key}>undefined</var>; 
+  if (val === null)
+    return <var .null key={key}>null</var>;
+  else if (val === undefined)
+    return <var .undefined key={key}>undefined</var>;
 
-  switch(typeof val) {
-    case "string": 
-      return forLog ? <span .string key={key}>{crackText(val)}</span>
-                    : <var .string key={key}>{val}</var>; 
-    case "number": 
+  switch (typeof val) {
+    case "string":
+      return forLog ? <span .string key={key}>{crackText(val)}</span> :
+        <var .string key={key}>{val}</var>;
+    case "number":
       return <var .number key={key}>{val.toString()}</var>;
-    case "object": 
-      if( val !== null )
-        return <SublimatedObject channel={channel} def={val} key={key} />; 
+    case "object":
+      if (val !== null)
+        return <SublimatedObject channel={channel} def={val} key={key} />;
       // else fall through
-    default: 
-      return <var .other key={key}>{JSON.stringify(val)}</var>; 
+    default:
+      return <var .other key={key}>{JSON.stringify(val)}</var>;
   }
 }
 

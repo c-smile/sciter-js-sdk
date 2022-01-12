@@ -1,5 +1,4 @@
-
-Note: this document is written intentionally close to [ReactJS/Components and Props](https://reactjs.org/docs/components-and-props.html) article to highlight differences and similarities with ReactJS.
+Note: this document is written intentionally close to [ReactJS/Components and Props](https://reactjs.org/docs/components-and-props.html) article to highlight similarities and differences with ReactJS.
 
 ## Components and Props
 
@@ -24,6 +23,7 @@ class Welcome extends Element {
   function this(props) { 
     this.props = props; 
   }
+
   function render() {
     return <h1>Hello, {this.props.name}</h1>;
   }
@@ -40,16 +40,16 @@ Class-based components have some additional features that we will discuss in the
 
 Full declaration of component functions and constructors may look like as:
 
-```
-function FunctionComponent(props,kids[,parent]) {} 
+```JavaScript
+function FunctionComponent(props, kids [,parent]) {}
 ```
 
 Where:
 
 * *props* are passed attributes;
-* *kids* are child, content VNodes;
-* *parent* is a parent DOM element where the component will appear.     
-* *this* environment variable can be either `null` for brand new element, or an object `instanceof Element` for existing element.
+* *kids* are children, content VNodes;
+* *parent* is the parent DOM element where the component will appear.
+* *this* environment variable can be either `null` for a brand new element, or an object `instanceof Element` for existing element.
 
 Example, this declaration:
 

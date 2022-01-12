@@ -13,13 +13,29 @@ npm install
 ## review code for errors
 
 ```sh
-./node_modules/.bin/eslint test/*
+npx --config .eslintrc.json test/*
 ```
 
 ## review and fix code errors
 
 ```sh
-./node_modules/.bin/eslint --fix test/*
+npx --config .eslintrc.json --fix test/*
+```
+
+## known issues with sciter
+
+Some sciter JSX html attribute rules are not understood by the JSX parser and create parsing errors, namely:
+
+- `#` shortcut for `id`
+- `|` shortcut for `type`
+- `()` shortcut for `name`
+
+For example
+
+```jsx
+  return <section#projects>
+      ...
+    </section>;
 ```
 
 ## eslint rules

@@ -57,10 +57,13 @@ Window (`<html>`) specific attributes
 | `window-min-height`| minimal height of the window, CSS length units
 | `window-max-width` | maximal width of the window, CSS length units
 | `window-max-height`| maximal height of the window, CSS length units
-| `window-resizable`  | `true\|false\|LENGTH-UNIT` i.e. `10px` counted from window frame inwards
+| `window-resizable` | `true\|false\|LENGTH-UNIT` i.e. `10px` counted from window frame inwards
+| `window-minimizable` | `true\|false`
+| `window-maximizable` | `true\|false`
 | `window-blurbehind` | `auto\|dark\|light\|ultra-dark\|ultra-light` translucent effect.
 | `window-state` | `shown\|minimized\|maximized\|full-screen\|hidden` - initial state of HTML window
 | `lang` | ISO 639-1 value, define dictionary for spellcheck, Date...
+| `disable-debug` | do not connect to inspector
 
 
 ## Misc

@@ -145,6 +145,11 @@ class scriptNS
     const output = document.$("pre#jsonOutput");
     output.innerText = JSON.stringify(obj);
   }
+
+  static testErroneousFunc() {
+    throw new Error("what a surprise!");
+  }
+
 }
 
 // subscribe to application (global) events 
@@ -160,6 +165,19 @@ document.body.testMethod = function(n) {
 function testFunction(n) {
   return n + 2; 
 }
+
+function testError() {
+  const output = document.$("output#error");
+  try {
+    let err = Window.this.assetInterface.errorGeneration();
+    output.value = "Returs:" + err.toString();
+  } catch(e) {
+    output.value = "Caught:" + e.toString();
+  }
+}
+
+testError();
+
 
         </script>
     </head>
@@ -220,6 +238,12 @@ function testFunction(n) {
     </form>
   </section>
 
+  <section>
+    <p>Calls <code>Window.this.errorGeneration()</code></p>
+    <output #error />
+  </section>
+
+
 </main>
 
 <h2>Use of native objects</h2>
@@ -264,6 +288,12 @@ function testFunction(n) {
     <button #test-script-func-2>Call function scriptNS.testFunc(obj)</button>
     <pre #jsonOutput></pre>
   </section>
+
+  <section>
+    <button #test-script-func-3>Call function scriptNS.testErroneousFunc()</button>
+    Note that should throw sciter::script_error in native code
+  </section>
+
 </main>
 
 <section>

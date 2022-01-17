@@ -1,3 +1,32 @@
+## 4.4.8.24
+
+### Fixes:
+
+* [css] flow:horizontal, percent calculation in children;
+* fix of potential av in htmlarea drag operation;
+* [macos] fix of AV on window closing;
+* [macos] fix of operation on versions of MacOS prior 10.14;
+* `<input|number>` rendering optimization;
+* [rtl] `<input>`,`<plaintext>` CTRL|SHIFT directionality switch;
+* Support of `sciter::value::make_error("text")` to rise errors from native code;
+* `behavior:form` / `<form>` , element.value fix;
+* scapp.exe, cmdline parameters handling fix;
+* generalization of initial window pos and size;
+* [JS/DOM] `styleElement.innerText = "...."` to update CSS rules in `<style>` elements;
+* [hyperlink] fix of NUMPAD-ENTER handling;
+* [JS/DOM] fix of Event.eventPhase / AT_TARGET;
+* [JS/DOM] fix of erroneous `Window.this` value after `Window.this.load(...)` call.
+
+### New features:
+
+* enable multiple handlers on sizechange and visualstatechange events:
+  ```JS
+  document.on("sizechange",function(){});
+  document.on("visualstatechange",function(){});
+  ```
+
+
+
 ## 4.4.8.23
 
 ### Fixes:

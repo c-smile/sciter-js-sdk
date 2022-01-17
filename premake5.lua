@@ -138,11 +138,13 @@ project "usciter"
            "include/aux-*.*",
            "include/sciter-win-main.cpp",
            "include/behaviors/behavior_drawing.cpp",
+           "include/behaviors/behavior_native_textarea.cpp",
            "include/behaviors/behavior_video_generator.cpp",
            "include/behaviors/behavior_video_generator_full.cpp",
            "include/behaviors/behavior_camera_capture.cpp",
            "demos/usciter/win-res/usciter.rc",
            "demos/usciter/win-res/dpi-aware.manifest" }
+    links { "shell32", "advapi32", "ole32", "oleaut32", "gdi32", "comdlg32" }
     prebuildcommands { 
       "%{prj.location}..\\..\\bin\\".. osabbr() .. "\\packfolder.exe %{prj.location}..\\..\\demos\\usciter\\res %{prj.location}..\\..\\demos\\usciter\\resources.cpp -v \"resources\""
     }

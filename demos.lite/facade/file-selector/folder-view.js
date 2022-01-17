@@ -221,7 +221,7 @@ export class FolderView extends Element
     var files = this.files.map(name => <option.file key={name+"/f"} filename={path + name} state-current={currentName == name}>{name}</option>);
     
     var pathoptions = pathparts.map( (name,index) => <option.folder filename={partialpath(index)}>{name}</option>);
-    var first = ( this.path && this.path != "/" ) ? <option.up filename={this.parentPath} state-current={currentName == ".."}></option> : [];
+    var first = ( this.path && this.path != "/" ) ? <option.up filename={this.parentPath[0]} state-current={currentName == ".."}></option> : [];
 
     return <folder path={path} styleset="folder-view.css#folder-view">
       <select|list.path>{first}{pathoptions}</select>

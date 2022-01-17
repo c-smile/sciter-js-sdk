@@ -135,12 +135,17 @@ public:
     return api_map;
   }
 
+  sciter::value errorGeneration() {
+    return sciter::value::make_error("Test of error");
+  }
+
   SOM_PASSPORT_BEGIN_EX(assetInterface, frame)
     SOM_FUNCS(
       SOM_FUNC(stringSum),
       SOM_FUNC(integerSum),
       SOM_FUNC(bytesSum),
       SOM_FUNC(vectorIntegerMul),
+      SOM_FUNC(errorGeneration),
       SOM_FUNC(makeNativeObject),
       SOM_FUNC(startNativeThread),
       SOM_FUNC(startNativeThreadWithObject),
@@ -201,6 +206,17 @@ public:
           obj.set_item("data", ++counter);
           obj.set_item("title", "hello from native side");
           this->call_function("scriptNS.testFunc", obj);
+          return true;
+        }
+        else if (target.test("button#test-script-func-3"))
+        {
+          // call function by its "path", passing script object { data: counter, title: "text" } :
+          try {
+            this->call_function("scriptNS.testErroneousFunc");
+          }
+          catch (sciter::script_error e) {
+             std::string err = e.what();
+          }
           return true;
         }
 

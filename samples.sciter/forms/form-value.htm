@@ -30,12 +30,13 @@
     <script>
       
       document.on("change","form", function(event,form) {
+         console.log(event.target,form.value);
          document.$("textarea#json").value = JSON.stringify(form.value,null,"  "); 
+
       });
 
       document.on("click", "button#set", function() {
          const data = JSON.parse(document.$("textarea#json").value);
-         document.$("form").value = data;
       });
     
     </script>
@@ -69,7 +70,7 @@
       <input|password(passWord) />
       
     <label for=checkboxButton>checkboxButton</label>
-      <button|checkbox(checkboxButton) value=true>Checkbox</button>
+      <button|checkbox(checkboxButton) value="checked">Checkbox</button>
   
     <label>radioGroup</label>
       <div>
@@ -79,7 +80,7 @@
       </div>
       
     <label>names (sub-group)</label>
-    <div.table(names) #test style="background:#FFD; padding:6dip">
+    <div.table(names) style="background:#FFD; padding:6dip">
       <label>First:</label><input|text(first) value="My">
       <label>Last:</label><input|text(last) value="Name">
     </div>

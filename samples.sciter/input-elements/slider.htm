@@ -2,7 +2,9 @@
 	<head>
 		<title></title>
 		<style>
-      body { font:system; background:threedface; margin:0; padding:20px; }
+
+      body { font:system; margin:0; padding:20px; }
+      //form > #sliderval {width:64px}
 	  </style>
     <script>
 
@@ -20,8 +22,8 @@
       <h1>slider bar test</h1>
 
       <form>
-        <input|integer #sliderval min=0 max=100 value=0 step=10/>
         <input|hslider #slidersrc min=0 max=100 value=0 />
+        <input|integer #sliderval min=0 max=100 value=0 step="10"/>
       </form>
 
       <h2>horizontal</h2>

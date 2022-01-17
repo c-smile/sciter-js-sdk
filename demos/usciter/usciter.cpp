@@ -79,6 +79,8 @@ int uimain(std::function<int()> run ) {
                           ALLOW_EVAL |
                           ALLOW_SYSINFO );
 
+  //SciterSetOption(NULL, SCITER_ENABLE_UIAUTOMATION, TRUE);
+
   SciterSetGlobalAsset(new sqlite::SQLite()); // adding SQLite as a global namespace object
 
 #ifdef _DEBUG

@@ -1,4 +1,5 @@
-Note: this document is written intentionally close to [ReactJS/Components and Props](https://reactjs.org/docs/components-and-props.html) article to highlight similarities and differences with ReactJS.
+
+Note: this document is written intentionally close to [ReactJS/Components and Props](https://reactjs.org/docs/components-and-props.html) article to highlight differences and similarities with ReactJS.
 
 ## Components and Props
 

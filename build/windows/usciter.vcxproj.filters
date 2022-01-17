@@ -125,6 +125,9 @@
     <ClCompile Include="..\..\include\behaviors\behavior_drawing.cpp">
       <Filter>include\behaviors</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\include\behaviors\behavior_native_textarea.cpp">
+      <Filter>include\behaviors</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\include\behaviors\behavior_video_generator.cpp">
       <Filter>include\behaviors</Filter>
     </ClCompile>

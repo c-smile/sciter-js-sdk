@@ -16,16 +16,19 @@ document.on("click","button#open", function() {
         path: URL.toPath(__DIR__ + "load-save-file.htm")
     };
     console.log(fn);
+    document.$("pre#out").innerText = fn;
     return true;
   })
 
 document.on("click","button#save", function() {
-    let fn = Window.this.selectFile {
-        filter:file_filter,
+    let fn = Window.this.selectFile({
+        //filter:file_filter,
         mode:"save",
-        path: URL.toPath(__DIR__ + "load-save-file.htm")
-    };
+        path: URL.toPath(__DIR__ + "load-save-file.docx")
+        //path: URL.toPath(__DIR__)
+    });
     console.log(fn);
+    document.$("pre#out").innerText = fn;
     return true;
   })
 
@@ -36,6 +39,8 @@ document.on("click","button#save", function() {
 
 <button#open>Open</button>
 <button#save>Save</button>
+
+<pre#out/>
 
     </body>
 </html>

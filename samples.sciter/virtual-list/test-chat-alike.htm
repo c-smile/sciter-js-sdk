@@ -52,11 +52,13 @@
         import * as env from "@env";
         import * as DS from "test-chat-data-source.js";
 
-        var tape = document.$("tape#chat-items");
+        var tape;
+        // need to postpone tape retrieval to after DOM initialization:
+        document.ready = function() { tape = document.$("tape#chat-items"); }
 
         document.on('click', 'button#btn-add-item', () => {
           tape.vlist.navigate("end"); // scroll        
-          let [message,index] = DS.messageNew(); 
+          let [message,index] = DS.messageNew();
           tape.appendElements(index,1);
           tape.lastElementChild.scrollIntoView({behavior:"smooth"});
         });

@@ -1,3 +1,20 @@
+## 4.4.8.25
+
+[DOM] Element.elementFromPoint(x,y) - find element by coordinates.
+
+### New features:
+* [DOM] `Element.elementFromPoint(x,y)` - find element by coordinates and so 
+* [DOM] `Element.elementFromPoint(x,y)` is also available.
+
+### Fixes:
+
+* Fix of window creation sequence.
+* Fix `form.value` to collect only named (having name attribute defined) fields (used to be id's too).
+* Fix `form.value` to collect custom elements with `value` property defined.
+* [integration] Disabling `SetErrorMode(SEM_FAILCRITICALERRORS | SEM_NOGPFAULTERRORBOX | SEM_NOOPENFILEERRORBOX);` in libuv that prevents dump collection on app level.
+* [graphics] Fix of `graphics.pushLayer("...area...")` geometry calculation.
+* [Audio] fix of AV after `stop()` call.
+
 ## 4.4.8.24
 
 ### Fixes:

@@ -134,13 +134,17 @@ read only
 
   scrolls this element into scrollable view - makes it visible - not occluded.
 
-*  ##### `element.scrollIntoView(options)`
+* ##### `element.scrollIntoView(options)`
 
   scrolls this element into scrollable view - makes it visible - not occluded.
   _options_ is an object with fields:
 
   * `behavior` : `"instant"` | `"smooth"`, if _smooth_ performs animated scroll;
   * `block` : `"start"` | `"nearest"` - defines vertical position;
+---
+* ##### `elementFromPoint(x,y):Element` 
+
+  returns element found inside this by coordinates x/y. Note: 0/0 is lef/top of element's inner box.
 
 ---
 * `element.click()` - generates click event on the element 

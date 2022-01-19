@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+div {
+    size:100px;
+    border:1px solid;
+    border-radius:50px;
+    text-align:center;
+    vertical-align:middle;
+}
+
+        </style>
+        <script>
+
+document.$("div").paintBackground = function(gfx) {
+   gfx.pushLayer("background-area");
+   gfx.fillStyle = "gold";
+   gfx.fillRect(-1000,-1000,2000,2000);
+   gfx.popLayer();
+};
+
+
+
+        </script>
+    </head>
+    <body>
+       <div>Clip area = background</div>
+    </body>
+</html>

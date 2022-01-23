@@ -185,6 +185,19 @@ struct SciterRequestAPI
   REQUEST_RESULT
         SCFN(RequestGetData)( HREQUEST rq, LPCBYTE_RECEIVER* rcv, LPVOID rcv_param );
 
+#if 0
+  // issues http request, creates instance of 
+  REQUEST_RESULT
+        SCFN(Request)(
+          HWINDOW        hSciterInstance,
+          LPCSTR         url,             // url
+          UINT           requestType,     // one of REQUEST_RQ_TYPE values
+          REQUEST_PARAM *requestParams,   // parameters
+          UINT           nParams,         // number of parameters
+          HREQUEST*      request /*OUT*/  // request issued, NOTE: handler is RequestUse'd, must be RequestUnUse'd
+        );
+#endif
+
 };
 
 typedef struct SciterRequestAPI* LPSciterRequestAPI;

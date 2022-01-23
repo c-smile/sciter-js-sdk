@@ -89,7 +89,9 @@ typedef SBOOL SC_CALLBACK SciterBehaviorFactory( LPCSTR, HELEMENT, LPElementEven
   {
       CONTROL_KEY_PRESSED = 0x1,
       SHIFT_KEY_PRESSED = 0x2,
-      ALT_KEY_PRESSED = 0x4
+      ALT_KEY_PRESSED = 0x4,
+      RIGHT_SHIFT_KEY_PRESSED = 0x8,
+      CMD_KEY_PRESSED = 0x10,
   } KEYBOARD_STATES;
 
 // parameters of evtg == HANDLE_INITIALIZATION

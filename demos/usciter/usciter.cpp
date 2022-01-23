@@ -98,16 +98,23 @@ int uimain(std::function<int()> run ) {
 
   const std::vector<sciter::string>& argv = sciter::application::argv();
 
+  sciter::string file_to_open;
+
   // usciter.exe -o file-to-open.htm
   if (argv.size() > 1) {
-    sciter::string file_to_open;
     for(int n = 1; n < int(argv.size()) - 1; ++n )
         if( aux::chars_of(argv[n]) == const_wchars("-o") ) {
           file_to_open = argv[n+1];
           break;
         }
-    if (file_to_open.length())
+    if (file_to_open.length()) {
+      WCHAR fullpath[2048] = {0};
+#ifdef WINDOWS
+      if(GetFullPathName(file_to_open.c_str(), 2048, fullpath, NULL))
+        file_to_open = fullpath;
+#endif
       loaded = pwin->load(file_to_open.c_str());
+    }
   }
 
   if(!loaded)
@@ -122,7 +129,8 @@ int uimain(std::function<int()> run ) {
     pwin->load(WSTR("this://app/default-else.htm"));
 #endif // WINDOWS
 
-  //pwin->expand(); // script will do that
+  if(file_to_open.length())
+    pwin->expand(); // script will do that
 
   //sciter::value r = pwin->call_function("test", sciter::value(42));
   //sciter::value r = pwin->eval(const_wchars("test(32)"));

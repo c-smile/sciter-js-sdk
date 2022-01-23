@@ -287,8 +287,9 @@ typedef struct _ISciterAPI {
 
   SCDOM_RESULT SCFN(SciterGetElementAsset)(HELEMENT el, UINT64 nameAtom, som_asset_t** ppass);
 
-  UINT   SCFN(SciterSetVariable)(HWINDOW hwndOrNull, LPCWSTR path, const VALUE* pvalToSet);
-  UINT   SCFN(SciterGetVariable)(HWINDOW hwndOrNull, LPCWSTR path, VALUE* pvalToGet);
+  // these two are place holders - not implemented:
+  UINT   SCFN(SciterSetVariable)(HWINDOW hwndOrNull, LPCSTR name, const VALUE* pvalToSet);
+  UINT   SCFN(SciterGetVariable)(HWINDOW hwndOrNull, LPCSTR name, VALUE* pvalToGet);
 
   UINT   SCFN(SciterElementUnwrap)(const VALUE* pval, HELEMENT* ppElement);
   UINT   SCFN(SciterElementWrap)(VALUE* pval, HELEMENT pElement);
@@ -544,11 +545,15 @@ inline ISciterAPI *_SAPI(ISciterAPI *ext) {
   inline   SBOOL    SCAPI SciterSetCSS (HWINDOW hWndSciter, LPCBYTE utf8, UINT numBytes, LPCWSTR baseUrl, LPCWSTR mediaType) { return SAPI()->SciterSetCSS (hWndSciter,utf8,numBytes,baseUrl,mediaType); }
   inline   SBOOL    SCAPI SciterSetMediaType (HWINDOW hWndSciter, LPCWSTR mediaType) { return SAPI()->SciterSetMediaType (hWndSciter,mediaType); }
   inline   SBOOL    SCAPI SciterSetMediaVars (HWINDOW hWndSciter, const SCITER_VALUE *mediaVars) { return SAPI()->SciterSetMediaVars (hWndSciter,mediaVars); }
-  inline   UINT    SCAPI SciterGetMinWidth (HWINDOW hWndSciter) { return SAPI()->SciterGetMinWidth (hWndSciter); }
-  inline   UINT    SCAPI SciterGetMinHeight (HWINDOW hWndSciter, UINT width) { return SAPI()->SciterGetMinHeight (hWndSciter,width); }
+  inline   UINT     SCAPI SciterGetMinWidth (HWINDOW hWndSciter) { return SAPI()->SciterGetMinWidth (hWndSciter); }
+  inline   UINT     SCAPI SciterGetMinHeight (HWINDOW hWndSciter, UINT width) { return SAPI()->SciterGetMinHeight (hWndSciter,width); }
+  inline   VOID     SCAPI SciterUpdateWindow(HWINDOW hwnd) { SAPI()->SciterUpdateWindow(hwnd); }
+
   inline   SBOOL    SCAPI SciterCall (HWINDOW hWnd, LPCSTR functionName, UINT argc, const SCITER_VALUE* argv, SCITER_VALUE* retval) { return SAPI()->SciterCall (hWnd,functionName, argc,argv,retval); }
   inline   SBOOL    SCAPI SciterEval ( HWINDOW hwnd, LPCWSTR script, UINT scriptLength, SCITER_VALUE* pretval) { return SAPI()->SciterEval ( hwnd, script, scriptLength, pretval); }
-  inline   VOID    SCAPI SciterUpdateWindow(HWINDOW hwnd) { SAPI()->SciterUpdateWindow(hwnd); }
+  inline   VOID     SCAPI SciterSetVariable(HWINDOW hwndOrNull, LPCSTR name, const VALUE* pvalToSet) { SAPI()->SciterSetVariable(hwndOrNull, name, pvalToSet); }
+  inline   VOID     SCAPI SciterGetVariable(HWINDOW hwndOrNull, LPCSTR name, VALUE* pval) { SAPI()->SciterGetVariable(hwndOrNull, name, pval); }
+
 #if defined(WINDOWS) && !defined(WINDOWLESS)
   inline   SBOOL    SCAPI SciterTranslateMessage (MSG* lpMsg) { return SAPI()->SciterTranslateMessage (lpMsg); }
 #endif

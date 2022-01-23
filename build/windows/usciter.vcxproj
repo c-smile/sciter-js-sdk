@@ -225,42 +225,42 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugSkia|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\bin\windows\x32skia\</OutDir>
-    <IntDir>obj\x32\DebugSkia\</IntDir>
+    <IntDir>obj\x32\DebugSkia\usciter\</IntDir>
     <TargetName>usciter</TargetName>
     <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugSkia|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\bin\windows\x64skia\</OutDir>
-    <IntDir>obj\x64\DebugSkia\</IntDir>
+    <IntDir>obj\x64\DebugSkia\usciter\</IntDir>
     <TargetName>usciter</TargetName>
     <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugSkia|ARM64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\bin\windows\arm64skia\</OutDir>
-    <IntDir>obj\arm64\DebugSkia\</IntDir>
+    <IntDir>obj\arm64\DebugSkia\usciter\</IntDir>
     <TargetName>usciter</TargetName>
     <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseSkia|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>..\..\bin\windows\x32skia\</OutDir>
-    <IntDir>obj\x32\ReleaseSkia\</IntDir>
+    <IntDir>obj\x32\ReleaseSkia\usciter\</IntDir>
     <TargetName>usciter</TargetName>
     <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseSkia|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>..\..\bin\windows\x64skia\</OutDir>
-    <IntDir>obj\x64\ReleaseSkia\</IntDir>
+    <IntDir>obj\x64\ReleaseSkia\usciter\</IntDir>
     <TargetName>usciter</TargetName>
     <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseSkia|ARM64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>..\..\bin\windows\arm64skia\</OutDir>
-    <IntDir>obj\arm64\ReleaseSkia\</IntDir>
+    <IntDir>obj\arm64\ReleaseSkia\usciter\</IntDir>
     <TargetName>usciter</TargetName>
     <TargetExt>.exe</TargetExt>
   </PropertyGroup>

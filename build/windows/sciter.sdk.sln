@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sciter-sqlite", "sciter-sql
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "usciter", "usciter.vcxproj", "{84AA9945-F089-18E1-F9A1-A3B765007F42}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "window-mixin", "window-mixin.vcxproj", "{8FC3B5B3-7B26-4558-24AC-7D0E10EE10DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		DebugSkia|ARM64 = DebugSkia|ARM64
@@ -137,6 +139,30 @@ Global
 		{84AA9945-F089-18E1-F9A1-A3B765007F42}.Release|Win32.Build.0 = Release|Win32
 		{84AA9945-F089-18E1-F9A1-A3B765007F42}.Release|x64.ActiveCfg = Release|x64
 		{84AA9945-F089-18E1-F9A1-A3B765007F42}.Release|x64.Build.0 = Release|x64
+		{8FC3B5B3-7B26-4558-24AC-7D0E10EE10DB}.DebugSkia|ARM64.ActiveCfg = DebugSkia|ARM64
+		{8FC3B5B3-7B26-4558-24AC-7D0E10EE10DB}.DebugSkia|ARM64.Build.0 = DebugSkia|ARM64
+		{8FC3B5B3-7B26-4558-24AC-7D0E10EE10DB}.DebugSkia|Win32.ActiveCfg = DebugSkia|Win32
+		{8FC3B5B3-7B26-4558-24AC-7D0E10EE10DB}.DebugSkia|Win32.Build.0 = DebugSkia|Win32
+		{8FC3B5B3-7B26-4558-24AC-7D0E10EE10DB}.DebugSkia|x64.ActiveCfg = DebugSkia|x64
+		{8FC3B5B3-7B26-4558-24AC-7D0E10EE10DB}.DebugSkia|x64.Build.0 = DebugSkia|x64
+		{8FC3B5B3-7B26-4558-24AC-7D0E10EE10DB}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{8FC3B5B3-7B26-4558-24AC-7D0E10EE10DB}.Debug|ARM64.Build.0 = Debug|ARM64
+		{8FC3B5B3-7B26-4558-24AC-7D0E10EE10DB}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8FC3B5B3-7B26-4558-24AC-7D0E10EE10DB}.Debug|Win32.Build.0 = Debug|Win32
+		{8FC3B5B3-7B26-4558-24AC-7D0E10EE10DB}.Debug|x64.ActiveCfg = Debug|x64
+		{8FC3B5B3-7B26-4558-24AC-7D0E10EE10DB}.Debug|x64.Build.0 = Debug|x64
+		{8FC3B5B3-7B26-4558-24AC-7D0E10EE10DB}.ReleaseSkia|ARM64.ActiveCfg = ReleaseSkia|ARM64
+		{8FC3B5B3-7B26-4558-24AC-7D0E10EE10DB}.ReleaseSkia|ARM64.Build.0 = ReleaseSkia|ARM64
+		{8FC3B5B3-7B26-4558-24AC-7D0E10EE10DB}.ReleaseSkia|Win32.ActiveCfg = ReleaseSkia|Win32
+		{8FC3B5B3-7B26-4558-24AC-7D0E10EE10DB}.ReleaseSkia|Win32.Build.0 = ReleaseSkia|Win32
+		{8FC3B5B3-7B26-4558-24AC-7D0E10EE10DB}.ReleaseSkia|x64.ActiveCfg = ReleaseSkia|x64
+		{8FC3B5B3-7B26-4558-24AC-7D0E10EE10DB}.ReleaseSkia|x64.Build.0 = ReleaseSkia|x64
+		{8FC3B5B3-7B26-4558-24AC-7D0E10EE10DB}.Release|ARM64.ActiveCfg = Release|ARM64
+		{8FC3B5B3-7B26-4558-24AC-7D0E10EE10DB}.Release|ARM64.Build.0 = Release|ARM64
+		{8FC3B5B3-7B26-4558-24AC-7D0E10EE10DB}.Release|Win32.ActiveCfg = Release|Win32
+		{8FC3B5B3-7B26-4558-24AC-7D0E10EE10DB}.Release|Win32.Build.0 = Release|Win32
+		{8FC3B5B3-7B26-4558-24AC-7D0E10EE10DB}.Release|x64.ActiveCfg = Release|x64
+		{8FC3B5B3-7B26-4558-24AC-7D0E10EE10DB}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -20,6 +20,9 @@ main {flow:horizontal-wrap; border-spacing:2em; }
         </style>
         <script>
 
+document.$("output#init-script").value = initializedByInitScript;
+document.$("output#init-code").value = initializedByCode;
+
 // Window.this - the window we are in
 
 document.on("input", "form#asset1", function(evt,form) {
@@ -184,6 +187,16 @@ testError();
     <body>
 
 <h1>Sciter.JS integration and API demo.</h1>
+
+<h2>Initialization</h2>
+
+<h3>By init script (<code>window::set_init_script(...)</code>)</h3>  
+  
+  <p>initializedByInitScript : <output#init-script /></p>
+
+<h3>By native code (<code>window::set_variable(...)</code>)</h3>  
+  
+  <p>initializedByCode : <output#init-code /></p>
 
 <h2>Calling native functions from script</h2>
 

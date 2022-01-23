@@ -1,0 +1,34 @@
+
+
+  html {
+    background:gold;
+  }
+
+  sys-info {
+    prototype: SysInfo url(res:main.js);
+    display:block;
+    flow: row(label,span); /* [label][span] rows */
+    border-spacing:0.5em;
+    width:max-content;
+    height:min-content;
+    margin: *; /*in the middle*/
+    background: white;
+    padding: 0.5em 1em;
+  }
+
+  sys-info > header {
+    border-bottom:1px solid #ccc;
+  }
+
+  sys-info > span {
+    display: block;
+    width: max-content;
+    font-weight: bold;
+  }
+
+  sys-info > label {
+    display: block;
+    width: max-content;
+    text-align:right;
+  }
+

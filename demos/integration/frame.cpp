@@ -238,7 +238,14 @@ int uimain(std::function<int()> run ) {
 
   sciter::debug_output_console console; // console.log() ->  console window
 
+  // resources archive 
   sciter::archive::instance().open(aux::elements_of(resources)); // bind resources[] (defined in "resources.cpp") with the archive
+
+  // set initial script, note it will be run anew on each document instance,
+  // *before* document will have its DOM elements.
+  sciter::window::set_init_script("globalThis.initializedByInitScript = 42");
+
+  sciter::window::set_variable("initializedByCode", 0xAF);
 
   sciter::om::hasset<frame> pwin = new frame();
 

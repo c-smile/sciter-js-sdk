@@ -101,6 +101,7 @@
     color:threedshadow;
   }
 
+
   menu li:current span.accesskey
   {
     color:#FFD700;
@@ -127,10 +128,7 @@
   menu li:hover:owns-popup,
   menu li:current
   { 
-    //background-color:highlight; 
-    //color:highlighttext;  
-    //border-radius:3px;
-    background:url(theme:list-view-item-selected) stretch;
+    background-color:highlight; color:highlighttext; 
   }
 
   /* menu separator */

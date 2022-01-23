@@ -285,6 +285,20 @@ namespace sciter
         return handled != 0;
       }
 
+      // this script will be excuted in context of each document loaded into the engine,
+      // The purpose of such init script is to initialize global context. 
+      static void set_init_script(const char* ut8z_js) {
+        SBOOL r = SciterSetOption(NULL, SCITER_SET_INIT_SCRIPT, UINT_PTR(ut8z_js));
+        assert(r); (void)r;
+      }
+
+      // this script will be excuted in context of each document loaded into the engine,
+      // The purpose of such init script is to initialize global context. 
+      static void set_variable(const char* name, sciter::value val) {
+        SciterSetVariable(NULL,name, &val);
+      }
+
+
   };
 
 #ifdef WINDOWS

@@ -273,6 +273,29 @@ if( _TARGET_OS == "windows") then
     removeplatforms { "x64" }
     removeconfigurations { "*skia" }
     filter {}
+
+  project "window-mixin"
+
+    kind "WindowedApp"
+    language "C++"
+
+    dpiawareness "HighPerMonitor"
+
+    files { "demos/window-mixin/*.h",
+            "demos/window-mixin/*.cpp",
+            "demos/window-mixin/*.rc",
+            "demos/window-mixin/*.ico",
+            "demos/window-mixin/dpi-aware.manifest",
+            "demos/window-mixin/res/*.*" }
+
+    files {"include/sciter-*.h",
+           "include/sciter-*.hpp",
+           "include/aux-*.*"}
+
+    settargetdir()
+
+    filter {}
+
 end
 
 -- sciter extension library - SQLite

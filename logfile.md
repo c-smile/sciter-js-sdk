@@ -1,10 +1,31 @@
-## 4.4.8.25
-
-[DOM] Element.elementFromPoint(x,y) - find element by coordinates.
+## 4.4.8.26
 
 ### New features:
+
+* `SciterSetVariable()` and `SciterGetVariable()` API implementation. `SciterSetVariable()` function allows to initialize variables in global JS context of documents.
+* `sciter.decode(..., "utf-16le/be")` support.
+* *window-mixin* integration demo - demonstrates [mixin](https://sciter.com/developers/embedding-principles/#mixin) Sciter integration.
+* "Script injects" :
+  ``` C++
+       static void set_init_script(const char* utf8z_js) {
+        SBOOL r = SciterSetOption(NULL, SCITER_SET_INIT_SCRIPT, UINT_PTR(utf8z_js));
+        assert(r); (void)r;
+      }
+  ```  
+
+### Fixes:
+
+* `usciter.exe -o filename.htm` fix.
+* `scapp.exe` style fixes.
+* [inspector] fix of frame content inspection.
+* [inspector] reporting initialization errors.
+
+## 4.4.8.25
+
+### New features:
+
 * [DOM] `Element.elementFromPoint(x,y)` - find element by coordinates and so 
-* [DOM] `Element.elementFromPoint(x,y)` is also available.
+* [DOM] `Document.elementFromPoint(x,y)` is also available.
 
 ### Fixes:
 
@@ -41,8 +62,6 @@
   document.on("sizechange",function(){});
   document.on("visualstatechange",function(){});
   ```
-
-
 
 ## 4.4.8.23
 

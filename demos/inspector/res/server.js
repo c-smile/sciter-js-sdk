@@ -83,7 +83,14 @@ async function activateOtherInstance() {
     await pipe.write(bstream.pack(["activate", false, null]));
     Window.this.close();
   }
-  catch (e) {}
+  catch (e) {
+      document.body.patch(<body>
+        Error {e} activating other instance of inspector.
+        <pre>{e?.stack}</pre>
+        (Rebooting the OS may help).
+      </body>);
+      Window.this.state = Window.WINDOW_SHOWN;
+  }
 }
 
 export async function serve(driverFactory) {
@@ -106,7 +113,13 @@ export async function serve(driverFactory) {
       p.close();
       activateOtherInstance();
     }
-    else
-      console.error("serve:", e, e?.stack);
+    else {
+      document.body.patch(<body>
+        Error {e} starting inspector.
+        <pre>{e?.stack}</pre>
+        (Rebooting the OS may help).
+      </body>);
+      Window.this.state = Window.WINDOW_SHOWN;
+    }
   }
 }

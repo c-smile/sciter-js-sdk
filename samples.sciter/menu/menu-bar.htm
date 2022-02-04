@@ -1,0 +1,132 @@
+<html>
+  <head>
+  <style>
+    @import url(menu-bar.css);
+    
+    ul#menu-bar 
+    {
+      margin:0;
+      border-bottom:1px solid threedface;
+      border-left:1px solid transparent;
+      padding:0;
+    }
+    
+    ul#menu-bar:focus 
+    {
+      border-left:1px solid highlight;
+    }
+
+    ul#menu-bar > li 
+    {
+      //margin:0 8px;
+      //background-color:threedface;
+    }
+    
+    /* table menu */    
+    menu.table 
+    {
+      flow:table;
+    }
+    menu.table td {padding:0.5em 1em;}
+    menu.table td[role="menu-item"]:current
+    { 
+      background-color:highlight; color:highlighttext; 
+    }
+    
+    select { vertical-align:middle; }
+
+    ul#menu-bar > caption {
+      width:*; /*spans the rest*/
+      text-align:center;
+    }
+    
+  </style>
+  
+    <script|module>
+    
+      document.on("click", "menu > li ", (evt,li) => {
+        console.log("menu item click on ", li); 
+      });
+    
+      document.on("click", "button(dialog-button)", (evt,button) => {
+         Window.this.modal(<info>dialog from button <b>{button.attributes["name"]}</b></info>);
+      });
+    
+    </script>  
+  
+  
+  </head>
+
+<body>
+
+<ul id="menu-bar"> <!-- top level - menu bar, it must match ul#menu-bar selector, see std-menu.css -->
+  <li>Simple
+    <menu class="cool">
+      <li title="Hello world!">First item (with tooltip)</li>
+      <li accesskey="^2">Second item<span class="accesskey">Ctrl+2</span></li>
+      <li>Third item
+        <menu>
+          <li style="background:linear-gradient(left,yellow,red)">First sub-item</li>
+          <li>Second sub-item</li>
+        </menu>
+      </li>
+      <li accesskey="^4">Fourth item<span class="accesskey">Ctrl+4</span></li>
+      <li>Table menu
+        <menu.table>
+          <tr><td role="menu-item">1.1</td><td role="menu-item">1.2</td><td role="menu-item">1.3</td></tr>
+          <tr><td role="menu-item">2.1</td><td role="menu-item">2.2</td><td role="menu-item">2.3</td></tr>
+        </menu>
+      </li>
+    </menu>
+   </li>
+   <li>Simple 2
+    <menu>
+      <li >First item</li>
+      <li >Second item</li>
+      <li >Third item</li>
+    </menu>
+  </li>
+  <li>Inputs
+    <menu>
+      <li><button|radio(myradios) value="a">First radio item</button></li>
+      <li><button|radio(myradios) value="b">Second radio item</button></li>
+      <li><button|radio(myradios) value="c">Third radio item</button></li>
+      <hr/>
+      <li><button|checkbox>First check item</button></li>
+      <li><button|checkbox>Second check item</button></li>
+      <li><button|checkbox>Third check item</button></li>
+      <hr/>
+      <li>Volume is <input|hslider(volume) max="10" value="0" buddy="volume-buddy" /> <b id="volume-buddy">x</b> Db</li>
+    </menu>
+  </li>
+
+  <li>Complex
+    <menu>
+      <li>Status:<input|progress name="p2" maxvalue="100" value="25"/></li>
+      <li>Value:<input|number name="num" size=4 step=1 minvalue=0 maxvalue=100 value="25"/></li>
+      <li><button(dialog-button)>show dialog</button></li>
+      <li>dropdown select: <select>
+        <option>First</option>
+        <option>Second</option>
+        <option>Third</option>
+      </li>
+    </menu>
+  </li>
+
+  <caption role="window-caption">Window caption</caption>
+
+</ul>
+
+<!--<menu class="cool" style="display:block;">
+  <li title="Hello world!">First item (with tooltip)</li>
+  <li accesskey="^2">Second item<span class="accesskey">Ctrl+<font color="red">2</font></span></li>
+</menu>-->
+
+
+</body>
+
+
+
+</html>
+	
+	

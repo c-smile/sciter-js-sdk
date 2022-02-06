@@ -1,0 +1,11 @@
+note { 
+  display:block; 
+  margin:10px; padding:5px; 
+  font:system;
+  padding-left:60px;
+  padding-right:24px;
+  background: url(sciter:icon-information.png) no-repeat left 6px top 50%;
+  background-size:34px;
+  min-height: 46px;
+  vertical-align:middle;
+}  

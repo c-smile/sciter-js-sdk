@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+   input|integer { // note: that is input[type="integer"]
+     attr(min): 0;
+     attr(max): 100;
+     attr(step): 1;
+   }
+
+   picture.info { attr(src): url(sciter:icon-information.png); }
+   picture.error { attr(src): url(sciter:icon-error.png); }
+   picture.alert { attr(src): url(sciter:icon-alert.png); }
+   picture.question { attr(src): url(sciter:icon-question.png); }
+
+        </style>
+    </head>
+    <body>
+
+<p>Parametric attributes defined by CSS</p>
+
+<input|integer />
+
+<p>Parametric attribute <code>src</code> defined by CSS</p>
+<picture.info />
+<picture.error />
+<picture.alert />
+<picture.question />
+
+    </body>
+</html>

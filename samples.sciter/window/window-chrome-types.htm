@@ -12,6 +12,11 @@ document.on("click","button#window-frame-default", () => {
       url   : __DIR__ + "chrome-types/window-frame-default.htm", 
       state : Window.WINDOW_SHOWN
   });
+  
+  // demo of Window.all collection - all Sciter windows of the app
+  let allwindows = Window.all.map( window => window.document.url() );
+  console.log("all Sciter windows:",allwindows);
+
 });
 
 document.on("click","button#window-frame-extended", () => {

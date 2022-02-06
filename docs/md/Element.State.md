@@ -20,7 +20,7 @@ element:visited {
 
 rule to be applied.
 
-## Properties:  
+## Properties:
 
 * `link`
 * `hover`
@@ -53,19 +53,26 @@ rule to be applied.
 * `popup`
 * `ready`
 * `windowroot` - readonly, true is this is a root document of the window;
-* `reactive` - `element.state.reconciliation = false;` will prevent reconciliation of element's content by Reactor
-* `value` - any value - runtime value coerced to particular type. Actual for input elements.
+
+* `reactive` - `element.state.reactive = false;` will prevent reconciliation of element's content by Reactor
+
+* `value` - any value - runtime value of native behavior attached to the element. Actual for input elements.
+
 * `occluded:integer` - read-only, reports visibility status of the element, if `0` then the element is visible in full, otherwise combination of these flags:
   * `0x1` - left side of border box is clipped out (invisible).
   * `0x2` - top side is clipped.
   * `0x4` - right side is clipped.
   * `0x8` - bottom side is clipped.
   `0xf` value means that the element is completely clipped out - invisible.
+
 * `flow` - readonly, string, reports layout manager used by the element at the moment.
-  
+
   Can be one of: "default", "vertical", "horizontal", "horizontal-wrap", "vertical-wrap", "grid", 
   "table", "table-fixed", "table-row", "table-body", "columns", 
   "stack", "text", "null", "image", "svg", "svg-child" or "";
+
+* `visible` - readonly, boolean, true if it is and any of its containers are visible - that are not `display:none` and not `visibility:none | hidden | collapsed`.
+
 
 Some properties of Element.State may cause CSS pseudo-class rules to be triggered:
 
@@ -90,7 +97,7 @@ section:expanded > div.content { visibility:visible; }
 
   Computes current height of the element content.
 
-* #### `element.state.capture(false | true |"strict" )` 
+* #### `element.state.capture(false | true |"strict" )`
   
   set/remove mouse capture, where:
   * `false` - remove capture if the element owns capture now;
@@ -132,7 +139,7 @@ section:expanded > div.content { visibility:visible; }
 
   _asPpx_ if defined and is _true_ tells the function to return coordinates in screen pixels. By default the function returns logical CSS pixels, a.k.a. DIPs - logical units, 1/96 of inch.   
 
-* #### `element.state.pixelsIn(length:string [,"horizontal" | "vertical"] ): number | undefined` 
+* #### `element.state.pixelsIn(length:string [,"horizontal" | "vertical"] ): number | undefined`
   
   parses _length_ string as CSS length units or percentage and then converts them to CSS pixels. Perecentage values are computed against element dimensions (inner box). Examples:
 
@@ -142,11 +149,11 @@ section:expanded > div.content { visibility:visible; }
      let c = el.state.pixelsIn("12pt"); // pixels in 12 points
   ```
 
-  * #### `element.state.mapLocalToWindow(xLocal,yLocal ): [xWindow,yWindow]` 
+  * #### `element.state.mapLocalToWindow(xLocal,yLocal ): [xWindow,yWindow]`
   
     maps local element coordinates to window coordinates. This method accounts affine 2D transformation the element and its parents may have.
 
-  * #### `element.state.mapWindowToLocal(xWindow,yWindow): [xLocal,yLocal]` 
+  * #### `element.state.mapWindowToLocal(xWindow,yWindow): [xLocal,yLocal]`
   
     maps point on window to local coordinates of particular element. This method accounts affine 2D transformation the element and its parents may have.
 

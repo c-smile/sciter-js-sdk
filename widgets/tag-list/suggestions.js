@@ -1,10 +1,10 @@
 
-export function suggestionMenu(host,provider,selectedTags) {
+export function suggestionMenu(host,provider) {
 
   let menu;
   let tags;
 
-  function renderMenuFor(text) {
+  function renderMenuFor(text,selectedTags) {
      tags = provider(text,selectedTags);
      return <menu.popup.suggestions styleset={__DIR__ + "tags.css#suggestions"}>
        { tags.map( tag => <li key={tag.id}>{tag.caption}</li>) }
@@ -22,8 +22,8 @@ export function suggestionMenu(host,provider,selectedTags) {
       menu.state.popup = false;
   }
 
-  function show(text) {
-    let vmenu = renderMenuFor(text);
+  function show(text,selectedTags) {
+    let vmenu = renderMenuFor(text,selectedTags);
     if(menu)
       menu.patch(vmenu);
     else {
@@ -40,10 +40,10 @@ export function suggestionMenu(host,provider,selectedTags) {
 
   host.on("keydown",function(evt) {
     if( evt.code == "KeyDOWN" ) {
-       show(host.value);
-       menu.firstElementChild.state.current = true;
-       menu.state.focus = true;
-       return true;
+      host.popup(menu);
+      menu.firstElementChild.state.current = true;
+      menu.state.focus = true;
+      return true;
     }
   });
 

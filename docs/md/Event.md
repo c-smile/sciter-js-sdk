@@ -12,10 +12,10 @@
 * `event.data`
 * `event.details`
 * `event.keyCode`
-* `event.code` string representation of keyCode "KeyENTER", "KeyF1"...
-* `event.altKey` true/false
-* `event.ctrlKey`
-* `event.metaKey`
+* `event.code` - string representation of keyCode "KeyENTER", "KeyF1"...
+* `event.altKey` - ALT true/false
+* `event.ctrlKey` 
+* `event.metaKey` - "command key" on OSX, "win" on Windows
 * `event.shiftKey`
 * `event.button`
 * `event.buttons`

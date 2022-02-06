@@ -417,6 +417,10 @@ struct SciterGraphicsAPI
   GRAPHIN_RESULT
         SCFN(gFlush) (HGFX hgfx);
 
+  // grab DOM element snapshot into image
+  GRAPHIN_RESULT
+    SCFN(imageCreateFromElement)(HIMG* poutImg, HELEMENT domElement);
+
 
 };
 

@@ -49,7 +49,8 @@
 
       HANDLE_EXCHANGE              = 0x1000, /**< system drag-n-drop */
       HANDLE_GESTURE               = 0x2000, /**< touch input events */
-
+      HANDLE_ATTRIBUTE_CHANGE      = 0x4000, /**< attribute change notification */
+      
       HANDLE_SOM                   = 0x8000, /**< som_asset_t request */
 
       HANDLE_ALL                   = 0xFFFF, /*< all of them */
@@ -647,6 +648,12 @@ typedef SBOOL SC_CALLBACK SciterBehaviorFactory( LPCSTR, HELEMENT, LPElementEven
       LPCWSTR   uri;          // requested url 
   } DATA_ARRIVED_PARAMS;
 
+  typedef struct ATTRIBUTE_CHANGE_PARAMS
+  {
+    HELEMENT  he;           // this element
+    LPCSTR    name;         // attribute name
+    LPCWSTR   value;        // new attribute value, NULL if attribute was deleted
+  } ATTRIBUTE_CHANGE_PARAMS;
 
 
 #pragma pack(pop)
@@ -758,6 +765,12 @@ typedef SBOOL SC_CALLBACK SciterBehaviorFactory( LPCSTR, HELEMENT, LPElementEven
           return on_script_call(he, params.name, params.argc, params.argv, params.result);
         }
 
+      virtual void handle_attribute_change(HELEMENT he, ATTRIBUTE_CHANGE_PARAMS& params)
+      {
+        return on_attribute_change(he, params.name, params.value);
+      }
+
+      
 
       //
       // alternative set of event handlers (aka old set).
@@ -789,6 +802,9 @@ typedef SBOOL SC_CALLBACK SciterBehaviorFactory( LPCSTR, HELEMENT, LPElementEven
       virtual bool on_data_arrived (HELEMENT he, HELEMENT initiator, LPCBYTE data, UINT dataSize, UINT dataType ) { return false; }
 
       virtual bool on_scroll( HELEMENT he, HELEMENT target, SCROLL_EVENTS cmd, INT pos, SBOOL isVertical ) { return false; }
+
+      // attribute has changed, if it was deleted then value is NULL  
+      virtual void on_attribute_change(HELEMENT he, LPCSTR name, LPCWSTR value) { }
 
       // ElementEventProc implementeation
       static SBOOL SC_CALLBACK  element_proc(LPVOID tag, HELEMENT he, UINT evtg, LPVOID prms )
@@ -828,6 +844,7 @@ typedef SBOOL SC_CALLBACK SciterBehaviorFactory( LPCSTR, HELEMENT, LPElementEven
             //OBSOLETE: case HANDLE_TISCRIPT_METHOD_CALL: { TISCRIPT_METHOD_PARAMS* p = (TISCRIPT_METHOD_PARAMS *)prms; return pThis->handle_scripting_call(he, *p ); }
 			      case HANDLE_GESTURE :  { GESTURE_PARAMS *p = (GESTURE_PARAMS *)prms; return pThis->handle_gesture(he, *p ); }
             case HANDLE_EXCHANGE: { EXCHANGE_PARAMS *p = (EXCHANGE_PARAMS *)prms; return pThis->handle_exchange(he, *p); }
+            case HANDLE_ATTRIBUTE_CHANGE: { ATTRIBUTE_CHANGE_PARAMS *p = (ATTRIBUTE_CHANGE_PARAMS *)prms; pThis->handle_attribute_change(he, *p); return 0; }
 			      default:
               assert(false);
         }

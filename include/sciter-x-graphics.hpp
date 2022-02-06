@@ -93,6 +93,17 @@ namespace sciter
         return image( himg );
       return image(0);
     }
+
+    // grab DOM element snapshot
+    static image create(HELEMENT he)
+    {
+      HIMG himg = 0;
+      GRAPHIN_RESULT r = gapi()->imageCreateFromElement(&himg, he); assert(r == GRAPHIN_OK); (void)(r);
+      if (himg)
+        return image(himg);
+      return image(0);
+    }
+
     static image load( aux::bytes data ) // loads image from png or jpeg encoded data
     {
       HIMG himg;

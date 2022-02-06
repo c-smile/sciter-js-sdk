@@ -1,0 +1,27 @@
+<html window-frame="solid">
+    <head>
+        <title>Test</title>
+        <style>
+
+body {
+    margin:0;
+    background:gold;
+}
+        </style>
+        <script|module>
+
+  Window.this.on("spacechange", () => {
+
+    if(!Window.this.isOnActiveSpace)
+      Window.this.close();
+
+  });
+
+
+        </script>
+    </head>
+    <body>
+        Proxy window, should be closed on space change.
+
+    </body>
+</html>

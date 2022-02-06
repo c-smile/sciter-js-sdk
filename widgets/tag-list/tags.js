@@ -47,19 +47,22 @@ export class TagList extends Element {
   }
 
   removeTag(tagObj) {
+    if(this.smenu) this.smenu.hide();
     this.tags = this.tags.filter( tag => tag.id !== tagObj.id );
     this.componentUpdate();
     this.post(new Event("change",{bubbles:true}));
   }
 
   ["on change at input"](evt,input) {
-    if(!this.smenu) this.smenu = suggestionMenu(input,this.suggestor,this.tags);
-    this.smenu.show(input.value);
+    if(!this.smenu) this.smenu = suggestionMenu(input,this.suggestor);
+    this.smenu.show(input.value,this.tags);
   }
 
   ["on add-tag"](evt) {
     this.tags.push(evt.data);
-    this.$("input").value = "";
+    const input = this.$("input");
+    input.value = "";
+    input.state.focus = true;
     this.componentUpdate();
   }
 

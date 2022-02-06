@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title></title>
+    
+    <style>
+    
+      @import url(../unittest.css);
+      @import url(../../note.css);
+      
+      section.collapsible { aspect: collapsible; }
+      section.collapsible > caption { behavior: clickable;  }
+      section.collapsible > div { size:200px; background:gold;}
+      section.collapsible:collapsed > div { visibility:none; }
+    
+    </style>
+    
+    <link rel="unittest" href="С-groups-tests.js" />
+    
+    <script>
+    
+      function collapsible() {
+        if( "collapsed" in this.attributes )
+          this.state.collapsed = true;
+        else if( "expanded" in this.attributes )
+          this.state.expanded = true;
+        this.$("caption").on("click", () => {
+          this.state.collapsed = !this.state.collapsed;
+        });
+      }
+    
+    </script>
+  </head>
+<body>
+  <note>Click SHIFT+CTRL+T to reveal test list</note>
+  <section.collapsible>
+    <caption>Clickable caption</caption>
+    <div>
+      Content
+    </div>
+  </section>
+  
+</body>
+</html>

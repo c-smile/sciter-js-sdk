@@ -1,0 +1,152 @@
+<html window-resizable="true"
+      window-width="320px"
+      window-height="92%" >
+  <head>
+    <title>Defined tests</title>
+    <style>
+    
+      body { font:system; margin:0; padding:4px; border-spacing:4px }
+    
+      select#list { 
+        display:block;
+        size:*;
+        margin:0;
+      } 
+      
+      select#list option[state=running] > caption { background:#fffabf; }
+      select#list option[state=ok] > caption { background:#d7ffbf; }
+      select#list option[state=fail] > caption { background:#ffc2bf; }
+      
+      form { flow:horizontal; padding:0.4em; }
+      form > span { display:block; width:*; flow:vertical; text-align:center; }
+      form > span > label { display:block; width:*; }
+      form > span > var { font-size:18pt; font-weight:bold; display:block; width:*;  }
+      
+      body[state=running] > form { background:#fffabf; }
+      body[state=ok]      > form { background:#d7ffbf; }
+      body[state=fail]    > form { background:#ffc2bf; }
+
+      plaintext#log {
+        size:*;
+        overflow:auto;
+      }
+
+      plaintext#log > text.fail { color:red; } 
+      plaintext#log > text.fail > span { background:red; color:white; }
+      plaintext#log > text.ok { color:green; }
+      plaintext#log > text.ok > span { background:green; color:white; }
+      plaintext#log > text.group { font-weight:bold; }
+      
+    </style>
+    <script type="module">
+      
+      const {UnitTest} = Window.this.parameters;
+
+      class TestOption extends Element {
+        this(props) { this.item = props.item; }
+        render() {
+          const item = this.item;
+          return <option.test key={item.id} state={item.state}>
+            <caption>{item.name}</caption>
+          </option>;
+        }
+      }
+
+      class GroupOption extends Element {
+        this(props) { this.item = props.item; }
+        render() {
+          const item = this.item;
+          const list = item.list.map(item => item.run ? <TestOption item={item} />
+                                                      : <GroupOption item={item} />);
+          return <option key={item.id} expanded="true">
+            <caption>{item.name}</caption>
+            {list}
+          </option>;
+        }
+      }
+
+      class Body extends Element {
+
+        runState = "";
+        //testIndexes = [];
+        nselected = 0;
+        succeeded;
+        failed;
+        total;
+
+        log = [];
+
+        render() {
+
+          return <body state={this.runState}>
+            <button #run disabled={this.nselected == 0}>Run</button>
+            <frameset rows="*,*">
+              <select|tree #list multiple="checkmarks">
+                 <GroupOption item={UnitTest.root} />
+              </select>
+              <splitter/>
+              <plaintext #log state-reconciliation={true} readonly >{this.log}</plaintext>
+            </frameset>
+            <form>
+              <span><label>succeeded</label><var>{this.succeeded}</var></span>
+              <span><label>failed</label><var>{this.failed}</var></span>
+              <span><label>total</label><var>{this.total}</var></span>
+            </form>
+          </body>;
+        }
+
+        ["on change at #list"](evt,list){
+          let nselected = 0;
+          for(let option of list.$$("option")) {
+            const checked = option.state.checked;
+            option.item.selected = checked;
+            if(checked) ++nselected; 
+          }
+          this.componentUpdate({nselected});
+        }
+
+        ["on click at #run"](evt,button) {
+
+          this.log = [];
+
+          const onTestStart = ( test ) => {
+            test.state = "running"; 
+            this.componentUpdate();
+          }
+          
+          const onTestEnd = ( test, error ) => {
+            const state = error ? "fail" : "ok";  
+            test.state = state; 
+            let et = error ? ": " + error : "";
+            this.log.push(<text class={state}>*<span>{" " + state +" "}</span>:{test.name} {et}</text>);
+            this.componentUpdate();
+          }
+
+          const onGroupStart = ( group ) => {
+            this.log.push(<text.group># {group.name}</text>);
+          }
+
+          this.componentUpdate({runState:"running"});
+
+          UnitTest.run(onTestStart, onTestEnd, onGroupStart).then( endStats => {
+
+            let {fail,succ,error} = endStats;
+
+            this.componentUpdate({
+              succeeded: succ,
+              failed: fail,
+              total: succ + fail,
+              runState: fail == 0 ? "ok" : "fail"
+            })
+
+          });
+        }
+
+      }
+
+      document.body.patch(<Body/>);
+    
+    </script>
+  </head>
+  <body></body>
+</html>

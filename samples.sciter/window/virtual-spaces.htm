@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+section {
+    behavior:clickable;
+    size:*;
+    background:gold;
+}
+
+        </style>
+        <script|module>
+
+class App extends Element {
+
+    counter = 0;
+    onActiveSpace = true;
+
+    componentDidMount() {
+      Window.this.on("spacechange", () => {
+        const onActiveSpace = Window.this.isOnActiveSpace;
+        this.componentUpdate({counter: this.counter + 1, onActiveSpace });
+
+        if(!onActiveSpace) {
+
+          let [x1,y1,x2,y2] = Window.this.screenBox("workarea","rect");
+          new Window({
+            url: __DIR__ + "proxy-window/window.htm",
+            width: 100,
+            height: 100,
+            alignment: 9
+          });
+        }
+      });
+    }
+
+    render() {
+        return <body>
+           <section>
+             <p>Number of space (virtual desktop) changes: {this.counter}</p>
+             <p>Change space / virtual desktop to see proxy window.</p>
+           </section>
+        </body>;
+    }
+}
+
+document.body.patch(<App/>);
+
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

@@ -5,4 +5,7 @@
     </LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LocalDebuggerDebuggerType>Script</LocalDebuggerDebuggerType>
+  </PropertyGroup>
 </Project>

@@ -1,3 +1,43 @@
+## 4.4.8.27
+
+### New features:
+
+* Virtual desktops/spaces support:
+  - Window _event spacechange_ is sent to the window when space / virtual desktop changes/ Use `window.on("spacechange",handler)` to subscribe to that event.  
+  - `window.isOnActiveSpace` property. _true_ if the window is on active space and _false_ otherwise. 
+  - sample: /samples.sciter/window/virtual-spaces.htm
+  
+* [CSS] `attr(name): value;` attribute-property declaration. This allows to define default values of DOM attributes in CSS. Example: 
+  ```CSS
+  input|number { attr(min):0; attr(max):100; attr(step):1 }
+  ```
+* sdk.js/samples.sciter/unit-test - unit test framework, modelled after [JEST](https://jestjs.io/).   
+  Initial implementation, to be extended and documented.
+
+* [reactor/JSX] Support of inline style definitions `<div style={obj}>`. [see](https://sciter.com/forums/topic/reactor-inline-style-does-not-work/).
+
+* [SDK/API] `HANDLE_ATTRIBUTE_CHANGE` event_handler callback: 
+  ```C++
+  virtual void event_handler::handle_attribute_change(HELEMENT he, ATTRIBUTE_CHANGE_PARAMS& params)
+      {
+        return on_attribute_change(he, params.name, params.value);
+      }
+  ```
+  Useful in cases when Reactor manages elements with custom behaviors.
+
+### Fixes:
+
+* `componentWillUnmount()` is coming while `element.parentElement` is still valid.
+* [macosx] frequent click events generation fix. 
+* Fix of `:popup` style application, [see issue](https://sciter.com/forums/topic/fade-in-out-animation-on-popup-dialog/#post-76241).
+* Fix of initial window position if it is defined in `SciterCreateWindow()`.
+* Fix of scrollbar dpi issue.
+* Sciter's animated scroll-indicator is back. 
+* Preventing multiple loading of the same CSS file.
+* [windows] mouse-enter/leave on popup menus fix.
+* [CSS] Fix of `position:absolute` positioning with `z-index`. [see](https://sciter.com/forums/topic/css-z-index-issue/).
+* Fix of arrays handling in `xcall("...",)`
+
 ## 4.4.8.26
 
 ### New features:

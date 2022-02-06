@@ -62,7 +62,19 @@ typedef enum VALUE_UNIT_TYPE
     UT_DIP = 13,
     reserved3 = 14, 
     reserved4 = 15, 
-    UT_URL   = 16,  // url in string
+
+    UT_PR_WIDTH = 16, // width(n%)
+    UT_PR_HEIGHT = 17, // height(n%)
+    UT_PR_VIEW_WIDTH = 18, // vw
+    UT_PR_VIEW_HEIGHT = 19, // vh
+    UT_PR_VIEW_MIN = 20, // vmin
+    UT_PR_VIEW_MAX = 21, // vmax
+
+    UT_REM = 22, // root em
+    UT_PPX = 23, // physical px
+    UT_CH = 24   // width of '0'
+
+
 } VALUE_UNIT_TYPE;
 
 typedef enum VALUE_UNIT_TYPE_DATE

@@ -1,3 +1,7 @@
+## 4.4.8.27-bis
+
+Maintainance build: use of latest libjpeg, libwebp, libuv. This closes 32 CVEs found in those libraries.
+
 ## 4.4.8.27
 
 ### New features:

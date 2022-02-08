@@ -1,3 +1,14 @@
+## 4.4.8.28
+
+### New features:
+
+* + support of CSS selectors `:only-of-type`, `first-of-type` and `last-of-type`;
+
+### Fixes:
+
+* regression fixes of `@env.exec()` and `element.classList.add/remove()`;
+* `:hover` style reactivity on mouse moves;
+
 ## 4.4.8.27-bis
 
 Maintainance build: use of latest libjpeg, libwebp, libuv. This closes 32 CVEs found in those libraries.

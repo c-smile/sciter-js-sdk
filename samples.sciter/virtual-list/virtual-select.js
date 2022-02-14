@@ -133,7 +133,7 @@ export class VirtualList extends Element {
 
   onkeydown(evt) {
     switch(evt.code) {
-      case "KeyDOWN" : 
+      case "ArrowDown" : 
         if(!this.currentItem) { 
           this.componentUpdate { currentItem : this.itemOfElement(this.vlist.firstVisibleItem) };
         } else {
@@ -144,7 +144,7 @@ export class VirtualList extends Element {
           }
         }
         break;
-      case "KeyUP" : 
+      case "ArrowUp" : 
         if(!this.currentItem) { 
           this.componentUpdate { currentItem : this.itemOfElement(this.vlist.lastVisibleItem) };
         } else {
@@ -155,11 +155,11 @@ export class VirtualList extends Element {
           }
         }
         break;
-      case "KeyEND" : 
+      case "End" : 
         this.currentItem = this.itemAt(this.totalItems() - 1);
         this.vlist.navigate("end");
         break;
-      case "KeyHOME" : 
+      case "Home" : 
         this.currentItem = this.itemAt(0);
         this.vlist.navigate("start");
         break;

@@ -39,7 +39,7 @@ export function suggestionMenu(host,provider) {
   }
 
   host.on("keydown",function(evt) {
-    if( evt.code == "KeyDOWN" ) {
+    if( evt.code == "ArrowDown" ) {
       host.popup(menu);
       menu.firstElementChild.state.current = true;
       menu.state.focus = true;

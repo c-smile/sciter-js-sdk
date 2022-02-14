@@ -273,7 +273,7 @@
 		</Unit>
 		<Unit filename="../../../include/sciter-x-host-callback.h">
 		</Unit>
-		<Unit filename="../../../include/sciter-x-lite-keycodes.h">
+		<Unit filename="../../../include/sciter-x-key-codes.h">
 		</Unit>
 		<Unit filename="../../../include/sciter-x-lite.hpp">
 		</Unit>

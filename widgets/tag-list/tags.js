@@ -21,11 +21,11 @@ export class TagList extends Element {
   }
 
   ["on keydown at input"](evt,input) {
-    if( evt.code == "KeyRETURN" ) {
+    if( evt.code == "Enter" ) {
       this.addNewTag(input.value);
       input.value = "";
       return true;
-    } if( evt.code == "KeyBACK" ) {
+    } if( evt.code == "Backspace" ) {
       if(!input.value && this.tags.length) {
         this.removeTag(this.tags[this.tags.length - 1]);
         return true;

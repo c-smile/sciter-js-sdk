@@ -113,11 +113,22 @@ sys is built on top of [libuv](https://github.com/libuv/libuv) that Sciter.JS us
     async function deleteFile(path) { await sys.fs.unlink(path) }
   ```
 
-* `fs.rename() : Promise` - async file rename
-* `fs.mkdtemp(template:string) : Promise(result:string)` - create unique temporary dir. The last six characters of template must be "XXXXXX"
-* `fs.mkstemp(template:string) : Promise` - create unique temporary file. The last six characters of template must be "XXXXXX"
+* #### `fs.rename(oldPath:string,newPath:string) : Promise`
+  
+  Renames the file. Note: this may move the file to different device. Equivalent to [rename](https://man7.org/linux/man-pages/man2/rename.2.html). 
+
+* #### `fs.mkdtemp(template:string) : Promise(result:string)` 
+
+  Creates unique temporary dir. The last six characters of template must be "XXXXXX". Equivalent of [mkdtemp](https://man7.org/linux/man-pages/man3/mkdtemp.3.html)
+
+* #### `fs.mkstemp(template:string) : Promise` 
+  
+  Creates unique temporary file. The last six characters of template must be "XXXXXX"
+
 * `fs.rmdir(path) : Promise` - async delete dir
-* `fs.$mkdir(path) : boolean` - creates folder (synchronous)
+* `fs.$rmdir(path)` : - syncchronous delete dir
+* `fs.mkdir(path[, mode = 0o777]) : Promise` - creates folder
+* `fs.$mkdir(path[, mode = 0o777])` - creates folder (synchronous)
 * `fs.copyfile() : Promise` - async file copy
 * `fs.readdir() : Promise` - async read dir
 * `fs.$readdir(): filelist` - reads folder content synchronously

@@ -1,3 +1,44 @@
+## 4.4.8.29
+
+### New features:
+
+* css selectors: `:last-of-type`, `:first-of-type`, `:only-of-type`
+* [JS] implementation of 
+* 
+  * `console.assert(expr,fmt, ...)`
+  * `console.assert(expr,{fields...})`
+  
+  Note that in Sciter `console.assert` throws error if _expr_ is falsy - in browsers console.assert() just prints stuff to console.
+
+* + sdk.js/widgets/tabs/ sample - that `<tabs>` thing.
+* Experimental support of system menus:
+  ```HTML
+     <menu role="window-menu">
+       <li>File
+           <menu>
+              <li accesskey="^N">New</li>
+              <li accesskey="^O">Open</li>
+              <hr/>
+              <li accesskey="Q">Quit</li>
+           </menu>
+       </li>
+       ...
+     </menu>
+  ```
+  On Windows this creates native menu bar in the window. On MacOS it populates application menu bar. On Linux - not ready yet.
+
+  Note for window-frame != "standard" the menu is invisible but still makes sense as global hotkeys table.
+
+  For the demo see [integration](https://github.com/c-smile/sciter-js-sdk/blob/main/demos/integration/res/default.htm) project in SDK.
+
+### Fixes:
+
+* Fix of `KeyboardEvent.code` values to generaly match [W3C specification](https://www.w3.org/TR/uievents-code/);
+* Fix of functions taking varargs, like `@env.exec(...)`, `printf(fmt,...)` and others;
+* Fix of mouse reactivity in regard `:hover` styles. 
+* Fix of stack overflow in style-set: "..." applying roots with appearance:none.
+* Fix of position:relative inside position:absolute, see: https://sciter.com/forums/topic/css-position-issue/
+
 ## 4.4.8.28
 
 ### New features:

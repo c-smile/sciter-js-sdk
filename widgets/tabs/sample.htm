@@ -1,0 +1,63 @@
+<html>
+  <head>
+  <title></title>
+  <style>
+    @import url(tabs.css);
+    
+    html { background:#ffffee; }
+    form { margin-bottom:1em; }
+    section { text-align: center; vertical-align:middle; }
+    
+  </style>
+  <script>
+
+    document.on("statechange", "tabs", (e,tabs) => {
+      document.$("select").value = tabs.current;
+    });
+
+    document.on("change", "select",(e,select) => {
+      document.$("tabs").current = select.value;
+    });
+  
+  </script>
+  </head>
+<body>
+
+  <p>This implementation uses dedicated &lt;panels&gt; container for panels</p>
+
+  <form>
+    current tab: <select #current-tab>
+      <option value=first>First</option>
+      <option value=second>Second</option>
+      <option value=third>Third</option>
+    </select>
+  </form>
+
+  <tabs #test>
+    <strip>
+      <label for=first selected>First</label>
+      <label for=second >Second</label>
+      <label for=third>Third</label>
+    </strip>
+    <panels>
+      <section(first)>
+        First tab content
+        <input|text #n1 >
+        <input|text #n2 >
+      </section>
+      <section(second)>
+        Second tab content
+        <input|text #n3 value="n3" >
+        <input|text #n4 value="n4" >
+      </section>
+      <section(third)>
+        Third tab content
+        <input|text #n5 value="n5" >
+        <input|text #n6 value="n6" >
+      </section>
+    </panels>
+  </tabs>
+
+
+</body>
+</html>

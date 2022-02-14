@@ -63,6 +63,7 @@
 		6F633B3D32CEFCEF7172A17D /* aux-asset.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "aux-asset.h"; path = "../../include/aux-asset.h"; sourceTree = "<group>"; };
 		7065E18508B2C73736F9C7C5 /* egl_context.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = egl_context.h; path = ../../demos.lite/glfw/src/egl_context.h; sourceTree = "<group>"; };
 		73296C15B73D3D47AB0EC255 /* sciter-x-threads.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sciter-x-threads.h"; path = "../../include/sciter-x-threads.h"; sourceTree = "<group>"; };
+		737A95875297AFB92EA10BC7 /* sciter-x-key-codes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sciter-x-key-codes.h"; path = "../../include/sciter-x-key-codes.h"; sourceTree = "<group>"; };
 		765D34619129A31394FA3AA1 /* sciter-x-graphics.hpp */ = {isa = PBXFileReference; lastKnownFileType = text; name = "sciter-x-graphics.hpp"; path = "../../include/sciter-x-graphics.hpp"; sourceTree = "<group>"; };
 		7C2720A51A082157F18666E5 /* behavior_drawing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = behavior_drawing.cpp; path = ../../include/behaviors/behavior_drawing.cpp; sourceTree = "<group>"; };
 		7E486957780A25C9B2092797 /* glad.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = glad.c; path = ../../demos.lite/glfw/deps/glad.c; sourceTree = "<group>"; };
@@ -85,7 +86,6 @@
 		D4AFF9AD981BBB5FD6BF5FED /* sciter-om.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sciter-om.h"; path = "../../include/sciter-om.h"; sourceTree = "<group>"; };
 		DDE149C1061C0273EDB79001 /* value.hpp */ = {isa = PBXFileReference; lastKnownFileType = text; name = value.hpp; path = ../../include/value.hpp; sourceTree = "<group>"; };
 		E3365C33B159AFE538680273 /* monitor.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = monitor.c; path = ../../demos.lite/glfw/src/monitor.c; sourceTree = "<group>"; };
-		E93362E3F9188F15E58C1923 /* sciter-x-lite-keycodes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "sciter-x-lite-keycodes.h"; path = "../../include/sciter-x-lite-keycodes.h"; sourceTree = "<group>"; };
 		EA5C1300C9792D32A5828940 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		EDBD3B01CCDA5533A8E3B141 /* posix_thread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = posix_thread.h; path = ../../demos.lite/glfw/src/posix_thread.h; sourceTree = "<group>"; };
 		F4B532078A2BF139F8C84847 /* aux-platform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "aux-platform.h"; path = "../../include/aux-platform.h"; sourceTree = "<group>"; };
@@ -169,7 +169,7 @@
 				4A3645A1E2832B5310CA2BE1 /* sciter-x-graphics.h */,
 				765D34619129A31394FA3AA1 /* sciter-x-graphics.hpp */,
 				4528DB6F550E07A1418191AF /* sciter-x-host-callback.h */,
-				E93362E3F9188F15E58C1923 /* sciter-x-lite-keycodes.h */,
+				737A95875297AFB92EA10BC7 /* sciter-x-key-codes.h */,
 				6AC5C3FB7CEFA0ADB0E08A3B /* sciter-x-lite.hpp */,
 				4BA5D1CDE11C90FF4FB8E80D /* sciter-x-msg.h */,
 				1E4012B7390C81693CDD18F7 /* sciter-x-primitives.h */,

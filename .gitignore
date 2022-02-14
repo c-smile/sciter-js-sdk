@@ -12,3 +12,4 @@
 *.idb
 *.dSYM
 *.lib
+.vs

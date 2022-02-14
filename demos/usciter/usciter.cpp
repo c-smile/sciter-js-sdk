@@ -38,7 +38,7 @@ public:
     return false;
   }*/
 
-#if 0
+#if 1
   // behavioral "named call" handler demo:
   // test in script:
   //

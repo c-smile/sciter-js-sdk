@@ -42,9 +42,9 @@ export function lightbox(jsxDialog)
   dlg.on("keydown", function(evt) {
     var cmd;
     console.log(evt.code);
-    if( evt.code == "KeyESCAPE" )
+    if( evt.code == "Escape" )
       cmd = "cancel";
-    else if( evt.code == "KeyRETURN" )
+    else if( evt.code == "Enter" )
       cmd = "ok";
     else 
       return; // we handle only ESCAPE and ENTER here.
@@ -125,9 +125,9 @@ export function lightboxAsync(jsxDialog)
   // setup keyboard event handler
   dlg.on("keydown", function(evt) {
     var cmd;
-    if( evt.code == "KeyESCAPE" )
+    if( evt.code == "Escape" )
       cmd = "cancel";
-    else if( evt.code == "KeyRETURN" )
+    else if( evt.code == "Enter" )
       cmd = "ok";
     else 
       return; // we handle only ESCAPE and ENTER here.

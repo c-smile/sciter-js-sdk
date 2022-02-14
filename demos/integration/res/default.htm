@@ -1,6 +1,27 @@
 <html>
     <head>
         <title>Test</title>
+
+        <menu role="window-menu">
+           <li>File
+              <menu>
+                <li.hello accesskey="^KeyH">Say Hello</li>
+                <hr/>
+                <li.quit accesskey="^KeyQ">Quit</li>
+              </menu>
+           </li>  
+           <li>Tests
+              <menu>
+                <li.test target="test0" accesskey="^Digit0">Calling native functions from script</li>
+                <li.test target="test1" accesskey="^Digit1">Use of native objects</li>
+                <li.test target="test2" accesskey="^Digit2">Use of native functors</li>
+                <li.test target="test3" accesskey="^Digit3">Long tasks in worker threads</li>
+                <li.test target="test4" accesskey="^Digit4">Calling script function from native</li>
+                
+              </menu>
+           </li>  
+        </menu>
+
         <style>
 
 form {
@@ -19,6 +40,19 @@ main {flow:horizontal-wrap; border-spacing:2em; }
 
         </style>
         <script>
+
+// menu handling:
+document.on("click","menu>li.hello", () => { Window.this.modal(<info>Hello world!</info>); });
+document.on("click","menu>li.quit", () => { Window.this.close(); });
+document.on("click","menu>li[target]", (e,li) => { 
+  const targetId = li.attributes["target"];
+  const target = document.getElementById(targetId);
+  console.assert(target,"no element with id %s",targetId);
+  target.scrollIntoView({behavior:"smooth"});
+});
+// -----------
+
+
 
 document.$("output#init-script").value = initializedByInitScript;
 document.$("output#init-code").value = initializedByCode;
@@ -73,7 +107,7 @@ var nativeObj = Window.this.assetInterface.makeNativeObject();
   });
 
 // native functors
-  document.on("click", "button#native-add", function() {
+  document.on("click", "button#testative-add", function() {
     const output = document.$("#functorsOutput");
 
     const api = Window.this.assetInterface.nativeFunctionsA();
@@ -82,7 +116,7 @@ var nativeObj = Window.this.assetInterface.makeNativeObject();
     output.innerText = `api.add(2,2) : ${ r }`;
   });
 
-  document.on("click", "button#native-sub", function() {
+  document.on("click", "button#testative-sub", function() {
     const output = document.$("#functorsOutput");
 
     const api = Window.this.assetInterface.nativeFunctionsA();
@@ -181,7 +215,6 @@ function testError() {
 
 testError();
 
-
         </script>
     </head>
     <body>
@@ -198,7 +231,7 @@ testError();
   
   <p>initializedByCode : <output#init-code /></p>
 
-<h2>Calling native functions from script</h2>
+<h2 #test0>Calling native functions from script</h2>
 
 <h3>Asset interface demo</h3>
 
@@ -259,7 +292,7 @@ testError();
 
 </main>
 
-<h2>Use of native objects</h2>
+<h2 #test1>Use of native objects</h2>
 
 <section>
   <p>Creates native object and uses its methods:</p>
@@ -268,17 +301,17 @@ testError();
   <pre #objectOutput />
 </section>
 
-<h2>Use of native functors</h2>
+<h2 #test2>Use of native functors</h2>
 
 <section>
   <p>requests native API (as map of functions) and uses them:</p>
-  <button #native-add>2 + 2</button>
-  <button #native-sub>2 - 2</button>
+  <button #testative-add>2 + 2</button>
+  <button #testative-sub>2 - 2</button>
   <pre #functorsOutput />
 </section>
 
 
-<h2>Running long tasks in worker threads</h2>
+<h2 #test3>Running long tasks in worker threads</h2>
 
 <section>
   <progress #task-progress max=100 value=0 />
@@ -287,7 +320,7 @@ testError();
 </section>
 
 
-<h2>Calling script function from native side</h2>
+<h2 #test4>Calling script function from native side</h2>
 
 <p>These will use native <code>handle_event()</code> handler and call functions on script side from native side</p>
 

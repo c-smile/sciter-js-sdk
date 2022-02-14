@@ -22,6 +22,8 @@ int main(int argc, const char * argv[])
   NSArray *tl;
   auto mb = [NSBundle mainBundle];
   [mb loadNibNamed:@"MainMenu" owner:application topLevelObjects:&tl];
+
+  [application setActivationPolicy:NSApplicationActivationPolicyRegular];
   
   //SciterSetOption(NULL, SCITER_SET_GFX_LAYER, GFX_LAYER_CG);
   SciterSetOption(NULL, SCITER_SET_GFX_LAYER, GFX_LAYER_SKIA_OPENGL);

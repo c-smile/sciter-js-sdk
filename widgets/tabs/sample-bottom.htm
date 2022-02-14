@@ -1,0 +1,55 @@
+<html>
+  <head>
+  <title></title>
+  <style>
+    @import url(tabs.css);
+    
+    html { background:#ffffee; }
+    form { margin-bottom:1em; }
+    section { text-align: center; vertical-align:middle; }
+    
+  </style>
+  <script>
+  
+    document.on("statechange", "tabs", (e,tabs) => {
+      document.$("select").value = tabs.current;
+    });
+
+    document.on("change", "select",(e,select) => {
+      document.$("tabs").current = select.value;
+    });
+
+  </script>
+  </head>
+<body>
+
+  <form>
+    current tab: <select #current-tab>
+      <option value=first>First</option>
+      <option value=second>Second</option>
+      <option value=third>Third</option>
+    </select>
+  </form>
+
+  <tabs.bottom>
+    <strip>
+      <label for=first >First</label>
+      <label for=second >Second</label>
+      <label for=third >Third</label>
+    </strip>
+    <panels>
+      <section(first)>
+        First tab content
+      </section>
+      <section(second)>
+        Second tab content
+      </section>
+      <section(third)>
+        Third tab content
+      </section>
+    </panels>
+  </tabs>
+
+
+</body>
+</html>

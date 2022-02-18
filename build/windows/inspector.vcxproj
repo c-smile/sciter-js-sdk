@@ -166,7 +166,7 @@
       <AdditionalManifestFiles>../../demos/inspector/win-res/dpi-aware.manifest;%(AdditionalManifestFiles)</AdditionalManifestFiles>
     </Manifest>
     <PreBuildEvent>
-      <Command>$(ProjectDir)..\..\bin\windows\packfolder.exe $(ProjectDir)..\..\demos\inspector\res $(ProjectDir)..\..\demos\inspector\resources.cpp -v "resources"</Command>
+      <Command>"$(ProjectDir)..\..\bin\windows\packfolder.exe" "$(ProjectDir)..\..\demos\inspector\res" "$(ProjectDir)..\..\demos\inspector\resources.cpp" -v "resources"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -196,7 +196,7 @@
       <AdditionalManifestFiles>../../demos/inspector/win-res/dpi-aware.manifest;%(AdditionalManifestFiles)</AdditionalManifestFiles>
     </Manifest>
     <PreBuildEvent>
-      <Command>$(ProjectDir)..\..\bin\windows\packfolder.exe $(ProjectDir)..\..\demos\inspector\res $(ProjectDir)..\..\demos\inspector\resources.cpp -v "resources"</Command>
+      <Command>"$(ProjectDir)..\..\bin\windows\packfolder.exe" "$(ProjectDir)..\..\demos\inspector\res" "$(ProjectDir)..\..\demos\inspector\resources.cpp" -v "resources"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
@@ -226,7 +226,7 @@
       <AdditionalManifestFiles>../../demos/inspector/win-res/dpi-aware.manifest;%(AdditionalManifestFiles)</AdditionalManifestFiles>
     </Manifest>
     <PreBuildEvent>
-      <Command>$(ProjectDir)..\..\bin\windows\packfolder.exe $(ProjectDir)..\..\demos\inspector\res $(ProjectDir)..\..\demos\inspector\resources.cpp -v "resources"</Command>
+      <Command>"$(ProjectDir)..\..\bin\windows\packfolder.exe" "$(ProjectDir)..\..\demos\inspector\res" "$(ProjectDir)..\..\demos\inspector\resources.cpp" -v "resources"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -261,7 +261,7 @@
       <AdditionalManifestFiles>../../demos/inspector/win-res/dpi-aware.manifest;%(AdditionalManifestFiles)</AdditionalManifestFiles>
     </Manifest>
     <PreBuildEvent>
-      <Command>$(ProjectDir)..\..\bin\windows\packfolder.exe $(ProjectDir)..\..\demos\inspector\res $(ProjectDir)..\..\demos\inspector\resources.cpp -v "resources"</Command>
+      <Command>"$(ProjectDir)..\..\bin\windows\packfolder.exe" "$(ProjectDir)..\..\demos\inspector\res" "$(ProjectDir)..\..\demos\inspector\resources.cpp" -v "resources"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -296,7 +296,7 @@
       <AdditionalManifestFiles>../../demos/inspector/win-res/dpi-aware.manifest;%(AdditionalManifestFiles)</AdditionalManifestFiles>
     </Manifest>
     <PreBuildEvent>
-      <Command>$(ProjectDir)..\..\bin\windows\packfolder.exe $(ProjectDir)..\..\demos\inspector\res $(ProjectDir)..\..\demos\inspector\resources.cpp -v "resources"</Command>
+      <Command>"$(ProjectDir)..\..\bin\windows\packfolder.exe" "$(ProjectDir)..\..\demos\inspector\res" "$(ProjectDir)..\..\demos\inspector\resources.cpp" -v "resources"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
@@ -331,7 +331,7 @@
       <AdditionalManifestFiles>../../demos/inspector/win-res/dpi-aware.manifest;%(AdditionalManifestFiles)</AdditionalManifestFiles>
     </Manifest>
     <PreBuildEvent>
-      <Command>$(ProjectDir)..\..\bin\windows\packfolder.exe $(ProjectDir)..\..\demos\inspector\res $(ProjectDir)..\..\demos\inspector\resources.cpp -v "resources"</Command>
+      <Command>"$(ProjectDir)..\..\bin\windows\packfolder.exe" "$(ProjectDir)..\..\demos\inspector\res" "$(ProjectDir)..\..\demos\inspector\resources.cpp" -v "resources"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

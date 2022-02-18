@@ -125,7 +125,7 @@
       <AdditionalManifestFiles>../../demos/integration/win-res/dpi-aware.manifest;%(AdditionalManifestFiles)</AdditionalManifestFiles>
     </Manifest>
     <PreBuildEvent>
-      <Command>$(ProjectDir)..\..\bin\windows\packfolder.exe $(ProjectDir)..\..\demos\integration\res $(ProjectDir)..\..\demos\integration\resources.cpp -v "resources"</Command>
+      <Command>"$(ProjectDir)..\..\bin\windows\packfolder.exe" "$(ProjectDir)..\..\demos\integration\res" "$(ProjectDir)..\..\demos\integration\resources.cpp" -v "resources"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
@@ -155,7 +155,7 @@
       <AdditionalManifestFiles>../../demos/integration/win-res/dpi-aware.manifest;%(AdditionalManifestFiles)</AdditionalManifestFiles>
     </Manifest>
     <PreBuildEvent>
-      <Command>$(ProjectDir)..\..\bin\windows\packfolder.exe $(ProjectDir)..\..\demos\integration\res $(ProjectDir)..\..\demos\integration\resources.cpp -v "resources"</Command>
+      <Command>"$(ProjectDir)..\..\bin\windows\packfolder.exe" "$(ProjectDir)..\..\demos\integration\res" "$(ProjectDir)..\..\demos\integration\resources.cpp" -v "resources"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -190,7 +190,7 @@
       <AdditionalManifestFiles>../../demos/integration/win-res/dpi-aware.manifest;%(AdditionalManifestFiles)</AdditionalManifestFiles>
     </Manifest>
     <PreBuildEvent>
-      <Command>$(ProjectDir)..\..\bin\windows\packfolder.exe $(ProjectDir)..\..\demos\integration\res $(ProjectDir)..\..\demos\integration\resources.cpp -v "resources"</Command>
+      <Command>"$(ProjectDir)..\..\bin\windows\packfolder.exe" "$(ProjectDir)..\..\demos\integration\res" "$(ProjectDir)..\..\demos\integration\resources.cpp" -v "resources"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
@@ -225,7 +225,7 @@
       <AdditionalManifestFiles>../../demos/integration/win-res/dpi-aware.manifest;%(AdditionalManifestFiles)</AdditionalManifestFiles>
     </Manifest>
     <PreBuildEvent>
-      <Command>$(ProjectDir)..\..\bin\windows\packfolder.exe $(ProjectDir)..\..\demos\integration\res $(ProjectDir)..\..\demos\integration\resources.cpp -v "resources"</Command>
+      <Command>"$(ProjectDir)..\..\bin\windows\packfolder.exe" "$(ProjectDir)..\..\demos\integration\res" "$(ProjectDir)..\..\demos\integration\resources.cpp" -v "resources"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

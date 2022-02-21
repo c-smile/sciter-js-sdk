@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style></style>
+        <script>
+
+const elTime = document.$("output.time");
+
+elTime.timer(1s,function() {
+  this.value = new Date().toLocaleTimeString();
+  return true; // keep running
+})
+
+        </script>
+    </head>
+    <body>
+    <p>This sample uses Duration units: <code>el.timer(1s,...)</code></p>
+    Time: <output.time />
+    </body>
+</html>

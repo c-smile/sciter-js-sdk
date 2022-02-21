@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style></style>
+        <script type="json-plus" id="data">
+          {
+            name-extra: 12rad;            
+            date: 2022-01-01;
+            num: 1234;
+            length: 12pt;  
+            string: "string";
+            arr1: [1, 2, 3, 4];
+            arr2: 1 2 3 4;
+          }
+        </script>
+
+        <script|module>
+
+        import {parseValue} from "@sciter";
+
+        let data = parseValue( document.$("#data").innerText );
+
+        console.log(data);
+
+        console.assert( typeof data.string == "string", "String?");
+        console.assert( typeof data.num == "number", "Number?");
+        console.assert( data.date instanceof Date, "Date?");
+        console.assert( data.length instanceof Length, "Length?");
+        console.assert( data["name-extra"] instanceof Angle, "Angle?");
+        console.assert( Array.isArray(data.arr1) && data.arr1.length == 4, "Array1?");
+        console.assert( Array.isArray(data.arr2) && data.arr2.length == 4, "Array2?");
+
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

@@ -9,10 +9,11 @@
 * `event.eventPhase`
 * `event.target`
 * `event.type`
-* `event.data`
-* `event.details`
-* `event.keyCode`
-* `event.code` - string representation of keyCode "KeyENTER", "KeyF1"...
+* `event.data:any`
+* `event.details:any` - alias of `event.data`
+* `event.keyCode:integer` - key code, see include/sciter-x-key-codes.h
+* `event.platformKeyCode` - platform's native key code, e.g, wParam in WM_KEYDOWN on Windows.
+* `event.code` - string representation of keyCode "KeyA", "F1", "Enter"...
 * `event.altKey` - ALT true/false
 * `event.ctrlKey` 
 * `event.metaKey` - "command key" on OSX, "win" on Windows

@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style></style>
+        <script|module>
+
+import * as sys from "@sys";
+
+document.monitor = sys.fs.watch( URL.toPath(__DIR__), function(path,event,status) {
+  document.body.append(<text>Change in {path} event {event} status {status}</text>);
+});
+
+
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

@@ -68,7 +68,9 @@
 #endif
 
 #if defined(WINDOWS)
-  #define WIN32_LEAN_AND_MEAN
+  #ifndef WIN32_LEAN_AND_MEAN
+    #define WIN32_LEAN_AND_MEAN
+  #endif
   #include <specstrings.h>
   #include <windows.h>
   #include <oaidl.h>

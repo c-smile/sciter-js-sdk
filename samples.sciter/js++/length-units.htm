@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+            div { size:50pt; background:gold; }
+
+        </style>
+        <script>
+
+// use of Length units:
+// 70pt - is a value instanceof Length
+
+document.$("div").style.width = 70pt;
+
+console.log(
+    document.$("div").style.width.units,
+    document.$("div").style.width );
+
+
+        </script>
+    </head>
+    <body>
+    <div>test</div>
+    </body>
+</html>

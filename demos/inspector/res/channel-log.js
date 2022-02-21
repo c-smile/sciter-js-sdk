@@ -54,7 +54,7 @@ export class ChannelLog extends Element {
   }
 
   ["on ^keydown at textarea#toeval"](evt, textarea) {
-    if (evt.code != "KeyRETURN") return;
+    if (evt.code != "Enter") return;
     if (evt.shiftKey || evt.ctrlKey) return;
     const toeval = textarea.value.trim();
     if (!toeval) return;

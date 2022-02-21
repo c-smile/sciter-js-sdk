@@ -59,19 +59,27 @@ function reloadFile()
   updateCaption();
 }
 
-on("click","button#open", function() {
-    var fn = view.selectFile("open",file_filter);
-    if( fn ) 
-      loadFile(fn);
-  })
+on("click","button#open", function(e,btn) {
+  if(btn.ownerDocument !== document)
+    return false;
+  var fn = view.selectFile("open",file_filter);
+  if( fn ) 
+    loadFile(fn);
+})
 
-on("click","button#reload", function () {
-    //liveReload.reset();
-    if( filename )
-      reloadFile();
-  })
+on("click","button#reload", function (e,btn) {
+  if(btn.ownerDocument !== document)
+    return false;
 
-on("click", "button#open-in-view", function() {
+  //liveReload.reset();
+  if( filename )
+    reloadFile();
+})
+
+on("click", "button#open-in-view", function(e,btn) {
+  if(btn.ownerDocument !== document)
+    return false;
+
   var fn = view.selectFile("open",file_filter);
   if( fn ) 
     view.load(fn);

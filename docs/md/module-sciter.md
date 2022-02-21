@@ -3,125 +3,120 @@
 The module contains Sciter specific functions.
 
 ## constants:
-<details>
-<summary><code>VERSION</code></summary>
 
-Constant string, current engine version in the form "X.X.X.X";
+### `sctr.VERSION`
 
-</details>
-<details>
-<summary><code>REVISION</code></summary>
+String, readonly, current engine version in the form "X.X.X.X";
 
-Constant string, SVN build revision;
+### `sctr.REVISION`
 
-</details>
-<details>
-<summary><code>QUICKJS_VERSION</code></summary>
+String, readonly, SVN build revision;
 
-QuickJS version
+### `sctr.QUICKJS_VERSION`
 
-</details>
+String, readonly, QuickJS version
 
 ## functions:
-<details>
-<summary><code>devicePixels(length: int | string[,axis])</code></summary>
+
+### `sctr.import(path:string):object`
+
+That is synchronous equivalent of standard JS [`import()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#dynamic_imports), so it can be used sycnhronously as 
+
+```JS
+let module = sctr.import('modules/my-module.js');
+```
+That is essentially dynamic equivalent of static 
+```JS
+import * as module from 'modules/my-module.js';
+```
+
+### `sctr.loadLibrary("name"): any`
+
+Loads Sciter extension native library (dll,so,dylib). 
+
+The "name" is the name of DLL without extension. 
+
+The dll shall reside in the same folder as executable. See /sqlite project that can be used to produce sciter-sqlite extension dll.
+
+### `sctr.parseValue(string): any`
+
+Parses _string_ value by "JSON++ rules", here are valid inputs:
+
+* `"true"` -> _true_ value;
+* `"null"` -> _null_ value;
+* `"1234"` ->  Numeric value 1234;
+* `"0xFF"` ->  Numeric value 255 (hex);
+* `"2021-12-01"` -> date 2021-12-01 (in ISO format);
+* `"12px"` -> value of Length class;
+* `"1rad"` -> value of Angle class;
+* `"{name1:val1, name2:val2,...}"` -> object value;
+* `"{some-name1:val1; some-name2:val2; ...}"` -> CSS kind of object value;
+* `"[val1, val2, ...]"` -> array;
+
+### `sctr.devicePixels(length: int | string[,axis])`
    
 Converts _length_ to device (screen) pixels:
 
 - _length_ can be integer - number of dips (a.k.a. "CSS pixels")  
 - or a string like "2in" to get number of screen pixels in 2 inches of a ruler placed on screen.
 - _axis_ is either "width" or "height", note axis parameter makes sense only for devices that have different resolution on x/y axis.
-</details>
-<details>
-<summary><code>loadLibrary("name"): any</code></summary>
 
-Loads Sciter extension native library (dll,so,dylib). 
 
-the "name" is dll name without extension. 
-
-The dll shall reside in the same folder as executable. See /sqlite project that can be used to produce sciter-sqlite extension dll.  
-</details>
-<details>
-  <summary><code>on("eventname" [, "selector" ], handler)</code></summary>
+### `sctr.on("eventname" [, "selector" ], handler)`
 
 Subscribe to any DOM event, conceptually close to `document.on(...)`
 
-</details>
-<details>
-<summary><code>off("eventname" | handler)</code></summary>
+### `sctr.off("eventname" | handler)`
 
 Unsubscribe event handler from DOM event.
 
-</details>
-<details>
-<summary><code>$("selector")</code></summary>
+### `sctr.$("selector"): Element`
 
 Returns first matched DOM element in current document.
 
-</details>
-<details>
-<summary><code>$$("selector")</code></summary>
+### `sctr.$$("selector"): array(Element)`
 
 Returns list (array) of matched DOM elements.
 
-</details>
-<details>
-<summary><code>uuid():string</code></summary>
+### `sctr.uuid():string`
 
 Returns [uuid](https://en.wikipedia.org/wiki/Universally_unique_identifier) as a string.
 
-</details>
-<details>
-<summary><code>encode(text:string, [encoding:string="utf-8"]):arrayBuffer</code></summary>
+### `sctr.encode(text:string, [encoding:string="utf-8"]):arrayBuffer`
 
 Encodes text to sequence of bytes (ArrayBuffer). Default _encoding_ is "utf-8".
 
   _encoding_ is [IANA encoding](https://www.iana.org/assignments/character-sets/character-sets.xhtml) identifier
 
-</details>
-<details>
-<summary><code>decode(bytes:arrayBuffer, [encoding:string="utf-8"]):string</code></summary>
+### `sctr.decode(bytes:arrayBuffer, [encoding:string="utf-8"]):string`
 
 Decodes sequence of bytes of buffer to string. Default _encoding_ is "utf-8".
 
-</details>
-<details>
-<summary><code>compress(in:arrayBuffer,[method]):arrayBuffer</code></summary>
+### `sctr.compress(in:arrayBuffer,[method]):arrayBuffer`
 
 Returns compressed _in_ buffer.
 
 Where _method_ is one of "gz","gzip" or "lzf" (default).
 
-</details>
-<details>
-<summary><code>decompress(in:arrayBuffer,[method]):arrayBuffer</code></summary>
+### `sctr.decompress(in:arrayBuffer,[method]):arrayBuffer`
 
 Returns decompressed _in_ buffer.
 
 _method_ is one of "gz","gzip" or "lzf" (default).
 
-</details>
-<details>
-<summary><code>toBase64(in:arrayBuffer):string</code></summary>
+### `sctr.toBase64(in:arrayBuffer):string`
 
 Returns string - base64 encoded _in_ buffer.
 
-</details>
-<details>
-<summary><code>fromBase64(in:string):arrayBuffer</code></summary>
+### `sctr.fromBase64(in:string):arrayBuffer`
 
 Restores array buffer from base64 encoded string.
 
-</details>
-<details>
-<summary><code>md5(in:arrayBuffer):string</code></summary>
+### `sctr.md5(in:arrayBuffer):string`
 
 Returns md5 digest (a.k.a. hash) of the _in_ data.
 
-</details>
-<details>
-<summary><code>crc32(in:arrayBuffer):integer</code></summary>
+### `sctr.crc32(in:arrayBuffer):integer`
 
 Returns crc32 hash of the _in_ data.
 
-</details>

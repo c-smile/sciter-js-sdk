@@ -2,75 +2,73 @@
 
 The module represents current OS and running environment.
 
-#### constants:
+## constants:
 
 * `env.OS` - OS identification name, for example `"Windows-8.1"`
 * `env.PLATFORM` - OS/platform generic name: `"Windows"`, `"OSX"`, `"Linux"`, `"Android"`, etc.
 * `env.DEVICE` - device type: `"desktop"`, `"mobile"`
 
-#### functions:
+## functions:
 
-* `env.language()` 
+### `env.language()`
 
-  returns two-letter language abbreviation of user's default language, for example `"en"` for English.
+Returns two-letter language abbreviation of user's default language, for example `"en"` for English.
 
-* `env.country()` 
+### `env.country()`
 
-  returns two-letter country abbreviation, for example `"CA"` for Canada.  
+Returns two-letter country abbreviation, for example `"CA"` for Canada.  
 
-* `env.userName()` 
+### `env.userName()`
 
-  returns current user name. 
+ Returns current user name. 
 
-* `env.machineName()` 
+### `env.machineName()`
   
-  machine network name.  
+Machine network name.  
 
-* `env.domainName()` 
+### `env.domainName()`
   
-  machine network domain.
+Machine network domain.
 
-* `env.launch(path)` 
+### `env.launch(path)`
   
-  method to open documents and start applications;
+Method to open documents and start applications;
 
-    Example: `env.launch("https://sciter.com")` will open default browser with that url.
+Example: `env.launch("https://sciter.com")` will open default browser with that url.
 
-* `env.home([relpath]): string` 
+### `env.home([relpath]): string`
 
-  converts relative path to absolute path using location of sciter.dll as a base. 
+Converts relative path to absolute path using location of sciter.dll as a base. 
 
-* `env.homeURL([relpath]): string` 
+### `env.homeURL([relpath]): string`
  
-  same as `env.home(relpath)` but returns "file://..." URL.
+Same as `env.home(relpath)` but returns "file://..." URL.
 
-* `env.path(name,[relpath]): string` 
+### `env.path(name,[relpath]): string`
 
-  returns location of well known folders on user machine, name is one of: 
+Returns location of well known folders on user machine, name is one of: 
 
-  * "home" - user's home folder;
-  * "applications" - applications a.k.a program files;
-  * "root" - file system root;
-  * "desktop" - desktop folder;
-  * "appdata" - applications data folder;
-  * "downloads"
-  * "documents"
-  * "music"
-  * "videos"
-  * "pictures"
-  
-  If _relpath_ is provided the function returns absolute path of that relpath combined with the folder path.
++ "home" - user's home folder;
++ "applications" - applications a.k.a program files;
++ "root" - file system root;
++ "desktop" - desktop folder;
++ "appdata" - applications data folder;
++ "downloads"
++ "documents"
++ "music"
++ "videos"
++ "pictures"
 
-* `env.pathURL(name): string` 
+If _relpath_ is provided the function returns absolute path of that relpath combined with the folder path.
+
+### `env.pathURL(name): string`
  
-  same as `env.path(name)` but returns "file://..." URL.
+same as `env.path(name)` but returns "file://..." URL.
 
-* `env.variable(name:string [,toset:string | null]): string` 
+### `env.variable(name:string [,toset:string | null]): string`
 
-  [getenv](https://man7.org/linux/man-pages/man3/getenv.3.html)/[setenv(,,true)](https://man7.org/linux/man-pages/man3/setenv.3.html)/unsetenv() ( if _toset_ is _null_ )
+[getenv](https://man7.org/linux/man-pages/man3/getenv.3.html)/[setenv(,,true)](https://man7.org/linux/man-pages/man3/setenv.3.html)/unsetenv() ( if _toset_ is _null_ )
 
-* `env.exec()` 
+### `env.exec()`
  
-  execute comma-separated arguments. Example: `exec("scapp.exe", "main.html")`
-
-
+execute comma-separated arguments. Example: `exec("scapp.exe", "main.html")`

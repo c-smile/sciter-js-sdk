@@ -1,3 +1,31 @@
+## 4.4.8.30
+
+### New features:
+
+* JS extended by Length, Duration and Angle units. 
+
+  ES2017 introduced numbers with units already, like BigInt:
+  ```
+  const maxSafeInteger = 9007199254740991n;
+  ```
+  This version adds more number units:
+  - lengths: `100px`, `12pt`, `1em`, ...
+  - durations: `20ms`, `2s`
+  - angles: `90deg`, `0.5rad`, `1turn`, ...
+  
+* `Event.platformKeyCode` - reports native key code like wParam in WM_KEYDOWN on Windows.
+* `physicalDevicePixelRatio` - [MacOS] "retina" pixel ratio, on other platforms it is `1`. 
+
+### Fixes:
+
+* z-index handling fix.
+* `<input|number>` layout fix.
+* Regression fix of "preventing secondary style loading from the same url".
+* `progresss.setAttribute()` fix;
+* Fix of AV in frame deletion while loading.
+* Fix of window alignment on multihome systems with different scale factors.
+
+
 ## 4.4.8.29
 
 ### New features:
@@ -30,6 +58,11 @@
   Note for window-frame != "standard" the menu is invisible but still makes sense as global hotkeys table.
 
   For the demo see [integration](https://github.com/c-smile/sciter-js-sdk/blob/main/demos/integration/res/default.htm) project in SDK.
+
+* include/sciter-x-key-codes.h - list of key codes that are coming to KEY_DOWN/KEY_UP events. 
+
+  NOTE: that can be a breaking change if you use platform dependent key codes (like `VK_ENTER` on Windows) in your code.
+
 
 ### Fixes:
 

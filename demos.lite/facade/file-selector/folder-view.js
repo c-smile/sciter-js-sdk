@@ -125,10 +125,10 @@ export class FolderView extends Element
 
   ["on keyup at select.content"](evt,content) {
     switch(evt.code) {
-      case "KeyESCAPE" : 
+      case "Escape" : 
         this.navigateTo(this.parentPath[0]); 
         return true;
-      case "KeyRETURN" : 
+      case "Enter" : 
         this.activateCurrent();
         return true;
     }
@@ -136,7 +136,7 @@ export class FolderView extends Element
 
   ["on keydown at select.content"](evt) {
     switch(evt.code) {
-      case "KeyUP" : //not handled by select.content - on very first item
+      case "ArrowUp" : //not handled by select.content - on very first item
       {
         var path = this.pathPane;
         path.$("option:first-child").click();
@@ -148,7 +148,7 @@ export class FolderView extends Element
 
   ["on ^keydown at select.path"](evt) {
     switch(evt.code) {
-      case "KeyDOWN" : //not handled by select.content - on very first item
+      case "ArrowDown" : //not handled by select.content - on very first item
       {
         var content = this.contentPane;
         content.$("option:first-child").click();
@@ -160,10 +160,10 @@ export class FolderView extends Element
 
   ["on keyup at select.path"](evt,path) {
     switch(evt.code) {
-      case "KeyESCAPE" : 
+      case "Escape" : 
         this.navigateTo(this.parentPath[0]);
         return true;
-      case "KeyRETURN" : {
+      case "Enter" : {
         var current = path.$("option:current");
         if( !current || current.elementIndex == 0 ) {
           var [path,local] = this.parentPath;

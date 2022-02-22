@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+          footer {
+            margin-top:*;
+          }
+
+          form {
+            flow:row(label,input button group);  
+          }
+
+          form > group {
+            display:block;
+            flow:horizontal;
+          }
+
+        </style>
+        <script|module>
+
+           import {FocusAnimator} from "focus-animator.js";
+
+           FocusAnimator();
+
+        </script>
+    </head>
+    <body>
+
+      This is sample of focus move animation using immediate mode painting.
+
+      <form>
+        <label>Input</label><input|text value="hello" />
+        <label>Checkbox</label><button|checkbox>world</button>
+        <label>Radios</label><group><button|radio(foo)>1</button>
+                                    <button|radio(foo)>2</button>
+                                    <button|radio(foo)>2</button></group>
+      </form>
+
+      <footer>
+        test of focusable <a href="#" #test>hyperlink</a>
+      </footer>
+
+
+    </body>
+</html>

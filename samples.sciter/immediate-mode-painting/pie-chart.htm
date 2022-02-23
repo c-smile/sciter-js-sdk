@@ -5,73 +5,74 @@
     
     pie-chart {
       display:block;
-      aspect: Pie(band:20px, sector:rgb(100,150,200), circle:rgb(230,230,230));
-      size:200dip;
-      font-size:30dip;
+      prototype: Pie; // and its params:
+        var(band-width):20px;
+        var(band-color):rgb(230,230,230);
+        var(sector-color):rgb(100,150,200);
+      size:200px;
+      font-size:30px;
       vertical-align:middle;
       text-align:center;
+
     }
     
     </style>
     <script>
     
-      class Pie extends Element
-      {
+      class Pie extends Element {
+        #value = 0; 
+        strokeWidth;
+        circleColor;
+        strokeColor;
+        startAngle = -90deg;
 
         componentDidMount() {
-          this.strokeWidth = this.style.variable("band") || 10; 
+          this.strokeWidth = this.style.variable("band-width") || 10px; 
+          this.circleColor = this.style.variable("band-color") || Color.RGB(230,230,230); 
+          this.strokeColor = this.style.variable("sector-color") || Color.RGB(100,0,0); 
+          this.paintBackground = this.paint;
+          this.value = 1.0 * this.attributes["value"];
         }
-         const strokeWidth = params.band || 10; 
-         const strokeColor = params.sector || Color.RGB(100,0,0); 
-        const circleColor = params.circle || Color.RGB(230,230,230); 
-      
-        let start = 0; 
-        let value = 0;  
 
-        function render(gfx) 
+        paint(gfx) 
         {
-          var [w,h] = this.state.box("dimension"); 
-          var x = w/2; y = h/2;  
-          var r = Math.min(w,h) / 2 - strokeWidth / 2;  
+          let [w,h] = this.state.box("dimension"); 
+          let x = w/2, y = h/2;  
+          let r = Math.min(w,h) / 2 - this.strokeWidth / 2;  
           
-          gfx.strokeWidth = sw + 0.5;
-          gfx.strokeStyle = circleColor;
+          gfx.strokeWidth = this.strokeWidth;
+          gfx.strokeStyle = this.circleColor;
           gfx.beginPath();
-          gfx.arc(x,y,r,r, 0, 360);
+          gfx.arc(x,y,r,0, 360deg);
           gfx.stroke();
           gfx.beginPath();
-          gfx.strokeStyle = strokeColor;
-          gfx.arc(x,y,r,r, 360 * start, 360 * value);
+          gfx.strokeStyle = this.strokeColor;
+          gfx.arc(x,y,r,this.startAngle, this.startAngle + 360deg * this.#value);
           gfx.stroke();
         }  
-        
-        this.paintBackground = render;
-        
+  
         // redefining property 'value' on that element
-        this["value"] = property(v) {
-          get return value;
-          set {
-            value = v;
-            this.text = String.$({(value * 100).toInteger() }%) ;
-            this.refresh();
-          }
-        };
-        this.value = this.attributes["value"].toFloat(0.0);
+        get value() { return this.#value; }
+        set value(v) {
+          this.#value = v;
+          this.innerText = printf("%d%%", this.#value * 100);
+          this.requestPaint();
+        }
       }
 
-                 
-      event change $(input) {
-        $(pie-chart).value = this.value;
-      }
+          
+      document.on("change","input",function(e,input) {
+        document.$("pie-chart").value = input.value;
+      });
       
     
     </script>
   </head>
 <body>
 
-  value: <input|hslider min=0.0 max=1.0 value=0.25 />
+  value: <input|hslider min="0.0" max="1.0" value="0.25" />
 
-  <pie-chart value=0.25 />
+  <pie-chart value="0.25" />
 
 </body>
 </html>

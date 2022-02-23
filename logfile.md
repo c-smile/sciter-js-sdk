@@ -1,3 +1,19 @@
+## 4.4.8.31
+
+### New features:
+
+* new sample samples.sciter/immediate-mode-painting/pie-chart.htm - circular progress indicator.
+  Demonstrates use of units with Graphics;
+
+### Fixes:
+
+* [JS++]fix of angle literals parsing, like const s = 90deg;
+* [MacOS] fix of `doubleclick` and `tripleclick` event generation;
+* [MacOS] fix of AV in spellcheck functionality;
+* [a11y] fix of aria-labeledby handling; 
+* [CSS] fix of rules application ordering;
+* `Sciter.parseValue()` fix of error generation on erroneous inputs;
+
 ## 4.4.8.30
 
 ### New features:
@@ -12,7 +28,24 @@
   - lengths: `100px`, `12pt`, `1em`, ...
   - durations: `20ms`, `2s`
   - angles: `90deg`, `0.5rad`, `1turn`, ...
-  
+
+* `sciter.parseValue(string): any`
+
+  That's "JSON++" parser - parses the string using JSON extended by CSS syntax rules, this is valid JSON++ format:
+  ```JS
+    // Note: comments are supported in JSON++: 
+    {
+      date: 2020-10-11; // date literal
+      width: 200px; // length literal;
+      number: 42; // guess what?
+      // Note: names may have '-' in them
+      array-plain: [1,2,3,4]; // plain JS array
+      array-list: 1 2 3 4, 5 6 7 8; // JS [[1,2,3,4],[5,6,7,8]]
+      // name tokens are parsed to strings:
+      foo: incredible; // JSON eq. "foo": "incredible"
+    }
+  ```
+
 * `Event.platformKeyCode` - reports native key code like wParam in WM_KEYDOWN on Windows.
 * `physicalDevicePixelRatio` - [MacOS] "retina" pixel ratio, on other platforms it is `1`. 
 

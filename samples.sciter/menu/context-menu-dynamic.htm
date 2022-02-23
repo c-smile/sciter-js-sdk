@@ -10,22 +10,32 @@ div#test {
         </style>
         <script>
 
-document.on("contextmenu","div#test", function(evt,div) {
-  
-  evt.source = Element.create(<menu.context>
-      <li>Veni</li>
-      <li>Vidi</li>
-      <li>Vici</li>
-    </menu>);
-  return true;
-});
+
+class App extends Element {
+    render() {
+        return <body>
+          <div #test>Right click to see context menu</div>
+        </body>;
+    }
+
+    ["on contextmenu"](evt) {
+        evt.source = Element.create(<menu.context>
+          <li>Veni</li>
+          <li>Vidi</li>
+          <li>Vici</li>
+        </menu>);
+        return true;
+    }
+
+    ["on click at menu.context>li"](evt,menuitem) {
+        console.log(menuitem,menuitem.innerText);
+    }
+} 
+
+document.body.patch(<App/>);
 
         </script>
     </head>
     <body>
-
-    <div #test>Right click to see context menu</div>
-
-
     </body>
 </html>

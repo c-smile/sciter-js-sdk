@@ -19,7 +19,8 @@
         "getComputedStyle",
         "requestAnimationFrame",
         "cancelAnimationFrame",
-        "devicePixelRatio"
+        "devicePixelRatio",
+        "SQLite"
     ],
     "plugin": [
         "html"
@@ -35,7 +36,7 @@
             "error",
             "stroustrup"
         ],
-        "camelcase": "error",
+        "camelcase": "off",
         "capitalized-comments": "off",
         "comma-spacing": "error",
         "curly": [
@@ -43,6 +44,7 @@
             "multi-or-nest"
         ],
         "eol-last": "error",
+        "eqeqeq": "off",
         "indent": [
             "error",
             4,
@@ -65,7 +67,7 @@
         "no-empty-function": "error",
         "no-fallthrough": "warn",
         "no-global-assign": "warn",
-        "no-inline-comments": "warn",
+        "no-inline-comments": "off",
         "no-invalid-this": "off",
         "no-lone-blocks": "error",
         "no-mixed-operators": "error",

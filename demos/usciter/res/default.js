@@ -190,7 +190,7 @@ Settings.add(
         store: function(data) {
             data.theme = theme;
         },
-        restore: restore(data) {
+        restore: function(data) {
             setupTheme((data.theme));
         },
     });

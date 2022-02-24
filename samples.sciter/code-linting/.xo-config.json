@@ -19,8 +19,7 @@
         "getComputedStyle",
         "requestAnimationFrame",
         "cancelAnimationFrame",
-        "devicePixelRatio",
-        "SQLite"
+        "devicePixelRatio"
     ],
     "plugin": [
         "html"

@@ -2,7 +2,7 @@
 
 Linting is the automated checking of your source code for programmatic and stylistic errors.
 
-In this example, we are linting javascript code using [eslint](https://github.com/eslint/eslint) and eslint requires [Node.js](https://nodejs.dev/) and its package manager `npm` to be installed.
+In this example, we are linting javascript code using [xo](https://github.com/xojs/xo). Xo requires [Node.js](https://nodejs.dev/) and its package manager `npm` to be installed.
 
 ## install linter
 
@@ -13,13 +13,13 @@ npm install
 ## review code for errors
 
 ```sh
-npx --config .eslintrc.json test/*
+npx xo test/*
 ```
 
 ## review and fix code errors
 
 ```sh
-npx --config .eslintrc.json --fix test/*
+npx xo --fix test/*
 ```
 
 ## known issues with sciter

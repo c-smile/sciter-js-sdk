@@ -1,7 +1,6 @@
 {
   "devDependencies": {
-    "eslint": "^8.0",
-    "eslint-config-google": "^0.14.0",
+    "xo": "^0.48.0",
     "eslint-plugin-html": "^6.2.0"
   }
 }

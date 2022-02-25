@@ -304,6 +304,9 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
 
     Sending stops on first window that will consume the event by returning _true_ from event handler of this event.
 
+  * ### `Window.this.scapp.argv:array`
+
+    Get command line arguments in a scapp app
 
 ## events
 
@@ -345,4 +348,3 @@ Use `window.on("eventname", handler)` to subscribe to these events:
   * ### `"spacechange"`
     
     Space (a.k.a. virtual desktop) has changed. Use `Window.this.isOnActiveSpace` property to determine if window is on active space now. 
-

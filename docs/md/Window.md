@@ -229,7 +229,7 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
 
     You can assign the found element to `window.focus = element` set the focus on it.
 
-  * ### `window.close([value])`
+  * ### `window.close([value]): bool`
   
     request to close the window, the value is a return value used in modal dialogs;
 

@@ -2,7 +2,7 @@
 
 Linting is the automated checking of your source code for programmatic and stylistic errors.
 
-In this example, we are linting javascript code using [eslint](https://github.com/eslint/eslint) and eslint requires [Node.js](https://nodejs.dev/) and its package manager `npm` to be installed.
+In this example, we are linting javascript code using [xo](https://github.com/xojs/xo). Xo requires [Node.js](https://nodejs.dev/) and its package manager `npm` to be installed.
 
 ## install linter
 
@@ -13,30 +13,36 @@ npm install
 ## review code for errors
 
 ```sh
-npx --config .eslintrc.json test/*
+npx xo test/*
 ```
 
 ## review and fix code errors
 
 ```sh
-npx --config .eslintrc.json --fix test/*
+npx xo --fix test/*
 ```
 
-## known issues with sciter
+## known issues
 
-Some sciter JSX html attribute rules are not understood by the JSX parser and create parsing errors, namely:
+The sciter flavor of `JSX` causes the linter to crash because the under the hood JSX parser [`acorn`](https://github.com/acornjs/acorn) cannot parse the sciter shortcuts for attributes `id` (`#`), `class` (`.`), `type` (|) and `name` (`()`).
 
-- `#` shortcut for `id`
-- `|` shortcut for `type`
-- `()` shortcut for `name`
-
-For example
+This cannot be parsed:
 
 ```jsx
-  return <section#projects>
-      ...
-    </section>;
+const jsx = <section .myClass #myId>
+    ...
+</section>;
 ```
+
+while the regular jsx equivalent works just fine:
+
+```jsx
+const jsx = <section class="myClass" id="myId">
+    ...
+</section>;
+```
+
+If you have the skills it takes to fork `acorn` and update the parser, that would be great!
 
 ## eslint rules
 

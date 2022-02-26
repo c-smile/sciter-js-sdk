@@ -119,7 +119,7 @@
       <EnableDpiAwareness>PerMonitorHighDPIAware</EnableDpiAwareness>
     </Manifest>
     <PreBuildEvent>
-      <Command>$(ProjectDir)..\..\bin\windows\packfolder.exe $(ProjectDir)..\..\demos.lite\facade $(ProjectDir)..\..\demos.lite\facade-resources.cpp -v "resources"</Command>
+      <Command>"$(ProjectDir)..\..\bin\windows\packfolder.exe" "$(ProjectDir)..\..\demos.lite\facade" "$(ProjectDir)..\..\demos.lite\facade-resources.cpp" -v "resources"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -145,7 +145,7 @@
       <EnableDpiAwareness>PerMonitorHighDPIAware</EnableDpiAwareness>
     </Manifest>
     <PreBuildEvent>
-      <Command>$(ProjectDir)..\..\bin\windows\packfolder.exe $(ProjectDir)..\..\demos.lite\facade $(ProjectDir)..\..\demos.lite\facade-resources.cpp -v "resources"</Command>
+      <Command>"$(ProjectDir)..\..\bin\windows\packfolder.exe" "$(ProjectDir)..\..\demos.lite\facade" "$(ProjectDir)..\..\demos.lite\facade-resources.cpp" -v "resources"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -176,7 +176,7 @@
       <EnableDpiAwareness>PerMonitorHighDPIAware</EnableDpiAwareness>
     </Manifest>
     <PreBuildEvent>
-      <Command>$(ProjectDir)..\..\bin\windows\packfolder.exe $(ProjectDir)..\..\demos.lite\facade $(ProjectDir)..\..\demos.lite\facade-resources.cpp -v "resources"</Command>
+      <Command>"$(ProjectDir)..\..\bin\windows\packfolder.exe" "$(ProjectDir)..\..\demos.lite\facade" "$(ProjectDir)..\..\demos.lite\facade-resources.cpp" -v "resources"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -207,7 +207,7 @@
       <EnableDpiAwareness>PerMonitorHighDPIAware</EnableDpiAwareness>
     </Manifest>
     <PreBuildEvent>
-      <Command>$(ProjectDir)..\..\bin\windows\packfolder.exe $(ProjectDir)..\..\demos.lite\facade $(ProjectDir)..\..\demos.lite\facade-resources.cpp -v "resources"</Command>
+      <Command>"$(ProjectDir)..\..\bin\windows\packfolder.exe" "$(ProjectDir)..\..\demos.lite\facade" "$(ProjectDir)..\..\demos.lite\facade-resources.cpp" -v "resources"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

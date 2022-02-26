@@ -81,33 +81,33 @@
   </style>
 
   <script type="module">
-
     import * as sciter from "@sciter";
     import * as env from "@env";
+
     const $ = sciter.$;
     const on = sciter.on;
 
     document.ready = function() {
-      $("#version").innerText = sciter.VERSION;
-      $("#revision").innerText = sciter.REVISION;
-      $("#quickjs-version").innerText = sciter.QUICKJS_VERSION;
+        $("#version").innerText = sciter.VERSION;
+        $("#revision").innerText = sciter.REVISION;
+        $("#quickjs-version").innerText = sciter.QUICKJS_VERSION;
 
-      $("#os-type").innerText = env.DEVICE;
-      $("#os-version").innerText = env.OS;
-  	  $("#user").innerText = env.userName();
-  	  $("#machine").innerText = env.machineName();
-  	  $("#domain").innerText = env.domainName();
-  	  $("#language").innerText = env.language();
-  	  $("#country").innerText = env.country();
-      $("#gfx-backend").innerText = Window.this.graphicsBackend;
-      $("#sqlite-version").innerText = SQLite.version;
-    }
+        $("#os-type").innerText = env.DEVICE;
+        $("#os-version").innerText = env.OS;
+        $("#user").innerText = env.userName();
+        $("#machine").innerText = env.machineName();
+        $("#domain").innerText = env.domainName();
+        $("#language").innerText = env.language();
+        $("#country").innerText = env.country();
+        $("#gfx-backend").innerText = Window.this.graphicsBackend;
+        $("#sqlite-version").innerText = SQLite.version;
+    };
 
-    on("^click","a[href]", function() {
+    on("^click", "a[href]", function() {
       sciter.launch(this.attributes["href"]);
-      return true;
+        return true;
     });
-  
+
   </script>
 </head>
 <body>
@@ -126,23 +126,23 @@
   </section>
 
   <dl.info #system>
-	  <header#sciter>sciter.JS</header>
-	  <dt>version:</dt>	   <dd #version></dd>
+    <header#sciter>sciter.JS</header>
+    <dt>version:</dt>     <dd #version></dd>
     <dt>revision:</dt>   <dd #revision></dd>
     <header>QuickJS</header>
     <dt>version:</dt>    <dd #quickjs-version></dd>
     <header>SQLite</header>
     <dt>version:</dt>    <dd #sqlite-version></dd>
     <header>env</header>
-	  <dt>OS type:</dt>	   <dd #os-type></dd>
-	  <dt>OS version:</dt> <dd #os-version></dd>
+    <dt>OS type:</dt>     <dd #os-type></dd>
+    <dt>OS version:</dt> <dd #os-version></dd>
     <dt>GFX backend:</dt><dd #gfx-backend></dd>
-	  <dt>user:</dt>		   <dd #user></dd>
-	  <dt>machine:</dt>	   <dd #machine></dd>
-	  <dt>domain:</dt>	   <dd #domain></dd>
-    <!--<dt>home:</dt>	     <dd #home></dd>-->
-	  <dt>country:</dt>	   <dd #country></dd>
-	  <dt>language:</dt>	 <dd #language></dd>
+    <dt>user:</dt>       <dd #user></dd>
+    <dt>machine:</dt>     <dd #machine></dd>
+    <dt>domain:</dt>     <dd #domain></dd>
+    <!--<dt>home:</dt>       <dd #home></dd>-->
+    <dt>country:</dt>     <dd #country></dd>
+    <dt>language:</dt>   <dd #language></dd>
   </dl>
 </body>
 </html>

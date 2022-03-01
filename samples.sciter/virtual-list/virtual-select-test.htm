@@ -7,53 +7,53 @@
 import {VirtualSelect} from "virtual-select.js";
 
 function generate() {
-  let items = [];
-  for(let i = 0; i < 5; ++i)
-    items.push({key:i, text:`item # ${i}`});
-  return items;
+    const items = [];
+    for (let i = 0; i < 5; ++i)
+        items.push({key: i, text: `item # ${i}`});
+    return items;
 }
 
-let items = generate();
+const items = generate();
 
 function renderOption(item, isCurrent, isSelected) {
-  console.log("renderOption", item.key);
-  return <option key={item.key} 
-                 state-current={isCurrent} 
-                 state-checked={isSelected}>{item.text}</option>;
+    console.log("renderOption", item.key);
+    return <option key={item.key}
+        state-current={isCurrent}
+        state-checked={isSelected}>{item.text}</option>;
 }
 
 document.on("click", "button#update", function(evt) {
-  for(let item of items)
-    item.text += "*";
-  console.log("before update");
-  document.$("#vselect").componentUpdate();
+    for (const item of items)
+        item.text += "*";
+    console.log("before update");
+    document.$("#vselect").componentUpdate();
 });
 
 document.on("click", "button#append", function(evt) {
-  let n = items.length; 
-  for(let i = n; i < n + 50; ++i)
-    items.push({key:i, text:`item # ${i}`});
-  console.log("before append");
-  document.$("#vselect").componentUpdate();
+    const n = items.length;
+    for (let i = n; i < n + 50; ++i)
+        items.push({key: i, text: `item # ${i}`});
+    console.log("before append");
+    document.$("#vselect").componentUpdate();
 });
 
 document.on("click", "button#prune", function(evt) {
-  items.splice(items.length-25,25); 
-  console.log("before prune");
-  document.$("#vselect").componentUpdate();
+    items.splice(-25, 25);
+    console.log("before prune");
+    document.$("#vselect").componentUpdate();
 });
 
 document.body.patch(
-  <body>
-    <VirtualSelect id="vselect"
-                   items={items} 
-                   renderItem={renderOption} />
-    
+    <body>
+        <VirtualSelect id="vselect"
+            items={items}
+            renderItem={renderOption} />
+
     <button#update>Update</button>
     <button#append>Append</button>
     <button#prune>Prune</button>
 
-  </body>);
+    </body>);
 
         </script>
     </head>

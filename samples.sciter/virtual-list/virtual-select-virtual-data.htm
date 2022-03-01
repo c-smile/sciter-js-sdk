@@ -6,67 +6,67 @@
 
 import {VirtualSelect} from "virtual-select.js";
 
-let items = [];
+const items = [];
 let maxItems = 5000;
 
 // select with virtual data source
 class MySelect extends VirtualSelect {
-
-  constructor(props) { super(props); }
-
-  itemAt(at) { 
-    while(at >= items.length) {
-      let index = items.length;
-      items.push({key:index, text:`item # ${index}`});
+    constructor(props) {
+        super(props);
     }
-    return items[at];
-  }
-  totalItems() { 
-    return maxItems; 
-  }
-  indexOf(item) {  
-    return items.indexOf(item);
-  }
 
-  renderItem(item, isCurrent, isSelected) {
-    return <option key={item.key} 
-                   state-current={isCurrent} 
-                   state-checked={isSelected}>*{item.text}</option>;
-  }
+    itemAt(at) {
+        while (at >= items.length) {
+            const index = items.length;
+            items.push({key: index, text: `item # ${index}`});
+        }
 
+        return items[at];
+    }
 
+    totalItems() {
+        return maxItems;
+    }
+
+    indexOf(item) {
+        return items.indexOf(item);
+    }
+
+    renderItem(item, isCurrent, isSelected) {
+        return <option key={item.key}
+            state-current={isCurrent}
+            state-checked={isSelected}>*{item.text}</option>;
+    }
 }
 
-
 document.on("input", "#vselect", function(evt, vselect) {
-  console.log("value change", vselect.value);
+    console.log("value change", vselect.value);
 });
 
 document.on("click", "button#change-items", function() {
-  for(let item of items) 
-    item.text += " changed";
-  document.$("#vselect").componentUpdate();
+    for (const item of items)
+        item.text += " changed";
+    document.$("#vselect").componentUpdate();
 });
 
 document.on("click", "button#change-length", function() {
-  maxItems = 2000;
-  items.splice(maxItems);
-  document.$("#vselect").componentUpdate();
+    maxItems = 2000;
+    items.splice(maxItems);
+    document.$("#vselect").componentUpdate();
 });
 
 document.on("click", "button#remove-item", function() {
-  items.splice(10,1);
-  document.$("#vselect").componentUpdate();
+    items.splice(10, 1);
+    document.$("#vselect").componentUpdate();
 });
 
-
 document.body.patch(
-  <body>
-    <MySelect id="vselect" />
+    <body>
+        <MySelect id="vselect" />
     <button#change-items>Change items</button>
     <button#change-length>Change length of set</button>
     <button#remove-item>Remove 10th item</button>
-  </body>);
+    </body>);
 
         </script>
     </head>

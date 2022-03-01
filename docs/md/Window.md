@@ -2,17 +2,17 @@
 
 Instances of the Window class represent desktop windows.
 
-`Window.this` is a reference to current window object - instance of Window class where HTML document is loaded.
+`Window.this` is a reference to current window object, that is the instance of the `Window` class where the HTML document is loaded.
 
 NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.this` but not that strange "window" thing of browsers. 
 
 ## constructor:
 
-* ### `new Window {params}`
+* ### `new Window({params:object})`
 
-  where `params` is an object with the fields:
+  where `params` is an object with properties:
 
-  * `params.type` - optional, is one of:
+  * `type` - optional, is one of:
 
     * `Window.POPUP_WINDOW`
     * `Window.TOOL_WINDOW`
@@ -20,16 +20,16 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
     * `Window.FRAME_WINDOW` - default window type
     * `Window.DIALOG_WINDOW`
 
-  * `params.parent` : Window - optional, instance of parent (owner window). When owner will be closed or minimized this window will be closed/minimized too.
-  * `params.caption` : string - optional, window caption (or title).
-  * `params.x` : integer - optional, screen pixels, horizontal position of the window on screen;
-  * `params.y` : integer - optional, screen pixels, vertical position of the window from the top of the screen;
-  * `params.width` : integer - screen pixels, window width;
-  * `params.height` : integer - screen pixels, window height;
-  * `params.client` : true | false - if `true` then x,y,w,h are coordinates of desired window client box on the screen;
-  * `params.alignment` : integer - optional, \[1 to 9\] alignment of the window on monitor, if \[-1 to -9\] and parent is provided then it aligns the window against parent window. (1 bottom left corner, 2 bottom middle, 3 bottom right corner, 4 middle left, 5 center, 6 middle right, 7 top left corner, 8 top middle, 9 top right corner)
-  * `params.screen` : integer - optional, number of monitor on multi-home systems.
-  * `params.state` : - optional - window state, is one of:
+  * `parent` : Window - optional, instance of parent (owner window). When owner will be closed or minimized this window will be closed/minimized too.
+  * `caption` : string - optional, window caption (or title).
+  * `x` : integer - optional, screen pixels, horizontal position of the window on screen;
+  * `y` : integer - optional, screen pixels, vertical position of the window from the top of the screen;
+  * `width` : integer - screen pixels, window width;
+  * `height` : integer - screen pixels, window height;
+  * `client` : true | false - if `true` then x,y,w,h are coordinates of desired window client box on the screen;
+  * `alignment` : integer - optional, \[1 to 9\] alignment of the window on monitor, if \[-1 to -9\] and parent is provided then it aligns the window against parent window. (1 bottom left corner, 2 bottom middle, 3 bottom right corner, 4 middle left, 5 center, 6 middle right, 7 top left corner, 8 top middle, 9 top right corner)
+  * `screen` : integer - optional, number of monitor on multi-home systems.
+  * `state` : - optional - window state, is one of:
 
     * `Window.WINDOW_SHOWN` - default state
     * `Window.WINDOW_MINIMIZED`
@@ -37,8 +37,8 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
     * `Window.WINDOW_HIDDEN`
     * `Window.WINDOW_FULL_SCREEN`
 
-  * `params.url` : string - optional, window html source code file.
-  * `params.parameters` : array | string | object, ... - optional, extra parameters to pass to the new window.
+  * `url` : string - optional, window html source code file.
+  * `parameters` : array | string | object, ... - optional, extra parameters to pass to the new window.
 
 ## properties:
  
@@ -148,7 +148,7 @@ NOTE: the _window_ below is an instance of Sciter's Window class - e.g. `Window.
     _x_, _y_, _width_, _height_ are in DIPs - device independent pixels (a.k.a. CSS pixels).
 
 
-  * ### `window.selectFile({params})`
+  * ### `window.selectFile({params:object})`
    
    file open/save dialog, params is an object with the fields:
 

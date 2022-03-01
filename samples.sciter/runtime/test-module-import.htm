@@ -1,0 +1,42 @@
+<html>
+<head>
+<script type="module">
+
+import * as Sciter from "@sciter";
+
+document.on("ready", async function test() {
+    console.log("------------------------------------------");
+    console.log("Synchronous module import");
+    const syncModule = Sciter.import("module.js");
+
+    console.log("module.add(40, 2) = ", syncModule.add(40, 2));
+    console.log("module.sub(40, 2) = ", syncModule.sub(40, 2));
+
+    console.log("module.Operations.add(40, 2) = ", syncModule.Operations.add(40, 2));
+    console.log("module.Operations.sub(40, 2) = ", syncModule.Operations.sub(40, 2));
+
+    console.log("------------------------------------------");
+    console.log("Asynchronous module import");
+    const asyncModule = await import("module.js");
+
+    console.log("module.add(40, 2) = ", asyncModule.add(40, 2));
+    console.log("module.sub(40, 2) = ", asyncModule.sub(40, 2));
+
+    console.log("module.Operations.add(40, 2) = ", asyncModule.Operations.add(40, 2));
+    console.log("module.Operations.sub(40, 2) = ", asyncModule.Operations.sub(40, 2));
+
+    console.log("------------------------------------------");
+    console.log("Synchronous module import (error)");
+    const syncModuleError = Sciter.import("module-error.js");
+    console.log("module.add(40, 2) = ", syncModuleError.add(40, 2));
+
+    console.log("------------------------------------------");
+    console.log("Asynchronous module import (error)");
+    const asyncModuleError = await import("module-error.js");
+    console.log("module.add(40, 2) = ", asyncModuleError.add(40, 2));
+});
+
+</script>
+</head>
+<body />
+</html>

@@ -23,14 +23,16 @@ String, readonly, QuickJS version
 That is the synchronous equivalent of standard JS [`import()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#dynamic_imports), so it can be used synchronously as
 
 ```JS
-let module = sctr.import('modules/my-module.js');
+const module = sctr.import('my-module.js');
 ```
 
 That is essentially the dynamic equivalent of static import
 
 ```JS
-import * as module from 'modules/my-module.js';
+import * as module from 'my-module.js';
 ```
+
+For more information, check the `samples.sciter/runtime` demo.
 
 ### `sctr.loadLibrary("name"): any`
 

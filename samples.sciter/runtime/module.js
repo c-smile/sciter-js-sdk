@@ -15,3 +15,7 @@ export class Operations {
         return a - b;
     }
 }
+
+export default function greet(name) {
+    return `hello ${name}`;
+}

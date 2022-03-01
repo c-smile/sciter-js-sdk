@@ -20,12 +20,14 @@ String, readonly, QuickJS version
 
 ### `sctr.import(path:string):object`
 
-That is synchronous equivalent of standard JS [`import()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#dynamic_imports), so it can be used sycnhronously as 
+That is the synchronous equivalent of standard JS [`import()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#dynamic_imports), so it can be used synchronously as
 
 ```JS
 let module = sctr.import('modules/my-module.js');
 ```
-That is essentially dynamic equivalent of static 
+
+That is essentially the dynamic equivalent of static import
+
 ```JS
 import * as module from 'modules/my-module.js';
 ```

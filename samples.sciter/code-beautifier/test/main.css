@@ -1,0 +1,47 @@
+
+@import url(printview/print.css);
+
+body { 
+  flow:stack;
+  margin:0; 
+}
+
+frame#content { size:*; overflow: scroll-indicator; padding-bottom: 4em; }
+frame#overlay { size:*; }
+
+#nav {
+  flow: vertical;
+  display: block;
+  size: *;
+}
+
+#search {
+padding:.5em 1em;
+margin: 1em;
+width: *;
+}
+
+#folder {
+padding-top: 2em;
+display: block;
+overflow: scroll-indicator;
+font: system;
+border:none;
+size: *;
+}
+
+#folder > option:not(:node){
+  margin-left:16dip;
+}
+
+#folder option[index]{ font-weight:bold; }
+
+#result {
+  padding-top: 2em;
+  display: block;
+  overflow: scroll-indicator;
+  font: system;
+  border:none;
+  size: *;
+}
+

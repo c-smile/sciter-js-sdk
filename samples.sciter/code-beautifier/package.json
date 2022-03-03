@@ -1,0 +1,6 @@
+{
+  "name": "code-beautifier",
+  "devDependencies": {
+    "prettier": "2.5.1"
+  }
+}

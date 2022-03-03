@@ -1,16 +1,17 @@
 # HTML
 
-Sciter extends regular HTML with elements, features and easier ways of doing the same things.
+Sciter extends regular HTML with elements, features and easier ways of doing things.
 
-The following is a table of the what can be done in 'Sciter-way' instead (can be mixed)  
+The table shows how things can be done the Sciter way:
 
 | Sciter | Regular HTML |
 | ------ | ------------ |
-| `<input #id />`   | `<input id="id" />`
-| `<input .class />`| `<input class="class" />`
-| `<input\|text />` | `<input type="text" />`
-| `<input(name) />` | `<input name="name" />`
+| `<input #id />`    | `<input id="id" />`
+| `<input .class />` | `<input class="class" />`
+| `<input \|text />` | `<input type="text" />`
+| `<input (name) />` | `<input name="name" />`
 
+_NOTE_ In Sciter, the space after the element is optional. Regular html and Sciter html can be mixed in the same document.
 
 ## Elements
 
@@ -68,8 +69,8 @@ Window (`<html>`) specific attributes
 
 ## Misc
 
-- Sciter allow the use of the custom element tags, make sure to give it a default style.
+- **Attribute events (onclick..) are not supported. (unless you implement method for it to work).**
+- Sciter allows the use of custom element tags, make sure to give them a default style.
 - You can show popup with [`Element.popup`](Element.md#popup).
-- Attribute events (onclick..) are not supported. (unless you implement method for it to work).
 - String `&platform-cmd-mod;` is replaced with `Ctrl/CMD...`
 - [List of input elements](https://sciter.com/developers/for-web-programmers/input-elements-map/)

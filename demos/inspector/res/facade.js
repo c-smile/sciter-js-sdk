@@ -57,3 +57,10 @@ document.on("^click", "[href]", function(evt, hlink) {
   evt.stopPropagation();
   hlink.dispatchEvent(new Event("file-show", {bubbles: true, detail: data}), true);
 });
+
+document.on("keyup", function(event) {
+  // compare key
+  if (event.code === 'Escape') {
+    Window.this.close();
+  }
+});

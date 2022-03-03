@@ -1,4 +1,8 @@
-<html theme="light">
+<html
+  theme="light"
+  window-width="1200"
+  window-height="860"
+>
     <head>
         <title>Test</title>
         <style>
@@ -21,28 +25,25 @@
 
         </style>
         <script>
+          let theme = "default-unisex/theme.css";
 
-          var theme = "default-unisex/theme.css";
+          document.on("input", "form#config", function(evt, form) {
+              const config = form.value;
+              const frame = document.$("frame");
+              frame.frame.document.attributes["ui-size"] = form.value.size;
+              document.attributes.theme = form.value.mode;
 
-          document.on("input","form#config", function(evt,form) {
-            var config = form.value;
-            var frame = document.$("frame");
-            frame.frame.document.attributes["ui-size"] = form.value.size;
-            document.attributes["theme"] = form.value.mode;
-
-            if(theme != config.theme) {
-              theme = config.theme;
-              frame.attributes["content-style"] = theme;
-              frame.frame.loadFile(frame.frame.document.url());
-            }
-
-          }); 
+              if (theme != config.theme) {
+                  theme = config.theme;
+                  frame.attributes["content-style"] = theme;
+                  frame.frame.loadFile(frame.frame.document.url());
+              }
+          });
 
           /*document.on("click","radio(size)", function() {
             self.attributes["ui-size"] = document.$("form#config").size;
-          });*/ 
+          });*/
 
- 
         </script>
     </head>
     <body>

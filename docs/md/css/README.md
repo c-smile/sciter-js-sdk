@@ -114,15 +114,41 @@ div {
 }
 ```
 
-## Constents
+## Constants
 
-Constents can be declared globally as followed:
+Constants can be declared globally as followed:
 
 ```CSS
 @const DARK : #222;
 body {
   background: @DARK;
 }
+```
+
+## Media Queries
+
+Media queries behave a bit differently in Sciter.js when it comes to syntax and updating behavior.
+
+#### Differences from browser behavior
+* Minimum and maximum constraints (like `width < 600px` and `width >= 600px`) trigger on _screen_ size changes, _not_ on window size changes like in browsers. For window size change behavior, check [this example](https://sciter.com/forums/topic/media-with-css-only/#post-76753)
+
+#### Syntax
+The media query expression syntax is based on Javascript syntax:
+  * `and` is `&&`
+  * `min-width: 600px` is `width >= 600px`
+  * E.g. `@media screen and (min-width: 600px)` becomes `@media screen && (width >= 600px)` in Sciter.js
+
+You can even declare your own variables, dynamically set and change their values through Javascript, and put conditions on what CSS rules to run depending on the value:
+
+```CSS
+@media (viewport == "narrow") { div:nth-child(1n) { clear:after; } }
+@media (viewport == "normal") { div:nth-child(2n) { clear:after; } }
+@media isMobile { .columns { flow: vertical; } }
+```
+```javascript
+// set value in JS
+Window.this.mediaVars({ viewport: "normal" });
+Window.this.mediaVars({ isMobile: false });
 ```
 
 ## StyleSet

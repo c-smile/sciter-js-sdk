@@ -3,24 +3,33 @@
         <title>Test</title>
         <style>
 
-            div { size:50pt; background:gold; }
+            div { size:6cm; background:gold; }
 
         </style>
         <script>
 
+const div = document.$("div");
+
 // use of Length units:
 // 70pt - is a value instanceof Length
 
-document.$("div").style.width = 70pt;
+div.style.width = 6cm + 30mm; // Operators demo
 
-console.log(
-    document.$("div").style.width.units,
-    document.$("div").style.width );
+console.log( div.style.width.units, div.style.width, -div.style.width );
+
+div.content(<>
+    <p>width = { div.style.width} </p>
+    <p>height = { div.style.height} </p>
+    <p>width > height = { div.style.width > div.style.height } </p>
+</>)
 
 
         </script>
     </head>
     <body>
     <div>test</div>
+
+    <p>Note: the div should be of 9cm x 6cm (meauserd on screen surface by a ruler)
+
     </body>
 </html>

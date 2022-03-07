@@ -1,0 +1,76 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended", "google"
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "plugins": [
+        "html"
+    ],
+    "rules": {
+        "indent": [
+            "error",
+            2, {
+                "SwitchCase": 1
+            }
+        ],
+        "linebreak-style": [
+            "off",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "double"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "no-unused-vars": "warn",
+        "max-len": [
+            "warn",
+            120
+        ],
+        "new-cap": "error",
+        "no-multi-spaces": "warn",
+        "brace-style": [
+            "error",
+            "stroustrup"
+        ],
+        "curly": [
+            "error",
+            "multi-or-nest"
+        ],
+        "spaced-comment": "warn",
+        "no-else-return": "off",
+        "no-empty-function": "error",
+        "no-lone-blocks": "error",
+        "no-mixed-operators": "error",
+        "block-spacing": "error",
+        "eol-last": "error",
+        "arrow-spacing": "error",
+        "comma-spacing": "error",
+        "space-before-blocks": "error",
+        "no-inline-comments": "error",
+        "space-in-parens": [
+            "error",
+            "never"
+        ],
+        "camelcase": "error",
+        "no-multiple-empty-lines": "error",
+        "no-unused-private-class-members": "off",
+        "no-template-curly-in-string": "error",
+        "no-invalid-this": "off",
+        "require-jsdoc": "off",
+        "valid-jsdoc": "error"
+    }
+}

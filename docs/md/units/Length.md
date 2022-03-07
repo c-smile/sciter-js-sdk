@@ -32,7 +32,7 @@ List of supported units, standard CSS units:
 Sciter specific units 
 
 * `ppx` - physical pixels, always integer number.
-* `dip` - device independent pixel (1/96 of inch(n):length` `px` and `dip` are equivalents in default Sciter configuration. 
+* `dip` - device independent pixel (1/96 of inch(n):length `px` and `dip` are equivalents in default Sciter configuration. 
 * `fx` - Sciter's flex units. `style.width = 1fx` in script is equivalent to `width:1*` (or just `width:*`) in CSS.
 
 ### properties:
@@ -55,25 +55,20 @@ returns number of pixels.
 
 returns string representation.
 
-* `length.add(length):length`
+### operators:
 
-sum of two lengths. Lengths can be of different units, this:
+Length units support following operators:
 
-```const sum = 12px.add(24pt);```
-
-is legal, result will be in `px` units.
-
-* `length.sub(length):length`
-
-subtraction of two lengths. Lengths can be of different units.
-
-* `length.mul(number):length`
-
-multiplies the length by number.
-
-* `length.div(number):length`
-
-divides the length by number.
+* `a * n` - multiplication by number;
+* `a / n` - division by number; 
+* `a + b` - sum of two lengths;
+* `a - b` - substraction of two lengths;
+* `a == b` - equality of two lengths;
+* `a < b`,`a > b`, `a <= b`, `a >= b` - comparison of two lengths;
+* `+a` - unary plus operator;
+* `-a` - unary minus operator;
+* `++a`, `a++` - increment operator;
+* `--a`, `a--` - decrement operator;
 
 ### static methods:
 

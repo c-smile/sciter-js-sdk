@@ -125,7 +125,7 @@
 
       template<typename T> value(const T& v) : value(setter(v)) {;}
           
-      static value currency( INT64 v )  { value t; ValueInt64DataSet(&t, v, T_CURRENCY, 0); return t;}
+      static value big_int( INT64 v )  { value t; ValueInt64DataSet(&t, v, T_BIG_INT, 0); return t;}
       static value date( INT64 v, bool is_utc = true /* true if ft is UTC*/ )      { value t; ValueInt64DataSet(&t, v, T_DATE, is_utc);  return t;}
 #ifdef WIN32
       static value date( FILETIME ft, bool is_utc = true /* true if ft is UTC*/ )  { value t; ValueInt64DataSet(&t, *((INT64*)&ft), T_DATE, is_utc); return t;} 
@@ -246,7 +246,7 @@
       bool is_symbol() const { return t == T_STRING && u == UT_STRING_SYMBOL; }
       bool is_error_string() const { return t == T_STRING && u == UT_STRING_ERROR; }
       bool is_date() const { return t == T_DATE; }
-      bool is_currency() const { return t == T_CURRENCY; }
+      bool is_big_int() const { return t == T_BIG_INT; }
       bool is_map() const { return t == T_MAP; }
       bool is_array() const { return t == T_ARRAY; }
       bool is_array_like() const { return t == T_ARRAY || (t == T_OBJECT && u == UT_OBJECT_ARRAY); }

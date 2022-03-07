@@ -7,6 +7,7 @@
             name-extra: 12rad;            
             date: 2022-01-01;
             num: 1234;
+            bigint: 1234n;
             length: 12pt;  
             string: "string";
             arr1: [1, 2, 3, 4];
@@ -24,6 +25,7 @@
 
         console.assert( typeof data.string == "string", "String?");
         console.assert( typeof data.num == "number", "Number?");
+        console.assert( typeof data.bigint == "bigint", "BigInt?");
         console.assert( data.date instanceof Date, "Date?");
         console.assert( data.length instanceof Length, "Length?");
         console.assert( data["name-extra"] instanceof Angle, "Angle?");

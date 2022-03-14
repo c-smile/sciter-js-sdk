@@ -1,3 +1,17 @@
+## 4.4.8.33
+
+### Fixes:
+
+* `import "module"` -> `import "module.js"` substitution fix;
+* Fix of https://sciter.com/forums/topic/style-set-specificity-breaking-change/ ;
+* [reactor] `<div state-html={...} />` update optimization;
+* [CSS] `attr(window-frame): "...";` fix;
+
+### New features:
+
+* + `[globalThis.]evalModule("module text");` - like `eval("text")` but "module text" is parsed by module rules;
+* + [virtual-list] `scrollBy(deltay)` method;
+
 ## 4.4.8.32
 
 ### Fixes:

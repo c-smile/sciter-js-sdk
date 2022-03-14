@@ -1,3 +1,32 @@
+## 4.4.8.33
+
+### Fixes:
+
+* `import "module"` -> `import "module.js"` substitution fix;
+* Fix of https://sciter.com/forums/topic/style-set-specificity-breaking-change/ ;
+* [reactor] `<div state-html={...} />` update optimization;
+* [CSS] `attr(window-frame): "...";` fix;
+
+### New features:
+
+* + `[globalThis.]evalModule("module text");` - like `eval("text")` but "module text" is parsed by module rules;
+* + [virtual-list] `scrollBy(deltay)` method;
+
+## 4.4.8.32
+
+### Fixes:
+
+* `<input|time no-seconds />` fix.
+* fix of positioned double painting: https://sciter.com/forums/topic/problem-with-4-4-8-30/
+* `parseValue()` support of BigInt's
+* SDK sdk[.js]/include/value.h VALUE::T_CURRENCY is renamed to VALUE::T_BIG_INT - that allows to pass int64 from native code to JS as BigInt value.
+* [windows] fix of 1px border around maximized window;
+* [macos] navigation shortcuts (CMD+LEFT/RIGHT, OPTION+UP/DOWN etc.) 
+* behavior:selection fix;
+* Skia backend, fix of bitmap_graphics, text rendering.
+* `flow:horizontal;` layout fix;
+* `@media width > 600px {...}`; 
+
 ## 4.4.8.31
 
 ### New features:

@@ -1,77 +1,77 @@
 class Calculator {
-    constructor(previousOperandTextElement, currentOperandTextElement) {
-        this.previousOperandTextElement = previousOperandTextElement;
-        this.currentOperandTextElement = currentOperandTextElement;
-        this.clear();
-    }
+  constructor(previousOperandTextElement, currentOperandTextElement) {
+    this.previousOperandTextElement = previousOperandTextElement;
+    this.currentOperandTextElement = currentOperandTextElement;
+    this.clear();
+  }
 
-    clear() {
+  clear() {
         this.currentOperand = "";
         this.previousOperand = "";
-        this.operation = undefined;
-    }
+    this.operation = undefined;
+  }
 
-    delete() {
-        this.currentOperand = this.currentOperand.toString().slice(0, -1);
-    }
+  delete() {
+    this.currentOperand = this.currentOperand.toString().slice(0, -1);
+  }
 
-    appendNumber(number) {
+  appendNumber(number) {
         if (number === "." && this.currentOperand.includes(".")) return;
-        this.currentOperand = this.currentOperand.toString() + number.toString();
-    }
+    this.currentOperand = this.currentOperand.toString() + number.toString();
+  }
 
-    chooseOperation(operation) {
+  chooseOperation(operation) {
         if (this.currentOperand === "") return;
         if (this.previousOperand !== "")
-            this.compute();
+      this.compute();
 
-        this.operation = operation;
-        this.previousOperand = this.currentOperand;
+    this.operation = operation;
+    this.previousOperand = this.currentOperand;
         this.currentOperand = "";
-    }
+  }
 
-    compute() {
-        let computation;
+  compute() {
+    let computation;
         const prev = Number.parseFloat(this.previousOperand);
         const current = Number.parseFloat(this.currentOperand);
         if (Number.isNaN(prev) || Number.isNaN(current)) return;
-        switch (this.operation) {
+    switch (this.operation) {
             case "+":
-                computation = prev + current;
-                break;
+        computation = prev + current;
+        break;
             case "-":
-                computation = prev - current;
-                break;
+        computation = prev - current;
+        break;
             case "*":
-                computation = prev * current;
-                break;
+        computation = prev * current;
+        break;
             case "÷":
-                computation = prev / current;
-                break;
-            default:
-                return;
-        }
-
-        this.currentOperand = computation;
-        this.operation = undefined;
-        this.previousOperand = "";
+        computation = prev / current;
+        break;
+      default:
+        return;
     }
 
-    getDisplayNumber(number) {
-        const stringNumber = number.toString();
+    this.currentOperand = computation;
+    this.operation = undefined;
+        this.previousOperand = "";
+  }
+
+  getDisplayNumber(number) {
+    const stringNumber = number.toString();
         const integerDigits = Number.parseFloat(stringNumber.split(".")[0]);
         const decimalDigits = stringNumber.split(".")[1];
         const integerDisplay = Number.isNaN(integerDigits) ? "" : integerDigits.toLocaleString("en", {maximumFractionDigits: 0});
         if (decimalDigits != undefined)
-            return `${integerDisplay}.${decimalDigits}`;
+      return `${integerDisplay}.${decimalDigits}`;
 
-        return integerDisplay;
+      return integerDisplay;
     }
 
-    updateDisplay() {
+  updateDisplay() {
         this.currentOperandTextElement.textContent = this.getDisplayNumber(this.currentOperand);
         this.previousOperandTextElement.textContent = this.operation == undefined ? "" : `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`;
-    }
+  }
 }
 
 const numberButtons = document.querySelectorAll("[data-number]");
@@ -87,30 +87,30 @@ const calculator = new Calculator(previousOperandTextElement, currentOperandText
 for (const button of numberButtons) {
     button.addEventListener("click", () => {
         calculator.appendNumber(button.textContent);
-        calculator.updateDisplay();
+    calculator.updateDisplay();
     });
 }
 
 for (const button of operationButtons) {
     button.addEventListener("click", () => {
         calculator.chooseOperation(button.textContent);
-        calculator.updateDisplay();
+    calculator.updateDisplay();
     });
 }
 
 equalsButton.addEventListener("click", () => {
-    calculator.compute();
-    calculator.updateDisplay();
+  calculator.compute();
+  calculator.updateDisplay();
 });
 
 allClearButton.addEventListener("click", () => {
-    calculator.clear();
-    calculator.updateDisplay();
+  calculator.clear();
+  calculator.updateDisplay();
 });
 
 deleteButton.addEventListener("click", () => {
-    calculator.delete();
-    calculator.updateDisplay();
+  calculator.delete();
+  calculator.updateDisplay();
 });
 
 //console.log("Hello!"); - should show that black scary thing

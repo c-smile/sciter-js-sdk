@@ -39,25 +39,20 @@ returns number of radians.
 
 returns string representation.
 
-* `angle.add(angle):angle`
+### operators:
 
-sum of two angles. Angles can be of different units, this:
+Angle units support following operators:
 
-```const sum = 12deg.add(1rad);```
-
-is legal, result will be in `deg` units.
-
-* `angle.sub(angle):angle`
-
-subtraction of two angles. Angles can be of different units.
-
-* `angle.mul(number):angle`
-
-multiplies the angle by number.
-
-* `angle.div(number):angle`
-
-divides the angle by number.
+* `a * n` - multiplication by number;
+* `a / n` - division by number; 
+* `a + b` - sum of two lengths;
+* `a - b` - substraction of two lengths;
+* `a == b` - equality of two lengths;
+* `a < b`,`a > b`, `a <= b`, `a >= b` - comparison of two lengths;
+* `+a` - unary plus operator;
+* `-a` - unary minus operator;
+* `++a`, `a++` - increment operator;
+* `--a`, `a--` - decrement operator;
 
 ### static methods:
 

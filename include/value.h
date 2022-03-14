@@ -29,7 +29,7 @@ typedef enum VALUE_TYPE
     T_FLOAT = 4,
     T_STRING = 5,
     T_DATE = 6,     // INT64 - contains a 64-bit value representing the number of 100-nanosecond intervals since January 1, 1601 (UTC), a.k.a. FILETIME on Windows
-    T_CURRENCY = 7, // INT64 - 14.4 fixed number. E.g. dollars = int64 / 10000; 
+    T_BIG_INT = 7,  // INT64
     T_LENGTH = 8,   // length units, value is int or float, units are VALUE_UNIT_TYPE
     T_ARRAY = 9,
     T_MAP = 10,
@@ -171,12 +171,12 @@ UINT SCAPI ValueIntData( const VALUE* pval, INT* pData );
 UINT SCAPI ValueIntDataSet( VALUE* pval, INT data, UINT type, UINT units );
 
 /**
- * ValueInt64Data - retreive 64bit integer data of T_CURRENCY and T_DATE values.
+ * ValueInt64Data - retreive 64bit integer data of T_BIG_INT and T_DATE values.
  */
 UINT SCAPI ValueInt64Data( const VALUE* pval, INT64* pData );
 
 /**
- * ValueInt64DataSet - sets 64bit integer data of T_CURRENCY and T_DATE values.
+ * ValueInt64DataSet - sets 64bit integer data of T_BIG_INT and T_DATE values.
  */
 UINT SCAPI ValueInt64DataSet( VALUE* pval, INT64 data, UINT type, UINT units );
 

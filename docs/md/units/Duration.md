@@ -35,25 +35,21 @@ returns number of milliseconds in duration.
 
 returns string representation of the duration, for example "12s".
 
-* `duration.add(duration):duration`
+### operators:
 
-sum of two durations. Durations can be of different units, this:
+Duration units support following operators:
 
-```const sum = 12s.add(300ms);```
+* `a * n` - multiplication by number;
+* `a / n` - division by number; 
+* `a + b` - sum of two lengths;
+* `a - b` - substraction of two lengths;
+* `a == b` - equality of two lengths;
+* `a < b`,`a > b`, `a <= b`, `a >= b` - comparison of two lengths;
+* `+a` - unary plus operator;
+* `-a` - unary minus operator;
+* `++a`, `a++` - increment operator;
+* `--a`, `a--` - decrement operator;
 
-is legal, result will be in `s` units.
-
-* `duration.sub(duration):duration`
-
-subtraction of two durations. Durations can be of different units.
-
-* `duration.mul(number):duration`
-
-multiplies the duration by number.
-
-* `duration.div(number):duration`
-
-divides the duration by number.
 
 ### static methods:
 

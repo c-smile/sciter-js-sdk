@@ -121,7 +121,7 @@ In some cases you may need to set HTML content of an element from a string. In o
 
 ```JavaScript
 const htmlContent = "<b>some</b> literal <i>HTML</i>";
-<div state-html={Content} />
+<div state-html={htmlContent} />
 ```
 
 That above will generate 

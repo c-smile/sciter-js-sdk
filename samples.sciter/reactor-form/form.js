@@ -1,7 +1,7 @@
 ﻿
 
 export function FormError(props) {
-  const name = props.name;
+  const name = props.key;
   const error = Form.instance.errors?.[name]; 
   if( error ) 
     return <div.error for={name}>⇐ {error}</div>;

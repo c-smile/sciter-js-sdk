@@ -33,20 +33,20 @@ document.body.append(
     <Form #theform value={initialValue} validate={validate}>
       <label>email</label>
         <input|text(email) />
-          <FormError(email) />
+          <FormError key="email" />
       
       <label>password</label>
         <input|password(password) />
-          <FormError(password) />
+          <FormError key="password" />
       
       <label>sex</label>
          <group><button(sex)|radio value="male">Male</button>
                 <button(sex)|radio value="female">Female</button></group>
-           <FormError(sex) />
+           <FormError key="sex" />
       
       <label>description</label>
          <textarea(description) />  
-           <FormError(description) />
+           <FormError key="description" />
 
       <button|submit>Submit</button>
     </Form>);

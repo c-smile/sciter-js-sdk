@@ -59,10 +59,12 @@ export class ChannelLog extends Element {
       // populate textarea with the next previous eval (if any)
       const prev_eval = this.getNextPrevEval();
       textarea.value = prev_eval;
+      return true; // consume
     } else if (evt.code === "ArrowDown") {
       // populate textarea with next eval
       const next_eval = this.getNextEval();
       textarea.value = next_eval; // set to next eval in history
+      return true; // consume
     }
     if (evt.code != "Enter") return;
     if (evt.shiftKey || evt.ctrlKey) return;

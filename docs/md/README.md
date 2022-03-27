@@ -56,7 +56,7 @@
 
 * ### `JSON.parse(text, [reviver:function]): JSON` Parses a JSON string, constructing the value or object described by the string. An optional reviver function can be provided to perform a transformation on the resulting object before it is returned.
 
-* ### `JSON.stringify(object, [replacer:function])` Converts a JavaScript object or value to a JSON string, optionally replacing values if a replacer function is specified or optionally including only the specified properties if a replacer array is specified.
+* #### `JSON.stringify(object, [replacer:function], [indent:string])` Converts a JavaScript object or value to a JSON string, optionally replacing values if a replacer function is specified or optionally including only the specified properties if a replacer array is specified.
 
 ## global properties
 

@@ -5,11 +5,12 @@ Engine does the following in window construction phase:
 1. creates the window (HWND) with undetermined dimensions;
 
 2. Loads document:
-2. a. parses the document;
-2. b. loads styles
-2. c. loads JS, this also runs code on zero level (initialization of variables, functions, etc);
-2. d. assigns scripting behaviors according to CSS declarations;
-2. e. runs `document.ready`, you can use here window.move(x,y,w,h) if you know window dimensions.
+    1. _steps:_
+        1. parses the document;
+        2. loads styles
+        3. loads JS, this also runs code on zero level (initialization of variables, functions, etc);
+        4. assigns scripting behaviors according to CSS declarations;
+        5. runs `document.ready`, you can use here window.move(x,y,w,h) if you know window dimensions.
 
 3. Sets window dimensions: either from attributes of root <html> if they were not set in script before.
 

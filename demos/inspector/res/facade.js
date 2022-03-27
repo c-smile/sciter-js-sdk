@@ -1,14 +1,20 @@
-
 import {$, $$, on} from "@sciter";
 import {serve} from "server.js";
 import {ChannelDriver} from "driver.js";
-
 import {ChannelList} from "channel-list.js";
 import {ChannelView} from "channel-view.js";
+import * as Settings from "settings.js";
+
+document.ready = function() {
+  serve(ChannelDriver.factory);
+
+  Settings.init("inspector");
+};
 
 Object.defineProperty(Array.prototype, "last", {get() {
   return this[this.length - 1];
 }});
+
 Object.defineProperty(Array.prototype, "first", {get() {
   return this[0];
 }});
@@ -41,10 +47,6 @@ export class App extends Element {
   }
 }
 
-document.ready = function() {
-  serve(ChannelDriver.factory);
-};
-
 // global hyperlink handler
 document.on("^click", "[href]", function(evt, hlink) {
   const data = {
@@ -56,4 +58,9 @@ document.on("^click", "[href]", function(evt, hlink) {
   hlink.dispatchEvent(new Event("file-show", {bubbles: true, detail: data}), true);
 });
 
-
+document.on("keyup", function(event) {
+  // compare key
+  if (event.code === 'Escape') {
+    Window.this.close();
+  }
+});

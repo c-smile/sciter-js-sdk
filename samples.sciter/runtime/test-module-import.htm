@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>Test module import</title>
+<script type="module">
+
+import * as Sciter from "@sciter";
+
+document.on("ready", async function test() {
+    log("------------------------------------------");
+    log("Synchronous module import");
+    log("------------------------------------------");
+    const syncModule = Sciter.import("module.js");
+
+    // exported functions
+    log("module.add(40, 2) =", syncModule.add(40, 2));
+    log("module.sub(40, 2) =", syncModule.sub(40, 2));
+
+    // exported class
+    log("module.Operations.add(40, 2) =", syncModule.Operations.add(40, 2));
+    log("module.Operations.sub(40, 2) =", syncModule.Operations.sub(40, 2));
+
+    // default export
+    log("module.default(\"Andrew\") =", syncModule.default("Andrew"));
+
+    log("------------------------------------------");
+    log("Asynchronous module import");
+    log("------------------------------------------");
+    const asyncModule = await import("module.js");
+
+    // exported functions
+    log("module.add(40, 2) =", asyncModule.add(40, 2));
+    log("module.sub(40, 2) =", asyncModule.sub(40, 2));
+
+    // exported class
+    log("module.Operations.add(40, 2) =", asyncModule.Operations.add(40, 2));
+    log("module.Operations.sub(40, 2) =", asyncModule.Operations.sub(40, 2));
+
+    // default export
+    log("module.default(\"Andrew\") =", asyncModule.default("Andrew"));
+
+    log("------------------------------------------");
+    log("Synchronous module import (error) - check inspector for error");
+    log("------------------------------------------");
+    const syncModuleError = Sciter.import("module-error.js");
+    log("module.add(40, 2) =", syncModuleError.add(40, 2));
+
+    log("------------------------------------------");
+    log("Asynchronous module import (error) - check inspector for error");
+    log("------------------------------------------");
+    const asyncModuleError = await import("module-error.js");
+    log("module.add(40, 2) =", asyncModuleError.add(40, 2));
+});
+
+function log(arg1, arg2 = "") {
+    document.$("plaintext").append(arg1 + " " + arg2);
+    console.log(arg1, arg2);
+}
+
+</script>
+</head>
+<body>
+    <plaintext />
+</body>
+</html>

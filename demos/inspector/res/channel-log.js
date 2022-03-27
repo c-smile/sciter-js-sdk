@@ -22,6 +22,7 @@ export class ChannelLog extends Element {
   constructor(props) {
     super();
     this.channel = props.channel;
+    this.eval_history_index = -1;
   }
 
   componentDidMount() {
@@ -54,16 +55,29 @@ export class ChannelLog extends Element {
   }
 
   ["on ^keydown at textarea#toeval"](evt, textarea) {
+    if (evt.code === "ArrowUp") {
+      // populate textarea with the next previous eval (if any)
+      const prev_eval = this.getNextPrevEval();
+      textarea.value = prev_eval;
+      return true; // consume
+    } else if (evt.code === "ArrowDown") {
+      // populate textarea with next eval
+      const next_eval = this.getNextEval();
+      textarea.value = next_eval; // set to next eval in history
+      return true; // consume
+    }
     if (evt.code != "Enter") return;
     if (evt.shiftKey || evt.ctrlKey) return;
     const toeval = textarea.value.trim();
-    if (!toeval) return;
+    if (!toeval) return;  // don't eval empty string
     this.channel.theirLogs.push({
       severity: 0,
       subsystem: 4, // "eval"
       items: [toeval],
     });
     this.channel.notify("toeval", toeval);
+    textarea.value = ""; // clear textarea after eval
+    this.eval_history_index = -1; // reset eval history index
     return true; // do not propagate, consumed
   }
 
@@ -74,6 +88,32 @@ export class ChannelLog extends Element {
       text += opt.textContent;
     }
     Clipboard.writeText(text);
+  }
+
+  get evals() {
+    return this.channel.theirLogs.map((item) => {
+      if (item.subsystem != 4) return null;
+      return item.items[0];
+    }).filter((item) => item);
+  }
+
+  getEvalAtIndex(index) {
+    // get the nth eval from the end
+    const evals = this.evals;
+    if (!evals.length) return null;
+    return evals[evals.length - 1 - index];
+  }
+
+  getNextEval() {
+    // get the next eval in history
+    this.eval_history_index = Math.max(this.eval_history_index - 1, -1); // don't go below -1 (aka. no previous eval)
+    return this.getEvalAtIndex(this.eval_history_index);
+  }
+
+  getNextPrevEval() {
+    // get the next previous eval in history
+    this.eval_history_index = Math.min(this.eval_history_index + 1, this.evals.length - 1); // don't go above the last eval
+    return this.getEvalAtIndex(this.eval_history_index);
   }
 
   ["on keydown"](evt) {

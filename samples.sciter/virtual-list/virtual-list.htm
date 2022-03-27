@@ -8,78 +8,81 @@ import {VirtualList} from "virtual-select.js";
 
 // select with virtual data source
 class List extends VirtualList {
+    list; // array of items
 
-  list; // array of items
+    this(props) {
+        const {list, ...rest} = props;
+        super.this(rest);
+        this.list = list;
+    }
 
-  this(props) { 
-    let {list, ...rest} = props;
-    super.this(rest); 
-    this.list = list;
-  }
+    itemAt(at) {
+        return this.list[at];
+    }
 
-  itemAt(at) { return this.list[at]; }
-  totalItems() { return this.list.length; }
-  indexOf(item) { return this.list.indexOf(item); }
+    totalItems() {
+        return this.list.length;
+    }
 
-  // overridable
-  renderItem(item, isCurrent, isSelected) {
-    return <option key={item.key} 
-                   state-current={isCurrent} 
-                   state-checked={isSelected}>{item.text}</option>;
-  }
+    indexOf(item) {
+        return this.list.indexOf(item);
+    }
+
+    // overridable
+    renderItem(item, isCurrent, isSelected) {
+        return <option key={item.key}
+            state-current={isCurrent}
+            state-checked={isSelected}>{item.text}</option>;
+    }
 }
-
 
 class App extends Element {
+    list = [];
 
-  list = [];
-
-  constructor() {
-    super();
-    //for(let n = 0; n < 1000; ++n) { 
+    constructor() {
+        super();
+    //for(let n = 0; n < 1000; ++n) {
     //  this.list.push({key:n, text:`option # ${n}`});
     //}
-  }
-
-  render() {
-    return <body>
-      <List id="list" list={this.list} />
-      <button#change-items>Change items</button>
-      <button#change-length>Change length of set</button>
-      <button#remove-item>Remove 10th item</button>
-      <button#populate>Populate set</button>
-    </body>
-  }
-
-  ["on input at #vselect"](evt, vselect) {
-    console.log("value change", vselect.value);
-  }
-
-  ["on click at button#change-items"]() {
-    for(let item of this.list) 
-      item.text += " changed";
-    this.componentUpdate();
-  }
-
-  ["on click at button#change-length"]() {
-    this.list.splice(500);
-    this.componentUpdate();
-  }
-
-  ["on click at button#remove-item"]() {
-    this.list.splice(10,1);
-    this.componentUpdate();
-  }
-
-  ["on click at button#populate"]() {
-    for(let n = 0; n < 1000; ++n) { 
-      this.list.push({key:n, text:`option # ${n}`});
     }
-    this.componentUpdate();
-  }
 
+    render() {
+        return <body>
+            <List id="list" list={this.list} />
+            <button#change-items>Change items</button>
+            <button#change-length>Change length of set</button>
+            <button#remove-item>Remove 10th item</button>
+            <button#populate>Populate set</button>
+        </body>;
+    }
+
+    ["on input at #vselect"](evt, vselect) {
+        console.log("value change", vselect.value);
+    }
+
+    ["on click at button#change-items"]() {
+        for (const item of this.list)
+            item.text += " changed";
+        this.componentUpdate();
+    }
+
+    ["on click at button#change-length"]() {
+        this.list.splice(500);
+        this.componentUpdate();
+    }
+
+    ["on click at button#remove-item"]() {
+        this.list.splice(10, 1);
+        this.componentUpdate();
+    }
+
+    ["on click at button#populate"]() {
+        for (let n = 0; n < 1000; ++n)
+            this.list.push({key: n, text: `option # ${n}`});
+
+        this.componentUpdate();
+    }
 }
-
 
 document.body.patch(<App/>);
 

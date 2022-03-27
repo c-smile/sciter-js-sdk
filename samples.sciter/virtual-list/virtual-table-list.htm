@@ -27,79 +27,82 @@ import {VirtualList} from "virtual-select.js";
 
 // select with virtual data source
 class VirtualTableBody extends VirtualList {
+    list; // array of items
 
-  list; // array of items 
+    this(props) {
+        this.list = props.list;
+    }
 
-  this(props) { 
-    this.list = props.list; 
-  }
+    itemAt(at) {
+        return this.list[at];
+    }
 
-  itemAt(at) { return this.list[at]; }
-  totalItems() { return this.list.length; }
-  indexOf(item) { return this.list.indexOf(item); }
+    totalItems() {
+        return this.list.length;
+    }
 
-  // overridable
-  renderItem(item, isCurrent, isSelected) {
-    return  <tr key={item.key} >
-                <td>{item.date}</td>
-                <td>{item.key}</td>
-                <td>{item.text}</td> 
-            </tr>;
-  }
+    indexOf(item) {
+        return this.list.indexOf(item);
+    }
 
-  renderList(items) // overridable
-  { 
-    return <tbody styleset={__DIR__ + "virtual-table.css#tbody"}>{ items }</tbody>; 
-  }
+    // overridable
+    renderItem(item, isCurrent, isSelected) {
+        return <tr key={item.key} >
+            <td>{item.date}</td>
+            <td>{item.key}</td>
+            <td>{item.text}</td>
+        </tr>;
+    }
 
+    renderList(items) // overridable
+    {
+        return <tbody styleset={__DIR__ + "virtual-table.css#tbody"}>{ items }</tbody>;
+    }
 }
 
 class App extends Element {
+    filter = "";
+    data = []; // full data set
+    list = []; // data to render
 
-  filter = "";
-  data = []; // full data set
-  list = []; // data to render
+    constructor() {
+        super();
+        for (let n = 0; n < 1000; ++n)
+            this.data.push({key: n, text: `test # ${n}`, date: new Date().toLocaleString()});
+        this.list = this.data; // render full list initially
+    }
 
-  constructor() {
-    super();
-    for(let n = 0; n < 1000; ++n)
-      this.data.push({key:n, text: `test # ${n}`, date: new Date().toLocaleString()});
-    this.list = this.data; // render full list initially
-  }
-
-  render() {
-
-    return  <body>
-                <form>
-                   <label>filter</label> <input.filter value={this.filter}/>
-                </form> 
-                <table>
-                  <thead>
+    render() {
+        return <body>
+            <form>
+                <label>filter</label> <input.filter value={this.filter}/>
+            </form>
+            <table>
+                <thead>
                     <tr>
                         <th>aaa</th>
                         <th>bbb</th>
                         <th>ccc</th>
                     </tr>
-                  </thead>
-                  <VirtualTableBody list={this.list}/>
-                </table>
-              
-            </body>
-  }
+                </thead>
+                <VirtualTableBody list={this.list}/>
+            </table>
 
-  filterSet(textToLookup) {
-    if(textToLookup)
-      this.componentUpdate({ list: this.data.filter( record => record.text.indexOf(textToLookup) >= 0 ) });
-    else
-      this.componentUpdate({ list: this.data});
-  }
+        </body>;
+    }
 
-  ["on change at input.filter"](evt,input) {
-    this.filter = input.value;
-    // throttling filter application 
-    this.timer(400, () => this.filterSet(this.filter) );
-  }
+    filterSet(textToLookup) {
+        if (textToLookup)
+            this.componentUpdate({list: this.data.filter(record => record.text.includes(textToLookup))});
+        else
+            this.componentUpdate({list: this.data});
+    }
 
+    "on change at input.filter"(evt, input) {
+        this.filter = input.value;
+        // throttling filter application
+        this.timer(400, () => this.filterSet(this.filter));
+    }
 }
 
 document.body.patch(<App/>);

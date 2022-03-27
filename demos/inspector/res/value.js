@@ -120,7 +120,7 @@ function crackText(text) {
 }
 
 export function SublimatedValue(channel, val, key, forLog = false) {
-  if (!key) key = val.toString();
+  if (!key) key = `${val}`;
 
   if (val === null)
     return <var .null key={key}>null</var>;

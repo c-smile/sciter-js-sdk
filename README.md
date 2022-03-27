@@ -2,7 +2,7 @@
 
 Build cross platform desktop applications with HTML, CSS and javascript.
 
-### [Tutorials](https://sciter.com/tutorials/), [Documentation](docs/md/README.md) and [Developement logfile](logfile.md).
+### [Tutorials](https://sciter.com/tutorials/), [Documentation](docs/md/README.md) and [Development logfile](logfile.md).
 
 ## Script
 

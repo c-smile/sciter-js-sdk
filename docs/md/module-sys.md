@@ -226,7 +226,7 @@ sys is built on top of [libuv](https://github.com/libuv/libuv) that Sciter.JS us
 * `sys.getenv()`
 * `sys.setenv()`
 * `sys.unsetenv()`
-* `sys.cwd()`
+* `sys.cwd()` - Get current working directory
 * `sys.homedir()`
 * `sys.tmpdir()`
 * `sys.exepath()`

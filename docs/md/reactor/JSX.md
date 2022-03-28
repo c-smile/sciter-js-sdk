@@ -212,7 +212,7 @@ List of Element class functions that accept VNODEs and so JSX declarations:
 
 * `element.content(vnode | array of vnodes)` \- content of the element is replaced by these elements;
 * `element.append(vnode | array of vnodes)` \- these element\[s\] will be added to the end of element's content;
-* `element.prepend(vnode | array of vnodes)` \- these element\[s\] will be added to the end of element's content;
+* `element.prepend(vnode | array of vnodes)` \- these element\[s\] will be added to the beginning of element's content;
 * `element.patch(vnode)` \- patch existing DOM element by vnode definition, see below for more details;
 
 ### `element.patch(vnode)` \- DOM reconciliation (a.k.a patching) by vnode

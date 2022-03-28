@@ -64,7 +64,7 @@ namespace sciter
 
     window( UINT creationFlags, RECT frame = RECT() ) {
       asset_add_ref();
-      _hwnd = ::SciterCreateWindow(creationFlags, (frame.right - frame.left) > 0 ? &frame: NULL,NULL,this,NULL);
+      _hwnd = ::SciterCreateWindow(creationFlags, (frame.right - frame.left) > 0 ? &frame: NULL,&msg_delegate,this,NULL);
     }
 
     //virtual ~window() {}

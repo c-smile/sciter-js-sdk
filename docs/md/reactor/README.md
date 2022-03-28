@@ -54,4 +54,4 @@ But Facebook::ReactJS is a JavaScript library and SciterJS::Reactor is a native 
 * [Lists and Keys](lists-and-keys.md)
 * [Technical details: Component Lifecycle](component-lifecycle.md)
 * [Top-level API](reactor-api.md)
-* [Internalization support](JSX-i18n.md) - Built-in i18n primitives
+* [Internationalization support](JSX-i18n.md) - Built-in i18n primitives

@@ -6,7 +6,7 @@ The table shows how things can be done the Sciter way:
 
 | Sciter | Regular HTML |
 | ------ | ------------ |
-| `<input #id />`    | `<input id="id" />`
+| `<input #id />`   | `<input id="id" />`
 | `<input .class />` | `<input class="class" />`
 | `<input \|text />` | `<input type="text" />`
 | `<input (name) />` | `<input name="name" />`

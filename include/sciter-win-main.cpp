@@ -23,6 +23,7 @@ int APIENTRY wWinMain(HINSTANCE hInstance,
 	UNREFERENCED_PARAMETER(lpCmdLine);
   UNREFERENCED_PARAMETER(nCmdShow);
 
+#if defined(MANUAL_LOOP)
   OleInitialize(0); // for system drag-n-drop
 
   // comment this out if you need system theming
@@ -42,7 +43,12 @@ int APIENTRY wWinMain(HINSTANCE hInstance,
   int r = uimain(message_pump);
 
   OleUninitialize();
-
+#else 
+  // equivalent of the above
+  sciter::application::start();
+  int r = uimain([]() -> int { return sciter::application::run(); });
+  sciter::application::shutdown();
+#endif
   return r;
 	  
 }
@@ -70,39 +76,7 @@ namespace sciter {
     }
 
   }
-  
-  LRESULT window::on_message( HWINDOW hwnd, UINT msg, WPARAM wParam, LPARAM lParam, SBOOL& pHandled )
-  {
-     //switch(msg) {
-     //  case WM_SIZE: on_size(); break; 
-     //  case WM_MOVE: on_move(); break; 
-     //}
-     return 0;
-  }
-
-  LRESULT SC_CALLBACK window::msg_delegate(HWINDOW hwnd, UINT msg, WPARAM wParam, LPARAM lParam, LPVOID pParam, SBOOL* pHandled)
-  {
-    window* win = static_cast<window*>( pParam );
-    return win->on_message( hwnd, msg, wParam, lParam,*pHandled);
-  }
+ 
     
-  void window::collapse() { 
-    if(_hwnd) ::ShowWindow(_hwnd, SW_MINIMIZE ); 
-  }
-  void window::expand( bool maximize) { 
-    if(_hwnd) ::ShowWindow(_hwnd, maximize? SW_MAXIMIZE :SW_NORMAL ); 
-  }
-  void window::request_close() {
-    if(_hwnd) ::PostMessage(_hwnd, WM_CLOSE, 0, 0 ); 
-  }
-  void window::close() {
-    if (_hwnd) ::DestroyWindow(_hwnd);
-  }
-  window::window( UINT creationFlags, RECT frame): _hwnd(NULL)
-  {
-    asset_add_ref();
-    _hwnd = ::SciterCreateWindow(creationFlags,&frame,&msg_delegate,this,NULL);
-  }
-
 }
 

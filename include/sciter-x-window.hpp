@@ -42,11 +42,18 @@ int uimain( std::function<int()> run );
 /**sciter namespace.*/
 namespace sciter
 {
-
   namespace application
   {
     const std::vector<sciter::string>& argv();
-    HINSTANCE                          hinstance();
+    HINSTANCE hinstance();
+
+    inline void start() {  
+      std::vector<const WCHAR*> args;
+      for (auto& arg : argv()) args.push_back(arg.c_str());
+      SciterExec(SCITER_APP_INIT, (UINT_PTR)args.size(), (UINT_PTR)&args[0]); }
+    inline int  run() { return SciterExec(SCITER_APP_LOOP, 0, 0); }
+    inline bool request_quit(int rv) { return SciterExec(SCITER_APP_STOP, 0, 0); }
+    inline void shutdown() { SciterExec(SCITER_APP_SHUTDOWN, 0, 0); }
   }
 
   class window : public sciter::event_handler
@@ -54,7 +61,12 @@ namespace sciter
   {
     friend sciter::host<window>;
   public:
-    window( UINT creationFlags, RECT frame = RECT() );
+
+    window( UINT creationFlags, RECT frame = RECT() ) {
+      asset_add_ref();
+      _hwnd = ::SciterCreateWindow(creationFlags, (frame.right - frame.left) > 0 ? &frame: NULL,NULL,this,NULL);
+    }
+
     //virtual ~window() {}
 
     bool is_valid() const { return _hwnd != 0; }
@@ -62,10 +74,12 @@ namespace sciter
     virtual long asset_add_ref() { return asset::asset_add_ref(); }
     virtual long asset_release() { return asset::asset_release(); }
 
-    void collapse(); // minimize
-    void expand( bool maximize = false); // show or maximize
-    void request_close(); // requests window to be closed, note: script can reject the closure
-    void close(); // forced close of the window. Note: normally you shoud use request_close()
+    void collapse() { bind(); ::SciterWindowExec(_hwnd,SCITER_WINDOW_SET_STATE, SCITER_WINDOW_STATE_MINIMIZED,0); }
+    void expand( bool maximize = false) { bind(); ::SciterWindowExec(_hwnd,SCITER_WINDOW_SET_STATE, maximize ? SCITER_WINDOW_STATE_MAXIMIZED: SCITER_WINDOW_STATE_SHOWN,0); }
+    void request_close() // requests window to be closed, note: script can reject the closure
+                         { ::SciterWindowExec(_hwnd,SCITER_WINDOW_SET_STATE, SCITER_WINDOW_STATE_CLOSED,FALSE); }
+    void close() { ::SciterWindowExec(_hwnd,SCITER_WINDOW_SET_STATE, SCITER_WINDOW_STATE_CLOSED,TRUE); }
+    void activate(bool bring_to_front = false) { bind(); ::SciterWindowExec(_hwnd, SCITER_WINDOW_ACTIVATE, bring_to_front, 0); }
 
     /*OBSOLETE*/ void dismiss() { request_close(); }
 
@@ -104,8 +118,20 @@ namespace sciter
     }
 
 #if defined(WINDOWS)
-    virtual LRESULT on_message( HWINDOW hwnd, UINT msg, WPARAM wParam, LPARAM lParam, SBOOL& handled );
-    static LRESULT SC_CALLBACK msg_delegate(HWINDOW hwnd, UINT msg, WPARAM wParam, LPARAM lParam, LPVOID pParam, SBOOL* pHandled);
+    virtual LRESULT on_message( HWINDOW hwnd, UINT msg, WPARAM wParam, LPARAM lParam, SBOOL& handled ) {
+      //switch(msg) {
+      //  case WM_SIZE: on_size(); break; 
+      //  case WM_MOVE: on_move(); break; 
+      //}
+      return 0;
+    }
+
+    static LRESULT SC_CALLBACK msg_delegate(HWINDOW hwnd, UINT msg, WPARAM wParam, LPARAM lParam, LPVOID pParam, SBOOL* pHandled)
+    {
+      window* win = static_cast<window*>(pParam);
+      return win->on_message(hwnd, msg, wParam, lParam, *pHandled);
+    }
+
 #endif
   private:
      HWINDOW _hwnd;

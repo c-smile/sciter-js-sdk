@@ -22,7 +22,7 @@ int main(int argc, const char * argv[])
   NSArray *tl;
   auto mb = [NSBundle mainBundle];
   [mb loadNibNamed:@"MainMenu" owner:application topLevelObjects:&tl];
-
+  
   [application setActivationPolicy:NSApplicationActivationPolicyRegular];
   
   //SciterSetOption(NULL, SCITER_SET_GFX_LAYER, GFX_LAYER_CG);
@@ -62,33 +62,6 @@ namespace sciter {
       return _argv;
     }
     
-  }
-
-  void window::collapse() {
-    if(_hwnd) [nswindow(_hwnd) performMiniaturize:nsview(_hwnd)];
-  }
-  void window::expand( bool maximize) { 
-    if(_hwnd) [nswindow(_hwnd) makeKeyAndOrderFront:nil];
-  }    
-
-  void window::request_close() {
-      if(_hwnd) {
-          NSWindow* pw = nswindow(_hwnd);
-          if(pw) [pw performClose: pw];
-      }
-    _hwnd = 0;
-  }
-
-  void window::close() {
-    if(_hwnd) [nswindow(_hwnd) close];
-    _hwnd = 0;
-  }
-
-
-  window::window( UINT creationFlags, RECT frame): _hwnd(NULL)
-  {
-     asset_add_ref();
-    _hwnd = ::SciterCreateWindow(creationFlags, (frame.right - frame.left) > 0 ? &frame: NULL,NULL,this,NULL);
   }
 
 }

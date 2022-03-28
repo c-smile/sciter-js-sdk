@@ -299,6 +299,9 @@ typedef struct _ISciterAPI {
 
   SBOOL   SCFN(SciterReleaseGlobalAsset)(som_asset_t* pass);
 
+  INT_PTR SCFN(SciterExec)(UINT appCmd /**/, UINT_PTR p1, UINT_PTR p2);
+  INT_PTR SCFN(SciterWindowExec)(HWINDOW hwnd, UINT windowCmd /**/, UINT_PTR p1, UINT_PTR p2);
+
 } ISciterAPI;
 
 typedef ISciterAPI* (SCAPI *SciterAPI_ptr)();
@@ -573,6 +576,9 @@ inline ISciterAPI *_SAPI(ISciterAPI *ext) {
 #if !defined(WINDOWLESS)
   inline  HWINDOW SCAPI SciterCreateWindow ( UINT creationFlags,LPRECT frame, SciterWindowDelegate* delegate, LPVOID delegateParam, HWINDOW parent) { return SAPI()->SciterCreateWindow (creationFlags,frame,delegate,delegateParam,parent); }
 #endif
+
+  inline  INT_PTR SCAPI SciterExec(UINT appCmd, UINT_PTR p1, UINT_PTR p2) { return SAPI()->SciterExec(appCmd, p1, p2); }
+  inline  INT_PTR SCAPI SciterWindowExec(HWINDOW hwnd,UINT wndCmd, UINT_PTR p1, UINT_PTR p2) { return SAPI()->SciterWindowExec(hwnd, wndCmd, p1, p2); }
 
   inline SCDOM_RESULT SCAPI Sciter_UseElement(HELEMENT he) { return SAPI()->Sciter_UseElement(he); }
   inline SCDOM_RESULT SCAPI Sciter_UnuseElement(HELEMENT he) { return SAPI()->Sciter_UnuseElement(he); }

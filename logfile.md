@@ -1,3 +1,26 @@
+## 4.4.8.34
+
+### Fixes:
+
+* [performance] 0x7FFF cap on length of paragraph text. This means that paragraphs cannot have more characters than 32767. HTML parser breaks text on multiple paragraphs if input exceeds that number. 
+* [windows,osx] fix of compound emoji handling in editors.
+* Fix of https://sciter.com/forums/topic/sys-fs-splitpath-doesnt-work-as-expected/ ;
+* [virtual-list] mousewheel adjustments;
+* fix of https://sciter.com/forums/topic/selectable-div-context-menu-bug/;
+* optional delaying setting focus() to after measure (performance);
+* fix of AV on broken Windows machines that cannot create layered popup Direct2D windows;
+* removal of redundant debugging printout;
+* [Windows] `Event.keyState()` fix;
+* `NUMPAD ENTER` fix;
+
+### New features:
+
+* [API, pre 5.x.x.x], purpose of these two functions is to support non-C/C++ integrations.
+  * `SciterExec()` - application methods/commands;
+  * `SciterWindowExec()`- window methods/commands;
+* [css,JS] "multi-entry aspects" - aspect functions that have `aspect.detached()` method are detachable. see: samples/css++/aspect.htm and sdk.js/samples.css/css++/aspect.htm
+
+
 ## 4.4.8.33
 
 ### Fixes:

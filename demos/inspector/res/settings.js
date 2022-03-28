@@ -11,7 +11,7 @@ let list = [];
 // window position persistence
 add({
   uiStateStore: function(data) {
-    const [x, y, w, h] = Window.this.box("xywh", "border", "screen");
+    const [x, y, w, h] = Window.this.box("xywh", "border", "screen",true);
     data.window = {left: x, top: y, width: w, height: h};
   },
   uiStateRestore: function(data) {

@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Test</title>
+        <style>
+
+button:checked {
+    aspect: Foo(caption:"Foo");
+    color:red;
+}
+
+button:not(:checked) {
+    aspect: Bar(caption:"Bar");
+    color:green;
+}
+
+        </style>
+        <script>
+
+
+let counter = 0;
+
+function Foo({caption}) {
+    console.log("Foo",this);
+    this.innerText = `${caption} ${++counter}`;
+}
+Foo.detached = function () {
+    console.log("Foo detached",this);
+};
+
+function Bar({caption}) {
+    console.log("Bar",this);
+    this.innerText = `${caption}`;   
+}
+
+Bar.detached = function () {
+    console.log("Bar detached",this);
+};
+
+
+        </script>
+    </head>
+    <body>
+
+<button|checkbox>Foo</button>
+    </body>
+</html>

@@ -206,9 +206,9 @@ var children = arr.map( (n) => <li>item #{n}</li> );
 container.content(children);
 ```
 
-The container will have three `<li>` children with texts "item #1", "item #3" and "item #3".
+The container will have three `<li>` children with texts "item #1", "item #2" and "item #3".
 
-List of Element class functions that accept VNODEs and so SSX declarations: children with texts "item #1", "item #3" and "item #3".
+List of Element class functions that accept VNODEs and so JSX declarations:
 
 * `element.content(vnode | array of vnodes)` \- content of the element is replaced by these elements;
 * `element.append(vnode | array of vnodes)` \- these element\[s\] will be added to the end of element's content;

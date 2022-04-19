@@ -1,4 +1,5 @@
-# sciter-js-sdk
+# NOTE: sciter-js-sdk is moved to https://gitlab.com/c-smile/sciter-js-sdk/
+
 
 Build cross platform desktop applications with HTML, CSS and javascript.
 
